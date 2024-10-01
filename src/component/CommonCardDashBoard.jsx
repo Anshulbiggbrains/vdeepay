@@ -15,12 +15,9 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
         //   boxShadow: 2,
           textAlign: 'center', // Center the text
           cursor: 'pointer',
-          
           transition: 'box-shadow 0.3s ease-in-out',
           width: '100%',
           height: '100%',
-       
-      
           overflow: 'hidden',
         }}
         onClick={onClick}
