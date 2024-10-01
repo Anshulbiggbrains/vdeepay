@@ -10,6 +10,7 @@ import { useContext } from "react";
 import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
 import { Box } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 const NavItemSubmenu = ({
   item,
@@ -38,10 +39,10 @@ const NavItemSubmenu = ({
           sx={{
             
             justifyContent: open ? "initial" : "center",
-            color: whiteColor(),
+
             "&:hover": {
               // color: whiteColor(),
-              backgroundColor: `#190028`,
+              backgroundColor: `gray`,
               backdropFilter: "blur(5px)",
               // "& .menu-title": {
               //   color: whiteColor(),
@@ -65,10 +66,13 @@ const NavItemSubmenu = ({
             className="menu-title"
             primary={item.title}
             sx={{
+              color:"#012169",
+              "&:hover": {
               opacity: open ? 1 : 0,
               color: whiteColor(),
               fontSize: "16px",
               fontStyle: "italic",
+              }
             }}
           />
           {open ? subMenuOpen ? <ExpandLess /> : <ExpandMore /> : ""}
@@ -101,11 +105,11 @@ const NavItemSubmenu = ({
                     sx={{
                       pl: open ? 4 : 1.45,
                       justifyContent: open ? "initial" : "center",
-                      backgroundColor: isCurrentActive ? `#190028` : "",
+                      backgroundColor: isCurrentActive ? `#1877f2` : "#fff",
                       backdropFilter: isCurrentActive ? "blur(5px)" : "",
                       "&:hover": {
                         // color: whiteColor(),
-                        backgroundColor: `#190028`,
+                        backgroundColor: `#1877f2`,
                         // "& .submenu-title": {
                         //   color: whiteColor(),
                         // },
@@ -128,14 +132,18 @@ const NavItemSubmenu = ({
                       <img width="26px" src={subMenu.icon} alt="" />
                     </Box>
                     <ListItemText
-                      className="submenu-title"
                       primary={subMenu.title}
+                   
                       sx={{
-                        marginLeft: open && -2,
+                        marginLeft:-4,
+                        color:"#012169",
+
+                        "&:hover": {
+                        marginLeft: open && -5,
                         fontSize: "16px",
                         fontStyle: "italic",
                         color: whiteColor(),
-                      }}
+                      }}}
                     />
                   </ListItemButton>
                 </NavLink>
