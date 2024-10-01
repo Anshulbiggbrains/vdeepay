@@ -5,23 +5,13 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
   return (
     <Tooltip title={name} placement="top">
       <Box
-        className={isSelected ? "card-selected" : "card-unselected"}
+       
         sx={{
           display: 'flex',
           flexDirection: 'column', // Stack items vertically
           alignItems: 'center', // Center items horizontally
           justifyContent: 'center',
-          background: 'linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)',
-        //   boxShadow: 2,
-          textAlign: 'center', // Center the text
-          cursor: 'pointer',
-          
-          transition: 'box-shadow 0.3s ease-in-out',
-          width: '100%',
-          height: '100%',
-       
-      
-          overflow: 'hidden',
+          cursor: 'pointer'
         }}
         onClick={onClick}
       >
@@ -31,7 +21,7 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
             height: '80px',
             padding:2,
             borderRadius: '50%', // Circular shape
-            border: '5px solid green', // Border color similar to card's accent
+            border: '4px solid #ffb703', // Border color similar to card's accent
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

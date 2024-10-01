@@ -35,8 +35,8 @@ const RetDdDashboard = () => {
         { id: 4, name: "CMS 2", img: cmsIcon, component: CMSView },
         { id: 5, name: "Nepal Transfer", img: null, component: NepalTransfer },
         { id: 6, name: "Vendor Payments", img: null, component: VendorPayments },
-        // { id: 7, name: "Super", img: null, component: VendorPayments },
-        // { id: 8, name: "UPI", img: upi, component: UPITransferView },
+        { id: 7, name: "Super", img: null, component: VendorPayments },
+        { id: 8, name: "UPI", img: upi, component: UPITransferView },
       ],
     },
     {
@@ -45,7 +45,7 @@ const RetDdDashboard = () => {
         { id: 9, name: "Mobile Recharge", img: mobileR_img,component:MobileRechargeForm  },
         { id: 9, name: "DTH", img: dthIcon,component:MobileRechargeForm  },
         { id: 9, name: "Electricity", img: elecIcon,component:ElectricityForm  },
-        { id: 10, name: "Credit Card Payment", img: null ,component:CreditcardForm },
+        { id: 10, name: "Credit Card ", img: null ,component:CreditcardForm },
         { id: 10, name: "BroadBand", img: broadband ,component:ElectricityForm },
         { id: 11, name: "Gas", img: gasIcon  ,component:ElectricityForm},
         { id: 12, name: "Water", img: waterIcon  ,component:ElectricityForm},
@@ -117,6 +117,7 @@ const RetDdDashboard = () => {
         // Dashboard view displaying the card categories
         dataCategories.map((category, index) => (
           <Box
+          
             key={index}
             sx={{
               marginBottom: 2,
@@ -133,9 +134,9 @@ const RetDdDashboard = () => {
             >
               {category.title}
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container >
               {category.data.map((item) => (
-                <Grid item xs={12} sm={6} md={3} lg={2} key={item.id}>
+                <Grid item xs={12} sm={6} md={3} lg={1.5} key={item.id}>
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
