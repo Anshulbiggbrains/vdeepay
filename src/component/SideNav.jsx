@@ -154,6 +154,7 @@ export default function SideNav(props, { data }) {
   // ####################################
   useEffect(() => {
     window.addEventListener("resize", changeApply);
+    handleDrawerOpen();
     return () => {
       window.removeEventListener("resize", changeApply);
     };
@@ -273,7 +274,8 @@ export default function SideNav(props, { data }) {
   const drawer = (
     <div>
       <DrawerHeader sx={{ justifyContent: "space-between", pr: 1 }}>
-        {(open || mobileOpen) && (
+        {/* {(open || mobileOpen) && ( */}
+        {true && (
           <LogoComponent
             style={{
               padding: "4px",
@@ -283,7 +285,8 @@ export default function SideNav(props, { data }) {
             }}
           />
         )}
-        {!open && !mobileOpen && (
+        {/* {!open && !mobileOpen && ( */}
+        {false && (
           <img
             src={smLogo}
             width="35px"
@@ -335,6 +338,7 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
+        {/* {open && ( */}
         {open && (
           <Typography
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
@@ -403,7 +407,9 @@ export default function SideNav(props, { data }) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { md: 2, sm: 0, xs: 0 }, display: { sm: "none" } }}
+                sx={{ mr: { md: 2, sm: 0, xs: 0 },
+                display: { sm: "none" } }
+              }
               >
                 <MenuIcon />
               </IconButton>
@@ -701,9 +707,10 @@ export default function SideNav(props, { data }) {
           <>
             <WebDrawer
               variant="permanent"
-              open={open}
-              onMouseOver={handleDrawerOpen}
-              onMouseLeave={handleDrawerClose}
+              // open={open}
+              open={true}
+              // onMouseOver={handleDrawerOpen}
+              // onMouseLeave={handleDrawerClose}
               sx={{
                 position: "absolute",
                 zIndex: "1000",
@@ -725,9 +732,10 @@ export default function SideNav(props, { data }) {
         <>
           <WebDrawer
             variant="permanent"
-            open={open}
-            onMouseOver={handleDrawerOpen}
-            onMouseLeave={handleDrawerClose}
+            // open={open}
+            open={true}
+            // onMouseOver={handleDrawerOpen}
+            // onMouseLeave={handleDrawerClose}
             sx={{
               position: "absolute",
               zIndex: "1000",
