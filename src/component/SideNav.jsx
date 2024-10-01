@@ -267,7 +267,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "12rem", sm: "0.5rem", xs: "0.5rem" },
+    marginLeft: { md: "16rem", sm: "16rem", xs: "0.5rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
