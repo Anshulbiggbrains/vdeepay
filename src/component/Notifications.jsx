@@ -166,7 +166,8 @@ const Notifications = () => {
                       "&:hover": { transform: "scale(1.2)" },
                     }}
                   />
-                ) : (
+                ) : 
+                (
                   <NotificationsNoneIcon
                     size="large"
                     sx={{
@@ -175,7 +176,8 @@ const Notifications = () => {
                       "&:hover": { transform: "scale(1.2)" },
                     }}
                   />
-                )}
+                )
+                }
               </Badge>
             )}
           </Button>

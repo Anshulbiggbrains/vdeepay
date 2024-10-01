@@ -49,7 +49,8 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-const drawerWidth = 300;
+import ProfilePage from "./Profile";
+const drawerWidth = 240;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -550,15 +551,6 @@ export default function SideNav(props, { data }) {
         className="rm-pd-sm"
       >
         <DrawerHeader />
-        {/* {
-  user &&
-  (user.role === "Ret" || user.role === "Dd") && location.pathname === "/customer/dashboard" && (
-    <Box sx={{ mt: 3, ml: 2, mr: 2 }}>
-      <TransactionsData />
-    </Box>
-  )
-} */}
-
         {/* ############################ */}
         <div
           className={

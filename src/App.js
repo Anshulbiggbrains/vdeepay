@@ -87,6 +87,7 @@ import AdminBanking from "./View/AdminBanking";
 import AdminServices from "./View/AdminServices";
 import AdminApiServices from "./View/AdminApiServices";
 import Documents from "./View/Documents";
+import ProfilePage from "./component/Profile";
 // import IRCTCView from "./View/Travel/IRCTCView";
 // import MainTravelContainer from "./View/Travel/MainTravelContainer";
 
@@ -264,6 +265,10 @@ function App() {
                     <Route path="dashboard" element={<RetDdDashboard />} />
                     <Route path="recharge" element={<RechargeAndBillPay />} />
                     <Route path="money-transfer-new" element={<MoneyTransferViewNew/>} />
+                    <Route
+                      path="Profile-new"
+                      element={<ProfilePage />}
+                    />
 
                     <Route
                       path="money-transfer"
@@ -298,6 +303,8 @@ function App() {
                       path="vendor-payments"
                       element={<VendorPayments />}
                     />
+                    
+
                     {authCtx?.user?.stm === 1 && (
                       <Route path="settlements" element={<SettlementsView />} />
                     )}
