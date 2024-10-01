@@ -128,7 +128,7 @@ export default function SideNav(props, { data }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const title = setTitleFunc(location.pathname, location.state);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   // defining alias here
   const { window: SideWindow } = props;
@@ -329,7 +329,8 @@ export default function SideNav(props, { data }) {
               <NavItemComponent
                 item={item}
                 open={open || mobileOpen}
-                setOpen={setOpen}
+                // setOpen={setOpen}
+                setOpen={() => {}}
                 mobileOpen={mobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
                 index={index}
