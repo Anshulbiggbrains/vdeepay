@@ -128,7 +128,7 @@ export default function SideNav(props, { data }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const title = setTitleFunc(location.pathname, location.state);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   // defining alias here
   const { window: SideWindow } = props;
@@ -154,7 +154,7 @@ export default function SideNav(props, { data }) {
   // ####################################
   useEffect(() => {
     window.addEventListener("resize", changeApply);
-    // handleDrawerOpen();
+    handleDrawerOpen();
     return () => {
       window.removeEventListener("resize", changeApply);
     };
@@ -266,7 +266,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
+    marginLeft: { md: "12rem", sm: "0.5rem", xs: "0.5rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
@@ -708,8 +708,8 @@ export default function SideNav(props, { data }) {
               variant="permanent"
               open={open}
               // open={true}
-              onMouseOver={handleDrawerOpen}
-              onMouseLeave={handleDrawerClose}
+              // onMouseOver={handleDrawerOpen}
+              // onMouseLeave={handleDrawerClose}
               sx={{
                 position: "absolute",
                 zIndex: "1000",
@@ -733,8 +733,8 @@ export default function SideNav(props, { data }) {
             variant="permanent"
             open={open}
             // open={true}
-            onMouseOver={handleDrawerOpen}
-            onMouseLeave={handleDrawerClose}
+            // onMouseOver={handleDrawerOpen}
+            // onMouseLeave={handleDrawerClose}
             sx={{
               position: "absolute",
               zIndex: "1000",
