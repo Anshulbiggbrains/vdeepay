@@ -439,25 +439,14 @@ export default function SideNav(props, { data }) {
           <div
             style={{
               display: "flex",
-            
+              marginRight:"10px",
               justifyContent: "end",
+              
             }}
           >
-            {/* {user && user.role === "Admin" && <AdminBadgeComponent />}
-            <Mount visible={user?.role !== "Admin"}>
-              {" "}
-              <Notifications />
-
-            </Mount> */}
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              sx={{ color: "#000", mr: { xs: -2, sm: 0, md: 1 } }}
-            />
-            <WalletCard/>
-
+           <WalletCard/>
           </div>
+          
         </Toolbar>
       </WebAppBar>
 

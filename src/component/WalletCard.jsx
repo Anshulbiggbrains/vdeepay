@@ -150,7 +150,7 @@ const WalletCard = () => {
   return(
     <Grid container spacing={2}  >
 
-      <Grid item xs={6} lg={6}>
+      <Grid item xs={6}>
         <Box
           sx={{
             padding: '4px 6px 3px 4px ',               
@@ -159,8 +159,8 @@ const WalletCard = () => {
             mr:2,
             display: 'flex',
             alignItems: 'center',         
-            width: '100%',
-            maxWidth: '310px',
+            width: '99%',
+            maxWidth: '250px',  
             border: '2px solid black',
           }}
         >
@@ -171,33 +171,36 @@ const WalletCard = () => {
             <Typography variant="subtitle1" sx={{ color: '#1C2E46' }}>
               Wallet 1
             </Typography>
-            
+           
             <Typography variant="body2" sx={{ color: '#1C2E46', fontWeight: 'bold' }}>
               {numberSetter(user.w1 / 100)} ₹
             </Typography>
+           
           </Box>
+          <RefreshComponent refresh={userRequest} onClick={() => refreshUser()}  sx={{mb:2, color:"#000",fontSize:20,ml:2}} />
         </Box>
+        
       </Grid>
 
       {/* Wallet 2 */}
-      <Grid item xs={6} lg={6}>
+      <Grid item xs={6} >
         <Box
           sx={{
             padding: '4px 6px 3px 4px ',                
-            backgroundColor: '#E3F2FD',   
+            backgroundColor: '#E3F2FF',   
             borderRadius: '8px',          
             display: 'flex',
             alignItems: 'center',         
-            width: '100%',    
-            maxWidth: '310px',  
+            width: '99%',    
+            maxWidth: '250px',  
             border: '2px solid black',            
-            mr:2,
+            mr:2
           }}
         >
          
           <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#1C2E46', mr: 2 }} /> {/* Larger blue icon */}
           <Box>
-           
+
             <Typography variant="subtitle1" sx={{ color: '#1C2E46' }}>
               Wallet 2
             </Typography>
@@ -206,8 +209,14 @@ const WalletCard = () => {
               {numberSetter(user.w2 / 100)} ₹
             </Typography>
           </Box>
+          <RefreshComponent refresh={userRequest} onClick={() => refreshUser()}  sx={{mb:2, color:"#000",fontSize:20,ml:2}} />
         </Box>
+    
       </Grid>
+
+      
+    
+      
     </Grid>
 
   )
