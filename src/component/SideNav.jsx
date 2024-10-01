@@ -48,7 +48,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-const drawerWidth = 240;
+const drawerWidth = 300;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -241,6 +241,7 @@ export default function SideNav(props, { data }) {
       : nav;
 
   const outletBoxStyle = {
+    
     width: {
       lg:
         user?.role === "Admin"
@@ -791,7 +792,7 @@ export default function SideNav(props, { data }) {
           <Box sx={outletBoxStyle}>
             <Outlet />
           </Box>
-          {user?.role === "Admin"
+          {/* {user?.role === "Admin"
             ? ""
             : user?.role === "Asm"
             ? ""
@@ -799,6 +800,7 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
+            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&
@@ -810,7 +812,7 @@ export default function SideNav(props, { data }) {
               location.pathname !== "/ad/purchase" &&
               location.pathname !== "/md/purchase" && (
                 <>{isBig ? <RightNavbar /> : <RightNavBarMob />}</>
-              )}
+              )} */}
         </div>
       </Box>
     </Box>
