@@ -21,6 +21,7 @@
 // import BoltIcon from "@mui/icons-material/Bolt";
 // import BugReportIcon from "@mui/icons-material/BugReport";
 // import NotificationsIcon from "@mui/icons-material/Notifications";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import DashboardIcon from "./assets/sidenav/dashboard.svg";
@@ -128,6 +129,8 @@ import {
   busBooking,
   CMSIcon,
   irctcTravelImage,
+  maleAvatar,
+  femaleAvatar,
 } from "./iconsImports";
 
 export const nav = [
@@ -479,32 +482,32 @@ export const customer_nav = [
     icon2: DashboardIconWhite,
     to: "/customer/dashboard",
   },
-  {
-    title: "Recharge/Bill",
-    icon: Recharge,
-    icon2: RechargeIcon,
-    to: "/customer/recharge",
-  },
+  // {
+  //   title: "Recharge/Bill",
+  //   icon: Recharge,
+  //   icon2: RechargeIcon,
+  //   to: "/customer/recharge",
+  // },
  
 
-  {
-    title: "BBPS",
-    icon: bharatbig,
-    icon2: BbpsIcon,
-    to: "/customer/bbps",
-  },
-  {
-    title: "CMS",
-    icon: Cms2,
-    icon2: cmsIconWhite,
-    to: "/customer/cms",
-  },
-  {
-    title: "Money Transfer",
-    icon: transfer1,
-    icon2: MoneyTransferIcon,
-    to: "/customer/money-transfer",
-  },
+  // {
+  //   title: "BBPS",
+  //   icon: bharatbig,
+  //   icon2: BbpsIcon,
+  //   to: "/customer/bbps",
+  // },
+  // {
+  //   title: "CMS",
+  //   icon: Cms2,
+  //   icon2: cmsIconWhite,
+  //   to: "/customer/cms",
+  // },
+  // {
+  //   title: "Money Transfer",
+  //   icon: transfer1,
+  //   icon2: MoneyTransferIcon,
+  //   to: "/customer/money-transfer",
+  // },
   // {
   //   title: "Express Transfer",
   //   icon: ExpressIcon,
@@ -519,31 +522,31 @@ export const customer_nav = [
   // },
  
   
-  {
-    title: "Nepal Transfer",
-    icon: NepalIcon,
-    icon2: NepalIcon,
-    to: "/customer/nepal-transfer",
-  },
+  // {
+  //   title: "Nepal Transfer",
+  //   icon: NepalIcon,
+  //   icon2: NepalIcon,
+  //   to: "/customer/nepal-transfer",
+  // },
   // {
   //   title: "UPI Transfer",
   //   icon: Upi,
   //   icon2: UpiIcon,
   //   to: "/customer/upi-transfer",
   // },
-  {
-    title: "AEPS",
-    icon: AEPS1,
-    icon2: AepsIcon,
-    to: "/customer/aeps",
-  },
-  {
-    title: "Travel",
-    icon: Travel,
-    icon2: FlightIcon,
-    to: "/customer/travel",
-    // to: "/customer/travel-services",
-  },
+  // {
+  //   title: "AEPS",
+  //   icon: AEPS1,
+  //   icon2: AepsIcon,
+  //   to: "/customer/aeps",
+  // },
+  // {
+  //   title: "Travel",
+  //   icon: Travel,
+  //   icon2: FlightIcon,
+  //   to: "/customer/travel",
+  //   // to: "/customer/travel-services",
+  // },
   {
     title: "Credit Request",
     icon: creditmoney,
@@ -556,7 +559,22 @@ export const customer_nav = [
     icon2: ReportsIcon,
     to: "/customer/transactions",
   },
+  {
+    title: "User Profile",
+    icon: maleAvatar, // Import the avatar icon or use a default user icon
+    icon2: femaleAvatar, // Adjust accordingly
+    userProfile: true, // This indicates it contains user information
+ submenus:[
+{
+title:"Manage Your Profile",
+to:"/customer/my-profile",
 
+},{
+title:"Logout",
+to:"/login", 
+}
+ ]
+},
   {
           title: "My Complaints",
           icon: complaint,
@@ -569,6 +587,7 @@ export const customer_nav = [
                 icon2: TransactionIconWhite,
                 to: "/customer/purchase",
               },
+             
               // {
               //         title: "Khata Book",
               //         icon: Book,
@@ -580,7 +599,7 @@ export const customer_nav = [
                       icon: train,
                       icon2: trainIconWhite,
                       to: "https://www.irctc.co.in/nget/train-search",
-                    },
+                    },    
   // {
   //   title: "Reports",
   //   icon: ReportsIcon,

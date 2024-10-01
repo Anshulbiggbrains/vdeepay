@@ -36,7 +36,7 @@ import { Avatar, Button, Grid, IconButton, Tooltip } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import RightNavBarMob from "./RightNavBarMob";
 import Notifications from "./Notifications";
-import WalletCard from "./WalletCard"
+import WalletCard from "./WalletCard";
 import {
   getHoverInActive,
   secondaryColor,
@@ -49,6 +49,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
+import ProfilePage from "./Profile";
 const drawerWidth = 300;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -268,7 +269,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "16rem", sm: "16rem", xs: "16rem" },
+    marginLeft: { md: "16rem", sm: "16rem", xs: "0.5rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
@@ -276,8 +277,7 @@ export default function SideNav(props, { data }) {
   const drawer = (
     <div>
       <DrawerHeader sx={{ justifyContent: "space-between", pr: 1 }}>
-        {/* {(open || mobileOpen) && ( */}
-        {true && (
+        {(open || mobileOpen) && (
           <LogoComponent
             style={{
               padding: "4px",
@@ -287,8 +287,7 @@ export default function SideNav(props, { data }) {
             }}
           />
         )}
-        {/* {!open && !mobileOpen && ( */}
-        {false && (
+        {!open && !mobileOpen && (
           <img
             src={smLogo}
             width="35px"
@@ -318,7 +317,8 @@ export default function SideNav(props, { data }) {
             <NavItemSubmenu
               item={item}
               open={open || mobileOpen}
-              setOpen={setOpen}
+              // setOpen={setOpen}
+              setOpen={() => {}}
               mobileOpen={mobileOpen}
               handleDrawerToggle={handleDrawerToggle}
               index={index}
@@ -490,8 +490,8 @@ export default function SideNav(props, { data }) {
           <>
             <WebDrawer
               variant="permanent"
-              // open={open}
-              open={true}
+              open={open}
+              // open={true}
               // onMouseOver={handleDrawerOpen}
               // onMouseLeave={handleDrawerClose}
               sx={{
@@ -515,8 +515,8 @@ export default function SideNav(props, { data }) {
         <>
           <WebDrawer
             variant="permanent"
-            // open={open}
-            open={true}
+            open={open}
+            // open={true}
             // onMouseOver={handleDrawerOpen}
             // onMouseLeave={handleDrawerClose}
             sx={{
@@ -550,15 +550,6 @@ export default function SideNav(props, { data }) {
         className="rm-pd-sm"
       >
         <DrawerHeader />
-        {/* {
-  user &&
-  (user.role === "Ret" || user.role === "Dd") && location.pathname === "/customer/dashboard" && (
-    <Box sx={{ mt: 3, ml: 2, mr: 2 }}>
-      <TransactionsData />
-    </Box>
-  )
-} */}
-
         {/* ############################ */}
         <div
           className={
