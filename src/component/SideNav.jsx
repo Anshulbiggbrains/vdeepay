@@ -241,33 +241,33 @@ export default function SideNav(props, { data }) {
       : nav;
 
   const outletBoxStyle = {
-    width:"100%",
-    // width: {
-    //   lg:
-    //     user?.role === "Admin"
-    //       ? "100%"
-    //       : user?.role === "Asm"
-    //       ? "100%"
-    //       : user?.role === "Zsm"
-    //       ? "100%"
-    //       : // : user?.role === "Api"
-    //       // ? "100%"
-    //       location.pathname !== "/customer/transactions" &&
-    //         location.pathname !== "/api-user/transactions" &&
-    //         location.pathname !== "/account/dashboard" &&
-    //         location.pathname !== "/ad/transactions" &&
-    //         location.pathname !== "/md/transactions" &&
-    //         location.pathname !== "/ad/sale" &&
-    //         location.pathname !== "/md/sale" &&
-    //         location.pathname !== "/ad/purchase" &&
-    //         location.pathname !== "/md/purchase"
-    //       ? "100%"
-    //       : "100%",
-    //   xs: "100%",
-    // },
-    justifyContent: "end",
-    alignContent: "right",
-    marginLeft: { md: "16rem", sm: "0.5rem", xs: "0.5rem" },
+    
+    width: {
+      lg:
+        user?.role === "Admin"
+          ? "100%"
+          : user?.role === "Asm"
+          ? "100%"
+          : user?.role === "Zsm"
+          ? "100%"
+          : // : user?.role === "Api"
+          // ? "100%"
+          location.pathname !== "/customer/transactions" &&
+            location.pathname !== "/api-user/transactions" &&
+            location.pathname !== "/account/dashboard" &&
+            location.pathname !== "/ad/transactions" &&
+            location.pathname !== "/md/transactions" &&
+            location.pathname !== "/ad/sale" &&
+            location.pathname !== "/md/sale" &&
+            location.pathname !== "/ad/purchase" &&
+            location.pathname !== "/md/purchase"
+          ? "100%"
+          : "100%",
+      xs: "100%",
+    },
+    justifyContent: "start",
+    alignContent: "left",
+    marginLeft: { md: "16rem", sm: "16rem", xs: "16rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
