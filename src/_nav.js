@@ -580,6 +580,7 @@ export const customer_nav = [
              submenus:[
             {
             title:"Manage Your Profile",
+            
             to:"/customer/my-profile",
             
             },{
