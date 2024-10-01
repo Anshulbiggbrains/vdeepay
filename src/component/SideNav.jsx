@@ -438,7 +438,6 @@ export default function SideNav(props, { data }) {
                 fontWeight: "bold",
                 marginLeft: { md: 3, sm: 3 },
                 fontSize: { md: "20px", sm: "15px", xs: "15px" },
-                
               }}
             >
               {title}
