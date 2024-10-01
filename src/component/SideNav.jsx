@@ -128,7 +128,7 @@ export default function SideNav(props, { data }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const title = setTitleFunc(location.pathname, location.state);
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   // defining alias here
   const { window: SideWindow } = props;
@@ -154,7 +154,7 @@ export default function SideNav(props, { data }) {
   // ####################################
   useEffect(() => {
     window.addEventListener("resize", changeApply);
-    handleDrawerOpen();
+    // handleDrawerOpen();
     return () => {
       window.removeEventListener("resize", changeApply);
     };
@@ -274,8 +274,7 @@ export default function SideNav(props, { data }) {
   const drawer = (
     <div>
       <DrawerHeader sx={{ justifyContent: "space-between", pr: 1 }}>
-        {/* {(open || mobileOpen) && ( */}
-        {true && (
+        {(open || mobileOpen) && (
           <LogoComponent
             style={{
               padding: "4px",
@@ -285,8 +284,7 @@ export default function SideNav(props, { data }) {
             }}
           />
         )}
-        {/* {!open && !mobileOpen && ( */}
-        {false && (
+        {!open && !mobileOpen && (
           <img
             src={smLogo}
             width="35px"
@@ -708,10 +706,10 @@ export default function SideNav(props, { data }) {
           <>
             <WebDrawer
               variant="permanent"
-              // open={open}
-              open={true}
-              // onMouseOver={handleDrawerOpen}
-              // onMouseLeave={handleDrawerClose}
+              open={open}
+              // open={true}
+              onMouseOver={handleDrawerOpen}
+              onMouseLeave={handleDrawerClose}
               sx={{
                 position: "absolute",
                 zIndex: "1000",
@@ -733,10 +731,10 @@ export default function SideNav(props, { data }) {
         <>
           <WebDrawer
             variant="permanent"
-            // open={open}
-            open={true}
-            // onMouseOver={handleDrawerOpen}
-            // onMouseLeave={handleDrawerClose}
+            open={open}
+            // open={true}
+            onMouseOver={handleDrawerOpen}
+            onMouseLeave={handleDrawerClose}
             sx={{
               position: "absolute",
               zIndex: "1000",
