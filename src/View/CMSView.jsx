@@ -61,10 +61,10 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
 }));
 
-const CMSView = () => {
+const CMSView = ({resetView,type}) => {
   const [request, setRequest] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [cmsType, setCmsType] = useState("cms1");
+  // const [type, settype] = useState("cms1");
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [url, setUrl] = useState(undefined);
@@ -89,7 +89,9 @@ const CMSView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState("cms1")// Default active tab value
 
-
+  const handleBack=()=>{
+    resetView(false)
+  }
 
   const filterOptions = createFilterOptions({
     matchFrom: "start",
@@ -315,20 +317,20 @@ const CMSView = () => {
     const handleChange = (event, newValue) => {
       console.log("newval",newValue);
       setValue(newValue);
-      setCmsType(cms_tab_value[newValue])
+      // settype(cms_tab_value[newValue])
       // setCurrentType(cms_tab_value[newValue])
-      console.log("cms value is",cmsType)
+      console.log("cms value is",type)
 
     };
 
   return (
     <>
     <Grid>
-    <CustomTabs
+    {/* <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
-    />
+    /> */}
 
    
     <Box
@@ -348,6 +350,7 @@ const CMSView = () => {
       </OuterIcon>
       <Mount visible={url}>
         <Grid container>
+        
           <Grid
             item
             md={12}
@@ -405,6 +408,9 @@ const CMSView = () => {
               // alignItems: "center",
             }}
           >
+            <Button onClick={handleBack}>
+                  back
+                  </Button> 
               
             
             <Typography
@@ -430,8 +436,8 @@ const CMSView = () => {
               </Typography>
               <RadioGroup
                 row
-                value={cmsType}
-                onChange={(e) => setCmsType(e.target.value)}
+                value={type}
+                onChange={(e) => settype(e.target.value)}
               >
                 <FormControlLabel
                   value="cms1"
@@ -446,7 +452,7 @@ const CMSView = () => {
               </RadioGroup>
             </div>
           </Grid> */}
-          {cmsType === "cms1" ? (
+          {type === "cms1" ? (
             <Grid item md={12} xs={12}>
               <Box
                 component="form"

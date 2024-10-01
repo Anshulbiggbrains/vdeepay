@@ -48,8 +48,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import WalletCard from "./WalletCard"
-const drawerWidth = 240;
+const drawerWidth = 300;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -129,7 +128,7 @@ export default function SideNav(props, { data }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const title = setTitleFunc(location.pathname, location.state);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   // defining alias here
   const { window: SideWindow } = props;
@@ -155,6 +154,7 @@ export default function SideNav(props, { data }) {
   // ####################################
   useEffect(() => {
     window.addEventListener("resize", changeApply);
+    handleDrawerOpen();
     return () => {
       window.removeEventListener("resize", changeApply);
     };
@@ -241,6 +241,7 @@ export default function SideNav(props, { data }) {
       : nav;
 
   const outletBoxStyle = {
+    
     width: {
       lg:
         user?.role === "Admin"
@@ -266,7 +267,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
+    marginLeft: { md: "16rem", sm: "16rem", xs: "16rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
@@ -274,7 +275,8 @@ export default function SideNav(props, { data }) {
   const drawer = (
     <div>
       <DrawerHeader sx={{ justifyContent: "space-between", pr: 1 }}>
-        {(open || mobileOpen) && (
+        {/* {(open || mobileOpen) && ( */}
+        {true && (
           <LogoComponent
             style={{
               padding: "4px",
@@ -284,7 +286,8 @@ export default function SideNav(props, { data }) {
             }}
           />
         )}
-        {!open && !mobileOpen && (
+        {/* {!open && !mobileOpen && ( */}
+        {false && (
           <img
             src={smLogo}
             width="35px"
@@ -327,7 +330,8 @@ export default function SideNav(props, { data }) {
               <NavItemComponent
                 item={item}
                 open={open || mobileOpen}
-                setOpen={setOpen}
+                // setOpen={setOpen}
+                setOpen={() => {}}
                 mobileOpen={mobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
                 index={index}
@@ -336,6 +340,7 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
+        {/* {open && ( */}
         {open && (
           <Typography
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
@@ -404,7 +409,9 @@ export default function SideNav(props, { data }) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { md: 2, sm: 0, xs: 0 }, display: { sm: "none" } }}
+                sx={{ mr: { md: 2, sm: 0, xs: 0 },
+                display: { sm: "none" } }
+              }
               >
                 <MenuIcon />
               </IconButton>
@@ -482,9 +489,10 @@ export default function SideNav(props, { data }) {
           <>
             <WebDrawer
               variant="permanent"
-              open={open}
-              onMouseOver={handleDrawerOpen}
-              onMouseLeave={handleDrawerClose}
+              // open={open}
+              open={true}
+              // onMouseOver={handleDrawerOpen}
+              // onMouseLeave={handleDrawerClose}
               sx={{
                 position: "absolute",
                 zIndex: "1000",
@@ -506,9 +514,10 @@ export default function SideNav(props, { data }) {
         <>
           <WebDrawer
             variant="permanent"
-            open={open}
-            onMouseOver={handleDrawerOpen}
-            onMouseLeave={handleDrawerClose}
+            // open={open}
+            open={true}
+            // onMouseOver={handleDrawerOpen}
+            // onMouseLeave={handleDrawerClose}
             sx={{
               position: "absolute",
               zIndex: "1000",
@@ -565,7 +574,7 @@ export default function SideNav(props, { data }) {
           <Box sx={outletBoxStyle}>
             <Outlet />
           </Box>
-          {user?.role === "Admin"
+          {/* {user?.role === "Admin"
             ? ""
             : user?.role === "Asm"
             ? ""
@@ -573,6 +582,7 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
+            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&
@@ -584,7 +594,7 @@ export default function SideNav(props, { data }) {
               location.pathname !== "/ad/purchase" &&
               location.pathname !== "/md/purchase" && (
                 <>{isBig ? <RightNavbar /> : <RightNavBarMob />}</>
-              )}
+              )} */}
         </div>
       </Box>
     </Box>
