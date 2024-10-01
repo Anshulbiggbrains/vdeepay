@@ -29,6 +29,7 @@ const NavItemSubmenu = ({
   const setActiveIndex = sidebarCtx.setActiveIndex;
   const location = useLocation();
   const currentPath = location.pathname;
+  let isCurrentActive = currentPath === item?.to;
 
   return (
     <div>
@@ -37,13 +38,17 @@ const NavItemSubmenu = ({
         <ListItemButton
           onClick={handleClick}
           sx={{
-            
-            justifyContent: open ? "initial" : "center",
+            border: isCurrentActive ? "1px solid rgba(159, 134, 192, 0.3)" : "",
+            backgroundColor: isCurrentActive ? "#1877F2" : "",
 
+            justifyContent: open ? "initial" : "center",
             "&:hover": {
-              // color: whiteColor(),
-              backgroundColor: `gray`,
+              backgroundColor: isCurrentActive?"#1877F2":"",
+
+              color: whiteColor(),
+              // backgroundColor: `gray`,
               backdropFilter: "blur(5px)",
+         
               // "& .menu-title": {
               //   color: whiteColor(),
               // },
@@ -69,9 +74,8 @@ const NavItemSubmenu = ({
               color:"#012169",
               "&:hover": {
               opacity: open ? 1 : 0,
-              color: whiteColor(),
               fontSize: "16px",
-              fontStyle: "italic",
+              // fontStyle: "italic",
               }
             }}
           />
@@ -103,7 +107,7 @@ const NavItemSubmenu = ({
                 >
                   <ListItemButton
                     sx={{
-                      pl: open ? 4 : 1.45,
+                      // pl: open ? 4 : 1.45,
                       justifyContent: open ? "initial" : "center",
                       backgroundColor: isCurrentActive ? `#1877f2` : "#fff",
                       backdropFilter: isCurrentActive ? "blur(5px)" : "",
@@ -141,7 +145,7 @@ const NavItemSubmenu = ({
                         "&:hover": {
                         marginLeft: open && -5,
                         fontSize: "16px",
-                        fontStyle: "italic",
+                        // fontStyle: "italic",
                         color: whiteColor(),
                       }}}
                     />
