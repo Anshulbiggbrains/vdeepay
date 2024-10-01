@@ -36,6 +36,7 @@ import { Avatar, Button, Grid, IconButton, Tooltip } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import RightNavBarMob from "./RightNavBarMob";
 import Notifications from "./Notifications";
+import WalletCard from "./WalletCard";
 import {
   getHoverInActive,
   secondaryColor,
