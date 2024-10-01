@@ -15,7 +15,7 @@ const RefreshComponent = ({
     <>
       <Mount visible={refresh}>
         <Tooltip title="Refreshing">
-          <CircularProgress size="1.2rem" sx={{ color: progressColor, ml: 1 }} />
+          <CircularProgress size="1.1rem" sx={{ color: progressColor, ml: 1 }} />
         </Tooltip>
       </Mount>
       <Mount visible={!refresh}>

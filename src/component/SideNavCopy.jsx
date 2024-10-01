@@ -36,7 +36,6 @@ import { Avatar, Button, Grid, IconButton, Tooltip } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import RightNavBarMob from "./RightNavBarMob";
 import Notifications from "./Notifications";
-import WalletCard from "./WalletCard";
 import {
   getHoverInActive,
   secondaryColor,
@@ -49,7 +48,6 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import ProfilePage from "./Profile";
 const drawerWidth = 240;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -130,7 +128,7 @@ export default function SideNav(props, { data }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const title = setTitleFunc(location.pathname, location.state);
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   // defining alias here
   const { window: SideWindow } = props;
@@ -156,7 +154,6 @@ export default function SideNav(props, { data }) {
   // ####################################
   useEffect(() => {
     window.addEventListener("resize", changeApply);
-    handleDrawerOpen();
     return () => {
       window.removeEventListener("resize", changeApply);
     };
@@ -243,7 +240,6 @@ export default function SideNav(props, { data }) {
       : nav;
 
   const outletBoxStyle = {
-    
     width: {
       lg:
         user?.role === "Admin"
@@ -269,7 +265,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "16rem", sm: "16rem", xs: "0.5rem" },
+    marginLeft: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
@@ -330,8 +326,7 @@ export default function SideNav(props, { data }) {
               <NavItemComponent
                 item={item}
                 open={open || mobileOpen}
-                // setOpen={setOpen}
-                setOpen={() => {}}
+                setOpen={setOpen}
                 mobileOpen={mobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
                 index={index}
@@ -340,7 +335,6 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
-        {/* {open && ( */}
         {open && (
           <Typography
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
@@ -409,9 +403,7 @@ export default function SideNav(props, { data }) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { md: 2, sm: 0, xs: 0 },
-                display: { sm: "none" } }
-              }
+                sx={{ mr: { md: 2, sm: 0, xs: 0 }, display: { sm: "none" } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -437,7 +429,6 @@ export default function SideNav(props, { data }) {
                 fontWeight: "bold",
                 marginLeft: { md: 3, sm: 3 },
                 fontSize: { md: "20px", sm: "15px", xs: "15px" },
-                
               }}
             >
               {title}
@@ -446,14 +437,235 @@ export default function SideNav(props, { data }) {
           <div
             style={{
               display: "flex",
-              marginRight:"10px",
+              alignItems: "center",
               justifyContent: "end",
-              
             }}
           >
-           <WalletCard/>
+            {user && user.role === "Admin" && <AdminBadgeComponent />}
+            <Mount visible={user?.role !== "Admin"}>
+              {" "}
+              <Notifications />
+            </Mount>
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+              sx={{ color: "#000", mr: { xs: -2, sm: 0, md: 1 } }}
+            />
+            <Button
+              sx={{
+                borderRadius: "0px",
+                p: 0,
+                textAlign: "right",
+              }}
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <Tooltip title="MY Profile" placement="bottom">
+                  <Avatar
+                    id="user_img"
+                    alt={user.name}
+                    src={
+                      // !["0", "1"].includes(user.profile_image)?
+                      // user.profile_image : 
+                      user.gender === "FEMALE" ?
+                      femaleAvatar : maleAvatar
+                    }
+                    sx={{ width: 35, height: 35 }}
+                  />
+                {/* {user && user.profile_image ? (
+                  <Avatar
+                    id="user_img"
+                    alt={user.name}
+                    src={user.gender === "FEMALE" ? 
+                      // femaleAvatar : maleAvatar
+                      maleAvatar : femaleAvatar
+                    }
+                    sx={{ width: 35, height: 35 }}
+                  />
+                ) : (
+                  <Avatar
+                    id="user_img"
+                    alt={user.name}
+                    src={user && user.profile_image}
+                    sx={{ width: 35, height: 35 }}
+                  />
+                  // <Avatar
+                  //   id="user_img"
+                  //   alt={user.name}
+                  //   src={
+                  //     user &&
+                  //     user.profile_image !== "0" &&
+                  //     user.profile_image !== "1" ? (
+                  //       user.profile_image
+                  //     ) : user?.gender == "MALE" ? (
+                  //       <Avatar
+                  //         alt="Remy Sharp"
+                  //         src="../src/assets/maleAvatar.jpeg"
+                  //       />
+                  //     ) : user.gender === "FEMALE" ? (
+                  //       <Avatar
+                  //         alt="Remy Sharp"
+                  //         src="../assets/femaleAvatar.jpeg"
+                  //       />
+                  //     ) : (
+                  //       userAvt
+                  //     )
+                  //   }
+                  //   sx={{ width: 90, height: 90 }}
+                  // />
+              //   )} */}
+              </Tooltip>
+              <Grid sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    padding: 1,
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {user && user.name}
+                </Typography>
+              </Grid>
+            </Button>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              keepMounted
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <div
+                style={{
+                  margin: 0,
+                  paddingTop: "0rem",
+                  width: "250px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <MenuItem
+                  disableRipple
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "100%",
+                    marginTop: "-8px",
+                    "&:hover": { cursor: "default", background: "#fff" },
+                  }}
+                >
+                  {/* {user && user.profile_image !== "0" ? (
+                    <Avatar
+                      id="user_img"
+                      alt={user.name}
+                      src={user && user.profile_image}
+                      sx={{ width: 80, height: 80 }}
+                    />
+                  ) : (
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="../src/assets/maleAvatar.jpeg"
+                    />
+                  )} */}
+
+                  <Avatar
+                    id="user_img"
+                    alt={user.name}
+                    src={
+                      // !["0", "1"].includes(user.profile_image)?
+                      // user.profile_image : 
+                      user.gender === "FEMALE" ?
+                      femaleAvatar : maleAvatar
+                    }
+                    sx={{ width: 35, height: 35 }}
+                  />    
+
+                  <span
+                    style={{
+                      fontWeight: "550",
+                      fontSize: "0.9rem",
+                      marginTop: "0.3rem",
+                    }}
+                  >
+                    {user && user.name}
+                  </span>
+
+                  <span
+                    onClick={() => {
+                      if (user && user.role === "Admin") {
+                        navigate("/admin/my-profile");
+                      } else if (user && user.role === "Asm") {
+                        navigate("/asm/my-profile");
+                      } else if (user && user.role === "Zsm") {
+                        navigate("/zsm/my-profile");
+                      } else if (user && user.role === "Ad") {
+                        navigate("/ad/my-profile");
+                      } else if (user && user.role === "Md") {
+                        navigate("/md/my-profile");
+                      } else if (
+                        user &&
+                        (user.role === "Ret" || user.role === "Dd")
+                      ) {
+                        navigate("/customer/my-profile");
+                      } else if (user && user.role === "Api") {
+                        navigate("/api-user/my-profile");
+                      } else {
+                        navigate("/other/my-profile");
+                      }
+                      handleClose();
+                    }}
+                    style={{
+                      border: "1px solid #3f3f3f",
+                      borderRadius: "16px",
+                      padding: "0.2rem 1rem",
+                      fontSize: "0.9rem",
+                      margin: "1rem 0",
+                    }}
+                    className="simple-hover"
+                  >
+                    Manage your Profile
+                  </span>
+                </MenuItem>
+
+                <div className="profile-dropdown-divider-new"></div>
+                <MenuItem
+                  disableRipple
+                  onClick={() => {
+                    handleLogout();
+                    navigate("/");
+                  }}
+                  sx={{
+                    width: "100%",
+                    marginBottom: "-8px",
+                    textAlign: "center",
+                    py: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    "&:hover": {
+                      backgroundColor: getHoverInActive(),
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  Logout <LogoutIcon className="ms-2" fontSize="small" />
+                </MenuItem>
+              </div>
+            </Menu>
           </div>
-          
         </Toolbar>
       </WebAppBar>
 
@@ -490,9 +702,8 @@ export default function SideNav(props, { data }) {
             <WebDrawer
               variant="permanent"
               open={open}
-              // open={true}
-              // onMouseOver={handleDrawerOpen}
-              // onMouseLeave={handleDrawerClose}
+              onMouseOver={handleDrawerOpen}
+              onMouseLeave={handleDrawerClose}
               sx={{
                 position: "absolute",
                 zIndex: "1000",
@@ -515,9 +726,8 @@ export default function SideNav(props, { data }) {
           <WebDrawer
             variant="permanent"
             open={open}
-            // open={true}
-            // onMouseOver={handleDrawerOpen}
-            // onMouseLeave={handleDrawerClose}
+            onMouseOver={handleDrawerOpen}
+            onMouseLeave={handleDrawerClose}
             sx={{
               position: "absolute",
               zIndex: "1000",
@@ -549,6 +759,15 @@ export default function SideNav(props, { data }) {
         className="rm-pd-sm"
       >
         <DrawerHeader />
+        {/* {
+  user &&
+  (user.role === "Ret" || user.role === "Dd") && location.pathname === "/customer/dashboard" && (
+    <Box sx={{ mt: 3, ml: 2, mr: 2 }}>
+      <TransactionsData />
+    </Box>
+  )
+} */}
+
         {/* ############################ */}
         <div
           className={
@@ -565,7 +784,7 @@ export default function SideNav(props, { data }) {
           <Box sx={outletBoxStyle}>
             <Outlet />
           </Box>
-          {/* {user?.role === "Admin"
+          {user?.role === "Admin"
             ? ""
             : user?.role === "Asm"
             ? ""
@@ -573,7 +792,6 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
-            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&
@@ -585,7 +803,7 @@ export default function SideNav(props, { data }) {
               location.pathname !== "/ad/purchase" &&
               location.pathname !== "/md/purchase" && (
                 <>{isBig ? <RightNavbar /> : <RightNavBarMob />}</>
-              )} */}
+              )}
         </div>
       </Box>
     </Box>

@@ -157,8 +157,199 @@ const RightNavbar = () => {
   };
   return (
     <>
-    <Grid component="Box" className="right-nav" >
+    <Grid component="Box"  >
    
+    <Grid 
+  
+>
+<Grid>
+  <Box>
+  Wallet 1
+  <Typography>
+  {numberSetter( user.w1 / 100  )} ₹
+  </Typography>
+  </Box>
+</Grid>
+<Grid>
+  <Box>
+  Wallet 2
+  <Typography>
+  {numberSetter( user.w1 / 100  )} ₹
+  </Typography>
+  </Box>
+</Grid>
+
+    <Grid className={user.w1 / 100 < 1000 ? "animate cards" : "cards"} sx={{ width: "400px" ,}}>
+  <Grid container sx={{ display: "flex", background: "#1D89E4", borderRadius: "8px 8px 14px 14px", padding: "10px" }}>
+    <Grid item xs={6} md={6} lg={6} sx={{ display: "flex", alignItems: "start", justifyContent: "flex-start", padding: "5px", }}>
+      <Box sx={{ color: "white", fontSize: "16px", display: "flex", mt:1}}>
+        Wallet Balance 
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} />
+      </Box>
+    </Grid>
+
+    <Grid item xs={6} md={6} lg={6} sx={{ display: "flex", justifyContent: "end", alignItems: "center", padding: "2px 2px 0px 0px" }}>
+      <Box
+        sx={{
+          backgroundColor: "#FFFFFF",
+          borderRadius: "8px",
+          width: "35%", // Adjust this to control box width
+          height: "65px", // Increase height to fit both elements
+          display: "flex",
+          flexDirection: "column", // Align items vertically
+          justifyContent: "center",
+          alignItems: "center",
+          
+        }}
+      >
+        <Typography variant="h1" sx={{ margin: 0, color: "#CC8C0B", fontSize: "40px" }}>{!isMainWallet ? "1 " : "2"}</Typography> {/* Increased font size */}
+        <Typography variant="body2" sx={{ color: "#5382DE" }}>Wallet</Typography> {/* Display "Walleted" below the 1 */}
+      </Box>
+    </Grid>
+  </Grid>
+
+  <Grid container component="Box" sx={{ display: "flex", justifyContent: "space-between" }} lg={12} md={12}>
+    <Grid item lg={8} md={8} sx={{ justifyContent: "end" }}>
+      
+      {/* Display Wallet Balance */}
+      <Grid sx={{ mt: 1 }}>
+        {user.w1 / 100 < 1000 && (
+          <Box sx={{ textAlign: "left", fontSize: "15px", padding: "15px" }}> {/* Added padding */}
+            Your Wallet Balance is low <br />
+            Kindly recharge.
+          </Box>
+        )}
+      </Grid>
+
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mt: 1.6,
+        }}
+      >
+        <Grid item sx={{ display: "flex", justifyContent: "flex-start", }}>
+          <Tooltip title={isMainWallet ? user.w1 : user.w2}>
+            <Typography variant="h1" fontWeight="bold" sx={{ fontSize: "18px", ml: 4,fontSize:"20px" }}> {/* Increased font size */}
+              {numberSetter(!isMainWallet ? user.w1 / 100    : user.w2 / 100)} ₹
+            </Typography>
+          </Tooltip>
+        </Grid>
+
+        {/* Move Switch Button Here */}
+        <Grid item sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center",mt:3,mr:-6 }}>
+        <Switch
+  checked={isMainWallet}
+  onChange={handleWalletToggle}
+  sx={{
+    '& .MuiSwitch-thumb': {
+      backgroundColor: isMainWallet ? '#CC8C0B' : '#BED4FF', // Thumb color when on or off
+    },
+    '& .MuiSwitch-track': {
+      backgroundColor: '#BED4FF', // Track color always set to #BED4FF
+    },
+  }}
+/>
+
+
+
+        </Grid>
+      </Grid>
+    </Grid>
+
+    <Grid
+      item
+      lg={4}
+      md={4}
+      sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        flexDirection: "column",
+      }}
+    >
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-end" ,mr:1,mb:1}}>
+        {!isMainWallet ? (
+          <>
+          <Box sx={{display:"flex",gap:"10px",flexDirection: "column",}}>
+            <SendMoneyModal />
+            <AddBalanceViaPG />
+            </Box>
+          </>
+        ) : (
+          <>
+            <Mount visible={user && user.instId && selfqrValue !== "" && user.upi_qr === 1}>
+              <Box className="hover-zoom">
+                <IconButton
+                  className="hover-zoom"
+                  sx={{ color: "#fff" }}
+                  onClick={() => {
+                    setOpen(true);
+                    handleWalletTransfer();
+                    handleBankTransfer();
+                  }}
+                >
+                  <Tooltip title="QR" placement="left">
+                    <QrCode2Icon className="hover-white" />
+                  </Tooltip>
+                </IconButton>
+              </Box>
+            </Mount>
+
+            <Mount visible={user.instId}>
+              <OutletRegistration
+                btn={
+                  <Box className="hover-zoom">
+                    <IconButton className="hover-zoom" sx={{ color: "#fff" }}>
+                      <Tooltip title="QR" placement="left">
+                        <QrCode2Icon className="hover-white" />
+                      </Tooltip>
+                    </IconButton>
+                  </Box>
+                }
+              />
+            </Mount>
+
+            <Box className="hover-zoom">
+              <IconButton
+                className="hover-zoom"
+                sx={{ color: "#fff" }}
+                onClick={() => {
+                  setShowBankTransfer(!showBankTransfer);
+                  handleWalletTransfer();
+                }}
+              >
+                <Tooltip title="Bank Transfer" placement="left">
+                  <AccountBalanceIcon className="hover-white" />
+                </Tooltip>
+              </IconButton>
+            </Box>
+
+            <Box className="hover-zoom">
+              <IconButton
+                sx={{ color: "#fff" }}
+                onClick={() => {
+                  setShowWalletTransfer(!showWalletTransfer);
+                  handleBankTransfer();
+                }}
+              >
+                <Tooltip title="W2 to W1 Transfer" placement="left">
+                  <AccountBalanceWalletIcon className="hover-white" />
+                </Tooltip>
+              </IconButton>
+            </Box>
+          </>
+        )}
+      </Box>
+    </Grid>
+  </Grid>
+</Grid>
+</Grid>
+
+
+
+        
       <Mount visible={showQr}>
         <Card
           id="qrDrop"
