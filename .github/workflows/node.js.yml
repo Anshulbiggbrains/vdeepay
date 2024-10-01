@@ -29,19 +29,19 @@ jobs:
           npm install --force
           CI=false npm run build --force
 
-      - name: Cleanup Environment Files
-        run: rm -rf .env.prod
+      # - name: Cleanup Environment Files
+      #   run: rm -rf .env.prod
 
-      - name: Debug Secrets
-        run: |
-          echo "FTP Server: ${{ secrets.ftp_server }}"
-          echo "FTP Username: ${{ secrets.ftp_username }}"
-          echo "FTP Password: ***"  # Masking password for security
+      # - name: Debug Secrets
+      #   run: |
+      #     echo "FTP Server: ${{ secrets.ftp_server }}"
+      #     echo "FTP Username: ${{ secrets.ftp_username }}"
+      #     echo "FTP Password: ***"  # Masking password for security
 
-      - name: Deploy to FTP Server
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.ftp_server }}
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
-          local-dir: ./build/
+      # - name: Deploy to FTP Server
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      #   with:
+      #     server: ${{ secrets.ftp_server }}
+      #     username: ${{ secrets.ftp_username }}
+      #     password: ${{ secrets.ftp_password }}
+      #     local-dir: ./build/
