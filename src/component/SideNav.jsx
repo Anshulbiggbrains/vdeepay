@@ -784,7 +784,7 @@ export default function SideNav(props, { data }) {
           <Box sx={outletBoxStyle}>
             <Outlet />
           </Box>
-          {user?.role === "Admin"
+          {/* {user?.role === "Admin"
             ? ""
             : user?.role === "Asm"
             ? ""
@@ -792,6 +792,7 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
+            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&
@@ -803,7 +804,7 @@ export default function SideNav(props, { data }) {
               location.pathname !== "/ad/purchase" &&
               location.pathname !== "/md/purchase" && (
                 <>{isBig ? <RightNavbar /> : <RightNavBarMob />}</>
-              )}
+              )} */}
         </div>
       </Box>
     </Box>

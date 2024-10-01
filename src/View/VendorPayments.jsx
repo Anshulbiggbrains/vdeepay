@@ -43,7 +43,7 @@ import BeneCardVender from "../component/BeneCardVender";
 import { Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
 
-const VendorPayments = ({ type }) => {
+const VendorPayments = ({ type,setShowVendorPayments }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -59,6 +59,10 @@ const VendorPayments = ({ type }) => {
   const user = authCtx.user;
   const envName = getEnv();
   const navigate = useNavigate();
+  
+  const handleBack=()=>{
+    setShowVendorPayments(false)
+  }
   //
   // const envName = getEnv();
   console.log("type is ", type);
@@ -345,6 +349,9 @@ const VendorPayments = ({ type }) => {
                     py: 3,
                   }}
                 >
+                    <Button onClick={handleBack}>
+                  back
+                  </Button> 
                   {user?.dmt4 === 1 && user?.st === 1 && (
                     <div sx={{ display: "flex" }} hidden={remitterStatus}>
                       

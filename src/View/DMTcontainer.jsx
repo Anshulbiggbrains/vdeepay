@@ -6,6 +6,7 @@ import {
     FormControlLabel,
     Grid,
     Icon,
+    
     IconButton,
     Radio,
     RadioGroup,
@@ -40,7 +41,9 @@ import {
 import NoDataView from "../component/NoDataView";
   const DmtContainer = ({
     type,
-    setMoney=false
+    setMoney=false,
+    setShowDmtContainer,
+
   
   }) => {
     const [infoFetchedMob, setInfoFetchedMob] = useState(false);
@@ -191,6 +194,9 @@ import NoDataView from "../component/NoDataView";
         }
       );
     };
+    const handleBack=()=>{
+      setShowDmtContainer(false)
+    }
   
     // eslint-disable-next-line no-unused-vars
     const ekycCall = () => {
@@ -329,7 +335,10 @@ import NoDataView from "../component/NoDataView";
             <Grid
                           item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
                   
-                >                   
+                >     
+                <Button onClick={handleBack}>
+                  back
+                  </Button>              
                   <Card
                     className="card-css"
                     sx={{

@@ -61,10 +61,10 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
 }));
 
-const CMSView = () => {
+const CMSView = ({setShowCms,cmsType}) => {
   const [request, setRequest] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [cmsType, setCmsType] = useState("cms1");
+  // const [cmsType, setCmsType] = useState("cms1");
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [url, setUrl] = useState(undefined);
@@ -89,7 +89,9 @@ const CMSView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState("cms1")// Default active tab value
 
-
+  const handleBack=()=>{
+    setShowCms(false)
+  }
 
   const filterOptions = createFilterOptions({
     matchFrom: "start",
@@ -315,7 +317,7 @@ const CMSView = () => {
     const handleChange = (event, newValue) => {
       console.log("newval",newValue);
       setValue(newValue);
-      setCmsType(cms_tab_value[newValue])
+      // setCmsType(cms_tab_value[newValue])
       // setCurrentType(cms_tab_value[newValue])
       console.log("cms value is",cmsType)
 
@@ -324,11 +326,11 @@ const CMSView = () => {
   return (
     <>
     <Grid>
-    <CustomTabs
+    {/* <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
-    />
+    /> */}
 
    
     <Box
@@ -348,6 +350,7 @@ const CMSView = () => {
       </OuterIcon>
       <Mount visible={url}>
         <Grid container>
+        
           <Grid
             item
             md={12}
@@ -405,6 +408,9 @@ const CMSView = () => {
               // alignItems: "center",
             }}
           >
+            <Button onClick={handleBack}>
+                  back
+                  </Button> 
               
             
             <Typography
