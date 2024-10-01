@@ -2,63 +2,60 @@ import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Grid, Typography, Box } from "@mui/material";
 import AuthContext from "../store/AuthContext";
+import AskForDocsModal from "../modals/AskForDocsModal";
 import CommonCardDashBoard from "../component/CommonCardDashBoard";
-import { aepsIcon, BBPS, broadband, cmsIcon, dthIcon, elecIcon, gasIcon, landIcon, mobileR_img, upi, waterIcon } from "../iconsImports";
-import DmtContainer from "./DMTcontainer";
+import { cmsIcon } from "../iconsImports";
+import DmtContainer from "./DMTcontainer"; // Ensure this path is correct
+import { mt_tab_value } from "../utils/constants";
 import CMSView from "./CMSView";
 import VendorPayments from "./VendorPayments";
 import NepalTransfer from "./NepalTransfer";
 import UPITransferView from "./UPITransferView";
-import MobileRechargeForm from "../component/MobileRechargeForm";
-import CreditcardForm from "../component/CreditcardForm";
-import ElectricityForm from "../component/ElectricityForm";
-import AEPS2View from "./aeps/AEPS2View";
-import BBPSView from "./BBPSView";
-
-
 
 const RetDdDashboard = () => {
-  const [currentView, setCurrentView] = useState(null); // State to track the current view
-
+  const [open, setOpen] = useState(false);
+  const [currentType, setCurrentType] = useState(null);
+  const [showDmtContainer, setShowDmtContainer] = useState(false);
+  const [showCms, setShowCms] = useState(false);
+  const [showVendorPayments, setShowVendorPayments] = useState(false);
+  const [showNepalTransfer, setShowNepalTransfer] = useState(false);
+  const [showUpi,setShowUpi]=useState(false)
+  
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const role = authCtx.user.role;
+  const [value, setValue] = useState(0);
 
   // JSON format dummy data categorized into different sections
   const dataCategories = [
     {
       title: "Money Transfer",
       data: [
-        { id: 1, name: "DMT 1", img: null, component: DmtContainer },
-        { id: 2, name: "DMT 2", img: null, component: DmtContainer },
-        { id: 3, name: "CMS 1", img: cmsIcon, component: CMSView },
-        { id: 4, name: "CMS 2", img: cmsIcon, component: CMSView },
-        { id: 5, name: "Nepal Transfer", img: null, component: NepalTransfer },
-        { id: 6, name: "Vendor Payments", img: null, component: VendorPayments },
-        { id: 7, name: "Super", img: null, component: VendorPayments },
-        { id: 8, name: "UPI", img: upi, component: UPITransferView },
+        { id: 1, name: "DMT 1", img: null },
+        { id: 2, name: "DMT 2", img: null },
+        { id: 3, name: "CMS 1", img: cmsIcon },
+        { id: 4, name: "CMS 2", img: cmsIcon },
+        { id: 5, name: "Nepal Transfer", img: null },
+        { id: 6, name: "Vendor Payments", img: null },
+        { id: 7, name: "Super", img: null },
+        { id: 8, name: "UPI", img: null },
       ],
     },
     {
       title: "Recharges",
       data: [
-        { id: 9, name: "Mobile Recharge", img: mobileR_img,component:MobileRechargeForm  },
-        { id: 9, name: "DTH", img: dthIcon,component:MobileRechargeForm  },
-        { id: 9, name: "Electricity", img: elecIcon,component:ElectricityForm  },
-        { id: 10, name: "Credit Card Payment", img: null ,component:CreditcardForm },
-        { id: 10, name: "BroadBand", img: broadband ,component:ElectricityForm },
-        { id: 11, name: "Gas", img: gasIcon  ,component:ElectricityForm},
-        { id: 12, name: "Water", img: waterIcon  ,component:ElectricityForm},
-        { id: 13, name: "insurance", img: null  ,component:ElectricityForm},
-        { id: 13, name: "Landline", img: landIcon  ,component:ElectricityForm},
+        { id: 9, name: "DTH", img: null },
+        { id: 10, name: "Credit Card Payment", img: null },
+        { id: 11, name: "LIC", img: null },
+        { id: 12, name: "Insurance", img: null },
+        { id: 13, name: "Fast Tag", img: null },
       ],
     },
     {
       title: "AEPS",
       data: [
-        { id: 14, name: "Aeps", img: aepsIcon,component:AEPS2View },
-        { id: 14, name: "Bbps", img: BBPS,component:BBPSView },
-   
+        { id: 14, name: "Aeps 1", img: null },
+        { id: 15, name: "Aeps 2", img: null },
       ],
     },
     {
@@ -80,41 +77,57 @@ const RetDdDashboard = () => {
     },
   ];
 
-  const handleCardClick = (item) => {
-    // Check if the clicked item has a component associated
-    if (item.component) {
-    
-      setCurrentView({
-        component: item.component,
-        type:
-          item.name === "DMT 1" ? "dmt1" :
-          item.name === "DMT 2" ? "dmt2" :
-          item.name === "CMS 1" ? "cms1" :
-          item.name === "CMS 2" ? "cms2" :
-          item.name === "Vendor Payments" ? "express" :
-          item.name === "Nepal Transfer" ? "nepal" :
-          item.name === "Super" ? "super" :
-          item.name === "UPI" ? "upi" :
-          item.name==="Mobile Recharge"?"mobile":
-          item.name==="Water"?"WATER":
-          item.name==="DTH"?"dth":
-          item.name==="Gas"?"GAS":
-          item.name==="Broadband"?"BROADBAND":
-          item.name==="Insurance"?"INSURANCE":
-          item.name==="Electricity"?"ELECTRICITY":
-          item.name // default case
-      });
-        }
-  };
+  const handleCardClick = (itemName) => {
+    // Reset all views first
+    setShowDmtContainer(false);
+    setShowCms(false);
+    setShowVendorPayments(false);
+    setShowNepalTransfer(false);
 
-  const resetView = () => {
-    setCurrentView(null); // Reset to dashboard view
+    // Handle each case for Money Transfer
+    switch (itemName) {
+      case "DMT 1":
+        setCurrentType("dmt1");
+        setShowDmtContainer(true);
+        break;
+      case "DMT 2":
+        setCurrentType("dmt2");
+        setShowDmtContainer(true);
+        break;
+      case "CMS 1":
+        setCurrentType("cms1")
+        setShowCms(true);
+        break;
+        case "CMS 2":
+          setCurrentType("cms2")
+          setShowCms(true);
+          break;
+      case "Vendor Payments":
+        setShowVendorPayments(true);
+        setCurrentType("express");
+        break;
+      case "Nepal Transfer":
+        setShowNepalTransfer(true);
+        setCurrentType("nepal");
+        break;
+      case "Super":
+        setShowVendorPayments(true);
+        setCurrentType("super");
+        break;
+        case "UPI":
+          setShowUpi(true);
+          setCurrentType("upi");
+          break;
+      default:
+        // No action required, all views are reset above
+        break;
+    }
   };
 
   return (
     <>
-      {!currentView ? (
-        // Dashboard view displaying the card categories
+      {/* Render the card section or DmtContainer/CMSView/VendorPayments/NepalTransfer based on the state */}
+      {!showDmtContainer && !showCms && !showVendorPayments && !showNepalTransfer && !showUpi ? (
         dataCategories.map((category, index) => (
           <Box
             key={index}
@@ -139,21 +152,24 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
-                    onClick={() => handleCardClick(item)} // Pass the full item object
+                    onClick={() => handleCardClick(item.name)} // Handle click event
                   />
                 </Grid>
               ))}
             </Grid>
           </Box>
         ))
-      ) : (
-        // Show the selected view component
-        <currentView.component
-          type={currentView.type}
-
-          resetView={resetView} // Function to reset the view
-        />
-      )}
+      ) : showDmtContainer ? (
+        <DmtContainer type={currentType} setShowDmtContainer={setShowDmtContainer} />
+      ) : showCms ? (
+        <CMSView cmsType={currentType} setShowCms={setShowCms} />
+      ) : showNepalTransfer ? (
+        <NepalTransfer type={currentType} setShowNepalTransfer={setShowNepalTransfer} />
+      ) : showUpi ? (
+        <UPITransferView type={currentType} setShowUpi={setShowUpi} />
+      ) : showVendorPayments ? (
+        <VendorPayments type={currentType} setShowVendorPayments={setShowVendorPayments} />
+      ) : null}
     </>
   );
 };

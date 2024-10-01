@@ -36,7 +36,7 @@ import BeneCardUpi from "../component/BeneCardUpi";
 import NoDataView from "../component/NoDataView";
 import BeneSearchBar from "../component/BeneSearchBar";
 
-const UPITransferView = ({resetView}) => {
+const UPITransferView = ({setShowUpi}) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -47,7 +47,7 @@ const UPITransferView = ({resetView}) => {
   const [isMobv, setIsMobv] = useState(true);
   const [search, setSearch] = useState("");
   const handleBack=()=>{
-    resetView(false)
+    setShowUpi(false)
   }
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;

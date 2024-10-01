@@ -35,7 +35,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
+const MobileRechargeForm = ({ view, setOperatorIcon,operatorIcon }) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
@@ -71,7 +71,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
     // setOperator("");
     get(
       ApiEndpoints.GET_OPERATOR,
-      `sub_type=${type === "mobile" ? title : "DTH"}`,
+      `sub_type=${view === "mobile" ? title : "DTH"}`,
       "",
       (res) => {
         const opArray = res.data.data;
@@ -101,7 +101,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
       ApiEndpoints.GET_NUMBER_INFO,
       {
         number: number,
-        type: type === "mobile" ? "M" : "D",
+        type: view === "mobile" ? "M" : "D",
       },
       setRequest,
       (res) => {
@@ -156,7 +156,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
     }
 
 
-    if (mobile === "" && type === "mobile") {
+    if (mobile === "" && view === "mobile") {
       setdefaultIcon("");
     }
   }, [operatorVal, numberinfo]);
@@ -174,7 +174,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
             ? operator.op
             : numberinfo && numberinfo.operator,
         amount: form.amount.value,
-        type: type === "mobile" ? title.toUpperCase() : "DTH",
+        type: view === "mobile" ? title.toUpperCase() : "DTH",
         pf: "WEB",
         latitude: userLat && userLat,
         longitude: userLong && userLong,
@@ -258,9 +258,9 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
           <Box sx={{ p: 3 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
-                {type === "mobile" ? title : "DTH"}
+                {view === "mobile" ? title : "DTH"}
               </Typography>
-              {type === "mobile" && (
+              {view === "mobile" && (
                 <div style={{ textAlign: "right" }}>
                   <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
                     {title === "Prepaid" ? "Switch to Postpaid" : "Switch to Prepaid"}
@@ -294,7 +294,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
               }}
             >
               <Grid item xs={12}>
-                {type === "mobile" && (
+                {view === "mobile" && (
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Mobile Number"
@@ -325,7 +325,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
                     />
                   </FormControl>
                 )}
-                {type === "dth" && (
+                {view === "dth" && (
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Customer ID"
@@ -377,7 +377,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
                     }}
                     InputProps={{
                       inputProps: { max: 10000, min: 10 },
-                      endAdornment: infoFetched && type === "mobile" && (
+                      endAdornment: infoFetched && view === "mobile" && (
                         <InputAdornment position="end">
                           <AllPlansBar operator={operator && operator.op} onClick={(plan) => setAmount(plan?.plan)} />
                         </InputAdornment>
@@ -401,7 +401,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
                   disabled={request}
                 >
                   <span>
-                    {infoFetched ? "Proceed to pay" : type === "mobile" ? "Proceed" : "Fetch Info"}
+                    {infoFetched ? "Proceed to pay" : view === "mobile" ? "Proceed" : "Fetch Info"}
                   </span>
                 </Button>
               </Grid>
@@ -415,7 +415,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon }) => {
                   setModalVisible={setModalVisible}
                   setSuccessRechage={setSuccessRechage}
                   apiEnd={ApiEndpoints.PREPAID_RECHARGE}
-                  type="recharge"
+                  view="recharge"
                   setShowSuccess={setShowSuccess}
                   setMobile={setMobile}
                   setInfoFetched={setInfoFetched}

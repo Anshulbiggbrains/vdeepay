@@ -48,7 +48,7 @@ import HNavButton from "../component/HNavButton";
 import Mount from "../component/Mount";
 import NoDataView from "../component/NoDataView";
 
-const NepalTransfer = ({resetView}) => {
+const NepalTransfer = ({setShowNepalTransfer}) => {
   const [search, setSearch] = useState("");
   const [isMobv, setIsMobv] = useState(true);
   // const [idValue, setIdValue] = useState("");
@@ -59,7 +59,7 @@ const NepalTransfer = ({resetView}) => {
   const [filteredBenelist, setFilteredBenelist] = useState([]);
   const [newCustomer, setNewCustomer] = useState("");
   const handleBack=()=>{
-    resetView(false)
+    setShowNepalTransfer(false)
   }
   // console.log("filteredBenelist", filteredBenelist);
   const [nepalAllRes, setNepalAllRes] = useState({

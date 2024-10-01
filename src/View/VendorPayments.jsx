@@ -43,7 +43,7 @@ import BeneCardVender from "../component/BeneCardVender";
 import { Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
 
-const VendorPayments = ({ type,resetView }) => {
+const VendorPayments = ({ type,setShowVendorPayments }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -61,7 +61,7 @@ const VendorPayments = ({ type,resetView }) => {
   const navigate = useNavigate();
   
   const handleBack=()=>{
-    resetView(false)
+    setShowVendorPayments(false)
   }
   //
   // const envName = getEnv();

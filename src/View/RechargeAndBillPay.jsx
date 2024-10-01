@@ -52,13 +52,13 @@ const RechargeAndBillPay = () => {
   const tabs = [
     { label: 'Mobile',content: <MobileRechargeForm view="mobile" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} /> ,icon:<PhoneAndroidIcon/>},
     { label: 'DTH',content:<MobileRechargeForm view="dth"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<SatelliteIcon /> },
-    { label: 'Electricity',content: <ElectricityForm title="Electricity Bill Payment" type="ELECTRICITY" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:< ElectricBoltIcon />},
+    { label: 'Electricity',content: <ElectricityForm title="Electricity Bill Payment" subType="ELECTRICITY" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:< ElectricBoltIcon />},
     { label: 'Credit Card',content: <CreditcardForm setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} /> ,icon:<CreditCardIcon/> },
-    { label: 'BroadBand' ,content:  <ElectricityForm title="Broadband Bill Payment" type="BROADBAND" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<RouterIcon/>},
-    { label: 'Gas' ,content:  <ElectricityForm title="Gas Bill Payment" type="GAS" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} />,icon:< PropaneTankIcon/> },
-    { label: 'Water',content:  <ElectricityForm title="Water Bill Payment" type="WATER" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} />,icon:<InvertColorsIcon/> },
-    { label: 'Insurance',content:  <ElectricityForm title="Insurance" type="INSURANCE"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<MonitorHeartIcon />},
-    { label: 'Landline',content:  <ElectricityForm title="Landline Bill Payment" type="LANDLINE"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<LocalPhoneIcon /> },
+    { label: 'BroadBand' ,content:  <ElectricityForm title="Broadband Bill Payment" subType="BROADBAND" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<RouterIcon/>},
+    { label: 'Gas' ,content:  <ElectricityForm title="Gas Bill Payment" subType="GAS" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} />,icon:< PropaneTankIcon/> },
+    { label: 'Water',content:  <ElectricityForm title="Water Bill Payment" subType="WATER" setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon} />,icon:<InvertColorsIcon/> },
+    { label: 'Insurance',content:  <ElectricityForm title="Insurance" subType="INSURANCE"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<MonitorHeartIcon />},
+    { label: 'Landline',content:  <ElectricityForm title="Landline Bill Payment" subType="LANDLINE"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<LocalPhoneIcon /> },
   ];
   
 

@@ -61,10 +61,10 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
 }));
 
-const CMSView = ({resetView,type}) => {
+const CMSView = ({setShowCms,cmsType}) => {
   const [request, setRequest] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [type, settype] = useState("cms1");
+  // const [cmsType, setCmsType] = useState("cms1");
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [url, setUrl] = useState(undefined);
@@ -90,7 +90,7 @@ const CMSView = ({resetView,type}) => {
   const [currentType, setCurrentType] = useState("cms1")// Default active tab value
 
   const handleBack=()=>{
-    resetView(false)
+    setShowCms(false)
   }
 
   const filterOptions = createFilterOptions({
@@ -317,9 +317,9 @@ const CMSView = ({resetView,type}) => {
     const handleChange = (event, newValue) => {
       console.log("newval",newValue);
       setValue(newValue);
-      // settype(cms_tab_value[newValue])
+      // setCmsType(cms_tab_value[newValue])
       // setCurrentType(cms_tab_value[newValue])
-      console.log("cms value is",type)
+      console.log("cms value is",cmsType)
 
     };
 
@@ -436,8 +436,8 @@ const CMSView = ({resetView,type}) => {
               </Typography>
               <RadioGroup
                 row
-                value={type}
-                onChange={(e) => settype(e.target.value)}
+                value={cmsType}
+                onChange={(e) => setCmsType(e.target.value)}
               >
                 <FormControlLabel
                   value="cms1"
@@ -452,7 +452,7 @@ const CMSView = ({resetView,type}) => {
               </RadioGroup>
             </div>
           </Grid> */}
-          {type === "cms1" ? (
+          {cmsType === "cms1" ? (
             <Grid item md={12} xs={12}>
               <Box
                 component="form"

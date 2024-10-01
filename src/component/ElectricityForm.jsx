@@ -13,7 +13,7 @@ import OperatorSearch from "./OperatorSearch";
 import CardComponent from "./CardComponent";
 import { faListSquares } from "@fortawesome/free-solid-svg-icons";
 
-const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon }) => {
+const ElectricityForm = ({ title, subType, setOperatorIcon, operatorIcon }) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -108,7 +108,7 @@ const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon }) => {
   const getOperator = () => {
     get(
       ApiEndpoints.GET_OPERATOR,
-      `sub_type=${type}`,
+      `sub_type=${subType}`,
       null,
       (res) => {
         setOperatorList(res.data.data);

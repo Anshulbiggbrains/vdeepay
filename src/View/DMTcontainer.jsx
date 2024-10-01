@@ -42,7 +42,7 @@ import NoDataView from "../component/NoDataView";
   const DmtContainer = ({
     type,
     setMoney=false,
-    resetView,
+    setShowDmtContainer,
 
   
   }) => {
@@ -195,7 +195,7 @@ import NoDataView from "../component/NoDataView";
       );
     };
     const handleBack=()=>{
-      resetView(false)
+      setShowDmtContainer(false)
     }
   
     // eslint-disable-next-line no-unused-vars
