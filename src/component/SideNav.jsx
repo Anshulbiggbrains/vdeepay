@@ -50,7 +50,7 @@ import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
 import ProfilePage from "./Profile";
-const drawerWidth = 240;
+const drawerWidth = 300;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -317,7 +317,8 @@ export default function SideNav(props, { data }) {
             <NavItemSubmenu
               item={item}
               open={open || mobileOpen}
-              setOpen={setOpen}
+              // setOpen={setOpen}
+              setOpen={() => {}}
               mobileOpen={mobileOpen}
               handleDrawerToggle={handleDrawerToggle}
               index={index}

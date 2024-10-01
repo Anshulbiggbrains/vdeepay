@@ -482,32 +482,32 @@ export const customer_nav = [
     icon2: DashboardIconWhite,
     to: "/customer/dashboard",
   },
-  {
-    title: "Recharge/Bill",
-    icon: Recharge,
-    icon2: RechargeIcon,
-    to: "/customer/recharge",
-  },
+  // {
+  //   title: "Recharge/Bill",
+  //   icon: Recharge,
+  //   icon2: RechargeIcon,
+  //   to: "/customer/recharge",
+  // },
  
 
-  {
-    title: "BBPS",
-    icon: bharatbig,
-    icon2: BbpsIcon,
-    to: "/customer/bbps",
-  },
-  {
-    title: "CMS",
-    icon: Cms2,
-    icon2: cmsIconWhite,
-    to: "/customer/cms",
-  },
-  {
-    title: "Money Transfer",
-    icon: transfer1,
-    icon2: MoneyTransferIcon,
-    to: "/customer/money-transfer",
-  },
+  // {
+  //   title: "BBPS",
+  //   icon: bharatbig,
+  //   icon2: BbpsIcon,
+  //   to: "/customer/bbps",
+  // },
+  // {
+  //   title: "CMS",
+  //   icon: Cms2,
+  //   icon2: cmsIconWhite,
+  //   to: "/customer/cms",
+  // },
+  // {
+  //   title: "Money Transfer",
+  //   icon: transfer1,
+  //   icon2: MoneyTransferIcon,
+  //   to: "/customer/money-transfer",
+  // },
   // {
   //   title: "Express Transfer",
   //   icon: ExpressIcon,
@@ -522,31 +522,31 @@ export const customer_nav = [
   // },
  
   
-  {
-    title: "Nepal Transfer",
-    icon: NepalIcon,
-    icon2: NepalIcon,
-    to: "/customer/nepal-transfer",
-  },
+  // {
+  //   title: "Nepal Transfer",
+  //   icon: NepalIcon,
+  //   icon2: NepalIcon,
+  //   to: "/customer/nepal-transfer",
+  // },
   // {
   //   title: "UPI Transfer",
   //   icon: Upi,
   //   icon2: UpiIcon,
   //   to: "/customer/upi-transfer",
   // },
-  {
-    title: "AEPS",
-    icon: AEPS1,
-    icon2: AepsIcon,
-    to: "/customer/aeps",
-  },
-  {
-    title: "Travel",
-    icon: Travel,
-    icon2: FlightIcon,
-    to: "/customer/travel",
-    // to: "/customer/travel-services",
-  },
+  // {
+  //   title: "AEPS",
+  //   icon: AEPS1,
+  //   icon2: AepsIcon,
+  //   to: "/customer/aeps",
+  // },
+  // {
+  //   title: "Travel",
+  //   icon: Travel,
+  //   icon2: FlightIcon,
+  //   to: "/customer/travel",
+  //   // to: "/customer/travel-services",
+  // },
   {
     title: "Credit Request",
     icon: creditmoney,
