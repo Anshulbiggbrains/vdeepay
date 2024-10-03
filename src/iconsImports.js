@@ -132,7 +132,7 @@ import flightlogo from "./assets/svg/flight.jpeg"
 import neftlogo from "./assets/svg/neft_icon.svg";
 import impslogo from "./assets/svg/imps_icon.svg";
 import ChildPhoto from "./assets/Child.jpg";
-import Admindashlogo from "./assets/logo(1).png";
+import Admindashlogo from "./assets/vdeeyPay.png";
 import Upi from "./assets/svg/upi-icon.svg";
 import Limiticon from "./assets/LimitAcc.png";
 import Limit from "./assets/LimitTran.png";
