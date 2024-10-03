@@ -2,42 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Grid,
-  IconButton,
-  Tooltip,
-  Switch,
-  TextField,
-  FormControl,
+ 
   Typography,
-  Button,
-  Card,
+ 
 } from "@mui/material";
 import AuthContext from "../store/AuthContext";
 import { postFormData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
-import SendMoneyModal from "../modals/SendMoneyModal";
-import QrCode2Icon from "@mui/icons-material/QrCode2";
-import { upiWeb } from "../iconsImports";
-import QRCode from "react-qr-code";
+
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import Loader from "../component/loading-screen/Loader";
+
 import { numberSetter } from "../utils/Currencyutil";
-import WalletTransfer from "../modals/WalletTransfer";
+
 import useCommonContext from "../store/CommonContext";
-import OutletRegistration from "./OutletRegistration";
-import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
-import LocalParkingIcon from "@mui/icons-material/LocalParking";
-import QRWarningModal from "../modals/QRWarningModal";
+
 import { validateApiCall } from "../utils/LastApiCallChecker";
-import Mount from "./Mount";
+
 import RefreshComponent from "./RefreshComponent";
-import RecentHistory from "./right_sidenav/RecentHistory";
-import BankTransfer from "./right_sidenav/BankTransfer";
-import AddBalanceViaPG from "../modals/AddBalanceViaPG";
+
 import { useLocation } from "react-router-dom";
 
-
+import { keyframes } from '@mui/system';
 
 
 
@@ -147,77 +133,87 @@ const WalletCard = () => {
   const handleWalletToggle = () => {
      setIsMainWallet(!isMainWallet)
   };
+  const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const borderPulse = keyframes`
+  0% { border-color: red; }
+  50% { border-color: darkred; }
+  100% { border-color: red; }
+`;
+
   return(
-    <Grid container spacing={2}  >
+    <Grid container spacing={2}>
 
-      <Grid item xs={6}>
-        <Box
-          sx={{
-            padding: '4px 6px 3px 4px ',               
-            backgroundColor: '#E3F2FD',   
-            borderRadius: '8px',          
-            mr:2,
-            display: 'flex',
-            alignItems: 'center',         
-            width: '99%',
-            maxWidth: '250px',  
-            border: '2px solid black',
-          }}
-        >
-          {/* Wallet Icon on the left */}
-          <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#1C2E46', mr: 2 }} /> {/* Larger blue icon */}
-          <Box>
-            
-            <Typography variant="subtitle1" sx={{ color: '#1C2E46' }}>
-              Wallet 1
-            </Typography>
-           
-            <Typography variant="body2" sx={{ color: '#1C2E46', fontWeight: 'bold' }}>
-              {numberSetter(user.w1 / 100)} ₹
-            </Typography>
-           
-          </Box>
-          <RefreshComponent refresh={userRequest} onClick={() => refreshUser()}  sx={{mb:2, color:"#000",fontSize:20,ml:2}} />
+    {/* Wallet 1 */}
+    <Grid item xs={6}>
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebEe', 
+          borderRadius: '8px',
+          mr: 2,
+          display: 'flex',
+          alignItems: 'center',
+          width: '99%',
+          maxWidth: '250px',
+          border: '2px solid #D71313 ',
+          animation: `${fadeIn} 0.5s ease-in-out`, 
+          '&:hover': {
+            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
+          },
+        }}
+      >
+        {/* Wallet Icon */}
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
+            Wallet 1
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
+          ₹  {numberSetter(user.w1 / 100)} 
+          </Typography>
         </Box>
-        
-      </Grid>
-
-      {/* Wallet 2 */}
-      <Grid item xs={6} >
-        <Box
-          sx={{
-            padding: '4px 6px 3px 4px ',                
-            backgroundColor: '#E3F2FF',   
-            borderRadius: '8px',          
-            display: 'flex',
-            alignItems: 'center',         
-            width: '99%',    
-            maxWidth: '250px',  
-            border: '2px solid black',            
-            mr:2
-          }}
-        >
-         
-          <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#1C2E46', mr: 2 }} /> {/* Larger blue icon */}
-          <Box>
-
-            <Typography variant="subtitle1" sx={{ color: '#1C2E46' }}>
-              Wallet 2
-            </Typography>
-            {/* Balance */}
-            <Typography variant="body2" sx={{ color: '#1C2E46', fontWeight: 'bold' }}>
-              {numberSetter(user.w2 / 100)} ₹
-            </Typography>
-          </Box>
-          <RefreshComponent refresh={userRequest} onClick={() => refreshUser()}  sx={{mb:2, color:"#000",fontSize:20,ml:2}} />
-        </Box>
-    
-      </Grid>
-
-      
-    
-      
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+      </Box>
     </Grid>
+  
+    {/* Wallet 2 */}
+    <Grid item xs={6}>
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee', 
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '99%',
+          maxWidth: '250px',
+          border: '2px solid #D71313 ',
+          mr: 2,
+          animation: `${fadeIn} 0.5s ease-in-out`,
+          '&:hover': {
+            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
+          },
+        }}
+      >
+        {/* Wallet Icon */}
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
+            Wallet 2
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
+          ₹ {numberSetter(user.w2 / 100)} 
+          </Typography>
+        </Box>
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+      </Box>
+    </Grid>
+  
+  </Grid>
 
   )
 

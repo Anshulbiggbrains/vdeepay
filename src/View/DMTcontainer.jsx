@@ -39,8 +39,10 @@ import {
   import useResponsive from "../hooks/useResponsive";
   import { BBPS, teamWork } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
+import CustomTabs from "../component/CustomTabs";
+import { cms_tab_value, mt_tab_value } from "../utils/constants";
   const DmtContainer = ({
-    type,
+    // type,
     setMoney=false,
     resetView,
 
@@ -64,6 +66,9 @@ import NoDataView from "../component/NoDataView";
     const user = authCtx.user;
     const [numberList, setNumberList] = useState([]);
     const navigate = useNavigate();
+    const [value, setValue] = useState(0);
+    const [currentType, setCurrentType] = useState("dmt1")
+    const [type, settype] = useState("dmt1");
   
     useEffect(() => {
       if (search) {
@@ -216,6 +221,18 @@ import NoDataView from "../component/NoDataView";
     console.log("type is",type);
 
           console.log("rem",remitterStatus);
+          const tabs = [
+            { label: "Dmt 1",  },
+            { label: "Dmt 2",   },
+          ];
+          const handleChange = (event, newValue) => {
+            console.log("newval",newValue);
+            setValue(newValue);
+            settype(mt_tab_value[newValue])
+            setCurrentType(mt_tab_value[newValue])
+            console.log("cms value is",type)
+      
+          };
     return (
       <>
         {user && !user.instId && (
@@ -335,12 +352,14 @@ import NoDataView from "../component/NoDataView";
             <Grid
                           item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
                   
-                >     
-                {/* <Button onClick={handleBack}>
-                  back
-                  </Button>  */}
-     
-                               
+                >   
+                 <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />
+                  
+                           
                   <Card
                     className="card-css"
                     sx={{
@@ -348,9 +367,12 @@ import NoDataView from "../component/NoDataView";
                       px: 7,
                       py: 2,
                       mt:2
+                      
                     }}
-                  > 
-                              
+                  >    
+                    <Button sx={{justifyContent:"start"}} onClick={handleBack}>
+                  back
+                  </Button>                
                     <div>
                
                       {!mobile?(
@@ -360,7 +382,7 @@ import NoDataView from "../component/NoDataView";
                           fontSize: "24px",
                           fontWeight: "bold",
                           letterSpacing: "0.05rem",
-                          textAlign: "center",
+                          textAlign: "left",
                           mt: 0,
                         }}
                       >
@@ -390,8 +412,8 @@ import NoDataView from "../component/NoDataView";
                           
                         }}
                       >
-                  <Grid container xs={12}>
-                      {!infoFetchedMob && !infoFetchedMob&&
+                  <Grid container lg={12} sm={12} xs={12}>
+                      {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem &&
                           <FormControl sx={{ width: "100%" }}>
                             <TextField autoComplete="off"
                               size="small"
@@ -430,10 +452,40 @@ import NoDataView from "../component/NoDataView";
                               disabled={request && request && true}
                             />
                           </FormControl>
-                            }                               
-                          </Grid>
-                    
+                            }  
+             </Grid>
+             
+
                         </Grid>
+                        {addNewRem && addNewRem && (
+                <DmrAddRemitterModal
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  apiEnd={
+                    type === "dmt1"
+                      ? ApiEndpoints.ADD_REM
+                      : ApiEndpoints.DMT2_ADD_REM
+                  }
+                  view="moneyTransfer"
+                  setAddNewRem={setAddNewRem}
+                  otpRef={otpRefId}
+                  setOtpRef={setOtpRefId}
+                />
+              )}
+              {verifyotp && verifyotp && (
+                <DmrVrifyNewUser
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  view="moneyTransfer"
+                  verifyotp={verifyotp}
+                  setVerifyotp={setVerifyotp}
+                  apiEnd={ApiEndpoints.VALIDATE_OTP}
+                  otpRefId={otpRefId}
+                  setOtpRefId={setOtpRefId}
+                />
+              )}                             
+                   
+            
                         {infoFetchedMob && infoFetchedMob && (             
                 <Grid className="remitter-card" container sx={{ display: 'flex' }}>
                 <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
@@ -507,6 +559,7 @@ import NoDataView from "../component/NoDataView";
                     }}
                   />
                   {/* )} */}
+                  {infoFetchedMob && infoFetchedMob && 
                   <Grid
                     lg={12}
                     sm={12}
@@ -591,36 +644,13 @@ import NoDataView from "../component/NoDataView";
                     </div>
                     
                   </Grid>
+  }
+
+
                   </Card> 
                 </Grid>  
               </Grid>
-              {addNewRem && addNewRem && (
-                <DmrAddRemitterModal
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  apiEnd={
-                    type === "dmt1"
-                      ? ApiEndpoints.ADD_REM
-                      : ApiEndpoints.DMT2_ADD_REM
-                  }
-                  view="moneyTransfer"
-                  setAddNewRem={setAddNewRem}
-                  otpRef={otpRefId}
-                  setOtpRef={setOtpRefId}
-                />
-              )}
-              {verifyotp && verifyotp && (
-                <DmrVrifyNewUser
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  view="moneyTransfer"
-                  verifyotp={verifyotp}
-                  setVerifyotp={setVerifyotp}
-                  apiEnd={ApiEndpoints.VALIDATE_OTP}
-                  otpRefId={otpRefId}
-                  setOtpRefId={setOtpRefId}
-                />
-              )}
+         
             </div>
           </>
         )}            

@@ -32,7 +32,7 @@ export const getHoverInActive = () => {
 
 export const getTableHeadRowColor = () => {
   if (process.env.REACT_APP_TITLE === "ImpsGuru") {
-    return "#1877F2";
+    return " #E49B0F";
   }
 };
 
