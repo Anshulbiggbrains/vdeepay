@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
 import { Box } from "@mui/material";
-
+import { keyframes } from "@mui/system";
 const NavItemComponent = ({
   item,
   open,
@@ -33,6 +33,11 @@ const NavItemComponent = ({
     isCurrentActive = true;
   }
 
+  const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
   return (
     <div>
       <ListItem
@@ -74,6 +79,7 @@ const NavItemComponent = ({
           }}
         >
           <ListItemButton
+           className="icon-hover"
        sx={{
         justifyContent: open ? "initial" : "center",
         backgroundColor: isCurrentActive ? "#D48628" : "",
@@ -83,6 +89,11 @@ const NavItemComponent = ({
           backgroundColor: isCurrentActive?"#212b5a":"",
           color: "white", 
         },
+        "& img": {
+        transform: "scale(1.07)",
+     
+        animation: "pulse 1s infinite",
+      },
         borderRadius: "4px",
         display: "flex",
         alignItems: "center",
@@ -122,7 +133,7 @@ const NavItemComponent = ({
           // fontFamily:"cursive",
         fontFamily: "Montserrat, sans-serif",
           '&:hover': {
-            color: isCurrentActive ? "white" : "#012169",
+            color: isCurrentActive ? "white" : "white",
           }
         }}
       />

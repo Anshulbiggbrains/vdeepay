@@ -583,12 +583,15 @@ export const customer_nav = [
             
             to:"/customer/my-profile",
             
-            },{
-            title:"Logout",
-            to:"/login", 
             }
-             ]
-            },
+          ]
+        },
+            {
+              title:"Logout",
+              to:"/login", 
+              },
+             
+            
              
               // {
               //         title: "Khata Book",

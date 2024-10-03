@@ -35,7 +35,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-const MobileRechargeForm = ({ view, setOperatorIcon,operatorIcon }) => {
+const MobileRechargeForm = ({ view, setOperatorIcon,operatorIcon, resetView}) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
@@ -218,10 +218,16 @@ const MobileRechargeForm = ({ view, setOperatorIcon,operatorIcon }) => {
 
      console.log("deafault value ",infoFetched)
      
+     const handleBack=()=>{
+      resetView(false)
+    }
+     
   return (
    
     <div className="position-relative"  >
-   
+         <Button sx={{justifyContent:"start"}} onClick={handleBack}>
+                  back
+                  </Button>     
       <Loader loading={request} />
       {(!IsOptSelected&&
        <Grid container spacing={2}>

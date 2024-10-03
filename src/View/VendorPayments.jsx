@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Box,
   Button,
@@ -40,7 +39,7 @@ import { useNavigate } from "react-router-dom";
 import { currencySetter } from "../utils/Currencyutil";
 import BeneCardComponent from "../component/BeneCardComponent";
 import BeneCardVender from "../component/BeneCardVender";
-import { Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
+import { back, Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
 import CustomTabs from "../component/CustomTabs";
 
@@ -207,7 +206,7 @@ const VendorPayments = ({ resetView }) => {
   };
   const tabs = [
     { label: "Vendor Payment",  },
-    { label: "Supar",   },
+    { label: "Super",   },
   ];
   const handleChange = (event, newValue) => {
     console.log("newval",newValue);
@@ -372,10 +371,28 @@ const VendorPayments = ({ resetView }) => {
                   }}
                 >
 
-      
-                    <Button onClick={handleBack}>
-                  back
-                  </Button> 
+<Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+<Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                          sx={{p:1}}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
                   {user?.dmt4 === 1 && user?.st === 1 && (
                     <div sx={{ display: "flex" }} hidden={remitterStatus}>
                       
@@ -390,6 +407,7 @@ const VendorPayments = ({ resetView }) => {
                       letterSpacing: "0.05rem",
                       textAlign: "center",
                       mt: 1,
+                      flexGrow:1
                     }}
                   >
                     {type == "express"
@@ -397,6 +415,7 @@ const VendorPayments = ({ resetView }) => {
                       : "Super Money Transfer"}
                   </Typography>
                       ):null}
+                      </Grid>
                   <Box
                     component="form"
                     id="seachRemByAcc"
@@ -556,7 +575,7 @@ const VendorPayments = ({ resetView }) => {
     marginBottom: { xs: 2, sm: '-2%' }, // Responsive bottom margin
     padding: { xs: 2, sm: 0 }, // Add padding for small screens
   }}
->
+> 
 <DmrAddBeneficiaryModal
                       rem_mobile={mobile}
                       apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
@@ -569,6 +588,8 @@ const VendorPayments = ({ resetView }) => {
                )}
                     </Grid>              
                   </Box>
+                  {infoFetchedMob && infoFetchedMob && 
+
                 <Grid
                   lg={12}
                   sm={12}
@@ -653,7 +674,7 @@ const VendorPayments = ({ resetView }) => {
                     )}
                   </div>
                 </Grid>
-              
+}
                   
                 </Card>
             

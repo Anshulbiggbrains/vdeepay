@@ -22,7 +22,7 @@ import RetUpiTransferModal from "../modals/RetUpiTransferModal";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Loader from "../component/loading-screen/Loader";
 import CustomCard from "../component/CustomCard";
-import { Banner, Call1, LimitAcc, LimitTran, Name, noDataFoundGif } from "../iconsImports";
+import { back, Banner, Call1, LimitAcc, LimitTran, Name, noDataFoundGif } from "../iconsImports";
 import { PATTERNS } from "../utils/ValidationUtil";
 import { currencySetter } from "../utils/Currencyutil";
 import { randomColors } from "../theme/setThemeColor";
@@ -197,6 +197,7 @@ const UPITransferView = ({resetView}) => {
               </Grid>
             </Box>
           )}
+              
           <Box
             sx={{
               height: "max-content",
@@ -204,12 +205,16 @@ const UPITransferView = ({resetView}) => {
             }}
             className="position-relative card-css"
           >
+       
             <Loader loading={request} circleBlue />
             <Grid
               container
               spacing={3}
               sx={{ display: "flex", justifyContent: "center", mt: 1 }}
             >
+              
+              
+               
               <Grid
                 item
                 md={12}
@@ -221,9 +226,26 @@ const UPITransferView = ({resetView}) => {
                   marginLeft: 0,
                 }}
               >
-                <Button onClick={handleBack}>
-                  back
-                  </Button> 
+                <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+                <Button
+        size="small"
+        id="verify-btn"
+        className="button-props"
+        onClick={handleBack}
+      >
+                <span style={{ marginRight: '5px' }}>Back</span>
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button> 
 {
   !mobile?(
            <Typography
@@ -231,12 +253,16 @@ const UPITransferView = ({resetView}) => {
                     fontSize: "24px",
                     fontWeight: "bold",
                     textAlign: "center",
+                    flexGrow:1
                   }}
                 >
+                  
+                  
+                 
                   UPI Transfer
                 </Typography>
   ): null}
-
+</Grid>
                 <Box
                   component="form"
                   sx={{
@@ -247,7 +273,7 @@ const UPITransferView = ({resetView}) => {
                 >
                   <Grid container sx={{ pt: 1 }}>
                     <Grid item md={12} xs={12} lg={12}>
-                    {!infoFetchedMob && !infoFetchedMob&&
+                    {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem &&
 
                       <FormControl sx={{ width: "100%" }}>
                         <TextField autoComplete="off"
@@ -365,7 +391,8 @@ const UPITransferView = ({resetView}) => {
                   </Grid>
                 </Box>
               </Grid>
-              
+              {infoFetchedMob && infoFetchedMob && 
+
               <Grid
                     lg={12}
                     sm={12}
@@ -404,6 +431,7 @@ const UPITransferView = ({resetView}) => {
                     </Box>
  
                   </Box>
+                  
                   <Grid
                     container
                     spacing={2}
@@ -431,65 +459,6 @@ const UPITransferView = ({resetView}) => {
                     ) : (
                       bene.map((ben, index) => (
                         <Grid item xs={12} key={index}>
-                          {/* <CustomCard
-                          lg={12}
-                            width="100%"
-                            icon={
-                              <Box
-                                sx={{
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  display: "flex",
-                                  borderRadius: "4px",
-                                  height: "64px",
-                                  background: randomColors(),
-                                  width: "64px",
-                                }}
-                              >
-                                <Typography sx={{ fontSize: "40px" }}>
-                                  {ben.bene_name.charAt(0).toUpperCase()}
-                                </Typography>
-                              </Box>
-                            }
-                           
-                            title={ben.bene_acc}
-                            
-                            description={
-                              <div style={{ display: "flex", alignItems: "center" }}>
-                                <RetUpiTransferModal ben={ben} rem_number={mobile} />
-                              </div>
-                            }
-                            descriptionSup={
-                              <DeleteBeneficiaryModal
-                                bene={ben}
-                                mob={mobile}
-                                getRemitterStatus={getRemitterStatus}
-                                apiEnd={ApiEndpoints.REMOVE_BENE_UPI}
-                                view="expressTransfer"
-                              />
-
-                            }
-                            iconSup={
-                              <div style={{  }}>
-                                {ben.last_success_date ? (
-                                  <Box
-                                    sx={{
-                                      position: "absolute",
-                                      top: "-74px",
-                                      right: "-68px",
-                                      color: "#00bf78",
-                                    }}
-                                  >
-                                    <Tooltip title="Already Verified">
-                                      <VerifiedIcon sx={{ fontSize: "17px" }} />
-                                    </Tooltip>
-                                  </Box>
-                                ) : (
-                                  <AccountVerificationUpi rem_number={mobile} ben={ben} />
-                                )}
-                              </div>
-                            }
-                          /> */}
                           <BeneCardUpi  ben={ben} mobile={mobile}/>
                       
                         </Grid>
@@ -497,7 +466,7 @@ const UPITransferView = ({resetView}) => {
                     )}
                   </Grid>
                 </Grid>
-            
+} 
               {addNewRem && (
                 <DmrAddRemitterModal
                   rem_mobile={mobile}
@@ -512,8 +481,11 @@ const UPITransferView = ({resetView}) => {
             </Grid>
           </Box>
         </>
+            
       )}
+      
     </>
+    
   );
 };
 
