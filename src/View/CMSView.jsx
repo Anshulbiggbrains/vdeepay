@@ -12,7 +12,7 @@ import {
   createFilterOptions,
 } from "@mui/material";
 import React from "react";
-import { cmsIcon } from "../iconsImports";
+import { back, cmsIcon } from "../iconsImports";
 import { useState } from "react";
 import AuthContext from "../store/AuthContext";
 import { useContext } from "react";
@@ -363,6 +363,7 @@ const CMSView = ({resetView}) => {
               overflowY: "hidden",
             }}
           >
+              
             <div
               style={{
                 width: "100%",
@@ -384,6 +385,7 @@ const CMSView = ({resetView}) => {
               marginHeight="0"
               style={{ width: isMobile ? "100px" : "800px", height: "600px" }}
             ></iframe>
+             
           </Grid>
         </Grid>
       </Mount>
@@ -404,21 +406,40 @@ const CMSView = ({resetView}) => {
             xs={12}
             sx={{
               display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+        <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                          sx={{p:1}}
+                        >
+                                          <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
+          <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
               justifyContent: "space-between",
               // alignItems: "center",
             }}
           >
-            <Button onClick={handleBack}>
-                  back
-                  </Button> 
-              
-            
+               
+             
             <Typography
-              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:9,mt:2}}
+              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,flexGrow:1}}
             >
+          
               Cash Management System
             </Typography>
-          
+            </Grid>
           </Grid>
 
           {/* <Grid item md={12} xs={12} sx={{ mt: 3 }}>

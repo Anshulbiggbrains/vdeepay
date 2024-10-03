@@ -15,7 +15,7 @@ import {
   } from "@mui/material";
   import React from "react";
   import { useState } from "react";
-  import { Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
+  import { back, Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
   import { get, postJsonData } from "../network/ApiController";
   import ApiEndpoints from "../network/ApiEndPoints";
   import { apiErrorToast } from "../utils/ToastUtil";
@@ -357,9 +357,7 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
       tabs={tabs}
       value={value}
       onChange={handleChange}
-    />
-                  
-                           
+    />                
                   <Card
                     className="card-css"
                     sx={{
@@ -370,10 +368,30 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                       
                     }}
                   >    
-                    <Button sx={{justifyContent:"start"}} onClick={handleBack}>
-                  back
-                  </Button>                
+                   <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >    
+                         <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button> 
+                        </Grid>        
                     <div>
+               
                       {!mobile?(
                       <Typography
 
@@ -385,11 +403,14 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                           mt: 0,
                         }}
                       >
+                           
                         {type === "dmt1"
                           ? "Domestic Money Transfer 1"
                           : "Domestic Money Transfer 2"}
                       </Typography>
+                    
                       ):null}
+                  
                          <Grid
                         container
                         sx={{
@@ -633,7 +654,6 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                     
                   </Grid>
   }
-
 
                   </Card> 
                 </Grid>  
