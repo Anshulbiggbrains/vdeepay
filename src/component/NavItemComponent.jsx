@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
 import { Box } from "@mui/material";
-
+import { keyframes } from "@mui/system";
 const NavItemComponent = ({
   item,
   open,
@@ -33,6 +33,11 @@ const NavItemComponent = ({
     isCurrentActive = true;
   }
 
+  const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
   return (
     <div>
       <ListItem
@@ -73,60 +78,60 @@ const NavItemComponent = ({
           }}
         >
           <ListItemButton
-       sx={{
-        justifyContent: open ? "initial" : "center",
-        backgroundColor: isCurrentActive ? "#212b5a" : "",
-        backdropFilter:isCurrentActive  ? "blur(5px)" : "",
-        border: isCurrentActive ? "1px solid rgba(159, 134, 192, 0.3)" : "",
-        "&:hover": {
-          backgroundColor: isCurrentActive?"#212b5a":"",
-          color: "white", 
-        },
-        borderRadius: "4px",
-        display: "flex",
-        alignItems: "center",
-         fontSize: "18px", 
+  className="icon-hover"
+  sx={{
+    justifyContent: open ? "initial" : "center",
+    backgroundColor: isCurrentActive ? "#212b5a" : "",
+    backdropFilter: isCurrentActive ? "blur(5px)" : "",
+    border: isCurrentActive ? "1px solid black" : "",
+    "&:hover": {
+      backgroundColor: isCurrentActive ? "#212b5a" : "",
+      color: "white",
+      "& img": {
+        transform: "scale(1.07)",
+     
+        animation: "pulse 1s infinite",
+      },
+    },
+    borderRadius: "4px",
+    display: "flex",
+    alignItems: "center",
+    fontSize: "18px",
+  }}
+>
+  <Box
+    sx={{
+      mr: open ? 2 : "auto",
+      justifyContent: "center",
+      display: "flex",
+    }}
+  >
+    <img
+      width="22px"
+      src={item.icon}
+      alt=""
+      style={{
+        filter: isCurrentActive ? "invert(100%) brightness(1000%)" : "",
       }}
-      
-          >
-           <Box
-      sx={{
-        mr: open ? 2 : 'auto',
-        justifyContent: 'center',
-        display: 'flex', // Added to center the content
-      }}
-    >
-      <img
-        width="22px"
-        src={item.icon}
-        alt=""
-        style={{
-          filter: isCurrentActive
-          ? "invert(100%) brightness(1000%)"
-          : "",
-          
-        }}
-      />
-    </Box>
+    />
+  </Box>
 
-      <ListItemText
-        className="menu-title"
-        primary={item.title}
-        disableTypography
-        sx={{
-          opacity: open ? 1 : 0,
-          color: isCurrentActive ? "white" : "#012169",
-          fontSize: "16px",
-        
-          // fontFamily:"cursive",
-        fontFamily: "Montserrat, sans-serif",
-          '&:hover': {
-            color: isCurrentActive ? "white" : "#012169",
-          }
-        }}
-      />
+  <ListItemText
+    className="menu-title"
+    primary={item.title}
+    disableTypography
+    sx={{
+      opacity: open ? 1 : 0,
+      color: isCurrentActive ? "white" : "#012169",
+      fontSize: "16px",
+      fontFamily: "Montserrat, sans-serif",
+      "&:hover": {
+        color: isCurrentActive ? "white" : "#012169",
+      },
+    }}
+  />
+</ListItemButton>
 
-          </ListItemButton>
         </NavLink>
       </ListItem>
     </div>

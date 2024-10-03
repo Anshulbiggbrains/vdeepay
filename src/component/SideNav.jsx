@@ -290,7 +290,7 @@ export default function SideNav(props, { data }) {
         {!open && !mobileOpen && (
           <img
             src={smLogo}
-            width="35px"
+            width="5px"
             alt="c_logo"
             style={{
               padding: "4px",
