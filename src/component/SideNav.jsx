@@ -310,6 +310,9 @@ export default function SideNav(props, { data }) {
         sx={{
           height: { xs: "80vh", sm: "100vh" },
           overflowY: "scroll",
+           background: "#105497",
+           borderRadius:"0px 10px"
+         
         }}
       >
         {leftNav.map((item, index) => {
@@ -376,6 +379,8 @@ export default function SideNav(props, { data }) {
         open={open}
         sx={{
           paddingRight: "0px !important",
+         
+         
         }}
       >
         <Toolbar
@@ -384,6 +389,7 @@ export default function SideNav(props, { data }) {
             alignItems: "center",
             justifyContent: "space-between",
             pr: { xs: 0, md: 1 },
+            borderRadius:"0px 0px 20px 20px",
           }}
           className="nav"
         >
@@ -468,6 +474,7 @@ export default function SideNav(props, { data }) {
         }}
         sx={{
           display: { xs: "block", sm: "none" },
+          
           position: "absolute",
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
@@ -498,7 +505,7 @@ export default function SideNav(props, { data }) {
                 zIndex: "1000",
                 display: { xs: "none", sm: "block" },
                 "& .MuiDrawer-paper": {
-                  background: "#F3B95F",
+                 
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(35, 25, 66, 0.3)",
