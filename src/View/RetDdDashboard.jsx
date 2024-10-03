@@ -27,55 +27,43 @@ const RetDdDashboard = () => {
   // JSON format dummy data categorized into different sections
   const dataCategories = [
     {
-      title: "Money Transfer",
+      title: "Banking",
       data: [
-        { id: 1, name: "DMT 1", img: null, component: DmtContainer },
-        { id: 2, name: "DMT 2", img: null, component: DmtContainer },
-        { id: 3, name: "CMS 1", img: cmsIcon, component: CMSView },
-        { id: 4, name: "CMS 2", img: cmsIcon, component: CMSView },
+        { id: 1, name: "DMT", img: null, component: DmtContainer },
+       
+        { id: 3, name: "CMS ", img: cmsIcon, component: CMSView },
+
         { id: 5, name: "Nepal Transfer", img: null, component: NepalTransfer },
         { id: 6, name: "Vendor Payments", img: null, component: VendorPayments },
-        { id: 7, name: "Super", img: null, component: VendorPayments },
-        { id: 8, name: "UPI", img: upi, component: UPITransferView },
+       
+        { id: 7, name: "UPI", img: upi, component: UPITransferView },
+        { id: 8, name: "Aeps", img: aepsIcon,component:AEPS2View },
       ],
     },
     {
-      title: "Recharges",
+      title: "Utility",
       data: [
         { id: 9, name: "Mobile Recharge", img: mobileR_img,component:MobileRechargeForm  },
-        { id: 9, name: "DTH", img: dthIcon,component:MobileRechargeForm  },
-        { id: 9, name: "Electricity", img: elecIcon,component:ElectricityForm  },
-        { id: 10, name: "Credit Card ", img: null ,component:CreditcardForm },
-        { id: 10, name: "BroadBand", img: broadband ,component:ElectricityForm },
-        { id: 11, name: "Gas", img: gasIcon  ,component:ElectricityForm},
-        { id: 12, name: "Water", img: waterIcon  ,component:ElectricityForm},
-        { id: 13, name: "insurance", img: null  ,component:ElectricityForm},
-        { id: 13, name: "Landline", img: landIcon  ,component:ElectricityForm},
+        { id: 12, name: "DTH", img: dthIcon,component:MobileRechargeForm  },
+        { id: 13, name: "Electricity", img: elecIcon,component:ElectricityForm  },
+        { id: 14, name: "Credit Card ", img: null ,component:CreditcardForm },
+        { id: 15, name: "BroadBand", img: broadband ,component:ElectricityForm },
+        { id: 16, name: "Gas", img: gasIcon  ,component:ElectricityForm},
+        { id: 17, name: "Water", img: waterIcon  ,component:ElectricityForm},
+        { id: 18, name: "insurance", img: null  ,component:ElectricityForm},
+        { id: 19, name: "Landline", img: landIcon  ,component:ElectricityForm},
+        { id: 20, name: "Bbps", img: BBPS,component:BBPSView },
+        
       ],
     },
-    {
-      title: "AEPS",
-      data: [
-        { id: 14, name: "Aeps", img: aepsIcon,component:AEPS2View },
-        { id: 14, name: "Bbps", img: BBPS,component:BBPSView },
+  
    
-      ],
-    },
-    {
-      title: "QrCode",
-      data: [
-        { id: 16, name: "QRCODE", img: null },
-        { id: 17, name: "QRCODE 1", img: null },
-        { id: 18, name: "QRCODE 2", img: null },
-        { id: 19, name: "QRCODE 3", img: null },
-      ],
-    },
     {
       title: "Travel",
       data: [
-        { id: 20, name: "Travel", img: null },
-        { id: 21, name: "Pg", img: null },
-        { id: 22, name: "Pg 2", img: null },
+        { id: 21, name: "Travel", img: null },
+        { id: 22, name: "Pg", img: null },
+        { id: 23, name: "Pg 2", img: null },
       ],
     },
   ];
@@ -124,6 +112,7 @@ const RetDdDashboard = () => {
               border: "solid 1px lightgray",
               p: 3,
               borderRadius: 3,
+              background:"#f5e9e9",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
             }}
           >
