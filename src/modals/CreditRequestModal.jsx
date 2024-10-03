@@ -180,7 +180,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                 <Grid container sx={{ pt: 1 }}>
                   <Grid item md={12} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Amount"
                         // defaultValue={row.amount}
                         inputProps={{ readOnly: true }}
@@ -194,7 +195,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                   </Grid>
                   <Grid item md={12} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Amount in Words"
                         id="inWords"
                         // defaultValue={numWords(row.amount)}
@@ -208,7 +210,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                   </Grid>
                   <Grid item md={12} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Remarks"
                         id="remarks"
                         size="small"
@@ -217,7 +220,6 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                           setRemarkVal(e.target.value);
                         }}
                         className="new-password"
-                        autoComplete="off"
                         inputProps={{
                           autoFocus: "off",
                           form: {
@@ -294,7 +296,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                       />
                     </FormControl> */}
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Amount"
                         defaultValue={row.amount}
                         id="amt"
@@ -316,7 +319,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                       />
                     </FormControl> */}
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Amount in Words"
                         id="inWords"
                         // defaultValue={numWords(row.amount)}
@@ -329,7 +333,8 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                   </Grid>
                   <Grid item md={12} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Remarks"
                         id="remarks"
                         size="small"
@@ -337,7 +342,6 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                           setRemarkVal(e.target.value);
                         }}
                         required
-                        autoComplete="off"
                         inputProps={{
                           autoFocus: "off",
                           form: {
