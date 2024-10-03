@@ -32,7 +32,7 @@ import { capitalize1 } from "../utils/TextUtil";
 import { getEnv, randomColors } from "../theme/setThemeColor";
 import AuthContext from "../store/AuthContext";
 import OutletRegistration from "../component/OutletRegistration";
-import { PROJECTS } from "../utils/constants";
+import { mt_tab_value, PROJECTS } from "../utils/constants";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { banking } from "../_nav";
 import HNavButton from "../component/HNavButton";
@@ -42,8 +42,9 @@ import BeneCardComponent from "../component/BeneCardComponent";
 import BeneCardVender from "../component/BeneCardVender";
 import { Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
+import CustomTabs from "../component/CustomTabs";
 
-const VendorPayments = ({ type,resetView }) => {
+const VendorPayments = ({ resetView }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -59,6 +60,9 @@ const VendorPayments = ({ type,resetView }) => {
   const user = authCtx.user;
   const envName = getEnv();
   const navigate = useNavigate();
+  const [value, setValue] = useState(0);
+    const [currentType, setCurrentType] = useState(2)
+    const [type, settype] = useState("express");
   
   const handleBack=()=>{
     resetView(false)
@@ -201,6 +205,19 @@ const VendorPayments = ({ type,resetView }) => {
       }
     );
   };
+  const tabs = [
+    { label: "Vendor Payment",  },
+    { label: "Supar",   },
+  ];
+  const handleChange = (event, newValue) => {
+    console.log("newval",newValue);
+    setValue(newValue);
+    settype(mt_tab_value[newValue])
+    setCurrentType(mt_tab_value[newValue])
+
+    console.log("cms value is",type)
+
+  };
 
   return (
     <>
@@ -341,6 +358,11 @@ const VendorPayments = ({ type,resetView }) => {
 
                 }}
               >
+                                                  <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />
                 <Card
                   className="card-css"
                   sx={{
@@ -349,6 +371,8 @@ const VendorPayments = ({ type,resetView }) => {
                     py: 3,
                   }}
                 >
+
+      
                     <Button onClick={handleBack}>
                   back
                   </Button> 
