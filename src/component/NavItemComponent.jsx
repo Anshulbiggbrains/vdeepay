@@ -75,11 +75,11 @@ const NavItemComponent = ({
           <ListItemButton
        sx={{
         justifyContent: open ? "initial" : "center",
-        backgroundColor: isCurrentActive ? "#1877F2" : "",
+        backgroundColor: isCurrentActive ? "#00DFA2" : "",
         backdropFilter:isCurrentActive  ? "blur(5px)" : "",
         border: isCurrentActive ? "1px solid rgba(159, 134, 192, 0.3)" : "",
         "&:hover": {
-          backgroundColor: isCurrentActive?"#1877F2":"",
+          backgroundColor: isCurrentActive?"#00DFA2":"",
           color: "white", 
         },
         borderRadius: "4px",

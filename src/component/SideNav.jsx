@@ -49,8 +49,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import ProfilePage from "./Profile";
-const drawerWidth = 300;
+const drawerWidth = 250;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -58,6 +57,7 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+ 
 });
 
 const closedMixin = (theme) => ({
@@ -438,7 +438,6 @@ export default function SideNav(props, { data }) {
                 fontWeight: "bold",
                 marginLeft: { md: 3, sm: 3 },
                 fontSize: { md: "20px", sm: "15px", xs: "15px" },
-                
               }}
             >
               {title}
@@ -499,7 +498,7 @@ export default function SideNav(props, { data }) {
                 zIndex: "1000",
                 display: { xs: "none", sm: "block" },
                 "& .MuiDrawer-paper": {
-                  background: "rgb(250, 250, 250)",
+                  background: "#F3B95F",
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(35, 25, 66, 0.3)",
