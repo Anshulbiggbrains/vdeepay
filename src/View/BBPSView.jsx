@@ -151,7 +151,7 @@ const BBPSView = () => {
   const getCategories = () => {
     get(
       ApiEndpoints.BBPS_CATEGORIES,
-      ``,
+      "pf=WEB",
       setProgress,
       (res) => {
         const data = res.data.data;
