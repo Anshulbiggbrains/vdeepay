@@ -346,6 +346,7 @@ import NoDataView from "../component/NoDataView";
                       px: 7,
                       py: 2,
                       mt:2
+                      
                     }}
                   >                   
                     <div>
@@ -356,7 +357,7 @@ import NoDataView from "../component/NoDataView";
                           fontSize: "24px",
                           fontWeight: "bold",
                           letterSpacing: "0.05rem",
-                          textAlign: "center",
+                          textAlign: "left",
                           mt: 0,
                         }}
                       >
@@ -375,8 +376,8 @@ import NoDataView from "../component/NoDataView";
                           
                         }}
                       >
-                  <Grid container xs={12}>
-                      {!infoFetchedMob && !infoFetchedMob&&
+                  <Grid container lg={12} sm={12} xs={12}>
+                      {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem &&
                           <FormControl sx={{ width: "100%" }}>
                             <TextField autoComplete="off"
                               size="small"
@@ -415,10 +416,40 @@ import NoDataView from "../component/NoDataView";
                               disabled={request && request && true}
                             />
                           </FormControl>
-                            }                               
-                          </Grid>
-                    
+                            }  
+             </Grid>
+             
+
                         </Grid>
+                        {addNewRem && addNewRem && (
+                <DmrAddRemitterModal
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  apiEnd={
+                    type === "dmt1"
+                      ? ApiEndpoints.ADD_REM
+                      : ApiEndpoints.DMT2_ADD_REM
+                  }
+                  view="moneyTransfer"
+                  setAddNewRem={setAddNewRem}
+                  otpRef={otpRefId}
+                  setOtpRef={setOtpRefId}
+                />
+              )}
+              {verifyotp && verifyotp && (
+                <DmrVrifyNewUser
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  view="moneyTransfer"
+                  verifyotp={verifyotp}
+                  setVerifyotp={setVerifyotp}
+                  apiEnd={ApiEndpoints.VALIDATE_OTP}
+                  otpRefId={otpRefId}
+                  setOtpRefId={setOtpRefId}
+                />
+              )}                             
+                   
+            
                         {infoFetchedMob && infoFetchedMob && (             
                 <Grid className="remitter-card" container sx={{ display: 'flex' }}>
                 <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
@@ -492,6 +523,7 @@ import NoDataView from "../component/NoDataView";
                     }}
                   />
                   {/* )} */}
+                  {infoFetchedMob && infoFetchedMob && 
                   <Grid
                     lg={12}
                     sm={12}
@@ -576,36 +608,13 @@ import NoDataView from "../component/NoDataView";
                     </div>
                     
                   </Grid>
+  }
+
+
                   </Card> 
                 </Grid>  
               </Grid>
-              {addNewRem && addNewRem && (
-                <DmrAddRemitterModal
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  apiEnd={
-                    type === "dmt1"
-                      ? ApiEndpoints.ADD_REM
-                      : ApiEndpoints.DMT2_ADD_REM
-                  }
-                  view="moneyTransfer"
-                  setAddNewRem={setAddNewRem}
-                  otpRef={otpRefId}
-                  setOtpRef={setOtpRefId}
-                />
-              )}
-              {verifyotp && verifyotp && (
-                <DmrVrifyNewUser
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  view="moneyTransfer"
-                  verifyotp={verifyotp}
-                  setVerifyotp={setVerifyotp}
-                  apiEnd={ApiEndpoints.VALIDATE_OTP}
-                  otpRefId={otpRefId}
-                  setOtpRefId={setOtpRefId}
-                />
-              )}
+         
             </div>
           </>
         )}            
