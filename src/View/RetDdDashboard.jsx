@@ -39,35 +39,35 @@ const RetDdDashboard = () => {
     {
       title: "Banking",
       data: [
-        { id: 1, name: "DMT", img: null, component: DmtContainer },
-        { id: 3, name: "CMS ", img: cmsIcon, component: CMSView },
-        { id: 5, name: "Nepal Transfer", img: null, component: NepalTransfer },
-        { id: 6, name: "Vendor Payments", img: null, component: VendorPayments },
-        { id: 7, name: "UPI", img: upi, component: UPITransferView },
-        { id: 8, name: "Aeps", img: aepsIcon, component: AEPS2View },
+        { id: 1, name: "DMT", img: null, component: DmtContainer ,},
+        { id: 2, name: "CMS ", img: cmsIcon, component: CMSView },
+        { id: 3, name: "Nepal Transfer", img: null, component: NepalTransfer },
+        { id: 4, name: "Vendor Payments", img: null, component: VendorPayments },
+        { id: 5, name: "UPI", img: upi, component: UPITransferView },
+        { id: 6, name: "Aeps", img: aepsIcon, component: AEPS2View },
       ],
     },
     {
       title: "Utility",
       data: [
-        { id: 9, name: "Mobile Recharge", img: mobileR_img, component: MobileRechargeForm },
-        { id: 12, name: "DTH", img: dthIcon, component: MobileRechargeForm },
-        { id: 13, name: "Electricity", img: elecIcon, component: ElectricityForm },
-        { id: 14, name: "Credit Card ", img: null, component: CreditcardForm },
-        { id: 15, name: "BroadBand", img: broadband, component: ElectricityForm },
-        { id: 16, name: "Gas", img: gasIcon, component: ElectricityForm },
-        { id: 17, name: "Water", img: waterIcon, component: ElectricityForm },
-        { id: 18, name: "Insurance", img: null, component: ElectricityForm },
-        { id: 19, name: "Landline", img: landIcon, component: ElectricityForm },
-        { id: 20, name: "Bbps", img: BBPS, component: BBPSView },
+        { id: 7, name: "Mobile Recharge", img: mobileR_img, component: MobileRechargeForm },
+        { id: 8, name: "DTH", img: dthIcon, component: MobileRechargeForm },
+        { id: 9, name: "Electricity", img: elecIcon, component: ElectricityForm },
+        { id: 10, name: "Credit Card ", img: null, component: CreditcardForm },
+        { id: 11, name: "BroadBand", img: broadband, component: ElectricityForm },
+        { id: 12, name: "Gas", img: gasIcon, component: ElectricityForm },
+        { id: 13, name: "Water", img: waterIcon, component: ElectricityForm },
+        { id: 14, name: "Insurance", img: null, component: ElectricityForm },
+        { id: 15, name: "Landline", img: landIcon, component: ElectricityForm },
+        { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
       ],
     },
     {
       title: "Travel",
       data: [
-        { id: 21, name: "Travel", img: null },
-        { id: 22, name: "Pg", img: null },
-        { id: 23, name: "Pg 2", img: null },
+        { id: 17, name: "Travel", img: null },
+        { id: 18, name: "Pg", img: null },
+        { id: 19, name: "Pg 2", img: null },
       ],
     },
   ];
@@ -110,6 +110,7 @@ const RetDdDashboard = () => {
             ? "ELECTRICITY"
             : item.name // default case
       });
+      
     }
   };
 
@@ -120,7 +121,7 @@ const RetDdDashboard = () => {
   return (
     <>
       {!currentView ? (
-        // Dashboard view displaying the card categories
+      
         dataCategories.map((category, index) => (
           <Box
             key={index}
@@ -129,7 +130,7 @@ const RetDdDashboard = () => {
               border: "solid 1px lightgray",
               p: { xs: 1, sm: 3 }, // Responsive padding
               borderRadius: 3,
-              background: "#f5e9e9",
+              background: "#B9D9EB",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -146,7 +147,8 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
-                    onClick={() => handleCardClick(item)} // Pass the full item object
+                    onClick={() => handleCardClick(item)} 
+                   
                   />
                 </Grid>
               ))}

@@ -167,12 +167,12 @@ const borderPulse = keyframes`
         }}
       >
         {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
             Wallet 1
           </Typography>
-          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
           ₹  {numberSetter(user.w1 / 100)} 
           </Typography>
         </Box>
@@ -200,12 +200,12 @@ const borderPulse = keyframes`
         }}
       >
         {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
             Wallet 2
           </Typography>
-          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
           ₹ {numberSetter(user.w2 / 100)} 
           </Typography>
         </Box>

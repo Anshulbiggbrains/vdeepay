@@ -431,65 +431,6 @@ const UPITransferView = ({resetView}) => {
                     ) : (
                       bene.map((ben, index) => (
                         <Grid item xs={12} key={index}>
-                          {/* <CustomCard
-                          lg={12}
-                            width="100%"
-                            icon={
-                              <Box
-                                sx={{
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  display: "flex",
-                                  borderRadius: "4px",
-                                  height: "64px",
-                                  background: randomColors(),
-                                  width: "64px",
-                                }}
-                              >
-                                <Typography sx={{ fontSize: "40px" }}>
-                                  {ben.bene_name.charAt(0).toUpperCase()}
-                                </Typography>
-                              </Box>
-                            }
-                           
-                            title={ben.bene_acc}
-                            
-                            description={
-                              <div style={{ display: "flex", alignItems: "center" }}>
-                                <RetUpiTransferModal ben={ben} rem_number={mobile} />
-                              </div>
-                            }
-                            descriptionSup={
-                              <DeleteBeneficiaryModal
-                                bene={ben}
-                                mob={mobile}
-                                getRemitterStatus={getRemitterStatus}
-                                apiEnd={ApiEndpoints.REMOVE_BENE_UPI}
-                                view="expressTransfer"
-                              />
-
-                            }
-                            iconSup={
-                              <div style={{  }}>
-                                {ben.last_success_date ? (
-                                  <Box
-                                    sx={{
-                                      position: "absolute",
-                                      top: "-74px",
-                                      right: "-68px",
-                                      color: "#00bf78",
-                                    }}
-                                  >
-                                    <Tooltip title="Already Verified">
-                                      <VerifiedIcon sx={{ fontSize: "17px" }} />
-                                    </Tooltip>
-                                  </Box>
-                                ) : (
-                                  <AccountVerificationUpi rem_number={mobile} ben={ben} />
-                                )}
-                              </div>
-                            }
-                          /> */}
                           <BeneCardUpi  ben={ben} mobile={mobile}/>
                       
                         </Grid>

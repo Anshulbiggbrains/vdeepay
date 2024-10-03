@@ -1,4 +1,4 @@
-import { Tab, Box} from "@mui/material";
+import { Tab, Box,Button} from "@mui/material";
 import React, { useContext, useState } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import MobileRechargeForm from "../component/MobileRechargeForm";
@@ -42,6 +42,7 @@ const StyledTabs = styled((props) => (
 
 
 
+
 const RechargeAndBillPay = () => {
   const [value, setValue] = React.useState(0);
   const authCtx = useContext(AuthContext);
@@ -61,7 +62,7 @@ const RechargeAndBillPay = () => {
     { label: 'Landline',content:  <ElectricityForm title="Landline Bill Payment" subType="LANDLINE"  setOperatorIcon={setOperatorIcon} operatorIcon={operatorIcon}/>,icon:<LocalPhoneIcon /> },
   ];
   
-
+ 
 const handleChange = (event, newValue) => {
   setValue(newValue);
 };
@@ -95,6 +96,7 @@ const InnerIcon = styled(Box)(({ theme }) => ({
 console.log("image",operatorIcon);
   return (
    <>
+  
     <CustomTabs
     tabs={tabs}
     value={value}

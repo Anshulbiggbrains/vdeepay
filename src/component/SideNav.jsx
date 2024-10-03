@@ -310,6 +310,7 @@ export default function SideNav(props, { data }) {
         sx={{
           height: { xs: "80vh", sm: "100vh" },
           overflowY: "scroll",
+          background: "#F3B95F",
         }}
       >
         {leftNav.map((item, index) => {
@@ -498,7 +499,7 @@ export default function SideNav(props, { data }) {
                 zIndex: "1000",
                 display: { xs: "none", sm: "block" },
                 "& .MuiDrawer-paper": {
-                  background: "#F3B95F",
+                  // background: "#F3B95F",
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(35, 25, 66, 0.3)",
