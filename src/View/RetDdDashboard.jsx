@@ -35,8 +35,8 @@ const RetDdDashboard = () => {
         { id: 4, name: "CMS 2", img: cmsIcon, component: CMSView },
         { id: 5, name: "Nepal Transfer", img: null, component: NepalTransfer },
         { id: 6, name: "Vendor Payments", img: null, component: VendorPayments },
-        // { id: 7, name: "Super", img: null, component: VendorPayments },
-        // { id: 8, name: "UPI", img: upi, component: UPITransferView },
+        { id: 7, name: "Super", img: null, component: VendorPayments },
+        { id: 8, name: "UPI", img: upi, component: UPITransferView },
       ],
     },
     {

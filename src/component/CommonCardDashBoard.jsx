@@ -12,13 +12,14 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
           alignItems: 'center', // Center items horizontally
           justifyContent: 'center',
           background: 'linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)',
-        //   boxShadow: 2,
           textAlign: 'center', // Center the text
           cursor: 'pointer',
           transition: 'box-shadow 0.3s ease-in-out',
           width: '100%',
           height: '100%',
           overflow: 'hidden',
+          
+      
         }}
         onClick={onClick}
       >
@@ -26,13 +27,24 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
           sx={{
             width: '80px',
             height: '80px',
-            padding:2,
+            padding: 2,
+            mt:1,
             borderRadius: '50%', // Circular shape
             border: '5px solid green', // Border color similar to card's accent
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             mb: 1, // Margin bottom for spacing between image and text
+            transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+            '&:hover': {
+              border: '4px solid #FE3204',
+              animation: 'pulse 1s infinite',
+            },
+            '@keyframes pulse': {
+              '0%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.05)' },
+              '100%': { transform: 'scale(1)' },
+            },
           }}
         >
           <img
