@@ -11,7 +11,14 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
           flexDirection: 'column', // Stack items vertically
           alignItems: 'center', // Center items horizontally
           justifyContent: 'center',
-          cursor: 'pointer'
+          background: 'linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)',
+        //   boxShadow: 2,
+          textAlign: 'center', // Center the text
+          cursor: 'pointer',
+          transition: 'box-shadow 0.3s ease-in-out',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
         }}
         onClick={onClick}
       >
