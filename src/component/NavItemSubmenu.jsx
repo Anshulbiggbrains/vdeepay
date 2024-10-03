@@ -9,8 +9,10 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
-import { Box } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import { blue } from "@mui/material/colors";
+import { femaleAvatar, maleAvatar } from "../iconsImports";
+import AuthContext from "../store/AuthContext";
 
 const NavItemSubmenu = ({
   item,
@@ -19,18 +21,19 @@ const NavItemSubmenu = ({
   setOpen,
   handleDrawerToggle,
   mobileOpen,
+
 }) => {
   const [subMenuOpen, setSubMenuOpen] = React.useState(false);
   const handleClick = () => {
     setSubMenuOpen(!subMenuOpen);
   };
-
+  const {user} = useContext(AuthContext);
   const sidebarCtx = useContext(SideBarContext);
   const setActiveIndex = sidebarCtx.setActiveIndex;
   const location = useLocation();
   const currentPath = location.pathname;
   let isCurrentActive = currentPath === item?.to;
-
+console.log("user is ",user);
   return (
     <div>
       <List key={item.title}>
@@ -65,18 +68,29 @@ const NavItemSubmenu = ({
               justifyContent: "center",
             }}
           >
-            <img width="26px" src={item.icon} alt="" />
+          {/* <Avatar
+                    id="user_img"
+                    // alt={user.name}
+                    src={
+                      // !["0", "1"].includes(user.profile_image)?
+                      // user.profile_image : 
+                      user.gender === "FEMALE" ?
+                      femaleAvatar : maleAvatar
+                    }
+                    sx={{ width: 35, height: 35 }}
+                  /> */}
+            <img width="26px" src={user.gender=="MALE"?item?.icon:item?.icon2} alt="" />
           </Box>
           <ListItemText
             className="menu-title"
             primary={item.title}
             sx={{
-              color:"#012169",
-              "&:hover": {
+              // color:"#012169",
               opacity: open ? 1 : 0,
+              color: isCurrentActive? "white":"#012169",
               fontSize: "16px",
               // fontStyle: "italic",
-              }
+              
             }}
           />
           {open ? subMenuOpen ? <ExpandLess /> : <ExpandMore /> : ""}
@@ -101,7 +115,7 @@ const NavItemSubmenu = ({
                       display: "block",
                       textDecoration: "none",
                       justifyContent: open ? "center" : "end",
-                      padding: open ? "0px 12px 6px 12px" : "0px 8px 6px 6px",
+                      padding: open ? "0px 8px 6px 6px" : "",
                     };
                   }}
                 >
@@ -129,7 +143,7 @@ const NavItemSubmenu = ({
                     <Box
                       sx={{
                         mr: open ? 3 : 3,
-                        ml: open ? 0 : 3.5,
+                        // ml: open ? 0 : 3.5,
                         justifyContent: "center",
                       }}
                     >
@@ -139,11 +153,11 @@ const NavItemSubmenu = ({
                       primary={subMenu.title}
                    
                       sx={{
-                        marginLeft:-4,
+                        // marginLeft:-4,
                         color:"#012169",
 
                         "&:hover": {
-                        marginLeft: open && -5,
+                        // marginLeft: open && -5,
                         fontSize: "16px",
                         // fontStyle: "italic",
                         color: whiteColor(),

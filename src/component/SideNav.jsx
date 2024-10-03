@@ -49,7 +49,6 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import ProfilePage from "./Profile";
 const drawerWidth = 300;
 const openedMixin = (theme) => ({
   width: drawerWidth,

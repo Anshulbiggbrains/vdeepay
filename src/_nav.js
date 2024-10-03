@@ -559,22 +559,7 @@ export const customer_nav = [
     icon2: ReportsIcon,
     to: "/customer/transactions",
   },
-  {
-    title: "User Profile",
-    icon: maleAvatar, // Import the avatar icon or use a default user icon
-    icon2: femaleAvatar, // Adjust accordingly
-    userProfile: true, // This indicates it contains user information
- submenus:[
-{
-title:"Manage Your Profile",
-to:"/customer/my-profile",
-
-},{
-title:"Logout",
-to:"/login", 
-}
- ]
-},
+ 
   {
           title: "My Complaints",
           icon: complaint,
@@ -587,6 +572,23 @@ to:"/login",
                 icon2: TransactionIconWhite,
                 to: "/customer/purchase",
               },
+              {
+                title: "User Profile",
+                icon: maleAvatar, // Import the avatar icon or use a default user icon
+                icon2: femaleAvatar, // Adjust accordingly
+                userProfile: true, // This indicates it contains user information
+             submenus:[
+            {
+            title:"Manage Your Profile",
+            
+            to:"/customer/my-profile",
+            
+            },{
+            title:"Logout",
+            to:"/login", 
+            }
+             ]
+            },
              
               // {
               //         title: "Khata Book",
