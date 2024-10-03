@@ -127,13 +127,13 @@ const NavItemComponent = ({
         disableTypography
         sx={{
           opacity: open ? 1 : 0,
-          color: isCurrentActive ? "white" : "#012169",
+          color: isCurrentActive ? "white" : "white",
           fontSize: "16px",
         
           // fontFamily:"cursive",
         fontFamily: "Montserrat, sans-serif",
           '&:hover': {
-            color: isCurrentActive ? "white" : "#012169",
+            color: isCurrentActive ? "white" : "white",
           }
         }}
       />
