@@ -18,19 +18,21 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
           width: '100%',
           height: '100%',
           overflow: 'hidden',
+       
+      // Yellow box shadow on hover
           
-      
+
         }}
         onClick={onClick}
       >
         <Box
           sx={{
-            width: '80px',
-            height: '80px',
-          
+            width: { xs: '60px', sm: '80px' }, 
+            height: { xs: '60px', sm: '80px' },
+            boxShadow: '0px 4px 8px rgba(255, 217, 61, 0.7)', 
             mt:1,
-            borderRadius: '50%', // Circular shape
-            // border: '4px solid #FFD93D', // Border color similar to card's accent
+            borderRadius: '50%', 
+         
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -38,14 +40,9 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
             background:"white",
             mb: 1, // Margin bottom for spacing between image and text
             transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-            '&:hover': {
-              border: '4px solid #FE3204',
-              animation: 'pulse 1s infinite',
-            },
-            '@keyframes pulse': {
-              '0%': { transform: 'scale(1)' },
-              '50%': { transform: 'scale(1.05)' },
-              '100%': { transform: 'scale(1)' },
+             '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: '0px 4px 16px rgba(255, 217, 61, 0.9)', // Larger yellow box shadow on hover
             },
           }}
         >
