@@ -368,7 +368,28 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                       
                     }}
                   >    
-                                  
+                   <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >    
+                         <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button> 
+                        </Grid>        
                     <div>
                
                       {!mobile?(
@@ -382,22 +403,14 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                           mt: 0,
                         }}
                       >
-                           <Button
-                          size="small"
-                          id="verify-btn"
-                          className="button-props"
-                          onClick={handleBack}
-                        >    
-                             
-                               <span style={{ marginRight: '5px' }}>Back</span>
-                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-                        </Button>
+                           
                         {type === "dmt1"
                           ? "Domestic Money Transfer 1"
                           : "Domestic Money Transfer 2"}
                       </Typography>
-                          
+                    
                       ):null}
+                  
                          <Grid
                         container
                         sx={{

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Box,
   Button,
@@ -42,8 +41,9 @@ import BeneCardComponent from "../component/BeneCardComponent";
 import BeneCardVender from "../component/BeneCardVender";
 import { back, Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
+import CustomTabs from "../component/CustomTabs";
 
-const VendorPayments = ({ resetView,mt_tab_value }) => {
+const VendorPayments = ({ resetView }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -52,7 +52,6 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
   const [verifyotp, setVerifyotp] = useState(false);
   const [addNewRem, setAddNewRem] = useState(false);
   const [otpRefId, setOtpRefId] = useState("");
-  const [value, setValue] = useState(0);
   const [search, setSearch] = useState("");
   const [filteredBenelist, setFilteredBenelist] = useState([]);
   const [isMobv, setIsMobv] = useState(true);
@@ -60,9 +59,9 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
   const user = authCtx.user;
   const envName = getEnv();
   const navigate = useNavigate();
-  const [type, settype] = useState("express");
-  const [currentType, setCurrentType] = useState("express")
-
+  const [value, setValue] = useState(0);
+    const [currentType, setCurrentType] = useState(2)
+    const [type, settype] = useState("express");
   
   const handleBack=()=>{
     resetView(false)
@@ -205,13 +204,25 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
       }
     );
   };
+  const tabs = [
+    { label: "Vendor Payment",  },
+    { label: "Super",   },
+  ];
+  const handleChange = (event, newValue) => {
+    console.log("newval",newValue);
+    setValue(newValue);
+    settype(mt_tab_value[newValue])
+    setCurrentType(mt_tab_value[newValue])
 
+    console.log("cms value is",type)
+
+  };
 
   return (
     <>
       {envName === PROJECTS.moneyoddr && infoFetchedMob && (
         <div style={{ textAlign: "left", marginBottom: "10px" }}>
-          {/* <Button
+          <Button
             className="button-red"
             variant="contained"
             startIcon={<ArrowBackIcon />}
@@ -223,8 +234,7 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
             }}
           >
             back
-          </Button> */}
-          
+          </Button>
         </div>
       )}
       {user && !user.instId && (
@@ -347,16 +357,11 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
 
                 }}
               >
-                  
-                 <Button
-        size="small"
-        id="verify-btn"
-        className=""
-        sx={{ fontSize: "13px", py: 0, ml: 1, px: 1, display: 'flex', alignItems: 'center' }}
-        onClick={handleBack}
-      >
-        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-      </Button>
+                                                  <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />
                 <Card
                   className="card-css"
                   sx={{
@@ -365,6 +370,29 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
                     py: 3,
                   }}
                 >
+
+<Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+<Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                          sx={{p:1}}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
                   {user?.dmt4 === 1 && user?.st === 1 && (
                     <div sx={{ display: "flex" }} hidden={remitterStatus}>
                       
@@ -379,6 +407,7 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
                       letterSpacing: "0.05rem",
                       textAlign: "center",
                       mt: 1,
+                      flexGrow:1
                     }}
                   >
                     {type == "express"
@@ -386,6 +415,7 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
                       : "Super Money Transfer"}
                   </Typography>
                       ):null}
+                      </Grid>
                   <Box
                     component="form"
                     id="seachRemByAcc"
@@ -545,7 +575,7 @@ const VendorPayments = ({ resetView,mt_tab_value }) => {
     marginBottom: { xs: 2, sm: '-2%' }, // Responsive bottom margin
     padding: { xs: 2, sm: 0 }, // Add padding for small screens
   }}
->
+> 
 <DmrAddBeneficiaryModal
                       rem_mobile={mobile}
                       apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}

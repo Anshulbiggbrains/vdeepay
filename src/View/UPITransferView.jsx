@@ -212,6 +212,8 @@ const UPITransferView = ({resetView}) => {
               spacing={3}
               sx={{ display: "flex", justifyContent: "center", mt: 1 }}
             >
+              
+              
                
               <Grid
                 item
@@ -224,17 +226,18 @@ const UPITransferView = ({resetView}) => {
                   marginLeft: 0,
                 }}
               >
-               
-{
-  !mobile?(
-           <Typography
-                  sx={{
-                    fontSize: "24px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                   <Button
+                <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+                <Button
         size="small"
         id="verify-btn"
         className="button-props"
@@ -242,11 +245,24 @@ const UPITransferView = ({resetView}) => {
       >
                 <span style={{ marginRight: '5px' }}>Back</span>
         <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-      </Button>
+      </Button> 
+{
+  !mobile?(
+           <Typography
+                  sx={{
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    flexGrow:1
+                  }}
+                >
+                  
+                  
+                 
                   UPI Transfer
                 </Typography>
   ): null}
-
+</Grid>
                 <Box
                   component="form"
                   sx={{
@@ -257,7 +273,7 @@ const UPITransferView = ({resetView}) => {
                 >
                   <Grid container sx={{ pt: 1 }}>
                     <Grid item md={12} xs={12} lg={12}>
-                    {!infoFetchedMob && !infoFetchedMob&&
+                    {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem &&
 
                       <FormControl sx={{ width: "100%" }}>
                         <TextField autoComplete="off"
@@ -375,7 +391,8 @@ const UPITransferView = ({resetView}) => {
                   </Grid>
                 </Box>
               </Grid>
-              
+              {infoFetchedMob && infoFetchedMob && 
+
               <Grid
                     lg={12}
                     sm={12}
@@ -414,6 +431,7 @@ const UPITransferView = ({resetView}) => {
                     </Box>
  
                   </Box>
+                  
                   <Grid
                     container
                     spacing={2}
@@ -507,7 +525,7 @@ const UPITransferView = ({resetView}) => {
                     )}
                   </Grid>
                 </Grid>
-            
+} 
               {addNewRem && (
                 <DmrAddRemitterModal
                   rem_mobile={mobile}
@@ -522,8 +540,11 @@ const UPITransferView = ({resetView}) => {
             </Grid>
           </Box>
         </>
+            
       )}
+      
     </>
+    
   );
 };
 

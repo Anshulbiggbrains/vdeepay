@@ -217,7 +217,6 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                           setRemarkVal(e.target.value);
                         }}
                         className="new-password"
-                        autoComplete="off"
                         inputProps={{
                           autoFocus: "off",
                           form: {
@@ -337,7 +336,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                           setRemarkVal(e.target.value);
                         }}
                         required
-                        autoComplete="off"
+                        // autoComplete="off"
                         inputProps={{
                           autoFocus: "off",
                           form: {
