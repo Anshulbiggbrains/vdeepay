@@ -37,7 +37,6 @@ const AEPSGuidelinesModal = ({ open, setOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-<Zoom in={open} timeout={200}>
 <Box sx={style} className="sm_modal">
             <Typography
               sx={{
@@ -55,7 +54,6 @@ const AEPSGuidelinesModal = ({ open, setOpen }) => {
             </Grid>
             <ModalFooter onClick={handleClose} btn="Accept" />
           </Box>
-        </Zoom>
       </Modal>
     </Box>
   );

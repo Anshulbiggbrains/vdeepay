@@ -42,9 +42,8 @@ import BeneCardComponent from "../component/BeneCardComponent";
 import BeneCardVender from "../component/BeneCardVender";
 import { back, Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
-import CustomTabs from "../component/CustomTabs";
 
-const VendorPayments = ({ resetView }) => {
+const VendorPayments = ({ resetView,mt_tab_value }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [request, setRequest] = useState(false);
   const [remitterStatus, setRemitterStatus] = useState();
@@ -53,6 +52,7 @@ const VendorPayments = ({ resetView }) => {
   const [verifyotp, setVerifyotp] = useState(false);
   const [addNewRem, setAddNewRem] = useState(false);
   const [otpRefId, setOtpRefId] = useState("");
+  const [value, setValue] = useState(0);
   const [search, setSearch] = useState("");
   const [filteredBenelist, setFilteredBenelist] = useState([]);
   const [isMobv, setIsMobv] = useState(true);
@@ -60,9 +60,9 @@ const VendorPayments = ({ resetView }) => {
   const user = authCtx.user;
   const envName = getEnv();
   const navigate = useNavigate();
-  const [value, setValue] = useState(0);
-    const [currentType, setCurrentType] = useState(2)
-    const [type, settype] = useState("express");
+  const [type, settype] = useState("express");
+  const [currentType, setCurrentType] = useState("express")
+
   
   const handleBack=()=>{
     resetView(false)
@@ -205,19 +205,7 @@ const VendorPayments = ({ resetView }) => {
       }
     );
   };
-  const tabs = [
-    { label: "Vendor Payment",  },
-    { label: "Supar",   },
-  ];
-  const handleChange = (event, newValue) => {
-    console.log("newval",newValue);
-    setValue(newValue);
-    settype(mt_tab_value[newValue])
-    setCurrentType(mt_tab_value[newValue])
 
-    console.log("cms value is",type)
-
-  };
 
   return (
     <>
@@ -359,11 +347,16 @@ const VendorPayments = ({ resetView }) => {
 
                 }}
               >
-                                                  <CustomTabs
-      tabs={tabs}
-      value={value}
-      onChange={handleChange}
-    />
+                  
+                 <Button
+        size="small"
+        id="verify-btn"
+        className=""
+        sx={{ fontSize: "13px", py: 0, ml: 1, px: 1, display: 'flex', alignItems: 'center' }}
+        onClick={handleBack}
+      >
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button>
                 <Card
                   className="card-css"
                   sx={{
@@ -372,11 +365,6 @@ const VendorPayments = ({ resetView }) => {
                     py: 3,
                   }}
                 >
-
-      
-                    <Button onClick={handleBack}>
-                  back
-                  </Button> 
                   {user?.dmt4 === 1 && user?.st === 1 && (
                     <div sx={{ display: "flex" }} hidden={remitterStatus}>
                       
@@ -393,16 +381,6 @@ const VendorPayments = ({ resetView }) => {
                       mt: 1,
                     }}
                   >
-                     <Button
-        size="small"
-        id="verify-btn"
-        className="button-props"
-        // sx={{ fontSize: "13px", py: 0, ml: 1, px: 1, display: 'flex', alignItems: 'center' }}
-        onClick={handleBack}
-      >
-                        <span style={{ marginRight: '5px' }}>Back</span>
-        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-      </Button>
                     {type == "express"
                       ? "Express Money Transfer"
                       : "Super Money Transfer"}
@@ -580,6 +558,8 @@ const VendorPayments = ({ resetView }) => {
                )}
                     </Grid>              
                   </Box>
+                  {infoFetchedMob && infoFetchedMob && 
+
                 <Grid
                   lg={12}
                   sm={12}
@@ -664,7 +644,7 @@ const VendorPayments = ({ resetView }) => {
                     )}
                   </div>
                 </Grid>
-              
+}
                   
                 </Card>
             

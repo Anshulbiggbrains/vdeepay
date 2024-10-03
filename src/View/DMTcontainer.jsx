@@ -357,9 +357,7 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
       tabs={tabs}
       value={value}
       onChange={handleChange}
-    />
-                  
-                           
+    />                
                   <Card
                     className="card-css"
                     sx={{
@@ -370,9 +368,7 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                       
                     }}
                   >    
-                    <Button sx={{justifyContent:"start"}} onClick={handleBack}>
-                  back
-                  </Button>                
+                                  
                     <div>
                
                       {!mobile?(
@@ -645,7 +641,6 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                     
                   </Grid>
   }
-
 
                   </Card> 
                 </Grid>  

@@ -13,7 +13,7 @@ import {
 import React, { useContext, useRef } from "react";
 import BeneSearchBar from "../component/BeneSearchBar";
 import { useState } from "react";
-import { back, Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
+import { Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
 import { randomColors } from "../theme/setThemeColor";
 import { PATTERNS } from "../utils/ValidationUtil";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -344,26 +344,19 @@ const NepalTransfer = ({resetView}) => {
               marginLeft:0
             }}
           >
-           
             <Card
               className="card-css"
               sx={{
                 width: "100%",
                 px: 7,
                 py: 2,
-                mt:2
+                                      mt:2
 
               }}
             >
-                <Button
-        size="small"
-        id="verify-btn"
-        className="button-props"
-        onClick={handleBack}
-      >
-                        <span style={{ marginRight: '5px' }}>Back</span>
-        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-      </Button>
+              <Button onClick={handleBack}>
+                  back
+                  </Button> 
                       {!mobile?(
                       <Typography
                         sx={{
@@ -374,7 +367,6 @@ const NepalTransfer = ({resetView}) => {
                           mt: 0,
                         }}
                       >
-                       
                         Nepal Transfer
                       </Typography>
                       ):null}
@@ -447,6 +439,10 @@ const NepalTransfer = ({resetView}) => {
                     </FormControl>
 }
                   </Grid>
+
+
+
+                  
                   {/* <Mount visible={infoFetchedMob}>
                     <Grid container sx={{ mt: 3 }}>
                       <Grid item md={6} xs={12} sx={{ my: 2 }}>
@@ -651,6 +647,7 @@ const NepalTransfer = ({resetView}) => {
                   >
                     For more info click <InfoOutlinedIcon fontSize="small" />
                   </Typography> */}
+                  
                   <div
                     className="
                     enable-scroll "
@@ -870,13 +867,13 @@ const NepalTransfer = ({resetView}) => {
         </Grid>
       </div>
       {/* add customer if not found */}
-
+      {newCustomer && newCustomer &&(
       <NepalAddCustomer
         modelOpenHook={newCustomer}
         setMobile={setMobile}
         getCustomerByMobileOrId={getCustomerByMobileOrId}
       />
-   
+      )}
       {/* nepal cus on boarding modal  */}
       <NepalCusOnboardModal
         nepalAllRes={nepalAllRes}
