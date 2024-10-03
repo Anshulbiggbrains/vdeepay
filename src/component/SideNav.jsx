@@ -269,7 +269,7 @@ export default function SideNav(props, { data }) {
     },
     justifyContent: "start",
     alignContent: "left",
-    marginLeft: { md: "16rem", sm: "16rem", xs: "0.5rem" },
+    marginLeft: { md: "13rem", sm: "13rem", xs: "0.5rem" },
     marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
     marginTop: "1rem",
   };
@@ -565,7 +565,7 @@ export default function SideNav(props, { data }) {
           <Box sx={outletBoxStyle}>
             <Outlet />
           </Box>
-          {/* {user?.role === "Admin"
+          {user?.role === "Admin"
             ? ""
             : user?.role === "Asm"
             ? ""
@@ -585,7 +585,7 @@ export default function SideNav(props, { data }) {
               location.pathname !== "/ad/purchase" &&
               location.pathname !== "/md/purchase" && (
                 <>{isBig ? <RightNavbar /> : <RightNavBarMob />}</>
-              )} */}
+              )}
         </div>
       </Box>
     </Box>

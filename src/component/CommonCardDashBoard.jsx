@@ -27,13 +27,15 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
           sx={{
             width: '80px',
             height: '80px',
-            padding: 2,
+          
             mt:1,
             borderRadius: '50%', // Circular shape
-            border: '4px solid #FFD93D', // Border color similar to card's accent
+            // border: '4px solid #FFD93D', // Border color similar to card's accent
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            boxShadow: 2,
+            background:"white",
             mb: 1, // Margin bottom for spacing between image and text
             transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
             '&:hover': {
@@ -51,8 +53,8 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
             src={img}
             alt={name}
             style={{
-              width: '50px',
-              height: '50px',
+              width: '55px',
+              height: '55px',
               borderRadius: '50%', // Ensures the image is circular
             }}
           />
