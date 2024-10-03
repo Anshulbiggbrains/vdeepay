@@ -40,6 +40,7 @@ const NavItemComponent = ({
         disablePadding
         sx={{
           display: "block",
+          mt:2,
           // "&:hover": {
           //   color: "#fff",
           //   "& .menu-title": {
@@ -75,7 +76,7 @@ const NavItemComponent = ({
           <ListItemButton
        sx={{
         justifyContent: open ? "initial" : "center",
-        backgroundColor: isCurrentActive ? "#212b5a" : "",
+        backgroundColor: isCurrentActive ? "#D48628" : "",
         backdropFilter:isCurrentActive  ? "blur(5px)" : "",
         border: isCurrentActive ? "1px solid rgba(159, 134, 192, 0.3)" : "",
         "&:hover": {
@@ -115,7 +116,7 @@ const NavItemComponent = ({
         disableTypography
         sx={{
           opacity: open ? 1 : 0,
-          color: isCurrentActive ? "white" : "#012169",
+          color: isCurrentActive ? "white" : "white",
           fontSize: "16px",
         
           // fontFamily:"cursive",
