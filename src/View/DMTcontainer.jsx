@@ -6,7 +6,6 @@ import {
     FormControlLabel,
     Grid,
     Icon,
-    
     IconButton,
     Radio,
     RadioGroup,
@@ -367,7 +366,6 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                       px: 7,
                       py: 2,
                       mt:2
-                      
                     }}
                   >    
                     <Button sx={{justifyContent:"start"}} onClick={handleBack}>
@@ -397,11 +395,10 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
                           "& .MuiTextField-root": { mt: 2 },
                           objectFit: "contain",
                           overflowY: "scroll",
-                          
                         }}
                       >
                   <Grid container lg={12} sm={12} xs={12}>
-                      {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem &&
+                      {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem && !verifyotp &&
                           <FormControl sx={{ width: "100%" }}>
                             <TextField autoComplete="off"
                               size="small"
@@ -445,6 +442,9 @@ import { cms_tab_value, mt_tab_value } from "../utils/constants";
              
 
                         </Grid>
+                        {/* <Button sx={{justifyContent:"start"}} onClick={handleBack}>
+                          back
+                        </Button> */}
                         {addNewRem && addNewRem && (
                 <DmrAddRemitterModal
                   rem_mobile={mobile}
