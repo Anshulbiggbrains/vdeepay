@@ -5,7 +5,7 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
   return (
     <Tooltip title={name} placement="top">
       <Box
-        className={isSelected ? "card-selected" : "card-unselected"}
+       
         sx={{
           display: 'flex',
           flexDirection: 'column', // Stack items vertically
@@ -28,7 +28,7 @@ const CommonCardDashBoard = ({ name, img, onClick, height, isSelected = false })
             height: '80px',
             padding:2,
             borderRadius: '50%', // Circular shape
-            border: '5px solid green', // Border color similar to card's accent
+            border: '4px solid #FFD93D', // Border color similar to card's accent
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
