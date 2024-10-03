@@ -129,7 +129,7 @@ const RetDdDashboard = () => {
               border: "solid 1px lightgray",
               p: { xs: 1, sm: 3 }, // Responsive padding
               borderRadius: 3,
-              background: "#f5e9e9",
+              // background: "#f5e9e9",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
             }}
           >

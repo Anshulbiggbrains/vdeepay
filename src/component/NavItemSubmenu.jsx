@@ -87,7 +87,7 @@ console.log("user is ",user);
             sx={{
               // color:"#012169",
               opacity: open ? 1 : 0,
-              color: isCurrentActive? "white":"#012169",
+              color: isCurrentActive? "white":"white",
               fontSize: "16px",
               // fontStyle: "italic",
               
