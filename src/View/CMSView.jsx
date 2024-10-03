@@ -12,7 +12,7 @@ import {
   createFilterOptions,
 } from "@mui/material";
 import React from "react";
-import { cmsIcon } from "../iconsImports";
+import { back, cmsIcon } from "../iconsImports";
 import { useState } from "react";
 import AuthContext from "../store/AuthContext";
 import { useContext } from "react";
@@ -363,6 +363,7 @@ const CMSView = ({resetView,type}) => {
               overflowY: "hidden",
             }}
           >
+              
             <div
               style={{
                 width: "100%",
@@ -384,6 +385,7 @@ const CMSView = ({resetView,type}) => {
               marginHeight="0"
               style={{ width: isMobile ? "100px" : "800px", height: "600px" }}
             ></iframe>
+             
           </Grid>
         </Grid>
       </Mount>
@@ -398,6 +400,7 @@ const CMSView = ({resetView,type}) => {
           }}
           className="card-css"
         >
+       
           <Grid
             item
             md={12}
@@ -408,14 +411,19 @@ const CMSView = ({resetView,type}) => {
               // alignItems: "center",
             }}
           >
-            <Button onClick={handleBack}>
-                  back
-                  </Button> 
-              
-            
+             
             <Typography
-              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:9,mt:2}}
+              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:2,mt:2}}
             >
+              <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >
+                                          <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
               Cash Management System
             </Typography>
           

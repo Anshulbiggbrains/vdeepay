@@ -13,7 +13,7 @@ import {
 import React, { useContext, useRef } from "react";
 import BeneSearchBar from "../component/BeneSearchBar";
 import { useState } from "react";
-import { Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
+import { back, Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
 import { randomColors } from "../theme/setThemeColor";
 import { PATTERNS } from "../utils/ValidationUtil";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -344,19 +344,26 @@ const NepalTransfer = ({resetView}) => {
               marginLeft:0
             }}
           >
+           
             <Card
               className="card-css"
               sx={{
                 width: "100%",
                 px: 7,
                 py: 2,
-                                      mt:2
+                mt:2
 
               }}
             >
-              <Button onClick={handleBack}>
-                  back
-                  </Button> 
+                <Button
+        size="small"
+        id="verify-btn"
+        className="button-props"
+        onClick={handleBack}
+      >
+                        <span style={{ marginRight: '5px' }}>Back</span>
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button>
                       {!mobile?(
                       <Typography
                         sx={{
@@ -367,6 +374,7 @@ const NepalTransfer = ({resetView}) => {
                           mt: 0,
                         }}
                       >
+                       
                         Nepal Transfer
                       </Typography>
                       ):null}
@@ -862,11 +870,13 @@ const NepalTransfer = ({resetView}) => {
         </Grid>
       </div>
       {/* add customer if not found */}
+
       <NepalAddCustomer
         modelOpenHook={newCustomer}
         setMobile={setMobile}
         getCustomerByMobileOrId={getCustomerByMobileOrId}
       />
+   
       {/* nepal cus on boarding modal  */}
       <NepalCusOnboardModal
         nepalAllRes={nepalAllRes}

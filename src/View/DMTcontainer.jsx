@@ -15,7 +15,7 @@ import {
   } from "@mui/material";
   import React from "react";
   import { useState } from "react";
-  import { Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
+  import { back, Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
   import { get, postJsonData } from "../network/ApiController";
   import ApiEndpoints from "../network/ApiEndPoints";
   import { apiErrorToast } from "../utils/ToastUtil";
@@ -336,9 +336,11 @@ import NoDataView from "../component/NoDataView";
                           item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
                   
                 >     
-                <Button onClick={handleBack}>
+                {/* <Button onClick={handleBack}>
                   back
-                  </Button>              
+                  </Button>  */}
+     
+                               
                   <Card
                     className="card-css"
                     sx={{
@@ -347,8 +349,10 @@ import NoDataView from "../component/NoDataView";
                       py: 2,
                       mt:2
                     }}
-                  >                   
+                  > 
+                              
                     <div>
+               
                       {!mobile?(
                       <Typography
 
@@ -360,10 +364,21 @@ import NoDataView from "../component/NoDataView";
                           mt: 0,
                         }}
                       >
+                           <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
                         {type === "dmt1"
                           ? "Domestic Money Transfer 1"
                           : "Domestic Money Transfer 2"}
                       </Typography>
+                          
                       ):null}
                          <Grid
                         container

@@ -22,7 +22,7 @@ import RetUpiTransferModal from "../modals/RetUpiTransferModal";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Loader from "../component/loading-screen/Loader";
 import CustomCard from "../component/CustomCard";
-import { Banner, Call1, LimitAcc, LimitTran, Name, noDataFoundGif } from "../iconsImports";
+import { back, Banner, Call1, LimitAcc, LimitTran, Name, noDataFoundGif } from "../iconsImports";
 import { PATTERNS } from "../utils/ValidationUtil";
 import { currencySetter } from "../utils/Currencyutil";
 import { randomColors } from "../theme/setThemeColor";
@@ -197,6 +197,7 @@ const UPITransferView = ({resetView}) => {
               </Grid>
             </Box>
           )}
+              
           <Box
             sx={{
               height: "max-content",
@@ -204,12 +205,14 @@ const UPITransferView = ({resetView}) => {
             }}
             className="position-relative card-css"
           >
+       
             <Loader loading={request} circleBlue />
             <Grid
               container
               spacing={3}
               sx={{ display: "flex", justifyContent: "center", mt: 1 }}
             >
+               
               <Grid
                 item
                 md={12}
@@ -221,9 +224,7 @@ const UPITransferView = ({resetView}) => {
                   marginLeft: 0,
                 }}
               >
-                <Button onClick={handleBack}>
-                  back
-                  </Button> 
+               
 {
   !mobile?(
            <Typography
@@ -233,6 +234,15 @@ const UPITransferView = ({resetView}) => {
                     textAlign: "center",
                   }}
                 >
+                   <Button
+        size="small"
+        id="verify-btn"
+        className="button-props"
+        onClick={handleBack}
+      >
+                <span style={{ marginRight: '5px' }}>Back</span>
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button>
                   UPI Transfer
                 </Typography>
   ): null}

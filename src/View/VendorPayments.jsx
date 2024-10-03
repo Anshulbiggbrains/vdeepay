@@ -40,7 +40,7 @@ import { useNavigate } from "react-router-dom";
 import { currencySetter } from "../utils/Currencyutil";
 import BeneCardComponent from "../component/BeneCardComponent";
 import BeneCardVender from "../component/BeneCardVender";
-import { Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
+import { back, Call1, LimitAcc, LimitTran, Name } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
 
 const VendorPayments = ({ type,resetView }) => {
@@ -206,7 +206,7 @@ const VendorPayments = ({ type,resetView }) => {
     <>
       {envName === PROJECTS.moneyoddr && infoFetchedMob && (
         <div style={{ textAlign: "left", marginBottom: "10px" }}>
-          <Button
+          {/* <Button
             className="button-red"
             variant="contained"
             startIcon={<ArrowBackIcon />}
@@ -218,7 +218,8 @@ const VendorPayments = ({ type,resetView }) => {
             }}
           >
             back
-          </Button>
+          </Button> */}
+          
         </div>
       )}
       {user && !user.instId && (
@@ -341,6 +342,7 @@ const VendorPayments = ({ type,resetView }) => {
 
                 }}
               >
+                
                 <Card
                   className="card-css"
                   sx={{
@@ -349,9 +351,6 @@ const VendorPayments = ({ type,resetView }) => {
                     py: 3,
                   }}
                 >
-                    <Button onClick={handleBack}>
-                  back
-                  </Button> 
                   {user?.dmt4 === 1 && user?.st === 1 && (
                     <div sx={{ display: "flex" }} hidden={remitterStatus}>
                       
@@ -368,6 +367,16 @@ const VendorPayments = ({ type,resetView }) => {
                       mt: 1,
                     }}
                   >
+                     <Button
+        size="small"
+        id="verify-btn"
+        className="button-props"
+        // sx={{ fontSize: "13px", py: 0, ml: 1, px: 1, display: 'flex', alignItems: 'center' }}
+        onClick={handleBack}
+      >
+                        <span style={{ marginRight: '5px' }}>Back</span>
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button>
                     {type == "express"
                       ? "Express Money Transfer"
                       : "Super Money Transfer"}
