@@ -61,10 +61,10 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
 }));
 
-const CMSView = ({resetView,type}) => {
+const CMSView = ({resetView}) => {
   const [request, setRequest] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [type, settype] = useState("cms1");
+  const [type, settype] = useState("cms1");
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [url, setUrl] = useState(undefined);
@@ -317,8 +317,8 @@ const CMSView = ({resetView,type}) => {
     const handleChange = (event, newValue) => {
       console.log("newval",newValue);
       setValue(newValue);
-      // settype(cms_tab_value[newValue])
-      // setCurrentType(cms_tab_value[newValue])
+      settype(cms_tab_value[newValue])
+      setCurrentType(cms_tab_value[newValue])
       console.log("cms value is",type)
 
     };
@@ -326,11 +326,11 @@ const CMSView = ({resetView,type}) => {
   return (
     <>
     <Grid>
-    {/* <CustomTabs
+    <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
-    /> */}
+    />
 
    
     <Box

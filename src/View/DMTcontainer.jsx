@@ -39,8 +39,10 @@ import {
   import useResponsive from "../hooks/useResponsive";
   import { BBPS, teamWork } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
+import CustomTabs from "../component/CustomTabs";
+import { cms_tab_value, mt_tab_value } from "../utils/constants";
   const DmtContainer = ({
-    type,
+    // type,
     setMoney=false,
     resetView,
 
@@ -64,6 +66,9 @@ import NoDataView from "../component/NoDataView";
     const user = authCtx.user;
     const [numberList, setNumberList] = useState([]);
     const navigate = useNavigate();
+    const [value, setValue] = useState(0);
+    const [currentType, setCurrentType] = useState("dmt1")
+    const [type, settype] = useState("dmt1");
   
     useEffect(() => {
       if (search) {
@@ -216,6 +221,18 @@ import NoDataView from "../component/NoDataView";
     console.log("type is",type);
 
           console.log("rem",remitterStatus);
+          const tabs = [
+            { label: "Dmt 1",  },
+            { label: "Dmt 2",   },
+          ];
+          const handleChange = (event, newValue) => {
+            console.log("newval",newValue);
+            setValue(newValue);
+            settype(mt_tab_value[newValue])
+            setCurrentType(mt_tab_value[newValue])
+            console.log("cms value is",type)
+      
+          };
     return (
       <>
         {user && !user.instId && (
@@ -335,10 +352,14 @@ import NoDataView from "../component/NoDataView";
             <Grid
                           item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
                   
-                >     
-                <Button onClick={handleBack}>
-                  back
-                  </Button>              
+                >   
+                 <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />
+                  
+                           
                   <Card
                     className="card-css"
                     sx={{
@@ -348,7 +369,10 @@ import NoDataView from "../component/NoDataView";
                       mt:2
                       
                     }}
-                  >                   
+                  >    
+                    <Button sx={{justifyContent:"start"}} onClick={handleBack}>
+                  back
+                  </Button>                
                     <div>
                       {!mobile?(
                       <Typography
