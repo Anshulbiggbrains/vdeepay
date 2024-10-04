@@ -357,11 +357,12 @@ const VendorPayments = ({ resetView }) => {
 
                 }}
               >
-                                                  <CustomTabs
+                                                    {!infoFetchedMob && !infoFetchedMob&&  <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
     />
+                                                    }
                 <Card
                   className="card-css"
                   sx={{

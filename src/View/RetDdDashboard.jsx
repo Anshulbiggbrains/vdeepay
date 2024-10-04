@@ -26,6 +26,15 @@ import CreditcardForm from "../component/CreditcardForm";
 import ElectricityForm from "../component/ElectricityForm";
 import AEPS2View from "./aeps/AEPS2View";
 import BBPSView from "./BBPSView";
+import TravelContainer from "./Travel/TravelContainer";
+import FlightTab from "../component/Travel/FlightTab";
+import BusTab from "../component/Travel/BusTab";
+import TrainTab from "../component/Travel/TrainTab";
+import HotelsTab from "../component/Travel/HotelsTab";
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import HouseIcon from '@mui/icons-material/House';
+import TrainIcon from '@mui/icons-material/Train';
+import FlightIcon from '@mui/icons-material/Flight';
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null); // State to track the current view
@@ -65,12 +74,14 @@ const RetDdDashboard = () => {
     {
       title: "Travel",
       data: [
-        { id: 17, name: "Travel", img: null },
-        { id: 18, name: "Pg", img: null },
-        { id: 19, name: "Pg 2", img: null },
+        { id: 17, name: "AIR", img: FlightIcon ,component:FlightTab },
+        { id: 18, name: "BUS", img: null ,component:BusTab},
+        { id: 19, name: "HOTELS", img: null ,component:HotelsTab},
+        { id: 20, name: "IRCTC", img: null ,component:TrainTab},
       ],
     },
   ];
+
 
   const handleCardClick = (item) => {
     // Check if the clicked item has a component associated
