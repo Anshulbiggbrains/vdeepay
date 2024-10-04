@@ -168,7 +168,7 @@ const borderPulse = keyframes`
       >
         <Box  sx={{ minWidth: '100%', textAlign: 'left' }}> 
           <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontWeight: 'bold' }}>
-            ASM
+            ASM-
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
             Mobile No-

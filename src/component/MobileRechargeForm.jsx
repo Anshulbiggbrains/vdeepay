@@ -255,6 +255,7 @@ const MobileRechargeForm = ({ view, setOperatorIcon,operatorIcon, resetView}) =>
               title={operator.name}
               img={operator.code}
               height="55px"
+              onClick={() => handleOpenVal(operator.name)} 
               isSelected={ opName === operator.name?true:false}
             />
          
