@@ -191,11 +191,15 @@ const borderPulse = keyframes`
         }}
       >
         <Box  sx={{ minWidth: '100%', textAlign: 'left' }}>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c' ,fontWeight: 'bold'}}>
-            DD- Vinay 
+          <Box sx={{display:"flex"}}>
+          <Typography variant="body" sx={{ color: 'Black' ,fontWeight: 'bold'}}>
+            DD-   
           </Typography>
+          
+          <Typography  variant="" sx={{ color: 'black' }}><span>{user.name}</span></Typography>
+          </Box>
           <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
-            Mobile No- 9625271066
+            Mobile No- <span>{user.username}</span>
           </Typography>
         </Box>
       </Box>
@@ -243,7 +247,7 @@ const borderPulse = keyframes`
         <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c', }}>
-            Wallet 2
+            AEPS
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
             ₹ {numberSetter(user.w2 / 100)}
