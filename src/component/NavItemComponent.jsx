@@ -21,7 +21,6 @@ const NavItemComponent = ({
   const sidebarCtx = useContext(SideBarContext);
   const authCtx = useContext(AuthContext)
   const setActiveIndex = sidebarCtx.setActiveIndex;
-  const authCtx = useContext(AuthContext);
   const location = useLocation();
   const currentPath = location.pathname;
   let isCurrentActive = currentPath === item?.to;
