@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
-import BorderColorIcon from '@mui/icons-material/BorderColor';
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { postJsonData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -60,12 +60,12 @@ const VendorPayments = ({ resetView }) => {
   const envName = getEnv();
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
-    const [currentType, setCurrentType] = useState(0)
-    const [type, settype] = useState(0);
-  
-  const handleBack=()=>{
-    resetView(false)
-  }
+  const [currentType, setCurrentType] = useState(0);
+  const [type, settype] = useState(0);
+
+  const handleBack = () => {
+    resetView(false);
+  };
   //
   // const envName = getEnv();
   console.log("type is ", type);
@@ -171,9 +171,9 @@ const VendorPayments = ({ resetView }) => {
 
     return () => {};
   }, [search, bene]);
-  const returnMoneyNew=()=>{
-    setInfoFetchedMob(false)
-      }
+  const returnMoneyNew = () => {
+    setInfoFetchedMob(false);
+  };
   const [numberList, setNumberList] = useState([]);
 
   const getRemitterStatusByAcc = (event) => {
@@ -204,18 +204,14 @@ const VendorPayments = ({ resetView }) => {
       }
     );
   };
-  const tabs = [
-    { label: "Vendor Payment",  },
-    { label: "Super",   },
-  ];
+  const tabs = [{ label: "Vendor Payment" }, { label: "Super" }];
   const handleChange = (event, newValue) => {
-    console.log("newval",newValue);
+    console.log("newval", newValue);
     setValue(newValue);
-    settype(vendor_tab_value[newValue])
-    setCurrentType(vendor_tab_value[newValue])
+    settype(vendor_tab_value[newValue]);
+    setCurrentType(vendor_tab_value[newValue]);
 
-    console.log("cms value is",type)
-
+    console.log("cms value is", type);
   };
 
   return (
@@ -351,10 +347,9 @@ const VendorPayments = ({ resetView }) => {
                 sm={12}
                 xs={12}
                 sx={{
-                  mb: { md: 2, sm: 6, xs: 4,},
+                  mb: { md: 2, sm: 6, xs: 4 },
                   mr: { md: 0, sm: 1.3, xs: 1.3 },
-                  marginLeft:0,
-
+                  marginLeft: 0,
                 }}
               >
                                                     {!infoFetchedMob && !infoFetchedMob&&  <CustomTabs
@@ -371,52 +366,54 @@ const VendorPayments = ({ resetView }) => {
                     py: 3,
                   }}
                 >
-
-<Grid
-            item
-            md={12}
-            xs={12}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              mb: 2,
-            }}
-          >
-<Button
-                          size="small"
-                          id="verify-btn"
-                          className="button-props"
-                          onClick={handleBack}
-                          sx={{p:1}}
-                        >    
-                             
-                               <span style={{ marginRight: '5px' }}>Back</span>
-                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-                        </Button>
-                  {user?.dmt4 === 1 && user?.st === 1 && (
-                    <div sx={{ display: "flex" }} hidden={remitterStatus}>
-                      
-                    </div>
-                  )}
-                      {!mobile?(
-
-                  <Typography
+                  <Grid
+                    item
+                    md={12}
+                    xs={12}
                     sx={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      letterSpacing: "0.05rem",
-                      textAlign: "center",
-                      mt: 1,
-                      flexGrow:1
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
                     }}
                   >
-                    {type == "express"
-                      ? "Express Money Transfer"
-                      : "Super Money Transfer"}
-                  </Typography>
-                      ):null}
-                      </Grid>
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                      sx={{ p: 1 }}
+                    >
+                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <img
+                        src={back}
+                        alt="UPI logo"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    {user?.dmt4 === 1 && user?.st === 1 && (
+                      <div
+                        sx={{ display: "flex" }}
+                        hidden={remitterStatus}
+                      ></div>
+                    )}
+                    {!mobile ? (
+                      <Typography
+                        sx={{
+                          fontSize: "24px",
+                          fontWeight: "bold",
+                          letterSpacing: "0.05rem",
+                          textAlign: "center",
+                          mt: 1,
+                          flexGrow: 1,
+                        }}
+                      >
+                        {type == "express"
+                          ? "Express Money Transfer"
+                          : "Super Money Transfer"}
+                      </Typography>
+                    ) : null}
+                  </Grid>
                   <Box
                     component="form"
                     id="seachRemByAcc"
@@ -428,58 +425,60 @@ const VendorPayments = ({ resetView }) => {
                     }}
                     onSubmit={getRemitterStatusByAcc}
                   >
-                     <Grid container  md={12}
-                sm={12}
-                xs={12}
-                sx={{
-                  mb: { md: 2, sm: 4, xs: 4 },
-                  mr: { md: 0, sm: 1.3, xs: 1.3 },
-                }}>
+                    <Grid
+                      container
+                      md={12}
+                      sm={12}
+                      xs={12}
+                      sx={{
+                        mb: { md: 2, sm: 4, xs: 4 },
+                        mr: { md: 0, sm: 1.3, xs: 1.3 },
+                      }}
+                    >
                       <Grid item md={12} xs={12}>
-                      {!infoFetchedMob && !infoFetchedMob&&
-                        <FormControl sx={{ width: "100%" }}>
+                        {!infoFetchedMob && !infoFetchedMob && (
+                          <FormControl sx={{ width: "100%" }}>
+                            <TextField
+                              autoComplete="off"
+                              label="Mobile Number"
+                              id="mobile"
+                              name="mobile"
+                              type="tel"
+                              value={mobile}
+                              size="small"
+                              required
+                              onChange={(e) => {
+                                setIsMobv(PATTERNS.MOBILE.test(e.target.value));
+                                if (e.target.value === "") {
+                                  setRemitterStatus("");
+                                  setInfoFetchedMob(false);
+                                  bene && setBene([]);
 
-                          <TextField autoComplete="off"
-                            label="Mobile Number"
-                            id="mobile"
-                            name="mobile"
-                            type="tel"
-                            value={mobile}
-                            size="small"
-                            required
-                            onChange={(e) => {
-                              setIsMobv(PATTERNS.MOBILE.test(e.target.value));
-                              if (e.target.value === "") {
-                                setRemitterStatus("");
-                                setInfoFetchedMob(false);
-                                bene && setBene([]);
+                                  setIsMobv(true);
+                                }
 
-                                setIsMobv(true);
-                              }
-
-                              setMobile(e.target.value);
-                              if (e.target.value.length === 9) {
-                                setRemitterStatus("");
-                                setInfoFetchedMob(false);
-                                bene && setBene([]);
-                              }
-                              if (PATTERNS.MOBILE.test(e.target.value)) {
-                                getRemitterStatus(e.target.value);
-                              }
-                            }}
-                            error={!isMobv}
-                            helperText={!isMobv ? "Enter valid Mobile" : ""}
-                            
-                            inputProps={{
-                              form: {
-                                autocomplete: "off",
-                              },
-                              maxLength: "10",
-                            }}
-                            disabled={request && request && true}
-                          />
-                        </FormControl>
-}
+                                setMobile(e.target.value);
+                                if (e.target.value.length === 9) {
+                                  setRemitterStatus("");
+                                  setInfoFetchedMob(false);
+                                  bene && setBene([]);
+                                }
+                                if (PATTERNS.MOBILE.test(e.target.value)) {
+                                  getRemitterStatus(e.target.value);
+                                }
+                              }}
+                              error={!isMobv}
+                              helperText={!isMobv ? "Enter valid Mobile" : ""}
+                              inputProps={{
+                                form: {
+                                  autocomplete: "off",
+                                },
+                                maxLength: "10",
+                              }}
+                              disabled={request && request && true}
+                            />
+                          </FormControl>
+                        )}
                       </Grid>
 
                       {/* {infoFetchedMob && infoFetchedMob && (
@@ -535,150 +534,289 @@ const VendorPayments = ({ resetView }) => {
                           </Grid>
                           </Grid>
                       )}                 */}
-                       {infoFetchedMob && infoFetchedMob && (             
-                <Grid className="remitter-card" container sx={{ display: 'flex' }}>
-                <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', mb: 2 }}>
-                    <Box component="img" src={Name} alt="Name" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px",fontWeight:"600",mt:0.5 }}>
-                      {type==="dmt2"?remitterStatus?.fname: remitterStatus?.firstName} {type==="dmt2"?remitterStatus?.lname: remitterStatus?.lastName}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start' }}>
-                    <Box component="img" src={Call1} alt="Call" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px" ,fontWeight:"600",mt:0.4}}>{remitterStatus?.mobile}</Typography>
-                    <BorderColorIcon sx={{ color: "Black", width: 15 }} onClick={returnMoneyNew} />
-                  </Box>
-                </Grid>
+                      {infoFetchedMob && infoFetchedMob && (
+                        <Grid
+                          className="remitter-card"
+                          container
+                          sx={{ display: "flex" }}
+                        >
+                          <Grid
+                            item
+                            lg={6}
+                            sm={6}
+                            xs={6}
+                            sx={{
+                              display: "flex",
+                              flexDirection: "column",
+                              px: 2,
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "start",
+                                mb: 2,
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src={Name}
+                                alt="Name"
+                                sx={{
+                                  maxWidth: "25px",
+                                  maxHeight: "50px",
+                                  mr: 1,
+                                }}
+                              />
+                              <Typography
+                                sx={{
+                                  fontSize: "12px",
+                                  fontWeight: "600",
+                                  mt: 0.5,
+                                }}
+                              >
+                                {type === "dmt2"
+                                  ? remitterStatus?.fname
+                                  : remitterStatus?.firstName}{" "}
+                                {type === "dmt2"
+                                  ? remitterStatus?.lname
+                                  : remitterStatus?.lastName}
+                              </Typography>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "start",
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src={Call1}
+                                alt="Call"
+                                sx={{
+                                  maxWidth: "25px",
+                                  maxHeight: "50px",
+                                  mr: 1,
+                                }}
+                              />
+                              <Typography
+                                sx={{
+                                  fontSize: "12px",
+                                  fontWeight: "600",
+                                  mt: 0.4,
+                                }}
+                              >
+                                {remitterStatus?.mobile}
+                              </Typography>
+                              <BorderColorIcon
+                                sx={{ color: "Black", width: 15 }}
+                                onClick={returnMoneyNew}
+                              />
+                            </Box>
+                          </Grid>
 
-                <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: "end", px: 2 }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'end',justifyContent:"end" ,marginRight:{lg:7 , sm:3},mb:2 }}>
-                    <Box component="img" src={LimitAcc} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 ,fontWeight:"600",mb:0.5}}>Limit Available</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.limitTotal}</Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:"end" ,marginRight:{lg:3.5 , sm:3}}}>
-                    <Box component="img" src={LimitTran} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 ,fontWeight:"600"}}>Limit Per Transaction</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.limitPerTransaction}</Box>
-                  </Box>
-                </Grid>
-                 
-<Grid
-                lg={6}
-                xl={6}
-                xs={6}
-  sx={{
-    display: 'flex',
-    justifyContent: { xs: 'center', sm: 'flex-start',lg:"center" }, // Center on small screens, left on larger
-    width: '100%',
-    marginLeft: {  md: 23, sm: 23, xs: 13 },
-    marginBottom: { xs: 2, sm: '-2%' }, // Responsive bottom margin
-    padding: { xs: 2, sm: 0 }, // Add padding for small screens
-  }}
-> 
-<DmrAddBeneficiaryModal
-                      rem_mobile={mobile}
-                      apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
-                      getRemitterStatus={refreshRemitterStatus}
-                    />
-</Grid>
+                          <Grid
+                            item
+                            lg={6}
+                            sm={6}
+                            xs={6}
+                            sx={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "end",
+                              px: 2,
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "end",
+                                justifyContent: "end",
+                                marginRight: { lg: 7, sm: 3 },
+                                mb: 2,
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src={LimitAcc}
+                                alt="Limit"
+                                sx={{
+                                  maxWidth: "25px",
+                                  maxHeight: "50px",
+                                  mr: 1,
+                                }}
+                              />
+                              <Typography
+                                sx={{
+                                  fontSize: "12px",
+                                  mr: 1,
+                                  fontWeight: "600",
+                                  mb: 0.5,
+                                }}
+                              >
+                                Limit Available
+                              </Typography>
+                              <Box sx={{ fontWeight: "bold" }}>
+                                {remitterStatus?.limitTotal}
+                              </Box>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "end",
+                                marginRight: { lg: 3.5, sm: 3 },
+                              }}
+                            >
+                              <Box
+                                component="img"
+                                src={LimitTran}
+                                alt="Limit"
+                                sx={{
+                                  maxWidth: "25px",
+                                  maxHeight: "50px",
+                                  mr: 1,
+                                }}
+                              />
+                              <Typography
+                                sx={{
+                                  fontSize: "12px",
+                                  mr: 1,
+                                  fontWeight: "600",
+                                }}
+                              >
+                                Limit Per Transaction
+                              </Typography>
+                              <Box sx={{ fontWeight: "bold" }}>
+                                {remitterStatus?.limitPerTransaction}
+                              </Box>
+                            </Box>
+                          </Grid>
 
-
-              </Grid>
-               )}
-                    </Grid>              
+                          <Grid
+                            lg={6}
+                            xl={6}
+                            xs={6}
+                            sx={{
+                              display: "flex",
+                              justifyContent: {
+                                xs: "center",
+                                sm: "flex-start",
+                                lg: "center",
+                              }, // Center on small screens, left on larger
+                              width: "100%",
+                              marginLeft: { md: 23, sm: 23, xs: 13 },
+                              marginBottom: { xs: 2, sm: "-2%" }, // Responsive bottom margin
+                              padding: { xs: 2, sm: 0 }, // Add padding for small screens
+                            }}
+                          >
+                            <DmrAddBeneficiaryModal
+                              rem_mobile={mobile}
+                              apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
+                              getRemitterStatus={refreshRemitterStatus}
+                            />
+                          </Grid>
+                        </Grid>
+                      )}
+                    </Grid>
                   </Box>
-                  {infoFetchedMob && infoFetchedMob && 
-
-                <Grid
-                  lg={12}
-                  sm={12}
-                  xs={12}
-                  sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
-                >
-                    <Box
-                 
-                 sx={{
-                   display: "flex",
-                   justifyContent: "space-between",
-                   alignItems: "end",
-                   mx: { md: 2, sm: 1, xs: 0 },
-                   mr: { xs: 1.3, md: 2 },
-                 }}     
-                  >
-                     <Box
-      sx={{
-        flex: 1, // Ensure it takes available space
-        maxWidth: { lg: '100%', md: '200px', sm: '150px', xs: '100%' }, // Adjust max-width based on screen size
-      }}
-    >
-                    <BeneSearchBar
-                      setSearch={setSearch}
-                      label="Search Vendors"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "end",
-                      mx: { md: 2, sm: 1, xs: 0 },
-                      mr: { xs: 1.3, md: 2 },
-             
-                    }}
-                  >
-                    <Typography sx={{ fontSize: "18px",mb:1 }}>
-                      Vendor List ({bene.length})
-                    </Typography>
-                   
-                  </Box>
-                </Box>
-                  <div
-                    className="enable-scroll"
-                    style={{
-                      overflow: "auto",                      height: "85vh",
-                      height: "85vh", // Fixed height to control the scrolling area
-                      paddingBottom: "8px",
-                      "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for Webkit browsers
-                      msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
-                      scrollbarWidth: "none",
-                    }}
-                  >
-                    {bene.length <= 0 ? (
-                      <Typography sx={{ mt: 2 }}>No Vendor found.
-                      <Typography sx={{fontWeight:"bold"}}>
-                      Enter Remitter's Mobile Number to view Vendor List
-                    </Typography>
-                    <NoDataView/>
-                   
-                  </Typography>
-                    ) : filteredBenelist.length <= 0 ? (
-                      <Typography sx={{ mt: 2 }}>No Vendor found.</Typography>
-                    ) : (
-                      // Vendor mapping......
-                      filteredBenelist.map((ben, index) => {
-                        return (
-                          <>
-                          <BeneCardVender  
-                           type={type}
-                              ben={ben}
-                              index={index}
-                              mobile={mobile}
-                              remitterStatus={remitterStatus}
-                              getRemitterStatus={getRemitterStatus}
-                              view="MT_View"/>
-                        
-                          </>
-                        );
-                      })
-                    )}
-                  </div>
-                </Grid>
-}
-                  
+                  {infoFetchedMob && infoFetchedMob && (
+                    <Grid
+                      lg={12}
+                      sm={12}
+                      xs={12}
+                      sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "end",
+                          mx: { md: 2, sm: 1, xs: 0 },
+                          mr: { xs: 1.3, md: 2 },
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            flex: 1, // Ensure it takes available space
+                            maxWidth: {
+                              lg: "100%",
+                              md: "200px",
+                              sm: "150px",
+                              xs: "100%",
+                            }, // Adjust max-width based on screen size
+                          }}
+                        >
+                          <BeneSearchBar
+                            setSearch={setSearch}
+                            label="Search Vendors"
+                          />
+                        </Box>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "end",
+                            mx: { md: 2, sm: 1, xs: 0 },
+                            mr: { xs: 1.3, md: 2 },
+                          }}
+                        >
+                          <Typography sx={{ fontSize: "18px", mb: 1 }}>
+                            Vendor List ({bene.length})
+                          </Typography>
+                        </Box>
+                      </Box>
+                      <div
+                        className="enable-scroll"
+                        style={{
+                          overflow: "auto",
+                          height: "85vh",
+                          height: "85vh", // Fixed height to control the scrolling area
+                          paddingBottom: "8px",
+                          "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for Webkit browsers
+                          msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
+                          scrollbarWidth: "none",
+                        }}
+                      >
+                        {bene.length <= 0 ? (
+                          <Typography sx={{ mt: 2 }}>
+                            No Vendor found.
+                            <Typography sx={{ fontWeight: "bold" }}>
+                              Enter Remitter's Mobile Number to view Vendor List
+                            </Typography>
+                            <NoDataView />
+                          </Typography>
+                        ) : filteredBenelist.length <= 0 ? (
+                          <Typography sx={{ mt: 2 }}>
+                            No Vendor found.
+                          </Typography>
+                        ) : (
+                          // Vendor mapping......
+                          filteredBenelist.map((ben, index) => {
+                            return (
+                              <>
+                                <BeneCardVender
+                                  type={type}
+                                  ben={ben}
+                                  index={index}
+                                  mobile={mobile}
+                                  remitterStatus={remitterStatus}
+                                  getRemitterStatus={getRemitterStatus}
+                                  view="MT_View"
+                                />
+                              </>
+                            );
+                          })
+                        )}
+                      </div>
+                    </Grid>
+                  )}
                 </Card>
-            
+
                 {/* {numberList && numberList.length > 0 && ( */}
                 <DmrNumberListModal
                   numberList={numberList}
@@ -689,7 +827,6 @@ const VendorPayments = ({ resetView }) => {
                 />
                 {/* )} */}
               </Grid>
-            
             </Grid>
             {addNewRem && addNewRem && (
               <DmrAddRemitterModal
@@ -717,7 +854,6 @@ const VendorPayments = ({ resetView }) => {
         </>
       )}
     </>
-
   );
 };
 

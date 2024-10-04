@@ -145,76 +145,120 @@ const borderPulse = keyframes`
 `;
 
   return(
-    <Grid container spacing={2}>
-
-    {/* Wallet 1 */}
-    <Grid item xs={6}>
+    <Grid 
+    container 
+    spacing={2} 
+    wrap="nowrap" 
+    alignItems="center" 
+    justifyContent="flex-start"
+    
+  >
+    {/* ASM Card */}
+    <Grid item xs="auto">
       <Box
         sx={{
           padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebEe', 
+          backgroundColor: '#ffebee',
           borderRadius: '8px',
-          mr: 2,
           display: 'flex',
           alignItems: 'center',
-          width: '99%',
-          maxWidth: '250px',
-          border: '2px solid #D71313 ',
-          animation: `${fadeIn} 0.5s ease-in-out`, 
-          '&:hover': {
-            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
-          },
+          width: '170px', 
+          border: '2px solid #D71313',
         }}
       >
-        {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
+        <Box  sx={{ minWidth: '100%', textAlign: 'left' }}> 
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontWeight: 'bold' }}>
+            ASM
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+            Mobile No-
+          </Typography>
+        </Box>
+      </Box>
+    </Grid>
+  
+    {/* DD Card */}
+    <Grid item xs="auto">
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '175px', // Fixed width
+          border: '2px solid #D71313',
+        }}
+      >
+        <Box  sx={{ minWidth: '100%', textAlign: 'left' }}>
+          <Box sx={{display:"flex"}}>
+          <Typography variant="body" sx={{ color: 'Black' ,fontWeight: 'bold'}}>
+            DD-   
+          </Typography>
+          
+          <Typography  variant="" sx={{ color: 'black' }}><span>{user.name}</span></Typography>
+          </Box>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+            Mobile No- <span>{user.username}</span>
+          </Typography>
+        </Box>
+      </Box>
+    </Grid>
+  
+    {/* Wallet 1 */}
+    <Grid item xs="auto">
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '175px', // Fixed width
+          border: '2px solid #D71313',
+        }}
+      >
+        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
             Wallet 1
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
-          ₹  {numberSetter(user.w1 / 100)} 
+            ₹ {numberSetter(user.w1 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
       </Box>
     </Grid>
   
     {/* Wallet 2 */}
-    <Grid item xs={6}>
+    <Grid item xs="auto">
       <Box
         sx={{
           padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebee', 
+          backgroundColor: '#ffebee',
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '99%',
-          maxWidth: '250px',
-          border: '2px solid #D71313 ',
-          mr: 2,
-          animation: `${fadeIn} 0.5s ease-in-out`,
-          '&:hover': {
-            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
-          },
+          width: '170px',  // Fixed width
+          border: '2px solid #D71313',
         }}
       >
-        {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
+        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
         <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
-            Wallet 2
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c', }}>
+            AEPS
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
-          ₹ {numberSetter(user.w2 / 100)} 
+            ₹ {numberSetter(user.w2 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
       </Box>
     </Grid>
-  
   </Grid>
-
+  
+  
   )
 
 }

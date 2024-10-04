@@ -117,7 +117,7 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
                 </FormControl>
               </Grid>
             </Grid>
-            <ModalFooter form="addbene" request={request} btn="Add Beneficiary" />
+            <ModalFooter form="addbene" request={request} btn="Add Beneficiary" /> 
           </Box>
 
           {/* ModalFooter will always stick to the bottom */}

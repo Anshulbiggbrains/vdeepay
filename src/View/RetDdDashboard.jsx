@@ -60,7 +60,8 @@ const RetDdDashboard = () => {
 
   const location = useLocation();
   const authCtx = useContext(AuthContext);
-  const role = authCtx.user.role;
+  const user = authCtx.user;
+  console.log("user is ",user)
 
   // JSON format dummy data categorized into different sections
   const dataCategories = [
@@ -188,6 +189,8 @@ const RetDdDashboard = () => {
 
   return (
     <>
+     
+     { user.role==="Dd"&& location.pathname === '/customer/dashboard'&&
       <Grid
         item
         xs={12}
@@ -216,7 +219,7 @@ const RetDdDashboard = () => {
           way, making transactions quick and easy for millions.
         </marquee>
       </Grid>
-
+}
       {!currentView ? (
         dataCategories.map((category, index) => (
           <Box
@@ -226,7 +229,7 @@ const RetDdDashboard = () => {
               border: "solid 1px lightgray",
               p: { xs: 1, sm: 3 }, // Responsive padding
               borderRadius: 3,
-              // background: "#f5e9e9",
+              overflow: "wrap",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
             }}
           >

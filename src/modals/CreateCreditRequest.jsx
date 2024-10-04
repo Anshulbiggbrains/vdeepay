@@ -109,7 +109,7 @@ const CreateCreditRequest = ({ refresh }) => {
           }
           sx={{ py: 0.3 }}
         >
-          Credit Request
+          Add Request
         </Button>
       </Tooltip>
 
@@ -129,7 +129,7 @@ const CreateCreditRequest = ({ refresh }) => {
           }}
           role="presentation"
         >
-          <ModalHeader title="Create Credit Request" handleClose={handleClose} />
+          <ModalHeader title="Add Credit Request" handleClose={handleClose} />
           <Box
             component="form"
             id="createCreditReq"

@@ -1371,7 +1371,7 @@ const FilterCard = ({
                   }
                 }}
               >
-                Apply
+                Search
               </Button>
             </Tooltip>
             <Mount visible={query?.length > 0}>
