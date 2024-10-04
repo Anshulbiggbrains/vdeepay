@@ -127,6 +127,7 @@ import facebookIcon from "../src/assets/facebook.png";
 import instaIcon from "../src/assets/insta.png";
 import aboutUsNew from "../src/assets/aboutUs.png";
 import Admindash from "./assets/AdminDash.png";
+import backButton from "./assets/back.png"
 import pay from "./assets/svg/pay.svg";
 import flightlogo from "./assets/svg/flight.jpeg"
 import neftlogo from "./assets/svg/neft_icon.svg";
@@ -287,6 +288,7 @@ export const visaimg = visa;
 export const masterimg = master;
 export const ModrAboutus = aboutUsNew;
 export const loginPage = Admindash;
+export const back=backButton;
 export const paylogo = pay;
 export const flight1 = flightlogo
 export const Neftlogo = neftlogo;

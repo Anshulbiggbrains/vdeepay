@@ -108,7 +108,7 @@ const DmrAddRemitter = ({
   return (
     <Box sx={{ p: 2 }}>
       <Loader loading={request} />
-      <ModalHeader title="Add Remitter" handleClose={handleClose} />
+      <ModalHeader title="Register Sender" handleClose={handleClose} />
       <Box
         component="form"
         id="add_rem"
