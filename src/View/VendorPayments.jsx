@@ -31,7 +31,7 @@ import { capitalize1 } from "../utils/TextUtil";
 import { getEnv, randomColors } from "../theme/setThemeColor";
 import AuthContext from "../store/AuthContext";
 import OutletRegistration from "../component/OutletRegistration";
-import { mt_tab_value, PROJECTS } from "../utils/constants";
+import { mt_tab_value, PROJECTS, vendor_tab_value } from "../utils/constants";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { banking } from "../_nav";
 import HNavButton from "../component/HNavButton";
@@ -60,8 +60,8 @@ const VendorPayments = ({ resetView }) => {
   const envName = getEnv();
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
-    const [currentType, setCurrentType] = useState(2)
-    const [type, settype] = useState("express");
+    const [currentType, setCurrentType] = useState(0)
+    const [type, settype] = useState(0);
   
   const handleBack=()=>{
     resetView(false)
@@ -211,8 +211,8 @@ const VendorPayments = ({ resetView }) => {
   const handleChange = (event, newValue) => {
     console.log("newval",newValue);
     setValue(newValue);
-    settype(mt_tab_value[newValue])
-    setCurrentType(mt_tab_value[newValue])
+    settype(vendor_tab_value[newValue])
+    setCurrentType(vendor_tab_value[newValue])
 
     console.log("cms value is",type)
 
