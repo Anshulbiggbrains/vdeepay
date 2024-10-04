@@ -275,7 +275,7 @@ const LoginPage = () => {
           </Typography>
           <Box
             component="img"
-            src={loginPage}
+            src={loginPage1}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
@@ -288,7 +288,6 @@ const LoginPage = () => {
           />
           <br />
           <br />
-
           <Marquee
             fade={true}
             gradient={true}
@@ -397,9 +396,10 @@ const LoginPage = () => {
           <Loader loading={loading} />
           <Box component="form" id="contact" onSubmit={handleClick}>
             {!isOtpField && !isOtpField ? (
-              <Grid container spacing={3} sx={{ mb: 6 }}>
+              <Grid container spacing={1} sx={{ mb: 6 }}>
                 <Grid item xs={12} sx={{ mb: 2 }}>
                   <FormControl sx={{ width: "100%" }}>
+                  <Typography fullWidth sx={{ display:"flex",justifyContent:"left", fontWeight:"bold"}}>Username</Typography>
                     {/* <TextField autoComplete="off"
                       placeholder="Enter your Mobile Number"
                       name="username"
@@ -433,12 +433,15 @@ const LoginPage = () => {
                       placeholder="Enter your Mobile Number"
                       // id="mob"
                       // size="small"
-                      variant="standard"
+                      variant="outlined"
                       name="username"
                       required
                       type="number"
                       error={!isMobv}
                       helperText={!isMobv ? "Enter valid Mobile" : ""}
+                      sx={{
+                        borderRadius: "20%"
+                      }}
                       onChange={(e) => {
                         setIsMobv(PATTERNS.MOBILE.test(e.target.value));
                         if (e.target.value === "") setIsMobv(true);
@@ -466,6 +469,7 @@ const LoginPage = () => {
 
                 <Grid item xs={12} sx={{ mt: 2 }}>
                   <FormControl fullWidth variant="outlined" margin="normal">
+                    <Typography fullWidth sx={{ display:"flex",justifyContent:"left", fontWeight:"bold"}}>Password</Typography>
                     <Controller
                       name="password"
                       control={control}
@@ -474,7 +478,8 @@ const LoginPage = () => {
                           {...field}
                           placeholder="Enter Your Password"
                           type={showPassword ? "text" : "password"}
-                          variant="standard"
+                          // variant="standard"
+                          variant="outlined"
                           // error={!!errors.password}
                           error={!isPassV}
                           helperText={
