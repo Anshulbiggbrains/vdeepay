@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, IconButton } from "@mui/material";
 import AuthContext from "../store/AuthContext";
 import CommonCardDashBoard from "../component/CommonCardDashBoard";
 import {
@@ -26,6 +26,7 @@ import CreditcardForm from "../component/CreditcardForm";
 import ElectricityForm from "../component/ElectricityForm";
 import AEPS2View from "./aeps/AEPS2View";
 import BBPSView from "./BBPSView";
+import { Icon } from "@iconify/react";
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null); // State to track the current view
@@ -39,10 +40,15 @@ const RetDdDashboard = () => {
     {
       title: "Banking",
       data: [
-        { id: 1, name: "DMT", img: null, component: DmtContainer ,},
+        { id: 1, name: "DMT", img: null, component: DmtContainer },
         { id: 2, name: "CMS ", img: cmsIcon, component: CMSView },
         { id: 3, name: "Nepal Transfer", img: null, component: NepalTransfer },
-        { id: 4, name: "Vendor Payments", img: null, component: VendorPayments },
+        {
+          id: 4,
+          name: "Vendor Payments",
+          img: null,
+          component: VendorPayments,
+        },
         { id: 5, name: "UPI", img: upi, component: UPITransferView },
         { id: 6, name: "Aeps", img: aepsIcon, component: AEPS2View },
       ],
@@ -50,11 +56,26 @@ const RetDdDashboard = () => {
     {
       title: "Utility",
       data: [
-        { id: 7, name: "Mobile Recharge", img: mobileR_img, component: MobileRechargeForm },
+        {
+          id: 7,
+          name: "Mobile Recharge",
+          img: mobileR_img,
+          component: MobileRechargeForm,
+        },
         { id: 8, name: "DTH", img: dthIcon, component: MobileRechargeForm },
-        { id: 9, name: "Electricity", img: elecIcon, component: ElectricityForm },
+        {
+          id: 9,
+          name: "Electricity",
+          img: elecIcon,
+          component: ElectricityForm,
+        },
         { id: 10, name: "Credit Card ", img: null, component: CreditcardForm },
-        { id: 11, name: "BroadBand", img: broadband, component: ElectricityForm },
+        {
+          id: 11,
+          name: "BroadBand",
+          img: broadband,
+          component: ElectricityForm,
+        },
         { id: 12, name: "Gas", img: gasIcon, component: ElectricityForm },
         { id: 13, name: "Water", img: waterIcon, component: ElectricityForm },
         { id: 14, name: "Insurance", img: null, component: ElectricityForm },
@@ -108,9 +129,8 @@ const RetDdDashboard = () => {
             ? "INSURANCE"
             : item.name === "Electricity"
             ? "ELECTRICITY"
-            : item.name // default case
+            : item.name, // default case
       });
-      
     }
   };
 
@@ -120,8 +140,36 @@ const RetDdDashboard = () => {
 
   return (
     <>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={8}
+        lg={9}
+        sx={{
+          marginTop: { xs: "1rem" },
+          textAlign: "center",
+
+          borderRadius: "8px",
+          backgroundColor: "#fEDCDB",
+          marginTop: "0.1%",
+          color: " #004080",
+          // color: "#023047", #004080,
+          fontSize: "14px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "0.5rem",
+          padding: "8px 6px",
+        }}
+      >
+        <marquee behavior="scroll" direction="left">
+          Digital payments are growing faster than ever ! UPI is leading the
+          way, making transactions quick and easy for millions.
+        </marquee>
+      </Grid>
+
       {!currentView ? (
-      
         dataCategories.map((category, index) => (
           <Box
             key={index}
@@ -137,7 +185,12 @@ const RetDdDashboard = () => {
             <Typography
               variant="h6"
               align="left"
-              sx={{ pl: 1, mt: -2, mb: 1, fontSize: { xs: "1rem", sm: "1.25rem" } }} // Responsive typography
+              sx={{
+                pl: 1,
+                mt: -2,
+                mb: 1,
+                fontSize: { xs: "1rem", sm: "1.25rem" },
+              }} // Responsive typography
             >
               {category.title}
             </Typography>
@@ -147,8 +200,7 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
-                    onClick={() => handleCardClick(item)} 
-                   
+                    onClick={() => handleCardClick(item)}
                   />
                 </Grid>
               ))}
