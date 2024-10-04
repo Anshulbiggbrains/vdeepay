@@ -245,12 +245,8 @@ const NepalAddCustomer = ({
         justifyContent: "end",
       }}
     >
-      <Modal
-        open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style} className="sm_modal">
+     {open &&
+        <Box>
           <Loader loading={request} />
           <ModalHeader title="Add Customer" handleClose={handleClose} />
           <Box
@@ -851,7 +847,7 @@ const NepalAddCustomer = ({
             />
           )}
         </Box>
-      </Modal>
+}
     </Box>
   );
 };

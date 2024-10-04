@@ -1,5 +1,5 @@
 import biggpayLogo from "./assets/logo.png";
-import biggpayLogo_sm from "./assets/impsguru.ico";
+import biggpayLogo_sm from "./assets/VdeePay.ico";
 import airIndia from "./assets_travel/images/icons/AI.png";
 import closeicon from "./assets_travel/images/icons/close1.png";
 import successVdo from "./assets/video/checkmark.mp4";
@@ -127,10 +127,9 @@ import facebookIcon from "../src/assets/facebook.png";
 import instaIcon from "../src/assets/insta.png";
 import aboutUsNew from "../src/assets/aboutUs.png";
 import Admindash from "./assets/AdminDash.png";
-import loginpageIllustrator from "./assets/loginpageIllustrator.png";
-import backButton from "./assets/back.png"
+import backButton from "./assets/back.png";
 import pay from "./assets/svg/pay.svg";
-import flightlogo from "./assets/svg/flight.jpeg"
+import flightlogo from "./assets/svg/flight.jpeg";
 import neftlogo from "./assets/svg/neft_icon.svg";
 import impslogo from "./assets/svg/imps_icon.svg";
 import ChildPhoto from "./assets/Child.jpg";
@@ -138,8 +137,8 @@ import Admindashlogo from "./assets/vdeeyPay.png";
 import Upi from "./assets/svg/upi-icon.svg";
 import Limiticon from "./assets/LimitAcc.png";
 import Limit from "./assets/LimitTran.png";
-import Nameicon from "./assets/Name.png"
-import Callicon from "./assets/Call1.png"
+import Nameicon from "./assets/Name.png";
+import Callicon from "./assets/Call1.png";
 import serviceDN from "../src/assets/serviceDown.jpg";
 import unauth from "../src/assets/unauthorized.jpg";
 import slide_one from "../src/assets/slide1.webp";
@@ -185,6 +184,27 @@ import aepsGuidelinesNew from "./assets/aeps-guidelines-new.png";
 import creditReqGuidelines from "./assets/credit-request-disclaimer.png";
 import irctcAuth from "./assets/irctc-auth.png";
 import irctcTravel from "./assets_travel/images/irctc.jpg";
+//dashboard
+import money_l from "./assets/dashboard_icons/money.png";
+import cms_1 from "./assets/dashboard_icons/cms.png";
+import nepal_1 from "./assets/dashboard_icons/nepal.png";
+import vpay_1 from "./assets/dashboard_icons/vpay.png";
+import upi_1 from "./assets/dashboard_icons/upi.png";
+import aeps_1 from "./assets/dashboard_icons/aeps.png";
+import bus_1 from "./assets/dashboard_icons/bus.png";
+import train_1 from "./assets/dashboard_icons/train.png";
+import hotel_1 from "./assets/dashboard_icons/hotel.png";
+import airplane_1 from "./assets/dashboard_icons/airplane.png";
+import dth_1 from "./assets/dashboard_icons/dth.png";
+
+import electricity_1 from "./assets/dashboard_icons/electricity.png";
+import insurance_1 from "./assets/dashboard_icons/insurance.png";
+import creditcard_1 from "./assets/dashboard_icons/creditcard.png";
+import gas_1 from "./assets/dashboard_icons/gas.png";
+import water_1 from "./assets/dashboard_icons/water.png";
+import landline_1 from "./assets/dashboard_icons/landline.png";
+import broadband_1 from "./assets/dashboard_icons/broadband.png";
+
 export const Logo = biggpayLogo;
 export const smLogo = biggpayLogo_sm;
 export const TrainsImage = TrainImage;
@@ -289,18 +309,17 @@ export const visaimg = visa;
 export const masterimg = master;
 export const ModrAboutus = aboutUsNew;
 export const loginPage = Admindash;
-export const loginIllustrator = loginpageIllustrator;
-export const back=backButton;
+export const back = backButton;
 export const paylogo = pay;
-export const flight1 = flightlogo
+export const flight1 = flightlogo;
 export const Neftlogo = neftlogo;
 export const Impslogo = impslogo;
 export const Banner = ChildPhoto;
 export const loginPage1 = Admindashlogo;
-export const UpiLogo =Upi;
+export const UpiLogo = Upi;
 export const Name = Nameicon;
-export const LimitAcc =Limiticon;
-export const LimitTran =Limit;
+export const LimitAcc = Limiticon;
+export const LimitTran = Limit;
 export const Call1 = Callicon;
 export const serviceDown = serviceDN;
 export const unauthorized = unauth;
@@ -378,3 +397,23 @@ export const small_logo = smallLogo;
 export const outletRegImg = outlet_reg_img;
 export const maleAvatar = male_avatar;
 export const femaleAvatar = female_avatar;
+
+export const moneyl = money_l;
+export const nepal1 = nepal_1;
+export const cms1 = cms_1;
+export const vpay1 = vpay_1;
+export const aeps1 = aeps_1;
+export const upi1 = upi_1;
+export const bus1 = bus_1;
+export const train1 = train_1;
+export const airplane1 = airplane_1;
+export const hotel1 = hotel_1;
+export const electricity1 = electricity_1;
+export const insurance1 = insurance_1;
+export const creditcard1 = creditcard_1;
+export const dth1 = dth_1;
+export const landline1 = landline_1;
+export const broadband1 = broadband_1;
+export const gas1 = gas_1;
+export const water1 = water_1;
+

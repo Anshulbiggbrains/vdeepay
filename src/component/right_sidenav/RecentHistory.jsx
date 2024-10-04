@@ -11,8 +11,8 @@ import { capitalize } from "../../utils/FormattingUtils";
 import { currencySetter } from "../../utils/Currencyutil";
 import { datemonthYear } from "../../utils/DateUtils";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CloseIcon from '@mui/icons-material/ArrowDownward';
-import DoneIcon from '@mui/icons-material/ArrowUpward'; // Add this import
+import CloseIcon from "@mui/icons-material/ArrowDownward";
+import DoneIcon from "@mui/icons-material/ArrowUpward"; // Add this import
 
 const RecentHistory = () => {
   const { getRecentData, recentData, recentLoading } = useCommonContext();
@@ -21,7 +21,7 @@ const RecentHistory = () => {
   return (
     <Box
       className="card-css"
-      sx={{ mt: 2, px: 3, py: 1.5, borderRadius: "10px" }}
+      sx={{ mt: 2, px: 2.2, py: 1.5, borderRadius: "10px" }}
     >
       <Box
         sx={{
@@ -30,11 +30,19 @@ const RecentHistory = () => {
           alignItems: "center",
           fontWeight: "bold",
           fontSize: "20px",
-          position: "relative", // Allows positioning the refresh icon
+          position: "relative",
+          // Allows positioning the refresh icon
+          color: "#008ecc",
         }}
       >
         <ArrowForwardIcon
-          sx={{ fontSize: "20px", cursor: "pointer", position: "absolute", left: 0 }}
+          sx={{
+            fontSize: "20px",
+            cursor: "pointer",
+            position: "absolute",
+            left: 0,
+            color: " #ff0066",
+          }}
           onClick={() => navigate("/some-route")} // Replace with your desired route
         />
         Recent history
@@ -46,11 +54,12 @@ const RecentHistory = () => {
             alignItems: "center",
             position: "absolute", // Positioning the refresh icon to the right
             right: 0,
+            color: "#0141CF",
           }}
         >
           <RefreshComponent
             progressColor="#000"
-            color="#000"
+            color="#0000ff"
             refresh={recentLoading}
             onClick={() => {
               getRecentData();
@@ -61,7 +70,7 @@ const RecentHistory = () => {
       </Box>
 
       {/* ######## CONTENT ######## */}
-      <div
+      <Box
         style={{
           marginTop: "12px",
           overflowY: "scroll",
@@ -73,34 +82,56 @@ const RecentHistory = () => {
         {recentData.map((data, index) => {
           const walletBal = Number(data.amount).toFixed(2);
           return (
-            <Grid container sx={{ py: 1 }} key={index}>
+            <Grid
+              container
+              sx={{
+                py: 1,
+                borderRadius: 3,
+                px: 1,
+                mb: 0.3,
+                border: "2px solid #d48628",
+              }}
+              key={index}
+            >
               {/* ######### ICON GRID ######### */}
-              <Grid item xs={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Grid
+                item
+                xs={2}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 {data.status === "FAILED" ? (
                   <Icon
                     title="Failed"
-                    bgColor="#E6E6E6"
-                    icon={<CloseIcon sx={{ fontSize: "25px",color:"#FF0000" }} />}
+                    bgColor="#FFD1DC"
+                    icon={
+                      <CloseIcon sx={{ fontSize: "25px", color: "#FF0000" }} />
+                    }
                     onClick={() => console.log("Failed clicked")}
                   />
                 ) : data.status === "SUCCESS" ? (
                   <Icon
                     title="Success"
-                   bgColor="#E6E6E6"
-                    icon={<DoneIcon sx={{ fontSize: "25px",color:"green" }} />}
+                    bgColor="#FFD1DC"
+                    icon={
+                      <DoneIcon sx={{ fontSize: "25px", color: "green" }} />
+                    }
                     onClick={() => console.log("Success clicked")}
                   />
                 ) : data.status === "REFUND" ? (
                   <Icon
                     title="Refund"
-                    bgColor="#E87204"
+                    bgColor="#FFDIDC"
                     icon={<SyncIcon sx={{ fontSize: "16px" }} />}
                     onClick={() => console.log("Refund clicked")}
                   />
                 ) : (
                   <Icon
                     title="Refund"
-                    bgColor="#f48f26"
+                    bgColor="#FFD1DC"
                     icon={<PriorityHighIcon sx={{ fontSize: "16px" }} />}
                     onClick={() => console.log("Other status clicked")}
                   />
@@ -108,7 +139,11 @@ const RecentHistory = () => {
               </Grid>
 
               {/* ######### DETAILS GRID ######### */}
-              <Grid item xs={6} sx={{ display: "grid", justifyItems: "left" }}>
+              <Grid
+                item
+                xs={6}
+                sx={{ display: "grid", justifyItems: "left", color: "#004080" }}
+              >
                 <Tooltip
                   title={
                     data.operator === "Vendor Payments"
@@ -125,6 +160,7 @@ const RecentHistory = () => {
                       textOverflow: "clip",
                       width: "100%",
                       textAlign: "left",
+                      Gap: "0.2",
                     }}
                   >
                     {data.operator === "Vendor Payments"
@@ -132,10 +168,10 @@ const RecentHistory = () => {
                       : data.operator}
                   </div>
                 </Tooltip>
-                <div style={{ fontSize: "12px", color: "#676970" }}>
+                <div style={{ fontSize: "12px", color: "#787879" }}>
                   {data.number}
                 </div>
-                <div style={{ fontSize: "12px", color: "#676970" }}>
+                <div style={{ fontSize: "12px", color: "#787879" }}>
                   {datemonthYear(data.created_at)}
                 </div>
               </Grid>
@@ -146,12 +182,12 @@ const RecentHistory = () => {
                   style={{
                     color:
                       data.status === "SUCCESS"
-                        ? "#00bf78"
+                        ? "#1FD655"
                         : data.status === "PENDING"
                         ? "#f48f26"
                         : data.status === "REFUND"
                         ? "#E87204"
-                        : "#DC143C",
+                        : "#ff2316",
                     fontWeight: "bold",
                     fontSize: "15px",
                     display: "flex",
@@ -166,12 +202,12 @@ const RecentHistory = () => {
                   style={{
                     color:
                       data.status === "SUCCESS"
-                        ? "#00bf78"
+                        ? "#1FD655"
                         : data.status === "PENDING"
                         ? "#f48f26"
                         : data.status === "REFUND"
                         ? "#E87204"
-                        : "#DC143C",
+                        : "	#ff2316",
                     fontWeight: "bold",
                     fontSize: "12px",
                     display: "flex",
@@ -184,10 +220,10 @@ const RecentHistory = () => {
             </Grid>
           );
         })}
-      </div>
+      </Box>
       <div className="flex-he-vc">
         <Button
-          className="otp-hover-purple"
+          className="button-green-bold"
           onClick={() => {
             navigate("/customer/transactions");
           }}
@@ -217,6 +253,7 @@ function Icon({ title = "Success", bgColor = "", icon, onClick }) {
         color: "#fff",
         background: bgColor,
         marginTop: "0.3rem",
+
         cursor: "pointer", // Added to make the icon clickable
       }}
       onClick={onClick}
