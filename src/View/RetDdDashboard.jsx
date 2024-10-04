@@ -130,14 +130,14 @@ const RetDdDashboard = () => {
               border: "solid 1px lightgray",
               p: { xs: 1, sm: 3 }, // Responsive padding
               borderRadius: 3,
-              // background: "#f5e9e9",
+              overflow: "wrap",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
             }}
           >
             <Typography
               variant="h6"
               align="left"
-              sx={{ pl: 1, mt: -2, mb: 1, fontSize: { xs: "1rem", sm: "1.25rem" } }} // Responsive typography
+              sx={ {overflow:"hidden",textOverflow: 'ellipsis', pl: 1, mt: -2, mb: 1, fontSize: { xs: "1rem", sm: "1.25rem" } }} // Responsive typography
             >
               {category.title}
             </Typography>
