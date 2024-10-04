@@ -14,7 +14,7 @@ import {
   } from "@mui/material";
   import React from "react";
   import { useState } from "react";
-  import { Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
+  import { back, Call1, flight1, LimitAcc, LimitTran, Name } from "../iconsImports";
   import { get, postJsonData } from "../network/ApiController";
   import ApiEndpoints from "../network/ApiEndPoints";
   import { apiErrorToast } from "../utils/ToastUtil";
@@ -38,9 +38,13 @@ import {
   import useResponsive from "../hooks/useResponsive";
   import { BBPS, teamWork } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
+import CustomTabs from "../component/CustomTabs";
+import { cms_tab_value, mt_tab_value } from "../utils/constants";
   const DmtContainer = ({
-    type,
-    setMoney=false
+    // type,
+    setMoney=false,
+    resetView,
+
   
   }) => {
     const [infoFetchedMob, setInfoFetchedMob] = useState(false);
@@ -61,6 +65,9 @@ import NoDataView from "../component/NoDataView";
     const user = authCtx.user;
     const [numberList, setNumberList] = useState([]);
     const navigate = useNavigate();
+    const [value, setValue] = useState(0);
+    const [currentType, setCurrentType] = useState("dmt1")
+    const [type, settype] = useState("dmt1");
   
     useEffect(() => {
       if (search) {
@@ -191,6 +198,9 @@ import NoDataView from "../component/NoDataView";
         }
       );
     };
+    const handleBack=()=>{
+      resetView(false)
+    }
   
     // eslint-disable-next-line no-unused-vars
     const ekycCall = () => {
@@ -210,6 +220,18 @@ import NoDataView from "../component/NoDataView";
     console.log("type is",type);
 
           console.log("rem",remitterStatus);
+          const tabs = [
+            { label: "Dmt 1",  },
+            { label: "Dmt 2",   },
+          ];
+          const handleChange = (event, newValue) => {
+            console.log("newval",newValue);
+            setValue(newValue);
+            settype(mt_tab_value[newValue])
+            setCurrentType(mt_tab_value[newValue])
+            console.log("cms value is",type)
+      
+          };
     return (
       <>
         {user && !user.instId && (
@@ -329,7 +351,12 @@ import NoDataView from "../component/NoDataView";
             <Grid
                           item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
                   
-                >                   
+                >   
+                 <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />                
                   <Card
                     className="card-css"
                     sx={{
@@ -338,8 +365,31 @@ import NoDataView from "../component/NoDataView";
                       py: 2,
                       mt:2
                     }}
-                  >                   
+                  >    
+                   <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >    
+                         <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >    
+                             
+                               <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button> 
+                        </Grid>        
                     <div>
+               
                       {!mobile?(
                       <Typography
 
@@ -347,15 +397,18 @@ import NoDataView from "../component/NoDataView";
                           fontSize: "24px",
                           fontWeight: "bold",
                           letterSpacing: "0.05rem",
-                          textAlign: "center",
+                          textAlign: "left",
                           mt: 0,
                         }}
                       >
+                           
                         {type === "dmt1"
                           ? "Domestic Money Transfer 1"
                           : "Domestic Money Transfer 2"}
                       </Typography>
+                    
                       ):null}
+                  
                          <Grid
                         container
                         sx={{
@@ -363,11 +416,10 @@ import NoDataView from "../component/NoDataView";
                           "& .MuiTextField-root": { mt: 2 },
                           objectFit: "contain",
                           overflowY: "scroll",
-                          
                         }}
                       >
-                  <Grid container xs={12}>
-                      {!infoFetchedMob && !infoFetchedMob&&
+                  <Grid container lg={12} sm={12} xs={12}>
+                      {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem && !verifyotp &&
                           <FormControl sx={{ width: "100%" }}>
                             <TextField autoComplete="off"
                               size="small"
@@ -406,10 +458,43 @@ import NoDataView from "../component/NoDataView";
                               disabled={request && request && true}
                             />
                           </FormControl>
-                            }                               
-                          </Grid>
-                    
+                            }  
+             </Grid>
+             
+
                         </Grid>
+                        {/* <Button sx={{justifyContent:"start"}} onClick={handleBack}>
+                          back
+                        </Button> */}
+                        {addNewRem && addNewRem && (
+                <DmrAddRemitterModal
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  apiEnd={
+                    type === "dmt1"
+                      ? ApiEndpoints.ADD_REM
+                      : ApiEndpoints.DMT2_ADD_REM
+                  }
+                  view="moneyTransfer"
+                  setAddNewRem={setAddNewRem}
+                  otpRef={otpRefId}
+                  setOtpRef={setOtpRefId}
+                />
+              )}
+              {verifyotp && verifyotp && (
+                <DmrVrifyNewUser
+                  rem_mobile={mobile}
+                  getRemitterStatus={getRemitterStatus}
+                  view="moneyTransfer"
+                  verifyotp={verifyotp}
+                  setVerifyotp={setVerifyotp}
+                  apiEnd={ApiEndpoints.VALIDATE_OTP}
+                  otpRefId={otpRefId}
+                  setOtpRefId={setOtpRefId}
+                />
+              )}                             
+                   
+            
                         {infoFetchedMob && infoFetchedMob && (             
                 <Grid className="remitter-card" container sx={{ display: 'flex' }}>
                 <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
@@ -483,6 +568,7 @@ import NoDataView from "../component/NoDataView";
                     }}
                   />
                   {/* )} */}
+                  {infoFetchedMob && infoFetchedMob && 
                   <Grid
                     lg={12}
                     sm={12}
@@ -567,36 +653,12 @@ import NoDataView from "../component/NoDataView";
                     </div>
                     
                   </Grid>
+  }
+
                   </Card> 
                 </Grid>  
               </Grid>
-              {addNewRem && addNewRem && (
-                <DmrAddRemitterModal
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  apiEnd={
-                    type === "dmt1"
-                      ? ApiEndpoints.ADD_REM
-                      : ApiEndpoints.DMT2_ADD_REM
-                  }
-                  view="moneyTransfer"
-                  setAddNewRem={setAddNewRem}
-                  otpRef={otpRefId}
-                  setOtpRef={setOtpRefId}
-                />
-              )}
-              {verifyotp && verifyotp && (
-                <DmrVrifyNewUser
-                  rem_mobile={mobile}
-                  getRemitterStatus={getRemitterStatus}
-                  view="moneyTransfer"
-                  verifyotp={verifyotp}
-                  setVerifyotp={setVerifyotp}
-                  apiEnd={ApiEndpoints.VALIDATE_OTP}
-                  otpRefId={otpRefId}
-                  setOtpRefId={setOtpRefId}
-                />
-              )}
+         
             </div>
           </>
         )}            

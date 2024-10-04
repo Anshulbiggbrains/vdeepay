@@ -359,7 +359,9 @@ const CreditRequestView = () => {
     {
       name: "Remarks",
       selector: (row) => (
-        <div style={{ fontSize: "13px" }}>{row.remark ? row.remark : "NA"}</div>
+        <div style={{ fontSize: "13px", textAlign: "left" }}>
+          {row.remark ? row.remark : "NA"}
+        </div>
       ),
       wrap: true,
     },

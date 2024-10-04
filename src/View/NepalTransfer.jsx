@@ -13,7 +13,7 @@ import {
 import React, { useContext, useRef } from "react";
 import BeneSearchBar from "../component/BeneSearchBar";
 import { useState } from "react";
-import { Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
+import { back, Banner, Call1, indoNepal, kycVImg, LimitAcc, LimitTran, Name, prabhuMoneyTransfer } from "../iconsImports";
 import { randomColors } from "../theme/setThemeColor";
 import { PATTERNS } from "../utils/ValidationUtil";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -48,7 +48,7 @@ import HNavButton from "../component/HNavButton";
 import Mount from "../component/Mount";
 import NoDataView from "../component/NoDataView";
 
-const NepalTransfer = () => {
+const NepalTransfer = ({resetView}) => {
   const [search, setSearch] = useState("");
   const [isMobv, setIsMobv] = useState(true);
   // const [idValue, setIdValue] = useState("");
@@ -58,7 +58,9 @@ const NepalTransfer = () => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [filteredBenelist, setFilteredBenelist] = useState([]);
   const [newCustomer, setNewCustomer] = useState("");
-
+  const handleBack=()=>{
+    resetView(false)
+  }
   // console.log("filteredBenelist", filteredBenelist);
   const [nepalAllRes, setNepalAllRes] = useState({
     status: "",
@@ -352,6 +354,27 @@ const NepalTransfer = () => {
 
               }}
             >
+               <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+                <Button
+        size="small"
+        id="verify-btn"
+        className="button-props"
+        onClick={handleBack}
+      >
+                <span style={{ marginRight: '5px' }}>Back</span>
+        <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+      </Button>
+           
                       {!mobile?(
                       <Typography
                         sx={{
@@ -360,11 +383,13 @@ const NepalTransfer = () => {
                           letterSpacing: "0.05rem",
                           textAlign: "center",
                           mt: 0,
+                          flexGrow:1
                         }}
                       >
                         Nepal Transfer
                       </Typography>
                       ):null}
+                      </Grid>
               <Box
                 // component="form"
                 // id="seachNepalByID"
@@ -434,43 +459,6 @@ const NepalTransfer = () => {
                     </FormControl>
 }
                   </Grid>
-                  {/* <Mount visible={infoFetchedMob}>
-                    <Grid container sx={{ mt: 3 }}>
-                      <Grid item md={6} xs={12} sx={{ my: 2 }}>
-                        <LabelComponent label="Name" />
-                        <DetailsComponent
-                          detail={nepalAllRes?.customer?.Name}
-                        />
-                      </Grid>
-                      <Grid item md={6} xs={12} sx={{ my: 2 }}>
-                        <LabelComponent label="Mobiles" />
-                        <DetailsComponent
-                          detail={nepalAllRes?.customer?.Mobile?.string}
-                        />
-                      </Grid>
-
-                      <Grid item md={6} xs={12} sx={{ my: 2 }}>
-                        <LabelComponent label="ID Type" />
-                        <DetailsComponent
-                          detail={nepalAllRes?.customer?.Ids?.Id?.IdType}
-                        />
-                      </Grid>
-                      <Grid item md={6} xs={12} sx={{ my: 2 }}>
-                        <LabelComponent label="ID Number" />
-                        <DetailsComponent
-                          detail={nepalAllRes?.customer?.Ids?.Id?.IdNumber}
-                        />
-                      </Grid>
-                      <Grid item md={12} xs={12} sx={{ my: 2 }}>
-                        <LabelComponent label="Transaction Count" />
-                        <DetailsComponent
-                          detail={nepalAllRes?.customer?.TransactionCount}
-                          objData
-                          horizontal
-                        />
-                      </Grid>
-                    </Grid>
-                  </Mount>                */}
                   {infoFetchedMob && infoFetchedMob && (
   <Grid className="remitter-card" container sx={{ display: 'flex'}}>
                         <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
@@ -525,6 +513,7 @@ const NepalTransfer = () => {
               {(nepalAllRes?.customer?.EKYCStatus === "Unverified" ||
                 nepalUser?.customer?.OnboardingStatus === "Pending") &&
               !customerId ? (
+
                 <Grid
                   lg={12}
                   sm={12}
@@ -592,6 +581,7 @@ const NepalTransfer = () => {
                   />
                 </Grid>
               ) : (
+
                 <Grid
                   lg={12}
                   sm={12}
@@ -599,6 +589,7 @@ const NepalTransfer = () => {
                   sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
 
                 >
+
                   <Box
                     sx={{
                       display: "flex",
@@ -608,6 +599,7 @@ const NepalTransfer = () => {
                       mr: { xs: 1.3, md: 2 },
                     }}
                   >
+
                       <Box
                   sx={{
                     flex: 1, // Ensure it takes available space
@@ -626,18 +618,7 @@ const NepalTransfer = () => {
                     
                   </Box>
                 
-                  {/* <Typography
-                    sx={{
-                      textAlign: "end",
-                      mx: { md: 2, sm: 1, xs: 0 },
-                      mr: { xs: 1.3, md: 2 },
-                      mt: 0.5,
-                      fontSize: "13px",
-                      opacity: "0.8",
-                    }}
-                  >
-                    For more info click <InfoOutlinedIcon fontSize="small" />
-                  </Typography> */}
+                  
                   <div
                     className="
                     enable-scroll "
@@ -660,6 +641,7 @@ const NepalTransfer = () => {
                     {nepalAllRes?.receivers &&
                     (nepalAllRes?.receivers.length === 0 ||
                       nepalAllRes?.receivers === null) ? (
+                        
                       <Typography sx={{ mt: 2 }}>No Receiver found.
                        <NoDataView/>
                       </Typography>
@@ -846,6 +828,7 @@ const NepalTransfer = () => {
                     )}
                   </div>
                 </Grid>
+                  
               )}
             </Grid>
           
@@ -862,6 +845,7 @@ const NepalTransfer = () => {
         setMobile={setMobile}
         getCustomerByMobileOrId={getCustomerByMobileOrId}
       />
+    
       {/* nepal cus on boarding modal  */}
       <NepalCusOnboardModal
         nepalAllRes={nepalAllRes}

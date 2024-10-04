@@ -389,6 +389,11 @@ export const cms_tab_value= {
   1: "cms2",
 
 };
+export const vendor_tab_value= {
+  0: "express",
+  1: "super",
+
+};
 export const Transaction_Tab = {
   0: "",
   1: "PREPAID",

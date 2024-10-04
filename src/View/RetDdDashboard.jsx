@@ -1,55 +1,167 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import RetProductionSaleComponent from "../component/RetProductionSaleComponent";
-import AskForDocsModal from "../modals/AskForDocsModal";
+import { Grid, Typography, Box } from "@mui/material";
 import AuthContext from "../store/AuthContext";
-import Mount from "../component/Mount";
-import { USER_ROLES } from "../utils/constants";
-import MyEarnings from "../component/dashboard/retailer/MyEarnings";
+import CommonCardDashBoard from "../component/CommonCardDashBoard";
+import {
+  aepsIcon,
+  BBPS,
+  broadband,
+  cmsIcon,
+  dthIcon,
+  elecIcon,
+  gasIcon,
+  landIcon,
+  mobileR_img,
+  upi,
+  waterIcon,
+} from "../iconsImports";
+import DmtContainer from "./DMTcontainer";
+import CMSView from "./CMSView";
+import VendorPayments from "./VendorPayments";
+import NepalTransfer from "./NepalTransfer";
+import UPITransferView from "./UPITransferView";
+import MobileRechargeForm from "../component/MobileRechargeForm";
+import CreditcardForm from "../component/CreditcardForm";
+import ElectricityForm from "../component/ElectricityForm";
+import AEPS2View from "./aeps/AEPS2View";
+import BBPSView from "./BBPSView";
 
 const RetDdDashboard = () => {
-  const [graphDuration, setGraphDuration] = useState("TODAY");
-  const [graphRequest, setGraphRequest] = useState(false);
-  const [open, setopen] = useState(false);
+  const [currentView, setCurrentView] = useState(null); // State to track the current view
+
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const role = authCtx.user.role;
 
-  useEffect(() => {
-    if (
-      authCtx.ifDocsUploaded &&
-      (authCtx.ifDocsUploaded.pan_image === 0 ||
-        authCtx.ifDocsUploaded.aadhaar_image === 0) &&
-      location?.state?.login
-    ) {
-      setTimeout(() => {
-        setopen(true);
-      }, 2000);
+  // JSON format dummy data categorized into different sections
+  const dataCategories = [
+    {
+      title: "Banking",
+      data: [
+        { id: 1, name: "DMT", img: null, component: DmtContainer ,},
+        { id: 2, name: "CMS ", img: cmsIcon, component: CMSView },
+        { id: 3, name: "Nepal Transfer", img: null, component: NepalTransfer },
+        { id: 4, name: "Vendor Payments", img: null, component: VendorPayments },
+        { id: 5, name: "UPI", img: upi, component: UPITransferView },
+        { id: 6, name: "Aeps", img: aepsIcon, component: AEPS2View },
+      ],
+    },
+    {
+      title: "Utility",
+      data: [
+        { id: 7, name: "Mobile Recharge", img: mobileR_img, component: MobileRechargeForm },
+        { id: 8, name: "DTH", img: dthIcon, component: MobileRechargeForm },
+        { id: 9, name: "Electricity", img: elecIcon, component: ElectricityForm },
+        { id: 10, name: "Credit Card ", img: null, component: CreditcardForm },
+        { id: 11, name: "BroadBand", img: broadband, component: ElectricityForm },
+        { id: 12, name: "Gas", img: gasIcon, component: ElectricityForm },
+        { id: 13, name: "Water", img: waterIcon, component: ElectricityForm },
+        { id: 14, name: "Insurance", img: null, component: ElectricityForm },
+        { id: 15, name: "Landline", img: landIcon, component: ElectricityForm },
+        { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
+      ],
+    },
+    {
+      title: "Travel",
+      data: [
+        { id: 17, name: "Travel", img: null },
+        { id: 18, name: "Pg", img: null },
+        { id: 19, name: "Pg 2", img: null },
+      ],
+    },
+  ];
+
+  const handleCardClick = (item) => {
+    // Check if the clicked item has a component associated
+    if (item.component) {
+      setCurrentView({
+        component: item.component,
+        type:
+          item.name === "DMT 1"
+            ? "dmt1"
+            : item.name === "DMT 2"
+            ? "dmt2"
+            : item.name === "CMS 1"
+            ? "cms1"
+            : item.name === "CMS 2"
+            ? "cms2"
+            : item.name === "Vendor Payments"
+            ? "express"
+            : item.name === "Nepal Transfer"
+            ? "nepal"
+            : item.name === "Super"
+            ? "super"
+            : item.name === "UPI"
+            ? "upi"
+            : item.name === "Mobile Recharge"
+            ? "mobile"
+            : item.name === "Water"
+            ? "WATER"
+            : item.name === "DTH"
+            ? "dth"
+            : item.name === "Gas"
+            ? "GAS"
+            : item.name === "Broadband"
+            ? "BROADBAND"
+            : item.name === "Insurance"
+            ? "INSURANCE"
+            : item.name === "Electricity"
+            ? "ELECTRICITY"
+            : item.name // default case
+      });
+      
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
+
+  const resetView = () => {
+    setCurrentView(null); // Reset to dashboard view
+  };
 
   return (
     <>
-      <RetProductionSaleComponent
-        graphDuration={graphDuration}
-        setGraphDuration={setGraphDuration}
-        graphRequest={graphRequest}
-        setGraphRequest={setGraphRequest}
-        role={role}
-        USER_ROLES={USER_ROLES}
-      />
-      {/* <Mount
-        visible={
-          role !== USER_ROLES.ASM &&
-          role !== USER_ROLES.ACC &&
-          role !== USER_ROLES.API
-        }
-      >
-        <MyEarnings />
-      </Mount> */}
-      <AskForDocsModal open={open} setopen={setopen} />
+      {!currentView ? (
+      
+        dataCategories.map((category, index) => (
+          <Box
+            key={index}
+            sx={{
+              marginBottom: 2,
+              border: "solid 1px lightgray",
+              p: { xs: 1, sm: 3 }, // Responsive padding
+              borderRadius: 3,
+              // background: "#f5e9e9",
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <Typography
+              variant="h6"
+              align="left"
+              sx={{ pl: 1, mt: -2, mb: 1, fontSize: { xs: "1rem", sm: "1.25rem" } }} // Responsive typography
+            >
+              {category.title}
+            </Typography>
+            <Grid container spacing={2}>
+              {category.data.map((item) => (
+                <Grid item xs={12} sm={6} md={3} lg={2} key={item.id}>
+                  <CommonCardDashBoard
+                    name={item.name}
+                    img={item.img}
+                    onClick={() => handleCardClick(item)} 
+                   
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        ))
+      ) : (
+        // Show the selected view component
+        <currentView.component
+          type={currentView.type}
+          resetView={resetView} // Function to reset the view
+        />
+      )}
     </>
   );
 };

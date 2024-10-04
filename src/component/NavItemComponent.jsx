@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
 import { Box } from "@mui/material";
-
+import { keyframes } from "@mui/system";
 const NavItemComponent = ({
   item,
   open,
@@ -33,6 +33,11 @@ const NavItemComponent = ({
     isCurrentActive = true;
   }
 
+  const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
   return (
     <div>
       <ListItem
@@ -40,6 +45,7 @@ const NavItemComponent = ({
         disablePadding
         sx={{
           display: "block",
+          mt:2,
           // "&:hover": {
           //   color: "#fff",
           //   "& .menu-title": {
@@ -73,15 +79,21 @@ const NavItemComponent = ({
           }}
         >
           <ListItemButton
+           className="icon-hover"
        sx={{
         justifyContent: open ? "initial" : "center",
-        backgroundColor: isCurrentActive ? "#1877F2" : "",
+        backgroundColor: isCurrentActive ? "#D48628" : "",
         backdropFilter:isCurrentActive  ? "blur(5px)" : "",
         border: isCurrentActive ? "1px solid rgba(159, 134, 192, 0.3)" : "",
         "&:hover": {
-          backgroundColor: isCurrentActive?"#1877F2":"",
+          backgroundColor: isCurrentActive?"#212b5a":"",
           color: "white", 
         },
+        "& img": {
+        transform: "scale(1.07)",
+     
+        animation: "pulse 1s infinite",
+      },
         borderRadius: "4px",
         display: "flex",
         alignItems: "center",
@@ -115,13 +127,13 @@ const NavItemComponent = ({
         disableTypography
         sx={{
           opacity: open ? 1 : 0,
-          color: isCurrentActive ? "white" : "#012169",
+          color: isCurrentActive ? "white" : "white",
           fontSize: "16px",
         
           // fontFamily:"cursive",
         fontFamily: "Montserrat, sans-serif",
           '&:hover': {
-            color: isCurrentActive ? "white" : "#012169",
+            color: isCurrentActive ? "white" : "white",
           }
         }}
       />

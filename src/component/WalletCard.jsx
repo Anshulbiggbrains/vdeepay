@@ -1,0 +1,222 @@
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Box,
+  Grid,
+ 
+  Typography,
+ 
+} from "@mui/material";
+import AuthContext from "../store/AuthContext";
+import { postFormData } from "../network/ApiController";
+import ApiEndpoints from "../network/ApiEndPoints";
+import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
+
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+
+import { numberSetter } from "../utils/Currencyutil";
+
+import useCommonContext from "../store/CommonContext";
+
+import { validateApiCall } from "../utils/LastApiCallChecker";
+
+import RefreshComponent from "./RefreshComponent";
+
+import { useLocation } from "react-router-dom";
+
+import { keyframes } from '@mui/system';
+
+
+
+const WalletCard = () => {
+  const authCtx = useContext(AuthContext);
+  const user = authCtx.user;
+  const userLat = authCtx.location && authCtx.location.lat;
+  const userLong = authCtx.location && authCtx.location.long;
+  const [showQr, setShowQr] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [showWalletTransfer, setShowWalletTransfer] = useState(false);
+  const [showBankTransfer, setShowBankTransfer] = useState(false);
+  const instId = user && user.instId;
+  const [walletTransferErrMsg, setWalletTransferErrMsg] = useState("");
+  const [request, setRequest] = useState(false);
+  const { getRecentData, refreshUser, userRequest } = useCommonContext();
+  const [err, setErr] = useState();
+  const location = useLocation();
+
+  console.log("user is",user);
+  const selfqrValue =
+    instId && instId
+      ? `upi://pay?pa=ipay.133876.` +
+        instId +
+        "@icici" +
+        `&pn=${user && user.establishment}` +
+        "&cu=INR"
+      : "";
+
+  // ######################################
+  // W2 TO W1 TRANSFER API CALL ...........
+  // ######################################
+  const handleW2ToW1Transfer = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = {
+      amount: form.w2_amount.value,
+      pf: "WEB",
+      latitude: userLat,
+      longitude: userLong,
+    };
+
+    if (validateApiCall()) {
+      postFormData(
+        ApiEndpoints.W2TOW1_TRANSFER,
+        data,
+        setRequest,
+        (res) => {
+          okSuccessToast(res.data.message);
+          setWalletTransferErrMsg("");
+          document.getElementById("w2_amount").value = "";
+          document.getElementById("w2_amount").focused = "off";
+          refreshUser();
+          getRecentData();
+          setErr("");
+        },
+        (err) => {
+          setErr("");
+          if (
+            err.response.data.message.amount &&
+            err.response.data.message.amount
+          ) {
+            setWalletTransferErrMsg(err.response.data.message.amount);
+          } else {
+            setWalletTransferErrMsg("");
+            apiErrorToast(err);
+            refreshUser();
+            getRecentData();
+          }
+        }
+      );
+    } else {
+      setErr("");
+      const error = {
+        message: "Kindly wait some time before another request",
+      };
+      setErr(error);
+    }
+  };
+
+  useEffect(() => {
+    getRecentData();
+  }, []);
+
+  const handleOpen = () => {
+    // const timer = setTimeout(() => {
+    if (authCtx?.isLoggedIn) refreshUser();
+    // }, 30000);
+    // return () => clearTimeout(timer);
+  };
+
+  // ############################################
+  // TRANSFER CARDS COMPONENT HANDLING FUNCTIONS
+  // ############################################
+  const handleWalletTransfer = () => {
+    if (showWalletTransfer && showWalletTransfer) {
+      setShowWalletTransfer(!showWalletTransfer);
+    }
+  };
+  const handleBankTransfer = () => {
+    if (showBankTransfer && showBankTransfer) {
+      setShowBankTransfer(!showBankTransfer);
+    }
+  };
+  const [isMainWallet, setIsMainWallet] = useState(false);
+
+  const handleWalletToggle = () => {
+     setIsMainWallet(!isMainWallet)
+  };
+  const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const borderPulse = keyframes`
+  0% { border-color: red; }
+  50% { border-color: darkred; }
+  100% { border-color: red; }
+`;
+
+  return(
+    <Grid container spacing={2}>
+
+    {/* Wallet 1 */}
+    <Grid item xs={6}>
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebEe', 
+          borderRadius: '8px',
+          mr: 2,
+          display: 'flex',
+          alignItems: 'center',
+          width: '99%',
+          maxWidth: '250px',
+          border: '2px solid #D71313 ',
+          animation: `${fadeIn} 0.5s ease-in-out`, 
+          '&:hover': {
+            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
+          },
+        }}
+      >
+        {/* Wallet Icon */}
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
+            Wallet 1
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+          ₹  {numberSetter(user.w1 / 100)} 
+          </Typography>
+        </Box>
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+      </Box>
+    </Grid>
+  
+    {/* Wallet 2 */}
+    <Grid item xs={6}>
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee', 
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '99%',
+          maxWidth: '250px',
+          border: '2px solid #D71313 ',
+          mr: 2,
+          animation: `${fadeIn} 0.5s ease-in-out`,
+          '&:hover': {
+            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
+          },
+        }}
+      >
+        {/* Wallet Icon */}
+        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} /> 
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
+            Wallet 2
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+          ₹ {numberSetter(user.w2 / 100)} 
+          </Typography>
+        </Box>
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+      </Box>
+    </Grid>
+  
+  </Grid>
+
+  )
+
+}
+
+export default WalletCard

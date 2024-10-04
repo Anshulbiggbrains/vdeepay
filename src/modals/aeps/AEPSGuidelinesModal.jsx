@@ -1,4 +1,4 @@
-import { Box, Grid, Modal, Typography } from "@mui/material";
+import { Box, Grid, Modal, Typography, Fade, Slide,Collapse,Zoom } from "@mui/material";
 import React from "react";
 
 import { aepsGuidelinesImg, aepsGuidelinesNewImg } from "../../iconsImports";
@@ -33,27 +33,27 @@ const AEPSGuidelinesModal = ({ open, setOpen }) => {
     >
       <Modal
         open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm_modal">
-          <Typography
-            sx={{
-              textAlign: "center",
-              fontSize: "25px",
-              color: primaryColor(),
-            }}
-          >
-            {" "}
-            AEPS Guidelines
-          </Typography>
-          <Grid container>
-            <Grid item md={12} xs={12}>
-              <img src={aepsGuidelinesNewImg} alt="guidelines" width="100%" />
+<Box sx={style} className="sm_modal">
+            <Typography
+              sx={{
+                textAlign: "center",
+                fontSize: "25px",
+                color: primaryColor(),
+              }}
+            >
+              AEPS Guidelines
+            </Typography>
+            <Grid container>
+              <Grid item md={12} xs={12}>
+                <img src={aepsGuidelinesNewImg} alt="guidelines" width="100%" />
+              </Grid>
             </Grid>
-          </Grid>
-          <ModalFooter onClick={() => handleClose()} btn="Accept" />
-        </Box>
+            <ModalFooter onClick={handleClose} btn="Accept" />
+          </Box>
       </Modal>
     </Box>
   );

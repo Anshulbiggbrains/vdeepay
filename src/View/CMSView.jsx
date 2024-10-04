@@ -12,7 +12,7 @@ import {
   createFilterOptions,
 } from "@mui/material";
 import React from "react";
-import { cmsIcon } from "../iconsImports";
+import { back, cmsIcon } from "../iconsImports";
 import { useState } from "react";
 import AuthContext from "../store/AuthContext";
 import { useContext } from "react";
@@ -61,10 +61,10 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
 }));
 
-const CMSView = () => {
+const CMSView = ({resetView}) => {
   const [request, setRequest] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [cmsType, setCmsType] = useState("cms1");
+  const [type, settype] = useState("cms1");
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [url, setUrl] = useState(undefined);
@@ -89,7 +89,9 @@ const CMSView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState("cms1")// Default active tab value
 
-
+  const handleBack=()=>{
+    resetView(false)
+  }
 
   const filterOptions = createFilterOptions({
     matchFrom: "start",
@@ -315,9 +317,9 @@ const CMSView = () => {
     const handleChange = (event, newValue) => {
       console.log("newval",newValue);
       setValue(newValue);
-      setCmsType(cms_tab_value[newValue])
-      // setCurrentType(cms_tab_value[newValue])
-      console.log("cms value is",cmsType)
+      settype(cms_tab_value[newValue])
+      setCurrentType(cms_tab_value[newValue])
+      console.log("cms value is",type)
 
     };
 
@@ -348,6 +350,7 @@ const CMSView = () => {
       </OuterIcon>
       <Mount visible={url}>
         <Grid container>
+        
           <Grid
             item
             md={12}
@@ -360,6 +363,7 @@ const CMSView = () => {
               overflowY: "hidden",
             }}
           >
+              
             <div
               style={{
                 width: "100%",
@@ -381,6 +385,7 @@ const CMSView = () => {
               marginHeight="0"
               style={{ width: isMobile ? "100px" : "800px", height: "600px" }}
             ></iframe>
+             
           </Grid>
         </Grid>
       </Mount>
@@ -401,18 +406,40 @@ const CMSView = () => {
             xs={12}
             sx={{
               display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 2,
+            }}
+          >
+        <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                          sx={{p:1}}
+                        >
+                                          <span style={{ marginRight: '5px' }}>Back</span>
+                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
+                        </Button>
+          <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
               justifyContent: "space-between",
               // alignItems: "center",
             }}
           >
-              
-            
+               
+             
             <Typography
-              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:9,mt:2}}
+              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,flexGrow:1}}
             >
+          
               Cash Management System
             </Typography>
-          
+            </Grid>
           </Grid>
 
           {/* <Grid item md={12} xs={12} sx={{ mt: 3 }}>
@@ -430,8 +457,8 @@ const CMSView = () => {
               </Typography>
               <RadioGroup
                 row
-                value={cmsType}
-                onChange={(e) => setCmsType(e.target.value)}
+                value={type}
+                onChange={(e) => settype(e.target.value)}
               >
                 <FormControlLabel
                   value="cms1"
@@ -446,7 +473,7 @@ const CMSView = () => {
               </RadioGroup>
             </div>
           </Grid> */}
-          {cmsType === "cms1" ? (
+          {type === "cms1" ? (
             <Grid item md={12} xs={12}>
               <Box
                 component="form"

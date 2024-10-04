@@ -42,7 +42,7 @@ export const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     fontSize: "14px",
     minHeight: "15px",
     minWidth: "25px",
-    padding: "8px 8px", // Reduced padding
+    padding: "8px 6px", // Reduced padding
     borderRadius: "4px",
     "&.Mui-selected": {
       color: "#fff",
@@ -190,7 +190,7 @@ const TodayThisLastComponent = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: "0.3rem",
+            marginBottom: "0.8rem",
           }}
         >
           <IconButton sx={{ textAlign: "flex-start", color: "#003776" }}>
@@ -231,7 +231,7 @@ const TodayThisLastComponent = ({
             <Box
               key={index}
               sx={{
-                mt: -1.5,
+                mt: -2.3,
                 width: {
                   xs: "100%",
                   sm: "100%",
