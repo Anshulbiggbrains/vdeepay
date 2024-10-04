@@ -548,13 +548,13 @@ export const customer_nav = [
   //   // to: "/customer/travel-services",
   // },
   {
-    title: "Credit Request",
+    title: "Fund Request",
     icon: creditmoney,
     icon2: CreditRequestIcon,
     to: "/customer/cred-req",
   },
   {
-    title: "Transactions",
+    title: "Reports",
     icon: graph,
     icon2: ReportsIcon,
     to: "/customer/transactions",
