@@ -7,6 +7,7 @@ import SideBarContext from "../store/SideBarContext";
 import { whiteColor } from "../theme/setThemeColor";
 import { Box } from "@mui/material";
 import { keyframes } from "@mui/system";
+import AuthContext from "../store/AuthContext";
 const NavItemComponent = ({
   item,
   open,
@@ -16,6 +17,7 @@ const NavItemComponent = ({
   mobileOpen,
 }) => {
   const sidebarCtx = useContext(SideBarContext);
+  const authCtx = useContext(AuthContext)
   const setActiveIndex = sidebarCtx.setActiveIndex;
   const location = useLocation();
   const currentPath = location.pathname;
@@ -38,6 +40,7 @@ const NavItemComponent = ({
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 `;
+console.log("This is your NavItemComponent item", item)
   return (
     <div>
       <ListItem
@@ -52,9 +55,12 @@ const NavItemComponent = ({
           //     color: whiteColor(),
           //   },
           // },
-         
         }}
-        onClick={() => {
+        onClick={(item) => {
+          console.log("Latest item log", item.title)
+          if(item.title==="Logout"){
+            authCtx.logout()
+          }else{
           setActiveIndex({
             index: index,
             subIndex: -1,
@@ -63,6 +69,7 @@ const NavItemComponent = ({
             handleDrawerToggle();
           } else setOpen(false);
         }}
+      }
       >
         <NavLink
           to={item.to}
@@ -80,6 +87,11 @@ const NavItemComponent = ({
         >
           <ListItemButton
            className="icon-hover"
+           onClick={(item)=>{
+            console.log("This is your title on button click", item)
+            if(item.title === "Logout"){
+              authCtx.logout();
+           }}}
        sx={{
         justifyContent: open ? "initial" : "center",
         backgroundColor: isCurrentActive ? "#D48628" : "",
@@ -99,7 +111,6 @@ const NavItemComponent = ({
         alignItems: "center",
          fontSize: "18px", 
       }}
-      
           >
            <Box
       sx={{
