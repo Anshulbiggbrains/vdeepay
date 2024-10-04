@@ -214,7 +214,7 @@ const borderPulse = keyframes`
           border: '2px solid #D71313',
         }}
       >
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} />
+        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
             Wallet 1
@@ -223,7 +223,7 @@ const borderPulse = keyframes`
             ₹ {numberSetter(user.w1 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
       </Box>
     </Grid>
   
@@ -240,7 +240,7 @@ const borderPulse = keyframes`
           border: '2px solid #D71313',
         }}
       >
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#212b5a', mr: 2 }} />
+        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c', }}>
             Wallet 2
@@ -249,7 +249,7 @@ const borderPulse = keyframes`
             ₹ {numberSetter(user.w2 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
       </Box>
     </Grid>
   </Grid>
