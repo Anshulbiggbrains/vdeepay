@@ -9,6 +9,7 @@ import {
   Typography,
   Icon,
   InputAdornment,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -54,19 +55,19 @@ const DmrAddBeneficiaryModal = ({
   const [viewMpin, setViewMpin] = useState(false);
   // console.log("view", view);
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "40%",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    fontFamily: "Poppins",
-    height: "max-content",
-    overflowY: "scroll",
-    p: 2,
-  };
+  // const style = {
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   width: "40%",
+  //   bgcolor: "background.paper",
+  //   boxShadow: 24,
+  //   fontFamily: "Poppins",
+  //   height: "max-content",
+  //   overflowY: "scroll",
+  //   p: 2,
+  // };
   const handleOpen = () => {
     setOpen(true);
   };
@@ -242,13 +243,23 @@ const DmrAddBeneficiaryModal = ({
 </Button>
 
       <Box>
-        <Modal
+        <Drawer
           open={open}
+          anchor="right"
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          // aria-labelledby="modal-modal-title"
+          // aria-describedby="modal-modal-description"
         >
-          <Box sx={style} className="sm_modal">
+          <Box   sx={{
+            width: 400,
+            p: 2,
+            height: "100%",
+            boxShadow: 24,
+            fontFamily: "Poppins",
+            overflowY: "auto",
+          }}
+          role="presentation"
+ >
             <Loader loading={request} />
             <ModalHeader
               title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
@@ -266,52 +277,7 @@ const DmrAddBeneficiaryModal = ({
             >
               <Grid container sx={{ pt: 1 }}>
               <Grid item xs={12} sm={11.7} md={12} lg={12} xl={11.7}>
-  {/* <FormControl sx={{ width: "100%" }}>
-    <Autocomplete
-      // filterOptions={filterOptions}
-      disablePortal
-      id="combo-box-demo"
-      options={bankList ? bankList : ""}
-      onChange={(event, newValue) => {
-        if (newValue) {
-          setBankId(
-            view === "MT_View" && dmtValue === "dmt2"
-              ? newValue.id
-              : newValue.bankId
-          );
-          setIfscVal(
-            view === "MT_View" && dmtValue === "dmt2"
-              ? newValue.ifsc
-              : newValue.ifscGlobal
-          );
-          setBankName(newValue.name);
-        }
-      }}
-      getOptionLabel={(option) => option.name}
-      renderInput={(params) => (
-        <TextField autoComplete="off"
-          {...params}
-          label="Select Bank"
-          size="small"
-          required
-          value={bankTextVal}
-          onChange={(e) => {
-            setBankTextVal(e.target.value);
-          }}
-        />
-      )}
-      clearIcon={
-        <BackspaceIcon
-          sx={{ fontSize: "15px", ml: 0 }}
-          onClick={() => {
-            setBankId("");
-            setIfscVal("");
-            setBankName("");
-          }}
-        />
-      }
-    />
-  </FormControl> */}
+  
   <ApiSearch
     label="Search Bank"
     name="user_id"
@@ -393,38 +359,35 @@ const DmrAddBeneficiaryModal = ({
                 </Grid>
 
                 {dmtValue === "dmt2" && viewMpin && (
-                  <Grid
-                    item
-                    md={12}
-                    xs={12}
-                    sx={{ display: "flex", justifyContent: "center", mt: 2 }}
-                  >
-                    <FormControl>
-                      <Typography
-                        sx={{ display: "flex", justifyContent: "center" }}
-                      >
-                        Enter M-PIN
-                      </Typography>
-                      <PinInput
-                        length={6}
-                        focus
-                        type="password"
-                        onChange={(value, index) => {
-                          setMpin(value);
-                        }}
-                        regexCriteria={/^[0-9]*$/}
-                      />
-                      <Grid
-                        item
-                        md={12}
-                        xs={12}
-                        sx={{ display: "flex", justifyContent: "end" }}
-                      >
-                        <ResetMpin variant="text" />
-                      </Grid>
-                    </FormControl>
-                  </Grid>
-                )}
+  <Grid
+    item
+    md={12}
+    xs={12}
+    sx={{
+      display: "flex",
+      justifyContent: "space-between",
+      mt: 2,
+    }}
+  >
+    <Button
+      variant="contained"
+      color="primary"
+      type="submit"
+      sx={{ width: "48%" }}
+    >
+      Confirm
+    </Button>
+    <Button
+      variant="outlined"
+      color="secondary"
+      onClick={handleClose}
+      sx={{ width: "48%" }}
+    >
+      Cancel
+    </Button>
+  </Grid>
+)}
+ 
 
                 {dmtValue === "dmt2" && viewMpin && (
                   <Grid
@@ -478,7 +441,7 @@ const DmrAddBeneficiaryModal = ({
               // }}
             />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
       <VerifyOtpLogin
         secureValidate={secureValidate}

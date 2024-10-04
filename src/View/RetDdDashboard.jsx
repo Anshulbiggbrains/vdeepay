@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, IconButton } from "@mui/material";
 import AuthContext from "../store/AuthContext";
 import CommonCardDashBoard from "../component/CommonCardDashBoard";
 import {
@@ -26,23 +26,38 @@ import CreditcardForm from "../component/CreditcardForm";
 import ElectricityForm from "../component/ElectricityForm";
 import AEPS2View from "./aeps/AEPS2View";
 import BBPSView from "./BBPSView";
+import TravelContainer from "./Travel/TravelContainer";
+import FlightTab from "../component/Travel/FlightTab";
+import BusTab from "../component/Travel/BusTab";
+import TrainTab from "../component/Travel/TrainTab";
+import HotelsTab from "../component/Travel/HotelsTab";
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import HouseIcon from '@mui/icons-material/House';
+import TrainIcon from '@mui/icons-material/Train';
+import FlightIcon from '@mui/icons-material/Flight';
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null); // State to track the current view
 
   const location = useLocation();
   const authCtx = useContext(AuthContext);
-  const role = authCtx.user.role;
+  const user = authCtx.user;
+  console.log("user is ",user)
 
   // JSON format dummy data categorized into different sections
   const dataCategories = [
     {
       title: "Banking",
       data: [
-        { id: 1, name: "DMT", img: null, component: DmtContainer ,},
+        { id: 1, name: "DMT", img: null, component: DmtContainer },
         { id: 2, name: "CMS ", img: cmsIcon, component: CMSView },
         { id: 3, name: "Nepal Transfer", img: null, component: NepalTransfer },
-        { id: 4, name: "Vendor Payments", img: null, component: VendorPayments },
+        {
+          id: 4,
+          name: "Vendor Payments",
+          img: null,
+          component: VendorPayments,
+        },
         { id: 5, name: "UPI", img: upi, component: UPITransferView },
         { id: 6, name: "Aeps", img: aepsIcon, component: AEPS2View },
       ],
@@ -50,11 +65,26 @@ const RetDdDashboard = () => {
     {
       title: "Utility",
       data: [
-        { id: 7, name: "Mobile Recharge", img: mobileR_img, component: MobileRechargeForm },
+        {
+          id: 7,
+          name: "Mobile Recharge",
+          img: mobileR_img,
+          component: MobileRechargeForm,
+        },
         { id: 8, name: "DTH", img: dthIcon, component: MobileRechargeForm },
-        { id: 9, name: "Electricity", img: elecIcon, component: ElectricityForm },
+        {
+          id: 9,
+          name: "Electricity",
+          img: elecIcon,
+          component: ElectricityForm,
+        },
         { id: 10, name: "Credit Card ", img: null, component: CreditcardForm },
-        { id: 11, name: "BroadBand", img: broadband, component: ElectricityForm },
+        {
+          id: 11,
+          name: "BroadBand",
+          img: broadband,
+          component: ElectricityForm,
+        },
         { id: 12, name: "Gas", img: gasIcon, component: ElectricityForm },
         { id: 13, name: "Water", img: waterIcon, component: ElectricityForm },
         { id: 14, name: "Insurance", img: null, component: ElectricityForm },
@@ -65,12 +95,14 @@ const RetDdDashboard = () => {
     {
       title: "Travel",
       data: [
-        { id: 17, name: "Travel", img: null },
-        { id: 18, name: "Pg", img: null },
-        { id: 19, name: "Pg 2", img: null },
+        { id: 17, name: "AIR", img: FlightIcon ,component:FlightTab },
+        { id: 18, name: "BUS", img: null ,component:BusTab},
+        { id: 19, name: "HOTELS", img: null ,component:HotelsTab},
+        { id: 20, name: "IRCTC", img: null ,component:TrainTab},
       ],
     },
   ];
+
 
   const handleCardClick = (item) => {
     // Check if the clicked item has a component associated
@@ -108,9 +140,8 @@ const RetDdDashboard = () => {
             ? "INSURANCE"
             : item.name === "Electricity"
             ? "ELECTRICITY"
-            : item.name // default case
+            : item.name, // default case
       });
-      
     }
   };
 
@@ -120,8 +151,38 @@ const RetDdDashboard = () => {
 
   return (
     <>
+     
+     { user.role==="Dd"&& location.pathname === '/customer/dashboard'&&
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={8}
+        lg={9}
+        sx={{
+          marginTop: { xs: "1rem" },
+          textAlign: "center",
+
+          borderRadius: "8px",
+          backgroundColor: "#fEDCDB",
+          marginTop: "0.1%",
+          color: " #004080",
+          // color: "#023047", #004080,
+          fontSize: "14px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "0.5rem",
+          padding: "8px 6px",
+        }}
+      >
+        <marquee behavior="scroll" direction="left">
+          Digital payments are growing faster than ever ! UPI is leading the
+          way, making transactions quick and easy for millions.
+        </marquee>
+      </Grid>
+}
       {!currentView ? (
-      
         dataCategories.map((category, index) => (
           <Box
             key={index}
@@ -137,7 +198,12 @@ const RetDdDashboard = () => {
             <Typography
               variant="h6"
               align="left"
-              sx={ {overflow:"hidden",textOverflow: 'ellipsis', pl: 1, mt: -2, mb: 1, fontSize: { xs: "1rem", sm: "1.25rem" } }} // Responsive typography
+              sx={{
+                pl: 1,
+                mt: -2,
+                mb: 1,
+                fontSize: { xs: "1rem", sm: "1.25rem" },
+              }} // Responsive typography
             >
               {category.title}
             </Typography>
@@ -147,8 +213,7 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
-                    onClick={() => handleCardClick(item)} 
-                   
+                    onClick={() => handleCardClick(item)}
                   />
                 </Grid>
               ))}
