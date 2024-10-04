@@ -275,7 +275,7 @@ const LoginPage = () => {
           </Typography>
           <Box
             component="img"
-            src={loginPage}
+            src={loginPage1}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
@@ -288,7 +288,6 @@ const LoginPage = () => {
           />
           <br />
           <br />
-
           <Marquee
             fade={true}
             gradient={true}
