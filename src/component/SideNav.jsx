@@ -57,7 +57,6 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
- 
 });
 
 const closedMixin = (theme) => ({
@@ -243,7 +242,6 @@ export default function SideNav(props, { data }) {
       : nav;
 
   const outletBoxStyle = {
-    
     width: {
       lg:
         user?.role === "Admin"
@@ -301,14 +299,13 @@ export default function SideNav(props, { data }) {
           />
         )}
       </DrawerHeader>
-   
+
       <List
         sx={{
           height: { xs: "80vh", sm: "100vh" },
           overflowY: "scroll",
-           background: "#105497",
-           borderRadius:"0px 10px"
-         
+          background: "#105497",
+          borderRadius: "0px 10px",
         }}
       >
         {leftNav.map((item, index) => {
@@ -375,10 +372,8 @@ export default function SideNav(props, { data }) {
         open={open}
         sx={{
           paddingRight: "0px !important",
-          background:"white",
-          borderRadius:"0px 0px 0px 10px ",
-          
-         
+          background: "white",
+          borderRadius: "0px 0px 0px 10px ",
         }}
       >
         <Toolbar
@@ -387,7 +382,7 @@ export default function SideNav(props, { data }) {
             alignItems: "center",
             justifyContent: "space-between",
             pr: { xs: 0, md: 1 },
-      borderRadius:"0px 0px 0px 10px ",
+            borderRadius: "0px 0px 0px 10px ",
           }}
           className="nav"
         >
@@ -414,9 +409,7 @@ export default function SideNav(props, { data }) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { md: 2, sm: 0, xs: 0 },
-                display: { sm: "none" } }
-              }
+                sx={{ mr: { md: 2, sm: 0, xs: 0 }, display: { sm: "none" } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -450,14 +443,12 @@ export default function SideNav(props, { data }) {
           <div
             style={{
               display: "flex",
-              marginRight:"10px",
+              marginRight: "10px",
               justifyContent: "end",
-              
             }}
           >
-           <WalletCard/>
+            <WalletCard />
           </div>
-          
         </Toolbar>
       </WebAppBar>
 
@@ -472,7 +463,7 @@ export default function SideNav(props, { data }) {
         }}
         sx={{
           display: { xs: "block", sm: "none" },
-          
+
           position: "absolute",
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
@@ -503,7 +494,6 @@ export default function SideNav(props, { data }) {
                 zIndex: "1000",
                 display: { xs: "none", sm: "block" },
                 "& .MuiDrawer-paper": {
-                 
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
                   // border: "1px solid rgba(35, 25, 66, 0.3)",
@@ -578,7 +568,6 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
-            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&

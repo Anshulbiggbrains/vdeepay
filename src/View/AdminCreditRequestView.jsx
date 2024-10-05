@@ -382,13 +382,14 @@ const CreditRequestView = () => {
               approvedStatusText="APPROVED"
               pendingStatusText="PENDING"
               rejectedStatusText="REJECTED"
-              fontSize="12px"
+              fontSize="11px"
             />
           </Box>
         );
       },
       wrap: true,
     },
+
     {
       name: <span className="mx-3">Action</span>,
       selector: (row) => (
@@ -412,12 +413,16 @@ const CreditRequestView = () => {
 
               <Tooltip title="View">
                 <IconButton
-                  sx={{ color: "#134B70" }}
+                  sx={{ color: " #1877f2" }}
                   onClick={() => {
                     navigate("", {});
                   }}
                 >
-                  <VisibilityIcon />
+                  <Icon
+                    icon="dashicons:welcome-view-site"
+                    width={26}
+                    height={26}
+                  />
                 </IconButton>
               </Tooltip>
             </div>

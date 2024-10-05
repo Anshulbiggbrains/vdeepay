@@ -120,7 +120,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
               },
             }}
           >
-            <Icon icon="ri:chat-check-line" width={24} height={24} />
+            <Icon icon="charm:circle-tick" width={26} height={26} />
           </IconButton>
         </Tooltip>
       )}
@@ -148,7 +148,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
               },
             }}
           >
-            <Icon icon="ri:chat-delete-line" width={24} height={24} />
+            <Icon icon="charm:circle-cross" width={26} height={26} />
           </IconButton>
         </Tooltip>
       )}
