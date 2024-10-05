@@ -671,7 +671,7 @@ const RetDdTransactionView = () => {
                   user?.role?.toLowerCase() !== "api" && (
                     <Tooltip title="Download Receipt" placement="top">
                       <PrintIcon
-                        color="success"
+                        color="danger"
                         className=" mx-2 refresh-purple"
                         onClick={() => {
                           if (
@@ -822,7 +822,7 @@ const RetDdTransactionView = () => {
                         label={
                           <Typography
                             variant="body2"
-                            style={{ fontSize: "15px" }}
+                            style={{ fontSize: "15px",color:{showOldTransaction:"blue"} }}
                           >
                             Old
                           </Typography>
@@ -832,9 +832,9 @@ const RetDdTransactionView = () => {
 
                     <Tooltip title="Download Receipt" placement="top">
                       <PrintIcon
-                        color="success"
+                        color="danger"
                         // sx={{mt:2}}
-                        className="refresh-purple"
+                        className="text-danger"
                         onClick={() => {
                           if (
                             selectedRows &&

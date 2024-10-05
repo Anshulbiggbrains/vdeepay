@@ -1,7 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
+import Drawer from "@mui/material/Drawer";
 import { FormControl, Grid, TextField, Button } from "@mui/material";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
@@ -9,7 +10,6 @@ import { useState } from "react";
 import { postJsonData } from "../network/ApiController";
 import useCommonContext from "../store/CommonContext";
 import Loader from "../component/loading-screen/Loader";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
   const [open, setOpen] = useState(false);
@@ -17,19 +17,6 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
 
   const { getRecentData } = useCommonContext();
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "40%",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    fontFamily: "Poppins",
-    height: "max-content",
-    overflowY: "scroll",
-    p: 2,
-  };
   const handleOpen = () => {
     setOpen(true);
   };
@@ -51,7 +38,7 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
       setRequest,
       (res) => {
         getRecentData();
-        okSuccessToast("Beneficiary Added Successfuly");
+        okSuccessToast("Beneficiary Added Successfully");
         handleClose();
         if (getRemitterStatus) getRemitterStatus(rem_mobile);
       },
@@ -69,17 +56,16 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
       }}
     >
       <Button
-        // className="button-red"
         variant="text"
         size="small"
         onClick={handleOpen}
         sx={{
           color: "Dark-Blue",
           fontWeight: "bold",
-          textTransform:"capitalize",
+          textTransform: "capitalize",
           fontSize: "10px",
-          display: "flex", // Added to align items
-          alignItems: "center", // Vertically center the icon and text
+          display: "flex",
+          alignItems: "center",
           '&:hover': {
             color: "Dark-Blue",
             backgroundColor: "#D8D8D8",
@@ -87,28 +73,36 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
           },
         }}
       >
-          <AddCircleIcon sx={{ mr: 1, fontSize: "16px" ,mb:0.5}} />
-
+        <AddCircleIcon sx={{ mr: 1, fontSize: "16px", mb: 0.5 }} />
         Add Beneficiary
       </Button>
 
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style} className="sm_modal">
+      <Drawer open={open} onClose={handleClose} anchor="right">
+        <Box
+          sx={{
+            width: 400,
+            p: 2,
+            height: "100%",
+            boxShadow: 24,
+            fontFamily: "Poppins",
+            display: "flex", // Added to make the layout flexible
+            flexDirection: "column", // Ensure elements stack vertically
+            overflowY: "auto",
+          }}
+          role="presentation"
+        >
           <Loader loading={request} />
           <ModalHeader title="Add Beneficiary" handleClose={handleClose} />
+
           <Box
             component="form"
             id="addbene"
-            validate
+            validate="true"
             autoComplete="off"
             onSubmit={handleSubmit}
             sx={{
               "& .MuiTextField-root": { m: 1 },
+              flexGrow: 1, // This makes the form take up the remaining space
             }}
           >
             <Grid container sx={{ pt: 1 }}>
@@ -123,11 +117,15 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
                 </FormControl>
               </Grid>
             </Grid>
+            <ModalFooter form="addbene" request={request} btn="Add Beneficiary" /> 
           </Box>
-          <ModalFooter form="addbene" request={request} btn="Add Beneficiary" />
+
+          {/* ModalFooter will always stick to the bottom */}
+         
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };
+
 export default AddBeneficiaryUpiModal;

@@ -33,6 +33,7 @@ const NavItemSubmenu = ({
   const location = useLocation();
   const currentPath = location.pathname;
   let isCurrentActive = currentPath === item?.to;
+  console.log("item is defin sub",item)
 console.log("user is ",user);
   return (
     <div>
