@@ -508,7 +508,7 @@ export default function SideNav(props, { data }) {
               }}
               className=""
             >
-                <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} />
+                {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
               {drawer}
             </WebDrawer>
           </>
