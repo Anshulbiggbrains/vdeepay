@@ -61,7 +61,7 @@ const RetDdDashboard = () => {
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
-  console.log("user is ",user)
+  console.log("user is ", user);
 
   // JSON format dummy data categorized into different sections
   const dataCategories = [
@@ -189,37 +189,36 @@ const RetDdDashboard = () => {
 
   return (
     <>
-     
-     { user.role==="Dd"&& location.pathname === '/customer/dashboard'&&
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={8}
-        lg={9}
-        sx={{
-          marginTop: { xs: "1rem" },
-          textAlign: "center",
+      {user.role === "Dd" && location.pathname === "/customer/dashboard" && (
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={8}
+          lg={9}
+          sx={{
+            marginTop: { xs: "1rem" },
+            textAlign: "center",
 
-          borderRadius: "8px",
-          backgroundColor: "#fEDCDB",
-          marginTop: "0.5%",
-          color: " #004080",
-          // color: "#023047", #004080,
-          fontSize: "14px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "0.5rem",
-          padding: "8px 6px",
-        }}
-      >
-        <marquee behavior="scroll" direction="left">
-          Digital payments are growing faster than ever ! UPI is leading the
-          way, making transactions quick and easy for millions.
-        </marquee>
-      </Grid>
-}
+            borderRadius: "8px",
+            backgroundColor: "#fEDCDB",
+            marginTop: "0.1%",
+            color: " #004080",
+            // color: "#023047", #004080,
+            fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "0.5rem",
+            padding: "8px 6px",
+          }}
+        >
+          <marquee behavior="scroll" direction="left">
+            Digital payments are growing faster than ever ! UPI is leading the
+            way, making transactions quick and easy for millions.
+          </marquee>
+        </Grid>
+      )}
       {!currentView ? (
         dataCategories.map((category, index) => (
           <Box
@@ -251,7 +250,6 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
-                  
                     onClick={() => handleCardClick(item)}
                   />
                 </Grid>
