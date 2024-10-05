@@ -24,7 +24,7 @@ const LandingPageIntro = () => {
     >
       <Container maxWidth="xl">
         <Grid container xs={12} sx={{ px: { md: 8, sm: 1 } }}>
-          <Grid md={env === "ImpsGuru" || env === "PaisaKart" ? 6 : 12} sm={12}>
+          <Grid md={env === "VdeePay" || env === "PaisaKart" ? 6 : 12} sm={12}>
             <Box container sx={{ mt: 20 }}>
               <div className="lineUp">
                 <div
@@ -159,7 +159,7 @@ const LandingPageIntro = () => {
                     href={
                       env === "MoneyOddr"
                         ? ""
-                        : "https://play.google.com/store/apps/details?id=com.paisaonmobile.cm.impsguru"
+                        : "https://play.google.com/store/apps/details?id=com.paisaonmobile.cm.VdeePay"
                     }
                     target="_blank"
                   >

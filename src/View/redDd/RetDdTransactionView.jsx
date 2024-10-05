@@ -63,6 +63,7 @@ import RightSidePannel from "../../component/transactions/RightSidePannel";
 import CustomTabs from "../../component/CustomTabs";
 import RetDbTransactionTab from "../../component/Tab/RetDbTransactionTab";
 import CommonStatus from "../../component/CommonStatus";
+import { Icon } from "@iconify/react";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
 let refresh;
@@ -495,7 +496,9 @@ const RetDdTransactionView = () => {
               pendingStatusText="Pending"
               rejectedStatusText="Failed"
               refundStatusText="Refund"
-              fontSize="13px"
+              fontSize="11px"
+              maxWidth="85px"
+              minWidth="85px"
             />
           </Box>
         </>
@@ -507,13 +510,13 @@ const RetDdTransactionView = () => {
       selector: (row) => (
         <Tooltip title="View">
           <IconButton
-            sx={{ color: "#134B70" }}
+            sx={{ color: "#1877F2" }}
             onClick={() => {
               setRowData(row);
               setState(true);
             }}
           >
-            <VisibilityIcon />
+            <Icon icon="dashicons:welcome-view-site" width={26} height={26} />
           </IconButton>
         </Tooltip>
       ),
@@ -822,7 +825,10 @@ const RetDdTransactionView = () => {
                         label={
                           <Typography
                             variant="body2"
-                            style={{ fontSize: "15px",color:{showOldTransaction:"blue"} }}
+                            style={{
+                              fontSize: "15px",
+                              color: { showOldTransaction: "blue" },
+                            }}
                           >
                             Old
                           </Typography>

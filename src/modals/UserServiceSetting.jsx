@@ -11,6 +11,7 @@ import {
   Switch,
   styled,
   Tooltip,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -274,13 +275,14 @@ const UserServiceSetting = ({ row, refresh }) => {
           )}
         </IconButton>
       </Tooltip>
-      <Modal
+      <Drawer
         open={open}
+        anchor="right"
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        // aria-labelledby="modal-modal-title"
+        // aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:600}} >
           <Loader loading={request} />
           <ModalHeader title="User service setting" handleClose={handleClose} />
           <Grid>
@@ -329,7 +331,7 @@ const UserServiceSetting = ({ row, refresh }) => {
             </List>
           </Grid>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

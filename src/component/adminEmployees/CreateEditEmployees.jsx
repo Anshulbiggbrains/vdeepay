@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
 import Box from "@mui/material/Box";
-
 import {
   FormControl,
   Grid,
@@ -10,18 +9,12 @@ import {
   Tooltip,
   IconButton,
   Modal,
-  // MenuItem,
+  Drawer,
 } from "@mui/material";
-
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Loader from "../loading-screen/Loader"; 
 import ModalHeader from "../../modals/ModalHeader";
 import ModalFooter from "../../modals/ModalFooter";
-// import { useState } from "react";
-// import { patchJsonData, postJsonData } from "../../network/ApiController";
-// import ApiEndpoints from "../../network/ApiEndPoints";
-// import { apiErrorToast, okSuccessToast } from "../../utils/ToastUtil";
-// import { useEffect } from "react";
 import { whiteColor } from "../../theme/setThemeColor";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,10 +25,7 @@ import {
   setEmployeesData,
   updateEmployee,
 } from "../../features/allUsers/allUsersSlice";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { yyyymmdd } from "../../utils/DateUtils";
-import { PATTERNS } from "../../utils/ValidationUtil";
 
 const style = {
   position: "absolute",
@@ -53,27 +43,15 @@ const style = {
 
 const CreateEditEmployees = ({ refresh, edit = false, row }) => {
   const [open, setOpen] = React.useState(false);
-  const { employees, employeesLoading } = useSelector(
-    (store) => store.allUsers
-  );
-  const {
-    name,
-    role,
-    dob,
-    basic_pay,
-    hra,
-    ta,
-    bank,
-    ifsc,
-    acc_number,
-    target,
-    joining_date,
-  } = employees;
+  const { employees, employeesLoading } = useSelector((store) => store.allUsers);
+  const { name, role, dob, basic_pay, hra, ta, bank, ifsc, acc_number, target, joining_date } = employees;
   const dispatch = useDispatch();
+
   const handleOpen = () => {
     setOpen(true);
     if (row) dispatch(setEmployeesData(row));
   };
+
   const handleClose = () => {
     setOpen(false);
     dispatch(resetDataEmployees());
@@ -89,15 +67,11 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
     e.preventDefault();
     if (edit) {
       try {
-        // patch request
-        await dispatch(
-          updateEmployee({ ...employees, user_id: row?.id })
-        ).unwrap();
+        await dispatch(updateEmployee({ ...employees, user_id: row?.id })).unwrap();
         handleClose();
       } catch (error) {}
     } else {
       try {
-        // post request
         await dispatch(addEmployee(employees)).unwrap();
         if (refresh) refresh();
         handleClose();
@@ -106,13 +80,7 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "end",
-      }}
-    >
-      {" "}
+    <Box sx={{ display: "flex", justifyContent: "end" }}>
       {edit ? (
         <Tooltip title="Edit Account">
           <IconButton onClick={handleOpen}>
@@ -127,16 +95,10 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
         <Tooltip title="Add Account">
           <Button
             variant="outlined"
-            // className="button-transparent"
             className="refresh-icon-risk"
             onClick={handleOpen}
             startIcon={
-              <IconButton
-                sx={{
-                  p: 0,
-                  color: whiteColor(),
-                }}
-              >
+              <IconButton sx={{ p: 0, color: whiteColor() }}>
                 <AddCircleOutlineIcon />
               </IconButton>
             }
@@ -147,13 +109,12 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
         </Tooltip>
       )}
       <Box>
-        <Modal
+        <Drawer
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+         anchor="right"
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <Box
               sx={{
                 height: { md: "max-content", sm: "70vh", xs: "70vh" },
@@ -171,14 +132,13 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                 validate
                 autoComplete="off"
                 onSubmit={handleSubmit}
-                sx={{
-                  "& .MuiTextField-root": { m: 2 },
-                }}
+                sx={{ "& .MuiTextField-root": { m: 2 } }}
               >
                 <Grid container sx={{ pt: 1 }}>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Name"
                         id="name"
                         name="name"
@@ -191,28 +151,23 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                          label="Joining Date"
-                          value={joining_date}
-                          onChange={(newValue) => {
-                            dispatch(
-                              handleChangeEmployees({
-                                name: "joining_date",
-                                value: yyyymmdd(newValue),
-                              })
-                            );
-                          }}
-                          renderInput={(params) => (
-                            <TextField autoComplete="off" {...params} size="small" error={false} />
-                          )}
-                        />
-                      </LocalizationProvider>
+                      <TextField
+                        autoComplete="off"
+                        label="Joining Date"
+                        id="joining_date"
+                        name="joining_date"
+                        size="small"
+                        required
+                        type="date"
+                        value={joining_date}
+                        onChange={handleChange}
+                      />
                     </FormControl>
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Role"
                         id="role"
                         name="role"
@@ -225,29 +180,24 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                          label="Date of birth"
-                          value={dob}
-                          onChange={(newValue) => {
-                            dispatch(
-                              handleChangeEmployees({
-                                name: "dob",
-                                value: yyyymmdd(newValue),
-                              })
-                            );
-                          }}
-                          renderInput={(params) => (
-                            <TextField autoComplete="off" {...params} size="small" error={false} />
-                          )}
-                        />
-                      </LocalizationProvider>
+                      <TextField
+                        autoComplete="off"
+                        label="Date of Birth"
+                        id="dob"
+                        name="dob"
+                        size="small"
+                        required
+                        type="date"
+                        value={dob}
+                        onChange={handleChange}
+                      />
                     </FormControl>
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
-                        label="Basic pay"
+                      <TextField
+                        autoComplete="off"
+                        label="Basic Pay"
                         id="basic_pay"
                         name="basic_pay"
                         size="small"
@@ -260,7 +210,8 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="HRA"
                         id="hra"
                         name="hra"
@@ -274,7 +225,8 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="TA"
                         id="ta"
                         name="ta"
@@ -288,7 +240,8 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Target"
                         id="target"
                         name="target"
@@ -302,7 +255,8 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Bank"
                         id="bank"
                         name="bank"
@@ -315,7 +269,8 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="IFSC"
                         id="ifsc"
                         name="ifsc"
@@ -323,15 +278,13 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                         required
                         value={ifsc}
                         onChange={handleChange}
-                        // inputProps={{
-                        //   pattern: "/^[A-Za-z]{4}[0-9a-zA-Z]{7}$/",
-                        // }}
                       />
                     </FormControl>
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Account Number"
                         id="acc_number"
                         name="acc_number"
@@ -339,25 +292,18 @@ const CreateEditEmployees = ({ refresh, edit = false, row }) => {
                         required
                         value={acc_number}
                         onChange={handleChange}
-                        // inputProps={{
-                        //   pattern: `${PATTERNS.ACCOUNT_NUMBER}`,
-                        // }}
                       />
                     </FormControl>
                   </Grid>
                 </Grid>
+                <ModalFooter handleClose={handleClose} />
               </Box>
             </Box>
-            <ModalFooter
-              form="employees"
-              type="submit"
-              btn="Submit"
-              disable={employeesLoading}
-            />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );
 };
+
 export default CreateEditEmployees;

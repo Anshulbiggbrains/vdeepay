@@ -573,11 +573,11 @@ export const customer_nav = [
                 icon2: TransactionIconWhite,
                 to: "/customer/purchase",
               },
-              {
-                title:"Logout",
-                icon: mypurchase,
-                to:"/login", 
-                },
+              // {
+              //   title:"Logout",
+              //   icon: mypurchase,
+              //   to:"/login", 
+              //   },
                
               
               {

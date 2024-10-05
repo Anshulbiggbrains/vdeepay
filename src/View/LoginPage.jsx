@@ -10,6 +10,7 @@ import {
   Link,
   Typography,
   Hidden,
+  Divider,
 } from "@mui/material";
 import * as Yup from "yup";
 import { Controller, useForm } from "react-hook-form";
@@ -390,13 +391,13 @@ const LoginPage = () => {
               maxWidth: "56%",
               maxHeight: "46%",
               objectFit: "cover",
-              mb: 10,
+              mb: 4,
             }}
           />
           <Loader loading={loading} />
           <Box component="form" id="contact" onSubmit={handleClick}>
             {!isOtpField && !isOtpField ? (
-              <Grid container spacing={1} sx={{ mb: 6 }}>
+              <Grid container spacing={0.5} sx={{ mb: 6 }}>
                 <Grid item xs={12} sx={{ mb: 2 }}>
                   <FormControl sx={{ width: "100%" }}>
                   <Typography fullWidth sx={{ display:"flex",justifyContent:"left", fontWeight:"bold"}}>Username</Typography>
@@ -440,8 +441,10 @@ const LoginPage = () => {
                       error={!isMobv}
                       helperText={!isMobv ? "Enter valid Mobile" : ""}
                       sx={{
-                        borderRadius: "20%"
-                      }}
+                        borderRadius: '50px',
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '50px',
+                      }}}
                       onChange={(e) => {
                         setIsMobv(PATTERNS.MOBILE.test(e.target.value));
                         if (e.target.value === "") setIsMobv(true);
@@ -482,6 +485,11 @@ const LoginPage = () => {
                           variant="outlined"
                           // error={!!errors.password}
                           error={!isPassV}
+                          sx={{
+                            borderRadius: '50px',
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '50px',},
+                          }}
                           helperText={
                             // errors.password ? errors.password.message : ""
                             !isPassV
@@ -543,7 +551,7 @@ const LoginPage = () => {
                       marginTop: -5,
                     }}
                   >
-                    <ForgotPass />
+                  <ForgotPass />
                   </FormControl>
                 </Grid>
 
@@ -626,7 +634,7 @@ const LoginPage = () => {
                 >
                   Sign Up
                 </Button> */}
-               <Typography
+               {/* <Typography
                         variant="body2"
                         color="textSecondary"
                         fontSize={14}
@@ -640,7 +648,14 @@ const LoginPage = () => {
                         >
                           Register Here!
                         </Link>
-                      </Typography>
+                      </Typography> */}
+                      <Divider
+                        sx={{
+                          height: "10px", // Set height
+                          backgroundColor: "black", // Use backgroundColor instead of color
+                          border: "none", // Remove the default border if you want a solid color
+                        }}
+                      />
                 </Grid>
               </Grid>
             ) : (

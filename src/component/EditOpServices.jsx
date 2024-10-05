@@ -9,6 +9,7 @@ import {
   IconButton,
   Modal,
   MenuItem,
+  Drawer,
 } from "@mui/material";
 
 import { useState } from "react";
@@ -123,13 +124,13 @@ const EditOpServices = ({ refresh, row }) => {
         </IconButton>
       </Tooltip>
       <Box>
-        <Modal
+        <Drawer
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          anchor="right"
+       
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader title={`Edit Operator`} handleClose={handleClose} />
             <Box
@@ -222,7 +223,7 @@ const EditOpServices = ({ refresh, row }) => {
               disable={request}
             />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );

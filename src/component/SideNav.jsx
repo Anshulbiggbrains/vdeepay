@@ -9,9 +9,6 @@ import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import RightNavbar from "./RightNavbar";
 import AuthContext from "../store/AuthContext";
@@ -49,6 +46,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const drawerWidth = 250;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -57,7 +55,6 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
- 
 });
 
 const closedMixin = (theme) => ({
@@ -183,8 +180,8 @@ export default function SideNav(props, { data }) {
   const handleLogout = () => {
     authCtx.logout();
     setAnchorEl(null);
+    navigate("/login")
   };
-  console.log("userdata of", user);
   const leftNav =
     user && user.role === "Admin"
       ? Admin_nav
@@ -242,7 +239,7 @@ export default function SideNav(props, { data }) {
         : customer_nav
       : nav;
 
-  const outletBoxStyle = {
+  const  outletBoxStyle = {
     
     width: {
       lg:
@@ -301,7 +298,7 @@ export default function SideNav(props, { data }) {
           />
         )}
       </DrawerHeader>
-   
+
       <List
         sx={{
           height: { xs: "80vh", sm: "100vh" },
@@ -339,7 +336,24 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
-        {/* {open && ( */}
+         {open && (
+          <Typography
+          onClick={handleLogout}
+            sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
+          >
+            <span
+              style={{
+                opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px",
+              }}
+            >
+              Logout
+            </span>
+
+          </Typography>
+        )}
         {open && (
           <Typography
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
@@ -376,8 +390,6 @@ export default function SideNav(props, { data }) {
           paddingRight: "0px !important",
           background:"white",
           borderRadius:"0px 0px 0px 10px ",
-          
-         
         }}
       >
         <Toolbar
@@ -386,7 +398,7 @@ export default function SideNav(props, { data }) {
             alignItems: "center",
             justifyContent: "space-between",
             pr: { xs: 0, md: 1 },
-      borderRadius:"0px 0px 0px 10px ",
+            borderRadius: "0px 0px 0px 10px ",
           }}
           className="nav"
         >
@@ -413,9 +425,7 @@ export default function SideNav(props, { data }) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: { md: 2, sm: 0, xs: 0 },
-                display: { sm: "none" } }
-              }
+                sx={{ mr: { md: 2, sm: 0, xs: 0 }, display: { sm: "none" } }}
               >
                 <MenuIcon />
               </IconButton>
@@ -449,14 +459,12 @@ export default function SideNav(props, { data }) {
           <div
             style={{
               display: "flex",
-              marginRight:"10px",
+              marginRight: "10px",
               justifyContent: "end",
-              
             }}
           >
-           <WalletCard/>
+            <WalletCard />
           </div>
-          
         </Toolbar>
       </WebAppBar>
 
@@ -471,7 +479,7 @@ export default function SideNav(props, { data }) {
         }}
         sx={{
           display: { xs: "block", sm: "none" },
-          
+
           position: "absolute",
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
@@ -491,6 +499,7 @@ export default function SideNav(props, { data }) {
       {user?.layout ? (
         user?.layout * 1 === 1 && (
           <>
+          
             <WebDrawer
               variant="permanent"
               open={open}
@@ -502,7 +511,6 @@ export default function SideNav(props, { data }) {
                 zIndex: "1000",
                 display: { xs: "none", sm: "block" },
                 "& .MuiDrawer-paper": {
-                 
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
                   // border: "1px solid rgba(35, 25, 66, 0.3)",
@@ -510,13 +518,14 @@ export default function SideNav(props, { data }) {
               }}
               className=""
             >
+                {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
               {drawer}
             </WebDrawer>
           </>
         )
       ) : (
         <>
-          <WebDrawer
+               <WebDrawer
             variant="permanent"
             open={open}
             // open={true}
@@ -533,6 +542,8 @@ export default function SideNav(props, { data }) {
             }}
             className=""
           >
+               <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }} onClick={handleDrawerToggle} />
+
             {drawer}
           </WebDrawer>
         </>
@@ -577,7 +588,6 @@ export default function SideNav(props, { data }) {
             ? ""
             : user?.role === "Acc"
             ? ""
-            
             : // : user?.role === "Api"
               // ? ""
               location.pathname !== "/customer/transactions" &&

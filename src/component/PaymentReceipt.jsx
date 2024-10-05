@@ -632,7 +632,7 @@ const PaymentReceipt = () => {
                       variant="body2"
                       sx={{ fontSize: "0.875rem", color: "#256BC5" }}
                     >
-                      Email: impsguru@gmail.com
+                      Email: VdeePay@gmail.com
                     </Typography>
                   </Box>
 

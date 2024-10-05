@@ -53,8 +53,8 @@ const LandingPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{process.env.REACT_APP_TITLE}</title>
-        <meta name="description" content="ImpsGuru" />
-        <meta name="keywords" content="ImpsGuru" />
+        <meta name="description" content="VdeePay" />
+        <meta name="keywords" content="VdeePay" />
       </Helmet>
       <div className="app-content">
         <LandingPageIntro />

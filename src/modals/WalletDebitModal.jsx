@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import {
   Box,
+  Drawer,
   FormControl,
   Grid,
   IconButton,
@@ -99,13 +100,12 @@ const WalletDebitModal = ({ row }) => {
         </IconButton>
       </Tooltip>
 
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    anchor="right"
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:400}} className="sm_modal">
           <Loader loading={request} />
           <ModalHeader title="Wallet Debit" handleClose={handleClose} />
 
@@ -225,7 +225,7 @@ const WalletDebitModal = ({ row }) => {
             <ModalFooter form="edit-user" request={request} btn="Submit" />
           </Box>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

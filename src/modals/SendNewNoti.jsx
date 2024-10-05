@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import {
   Button,
+  Drawer,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -120,13 +121,12 @@ const SendNewNoti = ({ refresh }) => {
 
 
       <Box>
-        <Modal
+        <Drawer
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+   anchor="right"
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}}>
             <ModalHeader title="Send Notification" handleClose={handleClose} />
             <Box
               component="form"
@@ -211,7 +211,7 @@ const SendNewNoti = ({ refresh }) => {
               btn="Send"
             />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );

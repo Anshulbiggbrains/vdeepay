@@ -225,180 +225,174 @@ const DmtContainer = ({
   };
   console.log("type is", type);
 
-          console.log("rem",remitterStatus);
-          const tabs = [
-            { label: "Dmt 1",  },
-            { label: "Dmt 2",   },
-          ];
-          const handleChange = (event, newValue) => {
-            console.log("newval",newValue);
-            setValue(newValue);
-            settype(mt_tab_value[newValue])
-            setCurrentType(mt_tab_value[newValue])
-            console.log("cms value is",type)
-      
-          };
-    return (
-      <>
-        {user && !user.instId && (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100vh",
-              width:"100%"              
-            }}
-          >
-            <OutletRegistration autoOpen />
-          </Box>
-        )}
-  
-        {user && user.instId && (
-          <>
-            {user?.layout && user?.layout === 2 && (
-              <Box
-                className="card-css"
-                sx={{
-                  width: "100%",
-                  my: 2,
-                  p: 2,
-                  py: 1,
-                  mt:12
-                }}
-              >
-                <Typography className="services-heading">
-                  Banking Services
-                </Typography>
-                <Grid container>
-                  {user?.st === 0 ||
-                  user.dmt4 === 0 ||
-                  user?.aeps === 0 ||
-                  user?.nepal_transfer === 0 ||
-                  user?.upi_transfer === 0
-                    ? banking
-                        .filter((item) => {
-                          if (user?.st === 0 && item.title === "Super Transfer") {
-                            return undefined;
-                          }
-                          if (
-                            user?.dmt4 === 0 &&
-                            item.title === "Express Transfer"
-                          ) {
-                            return undefined;
-                          }
-                          if (user?.aeps === 0 && item.title === "AEPS") {
-                            return undefined;
-                          }
-                          if (
-                            user?.nepal_transfer === 0 &&
-                            item.title === "Nepal Transfer"
-                          ) {
-                            return undefined;
-                          }
-                          if (
-                            user?.upi_transfer === 0 &&
-                            item.title === "UPI Transfer"
-                          ) {
-                            return undefined;
-                          } else {
-                            return item;
-                          }
-                        })
-                        .map((mitem, index) => {
-                          return (
-                            <Grid
-                              item
-                              md={2}
-                              key={index}
-                              onClick={() => navigate(mitem.to)}
-                              className="horizontal-sidenav"
-                            >
-                              <HNavButton item={mitem} />
-                            </Grid>
-                          );
-                        })
-                    : banking.map((item, index) => {
+  console.log("rem", remitterStatus);
+  const tabs = [{ label: "Dmt 1" }, { label: "Dmt 2" }];
+  const handleChange = (event, newValue) => {
+    console.log("newval", newValue);
+    setValue(newValue);
+    settype(mt_tab_value[newValue]);
+    setCurrentType(mt_tab_value[newValue]);
+    console.log("cms value is", type);
+  };
+  return (
+    <>
+    
+      {user && !user.instId && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100%",
+          }}
+        >
+          <OutletRegistration autoOpen />
+        </Box>
+      )}
+
+      {user && user.instId && (
+        <>
+          {user?.layout && user?.layout === 2 && (
+            <Box
+              className="card-css"
+              sx={{
+                width: "100%",
+                my: 2,
+                p: 2,
+                py: 1,
+                mt: 12,
+              }}
+            >
+              <Typography className="services-heading">
+                Banking Services
+              </Typography>
+              <Grid container>
+                {user?.st === 0 ||
+                user.dmt4 === 0 ||
+                user?.aeps === 0 ||
+                user?.nepal_transfer === 0 ||
+                user?.upi_transfer === 0
+                  ? banking
+                      .filter((item) => {
+                        if (user?.st === 0 && item.title === "Super Transfer") {
+                          return undefined;
+                        }
+                        if (
+                          user?.dmt4 === 0 &&
+                          item.title === "Express Transfer"
+                        ) {
+                          return undefined;
+                        }
+                        if (user?.aeps === 0 && item.title === "AEPS") {
+                          return undefined;
+                        }
+                        if (
+                          user?.nepal_transfer === 0 &&
+                          item.title === "Nepal Transfer"
+                        ) {
+                          return undefined;
+                        }
+                        if (
+                          user?.upi_transfer === 0 &&
+                          item.title === "UPI Transfer"
+                        ) {
+                          return undefined;
+                        } else {
+                          return item;
+                        }
+                      })
+                      .map((mitem, index) => {
                         return (
                           <Grid
                             item
                             md={2}
                             key={index}
-                            onClick={() => navigate(item.to)}
+                            onClick={() => navigate(mitem.to)}
                             className="horizontal-sidenav"
                           >
-                            <HNavButton item={item} />
+                            <HNavButton item={mitem} />
                           </Grid>
                         );
-                      })}
-                </Grid>
-              </Box>
-            )}
-            <div
-              style={{
-                height: "90vh",
-                alignItems: infoFetchedMob
-                  ? "flex-start"
-                  : user?.layout && user?.layout === 2
-                  ? "start"
-                  : "center",
-              }}
-              className="position-relative"
-            >
-              <Loader circleBlue loading={request} />
-              {/* <Loaders/> */}
-              {/* initial form */}
-              <Grid
-                container
-                sx={{
-                  display: "flex",
-                }}
-              >
-            <Grid
-                          item xs={12} sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
-                  
-                >   
-                       {!infoFetchedMob && !infoFetchedMob&&!addNewRem && !addNewRem && !verifyotp &&
-                        <CustomTabs
-      tabs={tabs}
-      value={value}
-      onChange={handleChange}
-    />   
-                       }             
-                  <Card
-                    className="card-css"
-                    sx={{
-                      width: "100%",
-                      px: 7,
-                      py: 2,
-                      mt:2
-                    }}
-                  >    
-                   <Grid
-            item
-            md={12}
-            xs={12}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              mb: 2,
+                      })
+                  : banking.map((item, index) => {
+                      return (
+                        <Grid
+                          item
+                          md={2}
+                          key={index}
+                          onClick={() => navigate(item.to)}
+                          className="horizontal-sidenav"
+                        >
+                          <HNavButton item={item} />
+                        </Grid>
+                      );
+                    })}
+              </Grid>
+            </Box>
+          )}
+          <div
+            style={{
+              height: "90vh",
+              alignItems: infoFetchedMob
+                ? "flex-start"
+                : user?.layout && user?.layout === 2
+                ? "start"
+                : "center",
             }}
-          >    
-                         <Button
-                          size="small"
-                          id="verify-btn"
-                          className="button-props"
-                          onClick={handleBack}
-                        >    
-                             
-                               <span style={{ marginRight: '5px' }}>Back</span>
-                          <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
-                        </Button> 
-                        </Grid>        
-                    <div>
-               
-                      {!mobile?(
+            className="position-relative"
+          >
+            <Loader circleBlue loading={request} />
+            {/* <Loaders/> */}
+            {/* initial form */}
+            <Grid
+              container
+              sx={{
+                display: "flex",
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
+              >
+                <CustomTabs tabs={tabs} value={value} onChange={handleChange} />
+                <Card
+                  className="card-css"
+                  sx={{
+                    width: "100%",
+                    px: 7,
+                    py: 2,
+                    mt: 2,
+                  }}
+                >
+                  <Grid
+                    item
+                    md={12}
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <img
+                        src={back}
+                        alt="UPI logo"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                  </Grid>
+                  <div>
+                    {!mobile ? (
                       <Typography
                         sx={{
                           fontSize: "24px",

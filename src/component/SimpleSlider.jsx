@@ -57,7 +57,7 @@ const SimpleSlider = () => {
           <figure className="SliderCard2">
             <Grid container xs={12}>
               <Grid
-                md={env === "ImpsGuru" || env === "PaisaKart" ? 6 : 12}
+                md={env === "VdeePay" || env === "PaisaKart" ? 6 : 12}
                 sm={12}
               >
                 <Box container>
