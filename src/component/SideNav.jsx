@@ -308,7 +308,6 @@ export default function SideNav(props, { data }) {
           overflowY: "scroll",
            background: "#105497",
            borderRadius:"0px 10px"
-         
         }}
       >
         {leftNav.map((item, index) => {
