@@ -1,44 +1,44 @@
 export const primaryColor = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#1877F2";
   }
 };
 export const primaryLight = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#1877F2";
   }
 };
 export const primaryLightest = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#baa7d1";
   }
 };
 export const secondaryColor = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#1877F2";
   }
 };
 
 export const getHoverActive = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#231942";
   }
 };
 export const getHoverInActive = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return "#4045A1";
   }
 };
 
 export const getTableHeadRowColor = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return " #E49B0F";
   }
 };
 
 export const getEnv = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
-    return "ImpsGuru";
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
+    return "VdeePay";
   }
 };
 export const blackColor = () => {
@@ -50,7 +50,7 @@ export const whiteColor = () => {
 
 // user icon bg color change functions . . . .
 export const getUserColor = (role) => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     if (role === "Asm") {
       return "#1C2E46";
     }else if (role === "ZSM") {
@@ -130,18 +130,18 @@ export const getStatusColor = (status) => {
 };
 
 export const getFirmAddress = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return `Mobifast Solutions Plot No. 8 Pocket, 6, Sector 22, Rohini, Delhi, 110086`;
   }
 };
 export const getFirmContact = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
     return `01149954822`;
   }
 };
 export const getFirmEmail = () => {
-  if (process.env.REACT_APP_TITLE === "ImpsGuru") {
-    return `impsguru@gmail.com`;
+  if (process.env.REACT_APP_TITLE === "VdeePay") {
+    return `VdeePay@gmail.com`;
   }
 };
 
