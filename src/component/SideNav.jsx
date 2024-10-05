@@ -9,9 +9,6 @@ import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import RightNavbar from "./RightNavbar";
 import AuthContext from "../store/AuthContext";
@@ -242,7 +239,7 @@ export default function SideNav(props, { data }) {
         : customer_nav
       : nav;
 
-  const outletBoxStyle = {
+  const  outletBoxStyle = {
     
     width: {
       lg:

@@ -4,7 +4,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded"; // Using a roun
 
 const ModalHeader = ({
   title = "Modal heading",
-  subtitle = "Proceed your journey with Imps Guru.",
+  subtitle = "Start your journey with VdeePay.",
   handleClose,
 }) => {
   return (

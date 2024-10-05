@@ -3,6 +3,7 @@
 import {
   Button,
   Card,
+  Drawer,
   Grid,
   LinearProgress,
   Modal,
@@ -84,13 +85,13 @@ const BankChargesModal = ({
         {icon}
       </Box>
 
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        anchor="right"
+      
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:400}} >
           <ModalHeader
             title={`Bank Charges Details`}
             handleClose={handleClose}
@@ -117,7 +118,7 @@ const BankChargesModal = ({
             </Grid>
           </Box>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

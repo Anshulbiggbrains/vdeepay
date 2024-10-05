@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
   Button,
+  Drawer,
 } from "@mui/material";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { postJsonData } from "../network/ApiController";
@@ -153,13 +154,13 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
         </Tooltip>
       )}
       <Box>
-        <Modal
+        <Drawer
           open={open}
+          anchor="right"
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <ModalHeader
               title={`${action} (${row.name})`}
               handleClose={handleClose}
@@ -395,7 +396,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
 
             <ModalFooter form="cred_req" type="submit" request={request} />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );
