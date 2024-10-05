@@ -88,6 +88,7 @@ import AdminServices from "./View/AdminServices";
 import AdminApiServices from "./View/AdminApiServices";
 import Documents from "./View/Documents";
 import ProfilePage from "./component/Profile";
+import RetAdDdDashboard from "./View/RetAdDdDashboard";
 // import IRCTCView from "./View/Travel/IRCTCView";
 // import MainTravelContainer from "./View/Travel/MainTravelContainer";
 
@@ -237,7 +238,7 @@ function App() {
                     path={authCtx?.user?.role === "Ad" ? "ad" : "md"}
                     element={<SideNav />}
                   >
-                    <Route path="dashboard" element={<RetDdDashboard />} />
+                    <Route path="dashboard" element={<RetAdDdDashboard />} />
                     <Route path="users" element={<AdimUserView />} />
                     <Route
                       path="transactions"
