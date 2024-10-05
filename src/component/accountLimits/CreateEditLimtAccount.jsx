@@ -10,6 +10,7 @@ import {
   IconButton,
   Modal,
   MenuItem,
+  Drawer,
 } from "@mui/material";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -144,13 +145,13 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
         </Tooltip>
       )}
       <Box>
-        <Modal
+        <Drawer
+        anchor="right"
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+         
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader
               title={edit ? `Edit Account` : `Create Account`}
@@ -238,7 +239,7 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
               disable={request}
             />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );

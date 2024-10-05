@@ -9,6 +9,7 @@ import {
   MenuItem,
   Tooltip,
   colors,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -85,13 +86,12 @@ const IssueHandlerModal = ({ row, refresh }) => {
           <Icon icon="mdi:call-to-action" width={28} height={28} />
         </IconButton>
       </Tooltip>
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    anchor="right"
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:400}} className="sm_modal">
           <Loader loading={request} />
           <ModalHeader title="Handle Issue" handleClose={handleClose} />
           <Box
@@ -132,7 +132,7 @@ const IssueHandlerModal = ({ row, refresh }) => {
           </Box>
           <ModalFooter form="issueHandler" request={request} btn="save" />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };
