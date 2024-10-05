@@ -71,7 +71,7 @@ const ForgotPass = ({ refresh }) => {
         //   textTransform: "capitalize",
         //   padding: "2px 8px",
         // }}
-        sx={{ color: '#4253F0', fontSize: "10px", fontFamily: 'Manrope', fontWeight: 'bold' }}
+        sx={{ color: '#4253F0', fontSize: "10px", fontFamily: 'Manrope', fontWeight: 'bold', mt: 2 }}
         onClick={handleOpen}
       >
         Forgot Password

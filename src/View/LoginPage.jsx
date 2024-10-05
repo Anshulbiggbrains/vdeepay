@@ -440,8 +440,10 @@ const LoginPage = () => {
                       error={!isMobv}
                       helperText={!isMobv ? "Enter valid Mobile" : ""}
                       sx={{
-                        borderRadius: "20%"
-                      }}
+                        borderRadius: '50px',
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '50px',
+                      }}}
                       onChange={(e) => {
                         setIsMobv(PATTERNS.MOBILE.test(e.target.value));
                         if (e.target.value === "") setIsMobv(true);
@@ -482,6 +484,11 @@ const LoginPage = () => {
                           variant="outlined"
                           // error={!!errors.password}
                           error={!isPassV}
+                          sx={{
+                            borderRadius: '50px',
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '50px',},
+                          }}
                           helperText={
                             // errors.password ? errors.password.message : ""
                             !isPassV
@@ -543,7 +550,7 @@ const LoginPage = () => {
                       marginTop: -5,
                     }}
                   >
-                    <ForgotPass />
+                  <ForgotPass />
                   </FormControl>
                 </Grid>
 
