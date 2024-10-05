@@ -89,6 +89,7 @@ const NepalTransfer = ({ resetView }) => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
+  const [mobileNum, setMobileNum]=useState();
 
   const customerId = searchParams.get("customerId");
   const reqNoparam = searchParams.get("cpuniquerefno");
@@ -154,6 +155,7 @@ const NepalTransfer = ({ resetView }) => {
         data.number = value;
       }
     }
+    setMobileNum(data)
 
     postJsonData(
       ApiEndpoints.NEPAL_CUSTOMER_STATUS,
@@ -410,73 +412,79 @@ const NepalTransfer = ({ resetView }) => {
               >
                 <Grid container>
                   <Grid item md={12} xs={12}>
-                  {!infoFetchedMob && !infoFetchedMob&&!newCustomer&&
-                  <>
-                    <FormControl sx={{ width: "100%" }}>
-                      <TextField autoComplete="off"
-                        label="Mobile Number"
-                        id="mobile"
-                        name="mobile"
-                        type="tel"
-                        value={mobile}
-                        size="small"
-                        onChange={(e) => {
-                          setIsMobv(PATTERNS.MOBILE.test(e.target.value));
-                          setMobile(e.target.value);
-                          if (e.target.value === "") {
-                            setNewCustomer("");
-                            setInfoFetchedMob(false);
-                            //   bene && setBene([]);
-                            setIsMobv(true);
-                          } else if (e.target.value.length === 9) {
-                            setNewCustomer("");
-                            setInfoFetchedMob(false);
-                            //   bene && setBene([]);
-                          } else if (PATTERNS.MOBILE.test(e.target.value)) {
-                            getCustomerByMobileOrId(e.target.value, "byMobile");
-                          }
-                        }}
-                        error={!isMobv}
-                        helperText={!isMobv ? "Enter valid Mobile" : ""}
-                        onKeyDown={(e) => {
-                          if (
-                            (e.which >= 65 &&
-                              e.which <= 90 &&
-                              e.which !== 86) ||
-                            e.key === "+"
-                          ) {
-                            e.preventDefault();
-                          }
-                          if (e.target.value.length === 10) {
-                            if (e.key.toLowerCase() !== "backspace") {
-                              e.preventDefault();
-                            }
+                    {!infoFetchedMob && !infoFetchedMob && !newCustomer && (
+                      <>
+                        <FormControl sx={{ width: "100%" }}>
+                          <TextField
+                            autoComplete="off"
+                            label="Mobile Number"
+                            id="mobile"
+                            name="mobile"
+                            type="tel"
+                            value={mobile}
+                            size="small"
+                            onChange={(e) => {
+                              setIsMobv(PATTERNS.MOBILE.test(e.target.value));
+                              setMobile(e.target.value);
+                              if (e.target.value === "") {
+                                setNewCustomer("");
+                                setInfoFetchedMob(false);
+                                //   bene && setBene([]);
+                                setIsMobv(true);
+                              } else if (e.target.value.length === 9) {
+                                setNewCustomer("");
+                                setInfoFetchedMob(false);
+                                //   bene && setBene([]);
+                              } else if (PATTERNS.MOBILE.test(e.target.value)) {
+                                getCustomerByMobileOrId(
+                                  e.target.value,
+                                  "byMobile"
+                                );
+                              }
+                            }}
+                            error={!isMobv}
+                            helperText={!isMobv ? "Enter valid Mobile" : ""}
+                            onKeyDown={(e) => {
+                              if (
+                                (e.which >= 65 &&
+                                  e.which <= 90 &&
+                                  e.which !== 86) ||
+                                e.key === "+"
+                              ) {
+                                e.preventDefault();
+                              }
+                              if (e.target.value.length === 10) {
+                                if (e.key.toLowerCase() !== "backspace") {
+                                  e.preventDefault();
+                                }
 
-                            if (e.key.toLowerCase() === "backspace") {
+                                if (e.key.toLowerCase() === "backspace") {
+                                }
+                              }
+                            }}
+                            inputProps={{
+                              form: {
+                                autocomplete: "off",
+                              },
+                              maxLength: "10",
+                            }}
+                            disabled={
+                              (request && request && true) || customerId
                             }
-                          }
-                        }}
-                        inputProps={{
-                          form: {
-                            autocomplete: "off",
-                          },
-                          maxLength: "10",
-                        }}
-                        disabled={(request && request && true) || customerId}
-                      />
-                    </FormControl>
-
-                
-                       </>
-}
+                          />
+                        </FormControl>
+                      </>
+                    )}
                   </Grid>
-                  {newCustomer&&
-                         <NepalAddCustomer
-                         modelOpenHook={newCustomer}
-                         setMobile={setMobile}
-                         getCustomerByMobileOrId={getCustomerByMobileOrId}
-                       />
-                    }
+                  {newCustomer && (
+                    <NepalAddCustomer
+
+                      modelOpenHook={newCustomer}
+                      setMobile={setMobile}
+                      mobileNum={mobileNum}
+                      getCustomerByMobileOrId={getCustomerByMobileOrId}
+                    />
+                  )}
                   {infoFetchedMob && infoFetchedMob && (
                     <Grid
                       className="remitter-card"
@@ -676,58 +684,53 @@ const NepalTransfer = ({ resetView }) => {
                         2. Biometric verification
                       </Typography>
 
-                  <NepalMachine
-                    setMachineRequest={setMachineRequest}
-                    machineRequest={machineRequest}
-                    nepalAllRes={nepalAllRes}
-                    reqNo={reqNo}
-                    setNepalOnboardModalOpen={setNepalOnboardModalOpen}
-                  />
-
-                </Grid>
-              
-              ) : (
-
-                
-                <Grid
-                  lg={12}
-                  sm={12}
-                  xs={12}
-                  sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
-
-                >
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "end",
-                      mx: { md: 2, sm: 1, xs: 0 },
-                      mr: { xs: 1.3, md: 2 },
-                    }}
-                  >
-
+                      <NepalMachine
+                        setMachineRequest={setMachineRequest}
+                        machineRequest={machineRequest}
+                        nepalAllRes={nepalAllRes}
+                        reqNo={reqNo}
+                        setNepalOnboardModalOpen={setNepalOnboardModalOpen}
+                      />
+                    </Grid>
+                  ) : (
+                    <Grid
+                      lg={12}
+                      sm={12}
+                      xs={12}
+                      sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
+                    >
                       <Box
-                  sx={{
-                    flex: 1, // Ensure it takes available space
-                    maxWidth: { lg: '100%', md: '200px', sm: '150px', xs: '100%' }, // Adjust max-width based on screen size
-                  }}
-                  >
-                    <BeneSearchBar
-                    
-                      setSearch={setSearch}
-                      label="Search for receiver"
-                    />
-                  </Box>
-                    <Typography sx={{ fontSize: "18px",mb:1}}>
-                      Receivers List ({nepalAllRes?.receivers?.length})
-                    </Typography>
-                    
-                  </Box>
-                
-                  
-                  <div
-                    className="
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "end",
+                          mx: { md: 2, sm: 1, xs: 0 },
+                          mr: { xs: 1.3, md: 2 },
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            flex: 1, // Ensure it takes available space
+                            maxWidth: {
+                              lg: "100%",
+                              md: "200px",
+                              sm: "150px",
+                              xs: "100%",
+                            }, // Adjust max-width based on screen size
+                          }}
+                        >
+                          <BeneSearchBar
+                            setSearch={setSearch}
+                            label="Search for receiver"
+                          />
+                        </Box>
+                        <Typography sx={{ fontSize: "18px", mb: 1 }}>
+                          Receivers List ({nepalAllRes?.receivers?.length})
+                        </Typography>
+                      </Box>
+
+                      <div
+                        className="
                     enable-scroll "
                         style={{
                           overflow: "auto", // Ensure that the overflow behavior is automatic
@@ -945,7 +948,7 @@ const NepalTransfer = ({ resetView }) => {
           {/* condition here if ekyc is not done if info is fetched */}
         </Grid>
       </div>
-   
+
       {/* nepal cus on boarding modal  */}
       <NepalCusOnboardModal
         nepalAllRes={nepalAllRes}
