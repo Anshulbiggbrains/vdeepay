@@ -409,8 +409,8 @@ const AdminOperatorView = () => {
           isFilterAllowed={user?.role?.toLowerCase() === "admin"}
           filterComponent={
             <FilterCard
-              topMargin={-1}
-              bottomMargin={-1}
+              // topMargin={-1}
+              // bottomMargin={-1}
               fromOperatorPage
               ifTypeFilter
               ifnameFilter
