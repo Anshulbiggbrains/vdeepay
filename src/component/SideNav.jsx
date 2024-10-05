@@ -183,8 +183,8 @@ export default function SideNav(props, { data }) {
   const handleLogout = () => {
     authCtx.logout();
     setAnchorEl(null);
+    navigate("/login")
   };
-  console.log("userdata of", user);
   const leftNav =
     user && user.role === "Admin"
       ? Admin_nav
@@ -339,7 +339,24 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
-        {/* {open && ( */}
+         {open && (
+          <Typography
+          onClick={handleLogout}
+            sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
+          >
+            <span
+              style={{
+                opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px",
+              }}
+            >
+              Logout
+            </span>
+
+          </Typography>
+        )}
         {open && (
           <Typography
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
@@ -376,8 +393,6 @@ export default function SideNav(props, { data }) {
           paddingRight: "0px !important",
           background:"white",
           borderRadius:"0px 0px 0px 10px ",
-          
-         
         }}
       >
         <Toolbar
