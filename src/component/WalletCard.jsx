@@ -147,7 +147,7 @@ const borderPulse = keyframes`
   return(
     <Grid 
     container 
-    spacing={2} 
+    spacing={1} 
     wrap="nowrap" 
     alignItems="center" 
     justifyContent="flex-start"
@@ -162,16 +162,17 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '170px', 
+          width:{ lg:'140px' ,sm:"125px"}, 
+
           border: '2px solid #D71313',
         }}
       >
         <Box  sx={{ minWidth: '100%', textAlign: 'left' }}> 
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontWeight: 'bold' }}>
-            ASM
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize:"10px",fontWeight:"bold"}}>
+            ASM- 
           </Typography>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
-            Mobile No-
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" ,}}>
+            Mobile No- 
           </Typography>
         </Box>
       </Box>
@@ -186,21 +187,23 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '175px', // Fixed width
+          width:{ lg:'140px' ,sm:"125px"}, 
           border: '2px solid #D71313',
         }}
       >
         <Box  sx={{ minWidth: '100%', textAlign: 'left' }}>
           <Box sx={{display:"flex"}}>
-          <Typography variant="body" sx={{ color: 'Black' ,fontWeight: 'bold'}}>
-            DD-   
+          <Typography variant="body" sx={{ color: 'Black' ,fontSize:"10px",fontWeight:"bold"}}>
+            DD- <span style={{ fontSize: '10px' }}>{user.name}</span>
+          </Typography>
+         
+          </Box>
+          
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px",fontWeight:"bold" }}>
+            Mobile No- <span style={{ fontSize: '10px' ,fontWeight:"bold"}}>{user.username}</span>
           </Typography>
           
-          <Typography  variant="" sx={{ color: 'black' }}><span>{user.name}</span></Typography>
-          </Box>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
-            Mobile No- <span>{user.username}</span>
-          </Typography>
+          
         </Box>
       </Box>
     </Grid>
@@ -214,20 +217,20 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '175px', // Fixed width
+          width:{ lg:'140px' ,sm:"105px"}, 
           border: '2px solid #D71313',
         }}
       >
-        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
+        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
         <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
             Wallet 1
           </Typography>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
             ₹ {numberSetter(user.w1 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }} />
       </Box>
     </Grid>
   
@@ -240,20 +243,20 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '170px',  // Fixed width
+          width:{ lg:'140px' ,sm:"105px"}, 
           border: '2px solid #D71313',
         }}
       >
-        <AccountBalanceWalletIcon sx={{ fontSize: 25, color: '#212b5a', mr: 2 }} />
+        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1}} />
         <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c', }}>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
             AEPS
           </Typography>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontWeight: 'bold' }}>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
             ₹ {numberSetter(user.w2 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 25, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1}} />
       </Box>
     </Grid>
   </Grid>

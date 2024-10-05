@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Box, FormControl, Grid, TextField, Typography } from "@mui/material";
+import { Box, FormControl, Grid, TextField, Typography,Button } from "@mui/material";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { postJsonData, get } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -12,8 +12,12 @@ import BillPaymentModal from "../modals/BillPaymentModal";
 import OperatorSearch from "./OperatorSearch";
 import CardComponent from "./CardComponent";
 import { faListSquares } from "@fortawesome/free-solid-svg-icons";
+import {
+  back,
+ 
+} from "../iconsImports";
 
-const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon }) => {
+const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon , resetView}) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -134,10 +138,38 @@ const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon }) => {
     setParams([operator.param1, operator.param2, operator.param3]); // Show all fields by default
   };
 console.log("oppp",opName);
-
+const handleBack = () => {
+  resetView(false);
+};
   return (
     <div className="position-relative" id="whole">
+       <Grid
+                    item
+                    md={12}
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <img
+                        src={back}
+                        alt="UPI logo"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    </Grid>
       <Loader loading={fetchRequest} circleBlue />
+
       {!IsOptSelected && (
       <Grid container spacing={2}>
       {operatorVal &&

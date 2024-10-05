@@ -7,6 +7,7 @@ import {
   Box,
   Modal,
   Tooltip,
+  Drawer,
 } from "@mui/material"; 
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -92,13 +93,13 @@ const EditOperator = ({ row, refresh }) => {
         </IconButton>
       </Tooltip>  */}
 
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        anchor="right"
+    
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:400}} className="sm_modal">
           <ModalHeader title="Operator" handleClose={handleClose} />
           <Box
             component="form"
@@ -161,7 +162,7 @@ const EditOperator = ({ row, refresh }) => {
             <ModalFooter form="edit-operator" request={request} btn="Proceed" />
           </Box>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

@@ -339,57 +339,63 @@ const AdminOperatorView = () => {
         <ApiPaginateSearch
           actionButtons={
             <Grid
-              item
-              md={12}
-              sm={12}
-              xs={12}
+            item
+            md={12}
+            sm={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: { md: "end", xs: "start" },
+              alignItems: "center",
+              mt: "-45px", // Adjust the margin as needed
+              gap: 2, // Adds space between items on the same row
+            }}
+          >
+            {/* Show operator switch if user is Admin */}
+            <Mount visible={user?.role === "Admin"}>
+              <FormGroup sx={{ display: "flex", alignItems: "center" }}>
+                <FormControlLabel
+                  sx={{
+                    mt: { md: 0, sm: 2, xs: 2 },
+                    mb: { md: 0, sm: 2, xs: 2 },
+                  }}
+                  control={
+                    <Switch
+                      value={showoperatorservices}
+                      defaultChecked={showoperatorservices}
+                      onChange={handleOpServices}
+                    />
+                  }
+                  label={
+                    <Typography variant="body2" style={{ fontSize: "15px" }}>
+                      Api Services
+                    </Typography>
+                  }
+                />
+              </FormGroup>
+            </Mount>
+          
+            {/* Right-side items for actionButtons */}
+            <Box
               sx={{
                 display: "flex",
-                justifyContent: { md: "end", xs: "start" },
                 alignItems: "center",
-                mt: "-45px",
+                gap: 1, // Adds space between AddOperatorModal and refresh button
               }}
             >
-              <Mount visible={user?.role === "Admin"}>
-                <FormGroup>
-                  <FormControlLabel
-                    sx={{
-                      mt: { md: 0, sm: 2, xs: 2 },
-                      mb: { md: 0, sm: 2, xs: 2 },
-                    }}
-                    control={
-                      <Switch
-                        value={showoperatorservices}
-                        defaultChecked={showoperatorservices}
-                        onChange={handleOpServices}
-                      />
-                    }
-                    label={
-                      <Typography
-                        variant="body2"
-                        style={{ fontSize: "15px" }}
-                      >
-                        Api Services
-                      </Typography>
-                    }
-                  />
-                </FormGroup>
-              </Mount>
-  
-              {/* Right-side items for actionButtons */}
-              <Box>
-                <AddOperatorModal />
-                <Tooltip title="refresh">
-                  <IconButton
-                    aria-label="refresh"
-                    sx={{ color: "#0F52BA" }}
-                    onClick={() => refreshFunc(setQuery)}
-                  >
-                    <CachedIcon className="refresh-purple" />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            </Grid>
+              <AddOperatorModal />
+              <Tooltip title="refresh">
+                <IconButton
+                  aria-label="refresh"
+                  sx={{ color: "#0F52BA" }}
+                  onClick={() => refreshFunc(setQuery)}
+                >
+                  <CachedIcon className="refresh-purple" />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Grid>
+          
           }
           apiEnd={
             showoperatorservices

@@ -8,6 +8,7 @@ import {
   Tooltip,
   IconButton,
   MenuItem,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -114,13 +115,13 @@ const EditPlanModal = ({ refresh, row }) => {
       </Tooltip>
 
       <Box>
-        <Modal
+        <Drawer
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          anchor="right"
+     
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader title="Edit Plan" handleClose={handleClose} />
             <Box
@@ -196,7 +197,7 @@ const EditPlanModal = ({ refresh, row }) => {
               <ModalFooter form="addPlan" request={request} />
             </Box>
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );

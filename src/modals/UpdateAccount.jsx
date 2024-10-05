@@ -8,6 +8,7 @@ import {
   Modal,
   Tooltip,
   MenuItem,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -121,13 +122,12 @@ const UpdateAccount = ({ row, refresh }) => {
         </IconButton> */}
       </Tooltip>
 
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    anchor="right"
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{width:400}} className="sm_modal">
           <ModalHeader title="Update Account" handleClose={handleClose} />
           <Box
             component="form"
@@ -140,7 +140,7 @@ const UpdateAccount = ({ row, refresh }) => {
             }}
           >
             <Grid container sx={{ pt: 1 }}>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Name"
@@ -151,7 +151,7 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Business Name"
@@ -162,7 +162,7 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Number"
@@ -173,7 +173,7 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     select
@@ -199,7 +199,7 @@ const UpdateAccount = ({ row, refresh }) => {
                   </TextField>
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Credit Limit"
@@ -210,7 +210,7 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12} >
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     select
@@ -238,7 +238,7 @@ const UpdateAccount = ({ row, refresh }) => {
             />
           </Box>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

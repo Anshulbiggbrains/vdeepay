@@ -108,32 +108,51 @@ const AdminBanksView = () => {
     // },
     {
       name: "Statement",
-      selector: (row) => (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Tooltip title="statement">
-            <MyButton
-              green
-              text="Statement"
-              onClick={() => {
-                navigate("/admin/bankStatement", {
-                  state: {
-                    bank_id: row.id,
-                    bank_name: row.name,
-                    balance: row.balance,
+      selector: (row) => {
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Tooltip title=" Statement">
+              <Button
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "8px",
+                  fontSize: "12px",
+                  color: "#312e2e",
+                  fontWeight: "bold",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  justifyContent: "center",
+                  background: "linear-gradient(45deg, #1ee383, #16de4c)",
+                  boxShadow: "0px 4px 15px rgba(0, 255, 150, 0.2)",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 6px 20px rgba(0, 255, 150, 0.2)",
                   },
-                });
-              }}
-            />
-          </Tooltip>
-        </Box>
-      ),
+                }}
+                onClick={() => {
+                  navigate("/admin/bankStatement", {
+                    state: {
+                      bank_id: row.id,
+                      bank_name: row.name,
+                      balance: row.balance,
+                    },
+                  });
+                }}
+              >
+                Statement
+              </Button>
+            </Tooltip>
+          </Box>
+        );
+      },
     },
 
     {
