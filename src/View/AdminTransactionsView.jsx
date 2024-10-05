@@ -637,14 +637,17 @@ const AdminTransactionsView = () => {
             pendingStatusText="Pending"
             rejectedStatusText="Failed"
             refundStatusText="Refund"
-            fontSize="14px"
+            fontSize="11px"
+            minWidth="90px"
+            maxWidth="90px"
           />
+
           <div
             className="break-words"
             style={{
               fontSize: "9px",
 
-              marginTop: "7px",
+              marginTop: "5px",
               color: "#535353",
               fontWeight: "500",
               display: "flex",

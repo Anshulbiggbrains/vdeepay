@@ -159,11 +159,11 @@ const CommonStatus = ({
           status === "SUCCESS" ||
           status === "APPROVED" ||
           status === "OPEN"
-            ? "linear-gradient(45deg,#1ee383, #16de4c)"
+            ? "linear-gradient(45deg, #1ee383, #16de4c)"
             : status === 2 || status === "PENDING"
-            ? "linear-gradient(45deg,#DB9D00, #f0c324)"
+            ? "linear-gradient(45deg, #DB9D00, #f0c324)"
             : status === 0 || status === "REJECTED" || status === "FAILED"
-            ? "linear-gradient(45deg, #e01f1f, #d93025)"
+            ? "linear-gradient(45deg, #ec2626, #d93025)"
             : status === "REFUND"
             ? "linear-gradient(45deg, #1260e0, #1751cf)"
             : "linear-gradient(45deg, #9e9e9e, #7e7e7e)",
