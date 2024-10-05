@@ -566,12 +566,20 @@ export const customer_nav = [
           icon2: ComplaintsIconWhite,
           to: "/customer/complaints",
         },
+
         {
                 title: "My Purchase",
                 icon: mypurchase,
                 icon2: TransactionIconWhite,
                 to: "/customer/purchase",
               },
+              {
+                title:"Logout",
+                icon: mypurchase,
+                to:"/login", 
+                },
+               
+              
               {
                 title: "User Profile",
                 icon: maleAvatar, // Import the avatar icon or use a default user icon
@@ -586,12 +594,7 @@ export const customer_nav = [
             }
           ]
         },
-            {
-              title:"Logout",
-              to:"/login", 
-              },
-             
-            
+           
              
               // {
               //         title: "Khata Book",

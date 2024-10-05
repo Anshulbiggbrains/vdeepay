@@ -15,6 +15,24 @@ import {
   mobileR_img,
   upi,
   waterIcon,
+  moneyl,
+  cms1,
+  nepal1,
+  aeps1,
+  upi1,
+  vpay1,
+  airplane1,
+  bus1,
+  hotel1,
+  train1,
+  electricity1,
+  creditcard1,
+  insurance1,
+  dth1,
+  broadband1,
+  gas1,
+  water1,
+  landline1,
 } from "../iconsImports";
 import DmtContainer from "./DMTcontainer";
 import CMSView from "./CMSView";
@@ -31,10 +49,11 @@ import FlightTab from "../component/Travel/FlightTab";
 import BusTab from "../component/Travel/BusTab";
 import TrainTab from "../component/Travel/TrainTab";
 import HotelsTab from "../component/Travel/HotelsTab";
-import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import HouseIcon from '@mui/icons-material/House';
-import TrainIcon from '@mui/icons-material/Train';
-import FlightIcon from '@mui/icons-material/Flight';
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
+import HouseIcon from "@mui/icons-material/House";
+import TrainIcon from "@mui/icons-material/Train";
+import FlightIcon from "@mui/icons-material/Flight";
+import { Money } from "@mui/icons-material";
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null); // State to track the current view
@@ -49,17 +68,22 @@ const RetDdDashboard = () => {
     {
       title: "Banking",
       data: [
-        { id: 1, name: "DMT", img: null, component: DmtContainer },
-        { id: 2, name: "CMS ", img: cmsIcon, component: CMSView },
-        { id: 3, name: "Nepal Transfer", img: null, component: NepalTransfer },
+        { id: 1, name: "DMT", img: moneyl, component: DmtContainer },
+        { id: 2, name: "CMS ", img: cms1, component: CMSView },
+        {
+          id: 3,
+          name: "Nepal Transfer",
+          img: nepal1,
+          component: NepalTransfer,
+        },
         {
           id: 4,
           name: "Vendor Payments",
-          img: null,
+          img: vpay1,
           component: VendorPayments,
         },
-        { id: 5, name: "UPI", img: upi, component: UPITransferView },
-        { id: 6, name: "Aeps", img: aepsIcon, component: AEPS2View },
+        { id: 5, name: "UPI", img: upi1, component: UPITransferView },
+        { id: 6, name: "Aeps", img: aeps1, component: AEPS2View },
       ],
     },
     {
@@ -71,38 +95,52 @@ const RetDdDashboard = () => {
           img: mobileR_img,
           component: MobileRechargeForm,
         },
-        { id: 8, name: "DTH", img: dthIcon, component: MobileRechargeForm },
+        { id: 8, name: "DTH", img: dth1, component: MobileRechargeForm },
         {
           id: 9,
           name: "Electricity",
-          img: elecIcon,
+          img: electricity1,
           component: ElectricityForm,
         },
-        { id: 10, name: "Credit Card ", img: null, component: CreditcardForm },
+        {
+          id: 10,
+          name: "Credit Card ",
+          img: creditcard1,
+          component: CreditcardForm,
+        },
         {
           id: 11,
           name: "BroadBand",
-          img: broadband,
+          img: broadband1,
           component: ElectricityForm,
         },
-        { id: 12, name: "Gas", img: gasIcon, component: ElectricityForm },
-        { id: 13, name: "Water", img: waterIcon, component: ElectricityForm },
-        { id: 14, name: "Insurance", img: null, component: ElectricityForm },
-        { id: 15, name: "Landline", img: landIcon, component: ElectricityForm },
+        { id: 12, name: "Gas", img: gas1, component: ElectricityForm },
+        { id: 13, name: "Water", img: water1, component: ElectricityForm },
+        {
+          id: 14,
+          name: "Insurance",
+          img: insurance1,
+          component: ElectricityForm,
+        },
+        {
+          id: 15,
+          name: "Landline",
+          img: landline1,
+          component: ElectricityForm,
+        },
         { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
       ],
     },
     {
       title: "Travel",
       data: [
-        { id: 17, name: "AIR", img: FlightIcon ,component:FlightTab },
-        { id: 18, name: "BUS", img: null ,component:BusTab},
-        { id: 19, name: "HOTELS", img: null ,component:HotelsTab},
-        { id: 20, name: "IRCTC", img: null ,component:TrainTab},
+        { id: 17, name: "AIR", img: airplane1, component: FlightTab },
+        { id: 18, name: "BUS", img: bus1, component: BusTab },
+        { id: 19, name: "HOTELS", img: hotel1, component: HotelsTab },
+        { id: 20, name: "IRCTC", img: train1, component: TrainTab },
       ],
     },
   ];
-
 
   const handleCardClick = (item) => {
     // Check if the clicked item has a component associated
@@ -213,6 +251,7 @@ const RetDdDashboard = () => {
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}
+                  
                     onClick={() => handleCardClick(item)}
                   />
                 </Grid>
