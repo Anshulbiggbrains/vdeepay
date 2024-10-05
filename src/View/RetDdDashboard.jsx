@@ -203,7 +203,7 @@ const RetDdDashboard = () => {
 
           borderRadius: "8px",
           backgroundColor: "#fEDCDB",
-          marginTop: "0.1%",
+          marginTop: "0.5%",
           color: " #004080",
           // color: "#023047", #004080,
           fontSize: "14px",
@@ -247,7 +247,7 @@ const RetDdDashboard = () => {
             </Typography>
             <Grid container spacing={2}>
               {category.data.map((item) => (
-                <Grid item xs={12} sm={6} md={3} lg={2} key={item.id}>
+                <Grid item xs={12} sm={6} md={3} lg={2} key={item.id}sx={{mb:1}}>
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}

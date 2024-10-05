@@ -19,6 +19,7 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
             width: "100%",
             height: "100%",
             overflow: "hidden",
+            
 
             // Yellow box shadow on hover
           }}
