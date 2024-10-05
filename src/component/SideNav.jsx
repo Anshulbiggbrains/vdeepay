@@ -46,6 +46,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const drawerWidth = 250;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -180,6 +181,13 @@ export default function SideNav(props, { data }) {
   const handleLogout = () => {
     authCtx.logout();
     setAnchorEl(null);
+  };
+    const toggleDrawer = () => {
+    if (open) {
+      handleDrawerClose();
+    } else {
+      handleDrawerOpen();
+    }
   };
   console.log("userdata of", user);
   const leftNav =
@@ -489,6 +497,7 @@ export default function SideNav(props, { data }) {
       {user?.layout ? (
         user?.layout * 1 === 1 && (
           <>
+          
             <WebDrawer
               variant="permanent"
               open={open}
@@ -508,13 +517,14 @@ export default function SideNav(props, { data }) {
               }}
               className=""
             >
+                <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} />
               {drawer}
             </WebDrawer>
           </>
         )
       ) : (
         <>
-          <WebDrawer
+               <WebDrawer
             variant="permanent"
             open={open}
             // open={true}
@@ -531,6 +541,8 @@ export default function SideNav(props, { data }) {
             }}
             className=""
           >
+               <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }} onClick={handleDrawerToggle} />
+
             {drawer}
           </WebDrawer>
         </>
