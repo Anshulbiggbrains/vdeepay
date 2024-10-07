@@ -356,7 +356,13 @@ const DmtContainer = ({
                 xs={12}
                 sx={{ mb: { md: 2, sm: 4, xs: 4 }, marginLeft: 0 }}
               >
+                 {!infoFetchedMob &&
+                          !infoFetchedMob &&
+                          !addNewRem &&
+                          !addNewRem &&
+                          !verifyotp &&
                 <CustomTabs tabs={tabs} value={value} onChange={handleChange} />
+                 }
                 <Card
                   className="card-css"
                   sx={{

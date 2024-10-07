@@ -352,7 +352,8 @@ const VendorPayments = ({ resetView }) => {
                   marginLeft: 0,
                 }}
               >
-                                                    {!infoFetchedMob && !infoFetchedMob&&  <CustomTabs
+                                                    {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&
+                                                      <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
@@ -436,7 +437,7 @@ const VendorPayments = ({ resetView }) => {
                       }}
                     >
                       <Grid item md={12} xs={12}>
-                        {!infoFetchedMob && !infoFetchedMob && (
+                        {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&(
                           <FormControl sx={{ width: "100%" }}>
                             <TextField
                               autoComplete="off"
