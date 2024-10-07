@@ -147,14 +147,14 @@ const Loader = ({ loading, children }) => {
         .circle1 {
           width: 120px;
           height: 120px;
-          border: 5px solid #1877F2;
+          border: 5px solid red;
           animation: rotateAnimation1 3.2s linear infinite;
         }
 
         .circle2 {
           width: 150px;
           height: 150px;
-          border: 5px solid #F18D18;
+          border: 5px solid blue;
           animation: rotateAnimation2 3.2s linear infinite;
           opacity: 0.25;
         }
