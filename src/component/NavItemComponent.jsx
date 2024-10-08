@@ -19,7 +19,7 @@ const NavItemComponent = ({
   handleLogout, // Add a logout handler passed as a prop
 }) => {
   const sidebarCtx = useContext(SideBarContext);
-  const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
   const setActiveIndex = sidebarCtx.setActiveIndex;
   const location = useLocation();
   const currentPath = location.pathname;
@@ -46,7 +46,7 @@ const NavItemComponent = ({
   const handleItemClick = () => {
     if (item.title === "Logout") {
       authCtx.logout();
-      // handleLogout(); 
+      // handleLogout();
     } else {
       setActiveIndex({
         index: index,

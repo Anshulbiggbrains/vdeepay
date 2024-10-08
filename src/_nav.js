@@ -93,6 +93,8 @@ import AEPS1 from "./assets/sidenav/AEPS1.svg";
 import complaint from "./assets/sidenav/complaint.svg";
 import Cms2 from "./assets/sidenav/Cms2.svg";
 import graph from "./assets/sidenav/graph.svg";
+import Book from "./assets/sidenav/book.svg";
+import bharatbig from "./assets/sidenav/bharatbig.svg";
 import home from "./assets/home.svg";
 import {
   account_ledgre,
@@ -176,7 +178,7 @@ export const nav = [
     to: "/dashboard/transaction",
   },
   {
-    title: "Credit Request",
+    title: "Fund Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/dashboard/transaction",
@@ -214,7 +216,7 @@ export const Admin_nav = [
   //   to: "/admin/prabhu",
   // },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/admin/cred-req",
@@ -287,24 +289,24 @@ export const Admin_nav = [
     icon2: AccountIconWhite,
     to: "/admin/risk",
   },
-  {
-    title: "Virtual Accounts",
-    icon: virtualaccount1,
-    icon2: AccountIconWhite,
-    to: "/admin/virtual-accounts",
-  },
-  {
-    title: "Employees",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/admin/employees",
-  },
-  {
-    title: "Invoices",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/admin/invoice",
-  },
+  // {
+  //   title: "Virtual Accounts",
+  //   icon: virtualaccount1,
+  //   icon2: AccountIconWhite,
+  //   to: "/admin/virtual-accounts",
+  // },
+  // {
+  //   title: "Employees",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/admin/employees",
+  // },
+  // {
+  //   title: "Invoices",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/admin/invoice",
+  // },
 ];
 export const Asm_nav = [
   {
@@ -326,7 +328,7 @@ export const Asm_nav = [
     to: "/asm/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/asm/cred-req",
@@ -352,7 +354,7 @@ export const Zsm_nav = [
     to: "/zsm/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund  Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/zsm/cred-req",
@@ -372,17 +374,17 @@ export const Api_nav = [
     to: "/api-user/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/api-user/cred-req",
   },
-  {
-    title: "Invoices",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/api-user/invoice",
-  },
+  // {
+  //   title: "Invoices",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/api-user/invoice",
+  // },
   {
     title: "Documents",
     icon: employee1,
@@ -405,7 +407,7 @@ export const Ad_nav = [
     to: "/ad/users",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/ad/cred-req",
@@ -456,7 +458,7 @@ export const Md_nav = [
     to: "/md/users",
   },
   {
-    title: "Credit Requests",
+    title: "Fund  Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/md/cred-req",
@@ -671,7 +673,7 @@ export const reports = [
     to: "/customer/account-ledger",
   },
   {
-    title: "Credit Request",
+    title: "Fund  Request",
     icon: creditReq,
     to: "/customer/cred-req",
   },

@@ -11,6 +11,10 @@ import {
   Button,
   Box,
   IconButton,
+  MenuItem,
+  InputLabel,
+  Select,
+  FormControl,
 } from "@mui/material";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { ddmmyy, dateToTime } from "../utils/DateUtils";
@@ -57,7 +61,7 @@ import useCommonContext from "../store/CommonContext";
 import RightSidePannel from "../component/transactions/RightSidePannel";
 import UpdateIcon from "@mui/icons-material/Update";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+
 import { resetData } from "../features/allUsers/allUsersSlice";
 import { keyframes } from "@emotion/react";
 import { styled } from "@mui/material/styles";
@@ -100,8 +104,8 @@ const AdminTransactionsView = () => {
   const [rowData, setRowData] = useState(false);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
-  const [scheduler, setScheduler] = useState(false);
-  const [schedulerTime, setSchedulerTime] = useState(0);
+  // const [scheduler, setScheduler] = useState(false);
+  // const [schedulerTime, setSchedulerTime] = useState(0);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -838,7 +842,6 @@ const AdminTransactionsView = () => {
           }}
         >
           {/* form in filter */}
-
           <FormGroup>
             <FormControlLabel
               sx={{
@@ -846,19 +849,19 @@ const AdminTransactionsView = () => {
                 mb: { md: 0, sm: 2, xs: 2 },
               }}
               control={
-                <Switch
-                  value={showOldTransaction}
-                  defaultChecked={showOldTransaction}
-                  onChange={() => setShowOldTransaction(!showOldTransaction)}
-                />
-              }
-              label={
-                <Typography variant="body2" style={{ fontSize: "15px" }}>
-                  Old
-                </Typography>
+                <FormControl variant="outlined">
+                  <Select
+                    value={showOldTransaction}
+                    onChange={() => setShowOldTransaction(!showOldTransaction)}
+                  >
+                    <MenuItem value={true}>Old</MenuItem>
+                    <MenuItem value={false}>New</MenuItem>
+                  </Select>
+                </FormControl>
               }
             />
           </FormGroup>
+
           {/* excel */}
           <div className="mx-2">
             <ExcelUploadModal
@@ -1082,27 +1085,27 @@ const AdminTransactionsView = () => {
                   <>
                     <FormGroup>
                       <FormControlLabel
-                        sx={{}}
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
                         control={
-                          <Switch
-                            value={showOldTransaction}
-                            defaultChecked={showOldTransaction}
-                            onChange={() =>
-                              setShowOldTransaction(!showOldTransaction)
-                            }
-                          />
-                        }
-                        label={
-                          <Typography
-                            variant="body2"
-                            style={{ fontSize: "15px" }}
-                          >
-                            Old
-                          </Typography>
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
                         }
                       />
                     </FormGroup>
-
                     <div className="">
                       <ExcelUploadModal
                         twobuttons="Download Csv"
@@ -1131,7 +1134,7 @@ const AdminTransactionsView = () => {
                         <CachedIcon className="refresh-purple" />
                       </IconButton>
                     </Tooltip>
-                    <>
+                    {/* <>
                       <Tooltip title="Scheduler">
                         <BlinkingIcon active={isActive} onClick={handleClick} />
                       </Tooltip>
@@ -1151,8 +1154,8 @@ const AdminTransactionsView = () => {
                         </MenuItem>
                         <MenuItem onClick={handleStop}>Stop</MenuItem>
                       </Menu>
-                    </>
-                    <div className="ms-3">
+                    </> */}
+                    {/* <div className="ms-3">
                       <Link to="/admin/prabhu" className="navLinks">
                         <Button
                           size="small"
@@ -1170,7 +1173,7 @@ const AdminTransactionsView = () => {
                           Prabhu Transfer
                         </Button>
                       </Link>
-                    </div>
+                    </div> */}
                   </>
                 }
               />
