@@ -116,17 +116,23 @@ const Loader = ({ loading, children }) => {
             backdropFilter: "blur(5px)",
             background: "rgba(0, 0, 0, 0.2)",
             zIndex: 9998,
+            flexDirection: "column", // This ensures the logo and text are in column layout
           }}
         >
           <div className="loader-container">
             <img
               src={smLogo}
-              style={{ cursor: "pointer", width: 80, animation: 'scaleAnimation 2s infinite' }}
+              style={{
+                cursor: "pointer",
+                width: 80,
+                animation: "zoomInOut 2s infinite",
+              }}
               alt="Loading..."
             />
             <div className="circle1" />
             <div className="circle2" />
           </div>
+          <p className="loading-text" style={{color:"blue",margin:"5%"}}>Please wait...</p>
         </Box>
       )}
       {children}
@@ -177,9 +183,21 @@ const Loader = ({ loading, children }) => {
           }
         }
 
-        @keyframes scaleAnimation {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(0.9); }
+        @keyframes zoomInOut {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1); /* Slight zoom in effect */
+          }
+        }
+
+        .loading-text {
+          margin-top: 20px;
+          font-size: 18px;
+          color: white;
+          font-family: Arial, sans-serif;
         }
       `}</style>
     </div>
@@ -187,4 +205,5 @@ const Loader = ({ loading, children }) => {
 };
 
 export default Loader;
+
 

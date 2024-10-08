@@ -96,13 +96,13 @@ export const getUserColor = (role) => {
 export const randomColors = () => {
   // Array containing colors
   var colors = [
-    "rgb(153, 102, 255 , 0.20)",
-    "rgb(75, 192, 192 , 0.20)",
-    "rgb(255, 204, 86 , 0.20)",
-    "rgb(255, 99, 133 , 0.20)",
-    "#d3d3d3",
+    "rgba(255, 99, 132, 0.2)",  // Light red
+    "rgba(54, 162, 235, 0.2)",  // Light blue
+    "rgba(255, 206, 86, 0.2)",  // Light yellow
+    "rgba(75, 192, 192, 0.2)",  // Light teal
+    "rgba(153, 102, 255, 0.2)", // Light purple
   ];
-
+  
   // selecting random color
   var random_color = colors[Math.floor(Math.random() * colors.length)];
   return random_color;
