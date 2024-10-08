@@ -465,7 +465,7 @@ const CreditRequestView = () => {
       }
     );
   };
-
+console.log("the role is",user.role)
   return (
     <Grid>
       <Grid
@@ -482,7 +482,7 @@ const CreditRequestView = () => {
         <FilterCard
           ifestFilter={user.role !== "Api"}
           ifnumberFilter
-          ifAsmFilter={user.role !== "Api"}
+          ifAsmFilter={user.role !== "Api" && user.role !== "Ret" &&  user.role !== "Dd"}
           ifStatusFilter
           setQuery={setQuery}
           query={query}

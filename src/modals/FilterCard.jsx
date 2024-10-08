@@ -1106,31 +1106,7 @@ const FilterCard = ({
             </FormControl>
           </div>
         )}
-        {ifdateFilter && (
-          <div
-            style={{
-              width: isMobile ? "100%" : "fit-content",
-              overflow: "hidden",
-            }}
-            className="mx-2"
-          >
-            <FormControl
-              sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
-            >
-              <TextField autoComplete="off"
-                className="filter-input"
-                size={isMobile ? "small" : "small"}
-                id="type"
-                value={fromBank}
-                onChange={(e) => {
-                  SetFromBank(e.target.value);
-                }}
-                variant="standard"
-                label="From"
-              />
-            </FormControl>
-          </div>
-        )}
+       
         {ifMessageFilter && (
           <div
             style={{
@@ -1156,7 +1132,7 @@ const FilterCard = ({
             </FormControl>
           </div>
         )}
-        {ifFromBankFilter && (
+        {ifdateFilter && (
           <div
             style={{
               width: isMobile ? "100%" : "10.5%",

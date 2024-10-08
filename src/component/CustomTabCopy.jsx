@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Tabs, Tab, Box, Typography, Divider } from '@mui/material';
+import { AppBar, Tabs, Tab, Box, Typography } from '@mui/material';
 
 function CustomTabs({ tabs, value, onChange, heading }) {
   return (
@@ -16,18 +16,18 @@ function CustomTabs({ tabs, value, onChange, heading }) {
               backgroundColor: '#fcde67',
             },
             "& .MuiTab-root": {
-              color: "#000",
-              "& .MuiSvgIcon-root": {
-                color: "#ee6c4d",
-              },
-            },
-            "& .MuiTab-root.Mui-selected": {
-              color: "#FE0000",
-              "& .MuiSvgIcon-root": {
-                color: "#FE0000",
-              },
-            },
-            minHeight: '30px',
+      color: "#000",
+      "& .MuiSvgIcon-root": {
+        color: "#ee6c4d", 
+      },
+    },
+    "& .MuiTab-root.Mui-selected": {
+      color: "#FE0000",
+      "& .MuiSvgIcon-root": {
+        color: "#FE0000", 
+      },
+    },
+            minHeight: '30px', 
           }}
         >
           {tabs.map((tab, index) => (
@@ -39,29 +39,23 @@ function CustomTabs({ tabs, value, onChange, heading }) {
               sx={{
                 bgcolor: 'white',
                 color: 'black',
-                minHeight: '30px',
+                minHeight: '30px', 
                 fontSize: '0.800rem',
-                padding: '6px 12px',
+                padding: '6px 12px', 
                 flexDirection: 'row',
-                gap: '8px',
+                gap: '8px'
               }}
             />
           ))}
         </Tabs>
       </AppBar>
-
       {heading && (
-        <>
-          <Box sx={{ p: 1, pb: 0.5 }}>
-            <Typography variant="h5" component="h1" gutterBottom>
-              {heading}
-            </Typography>
-          </Box>
-          
-          <Divider sx={{ my: 2 }} />
-        </>
+        <Box sx={{ p: 1, pb: 0.5 }}> {/* Further reduced padding, especially bottom padding */}
+          <Typography variant="h5" component="h1" gutterBottom>
+            {heading}
+          </Typography>
+        </Box>
       )}
-
       {tabs.map((tab, index) => (
         <TabPanel key={index} value={value} index={index}>
           {tab.content}
@@ -84,7 +78,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 1.5, overflow: 'auto' }}>
+        <Box sx={{ p: 1.5, overflow: 'auto' }}> {/* Further reduced padding */}
           {children}
         </Box>
       )}

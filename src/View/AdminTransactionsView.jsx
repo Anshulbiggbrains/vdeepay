@@ -344,7 +344,12 @@ const AdminTransactionsView = () => {
 
   const columns = [
     {
-      name: "Date/Time",
+      name: 
+      <Tooltip title=" Created at/Updated at" >
+        <Typography variant="" sx={{fontSize:"13px" ,whiteSpace: 'nowrap',overflow: 'hidden',textOverflow: 'ellipsis' }}>
+          Created at/Updated at
+        </Typography>
+      </Tooltip>,
       selector: (row) => (
         <>
           <div className="mb-2">
@@ -400,6 +405,29 @@ const AdminTransactionsView = () => {
         </div>
       ),
       width: "60px",
+    },
+
+    {
+      name:"Platform",
+      selector:(row)=>(
+      <div>
+         <Tooltip title={capitalize1(row.platform)}>
+            <div style={{ textAlign: "left" }}>
+              <div
+                className="break-words"
+                style={{
+                  fontSize: "12px",
+                }}
+              >
+                {capitalize1(row.platform)}
+              </div>
+            </div>
+          </Tooltip>
+      </div>
+      ),
+      wrap: true,
+      width: "105px",
+    
     },
 
     // est missing from ad login
@@ -1014,9 +1042,9 @@ const AdminTransactionsView = () => {
                 topMargin={0}
                 bottomMargin={0}
                 showSearch={false}
-                ifdateFilter
                 ifrouteFilter
                 ifoperatorFilter
+                ifdateFilter
                 ifstatusFilter
                 iforderidFilter
                 // type and category is same
@@ -1035,7 +1063,7 @@ const AdminTransactionsView = () => {
                 ifAsmFilter
                 asmList={asmList}
                 typeList={typeList.filter((item) => item.name !== "ALL")}
-                ifClientIdFilter
+                // ifClientIdFilter
                 nonAdminColOptions={nonAdminColOptions[`${role}`]}
                 statusList={statusList}
                 operatorList={operatorList}

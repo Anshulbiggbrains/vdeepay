@@ -367,7 +367,12 @@ export default function SideNav(props, { data }) {
                 marginRight: "5px",
               }}
             >
-              Logout
+              {user?.role === "Dd" ?(
+             <Button sx={{ color: whiteColor()}}>Sign Out</Button>
+              ):(
+                <Button sx={{ color: whiteColor()}}>Logout</Button>
+              )
+}
             </span>
 
           </Typography>
