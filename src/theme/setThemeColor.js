@@ -32,7 +32,7 @@ export const getHoverInActive = () => {
 
 export const getTableHeadRowColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return " #E49B0F";
+    return "#E49B0F";
   }
 };
 
@@ -53,7 +53,7 @@ export const getUserColor = (role) => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
     if (role === "Asm") {
       return "#1C2E46";
-    }else if (role === "ZSM") {
+    } else if (role === "ZSM") {
       return "#FFC0CB";
     } else if (role === "Ad") {
       return "#16BA75";

@@ -21,7 +21,7 @@
 // import BoltIcon from "@mui/icons-material/Bolt";
 // import BugReportIcon from "@mui/icons-material/BugReport";
 // import NotificationsIcon from "@mui/icons-material/Notifications";
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import DashboardIcon from "./assets/sidenav/dashboard.svg";
@@ -67,34 +67,34 @@ import InstantIconWhite from "./assets/sidenav/white/instant.svg";
 import cmsIconWhite from "./assets/sidenav/white/cms.svg";
 import employeesIconWhite from "./assets/sidenav/white/employee_icon_white.svg";
 import trainIconWhite from "./assets/sidenav/white/train.svg";
-import  dashboards from "./assets/sidenav/dashboards.svg";
-import  transfer1 from "./assets/sidenav/transfer1.svg";
-import  creditrq1 from "./assets/sidenav/creditrq1.svg";
-import  account1 from "./assets/sidenav/account1.svg";
-import  transaction1 from "./assets/sidenav/white/transaction1.svg";
-import  bank1 from "./assets/sidenav/bank1.svg";
-import  message1 from "./assets/sidenav/message1.svg";
-import  notification1 from "./assets/sidenav/notification1.svg";
-import  route1 from "./assets/sidenav/route1.svg";
-import  employee1 from "./assets/sidenav/employee1.svg";
-import  operator1 from "./assets/sidenav/operator1.svg";
-import  plan1 from "./assets/sidenav/plan1.svg";
-import  virtualaccount1 from "./assets/sidenav/virtualaccount1.svg";
-import  complaint1 from "./assets/sidenav/complaint1.svg";
-import  risk1 from "./assets/sidenav/risk1.svg";
+import dashboards from "./assets/sidenav/dashboards.svg";
+import transfer1 from "./assets/sidenav/transfer1.svg";
+import creditrq1 from "./assets/sidenav/creditrq1.svg";
+import account1 from "./assets/sidenav/account1.svg";
+import transaction1 from "./assets/sidenav/white/transaction1.svg";
+import bank1 from "./assets/sidenav/bank1.svg";
+import message1 from "./assets/sidenav/message1.svg";
+import notification1 from "./assets/sidenav/notification1.svg";
+import route1 from "./assets/sidenav/route1.svg";
+import employee1 from "./assets/sidenav/employee1.svg";
+import operator1 from "./assets/sidenav/operator1.svg";
+import plan1 from "./assets/sidenav/plan1.svg";
+import virtualaccount1 from "./assets/sidenav/virtualaccount1.svg";
+import complaint1 from "./assets/sidenav/complaint1.svg";
+import risk1 from "./assets/sidenav/risk1.svg";
 import mypurchase from "./assets/sidenav/mypurchase.svg";
-import  train from "./assets/sidenav/train.svg";
-import  Upi from "./assets/sidenav/Upi.svg";
-import  creditmoney from "./assets/sidenav/creditmoney.svg";
-import  Reports1 from "./assets/sidenav/Reports1.svg";
+import train from "./assets/sidenav/train.svg";
+import Upi from "./assets/sidenav/Upi.svg";
+import creditmoney from "./assets/sidenav/creditmoney.svg";
+import Reports1 from "./assets/sidenav/Reports1.svg";
 import Recharge from "./assets/sidenav/Recharge.svg";
 import Travel from "./assets/sidenav/Travel.svg";
-import AEPS1 from "./assets/sidenav/AEPS1.svg"
+import AEPS1 from "./assets/sidenav/AEPS1.svg";
 import complaint from "./assets/sidenav/complaint.svg";
-import Cms2 from "./assets/sidenav/Cms2.svg"
-import graph from "./assets/sidenav/graph.svg"
+import Cms2 from "./assets/sidenav/Cms2.svg";
+import graph from "./assets/sidenav/graph.svg";
 import Book from "./assets/sidenav/book.svg";
-import bharatbig from "./assets/sidenav/bharatbig.svg"
+import bharatbig from "./assets/sidenav/bharatbig.svg";
 import {
   account_ledgre,
   aepsIcon,
@@ -144,7 +144,7 @@ export const nav = [
     title: "Recharge",
     icon: RechargeIcon,
     icon2: RechargeIcon,
-    to: "/dashboard/transaction", 
+    to: "/dashboard/transaction",
   },
   {
     title: "Money Transfer",
@@ -177,7 +177,7 @@ export const nav = [
     to: "/dashboard/transaction",
   },
   {
-    title: "Credit Request",
+    title: "Fund Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/dashboard/transaction",
@@ -215,7 +215,7 @@ export const Admin_nav = [
   //   to: "/admin/prabhu",
   // },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/admin/cred-req",
@@ -288,24 +288,24 @@ export const Admin_nav = [
     icon2: AccountIconWhite,
     to: "/admin/risk",
   },
-  {
-    title: "Virtual Accounts",
-    icon: virtualaccount1,
-    icon2: AccountIconWhite,
-    to: "/admin/virtual-accounts",
-  },
-  {
-    title: "Employees",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/admin/employees",
-  },
-  {
-    title: "Invoices",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/admin/invoice",
-  },
+  // {
+  //   title: "Virtual Accounts",
+  //   icon: virtualaccount1,
+  //   icon2: AccountIconWhite,
+  //   to: "/admin/virtual-accounts",
+  // },
+  // {
+  //   title: "Employees",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/admin/employees",
+  // },
+  // {
+  //   title: "Invoices",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/admin/invoice",
+  // },
 ];
 export const Asm_nav = [
   {
@@ -327,7 +327,7 @@ export const Asm_nav = [
     to: "/asm/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/asm/cred-req",
@@ -353,7 +353,7 @@ export const Zsm_nav = [
     to: "/zsm/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund  Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/zsm/cred-req",
@@ -373,17 +373,17 @@ export const Api_nav = [
     to: "/api-user/transactions",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/api-user/cred-req",
   },
-  {
-    title: "Invoices",
-    icon: employee1,
-    icon2: employeesIconWhite,
-    to: "/api-user/invoice",
-  },
+  // {
+  //   title: "Invoices",
+  //   icon: employee1,
+  //   icon2: employeesIconWhite,
+  //   to: "/api-user/invoice",
+  // },
   {
     title: "Documents",
     icon: employee1,
@@ -406,7 +406,7 @@ export const Ad_nav = [
     to: "/ad/users",
   },
   {
-    title: "Credit Requests",
+    title: "Fund Request",
     icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/ad/cred-req",
@@ -457,7 +457,7 @@ export const Md_nav = [
     to: "/md/users",
   },
   {
-    title: "Credit Requests",
+    title: "Fund  Request",
     icon: CreditRequestIcon,
     icon2: CreditRequestIcon,
     to: "/md/cred-req",
@@ -488,7 +488,6 @@ export const customer_nav = [
   //   icon2: RechargeIcon,
   //   to: "/customer/recharge",
   // },
- 
 
   // {
   //   title: "BBPS",
@@ -520,8 +519,7 @@ export const customer_nav = [
   //   icon2: SuperIcon,
   //   to: "/customer/super-transfer",
   // },
- 
-  
+
   // {
   //   title: "Nepal Transfer",
   //   icon: NepalIcon,
@@ -559,62 +557,59 @@ export const customer_nav = [
     icon2: ReportsIcon,
     to: "/customer/transactions",
   },
- 
-  {
-          title: "My Complaints",
-          icon: complaint,
-          icon2: ComplaintsIconWhite,
-          to: "/customer/complaints",
-        },
 
-        {
-                title: "My Purchase",
-                icon: mypurchase,
-                icon2: TransactionIconWhite,
-                to: "/customer/purchase",
-              },
-              
-              // {
-              //   title:"Logout",
-              //   icon: mypurchase,
-              //   to:"/login", 
-              //   },
-               
-              
-              {
-                title: "User Profile",
-                icon: maleAvatar, // Import the avatar icon or use a default user icon
-                icon2: femaleAvatar, // Adjust accordingly
-                userProfile: true, // This indicates it contains user information
-             submenus:[
-            {
-            title:"Manage Your Profile",
-            
-            to:"/customer/my-profile",
-            
-            }
-          ]
-        },
-        {
-          title: "loginHistory",
-          icon: mypurchase,
-          icon2: TransactionIconWhite,
-          to: "/customer/loginHistory",
-        },
-           
-             
-              // {
-              //         title: "Khata Book",
-              //         icon: Book, 
-              //         icon2: AccountIcon,
-              //         to: "/customer/khata-book",
-              //       },
-                    {
-                      title: "IRCTC",
-                      icon: train,
-                      icon2: trainIconWhite,
-                      to: "https://www.irctc.co.in/nget/train-search",
-                    },    
+  {
+    title: "My Complaints",
+    icon: complaint,
+    icon2: ComplaintsIconWhite,
+    to: "/customer/complaints",
+  },
+
+  {
+    title: "My Purchase",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/customer/purchase",
+  },
+
+  // {
+  //   title:"Logout",
+  //   icon: mypurchase,
+  //   to:"/login",
+  //   },
+
+  {
+    title: "User Profile",
+    icon: maleAvatar, // Import the avatar icon or use a default user icon
+    icon2: femaleAvatar, // Adjust accordingly
+    userProfile: true, // This indicates it contains user information
+    submenus: [
+      {
+        title: "Manage Your Profile",
+
+        to: "/customer/my-profile",
+      },
+    ],
+  },
+  {
+    title: "loginHistory",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/customer/loginHistory",
+  },
+
+  // {
+  //         title: "Khata Book",
+  //         icon: Book,
+  //         icon2: AccountIcon,
+  //         to: "/customer/khata-book",
+  //       },
+  {
+    title: "IRCTC",
+    icon: train,
+    icon2: trainIconWhite,
+    to: "https://www.irctc.co.in/nget/train-search",
+  },
   // {
   //   title: "Reports",
   //   icon: ReportsIcon,
@@ -677,7 +672,7 @@ export const reports = [
     to: "/customer/account-ledger",
   },
   {
-    title: "Credit Request",
+    title: "Fund  Request",
     icon: creditReq,
     to: "/customer/cred-req",
   },

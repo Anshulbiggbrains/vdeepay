@@ -46,7 +46,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import axios from "axios";
 const drawerWidth = 250;
 const openedMixin = (theme) => ({
@@ -181,11 +181,9 @@ export default function SideNav(props, { data }) {
   const handleLogout = () => {
     authCtx.logout();
     setAnchorEl(null);
-    navigate("/login")
+    navigate("/login");
   };
-  const [ip, setIp] =  React.useState("");
-
-
+  const [ip, setIp] = React.useState("");
 
   useEffect(() => {
     const fetchIp = async () => {
@@ -257,8 +255,7 @@ export default function SideNav(props, { data }) {
         : customer_nav
       : nav;
 
-  const  outletBoxStyle = {
-    
+  const outletBoxStyle = {
     width: {
       lg:
         user?.role === "Admin"
@@ -321,8 +318,8 @@ export default function SideNav(props, { data }) {
         sx={{
           height: { xs: "80vh", sm: "100vh" },
           overflowY: "scroll",
-           background: "#105497",
-           borderRadius:"0px 10px"
+          background: "#105497",
+          borderRadius: "0px 10px",
         }}
       >
         {leftNav.map((item, index) => {
@@ -354,9 +351,9 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
-         {open && (
+        {open && (
           <Typography
-          onClick={handleLogout}
+            onClick={handleLogout}
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
           >
             <span
@@ -369,7 +366,6 @@ export default function SideNav(props, { data }) {
             >
               Logout
             </span>
-
           </Typography>
         )}
         {open && (
@@ -384,13 +380,17 @@ export default function SideNav(props, { data }) {
                 marginRight: "5px",
               }}
             >
-            IP:
+              IP:
             </span>
-            <span style={{   opacity: "0.9",
+            <span
+              style={{
+                opacity: "0.9",
                 fontSize: "14px",
                 fontWeight: "600",
-                marginRight: "5px", }}>
-            {ip}
+                marginRight: "5px",
+              }}
+            >
+              {ip}
             </span>
             <ComputerIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
           </Typography>
@@ -409,8 +409,8 @@ export default function SideNav(props, { data }) {
         open={open}
         sx={{
           paddingRight: "0px !important",
-          background:"white",
-          borderRadius:"0px 0px 0px 10px ",
+          background: "white",
+          borderRadius: "0px 0px 0px 10px ",
         }}
       >
         <Toolbar
@@ -520,7 +520,6 @@ export default function SideNav(props, { data }) {
       {user?.layout ? (
         user?.layout * 1 === 1 && (
           <>
-          
             <WebDrawer
               variant="permanent"
               open={open}
@@ -539,14 +538,14 @@ export default function SideNav(props, { data }) {
               }}
               className=""
             >
-                {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
+              {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
               {drawer}
             </WebDrawer>
           </>
         )
       ) : (
         <>
-               <WebDrawer
+          <WebDrawer
             variant="permanent"
             open={open}
             // open={true}
@@ -563,7 +562,10 @@ export default function SideNav(props, { data }) {
             }}
             className=""
           >
-               <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }} onClick={handleDrawerToggle} />
+            <ArrowForwardIcon
+              style={{ color: "#000000", fontSize: 30 }}
+              onClick={handleDrawerToggle}
+            />
 
             {drawer}
           </WebDrawer>
