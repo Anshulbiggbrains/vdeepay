@@ -1044,7 +1044,7 @@ const AdminTransactionsView = () => {
                 showSearch={false}
                 ifrouteFilter
                 ifoperatorFilter
-                ifdateFilter
+                ifFromBankFilter
                 ifstatusFilter
                 iforderidFilter
                 // type and category is same
