@@ -74,7 +74,7 @@ import AdminCreateVirtualAcct from "../modals/AdminCreateVirtualAcct";
 import CustomTabs from "../component/CustomTabs";
 import { Icon } from "@iconify/react";
 import AdminUserTab from "../component/Tab/AdminUserTab ";
-
+import { capitalize1 } from "../utils/TextUtil";
 // styled tabls
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -539,6 +539,28 @@ const AdimUserView = () => {
       selector: (row) => <div className="blue-highlight-txt">{row.role}</div>,
     },
     {
+      name:"Platform",
+      selector:(row)=>(
+      <div>
+         <Tooltip title={capitalize1(row.platform)}>
+            <div style={{ textAlign: "left" }}>
+              <div
+                className="break-words"
+                style={{
+                  fontSize: "12px",
+                }}
+              >
+                {capitalize1(row.platform)}
+              </div>
+            </div>
+          </Tooltip>
+      </div>
+      ),
+      wrap: true,
+      width: "105px",
+    
+    },
+    {
       name: "Parent",
       cell: (row) => (
         <div
@@ -877,6 +899,28 @@ const AdimUserView = () => {
     {
       name: "Role",
       selector: (row) => <div className="blue-highlight-txt">{row.role}</div>,
+    },
+    {
+      name:"Platform",
+      selector:(row)=>(
+      <div>
+         <Tooltip title={capitalize1(row.platform)}>
+            <div style={{ textAlign: "left" }}>
+              <div
+                className="break-words"
+                style={{
+                  fontSize: "12px",
+                }}
+              >
+                {capitalize1(row.platform)||'NA'}
+              </div>
+            </div>
+          </Tooltip>
+      </div>
+      ),
+      wrap: true,
+      width: "105px",
+    
     },
     {
       name: "InActive",

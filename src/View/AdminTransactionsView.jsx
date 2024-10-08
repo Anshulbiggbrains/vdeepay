@@ -407,28 +407,7 @@ const AdminTransactionsView = () => {
       width: "60px",
     },
 
-    {
-      name:"Platform",
-      selector:(row)=>(
-      <div>
-         <Tooltip title={capitalize1(row.platform)}>
-            <div style={{ textAlign: "left" }}>
-              <div
-                className="break-words"
-                style={{
-                  fontSize: "12px",
-                }}
-              >
-                {capitalize1(row.platform)}
-              </div>
-            </div>
-          </Tooltip>
-      </div>
-      ),
-      wrap: true,
-      width: "105px",
-    
-    },
+   
 
     // est missing from ad login
     {
