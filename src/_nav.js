@@ -418,18 +418,18 @@ export const Ad_nav = [
     icon2: TransactionIconWhite,
     to: "/ad/transactions",
   },
-  // {
-  //   title: "My Sale",
-  //   icon: TransactionIcon,
-  //   icon2: TransactionIconWhite,
-  //   to: "/ad/sale",
-  // },
-  // {
-  //   title: "My Purchase",
-  //   icon: TransactionIcon,
-  //   icon2: TransactionIconWhite,
-  //   to: "/ad/purchase",
-  // },
+  {
+    title: "My Sale",
+    icon: TransactionIcon,
+    icon2: TransactionIconWhite,
+    to: "/ad/sale",
+  },
+  {
+    title: "My Purchase",
+    icon: TransactionIcon,
+    icon2: TransactionIconWhite,
+    to: "/ad/purchase",
+  },
   // {
   //   title: "My Ledger",
   //   icon: TransactionIcon,
@@ -593,7 +593,7 @@ export const customer_nav = [
     ],
   },
   {
-    title: "loginHistory",
+    title: "Login History",
     icon: mypurchase,
     icon2: TransactionIconWhite,
     to: "/customer/loginHistory",

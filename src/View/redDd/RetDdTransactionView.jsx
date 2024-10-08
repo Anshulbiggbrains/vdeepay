@@ -530,6 +530,13 @@ const RetDdTransactionView = () => {
   //   { field: "Account", parameter: "ben_acc" },
   //   { field: "Username", parameter: "username" },
   // ];
+  const transactions = [
+    { title: "Total Transactions", amount: "$1000" },
+    { title: "Pending Transactions", amount: "$200" },
+    { title: "Completed Transactions", amount: "$800" },
+    { title: "Failed Transactions", amount: "$50" },
+    { title: "Refunded Transactions", amount: "$150" },
+  ];
 
   const statusList = [
     { name: "SUCCESS", code: "SUCCESS" },
@@ -631,7 +638,7 @@ const RetDdTransactionView = () => {
 
         <Grid xs={12} sx={{ pl: { xs: 0, md: 0 } }}>
           <ApiPaginateSearch
-            showSearch={false}
+            showSearch={true}
             actionButtons={
               <Grid
                 item
@@ -712,22 +719,30 @@ const RetDdTransactionView = () => {
               </Grid>
             }
             backButton={
-              role !== "admin" && role !== "api" ? (
-                <Button
-                  size="small"
-                  className="otp-hover-purple mb-2"
-                  sx={{
-                    color: primaryColor(),
-                  }}
-                  onClick={() => {
-                    setChooseInitialCategoryFilter(false);
-                  }}
-                >
-                  <KeyboardBackspaceIcon fontSize="small" /> Back
-                </Button>
-              ) : (
-                false
-              )
+              <Grid container spacing={2} sx={{ mb: 2 }}>
+              {transactions.map((transaction, index) => (
+                <Grid item xs={2.4} key={index}>
+                  <Box
+                    sx={{
+                      border: "1px solid #ccc",
+                      borderRadius: "4px", // Normal border radius
+                      padding: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "#f9f9f9", // Light background for the box
+                    }}
+                  >
+                    <Typography variant="h6">{transaction.title}</Typography>
+                    <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+                      {transaction.amount}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+             
             }
             apiEnd={
               showOldTransaction && showOldTransaction
