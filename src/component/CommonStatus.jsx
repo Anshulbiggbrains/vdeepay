@@ -148,8 +148,8 @@ const CommonStatus = ({
         minWidth: minWidth,
         maxWidth: maxWidth,
         fontSize: fontSize,
-        color: "#312e2e",
-        fontWeight: "bold",
+        color: "#ffffff",
+        fontWeight: "700",
         borderRadius: "8px",
         textTransform: "uppercase",
         transition: "all 0.3s ease",
@@ -163,7 +163,7 @@ const CommonStatus = ({
             : status === 2 || status === "PENDING"
             ? "linear-gradient(45deg, #DB9D00, #f0c324)"
             : status === 0 || status === "REJECTED" || status === "FAILED"
-            ? "linear-gradient(45deg, #ec2626, #d93025)"
+            ? "linear-gradient(45deg, 	#ff5252, #ea4444)"
             : status === "REFUND"
             ? "linear-gradient(45deg, #1260e0, #1751cf)"
             : "linear-gradient(45deg, #9e9e9e, #7e7e7e)",
@@ -181,8 +181,6 @@ const CommonStatus = ({
             ? "0px 4px 15px rgba(0, 150, 255, 0.2 )"
             : "0px 4px 15px rgba(150, 150, 150, 0.2 )",
         "&:hover": {
-          transform: "scale(1.05)",
-
           boxShadow:
             status === 1 ||
             status === "SUCCESS" ||

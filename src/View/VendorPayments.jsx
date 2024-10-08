@@ -4,6 +4,13 @@ import {
   Card,
   FormControl,
   Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Tooltip,
   Typography,
@@ -28,7 +35,7 @@ import Loader from "../component/loading-screen/Loader";
 import BeneSearchBar from "../component/BeneSearchBar";
 import { PATTERNS } from "../utils/ValidationUtil";
 import { capitalize1 } from "../utils/TextUtil";
-import { getEnv, randomColors } from "../theme/setThemeColor";
+import { getEnv, getTableHeadRowColor, randomColors } from "../theme/setThemeColor";
 import AuthContext from "../store/AuthContext";
 import OutletRegistration from "../component/OutletRegistration";
 import { mt_tab_value, PROJECTS, vendor_tab_value } from "../utils/constants";
@@ -61,7 +68,7 @@ const VendorPayments = ({ resetView }) => {
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState(0);
-  const [type, settype] = useState(0);
+  const [type, settype] = useState("express");
 
   const handleBack = () => {
     resetView(false);
@@ -209,9 +216,9 @@ const VendorPayments = ({ resetView }) => {
     console.log("newval", newValue);
     setValue(newValue);
     settype(vendor_tab_value[newValue]);
-    setCurrentType(vendor_tab_value[newValue]);
+    setCurrentType(newValue);
 
-    console.log("cms value is", type);
+    console.log("vendor type", type);
   };
 
   return (
@@ -352,7 +359,8 @@ const VendorPayments = ({ resetView }) => {
                   marginLeft: 0,
                 }}
               >
-                                                    {!infoFetchedMob && !infoFetchedMob&&  <CustomTabs
+                                                    {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&
+                                                      <CustomTabs
       tabs={tabs}
       value={value}
       onChange={handleChange}
@@ -436,7 +444,7 @@ const VendorPayments = ({ resetView }) => {
                       }}
                     >
                       <Grid item md={12} xs={12}>
-                        {!infoFetchedMob && !infoFetchedMob && (
+                        {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&(
                           <FormControl sx={{ width: "100%" }}>
                             <TextField
                               autoComplete="off"
@@ -481,95 +489,45 @@ const VendorPayments = ({ resetView }) => {
                         )}
                       </Grid>
 
-                      {/* {infoFetchedMob && infoFetchedMob && (
-                        // <div style={{ width: "100%" }}>
-                        //   <Grid item md={12} xs={12}>
-                        //     <FormControl sx={{ width: "100%" }}>
-                        //       <TextField autoComplete="off"
-                        //         label="Name"
-                        //         id="name"
-                        //         size="small"
-                        //         value={
-                        //           remitterStatus &&
-                        //           remitterStatus.firstName +
-                        //             " " +
-                        //             remitterStatus.lastName
-                        //         }
-                        //         disabled={request && request && true}
-                        //       />
-                        //     </FormControl>
-                        //   </Grid>                       
-                        // </div>
-                        <Grid className="remitter-card" container sx={{ display: 'flex' }}>
-                        <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
-                          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', mb: 2 }}>
-                            <Box component="img" src={Name} alt="Name" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                            <Typography sx={{ fontSize: "12px" }}>
-                            {
-                                   remitterStatus &&
-                                  remitterStatus.firstName +
-                                    " " +
-                                    remitterStatus.lastName
-                                }
-                            </Typography>
-                          </Box>
-                          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start' }}>
-                    <Box component="img" src={Call1} alt="Call" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px" }}>{remitterStatus?.mobile}</Typography>
-                    <BorderColorIcon sx={{ color: "Black", width: 15 }} onClick={returnMoneyNew} />
-                  </Box>
-                  <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: "end", px: 2 }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'end',justifyContent:"end" ,marginRight:{lg:3.5 , sm:3},mb:2 }}>
-                    <Box component="img" src={LimitAcc} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 }}>Limit Available</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.limitTotal}</Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:"end" }}>
-                    <Box component="img" src={LimitTran} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 }}>Limit Per Transaction</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.limitPerTransaction}</Box>
-                  </Box>
-                </Grid>
-               
-                          </Grid>
-                          </Grid>
-                      )}                 */}
+                     
                       {infoFetchedMob && infoFetchedMob && (
-                        <Grid
-                          className="remitter-card"
-                          container
-                          sx={{ display: "flex" }}
-                        >
-                          <Grid
-                            item
-                            lg={6}
-                            sm={6}
-                            xs={6}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              px: 2,
-                            }}
-                          >
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "start",
-                                mb: 2,
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={Name}
-                                alt="Name"
-                                sx={{
-                                  maxWidth: "25px",
-                                  maxHeight: "50px",
-                                  mr: 1,
-                                }}
-                              />
-                              <Typography
+                        <>
+               
+                     
+                        <TableContainer component={Paper}>
+                        <Table >
+
+
+
+
+                          {/* Table Head */}
+                          <TableHead>
+                            <TableRow>
+                              <TableCell align="center">Remitter Details</TableCell>
+                              <TableCell align="center">Contact Details</TableCell>
+                              <TableCell align="center">Limit Available</TableCell>
+                              <TableCell align="center">Limit Per Transaction</TableCell>
+                              <TableCell align="center">Add Vendor</TableCell>
+                            </TableRow>
+                          </TableHead>
+                      
+                         
+                          <TableBody>
+                          <TableRow>
+   
+     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+         <Box
+           component="img"
+           src={Name}
+           alt="Name"
+           sx={{
+             maxWidth: "25px",
+             maxHeight: "50px",
+             mr: 1,
+           }}
+         />
+        <Typography
                                 sx={{
                                   fontSize: "12px",
                                   fontWeight: "600",
@@ -583,25 +541,23 @@ const VendorPayments = ({ resetView }) => {
                                   ? remitterStatus?.lname
                                   : remitterStatus?.lastName}
                               </Typography>
-                            </Box>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "start",
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={Call1}
-                                alt="Call"
-                                sx={{
-                                  maxWidth: "25px",
-                                  maxHeight: "50px",
-                                  mr: 1,
-                                }}
-                              />
-                              <Typography
+       </Box>
+     </TableCell>
+   
+    
+     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+         <Box
+           component="img"
+           src={Call1}
+           alt="Call"
+           sx={{
+             maxWidth: "25px",
+             maxHeight: "50px",
+             mr: 1,
+           }}
+         />
+           <Typography
                                 sx={{
                                   fontSize: "12px",
                                   fontWeight: "600",
@@ -610,117 +566,73 @@ const VendorPayments = ({ resetView }) => {
                               >
                                 {remitterStatus?.mobile}
                               </Typography>
-                              <BorderColorIcon
-                                sx={{ color: "Black", width: 15 }}
-                                onClick={returnMoneyNew}
-                              />
-                            </Box>
-                          </Grid>
+         <BorderColorIcon
+           sx={{ color: "Black", width: 15, ml: 1 }}
+           onClick={returnMoneyNew}
+         />
+       </Box>
+     </TableCell>
+   
+   
+     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
 
-                          <Grid
-                            item
-                            lg={6}
-                            sm={6}
-                            xs={6}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "end",
-                              px: 2,
-                            }}
-                          >
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "end",
-                                justifyContent: "end",
-                                marginRight: { lg: 7, sm: 3 },
-                                mb: 2,
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={LimitAcc}
-                                alt="Limit"
-                                sx={{
-                                  maxWidth: "25px",
-                                  maxHeight: "50px",
-                                  mr: 1,
-                                }}
-                              />
-                              <Typography
-                                sx={{
-                                  fontSize: "12px",
-                                  mr: 1,
-                                  fontWeight: "600",
-                                  mb: 0.5,
-                                }}
-                              >
-                                Limit Available
-                              </Typography>
-                              <Box sx={{ fontWeight: "bold" }}>
-                                {remitterStatus?.limitTotal}
-                              </Box>
-                            </Box>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "end",
-                                marginRight: { lg: 3.5, sm: 3 },
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={LimitTran}
-                                alt="Limit"
-                                sx={{
-                                  maxWidth: "25px",
-                                  maxHeight: "50px",
-                                  mr: 1,
-                                }}
-                              />
-                              <Typography
-                                sx={{
-                                  fontSize: "12px",
-                                  mr: 1,
-                                  fontWeight: "600",
-                                }}
-                              >
-                                Limit Per Transaction
-                              </Typography>
-                              <Box sx={{ fontWeight: "bold" }}>
-                                {remitterStatus?.limitPerTransaction}
-                              </Box>
-                            </Box>
-                          </Grid>
 
-                          <Grid
-                            lg={6}
-                            xl={6}
-                            xs={6}
-                            sx={{
-                              display: "flex",
-                              justifyContent: {
-                                xs: "center",
-                                sm: "flex-start",
-                                lg: "center",
-                              }, // Center on small screens, left on larger
-                              width: "100%",
-                              marginLeft: { md: 23, sm: 23, xs: 13 },
-                              marginBottom: { xs: 2, sm: "-2%" }, // Responsive bottom margin
-                              padding: { xs: 2, sm: 0 }, // Add padding for small screens
-                            }}
-                          >
-                            <DmrAddBeneficiaryModal
+       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"center" }}>
+         <Box
+           component="img"
+           src={LimitAcc}
+           alt="Limit"
+           sx={{
+             maxWidth: "25px",
+             maxHeight: "50px",
+             mr: 1,
+           }}
+         />
+       
+         <Box sx={{ fontWeight: "bold", ml: 1 }}>
+         {remitterStatus?.limitTotal}
+         </Box>
+       </Box>
+     </TableCell>
+   
+    
+     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+         <Box
+           component="img"
+           src={LimitTran}
+           alt="Limit"
+           sx={{
+             maxWidth: "25px",
+             maxHeight: "50px",
+             mr: 1,
+           }}
+         />
+        
+         <Box sx={{ fontWeight: "bold" }}>
+         {remitterStatus?.limitPerTransaction}
+         </Box>
+       </Box>
+     </TableCell>
+     
+
+
+   
+   
+     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+     <DmrAddBeneficiaryModal
                               rem_mobile={mobile}
                               apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
                               getRemitterStatus={refreshRemitterStatus}
                             />
-                          </Grid>
-                        </Grid>
+     </TableCell>
+   </TableRow>
+   
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                   
+                      </>
                       )}
                     </Grid>
                   </Box>
@@ -795,8 +707,50 @@ const VendorPayments = ({ resetView }) => {
                             No Vendor found.
                           </Typography>
                         ) : (
-                          // Vendor mapping......
-                          filteredBenelist.map((ben, index) => {
+                          <TableContainer sx={{mt:2,}}>
+                          <Table >
+                          <TableHead
+  sx={{
+    border: "none",
+    color: "#fff",
+    backgroundColor: getTableHeadRowColor(),
+    fontFamily: "Poppins",
+    paddingLeft: "8px",
+    minHeight: "30px", // Set minimum height
+    maxHeight: "30px", // Set maximum height
+    borderBottom: "0.5px solid #DBDDDF",
+    paddingBottom: "4px",
+    paddingTop: "4px",
+  }}
+>
+  <TableRow
+    sx={{
+      maxHeight: "30px", // Apply max height to the row
+      paddingBottom: "4px",
+      paddingTop: "4px",
+    }}
+  >
+    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
+      Avatar
+    </TableCell>
+    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>Name</TableCell>
+    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>Account No</TableCell>
+    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>IFSC</TableCell>
+    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
+      Verified
+    </TableCell>
+    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
+      Actions
+    </TableCell>
+    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
+      Delete
+    </TableCell>
+  </TableRow>
+</TableHead>
+
+                            <TableBody>
+
+                              {filteredBenelist.map((ben, index) => {
                             return (
                               <>
                                 <BeneCardVender
@@ -807,10 +761,30 @@ const VendorPayments = ({ resetView }) => {
                                   remitterStatus={remitterStatus}
                                   getRemitterStatus={getRemitterStatus}
                                   view="MT_View"
+                                  
                                 />
                               </>
                             );
-                          })
+                          })}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                          // Vendor mapping......
+                          // filteredBenelist.map((ben, index) => {
+                          //   return (
+                          //     <>
+                          //       <BeneCardVender
+                          //         type={type}
+                          //         ben={ben}
+                          //         index={index}
+                          //         mobile={mobile}
+                          //         remitterStatus={remitterStatus}
+                          //         getRemitterStatus={getRemitterStatus}
+                          //         view="MT_View"
+                          //       />
+                          //     </>
+                          //   );
+                          // })
                         )}
                       </div>
                     </Grid>

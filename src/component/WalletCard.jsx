@@ -224,7 +224,7 @@ const borderPulse = keyframes`
         <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
-            Wallet 1
+            Wallet Balance
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
             ₹ {numberSetter(user.w1 / 100)}
@@ -250,7 +250,7 @@ const borderPulse = keyframes`
         <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1}} />
         <Box>
           <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
-            AEPS
+            AEPS Balance
           </Typography>
           <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
             ₹ {numberSetter(user.w2 / 100)}

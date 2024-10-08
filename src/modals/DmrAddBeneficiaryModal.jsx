@@ -226,11 +226,13 @@ const DmrAddBeneficiaryModal = ({
     textTransform:"capitalize",
     fontSize: "10px",
     display: "flex", // Added to align items
-    alignItems: "center", // Vertically center the icon and text
+    alignItems: "center",
+    borderRadius: 2,
+    backgroundColor: "#D9E9FD", // Vertically center the icon and text
     '&:hover': {
       color: "Dark-Blue",
       backgroundColor: "#D8D8D8",
-      borderRadius: 8,
+      
     },
   }}
 >
