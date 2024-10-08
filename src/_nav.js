@@ -573,6 +573,7 @@ export const customer_nav = [
                 icon2: TransactionIconWhite,
                 to: "/customer/purchase",
               },
+              
               // {
               //   title:"Logout",
               //   icon: mypurchase,
@@ -594,11 +595,17 @@ export const customer_nav = [
             }
           ]
         },
+        {
+          title: "loginHistory",
+          icon: mypurchase,
+          icon2: TransactionIconWhite,
+          to: "/customer/loginHistory",
+        },
            
              
               // {
               //         title: "Khata Book",
-              //         icon: Book,
+              //         icon: Book, 
               //         icon2: AccountIcon,
               //         to: "/customer/khata-book",
               //       },

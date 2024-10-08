@@ -47,6 +47,7 @@ import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import axios from "axios";
 const drawerWidth = 250;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -182,6 +183,23 @@ export default function SideNav(props, { data }) {
     setAnchorEl(null);
     navigate("/login")
   };
+  const [ip, setIp] =  React.useState("");
+
+
+
+  useEffect(() => {
+    const fetchIp = async () => {
+      try {
+        const response = await axios.get("https://api.ipify.org?format=json");
+        setIp(response.data.ip);
+      } catch (error) {
+        console.error("Error fetching the IP address:", error);
+      }
+    };
+
+    fetchIp();
+  }, []);
+
   const leftNav =
     user && user.role === "Admin"
       ? Admin_nav
@@ -366,10 +384,13 @@ export default function SideNav(props, { data }) {
                 marginRight: "5px",
               }}
             >
-              VERSION:
+            IP:
             </span>
-            <span style={{ fontSize: "13px" }}>
-              {process.env.REACT_APP_VERSION}
+            <span style={{   opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px", }}>
+            {ip}
             </span>
             <ComputerIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
           </Typography>
