@@ -56,7 +56,7 @@ const DeleteBeneficiaryModal = ({
     setOpen(false);
     setIsConfirmed(false);
   };
-
+console.log("benifisary id is",bene)
   const deleteBene = () => {
     postJsonData(
       apiEnd,
