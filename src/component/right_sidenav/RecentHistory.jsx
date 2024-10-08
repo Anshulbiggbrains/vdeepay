@@ -28,7 +28,7 @@ const RecentHistory = () => {
           display: "flex",
           justifyContent: "center", // Center the text horizontally
           alignItems: "center",
-          fontWeight: "bold",
+          fontWeight: "700",
           fontSize: "20px",
           position: "relative",
           // Allows positioning the refresh icon
@@ -108,7 +108,7 @@ const RecentHistory = () => {
                     title="Failed"
                     bgColor="#FFD1DC"
                     icon={
-                      <CloseIcon sx={{ fontSize: "25px", color: "#FF0000" }} />
+                      <CloseIcon sx={{ fontSize: "25px", color: "#ff2c2c" }} />
                     }
                     onClick={() => console.log("Failed clicked")}
                   />
@@ -117,7 +117,7 @@ const RecentHistory = () => {
                     title="Success"
                     bgColor="#FFD1DC"
                     icon={
-                      <DoneIcon sx={{ fontSize: "25px", color: "green" }} />
+                      <DoneIcon sx={{ fontSize: "25px", color: "	#259625" }} />
                     }
                     onClick={() => console.log("Success clicked")}
                   />
@@ -142,7 +142,11 @@ const RecentHistory = () => {
               <Grid
                 item
                 xs={6}
-                sx={{ display: "grid", justifyItems: "left", color: "#004080" }}
+                sx={{
+                  display: "grid",
+                  justifyItems: "left",
+                  color: "#004080",
+                }}
               >
                 <Tooltip
                   title={
@@ -160,7 +164,6 @@ const RecentHistory = () => {
                       textOverflow: "clip",
                       width: "100%",
                       textAlign: "left",
-                      Gap: "0.2",
                     }}
                   >
                     {data.operator === "Vendor Payments"
@@ -168,10 +171,22 @@ const RecentHistory = () => {
                       : data.operator}
                   </div>
                 </Tooltip>
-                <div style={{ fontSize: "12px", color: "#787879" }}>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#787879",
+                    textAlign: "left",
+                  }}
+                >
                   {data.number}
                 </div>
-                <div style={{ fontSize: "12px", color: "#787879" }}>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#787879",
+                    textAlign: "left",
+                  }}
+                >
                   {datemonthYear(data.created_at)}
                 </div>
               </Grid>
