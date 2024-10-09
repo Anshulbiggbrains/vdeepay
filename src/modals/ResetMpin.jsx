@@ -18,16 +18,15 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "40%",
+  width: { xs: "90%", sm: "70%", md: "50%", lg: "40%" }, // Responsive width
   bgcolor: "background.paper",
   boxShadow: 24,
   fontFamily: "Poppins",
-  // height: { xs: "35vh", md: "28vh" },
   height: "max-content",
-  overflowY: "scroll",
-  p: 2,
-};
-
+  maxHeight: "80vh", // Limit maximum height for better scrolling on smaller screens
+  overflowY: "auto", // Use auto to scroll when content overflows
+  p: 2
+}
 const ResetMpin = ({ variant, py, mt, username }) => {
   const authCtx = useContext(AuthContext);
   const user = authCtx && authCtx.user;
@@ -61,79 +60,75 @@ const ResetMpin = ({ variant, py, mt, username }) => {
   };
 
   return (
-    <Box
+    <Box sx={{ display: "flex" }}>
+    <Button
+      variant={variant ? variant : "contained"}
       sx={{
-        display: "flex",
-      
+        fontSize: { xs: "8px", sm: "10px" }, 
+        marginLeft: variant ? "" : "5px",
+        background: variant ? "" : secondaryColor(),
+        py: py ? 0.3 : undefined, 
+        mt: mt ? 1 : undefined, 
       }}
+      onClick={handleOpen}
+      className="button-red"
     >
-      <Button
-        variant={variant ? variant : "contained"}
-        sx={{
-          fontSize: "10px",
-          marginLeft: variant ? "" : "5px",
-          background: variant ? "" : secondaryColor(),
-          py: py && 0.3,
-          mt: mt && 1,
-          // color: envName === PROJECTS.moneyoddr ? primaryColor() : "#ffff",
-        }}
-        onClick={handleOpen}
-
-        className="button-red"
+      RESET MPIN
+    </Button>
+  
+    <Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        RESET MPIN
-      </Button>
-
-      <Box>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style} className="sm_modal">
-            <Loader loading={request} />
-            <ModalHeader title="Reset Mpin" handleClose={handleClose} />
-            <Box
-              component="form"
-              id="ResetMpin"
-              noValidate
-              autoComplete="off"
-              onSubmit={resetmpin}
-              sx={{
-                "& .MuiTextField-root": { m: 2 },
-              }}
-            >
-              <Grid container sx={{ pt: 1 }}>
-                <Grid item md={12} xs={12}>
-                  <Typography
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      fontSize: "28px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Are you Sure?
-                  </Typography>
-                  <Typography
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    You want to Reset your mpin.
-                  </Typography>
-                </Grid>
+        <Box sx={style} className="sm_modal">
+          <Loader loading={request} />
+          <ModalHeader title="Reset Mpin" handleClose={handleClose} />
+          <Box
+            component="form"
+            id="ResetMpin"
+            noValidate
+            autoComplete="off"
+            onSubmit={resetmpin}
+            sx={{
+              "& .MuiTextField-root": { m: 2 },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', 
+            }}
+          >
+            <Grid container sx={{ pt: 1 }}>
+              <Grid item md={12} xs={12}>
+                <Typography
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: { xs: "20px", sm: "24px", md: "28px" }, 
+                    fontWeight: "bold",
+                  }}
+                >
+                  Are you Sure?
+                </Typography>
+                <Typography
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: { xs: "14px", sm: "16px", md: "18px" }, // Responsive font size
+                    fontWeight: "bold",
+                  }}
+                >
+                  You want to Reset your mpin.
+                </Typography>
               </Grid>
-            </Box>
-            <ModalFooter form="ResetMpin" request={request} btn="Reset Mpin" />
+            </Grid>
           </Box>
-        </Modal>
-      </Box>
+          <ModalFooter form="ResetMpin" request={request} btn="Reset Mpin" />
+        </Box>
+      </Modal>
     </Box>
+  </Box>
   );
 };
 export default ResetMpin;

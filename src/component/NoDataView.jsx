@@ -1,7 +1,10 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import { noDataFoundGif } from "../iconsImports";
+import { 
+  // noDataFoundGif,
+  noDataIllustrator
+ } from "../iconsImports";
 
 const NoDataView = ({ msg }) => {
   const [timer, setTimer] = useState(true);
@@ -13,7 +16,7 @@ const NoDataView = ({ msg }) => {
       <Grid container hidden={timer}>
         <Grid item xs={12} sx={{ textAlign: "center" }}>
           <img
-            src={noDataFoundGif}
+            src={noDataIllustrator}
             alt="no_data"
             width="40%"
             // style={{ marginTop: "24px" }}

@@ -1,5 +1,16 @@
 import React from "react";
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,Grid,
+} from "@mui/material";
 import RetExpresTransferModal from "../modals/RetExpresTransferModal";
 import ApiEndpoints from "../network/ApiEndPoints";
 import DeleteBeneficiaryModal from "../modals/DeleteBeneficiaryModal";
@@ -20,100 +31,58 @@ const BeneCardVender = ({
   view,
 }) => {
   return (
-    <Card
-    
-      className="card-css"
-      key={index}
-      sx={{
-        display: "flex",
-        justifyContent: "left",
-        alignItems: "center",
-        px: 2,    
-        py: 1.5,
-        m: { md: 2, sm: 1, xs: 1 },
-        ml: { md: 2, sm: 0, xs: 0.5 },
-        position: "relative", 
-      }}
-    >
-      <Grid
-        sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          display: { md: "flex", sm: "none", xs: "none" },
-          background: randomColors(
-            ben && ben.name
-              ? ben.name.charAt(0).toUpperCase()
-              : ben.bene_name.charAt(0).toUpperCase()
-          ),
-          borderRadius: "4px",
-          height: "64px",
-          width: "64px",
-          position: "relative",
-          p: 1,
-        }}
-      >
-        <Typography sx={{ fontSize: "40px" }}>
+    <>
+   
+     <TableRow key={index}>
+     {/* Avatar Column */}
+     <TableCell align="center">
+       <Box
+         sx={{
+           background: randomColors(
+             ben?.name?.charAt(0).toUpperCase() ||
+             ben.bene_name.charAt(0).toUpperCase()
+           ),
+           borderRadius: "50%",
+           height: "50px",
+           width: "50px",
+           display: "flex",
+           justifyContent: "center",
+           alignItems: "center",
+           color: "#fff",
+         }}
+       >
+         <Typography sx={{ fontSize: "40px" }}>
           {ben && ben.name
             ? ben.name.charAt(0).toUpperCase()
             : ben.bene_name.charAt(0).toUpperCase()}
         </Typography>
-      </Grid>
+       </Box>
+     </TableCell>
 
-      <Grid
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-        
-          width: "100%",
-          alignContent: "center",
-          ml:2
-        }}
-      >
-       
-         
-          <Grid container sx={{display:"flex"}} >
-    <Grid item xs={12} sm={4}>
-      <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-        Name
-      </Typography>
-      <Typography sx={{ textAlign: "left" }}>
+     {/* Beneficiary Details */}
+     <TableCell>
+      
+     <Typography >
       {ben.name ? capitalize1(ben.name) : capitalize1(ben.bene_name)}
       </Typography>
-    </Grid>
-    <Grid item xs={12} sm={4} >
-      <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-        Account No 
-      </Typography>
-      <Typography sx={{ textAlign: "left" }}>
+     </TableCell>
+     <TableCell>
+       
+     <Typography >
       {ben.account ? ben.account : ben.bene_acc}
       </Typography>
-    </Grid>
-    <Grid item xs={12} sm={4}>
-      <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-        IFSC
-      </Typography>
-      <Typography sx={{ textAlign: "left" }}>
+     </TableCell>
+     <TableCell>
+      
+     <Typography >
       {ben.ifsc}
       </Typography>
-    </Grid>
-  </Grid> 
-        <Grid
-          sx={{
-            display: "flex", // Changed to flex for horizontal alignment
-            alignItems: "center",
-            mt: { md: 0, sm: 1, xs: 1 },
-            gap: 2, // Added gap for spacing between elements
-          }}
-        >
-          {/* <PortBeneficiaries
-        ben={ben}
-        dmtValue={dmtValue}
-        remitterStatus={remitterStatus}
-        getRemitterStatus={getRemitterStatus}
-        view={view}
-      /> */}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            {(ben.last_success_date &&
+     </TableCell>
+
+     {/* Actions */}
+     <TableCell align="center">
+       {/* Verified or Account Verification Modal */}
+       {(ben.last_success_date &&
                                     ben.last_success_date !== null) ? (
               <>
                 <VerifiedIcon sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }} />
@@ -132,10 +101,12 @@ const BeneCardVender = ({
                                         }
                                       />
             )}
-          </Box>
+     </TableCell>
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <RetExpresTransferModal
+     {/* Money Transfer Modals */}
+     <TableCell align="center">
+       <Box sx={{ display: "flex", gap: 1 }}>
+       <RetExpresTransferModal
                                     type="NEFT"
                                     ben={ben}
                                     rem_number={mobile && mobile}
@@ -151,7 +122,8 @@ const BeneCardVender = ({
                                         : "Super Transfer"
                                     }
                                   />
-                                  <RetExpresTransferModal
+                             
+                             <RetExpresTransferModal
                                     type="IMPS"
                                     ben={ben}
                                     rem_number={mobile && mobile}
@@ -167,7 +139,7 @@ const BeneCardVender = ({
                                         : "Super Transfer"
                                     }
                                   />
-            <Box sx={{ display: { md: "none", sm: "block", xs: "block" } }}>
+                                   <Box sx={{ display: { md: "none", sm: "block", xs: "block" } }}>
               {ben.verificationDt && ben.verificationDt !== null ? (
                 <Button
                   size="small"
@@ -184,29 +156,22 @@ const BeneCardVender = ({
                 </Button>
               ) : null}
             </Box>
-          </Box>
-        </Grid>
-        </Grid>
+      
+       </Box>
+     </TableCell>
 
-      {/* Position the Delete button in the top right corner */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "3px",
-          right: "2px",
-        }}
-      >
-                                  <DeleteBeneficiaryModal
+     {/* Delete Beneficiary Modal */}
+     <TableCell align="center">
+     <DeleteBeneficiaryModal
                                     bene={ben}
                                     mob={mobile && mobile}
                                     getRemitterStatus={getRemitterStatus}
                                     apiEnd={ApiEndpoints.REMOVE_BENE_EXPRESS}
                                     view="expressTransfer"
                                   />
-      </Box>
-
-      
-    </Card>
+     </TableCell>
+   </TableRow>
+   </>
   );
 };
 

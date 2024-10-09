@@ -92,7 +92,7 @@ const AddBeneficiaryUpiModal = ({ rem_mobile, apiEnd, getRemitterStatus }) => {
           role="presentation"
         >
           <Loader loading={request} />
-          <ModalHeader title="Add Beneficiary" handleClose={handleClose} />
+          <ModalHeader title="Add Beneficiary" subtitle="Easily Add Your Beneficiary and Simplify Your Transactions with VdeePay!" handleClose={handleClose} />
 
           <Box
             component="form"

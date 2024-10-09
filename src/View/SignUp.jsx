@@ -13,7 +13,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Verification from "../component/Verification";
 import Business from "../component/Business";
-import { loginPage } from "../iconsImports";
+import { dashboardIllustratorImg, loginPage } from "../iconsImports";
 import Personal from "../component/Personal";
 import Registration from "../component/Registration";
 import ProgressBar from "../component/ProgressBar";
@@ -195,7 +195,7 @@ const SignUp = () => {
   };
 
   return (
-    <Grid container spacing={0} sx={{ height: '97vh', overflow: 'hidden', m: 1 }}>
+    <Grid container spacing={0} sx={{ height: '97vh', overflow: 'hidden' }}>
       {loading && (
         <Box
           sx={{
@@ -218,7 +218,26 @@ const SignUp = () => {
       )}
       {/* Left Column - Hidden on medium and smaller screens */}
       <Hidden mdDown>
-        <Grid
+      <Grid
+        item
+        xs={12}
+        md={7}
+        lg={7}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: 9,
+          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          height: "100vh", 
+          width: "100%",
+        }}
+      >
+      </Grid>
+        {/* <Grid
           item
           xs={12}
           md={7}
@@ -275,7 +294,6 @@ const SignUp = () => {
           pauseOnHover={true}
           speed={100}
         >
-          {/* Marquee items */}
           {['Recharge and Bill payment', 'DTH Recharge', 'Money Transfer', 'Mobile Recharge', 'Nepal Money Transfer', 'Fund Transfer', 'UPI Transfer', 'Fastag Recharge', 'Insurance', 'Train Ticket', 'Domestic Money Transfer', 'AEPS', 'Micro ATM', 'Travel', 'Loan EMI'].map((item, index) => (
             <Typography
               key={index}
@@ -298,7 +316,6 @@ const SignUp = () => {
           gradientColor="#4253F0"
           pauseOnHover={true}
         >
-          {/* Repeated Marquee items */}
           {['Recharge and Bill payment', 'DTH Recharge', 'Money Transfer', 'Mobile Recharge', 'Nepal Money Transfer', 'Fund Transfer', 'UPI Transfer', 'Fastag Recharge', 'Insurance', 'Train Ticket', 'Domestic Money Transfer', 'AEPS', 'Micro ATM', 'Travel', 'Loan EMI'].map((item, index) => (
             <Typography
               key={index}
@@ -313,7 +330,7 @@ const SignUp = () => {
             </Typography>
           ))}
         </Marquee>
-        </Grid>
+        </Grid> */}
       </Hidden>
 
     <Grid

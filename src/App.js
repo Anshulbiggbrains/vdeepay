@@ -89,6 +89,7 @@ import AdminApiServices from "./View/AdminApiServices";
 import Documents from "./View/Documents";
 import ProfilePage from "./component/Profile";
 import RetAdDdDashboard from "./View/RetAdDdDashboard";
+import LoginHistory from "./View/LoginHistory";
 // import IRCTCView from "./View/Travel/IRCTCView";
 // import MainTravelContainer from "./View/Travel/MainTravelContainer";
 
@@ -160,6 +161,7 @@ function App() {
                   element={<RetailerCertificate />}
                 />
               )}
+              <Route path="loginHistory" element={<LoginHistory />} />
 
               {/* admin Login routes */}
               {authCtx.user && authCtx.user.role === "Admin" && (
@@ -201,6 +203,7 @@ function App() {
                   <Route path="complaints" element={<ComplaintsView />} />
                   <Route path="pg-orders" element={<AdminPgOrders />} />
                   <Route path="employees" element={<AdminEmployeesView />} />
+                  <Route path="loginHistory" element={<LoginHistory />} />
                 </Route>
               )}
 
@@ -220,6 +223,7 @@ function App() {
                     />
                     <Route path="cred-req" element={<CreditRequestView />} />
                     <Route path="my-profile" element={<NewMyProfile />} />
+                    <Route path="loginHistory" element={<LoginHistory />} />
                   </Route>
                 )}
               {authCtx.user && authCtx.user.role === "Api" && (
@@ -230,6 +234,7 @@ function App() {
                   <Route path="invoice" element={<ApiInvoice />} />
                   <Route path="documents" element={<Documents/>} />
                   <Route path="my-profile" element={<NewMyProfile />} />
+                  <Route path="loginHistory" element={<LoginHistory />} />
                 </Route>
               )}
               {authCtx.user &&
@@ -254,6 +259,7 @@ function App() {
                       path="khata-statement"
                       element={<KhataBookStatement />}
                     />
+                    <Route path="loginHistory" element={<LoginHistory />} />
                   </Route>
                 )}
               {authCtx.user &&
@@ -283,6 +289,7 @@ function App() {
                       path="booking-review"
                       element={<BookingReviewPage />}
                     />
+                      <Route path="loginHistory" element={<LoginHistory />} />
                     <Route
                       path="express-transfer"
                       element={

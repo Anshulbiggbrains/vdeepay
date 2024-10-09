@@ -29,11 +29,12 @@ import NavItemComponent from "./NavItemComponent";
 import NavItemSubmenu from "./NavItemSubmenu";
 import { setTitleFunc } from "../utils/HeaderTitleUtil";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar, Button, Grid, IconButton, Tooltip } from "@mui/material";
+import { Avatar, Button, Grid, IconButton, Tooltip,MenuItem ,Menu} from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import RightNavBarMob from "./RightNavBarMob";
 import Notifications from "./Notifications";
 import WalletCard from "./WalletCard";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import {
   getHoverInActive,
   secondaryColor,
@@ -46,7 +47,9 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
 import Mount from "./Mount";
 import TransactionsData from "./rendringPage/TransactionsData";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import MyProfile from "../View/MyProfile";
+import axios from "axios";
 const drawerWidth = 250;
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -180,8 +183,23 @@ export default function SideNav(props, { data }) {
   const handleLogout = () => {
     authCtx.logout();
     setAnchorEl(null);
-    navigate("/login")
+    navigate("/login");
   };
+  const [ip, setIp] = React.useState("");
+
+  useEffect(() => {
+    const fetchIp = async () => {
+      try {
+        const response = await axios.get("https://api.ipify.org?format=json");
+        setIp(response.data.ip);
+      } catch (error) {
+        console.error("Error fetching the IP address:", error);
+      }
+    };
+
+    fetchIp();
+  }, []);
+
   const leftNav =
     user && user.role === "Admin"
       ? Admin_nav
@@ -239,8 +257,7 @@ export default function SideNav(props, { data }) {
         : customer_nav
       : nav;
 
-  const  outletBoxStyle = {
-    
+  const outletBoxStyle = {
     width: {
       lg:
         user?.role === "Admin"
@@ -303,8 +320,8 @@ export default function SideNav(props, { data }) {
         sx={{
           height: { xs: "80vh", sm: "100vh" },
           overflowY: "scroll",
-           background: "#105497",
-           borderRadius:"0px 10px"
+          background: "#105497",
+          borderRadius: "0px 10px",
         }}
       >
         {leftNav.map((item, index) => {
@@ -336,9 +353,9 @@ export default function SideNav(props, { data }) {
             )
           );
         })}
-         {open && (
+        {open && (
           <Typography
-          onClick={handleLogout}
+            onClick={handleLogout}
             sx={{ textAlign: "left", pl: 5, mt: 2, color: whiteColor() }}
           >
             <span
@@ -349,9 +366,13 @@ export default function SideNav(props, { data }) {
                 marginRight: "5px",
               }}
             >
-              Logout
+              {user?.role === "Dd" ?(
+             <Button sx={{ color: whiteColor()}}>Sign Out</Button>
+              ):(
+                <Button sx={{ color: whiteColor()}}>Logout</Button>
+              )
+}
             </span>
-
           </Typography>
         )}
         {open && (
@@ -366,10 +387,17 @@ export default function SideNav(props, { data }) {
                 marginRight: "5px",
               }}
             >
-              VERSION:
+              IP:
             </span>
-            <span style={{ fontSize: "13px" }}>
-              {process.env.REACT_APP_VERSION}
+            <span
+              style={{
+                opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px",
+              }}
+            >
+              {ip}
             </span>
             <ComputerIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
           </Typography>
@@ -388,8 +416,8 @@ export default function SideNav(props, { data }) {
         open={open}
         sx={{
           paddingRight: "0px !important",
-          background:"white",
-          borderRadius:"0px 0px 0px 10px ",
+          background: "white",
+          borderRadius: "0px 0px 0px 10px ",
         }}
       >
         <Toolbar
@@ -464,7 +492,170 @@ export default function SideNav(props, { data }) {
             }}
           >
             <WalletCard />
+            <Button
+              sx={{
+                borderRadius: "0px",
+                p: 0,
+                textAlign: "right",
+              }}
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <Tooltip title="MY Profile" placement="bottom">
+                {user && user.profile_image !== "0" ? (
+                  <Avatar
+                    id="user_img"
+                    alt="Remy Sharp"
+                    // src={user && user.profile_image}
+                    src={user.gender === "F"? femaleAvatar : maleAvatar}
+                    sx={{ width: 35, height: 35 }}
+                  />
+                ) : (
+                  <AccountCircle sx={{ fontSize: "36px" }} />
+                )}
+              </Tooltip>
+              <Grid sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+                <Typography
+                  component="span"
+                    sx={{
+                      padding: 1,
+                      textTransform: "capitalize",
+                      whiteSpace: "nowrap", 
+                      overflow: "hidden",   
+                      textOverflow: "ellipsis"
+                  }}
+                >
+                  {user && user.name}
+                </Typography>
+              </Grid>
+            </Button>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              keepMounted
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <div
+                style={{
+                  margin: 0,
+                  paddingTop: "0rem",
+                  width: "250px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <MenuItem
+                  disableRipple
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "100%",
+                    marginTop: "-8px",
+                    "&:hover": { cursor: "default", background: "#fff" },
+                  }}
+                >
+                  {user && user.profile_image !== "0" ? (
+                    <Avatar
+                      id="user_img"
+                      alt="Remy Sharp"
+                      src={user.gender === "F"? femaleAvatar : maleAvatar}
+                      sx={{ width: 80, height: 80 }}
+                    />
+                  ) : (
+                    <AccountCircle
+                      sx={{ fontSize: "80px", color: secondaryColor() }}
+                    />
+                  )}
+
+                  <span
+                    style={{
+                      fontWeight: "550",
+                      fontSize: "0.9rem",
+                      marginTop: "0.3rem",
+                    }}
+                  >
+                    {user && user.name}
+                  </span>
+
+                  <span
+                    onClick={() => {
+                      if (user && user.role === "Admin") {
+                        navigate("/admin/my-profile");
+                      } else if (user && user.role === "Asm") {
+                        navigate("/asm/my-profile");
+                      } else if (user && user.role === "Zsm") {
+                        navigate("/zsm/my-profile");
+                      } else if (user && user.role === "Ad") {
+                        navigate("/ad/my-profile");
+                      } else if (user && user.role === "Md") {
+                        navigate("/md/my-profile");
+                      } else if (
+                        user &&
+                        (user.role === "Ret" || user.role === "Dd")
+                      ) {
+                        navigate("/customer/my-profile");
+                      } else if (user && user.role === "Api") {
+                        navigate("/api-user/my-profile");
+                      } else {
+                        navigate("/other/my-profile");
+                      }
+                      handleClose();
+                    }}
+                    style={{
+                      border: "1px solid #3f3f3f",
+                      borderRadius: "16px",
+                      padding: "0.2rem 1rem",
+                      fontSize: "0.9rem",
+                      margin: "1rem 0",
+                    }}
+                    className="simple-hover"
+                  >
+                    Manage your Profile
+                  </span>
+                </MenuItem>
+
+                <div className="profile-dropdown-divider-new"></div>
+                <MenuItem
+                  disableRipple
+                  onClick={() => {
+                    handleLogout();
+                    navigate("/");
+                  }}
+                  sx={{
+                    width: "100%",
+                    marginBottom: "-8px",
+                    textAlign: "center",
+                    py: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    "&:hover": {
+                      backgroundColor: getHoverInActive(),
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  Logout <LogoutIcon className="ms-2" fontSize="small" />
+                </MenuItem>
+              </div>
+            </Menu>
           </div>
+        
+            
         </Toolbar>
       </WebAppBar>
 
@@ -499,7 +690,6 @@ export default function SideNav(props, { data }) {
       {user?.layout ? (
         user?.layout * 1 === 1 && (
           <>
-          
             <WebDrawer
               variant="permanent"
               open={open}
@@ -518,14 +708,14 @@ export default function SideNav(props, { data }) {
               }}
               className=""
             >
-                {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
+              {/* <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }}   onClick={handleDrawerToggle} /> */}
               {drawer}
             </WebDrawer>
           </>
         )
       ) : (
         <>
-               <WebDrawer
+          <WebDrawer
             variant="permanent"
             open={open}
             // open={true}
@@ -542,7 +732,10 @@ export default function SideNav(props, { data }) {
             }}
             className=""
           >
-               <ArrowForwardIcon style={{ color: "#000000", fontSize: 30 }} onClick={handleDrawerToggle} />
+            <ArrowForwardIcon
+              style={{ color: "#000000", fontSize: 30 }}
+              onClick={handleDrawerToggle}
+            />
 
             {drawer}
           </WebDrawer>

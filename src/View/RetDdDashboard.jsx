@@ -33,6 +33,8 @@ import {
   gas1,
   water1,
   landline1,
+  recharge1,
+  bbps1,
 } from "../iconsImports";
 import DmtContainer from "./DMTcontainer";
 import CMSView from "./CMSView";
@@ -92,7 +94,7 @@ const RetDdDashboard = () => {
         {
           id: 7,
           name: "Mobile Recharge",
-          img: mobileR_img,
+          img: recharge1,
           component: MobileRechargeForm,
         },
         { id: 8, name: "DTH", img: dth1, component: MobileRechargeForm },
@@ -128,7 +130,7 @@ const RetDdDashboard = () => {
           img: landline1,
           component: ElectricityForm,
         },
-        { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
+        { id: 16, name: "Bbps", img: bbps1, component: BBPSView },
       ],
     },
     {
@@ -246,7 +248,15 @@ const RetDdDashboard = () => {
             </Typography>
             <Grid container spacing={2}>
               {category.data.map((item) => (
-                <Grid item xs={12} sm={6} md={3} lg={2} key={item.id}sx={{mb:1}}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={3}
+                  lg={2}
+                  key={item.id}
+                  sx={{ mb: 1 }}
+                >
                   <CommonCardDashBoard
                     name={item.name}
                     img={item.img}

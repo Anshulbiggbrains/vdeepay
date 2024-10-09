@@ -638,6 +638,7 @@ const BBPSView = () => {
      
       <Grid item lg={4} xs={12} sm={4} sx={{ p: 2 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
+     
     <Typography variant="h6" align="left">
       {biller[0]?.categoryName}
     </Typography>
@@ -701,12 +702,7 @@ const BBPSView = () => {
     position: "relative",
   }}
 >
-<OuterIcon>
-        <InnerIcon>
-        <img src={selectedImage} alt="bbps"  />
-        </InnerIcon>
-      </OuterIcon>
-  
+
   {/* Back to Categories Button aligned to the right */}
  
 
@@ -725,9 +721,15 @@ const BBPSView = () => {
             sx={formStyle}
           >
             <Grid container spacing={2} sx={{ pt: 1, width: { md: "100%", sm: "100%", xs: "100%" } }}>
-            <Typography variant="h6" align="left" sx={{ml:3,fontWeight:"300"}}>
-      {biller_name}
-    </Typography>
+              
+            <Box display="flex" alignItems="center">
+  <InnerIcon>
+    <img src={selectedImage} alt="bbps" />
+  </InnerIcon>
+  <Typography variant="h6" align="left" sx={{ ml: 2, fontWeight: "300" }}>
+    {biller_name}
+  </Typography>
+</Box>
               {params.map((item, index) => (
                 <Grid item md={12} xs={12} key={index}>
          

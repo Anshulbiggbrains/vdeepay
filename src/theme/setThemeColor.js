@@ -32,7 +32,7 @@ export const getHoverInActive = () => {
 
 export const getTableHeadRowColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return " #E49B0F";
+    return "#E49B0F";
   }
 };
 
@@ -53,7 +53,7 @@ export const getUserColor = (role) => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
     if (role === "Asm") {
       return "#1C2E46";
-    }else if (role === "ZSM") {
+    } else if (role === "ZSM") {
       return "#FFC0CB";
     } else if (role === "Ad") {
       return "#16BA75";
@@ -96,13 +96,13 @@ export const getUserColor = (role) => {
 export const randomColors = () => {
   // Array containing colors
   var colors = [
-    "rgb(153, 102, 255 , 0.20)",
-    "rgb(75, 192, 192 , 0.20)",
-    "rgb(255, 204, 86 , 0.20)",
-    "rgb(255, 99, 133 , 0.20)",
-    "#d3d3d3",
+    "rgba(255, 99, 132, 0.2)",  // Light red
+    "rgba(54, 162, 235, 0.2)",  // Light blue
+    "rgba(255, 206, 86, 0.2)",  // Light yellow
+    "rgba(75, 192, 192, 0.2)",  // Light teal
+    "rgba(153, 102, 255, 0.2)", // Light purple
   ];
-
+  
   // selecting random color
   var random_color = colors[Math.floor(Math.random() * colors.length)];
   return random_color;

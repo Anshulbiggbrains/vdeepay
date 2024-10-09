@@ -115,22 +115,13 @@ const EditOpServices = ({ refresh, row }) => {
     >
       {" "}
       <Tooltip title="Edit Account">
-        <IconButton onClick={getRouteVal}>
-          <Icon
-            icon="basil:edit-solid"
-            style={{ fontSize: "24px" }}
-            className="refresh-icon-risk"
-          />
+        <IconButton sx={{ color: "#0504AA" }} onClick={getRouteVal}>
+          <Icon icon="raphael:edit" width={24} height={24} />
         </IconButton>
       </Tooltip>
       <Box>
-        <Drawer
-          open={open}
-          onClose={handleClose}
-          anchor="right"
-       
-        >
-          <Box sx={{width:400}} className="sm_modal">
+        <Drawer open={open} onClose={handleClose} anchor="right">
+          <Box sx={{ width: 400 }} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader title={`Edit Operator`} handleClose={handleClose} />
             <Box
@@ -146,7 +137,8 @@ const EditOpServices = ({ refresh, row }) => {
               <Grid container sx={{ pt: 1 }}>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Name"
                       id="name"
                       size="small"
@@ -157,7 +149,8 @@ const EditOpServices = ({ refresh, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Code"
                       id="code"
                       size="small"
@@ -169,7 +162,8 @@ const EditOpServices = ({ refresh, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Admin Comm"
                       id="a_comm"
                       size="small"
@@ -196,7 +190,8 @@ const EditOpServices = ({ refresh, row }) => {
                 </Grid> */}
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Route"
                       id="route"
                       size="small"

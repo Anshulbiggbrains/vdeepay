@@ -372,82 +372,83 @@ const MyPurchaseView = () => {
           />
         </Grid>
         <ApiPaginateSearch
-          showSearch={false}
+          showSearch={true}
           isFilterAllowed
           actionButtons={
-            <Grid
-              item
-              md={12}
-              sm={12}
-              xs={12}
-              sx={{
-                display: "flex",
-                justifyContent: { md: "end", xs: "start" },
-                alignItems: "center",
-                pr: 5,
-              }}
-            >
-              <Box sx={{ display: "flex", justifyContent: "center", mx: 2 }}>
-                <DateRangePicker
-                  placement={isBig ? "leftStart" : "auto"}
-                  showOneCalendar
-                  placeholder="Date"
-                  size="xs"
-                  cleanable
-                  value={filterValues.dateVal}
-                  ranges={predefinedRanges}
-                  onChange={(value) => {
-                    const dateVal = value;
-                    const dates = {
-                      start: dateVal && dateVal[0],
-                      end: dateVal && dateVal[1],
-                    };
-                    setFilterValues({
-                      ...filterValues,
-                      date: {
-                        start: yyyymmdd(dates.start),
-                        end: yyyymmdd(dates.end),
-                      },
-                      dateVal,
-                    });
-                    if (dateVal) {
-                      setQuery(
-                        `${prefilledQuery}&start=${yyyymmdd(
-                          dateVal[0]
-                        )}&end=${yyyymmdd(dateVal[1])}`
-                      );
-                    } else {
-                      setQuery(`${prefilledQuery}`);
-                    }
-                  }}
-                  // disabledDate={afterToday()}
-                />
-              </Box>
+            <></>
+            // <Grid
+            //   item
+            //   md={12}
+            //   sm={12}
+            //   xs={12}
+            //   sx={{
+            //     display: "flex",
+            //     justifyContent: { md: "end", xs: "start" },
+            //     alignItems: "center",
+            //     pr: 5,
+            //   }}
+            // >
+            //   <Box sx={{ display: "flex", justifyContent: "center", mx: 2 }}>
+            //     <DateRangePicker
+            //       placement={isBig ? "leftStart" : "auto"}
+            //       showOneCalendar
+            //       placeholder="Date"
+            //       size="xs"
+            //       cleanable
+            //       value={filterValues.dateVal}
+            //       ranges={predefinedRanges}
+            //       onChange={(value) => {
+            //         const dateVal = value;
+            //         const dates = {
+            //           start: dateVal && dateVal[0],
+            //           end: dateVal && dateVal[1],
+            //         };
+            //         setFilterValues({
+            //           ...filterValues,
+            //           date: {
+            //             start: yyyymmdd(dates.start),
+            //             end: yyyymmdd(dates.end),
+            //           },
+            //           dateVal,
+            //         });
+            //         if (dateVal) {
+            //           setQuery(
+            //             `${prefilledQuery}&start=${yyyymmdd(
+            //               dateVal[0]
+            //             )}&end=${yyyymmdd(dateVal[1])}`
+            //           );
+            //         } else {
+            //           setQuery(`${prefilledQuery}`);
+            //         }
+            //       }}
+            //       // disabledDate={afterToday()}
+            //     />
+            //   </Box>
 
-              <ExcelUploadModal
-                twobuttons="Download Csv"
-                btn
-                request={request}
-                getExcel={getExcel}
-                getCsv={getCsv}
-                noOfResponses={noOfResponses}
-                setQuery={setQuery}
-                handleCloseCB={(closeModal) => {
-                  handleCloseModal = closeModal;
-                }}
-              />
-              <Tooltip title="refresh">
-                <IconButton
-                  aria-label="refresh"
-                sx={{color:"#0F52BA"}}
-                  onClick={() => {
-                    refreshFunc(setQuery);
-                  }}
-                >
-                  <CachedIcon className="refresh-purple" />
-                </IconButton>
-              </Tooltip>
-            </Grid>
+            //   <ExcelUploadModal
+            //     twobuttons="Download Csv"
+            //     btn
+            //     request={request}
+            //     getExcel={getExcel}
+            //     getCsv={getCsv}
+            //     noOfResponses={noOfResponses}
+            //     setQuery={setQuery}
+            //     handleCloseCB={(closeModal) => {
+            //       handleCloseModal = closeModal;
+            //     }}
+            //   />
+            //   <Tooltip title="refresh">
+            //     <IconButton
+            //       aria-label="refresh"
+            //     sx={{color:"#0F52BA"}}
+            //       onClick={() => {
+            //         refreshFunc(setQuery);
+            //       }}
+            //     >
+            //       <CachedIcon className="refresh-purple" />
+            //     </IconButton>
+            //   </Tooltip>
+            // </Grid>
           }
           apiEnd={ApiEndpoints.GET_TRANSACTIONS}
           searchOptions={searchOptions}
@@ -464,28 +465,28 @@ const MyPurchaseView = () => {
             setNoOfResponses(val);
           }}
           prefilledQuery={prefilledQuery}
-          backButton={
-            <Button
-              size="small"
-              className="otp-hover-purple mb-2"
-              sx={{
-                color: primaryColor(),
-              }}
-              onClick={() => {
-                setChooseInitialCategoryFilter(false);
-                if (role === USER_ROLES.AD) {
-                  navigate("/ad/transactions");
-                } else if (role === USER_ROLES.RET || role === USER_ROLES.DD) {
-                  navigate("/customer/transactions");
-                } else if (role === USER_ROLES.MD) {
-                  navigate("/md/transactions");
-                } else {
-                }
-              }}
-            >
-              <KeyboardBackspaceIcon fontSize="small" /> Back
-            </Button>
-          }
+          // backButton={
+          //   <Button
+          //     size="small"
+          //     className="otp-hover-purple mb-2"
+          //     sx={{
+          //       color: primaryColor(),
+          //     }}
+          //     onClick={() => {
+          //       setChooseInitialCategoryFilter(false);
+          //       if (role === USER_ROLES.AD) {
+          //         navigate("/ad/transactions");
+          //       } else if (role === USER_ROLES.RET || role === USER_ROLES.DD) {
+          //         navigate("/customer/transactions");
+          //       } else if (role === USER_ROLES.MD) {
+          //         navigate("/md/transactions");
+          //       } else {
+          //       }
+          //     }}
+          //   >
+          //     <KeyboardBackspaceIcon fontSize="small" /> Back
+          //   </Button>
+          // }
 
           
           filterComponent={

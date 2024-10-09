@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   Grid,
@@ -8,7 +8,7 @@ import {
   Modal,
   Tooltip,
   Drawer,
-} from "@mui/material"; 
+} from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
@@ -75,12 +75,8 @@ const EditOperator = ({ row, refresh }) => {
       }}
     >
       <Tooltip title="Edit Operator">
-        <IconButton onClick={handleOpen}>
-          <Icon
-            icon="basil:edit-solid"
-            style={{ fontSize: "22px" }}
-            className="refresh-icon-risk"
-          />
+        <IconButton sx={{ color: "#0504AA" }} onClick={handleOpen}>
+          <Icon icon="raphael:edit" width={26} height={26} />
         </IconButton>
       </Tooltip>
       {/* <Tooltip title="Edit Operator">
@@ -100,7 +96,7 @@ const EditOperator = ({ row, refresh }) => {
     
       >
         <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Operator" handleClose={handleClose} />
+          <ModalHeader title="Operator" handleClose={handleClose}subtitle="Easily Modify Operator Details with VdeePay" />
           <Box
             component="form"
             id="edit-operator"
@@ -116,7 +112,8 @@ const EditOperator = ({ row, refresh }) => {
             <Grid container sx={{ pt: 1 }}>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Admin Commision"
                     id="admin_comm"
                     size="small"
@@ -127,7 +124,8 @@ const EditOperator = ({ row, refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Retailer Commision"
                     id="ret_comm"
                     size="small"
@@ -138,7 +136,8 @@ const EditOperator = ({ row, refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Area Distributer Commision"
                     id="ad_comm"
                     size="small"
@@ -149,7 +148,8 @@ const EditOperator = ({ row, refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Direct Dealer Commision"
                     id="dd_comm"
                     size="small"

@@ -1,8 +1,6 @@
 import React from "react";
 import useCommonContext from "../../store/CommonContext";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-// import DoneIcon from "@mui/icons-material/Done";
-// import CloseIcon from "@mui/icons-material/Close";
 import SyncIcon from "@mui/icons-material/Sync";
 import { Box, Grid, Button, Tooltip } from "@mui/material";
 import RefreshComponent from "../RefreshComponent";
@@ -21,17 +19,16 @@ const RecentHistory = () => {
   return (
     <Box
       className="card-css"
-      sx={{ mt: 2, px: 2.2, py: 1.5, borderRadius: "10px" }}
+      sx={{ mt: 2, px: 1, py: 1.5, borderRadius: "10px" }}
     >
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center", // Center the text horizontally
+          justifyContent: "center",
           alignItems: "center",
-          fontWeight: "bold",
+          fontWeight: "700",
           fontSize: "20px",
           position: "relative",
-          // Allows positioning the refresh icon
           color: "#008ecc",
         }}
       >
@@ -43,16 +40,15 @@ const RecentHistory = () => {
             left: 0,
             color: " #ff0066",
           }}
-          onClick={() => navigate("/some-route")} // Replace with your desired route
+          onClick={() => navigate("/some-route")}
         />
-        Recent history
-        {/* ######### REFRESH COMPONENT ######### */}
+        Recent Transactions
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "absolute", // Positioning the refresh icon to the right
+            position: "absolute",
             right: 0,
             color: "#0141CF",
           }}
@@ -69,7 +65,6 @@ const RecentHistory = () => {
         </Box>
       </Box>
 
-      {/* ######## CONTENT ######## */}
       <Box
         style={{
           marginTop: "12px",
@@ -90,10 +85,12 @@ const RecentHistory = () => {
                 px: 1,
                 mb: 0.3,
                 border: "2px solid #d48628",
+                alignItems: "center", 
+                justifyContent: "space-between", 
               }}
               key={index}
+              wrap="nowrap"
             >
-              {/* ######### ICON GRID ######### */}
               <Grid
                 item
                 xs={2}
@@ -108,7 +105,7 @@ const RecentHistory = () => {
                     title="Failed"
                     bgColor="#FFD1DC"
                     icon={
-                      <CloseIcon sx={{ fontSize: "25px", color: "#FF0000" }} />
+                      <CloseIcon sx={{ fontSize: "25px", color: "#ff2c2c" }} />
                     }
                     onClick={() => console.log("Failed clicked")}
                   />
@@ -117,7 +114,7 @@ const RecentHistory = () => {
                     title="Success"
                     bgColor="#FFD1DC"
                     icon={
-                      <DoneIcon sx={{ fontSize: "25px", color: "green" }} />
+                      <DoneIcon sx={{ fontSize: "25px", color: "	#259625" }} />
                     }
                     onClick={() => console.log("Success clicked")}
                   />
@@ -138,11 +135,15 @@ const RecentHistory = () => {
                 )}
               </Grid>
 
-              {/* ######### DETAILS GRID ######### */}
               <Grid
                 item
                 xs={6}
-                sx={{ display: "grid", justifyItems: "left", color: "#004080" }}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  color: "#004080",
+                  minWidth: 0, // Prevents text overflow
+                }}
               >
                 <Tooltip
                   title={
@@ -157,10 +158,10 @@ const RecentHistory = () => {
                       fontWeight: "bold",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
-                      textOverflow: "clip",
+                      textOverflow: "ellipsis",
                       width: "100%",
                       textAlign: "left",
-                      Gap: "0.2",
+                      marginLeft: "6px",
                     }}
                   >
                     {data.operator === "Vendor Payments"
@@ -168,30 +169,48 @@ const RecentHistory = () => {
                       : data.operator}
                   </div>
                 </Tooltip>
-                <div style={{ fontSize: "12px", color: "#787879" }}>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#787879",
+                    marginLeft: "6px",
+                    display: "flex", 
+                   
+                  }}
+                >
                   {data.number}
                 </div>
-                <div style={{ fontSize: "12px", color: "#787879" }}>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#787879",
+                    marginLeft: "6px",
+                    display: "flex",
+                  }}
+                >
                   {datemonthYear(data.created_at)}
                 </div>
               </Grid>
 
-              {/* ######### WALLET BALANCE GRID ######### */}
-              <Grid item xs={4}>
+              <Grid
+                item
+                xs={4}
+                sx={{ display: "flex", flexDirection: "column", minWidth: 0 }}
+              >
                 <div
                   style={{
                     color:
                       data.status === "SUCCESS"
-                        ? "#1FD655"
+                        ? "#478778"
                         : data.status === "PENDING"
                         ? "#f48f26"
                         : data.status === "REFUND"
                         ? "#E87204"
                         : "#ff2316",
                     fontWeight: "bold",
-                    fontSize: "15px",
+                    fontSize: "13px",
                     display: "flex",
-                    justifyContent: "end",
+                    justifyContent: "flex-end",
                   }}
                   className="diff-font"
                 >
@@ -202,16 +221,16 @@ const RecentHistory = () => {
                   style={{
                     color:
                       data.status === "SUCCESS"
-                        ? "#1FD655"
+                        ? "#478778"
                         : data.status === "PENDING"
                         ? "#f48f26"
                         : data.status === "REFUND"
                         ? "#E87204"
-                        : "	#ff2316",
+                        : "#ff2316",
                     fontWeight: "bold",
                     fontSize: "12px",
                     display: "flex",
-                    justifyContent: "end",
+                    justifyContent: "flex-end",
                   }}
                 >
                   {data.status && capitalize(data.status)}
@@ -237,9 +256,6 @@ const RecentHistory = () => {
 
 export default RecentHistory;
 
-// {/* ######################################## */}
-// {/* # TRANSACTION STATUS COMMON COMPONENT # */}
-// {/* ######################################## */}
 function Icon({ title = "Success", bgColor = "", icon, onClick }) {
   return (
     <div
@@ -253,8 +269,7 @@ function Icon({ title = "Success", bgColor = "", icon, onClick }) {
         color: "#fff",
         background: bgColor,
         marginTop: "0.3rem",
-
-        cursor: "pointer", // Added to make the icon clickable
+        cursor: "pointer",
       }}
       onClick={onClick}
     >

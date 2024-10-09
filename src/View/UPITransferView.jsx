@@ -3,10 +3,20 @@ import {
   Button,
   Card,
   FormControl,
+  FormControlLabel,
   Grid,
-  InputAdornment,
+  Icon,
+  IconButton,
+  Paper,
+  Radio,
+  RadioGroup,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
@@ -25,7 +35,7 @@ import CustomCard from "../component/CustomCard";
 import { back, Banner, Call1, LimitAcc, LimitTran, Name, noDataFoundGif } from "../iconsImports";
 import { PATTERNS } from "../utils/ValidationUtil";
 import { currencySetter } from "../utils/Currencyutil";
-import { randomColors } from "../theme/setThemeColor";
+import { getTableHeadRowColor, randomColors } from "../theme/setThemeColor";
 import AuthContext from "../store/AuthContext";
 import OutletRegistration from "../component/OutletRegistration";
 import { banking } from "../_nav";
@@ -322,60 +332,126 @@ const UPITransferView = ({resetView}) => {
 }
                     </Grid>
                     {infoFetchedMob && infoFetchedMob && (
+                      <>
                       
-                        <Grid className="remitter-card" container sx={{ display: 'flex' }}>
-                        <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', px: 2 }}>
-                          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', mb: 2 }}>
-                            <Box component="img" src={Name} alt="Name" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                            <Typography sx={{ fontSize: "12px" ,fontWeight:"600",mt:0.5 }}> 
+                     
+
+                    
+                     <TableContainer component={Paper}>
+                     <Table>
+                       {/* Table Head */}
+                       <TableHead>
+                         <TableRow>
+                           <TableCell align="center">Remitter Details</TableCell>
+                           <TableCell align="center">Contact Details</TableCell>
+                           <TableCell align="center">Limit Available</TableCell>
+                           <TableCell align="center">Limit Per Transaction</TableCell>
+                           <TableCell align="center">Add Beneficiary</TableCell>
+                         </TableRow>
+                       </TableHead>
+                   
+                      
+                       <TableBody>
+                       <TableRow>
+
+  <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+      <Box
+        component="img"
+        src={Name}
+        alt="Name"
+        sx={{
+          maxWidth: "25px",
+          maxHeight: "50px",
+          mr: 1,
+        }}
+      />
+     <Typography sx={{ fontSize: "12px" ,fontWeight:"600",mt:0.5 }}> 
                             {
                                    remitterStatus &&
                                   remitterStatus.name 
                             
                                 }
                             </Typography>
-                          </Box>
-                          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start' }}>
-                    <Box component="img" src={Call1} alt="Call" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px" ,fontWeight:"600",mt:0.4}}>{remitterStatus?.number}</Typography>
-                    <BorderColorIcon sx={{ color: "Black", width: 15 }}   onClick={returnMoneyNew}  />
-                  </Box>
-                </Grid>
+    </Box>
+  </TableCell>
 
-                <Grid item lg={6} sm={6} xs={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: "end", px: 2 }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'end',justifyContent:"end" ,marginRight:{lg:4.7 , sm:5},mb:2 }}>
-                    <Box component="img" src={LimitAcc} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr: 1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 ,fontWeight:"600",mb:0.5}}>Limit Available</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.rem_limit}</Box>
-                  </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent:"end" }}>
-                    <Box component="img" src={LimitTran} alt="Limit" sx={{ maxWidth: "25px", maxHeight: "50px", mr:1 }} />
-                    <Typography sx={{ fontSize: "12px", mr: 1 ,fontWeight:"600"}}>Limit Per Transaction</Typography>
-                    <Box sx={{ fontWeight: 'bold' }}>{remitterStatus?.rem_limit}</Box>
-                  </Box>
-                </Grid>
-                <Grid
-                lg={6}
-                xl={6}
-                xs={6}
-  sx={{
-    display: 'flex',
-    justifyContent: { xs: 'center', sm: 'flex-start',lg:"center" }, // Center on small screens, left on larger
-    width: '100%',
-    marginLeft: {  md: 23, sm: 23, xs: 13 },
-    marginBottom: { xs: 2, sm: '-2%' }, // Responsive bottom margin
-    padding: { xs: 2, sm: 0 }, // Add padding for small screens
-  }}
->
-<AddBeneficiaryUpiModal
+ 
+  <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+      <Box
+        component="img"
+        src={Call1}
+        alt="Call"
+        sx={{
+          maxWidth: "25px",
+          maxHeight: "50px",
+          mr: 1,
+        }}
+      />
+    <Typography sx={{ fontSize: "12px" ,fontWeight:"600",mt:0.4}}>{remitterStatus?.number}</Typography>
+      <BorderColorIcon
+        sx={{ color: "Black", width: 15, ml: 1 }}
+        onClick={returnMoneyNew}
+      />
+    </Box>
+  </TableCell>
+
+
+  <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"center" }}>
+      <Box
+        component="img"
+        src={LimitAcc}
+        alt="Limit"
+        sx={{
+          maxWidth: "25px",
+          maxHeight: "50px",
+          mr: 1,
+        }}
+      />
+    
+      <Box sx={{ fontWeight: "bold", ml: 1 }}>
+      {remitterStatus?.rem_limit}
+      </Box>
+    </Box>
+  </TableCell>
+
+ 
+  <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
+      <Box
+        component="img"
+        src={LimitTran}
+        alt="Limit"
+        sx={{
+          maxWidth: "25px",
+          maxHeight: "50px",
+          mr: 1,
+        }}
+      />
+     
+      <Box sx={{ fontWeight: "bold" }}>
+      {remitterStatus?.rem_limit}
+      </Box>
+    </Box>
+  </TableCell>
+
+
+  <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+  <AddBeneficiaryUpiModal
                       rem_mobile={mobile}
                       apiEnd={ApiEndpoints.ADD_BENE_UPI}
                       getRemitterStatus={getRemitterStatus}
                     />
-</Grid>
+  </TableCell>
+</TableRow>
 
-                          </Grid>
-                        
+                       </TableBody>
+                     </Table>
+                   </TableContainer>
+                  
+                          </>
                       )}  
                     <Grid
                       item
@@ -426,7 +502,7 @@ const UPITransferView = ({resetView}) => {
       marginTop: 4
     }}>        
                  <Typography sx={{ fontSize: "18px", mb:1 }}>
-                      Beneficiary List ({bene.length})
+                     Upi List ({bene.length})
                     </Typography>
                     </Box>
  
@@ -457,12 +533,59 @@ const UPITransferView = ({resetView}) => {
                   </Typography>
                       </Grid>
                     ) : (
-                      bene.map((ben, index) => (
-                        <Grid item xs={12} key={index}>
-                          <BeneCardUpi  ben={ben} mobile={mobile}/>
+                        <TableContainer sx={{mt:2,}}>
+                          <Table >
+                          <TableHead
+  sx={{
+    border: "none",
+    color: "#fff",
+    backgroundColor: getTableHeadRowColor(),
+
+    fontFamily: "Poppins",
+    paddingLeft: "8px",
+    minHeight: "30px", // Set minimum height
+     // Set maximum height
+    borderBottom: "0.5px solid #DBDDDF",
+    paddingBottom: "4px",
+    paddingTop: "4px",
+  }}
+>
+  <TableRow
+    sx={{
+       // Apply max height to the row
+      paddingBottom: "4px",
+      paddingTop: "4px",
+    }}
+  >
+    <TableCell align="center" sx={{  padding: "4px" }}>
+      Avatar
+    </TableCell>
+    <TableCell sx={{  padding: "4px" }}>Name</TableCell>
+   
+    <TableCell  sx={{  padding: "4px" }}>Vpa Data</TableCell>
+  
+    <TableCell align="center" sx={{  padding: "4px" }}>
+      Verified
+    </TableCell>
+    <TableCell align="center" sx={{  padding: "4px" }}>
+      Actions
+    </TableCell>
+    <TableCell align="center" sx={{  padding: "4px" }}>
+      Delete
+    </TableCell>
+  </TableRow>
+</TableHead>
+
+                            <TableBody>
+
+                              {bene.map((ben, index) => (
+                             <BeneCardUpi  ben={ben} mobile={mobile}/>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+
                       
-                        </Grid>
-                      ))
                     )}
                   </Grid>
                 </Grid>

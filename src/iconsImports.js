@@ -6,6 +6,7 @@ import successVdo from "./assets/video/checkmark.mp4";
 import failedVdo from "./assets/video/exclaimation.mp4";
 import smallLogo from "./assets/small_logo.jpeg";
 import outlet_reg_img from "./assets/outletreg.png";
+import dashboardIllustrator from "./assets/dashboardIllustrator.png";
 
 //
 import bbps from "./assets/bbps.png";
@@ -39,6 +40,8 @@ import empty_table from "./assets/Panda.svg";
 import not_found_404 from "./assets/404_not_found.jpg";
 import unauthorizedNew from "./assets/401_Error_Unauthorized.png";
 import no_data_gif from "./assets/no_data.gif";
+import noDataIllustrator1 from "./assets/noDataIllustrator1.jpg";
+import noDataIllustrator2 from "./assets/noDataIllustrator2.jpg";
 import wave_bg from "./assets/wave-haikei.png";
 import team from "./assets/teamwork.jpg";
 
@@ -196,6 +199,8 @@ import train_1 from "./assets/dashboard_icons/train.png";
 import hotel_1 from "./assets/dashboard_icons/hotel.png";
 import airplane_1 from "./assets/dashboard_icons/airplane.png";
 import dth_1 from "./assets/dashboard_icons/dth.png";
+import recharge_1 from "./assets/dashboard_icons/recharge.png";
+import bbps_1 from "./assets/dashboard_icons/bbps.png";
 
 import electricity_1 from "./assets/dashboard_icons/electricity.png";
 import insurance_1 from "./assets/dashboard_icons/insurance.png";
@@ -204,12 +209,18 @@ import gas_1 from "./assets/dashboard_icons/gas.png";
 import water_1 from "./assets/dashboard_icons/water.png";
 import landline_1 from "./assets/dashboard_icons/landline.png";
 import broadband_1 from "./assets/dashboard_icons/broadband.png";
+import impsLogo from "./assets/IMPSLogo.png";
+import neftLogo from "./assets/NeftLogo.png";
 
 export const Logo = biggpayLogo;
 export const smLogo = biggpayLogo_sm;
 export const TrainsImage = TrainImage;
 export const HotelsImage = HotelImage;
 export const BusesImage = BusImage;
+export const dashboardIllustratorImg = dashboardIllustrator;
+
+export const imps_l = impsLogo;
+export const neft_l = neftLogo;
 
 //bbps export
 export const bbpsPng = bbps;
@@ -283,6 +294,8 @@ export const emptyTable = empty_table;
 export const notFound404 = not_found_404;
 export const unauthorized401 = unauthorizedNew;
 export const noDataFoundGif = no_data_gif;
+export const noDataIllustrator = noDataIllustrator1;
+// export const noDataIllustrator = noDataIllustrator2;
 export const waveBg = wave_bg;
 export const joinus = join_us;
 
@@ -416,4 +429,5 @@ export const landline1 = landline_1;
 export const broadband1 = broadband_1;
 export const gas1 = gas_1;
 export const water1 = water_1;
-
+export const recharge1 = recharge_1;
+export const bbps1 = bbps_1;

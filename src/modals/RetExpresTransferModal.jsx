@@ -21,7 +21,7 @@ import { useContext } from "react";
 import { breakAmt, performMt } from "../utils/MTBreakAmtUtil";
 import fail_anim from "../assets/animate-icons/fail.json";
 import success_anim from "../assets/animate-icons/success_anim.json";
-import { Impslogo, Logo, Neftlogo } from "../iconsImports";
+import { imps_l, Logo, neft_l } from "../iconsImports";
 import { AnimateIcon28 } from "../component/AnimateIcon28";
 import { postJsonData } from "../network/ApiController";
 import ResetMpin from "./ResetMpin";
@@ -411,24 +411,31 @@ const RetExpresTransferModal = ({
         justifyContent: "end",
       }}
     >
-      <Button
-        className={
-          type === "NEFT" ? "button-grayback" : "button-redback"
-        }
-        // startIcon={
-        //   <CallMadeIcon sx={{ mr: "-6px", fontSize: "2px" }} />
-        // }
-        sx={{ fontSize: "13px", py: 0, ml: 1, px: 1,display: 'flex', alignItems:'center' }}
-        onClick={handleOpen}
-      >
-          {type && type}
-        {type === "NEFT" ? (
-    <img src={Neftlogo} alt="NEFT" style={{ width: '14px', marginLeft:'4px'}} />
+<div
+  style={{
+    cursor: "pointer",
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: type === "NEFT" ? "#c69f26" : "#FF7F50",
+    padding: "4px", 
+    marginLeft: '1rem',
+    borderRadius: '4px', // Optional: add border-radius like a button
+    '&:hover': {
+      backgroundColor: type === "NEFT" ? "#E49B0F" : "#e64a19",
+    }
+  }}
+  onClick={handleOpen}
+>
+  {/* Conditionally render the NEFT or IMPS image */}
+  {type === "NEFT" ? (
+    <img src={neft_l} alt="NEFT" style={{ width: '50px', height: '20px' }} />
   ) : (
-    <img src={Impslogo} alt="Other" style={{ width: '14px', marginRight: '4px' }} />
+    <img src={imps_l} alt="IMPS" style={{ width: '50px', height: '20px' }} />
   )}
+</div>
 
-</Button>
+
+
      
       <Modal
         open={open}
@@ -437,7 +444,7 @@ const RetExpresTransferModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="sm_modal">
-          <ModalHeader title={view + `(${type})`} handleClose={handleClose} />
+          <ModalHeader title={view + `(${type})`} handleClose={handleClose} subtitle="Send Money Securely Anytime with VdeePay!" />
           <Box
             component="form"
             id="expMoneyTransfer"

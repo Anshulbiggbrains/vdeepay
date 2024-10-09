@@ -5,6 +5,13 @@ import {
   Card,
   FormControl,
   Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   // InputAdornment,
   TextField,
   // Tooltip,
@@ -24,7 +31,7 @@ import {
   Name,
   prabhuMoneyTransfer,
 } from "../iconsImports";
-import { randomColors } from "../theme/setThemeColor";
+import { getTableHeadRowColor, randomColors } from "../theme/setThemeColor";
 import { PATTERNS } from "../utils/ValidationUtil";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Loader from "../component/loading-screen/Loader";
@@ -68,6 +75,7 @@ const NepalTransfer = ({ resetView }) => {
   const [infoFetchedMob, setInfoFetchedMob] = useState(false);
   const [filteredBenelist, setFilteredBenelist] = useState([]);
   const [newCustomer, setNewCustomer] = useState("");
+  const[mobileNum,setMobileNumber]=useState()
   const handleBack = () => {
     resetView(false);
   };
@@ -89,7 +97,6 @@ const NepalTransfer = ({ resetView }) => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const [mobileNum, setMobileNum]=useState();
 
   const customerId = searchParams.get("customerId");
   const reqNoparam = searchParams.get("cpuniquerefno");
@@ -155,8 +162,7 @@ const NepalTransfer = ({ resetView }) => {
         data.number = value;
       }
     }
-    setMobileNum(data)
-
+ setMobileNumber(data)
     postJsonData(
       ApiEndpoints.NEPAL_CUSTOMER_STATUS,
       data,
@@ -412,99 +418,96 @@ const NepalTransfer = ({ resetView }) => {
               >
                 <Grid container>
                   <Grid item md={12} xs={12}>
-                    {!infoFetchedMob && !infoFetchedMob && !newCustomer && (
-                      <>
-                        <FormControl sx={{ width: "100%" }}>
-                          <TextField
-                            autoComplete="off"
-                            label="Mobile Number"
-                            id="mobile"
-                            name="mobile"
-                            type="tel"
-                            value={mobile}
-                            size="small"
-                            onChange={(e) => {
-                              setIsMobv(PATTERNS.MOBILE.test(e.target.value));
-                              setMobile(e.target.value);
-                              if (e.target.value === "") {
-                                setNewCustomer("");
-                                setInfoFetchedMob(false);
-                                //   bene && setBene([]);
-                                setIsMobv(true);
-                              } else if (e.target.value.length === 9) {
-                                setNewCustomer("");
-                                setInfoFetchedMob(false);
-                                //   bene && setBene([]);
-                              } else if (PATTERNS.MOBILE.test(e.target.value)) {
-                                getCustomerByMobileOrId(
-                                  e.target.value,
-                                  "byMobile"
-                                );
-                              }
-                            }}
-                            error={!isMobv}
-                            helperText={!isMobv ? "Enter valid Mobile" : ""}
-                            onKeyDown={(e) => {
-                              if (
-                                (e.which >= 65 &&
-                                  e.which <= 90 &&
-                                  e.which !== 86) ||
-                                e.key === "+"
-                              ) {
-                                e.preventDefault();
-                              }
-                              if (e.target.value.length === 10) {
-                                if (e.key.toLowerCase() !== "backspace") {
-                                  e.preventDefault();
-                                }
-
-                                if (e.key.toLowerCase() === "backspace") {
-                                }
-                              }
-                            }}
-                            inputProps={{
-                              form: {
-                                autocomplete: "off",
-                              },
-                              maxLength: "10",
-                            }}
-                            disabled={
-                              (request && request && true) || customerId
+                  {!infoFetchedMob && !infoFetchedMob&&!newCustomer&&
+                  <>
+                    <FormControl sx={{ width: "100%" }}>
+                      <TextField autoComplete="off"
+                        label="Mobile Number"
+                        id="mobile"
+                        name="mobile"
+                        type="tel"
+                        value={mobile}
+                        size="small"
+                        onChange={(e) => {
+                          setIsMobv(PATTERNS.MOBILE.test(e.target.value));
+                          setMobile(e.target.value);
+                          if (e.target.value === "") {
+                            setNewCustomer("");
+                            setInfoFetchedMob(false);
+                            //   bene && setBene([]);
+                            setIsMobv(true);
+                          } else if (e.target.value.length === 9) {
+                            setNewCustomer("");
+                            setInfoFetchedMob(false);
+                            //   bene && setBene([]);
+                          } else if (PATTERNS.MOBILE.test(e.target.value)) {
+                            getCustomerByMobileOrId(e.target.value, "byMobile");
+                          }
+                        }}
+                        error={!isMobv}
+                        helperText={!isMobv ? "Enter valid Mobile" : ""}
+                        onKeyDown={(e) => {
+                          if (
+                            (e.which >= 65 &&
+                              e.which <= 90 &&
+                              e.which !== 86) ||
+                            e.key === "+"
+                          ) {
+                            e.preventDefault();
+                          }
+                          if (e.target.value.length === 10) {
+                            if (e.key.toLowerCase() !== "backspace") {
+                              e.preventDefault();
                             }
-                          />
-                        </FormControl>
-                      </>
-                    )}
-                  </Grid>
-                  {newCustomer && (
-                    <NepalAddCustomer
 
-                      modelOpenHook={newCustomer}
-                      setMobile={setMobile}
-                      mobileNum={mobileNum}
-                      getCustomerByMobileOrId={getCustomerByMobileOrId}
-                    />
-                  )}
+                            if (e.key.toLowerCase() === "backspace") {
+                            }
+                          }
+                        }}
+                        inputProps={{
+                          form: {
+                            autocomplete: "off",
+                          },
+                          maxLength: "10",
+                        }}
+                        disabled={(request && request && true) || customerId}
+                      />
+                    </FormControl>
+
+                
+                       </>
+}
+                  </Grid>
+                  {newCustomer&&
+                         <NepalAddCustomer
+                         modelOpenHook={newCustomer}
+                         setMobile={setMobile}
+                         mobileNum={mobileNum}
+                         getCustomerByMobileOrId={getCustomerByMobileOrId}
+                       />
+                    }
                   {infoFetchedMob && infoFetchedMob && (
-                    <Grid
-                      className="remitter-card"
-                      container
-                      sx={{ display: "flex" }}
-                    >
-                      <Grid
-                        item
-                        lg={6}
-                        sm={6}
-                        xs={6}
-                        sx={{ display: "flex", flexDirection: "column", px: 2 }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "start",
-                            mb: 2,
-                          }}
+                    <>
+                   
+                  
+                    <TableContainer component={Paper}>
+                     <Table>
+
+                      <TableHead>
+                        <TableRow>
+                        <TableCell align="center">Remitter Details</TableCell>
+                           <TableCell align="center">Contact Details</TableCell>
+                           <TableCell align="center">Proof Type</TableCell>
+                           <TableCell align="center">Limit Per Transaction</TableCell>
+                           <TableCell align="center">Add Beneficiary</TableCell>
+                        </TableRow>
+
+                      </TableHead>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+                          <Box
+                          sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}
                         >
                           <Box
                             component="img"
@@ -516,7 +519,10 @@ const NepalTransfer = ({ resetView }) => {
                             detail={nepalAllRes?.customer?.Name}
                           />
                         </Box>
-                        <Box
+                     
+                          </TableCell>
+                          <TableCell>
+                          <Box
                           sx={{
                             display: "flex",
                             flexDirection: "row",
@@ -537,29 +543,10 @@ const NepalTransfer = ({ resetView }) => {
                             onClick={returnMoneyNew}
                           />
                         </Box>
-                      </Grid>
-
-                      <Grid
-                        item
-                        lg={6}
-                        sm={6}
-                        xs={6}
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "end",
-                          px: 2,
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "end",
-                            justifyContent: "end",
-                            marginRight: { lg: 11, sm: 10.5 },
-                            mb: 2,
-                          }}
+                          </TableCell>
+                          <TableCell>
+                          <Box
+                         sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}
                         >
                           <Box
                             component="img"
@@ -572,7 +559,9 @@ const NepalTransfer = ({ resetView }) => {
                             detail={nepalAllRes?.customer?.Ids?.Id?.IdType}
                           />
                         </Box>
-                        <Box
+                      
+                          </TableCell>
+                          <TableCell>  <Box
                           sx={{
                             display: "flex",
                             flexDirection: "row",
@@ -591,28 +580,37 @@ const NepalTransfer = ({ resetView }) => {
                             objData
                             horizontal
                           />
-                        </Box>
-                      </Grid>
+                         </Box>
+                         </TableCell>
+                         <TableCell>
+                         <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "end",
+                          }}
+                        >
 
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: { xs: "center", sm: "flex-start" },
-                          width: "100%",
-                          marginLeft: { lg: 50, md: 23, sm: 23, xs: 13 },
-                          marginBottom: { xs: 2, sm: "-2%" },
-                          padding: { xs: 2, sm: 0 },
-                        }}
-                      >
-                        <NTAddRecModal
+             <NTAddRecModal
                           nepalAllRes={nepalAllRes}
                           reqNo={reqNo}
                           customerMobile={customerMobile}
                           // token={token}
                           getCustomerByMobileOrId={getCustomerByMobileOrId}
                         />{" "}
-                      </Box>
-                    </Grid>
+                          </Box>
+
+                         </TableCell>
+ 
+
+
+                        </TableRow>
+                      </TableBody>
+                     </Table>
+
+                    </TableContainer>
+                    </>
                   )}
                 </Grid>
 
@@ -684,53 +682,58 @@ const NepalTransfer = ({ resetView }) => {
                         2. Biometric verification
                       </Typography>
 
-                      <NepalMachine
-                        setMachineRequest={setMachineRequest}
-                        machineRequest={machineRequest}
-                        nepalAllRes={nepalAllRes}
-                        reqNo={reqNo}
-                        setNepalOnboardModalOpen={setNepalOnboardModalOpen}
-                      />
-                    </Grid>
-                  ) : (
-                    <Grid
-                      lg={12}
-                      sm={12}
-                      xs={12}
-                      sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "end",
-                          mx: { md: 2, sm: 1, xs: 0 },
-                          mr: { xs: 1.3, md: 2 },
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            flex: 1, // Ensure it takes available space
-                            maxWidth: {
-                              lg: "100%",
-                              md: "200px",
-                              sm: "150px",
-                              xs: "100%",
-                            }, // Adjust max-width based on screen size
-                          }}
-                        >
-                          <BeneSearchBar
-                            setSearch={setSearch}
-                            label="Search for receiver"
-                          />
-                        </Box>
-                        <Typography sx={{ fontSize: "18px", mb: 1 }}>
-                          Receivers List ({nepalAllRes?.receivers?.length})
-                        </Typography>
-                      </Box>
+                  <NepalMachine
+                    setMachineRequest={setMachineRequest}
+                    machineRequest={machineRequest}
+                    nepalAllRes={nepalAllRes}
+                    reqNo={reqNo}
+                    setNepalOnboardModalOpen={setNepalOnboardModalOpen}
+                  />
 
-                      <div
-                        className="
+                </Grid>
+              
+              ) : (
+
+                
+                <Grid
+                  lg={12}
+                  sm={12}
+                  xs={12}
+                  sx={{ mb: { md: 2, sm: 4, xs: 4 } }}
+
+                >
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "end",
+                      mx: { md: 2, sm: 1, xs: 0 },
+                      mr: { xs: 1.3, md: 2 },
+                    }}
+                  >
+
+                      <Box
+                  sx={{
+                    flex: 1, // Ensure it takes available space
+                    maxWidth: { lg: '100%', md: '200px', sm: '150px', xs: '100%' }, // Adjust max-width based on screen size
+                  }}
+                  >
+                    <BeneSearchBar
+                    
+                      setSearch={setSearch}
+                      label="Search for receiver"
+                    />
+                  </Box>
+                    <Typography sx={{ fontSize: "18px",mb:1}}>
+                      Receivers List ({nepalAllRes?.receivers?.length})
+                    </Typography>
+                    
+                  </Box>
+                
+                  
+                  <div
+                    className="
                     enable-scroll "
                         style={{
                           overflow: "auto", // Ensure that the overflow behavior is automatic
@@ -765,175 +768,96 @@ const NepalTransfer = ({ resetView }) => {
                           filteredBenelist.map((item, index) => {
                             return (
                               <>
-                                <Card
-                                  className="card-css"
-                                  key={index}
-                                  sx={{
-                                    display: "flex",
-                                    justifyContent: "left",
-                                    px: 2,
-                                    py: 1.5,
-                                    m: { md: 2, sm: 1, xs: 1 },
-                                    ml: { md: 2, sm: 0, xs: 0.5 },
-                                  }}
-                                >
-                                  <Box
-                                    sx={{
-                                      alignItems: "center",
-                                      justifyContent: "center",
-                                      display: {
-                                        md: "flex",
-                                        sm: "none",
-                                        xs: "none",
-                                      },
-                                      background: randomColors(),
-                                      borderRadius: "4px",
-                                      height: "64px",
-                                      width: "64px",
-                                      p: 1,
-                                      position: "relative",
-                                    }}
-                                  >
-                                    <Typography
-                                      sx={{
-                                        fontSize: "40px",
-                                      }}
-                                    >
-                                      {item?.Name?.charAt(0).toUpperCase()}
-                                    </Typography>
-                                    <Box>
-                                      {item?.BankName?.toLowerCase() ===
-                                        "prabhu bank limited" && (
-                                        <ValidateNepalReceivers
-                                          accNo={item.AcNumber}
-                                          nepalAllRes={nepalAllRes}
-                                          reqNo={reqNo}
-                                          // token={token}
-                                        />
-                                      )}
-                                    </Box>
-                                  </Box>
-                                  {/* the verification code here */}
+                                <TableContainer component={Paper}>
+      <Table sx={{mt:2}}>
+      <TableHead
+  sx={{
+    border: "none",
+    color: "white",
+    backgroundColor: getTableHeadRowColor(), // Ensure this function returns a valid color
+    fontFamily: "Poppins",
+    height: "40px", // Set a fixed height for the table header
+    borderBottom: "0.5px solid #DBDDDF",
+    paddingBottom: "4px",
+    paddingTop: "4px",
+  }}
+>
+  <TableRow >
+    <TableCell sx={{ padding: "0 8px",color: "white" }}>
+      Initial
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+      Name
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+      Relationship
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+      A/C
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+      Bank
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+      Mobile
+    </TableCell>
+    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+      Actions
+    </TableCell>
+  </TableRow>
+</TableHead>
 
-                                  <Box
-                                    sx={{
-                                      display: "flex",
-                                      flexDirection: {
-                                        xs: "column",
-                                        md: "row",
-                                      },
-                                      justifyContent: "space-between",
-                                      width: "100%",
-                                      alignContent: "center",
-                                    }}
-                                  >
-                                    <Box
-                                      sx={{
-                                        ml: { xs: 1, md: 3 },
-                                        textAlign: "center",
-                                      }}
-                                    >
-                                      <div
-                                        style={{
-                                          display: "flex",
-                                          justifyContent: "left",
-                                          alignItems: "center",
-                                          fontWeight: "500",
-                                          textTransform: "capitalize",
-                                          fontSize: "16px",
-                                          textAlign: {
-                                            md: "center",
-                                            sm: "left",
-                                            xs: "left",
-                                          },
-                                        }}
-                                      >
-                                        {capitalize1(item?.Name)}
-                                        <span
-                                          style={{
-                                            marginLeft: "5px",
-                                            fontSize: "13px",
-                                          }}
-                                        >
-                                          ({item?.Relationship})
-                                        </span>
-                                        {/* hide the icon when payment mode is CP */}
-                                        {item?.PaymentMode !==
-                                          "Cash Payment" && (
-                                          <NepalAdditionalInfo
-                                            receiverDetails={item}
-                                          />
-                                        )}
-                                      </div>
-                                      {/* if mop is cash then we dont show the below details cause they dont exist */}
-                                      {item?.PaymentMode !== "Cash Payment" ? (
-                                        <Grid
-                                          sx={{
-                                            display: { xs: "flex", md: "grid" },
-                                            justifyContent: "space-between",
-                                          }}
-                                        >
-                                          <Typography
-                                            sx={{
-                                              textAlign: "left",
-                                              fontSize: "13px",
-                                            }}
-                                          >
-                                            A/C : {item?.AcNumber}
-                                          </Typography>
-
-                                          <Typography
-                                            sx={{
-                                              textAlign: "left",
-                                              fontSize: "13px",
-                                            }}
-                                          >
-                                            Bank : {item?.BankName}{" "}
-                                          </Typography>
-                                          <Typography
-                                            sx={{
-                                              textAlign: "left",
-                                              fontSize: "13px",
-                                            }}
-                                          >
-                                            Mobile : {item?.Mobile}{" "}
-                                          </Typography>
-                                        </Grid>
-                                      ) : (
-                                        <Grid
-                                          sx={{
-                                            display: { xs: "flex", md: "grid" },
-                                            justifyContent: "space-between",
-                                          }}
-                                        >
-                                          <Typography
-                                            sx={{
-                                              textAlign: "left",
-                                              fontSize: "13px",
-                                            }}
-                                          >
-                                            Mobile : {item?.Mobile}
-                                          </Typography>
-                                        </Grid>
-                                      )}
-                                    </Box>
-                                  </Box>
-                                  <div
-                                    style={{
-                                      display: "grid",
-                                      alignItems: "center",
-                                    }}
-                                  >
-                                    <NepalMtModal
-                                      receiver={item}
-                                      nepalAllRes={nepalAllRes}
-                                      customerMobile={customerMobile}
-                                      reqNo={reqNo}
-
-                                      // token={token}
-                                    />
-                                  </div>
-                                </Card>
+        <TableBody>
+          {filteredBenelist.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Box
+                  sx={{
+                    background: randomColors(),
+                    borderRadius: "50%",
+                    height: "64px",
+                    width: "64px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography sx={{ fontSize: "40px" }}>
+                    {item?.Name?.charAt(0).toUpperCase()}
+                  </Typography>
+                </Box>
+              </TableCell>
+              <TableCell>
+                <div style={{ fontWeight: "500", textTransform: "capitalize", fontSize: "16px" }}>
+                  {capitalize1(item?.Name)}
+                 
+                  {/* Conditional rendering for additional info */}
+                  {item?.PaymentMode !== "Cash Payment" && (
+                    <NepalAdditionalInfo receiverDetails={item} />
+                  )}
+                </div>
+              </TableCell>
+              <TableCell>
+                {item?.PaymentMode !== "Cash Payment" ? item?.Receiver.Relationship : "N/A"}
+              </TableCell>
+              <TableCell>
+                {item?.PaymentMode !== "Cash Payment" ? item?.AcNumber : "N/A"}
+              </TableCell>
+              <TableCell>{item?.BankName}</TableCell>
+              <TableCell>{item?.Mobile}</TableCell>
+              <TableCell>
+                <NepalMtModal
+                  receiver={item}
+                  nepalAllRes={nepalAllRes}
+                  customerMobile={customerMobile}
+                  reqNo={reqNo}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
                               </>
                             );
                           })
@@ -948,7 +872,7 @@ const NepalTransfer = ({ resetView }) => {
           {/* condition here if ekyc is not done if info is fetched */}
         </Grid>
       </div>
-
+   
       {/* nepal cus on boarding modal  */}
       <NepalCusOnboardModal
         nepalAllRes={nepalAllRes}

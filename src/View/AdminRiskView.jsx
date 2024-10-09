@@ -263,9 +263,9 @@ const AdminRiskView = () => {
         <div style={{ textAlign: "left" }}>
           <CommonStatus
             status={row.kyc_status}
-            approvedStatusText="Verified"
+            approvedStatusText="Complete"
             pendingStatusText="Pending"
-            rejectedStatusText="Not Done"
+            rejectedStatusText="Rejected"
             fontSize="13px"
             minWidth="120px"
           />

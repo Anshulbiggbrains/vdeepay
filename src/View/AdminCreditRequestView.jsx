@@ -413,13 +413,13 @@ const CreditRequestView = () => {
 
               <Tooltip title="View">
                 <IconButton
-                  sx={{ color: " #1877f2" }}
+                  sx={{ color: "#5234ea" }}
                   onClick={() => {
                     navigate("", {});
                   }}
                 >
                   <Icon
-                    icon="dashicons:welcome-view-site"
+                    icon="material-symbols:pageview-outline"
                     width={26}
                     height={26}
                   />
@@ -465,7 +465,7 @@ const CreditRequestView = () => {
       }
     );
   };
-
+console.log("the role is",user.role)
   return (
     <Grid>
       <Grid
@@ -482,7 +482,7 @@ const CreditRequestView = () => {
         <FilterCard
           ifestFilter={user.role !== "Api"}
           ifnumberFilter
-          ifAsmFilter={user.role !== "Api"}
+          ifAsmFilter={user.role !== "Api" && user.role !== "Ret" &&  user.role !== "Dd"}
           ifStatusFilter
           setQuery={setQuery}
           query={query}
