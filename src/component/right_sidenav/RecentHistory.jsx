@@ -42,7 +42,7 @@ const RecentHistory = () => {
           }}
           onClick={() => navigate("/some-route")}
         />
-        Recent history
+        Recent Transactions
         <Box
           sx={{
             display: "flex",

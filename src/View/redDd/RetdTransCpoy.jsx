@@ -63,6 +63,7 @@ import RightSidePannel from "../../component/transactions/RightSidePannel";
 import CustomTabs from "../../component/CustomTabs";
 import RetDbTransactionTab from "../../component/Tab/RetDbTransactionTab";
 import CommonStatus from "../../component/CommonStatus";
+import DetailCard from "./DetailCard";
 import { Icon } from "@iconify/react";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
@@ -88,11 +89,9 @@ const RetDdTransactionView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
   const [tabQueryreset, setTabQueryreset] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
 
-  // const chooseCat = (value) => {
-  //   setQuery("&category=" + value);
-  // };
-  // const [columnOptions, setColumnOptions] = useState([]);
 
   const isFilterAllowed = useMemo(
     () =>
@@ -509,21 +508,15 @@ const RetDdTransactionView = () => {
       name: "Details",
       selector: (row) => (
         <Tooltip title="View">
-          <IconButton
-            sx={{ color: "#1877F2" }}
-            onClick={() => {
-              setRowData(row);
-              setState(true);
-            }}
-          >
-            <Icon icon="dashicons:welcome-view-site" width={26} height={26} />
-          </IconButton>
+        
+        <DetailCard row={row} role={role}/>
         </Tooltip>
       ),
-      center: true,        
+      center: true,
       width: "70px",
     },
-  ];
+  ]
+
 
   // const searchOptions = [
   //   { field: "Number", parameter: "number" },
