@@ -812,13 +812,13 @@ const AdminTransactionsView = () => {
           md={12}
           sm={12}
           xs={12}
-          sx={{
-            display: { md: "none", sm: "none", xs: "flex" },
-            justifyContent: "end",
-            alignItems: "center",
-            flexDirection: { md: "row" },
-            pr: 1,
-          }}
+          // sx={{
+          //   display: { md: "none", sm: "none", xs: "flex" },
+          //   justifyContent: "end",
+          //   alignItems: "center",
+          //   flexDirection: { md: "row" },
+          //   pr: 1,
+          // }}
         >
           {/* form in filter */}
           <FormGroup>
