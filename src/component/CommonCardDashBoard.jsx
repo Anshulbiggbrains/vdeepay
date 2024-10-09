@@ -50,8 +50,8 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
               src={img}
               alt={name}
               style={{
-                width: "47px",
-                height: "47px",
+                width: "45px",
+                height: "45px",
                 borderRadius: "30%", // Ensures the image is circular
               }}
             />

@@ -17,6 +17,7 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { get, postJsonData } from "../network/ApiController";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import MyButton from "../component/MyButton";
+import { Icon } from "@iconify/react";
 
 const style = {
   position: "absolute",
@@ -112,22 +113,17 @@ const UpdateAccount = ({ row, refresh }) => {
       }}
     >
       <Tooltip title="update Account">
-        <MyButton text="Edit" onClick={handleOpen} ml={1} />
-        {/* <IconButton
-          variant="contained"
-          style={{ fontSize: "10px", marginLeft: "5px", color: "#DC5F5F" }}
+        {/* <MyButton text="Edit" onClick={handleOpen} ml={1} /> */}
+        <IconButton
+          style={{ fontSize: "10px", color: "#0504AA" }}
           onClick={handleOpen}
         >
-          <DriveFileRenameOutlineIcon />
-        </IconButton> */}
+          <Icon icon="raphael:edit" width={26} height={26} />
+        </IconButton>
       </Tooltip>
 
-      <Drawer
-        open={open}
-        onClose={handleClose}
-    anchor="right"
-      >
-        <Box sx={{width:400}} className="sm_modal">
+      <Drawer open={open} onClose={handleClose} anchor="right">
+        <Box sx={{ width: 400 }} className="sm_modal">
           <ModalHeader title="Update Account" handleClose={handleClose} />
           <Box
             component="form"
@@ -140,9 +136,10 @@ const UpdateAccount = ({ row, refresh }) => {
             }}
           >
             <Grid container sx={{ pt: 1 }}>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Name"
                     id="name"
                     size="small"
@@ -151,9 +148,10 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Business Name"
                     id="b_name"
                     size="small"
@@ -162,9 +160,10 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Number"
                     id="number"
                     size="small"
@@ -173,9 +172,10 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     select
                     label="ASM"
                     id="asm"
@@ -199,9 +199,10 @@ const UpdateAccount = ({ row, refresh }) => {
                   </TextField>
                 </FormControl>
               </Grid>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Credit Limit"
                     id="crLimit"
                     size="small"
@@ -210,9 +211,10 @@ const UpdateAccount = ({ row, refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={12} xs={12} >
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     select
                     label="Credit Status"
                     id="crStatus"

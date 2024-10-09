@@ -125,16 +125,15 @@ const AdminBanksView = () => {
                   alignItems: "center",
                   padding: "8px",
                   fontSize: "12px",
-                  color: "#312e2e",
-                  fontWeight: "bold",
+                  color: "#ffffff",
+                  fontWeight: "700",
                   borderRadius: "8px",
                   transition: "all 0.3s ease",
                   justifyContent: "center",
-                  background: "linear-gradient(45deg, #1ee383, #16de4c)",
-                  boxShadow: "0px 4px 15px rgba(0, 255, 150, 0.2)",
+                  background: "linear-gradient(45deg, #ff9248, 	#ff6600)",
+                  boxShadow: "0px 4px 15px rgba(255, 165, 0, 0.5)",
                   "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 6px 20px rgba(0, 255, 150, 0.2)",
+                    boxShadow: "0px 6px 20px rgba(255, 165, 0, 0.5)",
                   },
                 }}
                 onClick={() => {
@@ -172,8 +171,8 @@ const AdminBanksView = () => {
             name={row?.name}
             icon={
               <Tooltip title="Bank charges">
-                <IconButton sx={{ color: "#bd18c9" }}>
-                  <Icon icon="ic:outline-rate-review" width={25} height={25} />
+                <IconButton sx={{ color: "#560b7f" }}>
+                  <Icon icon="ri:funds-box-line" width={25} height={25} />
                 </IconButton>
               </Tooltip>
             }
@@ -185,8 +184,12 @@ const AdminBanksView = () => {
             name={row?.name}
             icon={
               <Tooltip title="Bank Deposit Details">
-                <IconButton sx={{ color: "#d04949" }}>
-                  <Icon icon="mdi:account-details" width={25} height={25} />
+                <IconButton sx={{ color: "#f10066" }}>
+                  <Icon
+                    icon="mdi:card-account-details-star-outline"
+                    width={25}
+                    height={25}
+                  />
                 </IconButton>
               </Tooltip>
             }

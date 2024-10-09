@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Loader from "../loading-screen/Loader"; 
+import Loader from "../loading-screen/Loader";
 import { useState } from "react";
 import ModalHeader from "../../modals/ModalHeader";
 import ModalFooter from "../../modals/ModalFooter";
@@ -112,12 +112,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
       {" "}
       {edit ? (
         <Tooltip title="Edit Account">
-          <IconButton onClick={handleOpen}>
-            <Icon
-              icon="basil:edit-solid"
-              style={{ fontSize: "24px" }}
-              className="refresh-icon-risk"
-            />
+          <IconButton sx={{ color: "#0504AA" }} onClick={handleOpen}>
+            <Icon icon="raphael:edit" width={25} height={25} />
           </IconButton>
         </Tooltip>
       ) : (
@@ -145,13 +141,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
         </Tooltip>
       )}
       <Box>
-        <Drawer
-        anchor="right"
-          open={open}
-          onClose={handleClose}
-         
-        >
-          <Box sx={{width:400}} className="sm_modal">
+        <Drawer anchor="right" open={open} onClose={handleClose}>
+          <Box sx={{ width: 400 }} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader
               title={edit ? `Edit Account` : `Create Account`}
@@ -170,7 +161,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
               <Grid container sx={{ pt: 1 }}>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Account Name"
                       id="acc_name"
                       size="small"
@@ -181,7 +173,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Account Number"
                       id="acc_no"
                       size="small"
@@ -192,7 +185,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Account IFSC"
                       id="ifsc"
                       size="small"
@@ -203,7 +197,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Account Type"
                       id="acc_type"
                       size="small"
@@ -220,7 +215,8 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Account Limit"
                       id="acc_limit"
                       size="small"
