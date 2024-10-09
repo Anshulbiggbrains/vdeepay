@@ -19,7 +19,6 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
             width: "100%",
             height: "100%",
             overflow: "hidden",
-            
 
             // Yellow box shadow on hover
           }}
@@ -51,9 +50,9 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
               src={img}
               alt={name}
               style={{
-                width: "45px",
-                height: "45px",
-                borderRadius: "50%", // Ensures the image is circular
+                width: "47px",
+                height: "47px",
+                borderRadius: "30%", // Ensures the image is circular
               }}
             />
           </Box>
