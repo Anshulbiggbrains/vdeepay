@@ -492,8 +492,7 @@ export default function SideNav(props, { data }) {
             }}
           >
             <WalletCard />
-          </div>
-          <Button
+            <Button
               sx={{
                 borderRadius: "0px",
                 p: 0,
@@ -522,9 +521,12 @@ export default function SideNav(props, { data }) {
               <Grid sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
                 <Typography
                   component="span"
-                  sx={{
-                    padding: 1,
-                    textTransform: "capitalize",
+                    sx={{
+                      padding: 1,
+                      textTransform: "capitalize",
+                      whiteSpace: "nowrap", 
+                      overflow: "hidden",   
+                      textOverflow: "ellipsis"
                   }}
                 >
                   {user && user.name}
@@ -651,6 +653,9 @@ export default function SideNav(props, { data }) {
                 </MenuItem>
               </div>
             </Menu>
+          </div>
+        
+            
         </Toolbar>
       </WebAppBar>
 
