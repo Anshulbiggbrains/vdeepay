@@ -454,11 +454,11 @@ const LoginPage = () => {
                         if (setUsername) setUsername(e.target.value);
                       }}
                       InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Icon icon="mi:call" style={{ color: "#292D32" }} />
-                          </InputAdornment>
-                        ),
+                        // startAdornment: (
+                        //   <InputAdornment position="start">
+                        //     <Icon icon="mi:call" style={{ color: "#292D32" }} />
+                        //   </InputAdornment>
+                        // ),
                       }}
                       onKeyDown={(e) => {
                         if (e.key === "+" || e.key === "-") e.preventDefault();
@@ -504,14 +504,14 @@ const LoginPage = () => {
                             if (setPassword) setPassword(e.target.value);
                           }}
                           InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <Icon
-                                  icon="solar:lock-password-outline"
-                                  style={{ color: "#292D32" }}
-                                />
-                              </InputAdornment>
-                            ),
+                            // startAdornment: (
+                            //   <InputAdornment position="start">
+                            //     <Icon
+                            //       icon="solar:lock-password-outline"
+                            //       style={{ color: "#292D32" }}
+                            //     />
+                            //   </InputAdornment>
+                            // ),
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
