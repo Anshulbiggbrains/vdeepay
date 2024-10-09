@@ -93,6 +93,7 @@ const BankChargesModal = ({
       >
         <Box sx={{width:400}} >
           <ModalHeader
+          subtitle="Be In Control: Clear Insights into Your Bank Charges!"
             title={`Bank Charges Details`}
             handleClose={handleClose}
           />

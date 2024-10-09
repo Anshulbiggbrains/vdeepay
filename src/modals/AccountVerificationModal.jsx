@@ -136,7 +136,7 @@ Verify
       >
         <Box sx={style} className="sm_modal">
           <Loader loading={request} />
-          <ModalHeader title="Verify Account" handleClose={handleClose} />
+          <ModalHeader title="Verify Account" subtitle="Verify Now, Transact with Confidence!" handleClose={handleClose} />
           <Box
             component="form"
             id="expMoneyTransfer"

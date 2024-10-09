@@ -469,15 +469,22 @@ const RetDdTransactionView = () => {
       omit: role !== "admin",
     },
     {
-      name: "Closing",
+      name: "Main Bal",
       selector: (row) => (
         <div className="d-flex align-items-start flex-column fw-bold">
           <div>{currencySetter(row.w1)}</div>
-          <div style={{ color: "#F29132" }}>{currencySetter(row.w2)}</div>
+          
         </div>
       ),
     },
-
+    {
+      name: "Aeps Bal",
+      selector: (row) => (
+        <div className="d-flex align-items-start flex-column fw-bold">
+              <div style={{ color: "#F29132" }}>{currencySetter(row.w2)}</div>
+        </div>
+      ),
+    },
     {
       name: "Status",
       selector: (row) => (
@@ -718,7 +725,7 @@ const RetDdTransactionView = () => {
                 />
               </Grid>
             }
-            backButton={
+            totalCard={
               <Grid container spacing={2} sx={{ mb: 2 }}>
               {transactions.map((transaction, index) => (
                 <Grid item xs={2.4} key={index}>

@@ -118,7 +118,7 @@ const AdminCreateVirtualAcct = ({ row, refresh ,user}) => {
       {/* Modal */}
       <Modal open={open}>
         <Box sx={style} className="sm_modal">
-          <ModalHeader title="Virtual Account" handleClose={handleClose} />
+          <ModalHeader title="Virtual Account"subtitle="Step into the Future of Banking with Your Virtual Account!" handleClose={handleClose} />
           <Grid container ref={ref}>
             <div
               style={{

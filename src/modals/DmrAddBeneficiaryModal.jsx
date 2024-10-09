@@ -264,6 +264,7 @@ const DmrAddBeneficiaryModal = ({
  >
             <Loader loading={request} />
             <ModalHeader
+            subtitle="Empower Your Payments: Add a Beneficiary Today!"
               title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
               handleClose={handleClose}
             />

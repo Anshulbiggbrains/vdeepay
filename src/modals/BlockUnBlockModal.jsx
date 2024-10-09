@@ -81,7 +81,7 @@ const BlockUnBlockModal = ({ row }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="sm_modal">
-          <ModalHeader title="Block Unblock User" handleClose={handleClose} />
+          <ModalHeader title="Block Unblock User" subtitle="Take Charge of Your Connections: Block or Unblock with VdeePay!" handleClose={handleClose} />
           <Box
             component="form"
             id="blockUnblockId"

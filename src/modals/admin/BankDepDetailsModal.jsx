@@ -102,6 +102,7 @@ const BankDepDetailsModal = ({
           className="sm_modal"
         >
           <ModalHeader
+          subtitle="Track Your Deposits with Detailed Insights."
             title={`${name}'s Deposite Report`}
             handleClose={handleClose}
           />
