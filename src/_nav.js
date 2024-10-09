@@ -579,19 +579,19 @@ export const customer_nav = [
   //   to:"/login",
   //   },
 
-  {
-    title: "User Profile",
-    icon: maleAvatar, // Import the avatar icon or use a default user icon
-    icon2: femaleAvatar, // Adjust accordingly
-    userProfile: true, // This indicates it contains user information
-    submenus: [
-      {
-        title: "Manage Your Profile",
+  // {
+  //   title: "User Profile",
+  //   icon: maleAvatar, // Import the avatar icon or use a default user icon
+  //   icon2: femaleAvatar, // Adjust accordingly
+  //   userProfile: true, // This indicates it contains user information
+  //   submenus: [
+  //     {
+  //       title: "Manage Your Profile",
 
-        to: "/customer/my-profile",
-      },
-    ],
-  },
+  //       to: "/customer/my-profile",
+  //     },
+  //   ],
+  // },
   {
     title: "Login History",
     icon: mypurchase,
