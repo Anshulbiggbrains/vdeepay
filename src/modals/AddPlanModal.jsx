@@ -137,7 +137,7 @@ const AddPlanModal = ({ refresh }) => {
     
       >
         <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Add Plan" handleClose={handleClose} />
+          <ModalHeader title="Add Plan" handleClose={handleClose}subtitle="Simplify Your Workflow: Add New Plan" />
           <Box
             component="form"
             id="addPlan"

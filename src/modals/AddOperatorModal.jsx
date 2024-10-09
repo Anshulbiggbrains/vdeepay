@@ -113,7 +113,7 @@ const AddOperatorModal = ({ refresh }) => {
 
       >
         <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Add Operator" handleClose={handleClose} />
+          <ModalHeader title="Add Operator" handleClose={handleClose} subtitle="Easily Add Operators for Enhanced Management" />
           <Box
             component="form"
             id="addOperator"

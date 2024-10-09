@@ -284,7 +284,7 @@ const NTAddRecModal = ({
           }}
           role="presentation">
           <Loader loading={request} />
-          <ModalHeader title="Add Receiver" handleClose={handleClose} />
+          <ModalHeader title="Add Receiver" subtitle="Empower Your Payments: Add a Receiver Today!" handleClose={handleClose} />
           <Box
             component="form"
             id="addreceiver"

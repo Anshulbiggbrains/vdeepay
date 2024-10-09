@@ -114,9 +114,9 @@ const Loader = ({ loading, children }) => {
             alignItems: "center",
             justifyContent: "center",
             backdropFilter: "blur(5px)",
-            background: "rgba(0, 0, 0, 0.2)",
+            background: "rgba(0, 0, 0, 0.5)", // Darker backdrop for better visibility
             zIndex: 9998,
-            flexDirection: "column", // This ensures the logo and text are in column layout
+            flexDirection: "column",
           }}
         >
           <div className="loader-container">
@@ -125,14 +125,14 @@ const Loader = ({ loading, children }) => {
               style={{
                 cursor: "pointer",
                 width: 80,
-                animation: "zoomInOut 2s infinite",
+                animation: "zoomInOut 1.5s infinite", // Zoom in/out animation for the logo
               }}
               alt="Loading..."
             />
             <div className="circle1" />
             <div className="circle2" />
           </div>
-          <p className="loading-text" style={{color:"blue",margin:"5%"}}>Please wait...</p>
+          <p className="loading-text" style={{marginTop:"4%"}}>Loading, please wait...</p>
         </Box>
       )}
       {children}
@@ -147,22 +147,23 @@ const Loader = ({ loading, children }) => {
         .circle1,
         .circle2 {
           position: absolute;
-          border-radius: 20%;
+          border-radius: 50%; /* Circular shape */
+          animation: zoomInOut 2.5s infinite; /* Zoom in/out animation for circles */
         }
 
         .circle1 {
-          width: 120px;
-          height: 120px;
-          border: 5px solid #1877F2;
-          animation: rotateAnimation1 3.2s linear infinite;
+          width: 200px;
+          height: 200px;
+          border: 8px solid #1877F2;
+          animation-delay: 0s; /* Starts immediately */
         }
 
         .circle2 {
-          width: 150px;
-          height: 150px;
-          border: 5px solid #F18D18;
-          animation: rotateAnimation2 3.2s linear infinite;
-          opacity: 0.25;
+          width: 220px;
+          height: 220px;
+          border: 8px solid #F18D18;
+          animation-delay: 0.25s; /* Starts a bit later for a staggered effect */
+          opacity: 0.3;
         }
 
         @keyframes rotateAnimation1 {
@@ -184,20 +185,20 @@ const Loader = ({ loading, children }) => {
         }
 
         @keyframes zoomInOut {
-          0%,
-          100% {
+          0%, 100% {
             transform: scale(1);
           }
           50% {
-            transform: scale(1.1); /* Slight zoom in effect */
+            transform: scale(1.1); /* Zoom in effect */
           }
         }
 
         .loading-text {
-          margin-top: 20px;
-          font-size: 18px;
+          margin-top: 15px;
+          font-size: 20px;
           color: white;
           font-family: Arial, sans-serif;
+          text-align: center; /* Center the text */
         }
       `}</style>
     </div>

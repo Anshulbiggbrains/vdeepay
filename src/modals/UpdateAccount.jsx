@@ -128,7 +128,7 @@ const UpdateAccount = ({ row, refresh }) => {
     anchor="right"
       >
         <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Update Account" handleClose={handleClose} />
+          <ModalHeader title="Update Account" handleClose={handleClose} subtitle="Easily Update Your Account Information Today." />
           <Box
             component="form"
             id="update-account"

@@ -146,6 +146,7 @@ console.log("benifisary id is",bene)
         <Box sx={style} className="sm_modal">
           <Loader loading={request} />
           <ModalHeader
+          subtitle="Simplify Your List: Easily Remove Beneficiaries with VdeePay!"
             title={
               view === "expressTransfer"
                 ? "Delete Vendor"

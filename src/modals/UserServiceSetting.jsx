@@ -303,7 +303,7 @@ const UserServiceSetting = ({ row, refresh }) => {
       >
         <Box sx={{ width: 600 }}>
           <Loader loading={request} />
-          <ModalHeader title="User service setting" handleClose={handleClose} />
+          <ModalHeader title="User service setting" subtitle="Empower Your Experience: Manage User Service Settings with Ease!" handleClose={handleClose} />
           <Grid>
             <List sx={{ width: "100%", bgcolor: "background.paper" }}>
               <Grid container>
