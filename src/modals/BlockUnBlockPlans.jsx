@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { Avatar, Grid, Tooltip, Typography } from "@mui/material";
+import { Avatar, Grid, Tooltip, Typography, IconButton } from "@mui/material";
 import ModalFooter from "./ModalFooter";
 import ModalHeader from "./ModalHeader";
 import { info } from "../iconsImports";
@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { useState } from "react";
 import Loader from "../component/loading-screen/Loader";
+import { Icon } from "@iconify/react";
 
 const style = {
   position: "absolute",
@@ -64,11 +65,19 @@ const BlockUnBlockPlans = ({ row }) => {
       <Box sx={{ width: "100%", mr: 3 }} onClick={handleOpen}>
         {row.status === 1 ? (
           <Tooltip title="Active">
-            <LockOpenOutlinedIcon sx={{ color: "#00BF78" }} />
+            <IconButton sx={{ color: "#00BF78" }}>
+              <Icon
+                icon="material-symbols:lock-open-right-outline"
+                width={26}
+                height={26}
+              />
+            </IconButton>
           </Tooltip>
         ) : (
           <Tooltip title="In-Active">
-            <LockOutlinedIcon sx={{ color: "#DC5F5F" }} />
+            <IconButton sx={{ color: "#DC5F5F" }}>
+              <Icon icon="rivet-icons:lock-closed" width={26} height={26} />
+            </IconButton>
           </Tooltip>
         )}
       </Box>

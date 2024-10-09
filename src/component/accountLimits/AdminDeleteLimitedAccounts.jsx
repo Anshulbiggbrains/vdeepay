@@ -14,7 +14,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import Loader from "../loading-screen/Loader"; 
+import Loader from "../loading-screen/Loader";
 
 const AdminDeleteLimitedAccounts = ({ row, refresh }) => {
   //   console.log("row", row);
@@ -68,11 +68,8 @@ const AdminDeleteLimitedAccounts = ({ row, refresh }) => {
   return (
     <div>
       <Tooltip title="Delete Account">
-        <IconButton onClick={handleClickOpen}>
-          <Icon
-            icon="ic:outline-delete"
-            style={{ color: "red", fontSize: "24px" }}
-          />
+        <IconButton sx={{ color: "#ff0000" }} onClick={handleClickOpen}>
+          <Icon icon="icon-park-outline:delete-five" width={26} height={26} />
         </IconButton>
       </Tooltip>
 

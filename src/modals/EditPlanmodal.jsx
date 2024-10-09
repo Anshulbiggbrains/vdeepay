@@ -105,23 +105,14 @@ const EditPlanModal = ({ refresh, row }) => {
       }}
     >
       <Tooltip title="Edit Account">
-        <IconButton onClick={handleOpen}>
-          <Icon
-            icon="basil:edit-solid"
-            style={{ fontSize: "22px" }}
-            className="refresh-icon-risk"
-          />
+        <IconButton sx={{ color: "#0504AA" }} onClick={handleOpen}>
+          <Icon icon="raphael:edit" width={26} height={26} />
         </IconButton>
       </Tooltip>
 
       <Box>
-        <Drawer
-          open={open}
-          onClose={handleClose}
-          anchor="right"
-     
-        >
-          <Box sx={{width:400}} className="sm_modal">
+        <Drawer open={open} onClose={handleClose} anchor="right">
+          <Box sx={{ width: 400 }} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader title="Edit Plan" handleClose={handleClose} />
             <Box
@@ -137,7 +128,8 @@ const EditPlanModal = ({ refresh, row }) => {
               <Grid container sx={{ pt: 1 }}>
                 <Grid item md={6} xs={12}>
                   <FormControl fullWidth>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       select
                       size="small"
                       defaultValue={row.operator}
@@ -161,7 +153,8 @@ const EditPlanModal = ({ refresh, row }) => {
                 </Grid>
                 <Grid item md={6} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Plan"
                       id="plan"
                       size="small"
@@ -173,7 +166,8 @@ const EditPlanModal = ({ refresh, row }) => {
 
                 <Grid item md={6} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Validity"
                       id="validity"
                       size="small"
@@ -184,7 +178,8 @@ const EditPlanModal = ({ refresh, row }) => {
                 </Grid>
                 <Grid item md={6} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Description"
                       id="description"
                       size="small"

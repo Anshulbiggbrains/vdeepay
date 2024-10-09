@@ -12,6 +12,9 @@ import {
   Box,
   Drawer,
   IconButton,
+  MenuItem,
+  FormControl,
+  Select,
   Stack,
 } from "@mui/material";
 // import InstallMobileIcon from "@mui/icons-material/InstallMobile";
@@ -737,28 +740,29 @@ const RetDdTransactionView = () => {
                   pr: 1,
                 }}
               >
-                <FormGroup>
-                  <FormControlLabel
-                    sx={{
-                      mt: { md: 0, sm: 2, xs: 2 },
-                      mb: { md: 0, sm: 2, xs: 2 },
-                    }}
-                    control={
-                      <Switch
-                        value={showOldTransaction}
-                        defaultChecked={showOldTransaction}
-                        onChange={() =>
-                          setShowOldTransaction(!showOldTransaction)
+              <FormGroup>
+                      <FormControlLabel
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
+                        control={
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
                         }
                       />
-                    }
-                    label={
-                      <Typography variant="body2" style={{ fontSize: "15px" }}>
-                        Old
-                      </Typography>
-                    }
-                  />
-                </FormGroup>
+                    </FormGroup>
                 {user?.role?.toLowerCase() !== "admin" &&
                   user?.role?.toLowerCase() !== "asm" &&
                   user?.role?.toLowerCase() !== "ad" &&
@@ -906,31 +910,26 @@ const RetDdTransactionView = () => {
                 // }
                 actionButtons={
                   <>
-                    <FormGroup>
+                   <FormGroup>
                       <FormControlLabel
-                        // sx={{
-                        //   mt: { md: 2, sm: 2, xs: 2 },
-                        //   mb: { md: 0, sm: 2, xs: 2 },
-                        // }}
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
                         control={
-                          <Switch
-                            value={showOldTransaction}
-                            defaultChecked={showOldTransaction}
-                            onChange={() =>
-                              setShowOldTransaction(!showOldTransaction)
-                            }
-                          />
-                        }
-                        label={
-                          <Typography
-                            variant="body2"
-                            style={{
-                              fontSize: "15px",
-                              color: { showOldTransaction: "blue" },
-                            }}
-                          >
-                            Old
-                          </Typography>
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
                         }
                       />
                     </FormGroup>
@@ -1070,25 +1069,28 @@ const RetDdTransactionView = () => {
           </div>{" "}
           {/* radio toggle */}
           <FormGroup>
-            <FormControlLabel
-              sx={{
-                mt: { md: 0, sm: 2, xs: 2 },
-                mb: { md: 0, sm: 2, xs: 2 },
-              }}
-              control={
-                <Switch
-                  value={showOldTransaction}
-                  defaultChecked={showOldTransaction}
-                  onChange={() => setShowOldTransaction(!showOldTransaction)}
-                />
-              }
-              label={
-                <Typography variant="body2" style={{ fontSize: "15px" }}>
-                  Old
-                </Typography>
-              }
-            />
-          </FormGroup>
+                      <FormControlLabel
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
+                        control={
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
+                        }
+                      />
+                    </FormGroup>
           {/* excel */}
           <div className="mx-2">
             <ExcelUploadModal

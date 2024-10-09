@@ -10,6 +10,7 @@ import { postFormData } from "../network/ApiController";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import { useState } from "react";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import { Icon } from "@iconify/react";
 
 const style = {
   position: "absolute",
@@ -62,11 +63,11 @@ const DeleteNotification = ({ row, refresh }) => {
         justifyContent: "center",
       }}
     >
-      <IconButton sx={{ width: "100%" }} onClick={handleOpen}>
-        <Tooltip title="Delete">
-          <DeleteForeverOutlinedIcon sx={{ color: "#DC5F5F" }} />
-        </Tooltip>
-      </IconButton>
+      <Tooltip title="Delete">
+        <IconButton sx={{ color: "#ff0000" }} onClick={handleOpen}>
+          <Icon icon="icon-park-outline:delete-five" width={24} height={24} />
+        </IconButton>
+      </Tooltip>
 
       <Box>
         <Drawer

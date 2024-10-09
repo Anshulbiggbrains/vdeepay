@@ -26,7 +26,7 @@ const RecentHistory = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          fontWeight: "bold",
+          fontWeight: "700",
           fontSize: "20px",
           position: "relative",
           color: "#008ecc",
@@ -105,7 +105,7 @@ const RecentHistory = () => {
                     title="Failed"
                     bgColor="#FFD1DC"
                     icon={
-                      <CloseIcon sx={{ fontSize: "25px", color: "#FF0000" }} />
+                      <CloseIcon sx={{ fontSize: "25px", color: "#ff2c2c" }} />
                     }
                     onClick={() => console.log("Failed clicked")}
                   />
@@ -114,7 +114,7 @@ const RecentHistory = () => {
                     title="Success"
                     bgColor="#FFD1DC"
                     icon={
-                      <DoneIcon sx={{ fontSize: "25px", color: "green" }} />
+                      <DoneIcon sx={{ fontSize: "25px", color: "	#259625" }} />
                     }
                     onClick={() => console.log("Success clicked")}
                   />

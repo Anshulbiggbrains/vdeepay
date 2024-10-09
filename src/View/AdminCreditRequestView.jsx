@@ -413,13 +413,13 @@ const CreditRequestView = () => {
 
               <Tooltip title="View">
                 <IconButton
-                  sx={{ color: " #1877f2" }}
+                  sx={{ color: "#5234ea" }}
                   onClick={() => {
                     navigate("", {});
                   }}
                 >
                   <Icon
-                    icon="dashicons:welcome-view-site"
+                    icon="material-symbols:pageview-outline"
                     width={26}
                     height={26}
                   />

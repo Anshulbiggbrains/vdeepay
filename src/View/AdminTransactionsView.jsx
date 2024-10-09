@@ -830,6 +830,8 @@ const AdminTransactionsView = () => {
               control={
                 <FormControl variant="outlined">
                   <Select
+                    variant="standard"
+                    fontSize="10px"
                     value={showOldTransaction}
                     onChange={() => setShowOldTransaction(!showOldTransaction)}
                   >

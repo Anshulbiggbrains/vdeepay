@@ -199,6 +199,8 @@ import train_1 from "./assets/dashboard_icons/train.png";
 import hotel_1 from "./assets/dashboard_icons/hotel.png";
 import airplane_1 from "./assets/dashboard_icons/airplane.png";
 import dth_1 from "./assets/dashboard_icons/dth.png";
+import recharge_1 from "./assets/dashboard_icons/recharge.png";
+import bbps_1 from "./assets/dashboard_icons/bbps.png";
 
 import electricity_1 from "./assets/dashboard_icons/electricity.png";
 import insurance_1 from "./assets/dashboard_icons/insurance.png";
@@ -427,3 +429,5 @@ export const landline1 = landline_1;
 export const broadband1 = broadband_1;
 export const gas1 = gas_1;
 export const water1 = water_1;
+export const recharge1 = recharge_1;
+export const bbps1 = bbps_1;
