@@ -118,7 +118,7 @@ const EditVirtualAccounts = ({ refresh, row }) => {
       anchor="right"
       >
         <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Edit Virtual Account" handleClose={handleClose} />
+          <ModalHeader title="Edit Virtual Account" handleClose={handleClose}  subtitle="Easily Edit Your Virtual Account Details."/>
           <Box sx={contentStyle}>
             <Loader loading={request} />
             <Box

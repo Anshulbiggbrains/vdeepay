@@ -10,7 +10,9 @@ import {
   Typography,
   Button,
   Box,
+  Drawer,
   IconButton,
+  Stack,
 } from "@mui/material";
 // import InstallMobileIcon from "@mui/icons-material/InstallMobile";
 // import LaptopIcon from "@mui/icons-material/Laptop";
@@ -35,7 +37,7 @@ import { get } from "../../network/ApiController";
 import { json2Csv, json2Excel } from "../../utils/exportToExcel";
 import { apiErrorToast } from "../../utils/ToastUtil";
 import useCommonContext from "../../store/CommonContext";
-import { ddmmyy, dateToTime } from "../../utils/DateUtils";
+import { ddmmyy, dateToTime, datemonthYear } from "../../utils/DateUtils";
 // import CheckStatusModal from "../../modals/CheckStatusModal";
 // import CheckResponseModal from "../../modals/CheckResponseModal";
 // import { capitalize1 } from "../../utils/TextUtil";
@@ -64,6 +66,26 @@ import CustomTabs from "../../component/CustomTabs";
 import RetDbTransactionTab from "../../component/Tab/RetDbTransactionTab";
 import CommonStatus from "../../component/CommonStatus";
 import { Icon } from "@iconify/react";
+import { getStatusColor } from "../../theme/setThemeColor";
+
+// import { currencySetter } from "../../utils/Currencyutil";
+import { capitalize1 } from "../../utils/TextUtil";
+
+// import { useContext } from "react";
+// import AuthContext from "../../store/AuthContext";
+import { createFileName, useScreenshot } from "use-react-screenshot";
+import { createRef } from "react";
+// import { Icon } from "@iconify/react";
+
+
+import { Crisp } from "crisp-sdk-web";
+
+import CloseIcon from "@mui/icons-material/Close";
+import LogoComponent from "../../component/LogoComponent";
+import Timeline from "../../component/transactions/Timeline";
+import Mount from "../../component/Mount";
+import Loader from "../../component/loading-screen/Loader";
+import CommonSnackBar from "../../component/CommonSnackBar";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
 let refresh;
@@ -74,8 +96,9 @@ const RetDdTransactionView = () => {
   const [query, setQuery] = useState();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
-  const role = user?.role.toLowerCase();
-  const [state, setState] = useState(false);
+ 
+  const [state, setState] = useState(true);
+  const[openViews ,setOpenViews]=useState(false)
   const [rowData, setRowData] = useState({});
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -88,6 +111,57 @@ const RetDdTransactionView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
   const [tabQueryreset, setTabQueryreset] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const role = user?.role.toLowerCase();
+
+  // screenshot
+  const [image, takeScreenshot] = useScreenshot({
+    type: "image/png",
+    quality: 1.0,
+  });
+  const download = (
+    image,
+    { name = "Transaction Details", extension = "png" } = {}
+  ) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  };
+
+  const LabelComponent = ({ label }) => {
+    return (
+      <span style={{ textAlign: "left", fontSize: "13px", minWidth: "100px" }}>
+        {label}
+      </span>
+    );
+  };
+
+  const DetailsComponent = ({ details }) => {
+    return (
+      <CommonSnackBar>
+        <span
+          style={{ textAlign: "right", fontSize: "13px" }}
+          className="fw-bold"
+        >
+          {details}
+        </span>
+      </CommonSnackBar>
+    );
+  };
+
+  const ref = createRef(null);
+  const downloadScreenshot = () => {
+    takeScreenshot(ref.current).then(download);
+  };
+
+  const openView = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
 
   // const chooseCat = (value) => {
   //   setQuery("&category=" + value);
@@ -169,6 +243,11 @@ const RetDdTransactionView = () => {
       }
     );
   };
+  console.log("open data is",openViews)
+  // const openView=()=>{
+  //   // setRowData(row);
+  //   setOpenViews(true)
+  // }
 
   // get types
   const getTypes = () => {
@@ -515,17 +594,15 @@ const RetDdTransactionView = () => {
     {
       name: "Details",
       selector: (row) => (
-        <Tooltip title="View">
-          <IconButton
-            sx={{ color: "#1877F2" }}
-            onClick={() => {
-              setRowData(row);
-              setState(true);
-            }}
-          >
-            <Icon icon="dashicons:welcome-view-site" width={26} height={26} />
-          </IconButton>
-        </Tooltip>
+        <>
+   <RightSidePannel 
+  // state={drawerState} 
+  // setState={setDrawerState} 
+  row={row} 
+  // setRow={setSelectedRow} 
+  // buttons={someButtonList}
+/>
+    </>
       ),
       center: true,
       width: "70px",
@@ -1057,18 +1134,8 @@ const RetDdTransactionView = () => {
             refresh={refresh}
           />{" "}
         </Grid>
-
-        <RightSidePannel
-          state={state}
-          setState={setState}
-          row={rowData}
-          buttons={
-            (rowData?.status === "SUCCESS" ||
-              rowData?.status === "PENDING") && (
-              <RaiseIssueModal row={rowData} refresh={refresh} />
-            )
-          }
-        />
+      
+    
       </Grid>
     );
   }
