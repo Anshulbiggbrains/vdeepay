@@ -10,9 +10,9 @@ import {
   Link,
   Typography,
   Hidden,
-  Divider,
 } from "@mui/material";
 import * as Yup from "yup";
+import Divider from "@mui/material/Divider";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Loader from "../component/loading-screen/Loader";
@@ -613,6 +613,40 @@ const LoginPage = () => {
                     {isOtpField ? "Verify OTP" : "Login"}
                   </Button>
                 </Grid>
+                <Grid item xs={12} sx={{ mt: 0 }}>
+                {/* <Divider 
+                  sx={{
+                    height: "5px",
+                    color: "black",
+                    border: "none"
+                  }}
+                /> */}
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
+                      <Divider sx={{ flexGrow: 1, height: "3px", backgroundColor: "black", border: "none", color: "black"}} />
+                      <Typography sx={{ mx: 2 }}>OR</Typography>
+                      <Divider sx={{ flexGrow: 1, height: "3px", backgroundColor: "black", border: "none", color: "black"}} />
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 0 }}>
+                  <Button
+                    // type="submit"
+                    form="contact"
+                    variant="contained"
+                    onClick={()=>{navigate("/sign-up")}}
+                    sx={{
+                      width: "100%",
+                      // mt: 2,
+                      // marginLeft:3,
+                      borderRadius:6,
+                      color: "#fff",
+                      backgroundColor: "#4253F0",
+                    }}
+                    // disabled={!(captchaChecked && agreedToTerms) && (isMobv && username !== "")}
+                    // disabled={handleLoginDisable()}
+                  >
+                    {/* {isOtpField ? "Verify OTP" : "Login"} */}Sign In
+                  </Button>
+                </Grid>
                 <Grid
                   item
                   xs={12}
@@ -649,13 +683,6 @@ const LoginPage = () => {
                           Register Here!
                         </Link>
                       </Typography> */}
-                      <Divider
-                        sx={{
-                          height: "10px", // Set height
-                          backgroundColor: "black", // Use backgroundColor instead of color
-                          border: "none", // Remove the default border if you want a solid color
-                        }}
-                      />
                 </Grid>
               </Grid>
             ) : (
