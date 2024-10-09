@@ -77,7 +77,7 @@ const DeletePlan = ({ row, refresh }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} className="sm_modal">
-            <ModalHeader title="Delete Plan" handleClose={handleClose} />
+            <ModalHeader title="Delete Plan" handleClose={handleClose} subtitle="Easily Delete Your Plan in Seconds." />
             <Box
               component="form"
               id="deletePlan"

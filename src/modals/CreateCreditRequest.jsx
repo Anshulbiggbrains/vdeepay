@@ -129,7 +129,7 @@ const CreateCreditRequest = ({ refresh }) => {
           }}
           role="presentation"
         >
-          <ModalHeader title="Add Credit Request" handleClose={handleClose} />
+          <ModalHeader title="Add Credit Request" handleClose={handleClose} subtitle="Quickly Request Credit with VdeePay Now!"/>
           <Box
             component="form"
             id="createCreditReq"

@@ -10,12 +10,7 @@ import {
   Typography,
   Button,
   Box,
-  Drawer,
   IconButton,
-  MenuItem,
-  FormControl,
-  Select,
-  Stack,
 } from "@mui/material";
 // import InstallMobileIcon from "@mui/icons-material/InstallMobile";
 // import LaptopIcon from "@mui/icons-material/Laptop";
@@ -40,7 +35,7 @@ import { get } from "../../network/ApiController";
 import { json2Csv, json2Excel } from "../../utils/exportToExcel";
 import { apiErrorToast } from "../../utils/ToastUtil";
 import useCommonContext from "../../store/CommonContext";
-import { ddmmyy, dateToTime, datemonthYear } from "../../utils/DateUtils";
+import { ddmmyy, dateToTime } from "../../utils/DateUtils";
 // import CheckStatusModal from "../../modals/CheckStatusModal";
 // import CheckResponseModal from "../../modals/CheckResponseModal";
 // import { capitalize1 } from "../../utils/TextUtil";
@@ -68,27 +63,8 @@ import RightSidePannel from "../../component/transactions/RightSidePannel";
 import CustomTabs from "../../component/CustomTabs";
 import RetDbTransactionTab from "../../component/Tab/RetDbTransactionTab";
 import CommonStatus from "../../component/CommonStatus";
+import DetailCard from "./DetailCard";
 import { Icon } from "@iconify/react";
-import { getStatusColor } from "../../theme/setThemeColor";
-
-// import { currencySetter } from "../../utils/Currencyutil";
-import { capitalize1 } from "../../utils/TextUtil";
-
-// import { useContext } from "react";
-// import AuthContext from "../../store/AuthContext";
-import { createFileName, useScreenshot } from "use-react-screenshot";
-import { createRef } from "react";
-// import { Icon } from "@iconify/react";
-
-
-import { Crisp } from "crisp-sdk-web";
-
-import CloseIcon from "@mui/icons-material/Close";
-import LogoComponent from "../../component/LogoComponent";
-import Timeline from "../../component/transactions/Timeline";
-import Mount from "../../component/Mount";
-import Loader from "../../component/loading-screen/Loader";
-import CommonSnackBar from "../../component/CommonSnackBar";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
 let refresh;
@@ -99,9 +75,8 @@ const RetDdTransactionView = () => {
   const [query, setQuery] = useState();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
- 
-  const [state, setState] = useState(true);
-  const[openViews ,setOpenViews]=useState(false)
+  const role = user?.role.toLowerCase();
+  const [state, setState] = useState(false);
   const [rowData, setRowData] = useState({});
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -114,62 +89,9 @@ const RetDdTransactionView = () => {
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
   const [tabQueryreset, setTabQueryreset] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const role = user?.role.toLowerCase();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
 
-  // screenshot
-  const [image, takeScreenshot] = useScreenshot({
-    type: "image/png",
-    quality: 1.0,
-  });
-  const download = (
-    image,
-    { name = "Transaction Details", extension = "png" } = {}
-  ) => {
-    const a = document.createElement("a");
-    a.href = image;
-    a.download = createFileName(extension, name);
-    a.click();
-  };
-
-  const LabelComponent = ({ label }) => {
-    return (
-      <span style={{ textAlign: "left", fontSize: "13px", minWidth: "100px" }}>
-        {label}
-      </span>
-    );
-  };
-
-  const DetailsComponent = ({ details }) => {
-    return (
-      <CommonSnackBar>
-        <span
-          style={{ textAlign: "right", fontSize: "13px" }}
-          className="fw-bold"
-        >
-          {details}
-        </span>
-      </CommonSnackBar>
-    );
-  };
-
-  const ref = createRef(null);
-  const downloadScreenshot = () => {
-    takeScreenshot(ref.current).then(download);
-  };
-
-  const openView = () => {
-    setIsDrawerOpen(true);
-  };
-
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-  };
-
-  // const chooseCat = (value) => {
-  //   setQuery("&category=" + value);
-  // };
-  // const [columnOptions, setColumnOptions] = useState([]);
 
   const isFilterAllowed = useMemo(
     () =>
@@ -246,11 +168,6 @@ const RetDdTransactionView = () => {
       }
     );
   };
-  console.log("open data is",openViews)
-  // const openView=()=>{
-  //   // setRowData(row);
-  //   setOpenViews(true)
-  // }
 
   // get types
   const getTypes = () => {
@@ -551,22 +468,15 @@ const RetDdTransactionView = () => {
       omit: role !== "admin",
     },
     {
-      name: "Main Bal",
+      name: "Closing",
       selector: (row) => (
         <div className="d-flex align-items-start flex-column fw-bold">
           <div>{currencySetter(row.w1)}</div>
-          
+          <div style={{ color: "#F29132" }}>{currencySetter(row.w2)}</div>
         </div>
       ),
     },
-    {
-      name: "Aeps Bal",
-      selector: (row) => (
-        <div className="d-flex align-items-start flex-column fw-bold">
-              <div style={{ color: "#F29132" }}>{currencySetter(row.w2)}</div>
-        </div>
-      ),
-    },
+
     {
       name: "Status",
       selector: (row) => (
@@ -597,20 +507,16 @@ const RetDdTransactionView = () => {
     {
       name: "Details",
       selector: (row) => (
-        <>
-   <RightSidePannel 
-  // state={drawerState} 
-  // setState={setDrawerState} 
-  row={row} 
-  // setRow={setSelectedRow} 
-  // buttons={someButtonList}
-/>
-    </>
+        <Tooltip title="View">
+        
+        <DetailCard row={row} role={role}/>
+        </Tooltip>
       ),
-      center: true,        
+      center: true,
       width: "70px",
     },
-  ];
+  ]
+
 
   // const searchOptions = [
   //   { field: "Number", parameter: "number" },
@@ -740,29 +646,28 @@ const RetDdTransactionView = () => {
                   pr: 1,
                 }}
               >
-              <FormGroup>
-                      <FormControlLabel
-                        sx={{
-                          mt: { md: 0, sm: 2, xs: 2 },
-                          mb: { md: 0, sm: 2, xs: 2 },
-                        }}
-                        control={
-                          <FormControl size="small">
-                            <Select
-                              variant="standard"
-                              fontSize="10px"
-                              value={showOldTransaction}
-                              onChange={() =>
-                                setShowOldTransaction(!showOldTransaction)
-                              }
-                            >
-                              <MenuItem value={true}>Old</MenuItem>
-                              <MenuItem value={false}>New</MenuItem>
-                            </Select>
-                          </FormControl>
+                <FormGroup>
+                  <FormControlLabel
+                    sx={{
+                      mt: { md: 0, sm: 2, xs: 2 },
+                      mb: { md: 0, sm: 2, xs: 2 },
+                    }}
+                    control={
+                      <Switch
+                        value={showOldTransaction}
+                        defaultChecked={showOldTransaction}
+                        onChange={() =>
+                          setShowOldTransaction(!showOldTransaction)
                         }
                       />
-                    </FormGroup>
+                    }
+                    label={
+                      <Typography variant="body2" style={{ fontSize: "15px" }}>
+                        Old
+                      </Typography>
+                    }
+                  />
+                </FormGroup>
                 {user?.role?.toLowerCase() !== "admin" &&
                   user?.role?.toLowerCase() !== "asm" &&
                   user?.role?.toLowerCase() !== "ad" &&
@@ -806,7 +711,7 @@ const RetDdTransactionView = () => {
                 />
               </Grid>
             }
-            totalCard={
+            backButton={
               <Grid container spacing={2} sx={{ mb: 2 }}>
               {transactions.map((transaction, index) => (
                 <Grid item xs={2.4} key={index}>
@@ -910,26 +815,31 @@ const RetDdTransactionView = () => {
                 // }
                 actionButtons={
                   <>
-                   <FormGroup>
+                    <FormGroup>
                       <FormControlLabel
-                        sx={{
-                          mt: { md: 0, sm: 2, xs: 2 },
-                          mb: { md: 0, sm: 2, xs: 2 },
-                        }}
+                        // sx={{
+                        //   mt: { md: 2, sm: 2, xs: 2 },
+                        //   mb: { md: 0, sm: 2, xs: 2 },
+                        // }}
                         control={
-                          <FormControl size="small">
-                            <Select
-                              variant="standard"
-                              fontSize="10px"
-                              value={showOldTransaction}
-                              onChange={() =>
-                                setShowOldTransaction(!showOldTransaction)
-                              }
-                            >
-                              <MenuItem value={true}>Old</MenuItem>
-                              <MenuItem value={false}>New</MenuItem>
-                            </Select>
-                          </FormControl>
+                          <Switch
+                            value={showOldTransaction}
+                            defaultChecked={showOldTransaction}
+                            onChange={() =>
+                              setShowOldTransaction(!showOldTransaction)
+                            }
+                          />
+                        }
+                        label={
+                          <Typography
+                            variant="body2"
+                            style={{
+                              fontSize: "15px",
+                              color: { showOldTransaction: "blue" },
+                            }}
+                          >
+                            Old
+                          </Typography>
                         }
                       />
                     </FormGroup>
@@ -1069,28 +979,25 @@ const RetDdTransactionView = () => {
           </div>{" "}
           {/* radio toggle */}
           <FormGroup>
-                      <FormControlLabel
-                        sx={{
-                          mt: { md: 0, sm: 2, xs: 2 },
-                          mb: { md: 0, sm: 2, xs: 2 },
-                        }}
-                        control={
-                          <FormControl size="small">
-                            <Select
-                              variant="standard"
-                              fontSize="10px"
-                              value={showOldTransaction}
-                              onChange={() =>
-                                setShowOldTransaction(!showOldTransaction)
-                              }
-                            >
-                              <MenuItem value={true}>Old</MenuItem>
-                              <MenuItem value={false}>New</MenuItem>
-                            </Select>
-                          </FormControl>
-                        }
-                      />
-                    </FormGroup>
+            <FormControlLabel
+              sx={{
+                mt: { md: 0, sm: 2, xs: 2 },
+                mb: { md: 0, sm: 2, xs: 2 },
+              }}
+              control={
+                <Switch
+                  value={showOldTransaction}
+                  defaultChecked={showOldTransaction}
+                  onChange={() => setShowOldTransaction(!showOldTransaction)}
+                />
+              }
+              label={
+                <Typography variant="body2" style={{ fontSize: "15px" }}>
+                  Old
+                </Typography>
+              }
+            />
+          </FormGroup>
           {/* excel */}
           <div className="mx-2">
             <ExcelUploadModal
@@ -1136,8 +1043,18 @@ const RetDdTransactionView = () => {
             refresh={refresh}
           />{" "}
         </Grid>
-      
-    
+
+        <RightSidePannel
+          state={state}
+          setState={setState}
+          row={rowData}
+          buttons={
+            (rowData?.status === "SUCCESS" ||
+              rowData?.status === "PENDING") && (
+              <RaiseIssueModal row={rowData} refresh={refresh} />
+            )
+          }
+        />
       </Grid>
     );
   }

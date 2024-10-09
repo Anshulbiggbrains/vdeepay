@@ -14,14 +14,14 @@ const RetDbTransactionTab = ({ setQuery, setTabQueryreset }) => {
   const [value, setValue] = useState(0);
 
   const tabs = [
-    { label: 'ALL',icon:<Diversity2Icon /> },
-    { label: 'Prepaid',icon:< SettingsCellIcon/> },
-    { label: 'Dth',icon:<SatelliteIcon/> },
-    { label: 'Utility',icon:<BuildIcon /> },
-    { label: 'Verification',icon:<BeenhereIcon/>  },
-    { label: 'Money Transfer',icon:<SwapHorizIcon sx={{ml:4}}/> },
-    { label: 'Collections' ,icon:<CollectionsIcon />},
-    { label: 'IRCTC' ,icon:< TrainIcon/>},
+    { label: 'ALL',icon:<Diversity2Icon  sx={{ fontSize: 20 }} /> },
+    { label: 'Prepaid',icon:< SettingsCellIcon  sx={{ fontSize: 20 }}/> },
+    { label: 'Dth',icon:<SatelliteIcon  sx={{ fontSize: 20 }}/> },
+    { label: 'Utility',icon:<BuildIcon  sx={{ fontSize: 20 }}/> },
+    { label: 'Verification',icon:<BeenhereIcon  sx={{ fontSize: 20 }}/>  },
+    { label: 'Money Transfer',icon:<SwapHorizIcon  sx={{ fontSize: 20, ml:4 }}/> },
+    { label: 'Collections' ,icon:<CollectionsIcon  sx={{ fontSize: 20 }} />},
+    { label: 'IRCTC' ,icon:< TrainIcon sx={{ fontSize: 20 }}/>},
   ];
 
   const handleChange = (event, newValue) => {

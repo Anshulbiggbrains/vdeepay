@@ -89,9 +89,14 @@ const EditOperator = ({ row, refresh }) => {
         </IconButton>
       </Tooltip>  */}
 
-      <Drawer open={open} onClose={handleClose} anchor="right">
-        <Box sx={{ width: 400 }} className="sm_modal">
-          <ModalHeader title="Operator" handleClose={handleClose} />
+      <Drawer
+        open={open}
+        onClose={handleClose}
+        anchor="right"
+    
+      >
+        <Box sx={{width:400}} className="sm_modal">
+          <ModalHeader title="Operator" handleClose={handleClose}subtitle="Easily Modify Operator Details with VdeePay" />
           <Box
             component="form"
             id="edit-operator"

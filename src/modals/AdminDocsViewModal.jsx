@@ -163,6 +163,7 @@ const AdminDocsViewModal = ({ row, refresh }) => {
     <Modal open={open} onClose={handleClose}>
       <Box sx={style} className="sm_modal">
         <ModalHeader
+        subtitle="Secure Your Trust: Easily Verify Your Documents with VdeePay!"
           title="Verify Documents"
           handleClose={handleClose}
           icon={<UploadIcon />} 

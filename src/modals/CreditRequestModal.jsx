@@ -157,6 +157,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
         <Drawer open={open} anchor="right" onClose={handleClose}>
           <Box sx={{ width: 400 }} className="sm_modal">
             <ModalHeader
+            subtitle="Take Action: Quick and Simple Fund Request!"
               title={`${action} (${row.name})`}
               handleClose={handleClose}
             />

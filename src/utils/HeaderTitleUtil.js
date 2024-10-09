@@ -22,11 +22,15 @@ export const setTitleFunc = (path, states) => {
     : path === "/admin/accountStatement"
     ? "Account Statement " + states.acc_name + " (" + states.mobile + ")"
     : path === "/customer/khata-statement"
+    
     ? "Khata Statement " + states.name + " (" + states.id + ")"
     : path === "/admin/bankStatement"
     ? states.bank_name + " Bank Statement"
     : path === "/admin/operators"
     ? "Operators"
+     : path === "/customer/loginHistory"
+    ? "Login History"
+   
     : path === "/admin/notification"
     ? "Notifications"
     : path === "/admin/prabhu-transactions"

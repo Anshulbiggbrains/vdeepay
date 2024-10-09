@@ -348,7 +348,12 @@ const AdminTransactionsView = () => {
 
   const columns = [
     {
-      name: "Date/Time",
+      name: 
+      <Tooltip title=" Created at/Updated at" >
+        <Typography variant="" sx={{fontSize:"13px" ,whiteSpace: 'nowrap',overflow: 'hidden',textOverflow: 'ellipsis' }}>
+          Created at/Updated at
+        </Typography>
+      </Tooltip>,
       selector: (row) => (
         <>
           <div className="mb-2">
@@ -405,6 +410,8 @@ const AdminTransactionsView = () => {
       ),
       width: "60px",
     },
+
+   
 
     // est missing from ad login
     {
@@ -1019,9 +1026,9 @@ const AdminTransactionsView = () => {
                 topMargin={0}
                 bottomMargin={0}
                 showSearch={false}
-                ifdateFilter
                 ifrouteFilter
                 ifoperatorFilter
+                ifFromBankFilter
                 ifstatusFilter
                 iforderidFilter
                 // type and category is same
@@ -1040,7 +1047,7 @@ const AdminTransactionsView = () => {
                 ifAsmFilter
                 asmList={asmList}
                 typeList={typeList.filter((item) => item.name !== "ALL")}
-                ifClientIdFilter
+                // ifClientIdFilter
                 nonAdminColOptions={nonAdminColOptions[`${role}`]}
                 statusList={statusList}
                 operatorList={operatorList}

@@ -145,6 +145,7 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
           <Box sx={{ width: 400 }} className="sm_modal">
             <Loader loading={request} />
             <ModalHeader
+            subtitle="Start Your Journey: Create Your Account"
               title={edit ? `Edit Account` : `Create Account`}
               handleClose={handleClose}
             />

@@ -122,9 +122,13 @@ const UpdateAccount = ({ row, refresh }) => {
         </IconButton>
       </Tooltip>
 
-      <Drawer open={open} onClose={handleClose} anchor="right">
-        <Box sx={{ width: 400 }} className="sm_modal">
-          <ModalHeader title="Update Account" handleClose={handleClose} />
+      <Drawer
+        open={open}
+        onClose={handleClose}
+    anchor="right"
+      >
+        <Box sx={{width:400}} className="sm_modal">
+          <ModalHeader title="Update Account" handleClose={handleClose} subtitle="Easily Update Your Account Information Today." />
           <Box
             component="form"
             id="update-account"

@@ -107,8 +107,9 @@ const AdminPlanView = () => {
             alignItems: "center",
           }}
         >
-          <BlockUnBlockPlans row={row} />
+          
           <EditPlanModal row={row} refresh={refresh} />
+          <BlockUnBlockPlans row={row} />
           <DeletePlan row={row} refresh={refresh} />
         </div>
       ),

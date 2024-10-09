@@ -15,19 +15,19 @@ function CustomTabs({ tabs, value, onChange, heading }) {
             '& .MuiTabs-indicator': {
               backgroundColor: '#fcde67',
             },
-            '& .MuiTab-root': {
-              color: '#000',
-              '& .MuiSvgIcon-root': {
-                color: '#ee6c4d',
-              },
-            },
-            '& .MuiTab-root.Mui-selected': {
-              color: '#FE0000',
-              '& .MuiSvgIcon-root': {
-                color: '#FE0000',
-              },
-            },
-            minHeight: '30px',
+            "& .MuiTab-root": {
+      color: "#000",
+      "& .MuiSvgIcon-root": {
+        color: "#ee6c4d", 
+      },
+    },
+    "& .MuiTab-root.Mui-selected": {
+      color: "#FE0000",
+      "& .MuiSvgIcon-root": {
+        color: "#FE0000", 
+      },
+    },
+            minHeight: '30px', 
           }}
         >
           {tabs.map((tab, index) => (
@@ -39,22 +39,18 @@ function CustomTabs({ tabs, value, onChange, heading }) {
               sx={{
                 bgcolor: 'white',
                 color: 'black',
-                minHeight: '30px',
+                minHeight: '30px', 
                 fontSize: '0.800rem',
-                padding: '6px 12px',
+                padding: '6px 12px', 
                 flexDirection: 'row',
-                gap: '8px',
-                borderRight: '3px solid #e0e0e0', // Adding the right border
-                '&:last-child': {
-                  borderRight: 'none', // Remove border for the last tab
-                },
+                gap: '8px'
               }}
             />
           ))}
         </Tabs>
       </AppBar>
       {heading && (
-        <Box sx={{ p: 1, pb: 0.5 }}>
+        <Box sx={{ p: 1, pb: 0.5 }}> {/* Further reduced padding, especially bottom padding */}
           <Typography variant="h5" component="h1" gutterBottom>
             {heading}
           </Typography>
@@ -82,7 +78,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 1.5, overflow: 'auto' }}>
+        <Box sx={{ p: 1.5, overflow: 'auto' }}> {/* Further reduced padding */}
           {children}
         </Box>
       )}

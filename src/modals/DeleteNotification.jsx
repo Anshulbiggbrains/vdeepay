@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { Avatar, IconButton, Tooltip, Typography } from "@mui/material";
+import { Avatar, Drawer, IconButton, Tooltip, Typography } from "@mui/material";
 import ModalFooter from "./ModalFooter";
 import ModalHeader from "./ModalHeader";
 import { info } from "../iconsImports";
@@ -70,14 +70,13 @@ const DeleteNotification = ({ row, refresh }) => {
       </Tooltip>
 
       <Box>
-        <Modal
+        <Drawer
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+        anchor="right"
         >
-          <Box sx={style} className="sm_modal">
-            <ModalHeader title="Delete Plan" handleClose={handleClose} />
+          <Box sx={{width:400}} className="sm_modal">
+            <ModalHeader title="Delete Plan" handleClose={handleClose} subtitle="Clear Your Space: Delete Notifications Instantly" />
             <Box
               component="form"
               id="DeleteNotification"
@@ -121,7 +120,7 @@ const DeleteNotification = ({ row, refresh }) => {
               btn="YES"
             />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );
