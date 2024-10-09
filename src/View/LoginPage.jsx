@@ -227,7 +227,7 @@ const LoginPage = () => {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "100vh",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             backdropFilter: "blur(5px)",
             display: "flex",
@@ -251,12 +251,12 @@ const LoginPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           padding: 9,
-          backgroundImage: `url(${dashboardIllustratorImg})`, // Set the background image
-          backgroundSize: 'cover', // Ensure the image covers the entire area
-          backgroundPosition: 'center', // Center the image
-          backgroundRepeat: 'no-repeat', // Prevent repeating
-          height: "100vh", // Full viewport height
-          width: "100%", // Full width
+          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          height: "100vh", 
+          width: "100%",
         }}
       >
           {/* <Typography
@@ -380,6 +380,8 @@ const LoginPage = () => {
           alignItems: "center",
           justifyContent: "center",
           padding: 9,
+          my: "auto",
+          maxHeight: "80vh"
         }}
       >
         <Box sx={{}}>
@@ -389,7 +391,8 @@ const LoginPage = () => {
             alt="admin dash"
             sx={{
               maxWidth: "56%",
-              maxHeight: "46%",
+              // maxHeight: "46%",
+              maxHeight: "80vh",
               objectFit: "cover",
               mb: 4,
             }}
@@ -622,9 +625,9 @@ const LoginPage = () => {
                   }}
                 /> */}
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
-                      <Divider sx={{ flexGrow: 1, height: "3px", backgroundColor: "black", border: "none", color: "black"}} />
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                       <Typography sx={{ mx: 2 }}>OR</Typography>
-                      <Divider sx={{ flexGrow: 1, height: "3px", backgroundColor: "black", border: "none", color: "black"}} />
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                     </Box>
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>
