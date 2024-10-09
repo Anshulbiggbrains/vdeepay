@@ -10,9 +10,9 @@ import {
   Link,
   Typography,
   Hidden,
-  Divider,
 } from "@mui/material";
 import * as Yup from "yup";
+import Divider from "@mui/material/Divider";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Loader from "../component/loading-screen/Loader";
@@ -21,7 +21,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box } from "@mui/system";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginPage, loginPage1 } from "../iconsImports";
+import { loginPage, loginPage1, dashboardIllustratorImg } from "../iconsImports";
 import { Icon } from "@iconify/react";
 import Marquee from "react-fast-marquee";
 import ForgotPass from "../modals/ForgotPass";
@@ -227,7 +227,7 @@ const LoginPage = () => {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "100vh",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             backdropFilter: "blur(5px)",
             display: "flex",
@@ -241,23 +241,25 @@ const LoginPage = () => {
       )}
       {/* Left Column - Hidden on medium and smaller screens */}
       <Hidden mdDown>
-        <Grid
-          item
-          xs={12}
-          md={7}
-          lg={7}
-          sx={{
-            backgroundColor: "#4253F0",
-            color: "#fff",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: 9,
-
-            height: "100vh",
-          }}
-        >
-          <Typography
+      <Grid
+        item
+        xs={12}
+        md={7}
+        lg={7}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: 9,
+          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          height: "100vh", 
+          width: "100%",
+        }}
+      >
+          {/* <Typography
             variant="h4"
             sx={{
               color: "#fff",
@@ -273,10 +275,10 @@ const LoginPage = () => {
           >
             The Simplest Way To Manage
             <br /> Your Payments
-          </Typography>
-          <Box
+          </Typography> */}
+          {/* <Box
             component="img"
-            src={loginPage1}
+            src={dashboardIllustratorImg}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
@@ -286,17 +288,16 @@ const LoginPage = () => {
               marginTop: "-50px",
               marginLeft: 10,
             }}
-          />
+          /> */}
           <br />
           <br />
-          <Marquee
+          {/* <Marquee
             fade={true}
             gradient={true}
             gradientColor="#4253F0"
             pauseOnHover={true}
             speed={100}
           >
-            {/* Marquee items */}
             {[
               "Recharge and Bill payment",
               "DTH Recharge",
@@ -326,16 +327,15 @@ const LoginPage = () => {
                 {item}
               </Typography>
             ))}
-          </Marquee>
+          </Marquee> */}
           <br />
 
-          <Marquee
+          {/* <Marquee
             fade={true}
             gradient={true}
             gradientColor="#4253F0"
             pauseOnHover={true}
           >
-            {/* Repeated Marquee items */}
             {[
               "Recharge and Bill payment",
               "DTH Recharge",
@@ -365,7 +365,7 @@ const LoginPage = () => {
                 {item}
               </Typography>
             ))}
-          </Marquee>
+          </Marquee> */}
         </Grid>
       </Hidden>
 
@@ -380,6 +380,8 @@ const LoginPage = () => {
           alignItems: "center",
           justifyContent: "center",
           padding: 9,
+          my: "auto",
+          maxHeight: "80vh"
         }}
       >
         <Box sx={{}}>
@@ -389,7 +391,8 @@ const LoginPage = () => {
             alt="admin dash"
             sx={{
               maxWidth: "56%",
-              maxHeight: "46%",
+              // maxHeight: "46%",
+              maxHeight: "80vh",
               objectFit: "cover",
               mb: 4,
             }}
@@ -451,11 +454,11 @@ const LoginPage = () => {
                         if (setUsername) setUsername(e.target.value);
                       }}
                       InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Icon icon="mi:call" style={{ color: "#292D32" }} />
-                          </InputAdornment>
-                        ),
+                        // startAdornment: (
+                        //   <InputAdornment position="start">
+                        //     <Icon icon="mi:call" style={{ color: "#292D32" }} />
+                        //   </InputAdornment>
+                        // ),
                       }}
                       onKeyDown={(e) => {
                         if (e.key === "+" || e.key === "-") e.preventDefault();
@@ -501,14 +504,14 @@ const LoginPage = () => {
                             if (setPassword) setPassword(e.target.value);
                           }}
                           InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <Icon
-                                  icon="solar:lock-password-outline"
-                                  style={{ color: "#292D32" }}
-                                />
-                              </InputAdornment>
-                            ),
+                            // startAdornment: (
+                            //   <InputAdornment position="start">
+                            //     <Icon
+                            //       icon="solar:lock-password-outline"
+                            //       style={{ color: "#292D32" }}
+                            //     />
+                            //   </InputAdornment>
+                            // ),
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
@@ -613,6 +616,40 @@ const LoginPage = () => {
                     {isOtpField ? "Verify OTP" : "Login"}
                   </Button>
                 </Grid>
+                <Grid item xs={12} sx={{ mt: 0 }}>
+                {/* <Divider 
+                  sx={{
+                    height: "5px",
+                    color: "black",
+                    border: "none"
+                  }}
+                /> */}
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
+                      <Typography sx={{ mx: 2 }}>OR</Typography>
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
+                    </Box>
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 0 }}>
+                  <Button
+                    // type="submit"
+                    form="contact"
+                    variant="contained"
+                    onClick={()=>{navigate("/sign-up")}}
+                    sx={{
+                      width: "100%",
+                      // mt: 2,
+                      // marginLeft:3,
+                      borderRadius:6,
+                      color: "#fff",
+                      backgroundColor: "#FE5100", //"#4253F0", "#D48628"
+                    }}
+                    // disabled={!(captchaChecked && agreedToTerms) && (isMobv && username !== "")}
+                    // disabled={handleLoginDisable()}
+                  >
+                    {/* {isOtpField ? "Verify OTP" : "Login"} */}Sign In
+                  </Button>
+                </Grid>
                 <Grid
                   item
                   xs={12}
@@ -649,13 +686,6 @@ const LoginPage = () => {
                           Register Here!
                         </Link>
                       </Typography> */}
-                      <Divider
-                        sx={{
-                          height: "10px", // Set height
-                          backgroundColor: "black", // Use backgroundColor instead of color
-                          border: "none", // Remove the default border if you want a solid color
-                        }}
-                      />
                 </Grid>
               </Grid>
             ) : (
