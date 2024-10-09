@@ -6,6 +6,7 @@ import successVdo from "./assets/video/checkmark.mp4";
 import failedVdo from "./assets/video/exclaimation.mp4";
 import smallLogo from "./assets/small_logo.jpeg";
 import outlet_reg_img from "./assets/outletreg.png";
+import dashboardIllustrator from "./assets/dashboardIllustrator.png";
 
 //
 import bbps from "./assets/bbps.png";
@@ -210,6 +211,7 @@ export const smLogo = biggpayLogo_sm;
 export const TrainsImage = TrainImage;
 export const HotelsImage = HotelImage;
 export const BusesImage = BusImage;
+export const dashboardIllustratorImg = dashboardIllustrator;
 
 //bbps export
 export const bbpsPng = bbps;

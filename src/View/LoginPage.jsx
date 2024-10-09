@@ -21,7 +21,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box } from "@mui/system";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginPage, loginPage1 } from "../iconsImports";
+import { loginPage, loginPage1, dashboardIllustratorImg } from "../iconsImports";
 import { Icon } from "@iconify/react";
 import Marquee from "react-fast-marquee";
 import ForgotPass from "../modals/ForgotPass";
@@ -241,23 +241,25 @@ const LoginPage = () => {
       )}
       {/* Left Column - Hidden on medium and smaller screens */}
       <Hidden mdDown>
-        <Grid
-          item
-          xs={12}
-          md={7}
-          lg={7}
-          sx={{
-            backgroundColor: "#4253F0",
-            color: "#fff",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: 9,
-
-            height: "100vh",
-          }}
-        >
-          <Typography
+      <Grid
+        item
+        xs={12}
+        md={7}
+        lg={7}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: 9,
+          backgroundImage: `url(${dashboardIllustratorImg})`, // Set the background image
+          backgroundSize: 'cover', // Ensure the image covers the entire area
+          backgroundPosition: 'center', // Center the image
+          backgroundRepeat: 'no-repeat', // Prevent repeating
+          height: "100vh", // Full viewport height
+          width: "100%", // Full width
+        }}
+      >
+          {/* <Typography
             variant="h4"
             sx={{
               color: "#fff",
@@ -273,10 +275,10 @@ const LoginPage = () => {
           >
             The Simplest Way To Manage
             <br /> Your Payments
-          </Typography>
-          <Box
+          </Typography> */}
+          {/* <Box
             component="img"
-            src={loginPage1}
+            src={dashboardIllustratorImg}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
@@ -286,17 +288,16 @@ const LoginPage = () => {
               marginTop: "-50px",
               marginLeft: 10,
             }}
-          />
+          /> */}
           <br />
           <br />
-          <Marquee
+          {/* <Marquee
             fade={true}
             gradient={true}
             gradientColor="#4253F0"
             pauseOnHover={true}
             speed={100}
           >
-            {/* Marquee items */}
             {[
               "Recharge and Bill payment",
               "DTH Recharge",
@@ -326,16 +327,15 @@ const LoginPage = () => {
                 {item}
               </Typography>
             ))}
-          </Marquee>
+          </Marquee> */}
           <br />
 
-          <Marquee
+          {/* <Marquee
             fade={true}
             gradient={true}
             gradientColor="#4253F0"
             pauseOnHover={true}
           >
-            {/* Repeated Marquee items */}
             {[
               "Recharge and Bill payment",
               "DTH Recharge",
@@ -365,7 +365,7 @@ const LoginPage = () => {
                 {item}
               </Typography>
             ))}
-          </Marquee>
+          </Marquee> */}
         </Grid>
       </Hidden>
 
