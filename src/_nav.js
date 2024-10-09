@@ -289,6 +289,13 @@ export const Admin_nav = [
     icon2: AccountIconWhite,
     to: "/admin/risk",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/admin/loginHistory",
+  },
+
   // {
   //   title: "Virtual Accounts",
   //   icon: virtualaccount1,
@@ -333,6 +340,13 @@ export const Asm_nav = [
     icon2: CreditRequestIcon,
     to: "/asm/cred-req",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/asm/loginHistory",
+  },
+
 ];
 export const Zsm_nav = [
   {
@@ -359,6 +373,13 @@ export const Zsm_nav = [
     icon2: CreditRequestIcon,
     to: "/zsm/cred-req",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/zsm/loginHistory",
+  },
+
 ];
 export const Api_nav = [
   {
@@ -391,6 +412,13 @@ export const Api_nav = [
     icon2: employeesIconWhite,
     to: "/api-user/documents",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/api-user/loginHistory",
+  },
+
 ];
 
 export const Ad_nav = [
@@ -430,6 +458,13 @@ export const Ad_nav = [
     icon2: TransactionIconWhite,
     to: "/ad/purchase",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/ad/loginHistory",
+  },
+
   // {
   //   title: "My Ledger",
   //   icon: TransactionIcon,
@@ -469,6 +504,13 @@ export const Md_nav = [
     icon2: TransactionIconWhite,
     to: "/md/transactions",
   },
+  {
+    title: "Login History",
+    icon: mypurchase,
+    icon2: TransactionIconWhite,
+    to: "/md/loginHistory",
+  },
+
   // {
   //   title: "Contact Us",
   //   icon: <SupportAgentIcon />,
@@ -579,19 +621,19 @@ export const customer_nav = [
   //   to:"/login",
   //   },
 
-  {
-    title: "User Profile",
-    icon: maleAvatar, // Import the avatar icon or use a default user icon
-    icon2: femaleAvatar, // Adjust accordingly
-    userProfile: true, // This indicates it contains user information
-    submenus: [
-      {
-        title: "Manage Your Profile",
+  // {
+  //   title: "User Profile",
+  //   icon: maleAvatar, // Import the avatar icon or use a default user icon
+  //   icon2: femaleAvatar, // Adjust accordingly
+  //   userProfile: true, // This indicates it contains user information
+  //   submenus: [
+  //     {
+  //       title: "Manage Your Profile",
 
-        to: "/customer/my-profile",
-      },
-    ],
-  },
+  //       to: "/customer/my-profile",
+  //     },
+  //   ],
+  // },
   {
     title: "Login History",
     icon: mypurchase,

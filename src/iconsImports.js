@@ -207,6 +207,8 @@ import gas_1 from "./assets/dashboard_icons/gas.png";
 import water_1 from "./assets/dashboard_icons/water.png";
 import landline_1 from "./assets/dashboard_icons/landline.png";
 import broadband_1 from "./assets/dashboard_icons/broadband.png";
+import impsLogo from "./assets/IMPSLogo.png";
+import neftLogo from "./assets/NeftLogo.png";
 
 export const Logo = biggpayLogo;
 export const smLogo = biggpayLogo_sm;
@@ -214,6 +216,9 @@ export const TrainsImage = TrainImage;
 export const HotelsImage = HotelImage;
 export const BusesImage = BusImage;
 export const dashboardIllustratorImg = dashboardIllustrator;
+
+export const imps_l = impsLogo;
+export const neft_l = neftLogo;
 
 //bbps export
 export const bbpsPng = bbps;
@@ -422,4 +427,3 @@ export const landline1 = landline_1;
 export const broadband1 = broadband_1;
 export const gas1 = gas_1;
 export const water1 = water_1;
-

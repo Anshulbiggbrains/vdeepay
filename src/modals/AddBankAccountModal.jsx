@@ -145,7 +145,7 @@ const AddBankAccountModal = ({ refresh }) => {
          
         >
           <Box sx={{width:400}} >
-            <ModalHeader title="Add Account" handleClose={handleClose} />
+            <ModalHeader title="Add Account" handleClose={handleClose} subtitle="Easily Add New Accounts with VdeePay" />
             <Box
               component="form"
               id="addAcc"

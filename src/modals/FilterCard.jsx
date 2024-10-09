@@ -919,7 +919,7 @@ const FilterCard = ({
                     setOptVal(null);
                   }
                 }}
-                placeholder="Search Operator"
+                placeholder="Operator"
                 size="small"
               />
             </FormControl>

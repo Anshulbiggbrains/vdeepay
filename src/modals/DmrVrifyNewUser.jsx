@@ -78,7 +78,7 @@ const DmrVrifyNewUser = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="sm_modal">
-          <ModalHeader title="Verify Sender" handleClose={handleClose} />
+          <ModalHeader title="Verify Sender" subtitle="Verify Now, Transact with Confidence!" handleClose={handleClose} />
           {/* <Box
             component="form"
             id="add_rem"

@@ -78,10 +78,11 @@ const BeneTableComponent = ({
         ben.verified === "1" ||
         ben.status === 1 ? (
           <>
-            <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
-            <VerifiedIcon
-              sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }}
-            />
+       <Box sx={{ display: 'flex', alignItems: 'center' }}>
+  <VerifiedIcon sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }} />
+  <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
+</Box>
+            
           </>
         ) : (
           <AccountVerificationModal

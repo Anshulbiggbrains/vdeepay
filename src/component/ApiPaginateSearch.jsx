@@ -33,6 +33,7 @@ const ApiPaginateSearch = ({
   per_page,
   showTotal = false,
   backButton,
+  totalCard,
   showSearch = true,
 }) => {
   const isDesktop = useResponsive("up", "sm");
@@ -100,6 +101,19 @@ const ApiPaginateSearch = ({
             }}
           >
             {backButton}
+          </Grid>
+        </Mount>
+        <Mount visible={showSearch}>
+          <Grid
+            item
+            md={12}
+            sx={{
+              textAlign: "left",
+              pl: 2,
+              display: { md: "block", sm: "none", xs: "none" },
+            }}
+          >
+            {totalCard}
           </Grid>
         </Mount>
       </Grid>
