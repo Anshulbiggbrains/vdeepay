@@ -1174,9 +1174,9 @@ const AdimUserView = () => {
           />
         </Grid>
       </Grid>
-
+{user.role!=="Ad"&&
       <AdminUserTab setQuery={setQuery} user={user} />
-
+}
       <ApiPaginateSearch
         showSearch={true}
         apiEnd={ApiEndpoints.GET_USERS}

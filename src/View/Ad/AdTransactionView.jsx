@@ -469,15 +469,7 @@ const AdTransactionView = () => {
     {
       name: "Details",
       selector: (row) => (
-        <Button
-          type="text"
-          onClick={() => {
-            setRowData(row);
-            setState(true);
-          }}
-        >
-          View
-        </Button>
+        <RightSidePannel  row={row}/>
       ),
       right: true,
     },
@@ -909,7 +901,7 @@ const AdTransactionView = () => {
           />
         </Grid>
 
-        <RightSidePannel state={state} setState={setState} row={rowData} />
+        {/* <RightSidePannel state={state} setState={setState} row={rowData} /> */}
       </Grid>
     );
   }
