@@ -21,7 +21,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box } from "@mui/system";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginPage, loginPage1, dashboardIllustratorImg } from "../iconsImports";
+import { loginPage, loginPage1, LoginPageIllustratorImg } from "../iconsImports";
 import { Icon } from "@iconify/react";
 import Marquee from "react-fast-marquee";
 import ForgotPass from "../modals/ForgotPass";
@@ -251,7 +251,7 @@ const LoginPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           padding: 9,
-          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundImage: `url(${LoginPageIllustratorImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center', 
           backgroundRepeat: 'no-repeat',
@@ -278,7 +278,7 @@ const LoginPage = () => {
           </Typography> */}
           {/* <Box
             component="img"
-            src={dashboardIllustratorImg}
+            src={LoginPageIllustrator}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
@@ -629,9 +629,9 @@ const LoginPage = () => {
                   }}
                 /> */}
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black",   filter: 'blur(2px)',}} />
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                       <Typography sx={{ mx: 2, }}>OR</Typography>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black",   filter: 'blur(2px)',}} />
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                     </Box>
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>

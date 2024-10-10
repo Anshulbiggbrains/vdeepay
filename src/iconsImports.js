@@ -6,7 +6,7 @@ import successVdo from "./assets/video/checkmark.mp4";
 import failedVdo from "./assets/video/exclaimation.mp4";
 import smallLogo from "./assets/small_logo.jpeg";
 import outlet_reg_img from "./assets/outletreg.png";
-import dashboardIllustrator from "./assets/dashboardIllustrator.png";
+import LoginPageIllustrator from "./assets/LoginPageSideIllustrator.jpg";
 
 //
 import bbps from "./assets/bbps.png";
@@ -132,6 +132,7 @@ import instaIcon from "../src/assets/insta.png";
 import aboutUsNew from "../src/assets/aboutUs.png";
 import Admindash from "./assets/AdminDash.png";
 import backButton from "./assets/back.png";
+import portButton from "./assets/exchange.png";
 import pay from "./assets/svg/pay.svg";
 import flightlogo from "./assets/svg/flight.jpeg";
 import neftlogo from "./assets/svg/neft_icon.svg";
@@ -218,7 +219,7 @@ export const smLogo = biggpayLogo_sm;
 export const TrainsImage = TrainImage;
 export const HotelsImage = HotelImage;
 export const BusesImage = BusImage;
-export const dashboardIllustratorImg = dashboardIllustrator;
+export const LoginPageIllustratorImg = LoginPageIllustrator;
 
 export const imps_l = impsLogo;
 export const neft_l = neftLogo;
@@ -325,6 +326,7 @@ export const masterimg = master;
 export const ModrAboutus = aboutUsNew;
 export const loginPage = Admindash;
 export const back = backButton;
+export const port = portButton;
 export const paylogo = pay;
 export const flight1 = flightlogo;
 export const Neftlogo = neftlogo;

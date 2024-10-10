@@ -10,6 +10,7 @@ import {
   Grid,
   Modal,
   TextField,
+  Tooltip,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import BackspaceIcon from "@mui/icons-material/Backspace";
@@ -18,6 +19,7 @@ import Loader from "../component/loading-screen/Loader";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
 import ApiSearch from "../component/ApiSearch";
+import { port } from "../iconsImports";
 
 const style = {
   position: "absolute",
@@ -128,28 +130,36 @@ const PortBeneficiaries = ({
         justifyContent: "end",
       }}
     >
+      <Tooltip title="PORT">
       <Button
-  // className="button-pinkback"
-  sx={{ 
-    fontSize: "13px", 
-    py: 0, 
-    ml: 1, 
-    px: 1, 
-    display: 'flex', 
-    alignItems: 'center', 
-    backgroundColor: "#E44D2E",
-    color: 'white',
+  sx={{
+    cursor: "pointer",
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: "#c69f26",
+    marginLeft: '1rem',
+    borderRadius: '4px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // Subtle shadow for depth
+    transition: 'background-color 0.3s, transform 0.2s', // Smooth transition
     '&:hover': {
-      backgroundColor: "#e04a4f",
-    }
+      backgroundColor: "#E49B0F",
+      transform: 'scale(1.05)' // Slightly enlarge on hover
+    },
+    '&:active': {
+      transform: 'scale(0.95)', // Scale down when active for feedback
+    },
   }}
-  endIcon={<ExitToAppIcon sx={{ fontSize: "1px" }} />}
   onClick={handleOpen}
 >
   <Loader loading={request} size="small" />
-  Port
+  <img
+    src={port}
+    alt="UPI logo"
+    style={{ width: "20px", height: "20px", marginLeft: "4px" }} // Added margin for spacing
+  />
 </Button>
 
+</Tooltip>
 
       <Box>
         <Modal
