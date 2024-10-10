@@ -250,6 +250,7 @@ const AsmProductSaleModal = ({
       >
         <Box sx={style} className="sm_modal">
           <ModalHeader
+          subtitle="Stay Informed: Your Comprehensive Product Report Awaits!"
             title={`${name}'s Product Report`}
             handleClose={handleClose}
           />

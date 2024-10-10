@@ -108,32 +108,50 @@ const AdminBanksView = () => {
     // },
     {
       name: "Statement",
-      selector: (row) => (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Tooltip title="statement">
-            <MyButton
-              green
-              text="Statement"
-              onClick={() => {
-                navigate("/admin/bankStatement", {
-                  state: {
-                    bank_id: row.id,
-                    bank_name: row.name,
-                    balance: row.balance,
+      selector: (row) => {
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Tooltip title=" Statement">
+              <Button
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "8px",
+                  fontSize: "12px",
+                  color: "#ffffff",
+                  fontWeight: "700",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  justifyContent: "center",
+                  background: "linear-gradient(45deg, #ff9248, 	#ff6600)",
+                  boxShadow: "0px 4px 15px rgba(255, 165, 0, 0.5)",
+                  "&:hover": {
+                    boxShadow: "0px 6px 20px rgba(255, 165, 0, 0.5)",
                   },
-                });
-              }}
-            />
-          </Tooltip>
-        </Box>
-      ),
+                }}
+                onClick={() => {
+                  navigate("/admin/bankStatement", {
+                    state: {
+                      bank_id: row.id,
+                      bank_name: row.name,
+                      balance: row.balance,
+                    },
+                  });
+                }}
+              >
+                Statement
+              </Button>
+            </Tooltip>
+          </Box>
+        );
+      },
     },
 
     {
@@ -153,8 +171,8 @@ const AdminBanksView = () => {
             name={row?.name}
             icon={
               <Tooltip title="Bank charges">
-                <IconButton sx={{ color: "#bd18c9" }}>
-                  <Icon icon="ic:outline-rate-review" width={25} height={25} />
+                <IconButton sx={{ color: "#560b7f" }}>
+                  <Icon icon="ri:funds-box-line" width={25} height={25} />
                 </IconButton>
               </Tooltip>
             }
@@ -166,8 +184,12 @@ const AdminBanksView = () => {
             name={row?.name}
             icon={
               <Tooltip title="Bank Deposit Details">
-                <IconButton sx={{ color: "#d04949" }}>
-                  <Icon icon="mdi:account-details" width={25} height={25} />
+                <IconButton sx={{ color: "#f10066" }}>
+                  <Icon
+                    icon="mdi:card-account-details-star-outline"
+                    width={25}
+                    height={25}
+                  />
                 </IconButton>
               </Tooltip>
             }

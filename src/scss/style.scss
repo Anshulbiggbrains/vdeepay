@@ -3285,7 +3285,7 @@ text-align: left !important;
 
 .blue-highlight-txt{
   font-size: 11px;
-  background-color: #1675e024;
+  background-color: #eec9d2;
   padding: 6px;
   font-weight: 300;
   color: #003776;
@@ -3355,3 +3355,25 @@ text-align: left !important;
   background: linear-gradient(71deg, #0c0a0e, #5f6fad, #0c0a0e);
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+}
+}
+
+.icon-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-hover:hover {
+  transform: scale(1.05);
+  // box-shadow: 0 0 10px #fff;
+  // border: 2px solid #fff;
+  animation: pulse 1s infinite;
+}

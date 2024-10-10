@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Tooltip } from "@mui/material";
+import { Box, Grid, IconButton, Button, Tooltip } from "@mui/material";
 import React from "react";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { useState } from "react";
@@ -222,12 +222,25 @@ const AdminAccountsView = () => {
       name: <span className="mx-5"> Actions</span>,
       selector: (row) => (
         <Box sx={{ display: "flex", gap: 1 }}>
+          <UpdateAccount row={row} refresh={refresh} />
           <Tooltip title="statement">
-            <MyButton
-              text="Statement"
-              green
-              // hidden={row.status && row.status === "1"}
-
+            <Button
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                padding: "6px",
+                fontSize: "12px",
+                color: "#ffffff",
+                fontWeight: "600",
+                borderRadius: "8px  ",
+                transition: "all 0.3s ease",
+                justifyContent: "center",
+                background: "linear-gradient(45deg, #ff9248, 	#ff6600)",
+                boxShadow: "0px 4px 15px rgba(255, 165, 0, 0.5)",
+                "&:hover": {
+                  boxShadow: "0px 6px 20px rgba(255, 165, 0, 0.5)",
+                },
+              }}
               onClick={() => {
                 navigate("/admin/accountStatement", {
                   state: {
@@ -237,7 +250,10 @@ const AdminAccountsView = () => {
                   },
                 });
               }}
-            />
+            >
+              Statement
+            </Button>
+
             {/* <Button
               display={row.status && row.status === "1" ? "none" : ""}
               style={{
@@ -257,124 +273,123 @@ const AdminAccountsView = () => {
               Statement
             </Button> */}
           </Tooltip>
-          <UpdateAccount row={row} refresh={refresh} />
         </Box>
       ),
+      width: "150px",
     },
   ];
 
   return (
-<Box>
-  <ApiPaginateSearch
-    actionButtons={
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",  
-        }}
-      >
-        <Box
-          sx={{
-            flexGrow: 1, 
-            maxWidth: "70%",  
-          }}
-        >
-          <FilterCard
-            ifdateFilter
-            ifestFilter
-            ifUsernameFilter
-            ifAsmFilter
-            setQuery={setQuery}
-            query={query}
-            chooseInitialCategoryFilter={
-              chooseInitialCategoryFilter !== "ALL"
-                ? chooseInitialCategoryFilter
-                : false
-            }
-            refresh={refresh}
-            isShowFilterCard={isShowFilterCard}
-            setIsShowFilterCard={setIsShowFilterCard}
+    <Box>
+      <ApiPaginateSearch
+        actionButtons={
+          <Grid
+            container
             sx={{
-              width: "100%",  // Ensure it takes the full width of its container
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
             }}
-          />
-        </Box>
-
-        <Grid
-          item
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            flexGrow: 1,
-          }}
-        >
-          <Box sx={{ mr: 0.6 }}>
-            <AddBankAddAccountModal />
-          </Box>
-
-          <ExcelUploadModal
-            twobuttons="Download Csv"
-            btn
-            request={request}
-            getExcel={getExcel}
-            getCsv={getCsv}
-            noOfResponses={noOfResponses}
-            setQuery={setQuery}
-            handleCloseCB={(closeModal) => {
-              handleCloseModal = closeModal;
-            }}
-          />
-
-          <Tooltip title="refresh">
-            <IconButton
-              aria-label="refresh"
+          >
+            <Box
               sx={{
-                width: "30px",
-                color: "#0F52BA",
-                textAlign: "center",
-              }}
-              onClick={() => {
-                refreshFunc(setQuery);
+                flexGrow: 1,
+                maxWidth: "70%",
               }}
             >
-              <CachedIcon className="refresh-purple" />
-            </IconButton>
-          </Tooltip>
-        </Grid>
-      </Grid>
-    }
-    apiEnd={ApiEndpoints.GET_ACCOUNTS}
-    setQuery={setQuery}
-    columns={columns}
-    apiData={apiData}
-    tableStyle={CustomStyles}
-    setApiData={setApiData}
-    ExpandedComponent={null}
-    queryParam={query ? query : ""}
-    returnRefetch={(ref) => {
-      refresh = ref;
-    }}
-    responses={(val) => {
-      setNoOfResponses(val);
-    }}
-    paginateServer={false}
-    paginate={true}
-    filterData
-    DBvalue={(backval) => {
-      setdebounceSearch(backval);
-    }}
-    choseVal={(backVal) => {
-      setSearchIn(backVal);
-    }}
-    filterFunc={filterFunc}
-    search={debounceSearch && debounceSearch}
-  />
-</Box>
+              <FilterCard
+                ifdateFilter
+                ifestFilter
+                ifUsernameFilter
+                ifAsmFilter
+                setQuery={setQuery}
+                query={query}
+                chooseInitialCategoryFilter={
+                  chooseInitialCategoryFilter !== "ALL"
+                    ? chooseInitialCategoryFilter
+                    : false
+                }
+                refresh={refresh}
+                isShowFilterCard={isShowFilterCard}
+                setIsShowFilterCard={setIsShowFilterCard}
+                sx={{
+                  width: "100%", // Ensure it takes the full width of its container
+                }}
+              />
+            </Box>
 
+            <Grid
+              item
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                flexGrow: 1,
+              }}
+            >
+              <Box sx={{ mr: 0.6 }}>
+                <AddBankAddAccountModal />
+              </Box>
+
+              <ExcelUploadModal
+                twobuttons="Download Csv"
+                btn
+                request={request}
+                getExcel={getExcel}
+                getCsv={getCsv}
+                noOfResponses={noOfResponses}
+                setQuery={setQuery}
+                handleCloseCB={(closeModal) => {
+                  handleCloseModal = closeModal;
+                }}
+              />
+
+              <Tooltip title="refresh">
+                <IconButton
+                  aria-label="refresh"
+                  sx={{
+                    width: "30px",
+                    color: "#0F52BA",
+                    textAlign: "center",
+                  }}
+                  onClick={() => {
+                    refreshFunc(setQuery);
+                  }}
+                >
+                  <CachedIcon className="refresh-purple" />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+          </Grid>
+        }
+        apiEnd={ApiEndpoints.GET_ACCOUNTS}
+        setQuery={setQuery}
+        columns={columns}
+        apiData={apiData}
+        tableStyle={CustomStyles}
+        setApiData={setApiData}
+        ExpandedComponent={null}
+        queryParam={query ? query : ""}
+        returnRefetch={(ref) => {
+          refresh = ref;
+        }}
+        responses={(val) => {
+          setNoOfResponses(val);
+        }}
+        paginateServer={false}
+        paginate={true}
+        filterData
+        DBvalue={(backval) => {
+          setdebounceSearch(backval);
+        }}
+        choseVal={(backVal) => {
+          setSearchIn(backVal);
+        }}
+        filterFunc={filterFunc}
+        search={debounceSearch && debounceSearch}
+      />
+    </Box>
   );
 };
 

@@ -359,7 +359,9 @@ const CreditRequestView = () => {
     {
       name: "Remarks",
       selector: (row) => (
-        <div style={{ fontSize: "13px" }}>{row.remark ? row.remark : "NA"}</div>
+        <div style={{ fontSize: "13px", textAlign: "left" }}>
+          {row.remark ? row.remark : "NA"}
+        </div>
       ),
       wrap: true,
     },
@@ -380,13 +382,14 @@ const CreditRequestView = () => {
               approvedStatusText="APPROVED"
               pendingStatusText="PENDING"
               rejectedStatusText="REJECTED"
-              fontSize="12px"
+              fontSize="11px"
             />
           </Box>
         );
       },
       wrap: true,
     },
+
     {
       name: <span className="mx-3">Action</span>,
       selector: (row) => (
@@ -410,12 +413,16 @@ const CreditRequestView = () => {
 
               <Tooltip title="View">
                 <IconButton
-                  sx={{ color: "#134B70" }}
+                  sx={{ color: "#5234ea" }}
                   onClick={() => {
                     navigate("", {});
                   }}
                 >
-                  <VisibilityIcon />
+                  <Icon
+                    icon="material-symbols:pageview-outline"
+                    width={26}
+                    height={26}
+                  />
                 </IconButton>
               </Tooltip>
             </div>
@@ -458,7 +465,7 @@ const CreditRequestView = () => {
       }
     );
   };
-
+console.log("the role is",user.role)
   return (
     <Grid>
       <Grid
@@ -475,7 +482,7 @@ const CreditRequestView = () => {
         <FilterCard
           ifestFilter={user.role !== "Api"}
           ifnumberFilter
-          ifAsmFilter={user.role !== "Api"}
+          ifAsmFilter={user.role !== "Api" && user.role !== "Ret" &&  user.role !== "Dd"}
           ifStatusFilter
           setQuery={setQuery}
           query={query}

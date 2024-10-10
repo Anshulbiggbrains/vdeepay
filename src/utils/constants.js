@@ -124,7 +124,7 @@ export const genders = [
 ];
 
 export const PROJECTS = {
-  imps: "ImpsGuru",
+  imps: "VdeePay",
   paisakart: "PaisaKart",
   moneyoddr: "MoneyOddr",
 };
@@ -387,6 +387,11 @@ export const mt_tab_value = {
 export const cms_tab_value= {
   0: "cms1",
   1: "cms2",
+
+};
+export const vendor_tab_value= {
+  0: "express",
+  1: "super",
 
 };
 export const Transaction_Tab = {

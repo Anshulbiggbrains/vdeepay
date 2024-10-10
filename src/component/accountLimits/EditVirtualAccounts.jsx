@@ -8,6 +8,7 @@ import {
   Modal,
   Typography,
   Paper,
+  Drawer,
 } from "@mui/material";
 import Loader from "../loading-screen/Loader"; 
 import ModalHeader from "../../modals/ModalHeader";
@@ -111,14 +112,13 @@ const EditVirtualAccounts = ({ refresh, row }) => {
           />
         </IconButton>
       </Tooltip>
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+      anchor="right"
       >
-        <Box sx={style} className="sm_modal">
-          <ModalHeader title="Edit Virtual Account" handleClose={handleClose} />
+        <Box sx={{width:400}} className="sm_modal">
+          <ModalHeader title="Edit Virtual Account" handleClose={handleClose}  subtitle="Easily Edit Your Virtual Account Details."/>
           <Box sx={contentStyle}>
             <Loader loading={request} />
             <Box
@@ -211,7 +211,7 @@ const EditVirtualAccounts = ({ refresh, row }) => {
             disable={request}
           />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

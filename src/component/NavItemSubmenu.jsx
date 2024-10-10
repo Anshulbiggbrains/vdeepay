@@ -33,6 +33,7 @@ const NavItemSubmenu = ({
   const location = useLocation();
   const currentPath = location.pathname;
   let isCurrentActive = currentPath === item?.to;
+  console.log("item is defin sub",item)
 console.log("user is ",user);
   return (
     <div>
@@ -90,7 +91,6 @@ console.log("user is ",user);
               color: isCurrentActive? "white":"white",
               fontSize: "16px",
               // fontStyle: "italic",
-              
             }}
           />
           {open ? subMenuOpen ? <ExpandLess /> : <ExpandMore /> : ""}

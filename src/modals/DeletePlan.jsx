@@ -10,6 +10,7 @@ import { postFormData } from "../network/ApiController";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import { useState } from "react";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import { Icon } from "@iconify/react";
 
 const style = {
   position: "absolute",
@@ -62,11 +63,11 @@ const DeletePlan = ({ row, refresh }) => {
         justifyContent: "center",
       }}
     >
-      <IconButton sx={{ width: "100%" }} onClick={handleOpen}>
-        <Tooltip title="Active">
-          <DeleteForeverOutlinedIcon sx={{ color: "#DC5F5F" }} />
-        </Tooltip>
-      </IconButton>
+      <Tooltip title="Active">
+        <IconButton sx={{ color: "#ff0000" }} onClick={handleOpen}>
+          <Icon icon="icon-park-outline:delete-five" width={26} height={26} />
+        </IconButton>
+      </Tooltip>
 
       <Box>
         <Modal
@@ -76,7 +77,7 @@ const DeletePlan = ({ row, refresh }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} className="sm_modal">
-            <ModalHeader title="Delete Plan" handleClose={handleClose} />
+            <ModalHeader title="Delete Plan" handleClose={handleClose} subtitle="Easily Delete Your Plan in Seconds." />
             <Box
               component="form"
               id="deletePlan"

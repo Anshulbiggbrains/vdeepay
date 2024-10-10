@@ -28,13 +28,14 @@ const DmrVrifyNewUser = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "40%",
+    width: "100%",
     bgcolor: "background.paper",
-    boxShadow: 24,
+    // boxShadow: 24,
     fontFamily: "Poppins",
     height: "max-content",
     overflowY: "scroll",
     p: 2,
+    mt: 1
   };
   const handleClose = () => {
     setOpen(false);
@@ -65,19 +66,20 @@ const DmrVrifyNewUser = ({
   return (
     <Box
       sx={{
+        width: "100%",
         display: "flex",
         justifyContent: "end",
       }}
     >
-      <Modal
+      <Box
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="sm_modal">
-          <ModalHeader title="Verify Remitter" handleClose={handleClose} />
-          <Box
+          <ModalHeader title="Verify Sender" subtitle="Verify Now, Transact with Confidence!" handleClose={handleClose} />
+          {/* <Box
             component="form"
             id="add_rem"
             validate
@@ -86,8 +88,8 @@ const DmrVrifyNewUser = ({
             sx={{
               "& .MuiTextField-root": { m: 1 },
             }}
-          >
-            <Grid container sx={{ pt: 1 }}>
+          > */}
+            <Grid container sx={{ pt: 1 }} spacing={2}>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
@@ -115,10 +117,10 @@ const DmrVrifyNewUser = ({
                 </FormControl>
               </Grid>
             </Grid>
-          </Box>
+          {/* </Box> */}
           <ModalFooter form="add_rem" request={request} />
         </Box>
-      </Modal>
+      </Box>
     </Box>
   );
 };

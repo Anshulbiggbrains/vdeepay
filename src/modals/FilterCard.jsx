@@ -919,7 +919,7 @@ const FilterCard = ({
                     setOptVal(null);
                   }
                 }}
-                placeholder="Search Operator"
+                placeholder="Operator"
                 size="small"
               />
             </FormControl>
@@ -1371,7 +1371,7 @@ const FilterCard = ({
                   }
                 }}
               >
-                Apply
+                Search
               </Button>
             </Tooltip>
             <Mount visible={query?.length > 0}>

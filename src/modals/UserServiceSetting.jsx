@@ -11,6 +11,7 @@ import {
   Switch,
   styled,
   Tooltip,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -36,24 +37,25 @@ const style = {
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 40,
-  height: 22,
+  width: 50,
+  height: 30,
   padding: 0,
   "& .MuiSwitch-switchBase": {
     padding: 0,
-    margin: 2,
+    margin: 1,
     transitionDuration: "300ms",
     "& + .MuiSwitch-track": {
-      backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#989898",
+      backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#ff0000",
       opacity: 1,
       border: 0,
+      content: '""',
     },
     "&.Mui-checked": {
       transform: "translateX(17px)",
-      color: "#fff",
+      bgcolor: "#FFF",
+
       "& + .MuiSwitch-track": {
-        backgroundColor:
-          theme.palette.mode === "dark" ? "#2ECA45" : "#49af4150",
+        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#49c949",
         opacity: 1,
         border: 0,
       },
@@ -62,7 +64,7 @@ const IOSSwitch = styled((props) => (
       },
     },
     "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: "#33cf4d",
+      color: "#fff",
       border: "6px solid #fff",
     },
     "&.Mui-disabled .MuiSwitch-thumb": {
@@ -77,12 +79,30 @@ const IOSSwitch = styled((props) => (
   },
   "& .MuiSwitch-thumb": {
     boxSizing: "border-box",
-    width: 18,
-    height: 18,
+    width: 28,
+    height: 28,
+    position: "relative", // Ensure correct positioning of the text
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "&:before": {
+      content: '"off"', // Default 'off' text
+      position: "absolute",
+      // Red color text when unchecked
+      fontSize: "12px",
+      color: "#000000",
+      fontWeight: "bold",
+    },
+  },
+  "& .Mui-checked .MuiSwitch-thumb:before": {
+    content: '"on"', // Change to 'on' text when checked
+    position: "absolute",
+    color: "#000000", // Green color text when checked
+    fontSize: "12px",
+    fontWeight: "bold",
   },
   "& .MuiSwitch-track": {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
     opacity: 1,
     transition: theme.transitions.create(["background-color"], {
       duration: 500,
@@ -274,15 +294,16 @@ const UserServiceSetting = ({ row, refresh }) => {
           )}
         </IconButton>
       </Tooltip>
-      <Modal
+      <Drawer
         open={open}
+        anchor="right"
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        // aria-labelledby="modal-modal-title"
+        // aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{ width: 600 }}>
           <Loader loading={request} />
-          <ModalHeader title="User service setting" handleClose={handleClose} />
+          <ModalHeader title="User service setting" subtitle="Empower Your Experience: Manage User Service Settings with Ease!" handleClose={handleClose} />
           <Grid>
             <List sx={{ width: "100%", bgcolor: "background.paper" }}>
               <Grid container>
@@ -302,7 +323,7 @@ const UserServiceSetting = ({ row, refresh }) => {
                                     color: "#fff",
                                   },
                                   "&.MuiSwitch-root .Mui-checked": {
-                                    color: "#49af41",
+                                    color: "#FFF",
                                   },
                                 }}
                                 defaultChecked={item.value === 1 ? true : false}
@@ -329,7 +350,7 @@ const UserServiceSetting = ({ row, refresh }) => {
             </List>
           </Grid>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

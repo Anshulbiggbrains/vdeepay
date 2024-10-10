@@ -9,6 +9,7 @@ import {
   IconButton,
   MenuItem,
   Button,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -129,14 +130,14 @@ const AddPlanModal = ({ refresh }) => {
           </Button>
         </Tooltip>
 
-      <Modal
+      <Drawer
         open={open}
+        anchor="right"
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    
       >
-        <Box sx={style} className="sm_modal">
-          <ModalHeader title="Add Plan" handleClose={handleClose} />
+        <Box sx={{width:400}} className="sm_modal">
+          <ModalHeader title="Add Plan" handleClose={handleClose}subtitle="Simplify Your Workflow: Add New Plan" />
           <Box
             component="form"
             id="addPlan"
@@ -148,7 +149,7 @@ const AddPlanModal = ({ refresh }) => {
             }}
           >
             <Grid container sx={{ pt: 1 }}>
-              <Grid item md={6} xs={12}>
+              <Grid item md={12} xs={12}>
                 <FormControl fullWidth>
                   <TextField autoComplete="off"
                     select
@@ -172,13 +173,13 @@ const AddPlanModal = ({ refresh }) => {
                   </TextField>
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={12}>
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off" label="Plan" id="plan" size="small" required />
                 </FormControl>
               </Grid>
 
-              <Grid item md={6} xs={12}>
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Validity"
@@ -188,7 +189,7 @@ const AddPlanModal = ({ refresh }) => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item md={6} xs={12}>
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     label="Description"
@@ -202,7 +203,7 @@ const AddPlanModal = ({ refresh }) => {
           </Box>
           <ModalFooter form="addPlan" request={request} />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

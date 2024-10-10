@@ -52,6 +52,7 @@ const style = {
 const NepalAddCustomer = ({
   modelOpenHook,
   setMobile,
+  mobileNum,
   getCustomerByMobileOrId,
 }) => {
   const [open, setOpen] = useState(false);
@@ -79,6 +80,7 @@ const NepalAddCustomer = ({
   const [customerTypeV, setCutomerTypeV] = useState("");
   const [sourceInc, setSourceInc] = useState("");
   const [annualInc, setAnnualInc] = useState("");
+  console.log("mobile number is ", mobileNum);
   // console.log("IdTypeV", IdTypeV);
   // validation hook
   const [validFields, setValidFields] = useState({
@@ -238,21 +240,16 @@ const NepalAddCustomer = ({
   }, [modelOpenHook]);
 
   return (
-    
     <Box
       sx={{
         display: "flex",
         justifyContent: "end",
       }}
     >
-      <Modal
-        open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style} className="sm_modal">
+      {open && (
+        <Box>
           <Loader loading={request} />
-          <ModalHeader title="Add Customer" handleClose={handleClose} />
+          <ModalHeader title="Add Customer" subtitle="Join the Network: Register Your Nepal Account with VdeePay!" handleClose={handleClose} />
           <Box
             component="form"
             id="nepal_add_cus"
@@ -272,7 +269,8 @@ const NepalAddCustomer = ({
                 sx={{ display: "flex", justifyContent: "center" }}
               >
                 <FormControl fullWidth>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Name"
                     id="name"
                     size="small"
@@ -303,11 +301,13 @@ const NepalAddCustomer = ({
                 sx={{ display: "flex", justifyContent: "center" }}
               >
                 <FormControl fullWidth>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     label="Mobile"
                     id="number"
                     size="small"
                     required
+                    defaultValue={mobileNum.number}
                     // this below is just validations
                     error={!validFields.number}
                     helperText={!validFields.number ? "Enter valid Mobile" : ""}
@@ -316,6 +316,7 @@ const NepalAddCustomer = ({
                         ...validFields,
                         number: PATTERNS.MOBILE.test(e.target.value),
                       });
+
                       if (e.target.value === "") {
                         setValidFields({
                           ...validFields,
@@ -332,7 +333,7 @@ const NepalAddCustomer = ({
                 md={4}
                 xs={12}
                 lg={6}
-                sx={{ display: "flex", justifyContent: "center" }}
+                sx={{ display: "flex", justifyContent: "flex-start" }}
               >
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DesktopDatePicker
@@ -352,7 +353,8 @@ const NepalAddCustomer = ({
                       );
                     }}
                     renderInput={(params) => (
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         size="small"
                         required
                         {...params}
@@ -380,7 +382,8 @@ const NepalAddCustomer = ({
                       // sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Enter OTP"
                           id="otp"
                           size="small"
@@ -425,7 +428,8 @@ const NepalAddCustomer = ({
                     // sx={{ display: "flex", justifyContent: "center" }}
                   >
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Gender"
                         id="gender"
                         size="small"
@@ -451,7 +455,8 @@ const NepalAddCustomer = ({
                     // sx={{ display: "flex", justifyContent: "center" }}
                   >
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Nationality"
                         id="nationality"
                         size="small"
@@ -491,7 +496,8 @@ const NepalAddCustomer = ({
                   >
                     <Loader loading={stateReq} size="small" />
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="State"
                         id="state"
                         size="small"
@@ -529,7 +535,8 @@ const NepalAddCustomer = ({
                     // sx={{ display: "flex", justifyContent: "center" }}
                   >
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="District"
                         id="district"
                         size="small"
@@ -565,7 +572,8 @@ const NepalAddCustomer = ({
                     // sx={{ display: "flex", justifyContent: "center" }}
                   >
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="City"
                         id="city"
                         size="small"
@@ -582,7 +590,8 @@ const NepalAddCustomer = ({
                     // sx={{ display: "flex", justifyContent: "center" }}
                   >
                     <FormControl fullWidth>
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Address"
                         id="address"
                         size="small"
@@ -619,7 +628,8 @@ const NepalAddCustomer = ({
                       }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Employer"
                           id="employer"
                           size="small"
@@ -641,7 +651,8 @@ const NepalAddCustomer = ({
                       }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="ID Type"
                           id="id_type"
                           size="small"
@@ -678,7 +689,8 @@ const NepalAddCustomer = ({
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="ID Number"
                           id="id_number"
                           size="small"
@@ -716,7 +728,8 @@ const NepalAddCustomer = ({
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Customer Type"
                           id="customer_type"
                           size="small"
@@ -746,7 +759,8 @@ const NepalAddCustomer = ({
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Income Source"
                           id="inc_source"
                           size="small"
@@ -764,7 +778,8 @@ const NepalAddCustomer = ({
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Source Income Type"
                           id="source_income_type"
                           size="small"
@@ -794,7 +809,8 @@ const NepalAddCustomer = ({
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
                       <FormControl fullWidth>
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           label="Annual Income"
                           id="annual_income"
                           size="small"
@@ -851,7 +867,7 @@ const NepalAddCustomer = ({
             />
           )}
         </Box>
-      </Modal>
+      )}
     </Box>
   );
 };

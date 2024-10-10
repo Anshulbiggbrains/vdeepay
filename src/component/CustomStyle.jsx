@@ -24,10 +24,10 @@ export const CustomStyles = {
   },
   headCells: {
     style: {
-      color: "#fff",
+      color: "#000",
       fontSize: "13px",
       paddingLeft: "0px",
-      fontWeight: "bold",
+      fontWeight: "600",
       justifyContent: "flex-start",
     },
   },
@@ -41,7 +41,7 @@ export const CustomStyles = {
   },
   rows: {
     highlightOnHoverStyle: {
-      backgroundColor: "#ecf39e",
+      backgroundColor: "#ffd9b3",
       borderBottomColor: "#FFFFFF",
       outline: "1px solid #ffffff",
     },
@@ -209,6 +209,3 @@ export const businessTableStyle = {
     },
   },
 };
-
-
-

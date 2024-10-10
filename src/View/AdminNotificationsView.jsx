@@ -10,6 +10,7 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { ddmmyy, dateToTime1 } from "../utils/DateUtils";
 import DeleteNotification from "../modals/DeleteNotification";
 import { getPriorityBg, getPriorityColor } from "../theme/setThemeColor";
+import { Icon } from "@iconify/react";
 let refresh;
 function refreshFunc(setQueryParams) {
   setQueryParams("");
@@ -54,11 +55,13 @@ const AdminNotificationsView = () => {
             backgroundColor: getPriorityBg(row.priority),
             padding: "0.2rem",
             borderRadius: "3px",
+            width: "70px",
           }}
         >
           {row.priority}
         </div>
       ),
+      width: "100px",
     },
     {
       name: "Message",
@@ -91,7 +94,7 @@ const AdminNotificationsView = () => {
             display: "flex",
             justifyContent: "end",
             alignItems: "center",
-            gap: 7,
+            gap: 5,
 
             pr: 0,
             width: "100px",
@@ -99,11 +102,15 @@ const AdminNotificationsView = () => {
         >
           {row.is_read === 0 ? (
             <Tooltip title="Unread">
-              <DoneIcon sx={{ color: "grey" }} />
+              <IconButton sx={{ color: "#909090" }}>
+                <Icon icon="mdi:read" width={26} height={26} />
+              </IconButton>
             </Tooltip>
           ) : (
             <Tooltip title="Read">
-              <DoneAllIcon color="success" />
+              <IconButton sx={{ color: "#69b41E" }}>
+                <Icon icon="mdi:read" width={26} height={26} />
+              </IconButton>
             </Tooltip>
           )}
 

@@ -8,6 +8,7 @@ import {
   Tooltip,
   IconButton,
   Button,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -75,28 +76,154 @@ const AddOperatorModal = ({ refresh }) => {
   };
 
   return (
+    <Box
+    sx={{
+      display: "flex",
+      justifyContent: "end",
+    }}
+  >
     <Tooltip title="Add operator">
-          <Button
-            variant="outlined"
-            // className="button-transparent"
-            className="refresh-icon-risk"
-            onClick={handleOpen}
-            startIcon={
-              <IconButton
-                sx={{
-                  p: 0,
+        <Button
+          variant="outlined"
+          // className="button-transparent"
+          className="refresh-icon-risk"
+          onClick={handleOpen}
+          startIcon={
+            <IconButton
+              sx={{
+                p: 0,
 
-                  color: whiteColor(),
-                }}
-              >
-                <AddCircleOutlineIcon />
-              </IconButton>
-            }
-            sx={{ py: 0.3 }}
+                color: whiteColor(),
+              }}
+            >
+              <AddCircleOutlineIcon />
+            </IconButton>
+          }
+          sx={{ py: 0.3 }}
+        >
+       Operator
+        </Button>
+      </Tooltip>
+
+    <Box>
+      <Drawer
+        open={open}
+        onClose={handleClose}
+        anchor="right"
+
+      >
+        <Box sx={{width:400}} className="sm_modal">
+          <ModalHeader title="Add Operator" handleClose={handleClose} subtitle="Easily Add Operators for Enhanced Management" />
+          <Box
+            component="form"
+            id="addOperator"
+            validate
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            sx={{
+              "& .MuiTextField-root": { m: 1 },
+            }}
           >
-         Operator
-          </Button>
-        </Tooltip>
+            <Grid container sx={{ pt: 1 }}>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField label="Name" id="name" size="small" required />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField label="Code" id="code" size="small" required />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField label="Route" id="route" size="small" required />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Category"
+                    id="category"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Param1"
+                    id="param1"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Is fetch"
+                    id="is_fetch"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Admin Commission"
+                    id="admin_comm"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Retailer Commission"
+                    id="ret_comm"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Area Distributer Commission"
+                    id="ad_comm"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label="Direct Dealer Commission"
+                    id="dd_comm"
+                    size="small"
+                    required
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField label="Image" id="img" size="small" required />
+                </FormControl>
+              </Grid>
+            </Grid>
+            <ModalFooter form="addOperator" request={request} />
+          </Box>
+        </Box>
+      </Drawer>
+    </Box>
+  </Box>
     
   );
 };

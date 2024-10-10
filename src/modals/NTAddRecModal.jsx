@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Drawer,
   FormControl,
   Grid,
   InputLabel,
@@ -267,15 +268,23 @@ const NTAddRecModal = ({
         <Loader loading={request} size="small" />
         Add Receiver
       </Button>
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        anchor="right"
+    
       >
-        <Box sx={style} className="sm_modal">
+        <Box sx={{
+            width: 400,
+            p: 2,
+            height: "100%",
+            boxShadow: 24,
+            fontFamily: "Poppins",
+            overflowY: "auto",
+          }}
+          role="presentation">
           <Loader loading={request} />
-          <ModalHeader title="Add Receiver" handleClose={handleClose} />
+          <ModalHeader title="Add Receiver" subtitle="Empower Your Payments: Add a Receiver Today!" handleClose={handleClose} />
           <Box
             component="form"
             id="addreceiver"
@@ -615,7 +624,7 @@ const NTAddRecModal = ({
             // disable={!validFields.name}
           />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

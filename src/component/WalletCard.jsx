@@ -145,76 +145,153 @@ const borderPulse = keyframes`
 `;
 
   return(
-    <Grid container spacing={2}>
-
-    {/* Wallet 1 */}
-    <Grid item xs={6}>
+    <Grid 
+    container 
+    spacing={1} 
+    wrap="nowrap" 
+    alignItems="center" 
+    justifyContent="flex-start"
+    
+  >
+    {/* ASM Card */}
+    { user.role==="Dd" && user.role==="Ret"&&
+    <Grid item xs="auto">
       <Box
         sx={{
           padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebEe', 
+          backgroundColor: '#ffebee',
           borderRadius: '8px',
-          mr: 2,
           display: 'flex',
           alignItems: 'center',
-          width: '99%',
-          maxWidth: '250px',
-          border: '2px solid #D71313 ',
-          animation: `${fadeIn} 0.5s ease-in-out`, 
-          '&:hover': {
-            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
-          },
+          width:{ lg:'140px' ,sm:"125px"}, 
+
+          border: '2px solid #D71313',
         }}
       >
-        {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
-        <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
-            Wallet 1
+        <Box  sx={{ minWidth: '100%', textAlign: 'left' }}> 
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize:"10px",fontWeight:"bold"}}>
+            ASM- 
           </Typography>
-          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
-          ₹  {numberSetter(user.w1 / 100)} 
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" ,}}>
+            Mobile No- 
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+      </Box>
+    </Grid>
+}
+    {/* DD Card */}
+    {user.role!=="Dd"&&
+    <Grid item xs="auto">
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width:{ lg:'140px' ,sm:"125px"}, 
+          border: '2px solid #D71313',
+        }}
+      >
+        <Box  sx={{ minWidth: '100%', textAlign: 'left' }}>
+          <Box sx={{display:"flex"}}>
+          <Typography variant="body" sx={{ color: 'Black' ,fontSize:"10px",fontWeight:"bold"}}>
+            DD- <span style={{ fontSize: '10px' }}>{user.name}</span>
+          </Typography>
+         
+          </Box>
+          
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px",fontWeight:"bold" }}>
+            Mobile No- <span style={{ fontSize: '10px' ,fontWeight:"bold"}}>{user.username}</span>
+          </Typography>
+          
+          
+        </Box>
+      </Box>
+    </Grid>
+}
+    {/* Wallet 1 */}
+    <Grid item xs="auto">
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width:{ lg:'140px' ,sm:"105px"}, 
+          border: '2px solid #D71313',
+        }}
+      >
+        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
+            Wallet Balance
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
+            ₹ {numberSetter(user.w1 / 100)}
+          </Typography>
+        </Box>
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }} />
       </Box>
     </Grid>
   
     {/* Wallet 2 */}
-    <Grid item xs={6}>
+    {user.role!=="Ad" && user.role!=="Md"&&
+    <Grid item xs="auto">
       <Box
         sx={{
           padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebee', 
+          backgroundColor: '#ffebee',
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: '99%',
-          maxWidth: '250px',
-          border: '2px solid #D71313 ',
-          mr: 2,
-          animation: `${fadeIn} 0.5s ease-in-out`,
-          '&:hover': {
-            animation: `${borderPulse} 1.5s infinite ease-in-out`, 
-          },
+          width:{ lg:'140px' ,sm:"105px"}, 
+          border: '2px solid #D71313',
         }}
       >
-        {/* Wallet Icon */}
-        <AccountBalanceWalletIcon sx={{ fontSize: 20, color: '#b71c1c', mr: 2 }} /> 
+        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1}} />
         <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c' }}>
-            Wallet 2
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
+            AEPS Balance
           </Typography>
-          <Typography variant="body2" sx={{ color: '#b71c1c', fontWeight: 'bold' }}>
-          ₹ {numberSetter(user.w2 / 100)} 
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
+            ₹ {numberSetter(user.w2 / 100)}
           </Typography>
         </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 20, ml: 2 }} />
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1}} />
       </Box>
     </Grid>
-  
+}
+    {user.role==="Ad" && user.role=="Md"&&
+    <Grid item xs="auto">
+      <Box
+        sx={{
+          padding: '4px 6px 3px 4px',
+          backgroundColor: '#ffebee',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          width:{ lg:'140px' ,sm:"105px"}, 
+          border: '2px solid #D71313',
+        }}
+      >
+        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1}} />
+        <Box>
+          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
+            Comm Wallet
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
+            ₹ {numberSetter(user.w2 / 100)}
+          </Typography>
+        </Box>
+        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1}} />
+      </Box>
+    </Grid>
+}
   </Grid>
-
+  
+  
   )
 
 }

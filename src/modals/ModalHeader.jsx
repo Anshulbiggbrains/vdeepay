@@ -4,7 +4,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded"; // Using a roun
 
 const ModalHeader = ({
   title = "Modal heading",
-  subtitle = "Proceed your journey with Imps Guru.",
+  subtitle = "Start your journey with VdeePay.",
   handleClose,
 }) => {
   return (
@@ -12,7 +12,8 @@ const ModalHeader = ({
       sx={{
         width: "100%",
         padding: "16px", // Adjust the padding
-        backgroundColor: "#1a78f20a", // Light purple background similar to the image
+        // backgroundColor: "#1a78f20a", // Light purple background similar to the image
+        backgroundColor: "#FFE6E6",
         borderRadius: "12px 12px 0 0", // Rounded corners at the top
         display: "flex",
         flexDirection: "column", // Stacks title and subtitle vertically

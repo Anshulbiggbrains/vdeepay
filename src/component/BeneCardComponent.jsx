@@ -1,5 +1,16 @@
 import React from "react";
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+} from "@mui/material";
 import RetExpresTransferModal from "../modals/RetExpresTransferModal";
 import ApiEndpoints from "../network/ApiEndPoints";
 import DeleteBeneficiaryModal from "../modals/DeleteBeneficiaryModal";
@@ -9,7 +20,7 @@ import { randomColors } from "../theme/setThemeColor";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import PortBeneficiaries from "../modals/PortBeneficiaries";
 
-const BeneCardComponent = ({
+const BeneTableComponent = ({
   ben,
   index,
   mobile,
@@ -19,106 +30,110 @@ const BeneCardComponent = ({
   view,
 }) => {
   return (
-    <Card
-      className="card-css"
-      key={index}
-      sx={{
-        display: "flex",
-        justifyContent: "space-between", // Changed to space-between
-        alignItems: "center",
-        px: 2,
-        py: 1.5,
-        m: { md: 2, sm: 1, xs: 1 },
-        position: "relative",
-      }}
-    >
-      <Grid
-        sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          display: { md: "flex", sm: "none", xs: "none" },
-          background: randomColors(
-            ben && ben.name
-              ? ben.name.charAt(0).toUpperCase()
-              : ben.bene_name.charAt(0).toUpperCase()
-          ),
-          borderRadius: "4px",
-          height: "64px",
-          width: "64px",
-          position: "relative",
-          p: 1,
-        }}
-      >
-        <Typography sx={{ fontSize: "40px" }}>
-          {ben && ben.name
-            ? ben.name.charAt(0).toUpperCase()
-            : ben.bene_name.charAt(0).toUpperCase()}
-        </Typography>
-      </Grid>
-
-      <Grid
-        sx={{
-          flexDirection: { xs: "column", md: "row" },
-          width: "100%",
-          ml: 2,
-         display:"flex"
-        }}
-      >
-        <Grid container>
-          <Grid item xs={4} sm={4} md={4} >
-            <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-              Name
-            </Typography>
-            <Typography sx={{ textAlign: "left" }}>
-              {ben.name ? capitalize1(ben.name) : capitalize1(ben.bene_name)}
-            </Typography>
-          </Grid>
-          <Grid item xs={4} sm={4}md={4} >
-            <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-              Account No
-            </Typography>
-            <Typography sx={{ textAlign: "left"}}>
-              {ben.account ? ben.account : ben.bene_acc}
-            </Typography>
-          </Grid>
-          <Grid item xs={4} sm={4} md={4}>
-            <Typography sx={{ textAlign: "left", fontWeight: "500" }}>
-              IFSC
-            </Typography>
-            <Typography sx={{ textAlign: "left" }}>{ben.ifsc}</Typography>
-          </Grid>
-        </Grid>
-        <Box sx={{  display: "flex", 
-            alignItems: "center",
-            mt: { md: 2, sm: 1, xs: 1,lg:2 },
-            justifyContent: "flex-end", }}>
-            {(ben.verificationDt && ben.verificationDt !== null) ||
-            ben.verified === "1" ||
-            ben.status === 1 ? (
-              <>
-                <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
-                <VerifiedIcon sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }} />
-
-              </>
-            ) : (
-              <AccountVerificationModal
-                ben={ben}
-                rem_number={mobile}
-                remitterStatus={remitterStatus}
-                getRemitterStatus={getRemitterStatus}
-                dmtValue={dmtValue}
-              />
-            )}
-          </Box>
-        <Grid
+    <TableRow key={index}>
+      {/* Avatar Column */}
+      <TableCell align="center">
+        <Box
           sx={{
-            display: "flex", 
+            background: randomColors(
+              ben?.name?.charAt(0).toUpperCase() ||
+              ben.bene_name.charAt(0).toUpperCase()
+            ),
+            borderRadius: "50%",
+            height: "50px",
+            width: "50px",
+            display: "flex",
+            justifyContent: "center",
             alignItems: "center",
-            mt: { md: 2, sm: 1, xs: 1,lg:2 },
-            justifyContent: "flex-end", // Align to the right
+            color: "#fff",
           }}
         >
+          <Typography sx={{ fontSize: "20px" }}>
+            {ben?.name?.charAt(0).toUpperCase() ||
+              ben.bene_name.charAt(0).toUpperCase()}
+          </Typography>
+        </Box>
+      </TableCell>
 
+      {/* Beneficiary Details */}
+      <TableCell>
+       
+        <Typography>
+          {ben.name ? capitalize1(ben.name) : capitalize1(ben.bene_name)}
+        </Typography>
+      </TableCell>
+      <TableCell>
+        
+        <Typography>{ben.account || ben.bene_acc}</Typography>
+      </TableCell>
+      <TableCell>
+       
+        <Typography>{ben.ifsc}</Typography>
+      </TableCell>
+
+      {/* Actions */}
+      <TableCell align="center">
+        {/* Verified or Account Verification Modal */}
+        {(ben.verificationDt && ben.verificationDt !== null) ||
+        ben.verified === "1" ||
+        ben.status === 1 ? (
+          <>
+       <Box sx={{ display: 'flex', alignItems: 'center' }}>
+  <VerifiedIcon sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }} />
+  <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
+</Box>
+            
+          </>
+        ) : (
+          <AccountVerificationModal
+            ben={ben}
+            rem_number={mobile}
+            remitterStatus={remitterStatus}
+            getRemitterStatus={getRemitterStatus}
+            dmtValue={dmtValue}
+          />
+        )}
+      </TableCell>
+
+      {/* Money Transfer Modals */}
+      <TableCell align="center">
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <RetExpresTransferModal
+            dmtValue={dmtValue}
+            type="NEFT"
+            ben={ben}
+            rem_number={mobile}
+            rem_details={remitterStatus}
+            apiEnd={
+              dmtValue === "dmt1"
+                ? ApiEndpoints.DMR_MONEY_TRANSFER
+                : ApiEndpoints.DMT2_MT
+            }
+            view="Money Transfer"
+            limit_per_txn={
+              remitterStatus.limitPerTransaction
+                ? remitterStatus.limitPerTransaction
+                : 5000
+            }
+            remDailyLimit={remitterStatus?.limitDetails?.availableDailyLimit}
+          />
+          <RetExpresTransferModal
+            type="IMPS"
+            ben={ben}
+            rem_number={mobile}
+            rem_details={remitterStatus}
+            apiEnd={
+              dmtValue === "dmt1"
+                ? ApiEndpoints.DMR_MONEY_TRANSFER
+                : ApiEndpoints.DMT2_MT
+            }
+            view="Money Transfer"
+            limit_per_txn={
+              remitterStatus.limitPerTransaction
+                ? remitterStatus.limitPerTransaction
+                : 5000
+            }
+          />
           <PortBeneficiaries
             ben={ben}
             dmtValue={dmtValue}
@@ -126,78 +141,15 @@ const BeneCardComponent = ({
             getRemitterStatus={getRemitterStatus}
             view={view}
           />
-          
+        </Box>
+      </TableCell>
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 1 }}>
-            <RetExpresTransferModal
-              dmtValue={dmtValue}
-              type="NEFT"
-              ben={ben}
-              rem_number={mobile && mobile}
-              rem_details={remitterStatus}
-              apiEnd={
-                dmtValue === "dmt1"
-                  ? ApiEndpoints.DMR_MONEY_TRANSFER
-                  : ApiEndpoints.DMT2_MT
-              }
-              view="Money Transfer"
-              limit_per_txn={
-                remitterStatus.limitPerTransaction
-                  ? remitterStatus.limitPerTransaction
-                  : 5000
-              }
-              remDailyLimit={remitterStatus?.limitDetails?.availableDailyLimit}
-            />
-            <RetExpresTransferModal
-              type="IMPS"
-              ben={ben}
-              rem_number={mobile && mobile}
-              rem_details={remitterStatus}
-              apiEnd={
-                dmtValue === "dmt1"
-                  ? ApiEndpoints.DMR_MONEY_TRANSFER
-                  : ApiEndpoints.DMT2_MT
-              }
-              view="Money Transfer"
-              limit_per_txn={
-                remitterStatus.limitPerTransaction
-                  ? remitterStatus.limitPerTransaction
-                  : 5000
-              }
-            />
-            {/* <Box sx={{ display: { md: "none", sm: "block", xs: "block" } }}>
-              {ben.verificationDt && ben.verificationDt !== null ? (
-                <Button
-                  size="small"
-                  sx={{
-                    fontSize: "10px",
-                    padding: "0px 5px !important",
-                    textTransform: "uppercase",
-                    minWidth: "59px !important",
-                    color: "#00bf78",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Already Verified
-                </Button>
-              ) : null}
-            </Box> */}
-          </Box>
-        </Grid>
-      </Grid>
-
-      {/* Position the Delete button in the top right corner */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "3px",
-          right: "2px",
-        }}
-      >
+      {/* Delete Beneficiary Modal */}
+      <TableCell align="center">
         <DeleteBeneficiaryModal
           dmtValue={dmtValue}
           bene={ben}
-          mob={mobile && mobile}
+          mob={mobile}
           getRemitterStatus={getRemitterStatus}
           apiEnd={
             dmtValue === "dmt1"
@@ -206,9 +158,9 @@ const BeneCardComponent = ({
           }
           view="moneyTransfer"
         />
-      </Box>
-    </Card>
+      </TableCell>
+    </TableRow>
   );
 };
 
-export default BeneCardComponent;
+export default BeneTableComponent;

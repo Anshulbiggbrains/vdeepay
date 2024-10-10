@@ -11,6 +11,10 @@ import {
   Button,
   Box,
   IconButton,
+  MenuItem,
+  InputLabel,
+  Select,
+  FormControl,
 } from "@mui/material";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { ddmmyy, dateToTime } from "../utils/DateUtils";
@@ -57,7 +61,7 @@ import useCommonContext from "../store/CommonContext";
 import RightSidePannel from "../component/transactions/RightSidePannel";
 import UpdateIcon from "@mui/icons-material/Update";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+
 import { resetData } from "../features/allUsers/allUsersSlice";
 import { keyframes } from "@emotion/react";
 import { styled } from "@mui/material/styles";
@@ -100,8 +104,8 @@ const AdminTransactionsView = () => {
   const [rowData, setRowData] = useState(false);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
-  const [scheduler, setScheduler] = useState(false);
-  const [schedulerTime, setSchedulerTime] = useState(0);
+  // const [scheduler, setScheduler] = useState(false);
+  // const [schedulerTime, setSchedulerTime] = useState(0);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -344,7 +348,12 @@ const AdminTransactionsView = () => {
 
   const columns = [
     {
-      name: "Date/Time",
+      name: 
+      <Tooltip title=" Created at/Updated at" >
+        <Typography variant="" sx={{fontSize:"13px" ,whiteSpace: 'nowrap',overflow: 'hidden',textOverflow: 'ellipsis' }}>
+          Created at/Updated at
+        </Typography>
+      </Tooltip>,
       selector: (row) => (
         <>
           <div className="mb-2">
@@ -401,6 +410,8 @@ const AdminTransactionsView = () => {
       ),
       width: "60px",
     },
+
+   
 
     // est missing from ad login
     {
@@ -637,14 +648,17 @@ const AdminTransactionsView = () => {
             pendingStatusText="Pending"
             rejectedStatusText="Failed"
             refundStatusText="Refund"
-            fontSize="14px"
+            fontSize="11px"
+            minWidth="90px"
+            maxWidth="90px"
           />
+
           <div
             className="break-words"
             style={{
               fontSize: "9px",
 
-              marginTop: "7px",
+              marginTop: "5px",
               color: "#535353",
               fontWeight: "500",
               display: "flex",
@@ -798,16 +812,15 @@ const AdminTransactionsView = () => {
           md={12}
           sm={12}
           xs={12}
-          sx={{
-            display: { md: "none", sm: "none", xs: "flex" },
-            justifyContent: "end",
-            alignItems: "center",
-            flexDirection: { md: "row" },
-            pr: 1,
-          }}
+          // sx={{
+          //   display: { md: "none", sm: "none", xs: "flex" },
+          //   justifyContent: "end",
+          //   alignItems: "center",
+          //   flexDirection: { md: "row" },
+          //   pr: 1,
+          // }}
         >
           {/* form in filter */}
-
           <FormGroup>
             <FormControlLabel
               sx={{
@@ -815,19 +828,21 @@ const AdminTransactionsView = () => {
                 mb: { md: 0, sm: 2, xs: 2 },
               }}
               control={
-                <Switch
-                  value={showOldTransaction}
-                  defaultChecked={showOldTransaction}
-                  onChange={() => setShowOldTransaction(!showOldTransaction)}
-                />
-              }
-              label={
-                <Typography variant="body2" style={{ fontSize: "15px" }}>
-                  Old
-                </Typography>
+                <FormControl variant="outlined">
+                  <Select
+                    variant="standard"
+                    fontSize="10px"
+                    value={showOldTransaction}
+                    onChange={() => setShowOldTransaction(!showOldTransaction)}
+                  >
+                    <MenuItem value={true}>Old</MenuItem>
+                    <MenuItem value={false}>New</MenuItem>
+                  </Select>
+                </FormControl>
               }
             />
           </FormGroup>
+
           {/* excel */}
           <div className="mx-2">
             <ExcelUploadModal
@@ -1011,9 +1026,9 @@ const AdminTransactionsView = () => {
                 topMargin={0}
                 bottomMargin={0}
                 showSearch={false}
-                ifdateFilter
                 ifrouteFilter
                 ifoperatorFilter
+                ifFromBankFilter
                 ifstatusFilter
                 iforderidFilter
                 // type and category is same
@@ -1032,7 +1047,7 @@ const AdminTransactionsView = () => {
                 ifAsmFilter
                 asmList={asmList}
                 typeList={typeList.filter((item) => item.name !== "ALL")}
-                ifClientIdFilter
+                // ifClientIdFilter
                 nonAdminColOptions={nonAdminColOptions[`${role}`]}
                 statusList={statusList}
                 operatorList={operatorList}
@@ -1051,27 +1066,27 @@ const AdminTransactionsView = () => {
                   <>
                     <FormGroup>
                       <FormControlLabel
-                        sx={{}}
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
                         control={
-                          <Switch
-                            value={showOldTransaction}
-                            defaultChecked={showOldTransaction}
-                            onChange={() =>
-                              setShowOldTransaction(!showOldTransaction)
-                            }
-                          />
-                        }
-                        label={
-                          <Typography
-                            variant="body2"
-                            style={{ fontSize: "15px" }}
-                          >
-                            Old
-                          </Typography>
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
                         }
                       />
                     </FormGroup>
-
                     <div className="">
                       <ExcelUploadModal
                         twobuttons="Download Csv"
@@ -1100,7 +1115,7 @@ const AdminTransactionsView = () => {
                         <CachedIcon className="refresh-purple" />
                       </IconButton>
                     </Tooltip>
-                    <>
+                    {/* <>
                       <Tooltip title="Scheduler">
                         <BlinkingIcon active={isActive} onClick={handleClick} />
                       </Tooltip>
@@ -1120,8 +1135,8 @@ const AdminTransactionsView = () => {
                         </MenuItem>
                         <MenuItem onClick={handleStop}>Stop</MenuItem>
                       </Menu>
-                    </>
-                    <div className="ms-3">
+                    </> */}
+                    {/* <div className="ms-3">
                       <Link to="/admin/prabhu" className="navLinks">
                         <Button
                           size="small"
@@ -1139,7 +1154,7 @@ const AdminTransactionsView = () => {
                           Prabhu Transfer
                         </Button>
                       </Link>
-                    </div>
+                    </div> */}
                   </>
                 }
               />

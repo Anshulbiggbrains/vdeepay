@@ -143,7 +143,8 @@ const AdminOperatorView = () => {
     {
       name: (
         <FormControl className="customized-textfield">
-          <TextField autoComplete="off"
+          <TextField
+            autoComplete="off"
             select
             value={defaultStatus}
             onChange={handleChangeStatus}
@@ -220,14 +221,14 @@ const AdminOperatorView = () => {
     {
       name: (
         <FormControl className="customized-textfield">
-          <TextField autoComplete="off"
+          <TextField
+            autoComplete="off"
             select
             value={defaultStatus}
             // onChange={handleChangeStatus}
-            sx={{ color: "#fff" }}
           >
             <MenuItem dense value="All">
-              All
+              Allasa
             </MenuItem>
             <MenuItem dense value="1">
               ACTIVE
@@ -278,163 +279,176 @@ const AdminOperatorView = () => {
   };
   return (
     <Grid container>
-    <Grid
-      item
-      md={12}
-      sm={12}
-      xs={12}
-      sx={{
-        display: { md: "none", sm: "none", xs: "flex" },
-        justifyContent: "end",
-        alignItems: "center",
-        flexDirection: { md: "row" },
-        pr: 1,
-       
-        position: 'relative' 
-      }}
-    >
-     
-      <Box sx={{ width: '150%' }}> 
-        <Mount visible={user?.role === "Admin"}>
-          <FormGroup>
-            <FormControlLabel
-              sx={{
-                mt: { md: 0, sm: 2, xs: 2 },
-                mb: { md: 0, sm: 2, xs: 2 },
-              }}
-              control={
-                <Switch
-                  value={showoperatorservices}
-                  defaultChecked={showoperatorservices}
-                  onChange={handleOpServices}
-                />
-              }
-              label={
-                <Typography variant="body2" style={{ fontSize: "15px" }}>
-                  Api Services
-                </Typography>
-              }
-            />
-          </FormGroup>
-        </Mount>
-      </Box>
-  
-     
-      <Box sx={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center' }}>
-        <AddOperatorModal />
-        <Tooltip title="refresh">
-          <IconButton
-            aria-label="refresh"
-            sx={{ color: "#0F52BA" }}
-            onClick={() => refreshFunc(setQuery)}
-          >
-            <CachedIcon className="refresh-purple" />
-          </IconButton>
-        </Tooltip>
-      </Box>
-    </Grid>
-  
-    <Grid xs={12}>
-      <div>
-        <ApiPaginateSearch
-          actionButtons={
-            <Grid
-              item
-              md={12}
-              sm={12}
-              xs={12}
-              sx={{
-                display: "flex",
-                justifyContent: { md: "end", xs: "start" },
-                alignItems: "center",
-                mt: "-45px",
-              }}
-            >
-              <Mount visible={user?.role === "Admin"}>
-                <FormGroup>
-                  <FormControlLabel
-                    sx={{
-                      mt: { md: 0, sm: 2, xs: 2 },
-                      mb: { md: 0, sm: 2, xs: 2 },
-                    }}
-                    control={
-                      <Switch
-                        value={showoperatorservices}
-                        defaultChecked={showoperatorservices}
-                        onChange={handleOpServices}
-                      />
-                    }
-                    label={
-                      <Typography
-                        variant="body2"
-                        style={{ fontSize: "15px" }}
-                      >
-                        Api Services
-                      </Typography>
-                    }
+      <Grid
+        item
+        md={12}
+        sm={12}
+        xs={12}
+        sx={{
+          display: { md: "none", sm: "none", xs: "flex" },
+          justifyContent: "end",
+          alignItems: "center",
+          flexDirection: { md: "row" },
+          pr: 1,
+
+          position: "relative",
+        }}
+      >
+        <Box sx={{ width: "150%" }}>
+          <Mount visible={user?.role === "Admin"}>
+            <FormGroup>
+              <FormControlLabel
+                sx={{
+                  mt: { md: 0, sm: 2, xs: 2 },
+                  mb: { md: 0, sm: 2, xs: 2 },
+                }}
+                control={
+                  <Switch
+                    value={showoperatorservices}
+                    defaultChecked={showoperatorservices}
+                    onChange={handleOpServices}
                   />
-                </FormGroup>
-              </Mount>
-  
-              {/* Right-side items for actionButtons */}
-              <Box>
-                <AddOperatorModal />
-                <Tooltip title="refresh">
-                  <IconButton
-                    aria-label="refresh"
-                    sx={{ color: "#0F52BA" }}
-                    onClick={() => refreshFunc(setQuery)}
-                  >
-                    <CachedIcon className="refresh-purple" />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            </Grid>
-          }
-          apiEnd={
-            showoperatorservices
-              ? ApiEndpoints.ADMIN_OP_SERVICE
-              : ApiEndpoints.GET_OPERATOR
-          }
-          searchOptions={searchOptions}
-          setQuery={setQuery}
-          columns={showoperatorservices ? opcolumns : columns}
-          apiData={showoperatorservices ? apiUserData : apiData}
-          setApiData={showoperatorservices ? setApiUserData : setApiData}
-          tableStyle={CustomStyles}
-          queryParam={query ? query : ""}
-          returnRefetch={(ref) => {
-            refresh = ref;
+                }
+                label={
+                  <Typography variant="body2" style={{ fontSize: "15px" }}>
+                    Api Services
+                  </Typography>
+                }
+              />
+            </FormGroup>
+          </Mount>
+        </Box>
+
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            display: "flex",
+            alignItems: "center",
           }}
-          isFilterAllowed={user?.role?.toLowerCase() === "admin"}
-          filterComponent={
-            <FilterCard
-              topMargin={-1}
-              bottomMargin={-1}
-              fromOperatorPage
-              ifTypeFilter
-              ifnameFilter
-              ifrouteFilter
-              ifstatusFilter
-              typeList={typeList}
-              getTypes={getTypes}
-              routeList={routeList}
-              statusList={statusList}
-              setQuery={setQuery}
-              query={query}
-              clearHookCb={(cb) => {
-                refreshFilter = cb;
-              }}
-              refresh={refresh}
-              isShowFilterCard={isShowFilterCard}
-              setIsShowFilterCard={setIsShowFilterCard}
-            />
-          }
-        />
-      </div>
+        >
+          <AddOperatorModal />
+          <Tooltip title="refresh">
+            <IconButton
+              aria-label="refresh"
+              sx={{ color: "#0F52BA" }}
+              onClick={() => refreshFunc(setQuery)}
+            >
+              <CachedIcon className="refresh-purple" />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      </Grid>
+
+      <Grid xs={12}>
+        <div>
+          <ApiPaginateSearch
+            actionButtons={
+              <Grid
+                item
+                md={12}
+                sm={12}
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: { md: "end", xs: "start" },
+                  alignItems: "center",
+                  mt: "-45px", // Adjust the margin as needed
+                  gap: 2, // Adds space between items on the same row
+                }}
+              >
+                {/* Show operator switch if user is Admin */}
+                <Mount visible={user?.role === "Admin"}>
+                  <FormGroup sx={{ display: "flex", alignItems: "center" }}>
+                    <FormControlLabel
+                      sx={{
+                        mt: { md: 0, sm: 2, xs: 2 },
+                        mb: { md: 0, sm: 2, xs: 2 },
+                      }}
+                      control={
+                        <Switch
+                          value={showoperatorservices}
+                          defaultChecked={showoperatorservices}
+                          onChange={handleOpServices}
+                        />
+                      }
+                      label={
+                        <Typography
+                          variant="body2"
+                          style={{ fontSize: "15px" }}
+                        >
+                          Api Services
+                        </Typography>
+                      }
+                    />
+                  </FormGroup>
+                </Mount>
+
+                {/* Right-side items for actionButtons */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1, // Adds space between AddOperatorModal and refresh button
+                  }}
+                >
+                  <AddOperatorModal />
+                  <Tooltip title="refresh">
+                    <IconButton
+                      aria-label="refresh"
+                      sx={{ color: "#0F52BA" }}
+                      onClick={() => refreshFunc(setQuery)}
+                    >
+                      <CachedIcon className="refresh-purple" />
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+              </Grid>
+            }
+            apiEnd={
+              showoperatorservices
+                ? ApiEndpoints.ADMIN_OP_SERVICE
+                : ApiEndpoints.GET_OPERATOR
+            }
+            searchOptions={searchOptions}
+            setQuery={setQuery}
+            columns={showoperatorservices ? opcolumns : columns}
+            apiData={showoperatorservices ? apiUserData : apiData}
+            setApiData={showoperatorservices ? setApiUserData : setApiData}
+            tableStyle={CustomStyles}
+            queryParam={query ? query : ""}
+            returnRefetch={(ref) => {
+              refresh = ref;
+            }}
+            isFilterAllowed={user?.role?.toLowerCase() === "admin"}
+            filterComponent={
+              <FilterCard
+                // topMargin={-1}
+                // bottomMargin={-1}
+                fromOperatorPage
+                ifTypeFilter
+                ifnameFilter
+                ifrouteFilter
+                ifstatusFilter
+                typeList={typeList}
+                getTypes={getTypes}
+                routeList={routeList}
+                statusList={statusList}
+                setQuery={setQuery}
+                query={query}
+                clearHookCb={(cb) => {
+                  refreshFilter = cb;
+                }}
+                refresh={refresh}
+                isShowFilterCard={isShowFilterCard}
+                setIsShowFilterCard={setIsShowFilterCard}
+              />
+            }
+          />
+        </div>
+      </Grid>
     </Grid>
-  </Grid>
-  
   );
 };
 

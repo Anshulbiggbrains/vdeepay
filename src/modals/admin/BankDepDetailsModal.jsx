@@ -3,11 +3,12 @@
 import {
   Button,
   Card,
+  Drawer,
   Grid,
-  LinearProgress,
-  Modal,
   ToggleButton,
   ToggleButtonGroup,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
@@ -16,27 +17,14 @@ import ModalHeader from "../ModalHeader";
 import { currencySetter } from "../../utils/Currencyutil";
 import ApiPaginate from "../../component/ApiPaginate";
 import { massegetable } from "../../component/CustomStyle";
-import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { capitalize1 } from "../../utils/TextUtil";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "40%",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  fontFamily: "Poppins",
-  p: 3,
-};
-let refresh;
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+let refresh;
 
 const BankDepDetailsModal = ({
   bank_id,
-  id,
   usedInUserTable = false,
   width = "max-content",
   icon,
@@ -45,8 +33,10 @@ const BankDepDetailsModal = ({
   const [open, setOpen] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState();
-  const [pieData, setPieData] = useState();
   const [type, setType] = useState("TODAY");
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // For mobile responsiveness
 
   const handleOpen = () => {
     setOpen(true);
@@ -69,62 +59,6 @@ const BankDepDetailsModal = ({
       width: "130px",
     },
   ];
-  const options = {
-    responsive: true,
-    scales: {
-      y: {
-        title: { display: true, text: "Amount in ₹" },
-      },
-      x: {
-        title: { display: true, text: "Date" },
-      },
-    },
-    plugins: {
-      legend: {
-        display: true,
-        labels: {
-          boxWidth: 20,
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            let label = context.dataset.label || "";
-            if (label) {
-              label += ": ";
-            }
-            if (context.parsed !== null) {
-              label += new Intl.NumberFormat("en-IN", {
-                style: "currency",
-                currency: "INR",
-              }).format(context.parsed);
-            }
-            return label;
-          },
-        },
-      },
-      title: {
-        display: true,
-        // text: "All Services Data",
-      },
-      subtitle: {
-        display: false,
-        // text: "All Services Data",
-      },
-    },
-    transitions: {
-      hide: {
-        animations: {
-          x: {
-            to: 0,
-          },
-          y: {
-            to: 0,
-          },
-        },
-      },
-    },
-  };
 
   useEffect(() => {
     if (type) setQuery(`type=${type}&bank_id=${bank_id}`);
@@ -149,14 +83,26 @@ const BankDepDetailsModal = ({
         {icon}
       </Box>
 
-      <Modal
+      <Drawer
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        anchor="right"
+        PaperProps={{
+          sx: {
+            width: isMobile ? "100%" : "400px", // Full width on mobile, 400px on larger screens
+          },
+        }}
       >
-        <Box sx={style} className="sm_modal">
+        <Box
+          sx={{
+            p: isMobile ? 1 : 2, // Padding is smaller on mobile for space efficiency
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+          className="sm_modal"
+        >
           <ModalHeader
+          subtitle="Track Your Deposits with Detailed Insights."
             title={`${name}'s Deposite Report`}
             handleClose={handleClose}
           />
@@ -169,12 +115,12 @@ const BankDepDetailsModal = ({
               "& .MuiTextField-root": { m: 1 },
             }}
           >
-            <Grid container spacing={2}>
-              <Grid item md={12} xs={12}>
+            <Grid container spacing={isMobile ? 1 : 2}>
+              <Grid item xs={12}>
                 <Card
                   sx={{
                     textAlign: "center",
-                    p: 2,
+                    p: { xs: 1, sm: 2 }, // Adjust padding for mobile and larger screens
                   }}
                 >
                   <ToggleButtonGroup
@@ -183,12 +129,21 @@ const BankDepDetailsModal = ({
                     exclusive
                     onChange={handleChange}
                     aria-label="type"
+                    sx={{
+                      "& .MuiToggleButton-root": {
+                        fontSize: isMobile ? "10px" : "14px", // Smaller font on mobile
+                        padding: isMobile ? "6px 10px" : "8px 16px", // Adjust button padding for mobile
+                      },
+                    }}
                   >
                     <ToggleButton value="TODAY">Today</ToggleButton>
                     <ToggleButton value="THIS">This</ToggleButton>
                     <ToggleButton value="LAST">Last</ToggleButton>
                   </ToggleButtonGroup>
                 </Card>
+              </Grid>
+
+              <Grid item xs={12}>
                 <ApiPaginate
                   apiEnd={ApiEndpoints.BANK_DETAILS}
                   columns={columnsProd}
@@ -204,11 +159,10 @@ const BankDepDetailsModal = ({
                   paginate={false}
                 />
               </Grid>
-              <Grid item md={5} xs={12}></Grid>
             </Grid>
           </Box>
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

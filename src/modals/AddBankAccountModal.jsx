@@ -9,6 +9,7 @@ import {
   IconButton,
   MenuItem,
   Button,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -137,14 +138,14 @@ const AddBankAccountModal = ({ refresh }) => {
       </Tooltip> */}
 
       <Box>
-        <Modal
+        <Drawer
           open={open}
+          anchor="right"
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+         
         >
-          <Box sx={style} className="sm_modal">
-            <ModalHeader title="Add Account" handleClose={handleClose} />
+          <Box sx={{width:400}} >
+            <ModalHeader title="Add Account" handleClose={handleClose} subtitle="Easily Add New Accounts with VdeePay" />
             <Box
               component="form"
               id="addAcc"
@@ -156,7 +157,7 @@ const AddBankAccountModal = ({ refresh }) => {
               }}
             >
               <Grid container sx={{ pt: 1 }}>
-                <Grid item md={6} xs={12}>
+                <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Owner Name"
@@ -166,7 +167,7 @@ const AddBankAccountModal = ({ refresh }) => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Shop Name"
@@ -176,7 +177,7 @@ const AddBankAccountModal = ({ refresh }) => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Registerd Mobile"
@@ -186,7 +187,7 @@ const AddBankAccountModal = ({ refresh }) => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item md={6} xs={12}>
+                <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
                     <TextField autoComplete="off"
                       label="Credit Limit"
@@ -197,7 +198,7 @@ const AddBankAccountModal = ({ refresh }) => {
                   </FormControl>
                 </Grid>
               </Grid>
-              <Grid item md={6} xs={6}>
+              <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
                   <TextField autoComplete="off"
                     select
@@ -226,7 +227,7 @@ const AddBankAccountModal = ({ refresh }) => {
               <ModalFooter form="addAcc" request={request} />
             </Box>
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );

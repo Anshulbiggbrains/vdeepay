@@ -9,6 +9,7 @@ import {
   MenuItem,
   Tooltip,
   colors,
+  Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -80,18 +81,17 @@ const IssueHandlerModal = ({ row, refresh }) => {
       >
         <IconButton
           onClick={handleOpen}
-          sx={{ color: row.status == "OPEN" ? "#1877F2" : "#535353" }}
+          sx={{ color: row.status == "OPEN" ? "#5234ea" : "#535353" }}
         >
-          <Icon icon="mdi:call-to-action" width={28} height={28} />
+          <Icon
+            icon="material-symbols:system-update-alt"
+            width={28}
+            height={28}
+          />
         </IconButton>
       </Tooltip>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style} className="sm_modal">
+      <Drawer open={open} onClose={handleClose} anchor="right">
+        <Box sx={{ width: 400 }} className="sm_modal">
           <Loader loading={request} />
           <ModalHeader title="Handle Issue" handleClose={handleClose} />
           <Box
@@ -107,12 +107,19 @@ const IssueHandlerModal = ({ row, refresh }) => {
             <Grid container sx={{ pt: 1, height: "150px" }}>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off" label="Remark" id="remark" size="small" required />
+                  <TextField
+                    autoComplete="off"
+                    label="Remark"
+                    id="remark"
+                    size="small"
+                    required
+                  />
                 </FormControl>
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
+                    autoComplete="off"
                     select
                     label="Status"
                     id="status"
@@ -132,7 +139,7 @@ const IssueHandlerModal = ({ row, refresh }) => {
           </Box>
           <ModalFooter form="issueHandler" request={request} btn="save" />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
+import Drawer from "@mui/material/Drawer";
 import {
   FormControl,
   Grid,
@@ -50,22 +50,10 @@ const CreateCreditRequest = ({ refresh }) => {
     );
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "40%",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    fontFamily: "Poppins",
-    height: "max-content",
-    overflowY: "scroll",
-    p: 2,
-  };
   const handleOpen = () => {
     getCredDataList();
   };
+
   const handleClose = () => {
     setDateValue("");
     setOpen(false);
@@ -121,18 +109,27 @@ const CreateCreditRequest = ({ refresh }) => {
           }
           sx={{ py: 0.3 }}
         >
-          Credit Request
+          Add Request
         </Button>
       </Tooltip>
 
-      <Modal
+      <Drawer
+        anchor="right"
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm_modal">
-          <ModalHeader title="Create Credit Request" handleClose={handleClose} />
+        <Box
+          sx={{
+            width: 400,
+            p: 2,
+            height: "100%",
+            boxShadow: 24,
+            fontFamily: "Poppins",
+            overflowY: "auto",
+          }}
+          role="presentation"
+        >
+          <ModalHeader title="Add Credit Request" handleClose={handleClose} subtitle="Quickly Request Credit with VdeePay Now!"/>
           <Box
             component="form"
             id="createCreditReq"
@@ -153,7 +150,7 @@ const CreateCreditRequest = ({ refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
                     select
                     value={bank && bank}
                     onChange={(e) => {
@@ -183,7 +180,7 @@ const CreateCreditRequest = ({ refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
                     select
                     value={mode && mode}
                     onChange={(e) => {
@@ -213,7 +210,7 @@ const CreateCreditRequest = ({ refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
                     label="Reference Id"
                     id="ref_id"
                     size="small"
@@ -223,7 +220,7 @@ const CreateCreditRequest = ({ refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
                     label="Select Date"
                     id="date"
                     size="small"
@@ -239,7 +236,7 @@ const CreateCreditRequest = ({ refresh }) => {
               </Grid>
               <Grid item md={12} xs={12}>
                 <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
+                  <TextField
                     label="Amount"
                     id="amt"
                     size="small"
@@ -258,8 +255,9 @@ const CreateCreditRequest = ({ refresh }) => {
           </Box>
           <ModalFooter form="createCreditReq" request={request} btn="Save" />
         </Box>
-      </Modal>
+      </Drawer>
     </Box>
   );
 };
+
 export default CreateCreditRequest;

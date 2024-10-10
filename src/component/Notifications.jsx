@@ -126,7 +126,7 @@ const Notifications = () => {
 
   return (
     <React.Fragment>
-      {/* <TextToSpeech text="Testing Dear User You Have Recieved On Your UPI QR Code. Https://Impsguru.Com" /> */}
+      {/* <TextToSpeech text="Testing Dear User You Have Recieved On Your UPI QR Code. Https://VdeePay.Com" /> */}
       {/* <TextToSpeech1 /> */}
 
       <Tooltip title="Notifications" placement="bottom">
