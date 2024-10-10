@@ -8,6 +8,8 @@ import { apiErrorToast } from "../utils/ToastUtil";
 import { useState } from "react";
 import { get } from "../network/ApiController";
 import InfoIcon from "@mui/icons-material/Info";
+import { Icon } from "@iconify/react";
+import { IconButton } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -57,6 +59,7 @@ const GetAdUserInfoByUsername = ({ row }) => {
       sx={{
         display: "grid",
         justifyContent: "center",
+        
       }}
     >
       {/* <Button
@@ -79,11 +82,12 @@ const GetAdUserInfoByUsername = ({ row }) => {
       >
         User Info
       </Button> */}
-      <InfoIcon
-        className="otp-hover-purple"
+      <IconButton
         onClick={handleOpen}
         sx={{ color: "#4045A1", fontSize: "15px" }}
-      />
+      >
+        <Icon icon="mage:information-square" width={25} height={25} />
+      </IconButton>
       <Modal
         open={open}
         onClose={handleClose}
