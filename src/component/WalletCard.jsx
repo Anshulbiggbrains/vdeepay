@@ -186,7 +186,7 @@ const borderPulse = keyframes`
 )}
 
     {/* DD Card */}
-    {user.role!=="Dd"&&
+    {user.role!=="Dd"&& user.role!=="Ad"&&
     <Grid item xs="auto">
       <Box
         sx={{
@@ -269,32 +269,37 @@ const borderPulse = keyframes`
       </Box>
     </Grid>
 }
-    {user.role==="Ad" && user.role=="Md"&&
-    <Grid item xs="auto">
-      <Box
-        sx={{
-          padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebee',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          width:{ lg:'140px' ,sm:"105px"}, 
-          border: '2px solid #D71313',
-        }}
-      >
-        <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1}} />
-        <Box>
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c',fontSize: "10px" }}>
-            Comm Wallet
-          </Typography>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" }}>
-            ₹ {numberSetter(user.w2 / 100)}
-          </Typography>
-        </Box>
-        <RefreshComponent refresh={userRequest} onClick={() => refreshUser()} sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1}} />
+{(user.role === "Ad" || user.role === "Md") && (
+  <Grid item xs="auto">
+    <Box
+      sx={{
+        padding: '4px 6px 3px 4px',
+        backgroundColor: '#ffebee',
+        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        width: { lg: '140px', sm: '105px' },
+        border: '2px solid #D71313',
+      }}
+    >
+      <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
+      <Box>
+        <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize: "10px" }}>
+          Comm Wallet
+        </Typography>
+        <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
+          ₹ {numberSetter(user.w2 / 100)}
+        </Typography>
       </Box>
-    </Grid>
-}
+      <RefreshComponent
+        refresh={userRequest}
+        onClick={() => refreshUser()}
+        sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }}
+      />
+    </Box>
+  </Grid>
+)}
+
   </Grid>
   
   
