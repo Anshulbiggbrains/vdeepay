@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Box, FormControl, Grid, TextField, Typography,Button } from "@mui/material";
+import { Box, FormControl, Grid, TextField, Typography ,Card} from "@mui/material";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { postJsonData, get } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -11,13 +11,10 @@ import AuthContext from "../store/AuthContext";
 import BillPaymentModal from "../modals/BillPaymentModal";
 import OperatorSearch from "./OperatorSearch";
 import CardComponent from "./CardComponent";
+import CircleComponent from "./CircleComponent";
 import { faListSquares } from "@fortawesome/free-solid-svg-icons";
-import {
-  back,
- 
-} from "../iconsImports";
 
-const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon , resetView}) => {
+const ElectricityForm = ({ title, type}) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -40,6 +37,7 @@ const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon , resetVie
   const [hoveredCard, setHoveredCard] = useState(false); 
   const [selectedCard, setSelectedCard] = useState(null); 
   
+  const [operatorIcon,setOperatorIcon] = useState()
   const operatorRef = useRef();
 
   const handleSubmit = (event) => {
@@ -134,200 +132,198 @@ const ElectricityForm = ({ title, type, setOperatorIcon, operatorIcon , resetVie
     setIsOptSelected(true);
     setOperatorId(operator.code);
     setSelectedCard(operator.code);
+    setOperatorIcon(operator.code)
     setOpName(operator.name);
     setParams([operator.param1, operator.param2, operator.param3]); // Show all fields by default
   };
 console.log("oppp",opName);
-const handleBack = () => {
-  resetView(false);
-};
+
   return (
     <div className="position-relative" id="whole">
-       <Grid
-                    item
-                    md={12}
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      mb: 2,
-                    }}
-                  >
-                    <Button
-                      size="small"
-                      id="verify-btn"
-                      className="button-props"
-                      onClick={handleBack}
-                    >
-                      <span style={{ marginRight: "5px" }}>Back</span>
-                      <img
-                        src={back}
-                        alt="UPI logo"
-                        style={{ width: "18px", height: "20px" }}
-                      />
-                    </Button>
-                    </Grid>
-      <Loader loading={fetchRequest} circleBlue />
-
-      {!IsOptSelected && (
+    <Loader loading={fetchRequest} circleBlue />
+    {!IsOptSelected && (
       <Grid container spacing={2}>
-      {operatorVal &&
-        operatorVal.map((operator, index) => (
-          <Grid item xs={6} sm={4} md={3} key={index}>
-            <CardComponent
-              title={operator.name}
-              img={operator.code}
-              onClick={() => handleOpenVal(operator)} 
-              
-             
-            />
-          </Grid>
-        ))}
-    </Grid>
-    
-      )}
-      {IsOptSelected && (
-        <Grid container spacing={2}>
-          <Grid
-            item
-            lg={4}
-            xs={12}
-            sm={4}
+        {operatorVal &&
+          operatorVal.map((operator, index) => (
+            <Grid item xs={6} sm={4} md={3} key={index}>
+              <CardComponent
+                title={operator.name}
+                img={operator.code}
+                onClick={() => handleOpenVal(operator)}
+              />
+            </Grid>
+          ))}
+      </Grid>
+    )}
+    {IsOptSelected && (
+      <Grid container spacing={2}>
+        <Grid
+          item
+          lg={4}
+          xs={12}
+          sm={4}
+          sx={{
+            height: "600px",
+            width: "600px",
+            overflowY: "auto",
+            p: 2,
+          }}
+        >
+          {operatorVal &&
+            operatorVal.map((operator, index) => (
+              <CardComponent
+                key={index}
+                title={operator.name}
+                img={operator.code}
+                height="55px"
+                onClick={() => {
+                  handleOpenVal(operator);
+                }}
+                isSelected={opName === operator.name ? true : false}
+              />
+            ))}
+        </Grid>
+  
+        {/* Right Form Section */}
+        <Grid item lg={8} xs={12} sm={8} sx={{ mr: -6 }}>
+          <Box
             sx={{
-              height: "600px",
-              width: "600px",
-              overflowY: "auto",
-              p: 2,
+              height: "100%",
+              p: 3,
             }}
           >
-           {operatorVal &&
-  operatorVal.map((operator, index) => (
-    <CardComponent
-      key={index}
-      title={operator.name}
-      img={operator.code}
-      height="55px"
-      onClick={() => {
-        handleOpenVal(operator);
-      }}
-      isSelected={opName === operator.name?true:false}
-
-    />
-  ))}
-
-          </Grid>
-
-          {/* Right Form Section */}
-          <Grid item lg={8} xs={12} sm={8} sx={{ mr: -4 }}>
-            
-            <Box
-              sx={{
-                p: 3,
+            {/* Flexbox for CircleComponent and Title */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                flexWrap: "wrap",
+                marginBottom: "16px",
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography sx={{ fontSize: "24px", fontWeight: "bold", ml: "15px" }}>
-                  {title}
-                </Typography>
-              </div>
-              <Box
-                component="form"
-                id="electricity"
-                validate="true"
-                autoComplete="off"
-                onSubmit={handleSubmit}
+              <CircleComponent img={operatorIcon} />
+              <Typography
                 sx={{
-                  "& .MuiTextField-root": { m: 1, width: "100%" },
-                  overflowY: "auto",
-                  maxHeight: "400px",
+                  fontSize: { xs: "18px", sm: "20px", md: "24px" }, 
+                  fontWeight: "bold",
+                  ml: "15px", 
+                  flex: 1, 
+                  wordWrap: "break-word", 
+                  marginLeft:"4px"
                 }}
               >
-                <Grid container spacing={2}>
-      
-                  {params.map((item, i) => (
-                    <Grid item xs={12} key={i }  >
-                      {item && item !== "" && (
-                        <FormControl sx={{ width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" }, mr: "19%" }}>
-                          <TextField
-                            label={item}
-                            id={"param" + (i + 1).toString()}
-                            size="small"
-                            sx={{
-                              "& .MuiInputBase-input": {
-                                fontSize: "12px",
-                                color: "black",
-                              },
-                              "& .MuiInputBase-input::placeholder": {
-                                fontSize: "12px",
-                                opacity: 1,
-                              },
-                            }}
-                            onChange={(e) => {
-                              setparamsValue({
-                                ...paramsValue,
-                                [e.currentTarget.id]: e.currentTarget?.value,
-                              });
-                            }}
-                            required
-                          />
-                        </FormControl>
-                      )}
-                    </Grid>
-                  ))}
-                  <Grid item xs={12}>
-                    <FormControl sx={{ width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" }, mr: "19%" }}>
-                      <TextField
-                        label="Amount"
-                        id="amount"
-                        size="small"
+                {opName}
+              </Typography>
+            </div>
+  
+            <Box
+              component="form"
+              id="electricity"
+              validate="true"
+              autoComplete="off"
+              onSubmit={handleSubmit}
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "100%" },
+                overflowY: "auto",
+                maxHeight: "400px",
+              }}
+            >
+              <Grid container spacing={0.5}>
+                {params.map((item, i) => (
+                  <Grid item xs={12} key={i}>
+                    {item && item !== "" && (
+                      <FormControl
                         sx={{
-                          "& .MuiInputBase-input": {
-                            fontSize: "12px",
-                            color: "black",
-                          },
-                          "& .MuiInputBase-input::placeholder": {
-                            fontSize: "12px",
-                            opacity: 1,
-                          },
+                          width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" },
+                          mr: "19%",
                         }}
-                        value={amountValue}
-                        onChange={(e) => {
-                          setAmountValue(e.target.value);
-                        }}
-                        required
-                      />
-                    </FormControl>
+                      >
+                        <TextField
+                          label={item}
+                          id={"param" + (i + 1).toString()}
+                          size="small"
+                          sx={{
+                            "& .MuiInputBase-input": {
+                              fontSize: "12px",
+                              color: "black",
+                            },
+                            "& .MuiInputBase-input::placeholder": {
+                              fontSize: "12px",
+                              opacity: 1,
+                            },
+                          }}
+                          onChange={(e) => {
+                            setparamsValue({
+                              ...paramsValue,
+                              [e.currentTarget.id]: e.currentTarget?.value,
+                            });
+                          }}
+                          required
+                        />
+                      </FormControl>
+                    )}
                   </Grid>
+                ))}
+                <Grid item xs={12}>
+                  <FormControl
+                    sx={{
+                      width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" },
+                      mr: "19%",
+                    }}
+                  >
+                    <TextField
+                      label="Amount"
+                      id="amount"
+                      size="small"
+                      sx={{
+                        "& .MuiInputBase-input": {
+                          fontSize: "12px",
+                          color: "black",
+                        },
+                        "& .MuiInputBase-input::placeholder": {
+                          fontSize: "12px",
+                          opacity: 1,
+                        },
+                      }}
+                      value={amountValue}
+                      onChange={(e) => {
+                        setAmountValue(e.target.value);
+                      }}
+                      required
+                    />
+                  </FormControl>
                 </Grid>
-              </Box>
-
-              {/* Payment Modal */}
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <BillPaymentModal
-                  changeFetchToPay={changeFetchToPay}
-                  amountValue={amountValue}
-                  fetchBill={fetchBill}
-                  billDetails={billDetails}
-                  setBillDetails={setBillDetails}
-                  payRequest={billPayRequest}
-                  setBillPayRequest={setBillPayRequest}
-                  modalVisible={modalVisible}
-                  setModalVisible={setModalVisible}
-                  operatorId={operatorId}
-                  operatorName={opName}
-                  successRecharge={successRecharge}
-                  setSuccessRechage={setSuccessRechage}
-                  showSuccess={showSuccess}
-                  setShowSuccess={setShowSuccess}
-                  data={data}
-                />
-              </div>
+              </Grid>
             </Box>
-          </Grid>
+  
+            {/* Payment Modal */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <BillPaymentModal
+                changeFetchToPay={changeFetchToPay}
+                amountValue={amountValue}
+                fetchBill={fetchBill}
+                billDetails={billDetails}
+                setBillDetails={setBillDetails}
+                payRequest={billPayRequest}
+                setBillPayRequest={setBillPayRequest}
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                operatorId={operatorId}
+                operatorName={opName}
+                successRecharge={successRecharge}
+                setSuccessRechage={setSuccessRechage}
+                showSuccess={showSuccess}
+                setShowSuccess={setShowSuccess}
+                data={data}
+              />
+            </div>
+          </Box>
         </Grid>
-      )}
-    </div>
+      </Grid>
+    )}
+  </div>
+  
   );
 };
 
