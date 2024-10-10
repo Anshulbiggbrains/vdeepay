@@ -201,7 +201,7 @@ const RetDdDashboard = () => {
           sx={{
             marginTop: { xs: "1rem" },
             textAlign: "center",
-
+            display:"flex",
             borderRadius: "8px",
             backgroundColor: "#fEDCDB",
             marginTop: "0.1%",

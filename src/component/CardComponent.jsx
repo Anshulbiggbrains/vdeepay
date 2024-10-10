@@ -84,7 +84,7 @@
 import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'; // Optional icon for illustration
-
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
   // Dynamically load image or fallback to placeholder
   let imageSrc;
@@ -104,18 +104,18 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           background: isSelected
-            ? 'linear-gradient(135deg, #1877F2 30%, #00A8FF 90%)' // Updated gradient for selected
-            : 'linear-gradient(135deg, #FFF 30%, #F1F1F1 90%)', // Neutral gradient for unselected
+            ? 'linear-gradient(135deg, #1877F2 30%, #00A8FF 90%)'
+            : 'linear-gradient(135deg, #FFF 30%, #F1F1F1 90%)', 
           boxShadow: isSelected ? 4 : 2,
-          borderRadius: '12px', // Rounded corners
+          borderRadius: '12px', 
           textAlign: 'left',
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
           width: '100%',
-          height: height || "100px", // Adjusted height
+          height: height || "75%",
           padding: 2,
           marginTop: 2,
-          border: isSelected ? '2px solid #1877F2' : '2px solid transparent', // Border for selected
+          border: isSelected ? '2px solid #1877F2' : '2px solid transparent',
           overflow: 'hidden',
           '&:hover': {
             transform: 'scale(1.05)',
@@ -132,7 +132,7 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
           }}
         >
           <img
-            src={imageSrc || img} // Fallback to img if dynamic loading fails
+            src={imageSrc || img} 
             alt={title}
             width="50px"
             style={{
@@ -142,7 +142,7 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
             }}
           />
 
-          {/* Operator name */}
+         
           <Typography
             variant="subtitle1"
             sx={{
@@ -150,16 +150,22 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
               overflow: 'hidden',
               whiteSpace: 'nowrap',
               textOverflow: 'ellipsis',
-              color: isSelected ? '#FFF' : '#333', // Dark text for unselected, white for selected
+              color: isSelected ? '#FFF' : '#333', 
+              fontSize: {
+                xs: '12px', 
+                sm: '14px', 
+                md: '16px', 
+                lg: '18px', 
+              },
             }}
           >
             {title}
           </Typography>
         </Box>
 
-        {/* Optional icon (replace or remove based on requirement) */}
+        
         {isSelected && (
-          <ElectricBoltIcon sx={{ color: '#FFF', fontSize: '24px', marginLeft: 'auto' }} />
+          <CheckCircleIcon sx={{ color: '#FFF', fontSize: '24px', marginLeft: 'auto' }} />
         )}
       </Box>
     </Tooltip>
