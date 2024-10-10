@@ -9,6 +9,7 @@ import {
   Button,
   CircularProgress,
   Divider,
+  Tooltip,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -411,29 +412,37 @@ const RetExpresTransferModal = ({
         justifyContent: "end",
       }}
     >
-<div
-  style={{
+
+<Tooltip title={type === "NEFT" ? "NEFT" : "IMPS"}>
+      <Button
+  sx={{
     cursor: "pointer",
     display: 'flex',
     alignItems: 'center',
     backgroundColor: type === "NEFT" ? "#c69f26" : "#FF7F50",
-    padding: "4px", 
     marginLeft: '1rem',
-    borderRadius: '4px', // Optional: add border-radius like a button
+    borderRadius: '4px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // Subtle shadow for depth
+    transition: 'background-color 0.3s, transform 0.2s', // Smooth transition
     '&:hover': {
-      backgroundColor: type === "NEFT" ? "#E49B0F" : "#e64a19",
-    }
+      backgroundColor: "#E49B0F",
+      transform: 'scale(1.05)' // Slightly enlarge on hover
+    },
+    '&:active': {
+      transform: 'scale(0.95)', // Scale down when active for feedback
+    },
   }}
   onClick={handleOpen}
 >
-  {/* Conditionally render the NEFT or IMPS image */}
+  <Loader loading={request} size="small" />
   {type === "NEFT" ? (
     <img src={neft_l} alt="NEFT" style={{ width: '50px', height: '20px' }} />
   ) : (
     <img src={imps_l} alt="IMPS" style={{ width: '50px', height: '20px' }} />
   )}
-</div>
+</Button>
 
+</Tooltip>
 
 
      

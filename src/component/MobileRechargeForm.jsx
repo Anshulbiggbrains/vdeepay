@@ -35,8 +35,9 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import CircleComponent from "./CircleComponent";
+import { back } from "../iconsImports";
 
-const MobileRechargeForm = ({ type,  }) => {
+const MobileRechargeForm = ({ type, resetView }) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
@@ -223,7 +224,9 @@ console.log("icons",operatorIcon);
     };
 
      console.log("deafault value ",operatorIcon)
-     
+     const handleBack = () => {
+      resetView(false);
+    };
   return (
    
     <div className="position-relative">

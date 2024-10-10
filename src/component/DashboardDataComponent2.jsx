@@ -8,20 +8,22 @@ import Tooltip from '@mui/material/Tooltip';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 const DashboardDataComponent2 = ({ users }) => {
   return (
+   
     <Box
   sx={{
     display: "flex",
     alignItems: "center",
     padding: { xs: "0.5rem", sm: "0.75rem", md: "1rem" },
     borderRadius: "10px",
-    boxShadow:
-      "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
+
     width: "100%",
     mb: { md: 0, sm: 2, xs: 2 },
     flexDirection: { xs: "column", sm: "row" }, 
     gap: { xs: 2, sm: 0 }, 
   }}
+  
 >
+
   <Avatar
     sx={{
       width: { xs: 40, sm: 48 }, 
@@ -33,7 +35,7 @@ const DashboardDataComponent2 = ({ users }) => {
   >
     {users.icon}
   </Avatar>
-
+  
   <Box
     sx={{
       textAlign: { xs: "center", sm: "left" }, 
@@ -41,6 +43,7 @@ const DashboardDataComponent2 = ({ users }) => {
       mb: { xs: 1, sm: 0 },
     }}
   >
+    
     <Typography
       sx={{
         color: "grey",
