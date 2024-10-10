@@ -21,8 +21,7 @@ const AdminUserTab = ({ setQuery, user }) => {
         return zsmTab;
       case "Md":
         return mdTab;
-      case "Ad":
-        return adTab;
+    
       default:
         return [];
     }

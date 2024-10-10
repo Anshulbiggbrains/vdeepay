@@ -25,6 +25,9 @@ const MoneyTransferModal = ({ row, refresh }) => {
   const [open, setOpen] = useState(false);
   const [request, setRequest] = useState(false);
   const [mpin, setMpin] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [error, setError] = useState(null);
   const { getRecentData } = useCommonContext();
   const style = {
     position: "absolute",
@@ -40,6 +43,25 @@ const MoneyTransferModal = ({ row, refresh }) => {
     overflowY: "scroll",
     p: 2,
   };
+  React.useEffect(() => {
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+          },
+          (error) => {
+            setError(error.message);
+          }
+        );
+      } else {
+        setError('Geolocation is not supported by this browser.');
+      }
+    };
+
+    getLocation();
+  }, []);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -58,6 +80,9 @@ const MoneyTransferModal = ({ row, refresh }) => {
       req_type: "CHAIN",
       amount: amt,
       mpin: mpin,
+      latitude:latitude,
+      longitude:longitude
+
     };
     setRequest(true);
     postJsonData(
@@ -140,6 +165,7 @@ const MoneyTransferModal = ({ row, refresh }) => {
                       required
                     >
                       <MenuItem value="CREDIT">CREDIT</MenuItem>
+                      <MenuItem value="DEBIT">DEBIT</MenuItem>
                     </TextField>
                   </FormControl>
                 </Grid>

@@ -23,6 +23,7 @@ export default function RightSidePannel({ row }) {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
+  console.log("row is define",row)
 
   // screenshot
   const [image, takeScreenshot] = useScreenshot({
@@ -62,15 +63,15 @@ export default function RightSidePannel({ row }) {
     takeScreenshot(ref.current).then(download);
   };
 
-  useEffect(() => {
-    if ((user && role === "ret") || (user && role === "dd")) {
-      Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
-      Crisp.chat.hide();
-    } else {
-      Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
-      Crisp.chat.show();
-    }
-  }, [user, role]);
+  // useEffect(() => {
+  //   if ((user && role === "ret") || (user && role === "dd")) {
+  //     Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
+  //     Crisp.chat.hide();
+  //   } else {
+  //     Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
+  //     Crisp.chat.show();
+  //   }
+  // }, [user, role]);
 
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 

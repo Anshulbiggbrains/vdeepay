@@ -619,10 +619,10 @@ const RetDdTransactionView = () => {
   // ];
   const transactions = [
     { title: "Total Transactions", amount: "$1000" },
-    { title: "Pending Transactions", amount: "$200" },
-    { title: "Completed Transactions", amount: "$800" },
-    { title: "Failed Transactions", amount: "$50" },
-    { title: "Refunded Transactions", amount: "$150" },
+    { title: "Pending ", amount: "$200" },
+    { title: "Completed ", amount: "$800" },
+    { title: "Failed ", amount: "$50" },
+    { title: "Refunded ", amount: "$150" },
   ];
 
   const statusList = [
