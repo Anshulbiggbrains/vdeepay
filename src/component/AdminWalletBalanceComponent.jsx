@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
@@ -26,7 +26,7 @@ const AdminWalletBalanceComponent = ({
   const [walletData, setWalletData] = useState([
     { name: "Primary", balance: "0", color: "#00BF78" },
     { name: "Tertiary", balance: "0", color: "#9f86c0" },
-    { name: "Wallet Balance", balance: "0", color: "#DC5F5F" },
+    // { name: "Wallet Balance", balance: "0", color: "#DC5F5F" },
     { name: "Bank Balance", balance: "0", color: "#F08D17" },
     { name: "API Balances", balance: "0", color: "#FFB6C6" },
   ]);
@@ -196,93 +196,189 @@ const AdminWalletBalanceComponent = ({
   }, []);
 
   return (
+    // <Grid
+    //   container
+    //   xs={12}
+    //   md={12}
+    //   lg={12}
+    //   sx={{
+    //     backgroundColor: "#fff",
+    //     borderRadius: "8px",
+    //     padding: "1rem",
+    //     boxShadow:
+    //       "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
+    //       width: { lg: "99%", md: "95%", sm: "100%" }, 
+    //     ml: { lg: "0", md: "0", xs: "0" }, 
+    //     mr: { lg: "1.5%", md: 0, xs: 0 },
+        
+    //   }}
+    
+    // >
+    //   {user && (user.role === "Asm" || user.role === "Zsm")
+    //     ? walletDataAsm &&
+    //       walletDataAsm.map((item, index) => {
+    //         return (
+    //           <Grid
+    //             key={index}
+    //             item
+    //             xs={6}
+    //             sm={3}
+    //             md={3}
+    //             sx={{
+    //               mb: { sm: 2, md: 2, xs: 2 },
+    //             }}
+    //           >
+    //             <DashboardDataComponent1
+    //               key={index}
+    //               users={item}
+    //               data="wallet"
+    //               index={index}
+    //               len={
+    //                 user && (user.role === "Asm" || user.role === "Zsm")
+    //                   ? walletDataAsm.length
+    //                   : walletData.length
+    //               }
+    //               w1={w1}
+    //               w2={w2}
+    //               getWalletBal={getWalletBalance}
+    //               getBankBal={getBankBalance}
+    //               getPrimaryBalance={getPrimaryBalance}
+    //               getTertiaryBalance={getTertiaryBalance}
+    //               PrimaryRequest={prequest}
+    //               TertiaryRequest={trequest}
+    //               walletReq={walletBalReq}
+    //               bankBalReq={bankBalReq}
+    //             />
+                
+   
+    
+
+    //           </Grid>
+    //         );
+    //       })
+    //     : walletData &&
+    //       walletData.map((item, index) => {
+    //         return (
+    //           <Grid
+    //             key={index}
+    //             item
+    //             xs={6}
+    //             sm={3}
+    //             md={2.2}
+    //             sx={{
+    //               mb: { sm: 2, md: 2, xs: 2 },
+    //             }}
+    //           >
+    //             <DashboardDataComponent1
+    //               users={item}
+    //               data="wallet"
+    //               index={index}
+    //               len={walletData.length}
+    //               w1={w1 && w1}
+    //               w2={w2 && w2}
+    //               getWalletBal={getWalletBalance}
+    //               getBankBal={getBankBalance}
+    //               getAPIBal={getAPIBalance}
+    //               apiBalancesData={apiBalancesData}
+    //               getPrimaryBalance={getPrimaryBalance}
+    //               getTertiaryBalance={getTertiaryBalance}
+    //               PrimaryRequest={prequest}
+    //               TertiaryRequest={trequest}
+    //               walletReq={walletBalReq}
+    //               bankBalReq={bankBalReq}
+    //               apiBalReq={apiBalReq}
+    //             />
+    //           </Grid>
+    //         );
+    //       })}
+    // </Grid>
     <Grid
-      container
-      xs={12}
-      md={12}
-      lg={10}
-      sx={{
-        display: "flex",
-        justifyContent: { md: "left", lg: "right", xs: "left" },
-        alignItems: "start",
-        mt: { md: 1, lg: 0, xs: 1 },
-        mr: { md: 1, lg: 0, xs: 1 },
-      }}
-    >
-      {user && (user.role === "Asm" || user.role === "Zsm")
-        ? walletDataAsm &&
-          walletDataAsm.map((item, index) => {
-            return (
-              <Grid
-                key={index}
-                item
-                xs={6}
-                sm={3}
-                md={3}
-                sx={{
-                  mb: { sm: 2, md: 2, xs: 2 },
-                }}
-              >
-                <DashboardDataComponent1
-                  key={index}
-                  users={item}
-                  data="wallet"
-                  index={index}
-                  len={
-                    user && (user.role === "Asm" || user.role === "Zsm")
-                      ? walletDataAsm.length
-                      : walletData.length
-                  }
-                  w1={w1}
-                  w2={w2}
-                  getWalletBal={getWalletBalance}
-                  getBankBal={getBankBalance}
-                  getPrimaryBalance={getPrimaryBalance}
-                  getTertiaryBalance={getTertiaryBalance}
-                  PrimaryRequest={prequest}
-                  TertiaryRequest={trequest}
-                  walletReq={walletBalReq}
-                  bankBalReq={bankBalReq}
-                />
-              </Grid>
-            );
-          })
-        : walletData &&
-          walletData.map((item, index) => {
-            return (
-              <Grid
-                key={index}
-                item
-                xs={6}
-                sm={3}
-                md={2.2}
-                sx={{
-                  mb: { sm: 2, md: 2, xs: 2 },
-                }}
-              >
-                <DashboardDataComponent1
-                  users={item}
-                  data="wallet"
-                  index={index}
-                  len={walletData.length}
-                  w1={w1 && w1}
-                  w2={w2 && w2}
-                  getWalletBal={getWalletBalance}
-                  getBankBal={getBankBalance}
-                  getAPIBal={getAPIBalance}
-                  apiBalancesData={apiBalancesData}
-                  getPrimaryBalance={getPrimaryBalance}
-                  getTertiaryBalance={getTertiaryBalance}
-                  PrimaryRequest={prequest}
-                  TertiaryRequest={trequest}
-                  walletReq={walletBalReq}
-                  bankBalReq={bankBalReq}
-                  apiBalReq={apiBalReq}
-                />
-              </Grid>
-            );
-          })}
-    </Grid>
+    container
+    xs={12}
+    md={12}
+    lg={12}
+    sx={{
+      backgroundColor: "#fff",
+      borderRadius: "8px",
+      padding: "1rem",
+      boxShadow:
+        "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
+      width: { lg: "99%", md: "95%", sm: "100%" },
+      ml: { lg: "0", md: "0", xs: "0" },
+      mr: { lg: "1.5%", md: 0, xs: 0 },
+    }}
+  >
+    {user && (user.role === "Asm" || user.role === "Zsm")
+      ? walletDataAsm.map((item, index) => (
+          <Grid
+            key={index}
+            item
+            xs={12} // Full width on small screens
+            sm={6}  // Half width on small to medium screens
+            md={3}  // Quarter width on medium screens
+            sx={{
+              mb: { sm: 2, md: 2, xs: 2 },
+              display: 'flex', // Use flex to allow children to take full space
+              flexDirection: 'column', // Align children in a column
+              height: '100%', // Ensure the Grid item takes full height
+            }}
+          >
+            <DashboardDataComponent1
+              users={item}
+              data="wallet"
+              index={index}
+              len={walletDataAsm.length}
+              w1={w1}
+              w2={w2}
+              getWalletBal={getWalletBalance}
+              getBankBal={getBankBalance}
+              getPrimaryBalance={getPrimaryBalance}
+              getTertiaryBalance={getTertiaryBalance}
+              PrimaryRequest={prequest}
+              TertiaryRequest={trequest}
+              walletReq={walletBalReq}
+              bankBalReq={bankBalReq}
+              sx={{ flex: 1 }} // Make sure the component takes full available space
+            />
+          </Grid>
+        ))
+      : walletData.map((item, index) => (
+          <Grid
+            key={index}
+            item
+            xs={12} // Full width on small screens
+            sm={6}  // Half width on small to medium screens
+            md={3}  // Quarter width on medium screens
+            sx={{
+              mb: { sm: 2, md: 2, xs: 2 },
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+            }}
+          >
+            <DashboardDataComponent1
+              users={item}
+              data="wallet"
+              index={index}
+              len={walletData.length}
+              w1={w1}
+              w2={w2}
+              getWalletBal={getWalletBalance}
+              getBankBal={getBankBalance}
+              getAPIBal={getAPIBalance}
+              apiBalancesData={apiBalancesData}
+              getPrimaryBalance={getPrimaryBalance}
+              getTertiaryBalance={getTertiaryBalance}
+              PrimaryRequest={prequest}
+              TertiaryRequest={trequest}
+              walletReq={walletBalReq}
+              bankBalReq={bankBalReq}
+              apiBalReq={apiBalReq}
+              sx={{ flex: 1 }} // Make sure the component takes full available space
+            />
+          </Grid>
+        ))}
+  </Grid>
   );
 };
 

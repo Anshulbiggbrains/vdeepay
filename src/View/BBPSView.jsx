@@ -23,7 +23,7 @@ import { CircularButton } from "../component/BBPSButtonComponent";
 import Loader from "../component/loading-screen/Loader";
 import OutletRegistration from "../component/OutletRegistration";
 import BeneSearchBar from "../component/BeneSearchBar";
-import { bbpsPng, cmsIcon } from "../iconsImports";
+import { back, bbpsPng, cmsIcon } from "../iconsImports";
 import BillDetailsModal from "../modals/BillDetailsModal";
 import CommonMpinModal from "../modals/CommonMpinModal";
 import useCommonContext from "../store/CommonContext";
@@ -62,7 +62,7 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
   background: theme.palette.common.white,
 }));
-const BBPSView = () => {
+const BBPSView = ({resetView}) => {
   const [progress, setProgress] = useState(false);
 
   const [catKey, setCatKey] = useState("");
@@ -109,6 +109,9 @@ const BBPSView = () => {
     matchFrom: "start",
     stringify: (option) => option.billerName,
   });
+  const handleBack = () => {
+    resetView(false);
+  };
 
   const getBillers = (cat_key) => {
     setBillers([]);
@@ -483,7 +486,31 @@ const BBPSView = () => {
           <Box sx={{mt:-1.5}}
 
 >
-
+<Grid
+                    item
+                    md={12}
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <img
+                        src={back}
+                        alt="UPI logo"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    </Grid>
       <Box sx={{ padding: 2 }}>
       {/* First page - Category View */}
       {showSecondPage === 0 && (

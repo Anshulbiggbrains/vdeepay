@@ -15,12 +15,12 @@ import { useContext } from "react";
 import AuthContext from "../store/AuthContext";
 import { cardNumberFormat } from "../utils/FormattingUtils";
 import { PATTERNS } from "../utils/ValidationUtil";
-import { rupayimg, visaimg, masterimg } from "../iconsImports";
+import { rupayimg, visaimg, masterimg, back } from "../iconsImports";
 // import * as Yup from "yup";
 // import { useForm } from "react-hook-form";
 // import { yupResolver } from "@hookform/resolvers/yup";
 
-const CreditcardForm = () => {
+const CreditcardForm = ({resetView}) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
@@ -34,7 +34,9 @@ const CreditcardForm = () => {
   const [isMobv, setIsMobv] = useState(true);
   const [cardType, setCardType] = useState("");
   const [apiCallStatus, setApiCallStatus] = useState(false);
-
+  const handleBack = () => {
+    resetView(false);
+  };
   // const CreditCardSchema = Yup.object().shape({
   //   amount: Yup.number().required().typeError("Incorrect format"),
   //   interest_rate: Yup.number().required().typeError("Incorrect format"),
@@ -76,10 +78,36 @@ const CreditcardForm = () => {
   };
 
   return (
+  
     <div>
+         <Grid
+                    item
+                    md={12}
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <img
+                        src={back}
+                        alt="UPI logo"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    </Grid>
       <Box sx={{ p: 3 }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
+          <Typography sx={{ fontSize: "24px", fontWeight: "bold",ml:3 }}>
             Credit Card Bill Payment
           </Typography>
         </div>
@@ -95,6 +123,7 @@ const CreditcardForm = () => {
             overflowY: "scroll",
           }}
         >
+         
           <Grid container sx={{ pt: 1 }} disabled>
             <Grid item md={12} xs={12}>
               <FormControl sx={{ width: "100%" }}>
