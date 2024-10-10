@@ -346,7 +346,6 @@ export const Asm_nav = [
     icon2: TransactionIconWhite,
     to: "/asm/loginHistory",
   },
-
 ];
 export const Zsm_nav = [
   {
@@ -379,7 +378,6 @@ export const Zsm_nav = [
     icon2: TransactionIconWhite,
     to: "/zsm/loginHistory",
   },
-
 ];
 export const Api_nav = [
   {
@@ -418,7 +416,6 @@ export const Api_nav = [
     icon2: TransactionIconWhite,
     to: "/api-user/loginHistory",
   },
-
 ];
 
 export const Ad_nav = [
