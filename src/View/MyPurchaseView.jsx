@@ -20,6 +20,7 @@ import moment from "moment";
 import { json2Csv, json2Excel } from "../utils/exportToExcel";
 import { apiErrorToast } from "../utils/ToastUtil";
 import ExcelUploadModal from "../modals/ExcelUploadModal";
+import CommonStatus from "../component/CommonStatus";
 
 // icons
 import InstallMobileIcon from "@mui/icons-material/InstallMobile";
@@ -165,46 +166,51 @@ const MyPurchaseView = () => {
         <div
           style={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             flexDirection: "column",
           }}
         >
           <div>
             {row.platform === "APP" ? (
               <Tooltip title="APP">
-                <InstallMobileIcon fontSize="small" />
+                <InstallMobileIcon fontSize="small" sx={{ color: "yellow" }} />
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <LaptopIcon fontSize="small" />
+                <LaptopIcon fontSize="small" sx={{ color: "green" }} />
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <AndroidIcon fontSize="small" />
+                <AndroidIcon fontSize="small" sx={{ color: "blue" }} />
               </Tooltip>
             ) : row.platform === "IOS" ? (
               <Tooltip title="IOS">
-                <AppleIcon fontSize="small" />
+                <AppleIcon fontSize="small" sx={{ color: "pink" }} />
               </Tooltip>
             ) : (
               <Tooltip title="API">
-                <SyncAltIcon fontSize="small" />
+                <SyncAltIcon fontSize="small" sx={{ color: "red" }} />
               </Tooltip>
             )}
           </div>
           <div className="fw-bold">{row.platform}</div>
         </div>
       ),
-      center: false,
-
-      width: "70px",
+      center: true,
     },
     {
       name: "Number",
       selector: (row) => (
-        <div style={{ textAlign: "left" }} className="d-flex">
+        <div
+          style={{
+            textAlign: "left",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <span
-            style={{ marginRight: "4px" }}
+            style={{}}
             onClick={() => {
               copyToClipBoard(row.number);
               handleClickSnack();
@@ -262,33 +268,27 @@ const MyPurchaseView = () => {
     {
       name: "Status",
       selector: (row) => (
-        <div
-          className="px-2 text-uppercase"
-          style={{
-            // fontSize: "12px",
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
 
-            color: "#fff",
-            backgroundColor:
-              row.status && row.status === "SUCCESS"
-                ? "#00BF78"
-                : row.status && row.status === "PENDING"
-                ? "#F08D17"
-                : row.status && row.status === "REFUND"
-                ? "#F08D17"
-                : "#DC6F6F",
-            fontWeight: "bold",
-            borderRadius: "4px",
-            minWidth: "70px",
-          }}
-        >
-          {row.status && row.status === "SUCCESS"
-            ? "Success"
-            : row.status && row.status === "PENDING"
-            ? "Pending"
-            : row.status && row.status === "REFUND"
-            ? "Refund"
-            : "Failed"}
-        </div>
+              alignItems: "center",
+            }}
+          >
+            <CommonStatus
+              status={row.status}
+              approvedStatusText="Success"
+              pendingStatusText="Pending"
+              rejectedStatusText="Failed"
+              refundStatusText="Refund"
+              fontSize="11px"
+              maxWidth="85px"
+              minWidth="85px"
+            />
+          </Box>
+        </>
       ),
     },
   ];
@@ -351,7 +351,7 @@ const MyPurchaseView = () => {
           <Tooltip title="refresh">
             <IconButton
               aria-label="refresh"
-              sx={{color:"#0F52BA"}}
+              sx={{ color: "#0F52BA" }}
               onClick={() => {
                 refreshFunc(setQuery);
               }}
@@ -488,78 +488,77 @@ const MyPurchaseView = () => {
           //   </Button>
           // }
 
-          
           filterComponent={
             <>
-            <Grid sx={{justifyContent:"end", display:"relative"}}>
-            <FilterCard
-              showSearch={false}
-              ifdateFilter
-              //
-              ifnumberFilter
-              setQuery={setQuery}
-              query={query}
-              clearHookCb={(cb) => {
-                refresh = cb;
-              }}
-              refresh={refresh}
-              // buttons
-              // backButton={
-              //   <Button
-              //     size="small"
-              //     className="otp-hover-purple"
-              //     sx={{
-              //       color: primaryColor(),
-              //     }}
-              //     onClick={() => {
-              //       setChooseInitialCategoryFilter(false);
-              //       if (role === USER_ROLES.AD) {
-              //         navigate("/ad/transactions");
-              //       } else if (
-              //         role === USER_ROLES.RET ||
-              //         role === USER_ROLES.DD
-              //       ) {
-              //         navigate("/customer/transactions");
-              //       } else if (role === USER_ROLES.MD) {
-              //         navigate("/md/transactions");
-              //       } else {
-              //       }
-              //     }}
-              //   >
-              //     <KeyboardBackspaceIcon fontSize="small" /> Back
-              //   </Button>
-              // }
-              actionButtons={
-                <>
-                <Box sx={{display:"flex", mt:2,ml:-1.5}}>
-                  <ExcelUploadModal
-                    twobuttons="Download Csv"
-                    btn
-                    request={request}
-                    getExcel={getExcel}
-                    getCsv={getCsv}
-                    noOfResponses={noOfResponses}
-                    setQuery={setQuery}
-                    handleCloseCB={(closeModal) => {
-                      handleCloseModal = closeModal;
-                    }}
-                  />
-                  <Tooltip title="refresh" >
-                    <IconButton
-                      aria-label="refresh"
-                      sx={{color:"#0F52BA"}}
-                      onClick={() => {
-                        refreshFunc(setQuery);
-                      }}
-                    >
-                      <CachedIcon className="refresh-purple" />
-                    </IconButton>
-                  </Tooltip>
-                  </Box>
-                </>
-              }
-            />
-            </Grid>
+              <Grid sx={{ justifyContent: "end", display: "relative" }}>
+                <FilterCard
+                  showSearch={false}
+                  ifdateFilter
+                  //
+                  ifnumberFilter
+                  setQuery={setQuery}
+                  query={query}
+                  clearHookCb={(cb) => {
+                    refresh = cb;
+                  }}
+                  refresh={refresh}
+                  // buttons
+                  // backButton={
+                  //   <Button
+                  //     size="small"
+                  //     className="otp-hover-purple"
+                  //     sx={{
+                  //       color: primaryColor(),
+                  //     }}
+                  //     onClick={() => {
+                  //       setChooseInitialCategoryFilter(false);
+                  //       if (role === USER_ROLES.AD) {
+                  //         navigate("/ad/transactions");
+                  //       } else if (
+                  //         role === USER_ROLES.RET ||
+                  //         role === USER_ROLES.DD
+                  //       ) {
+                  //         navigate("/customer/transactions");
+                  //       } else if (role === USER_ROLES.MD) {
+                  //         navigate("/md/transactions");
+                  //       } else {
+                  //       }
+                  //     }}
+                  //   >
+                  //     <KeyboardBackspaceIcon fontSize="small" /> Back
+                  //   </Button>
+                  // }
+                  actionButtons={
+                    <>
+                      <Box sx={{ display: "flex", mt: 2, ml: -1.5 }}>
+                        <ExcelUploadModal
+                          twobuttons="Download Csv"
+                          btn
+                          request={request}
+                          getExcel={getExcel}
+                          getCsv={getCsv}
+                          noOfResponses={noOfResponses}
+                          setQuery={setQuery}
+                          handleCloseCB={(closeModal) => {
+                            handleCloseModal = closeModal;
+                          }}
+                        />
+                        <Tooltip title="refresh">
+                          <IconButton
+                            aria-label="refresh"
+                            sx={{ color: "#0F52BA" }}
+                            onClick={() => {
+                              refreshFunc(setQuery);
+                            }}
+                          >
+                            <CachedIcon className="refresh-purple" />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    </>
+                  }
+                />
+              </Grid>
             </>
           }
         />

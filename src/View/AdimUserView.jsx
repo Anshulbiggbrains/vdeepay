@@ -75,6 +75,8 @@ import CustomTabs from "../component/CustomTabs";
 import { Icon } from "@iconify/react";
 import AdminUserTab from "../component/Tab/AdminUserTab ";
 import { capitalize1 } from "../utils/TextUtil";
+import kyc from "../assets/Kyc.png"
+import performance from "../assets/PerfomanceR.png"
 // styled tabls
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -1033,14 +1035,15 @@ const AdimUserView = () => {
 
               <Mount visible={row?.kyc !== 1}>
                 <Tooltip title="Kyc Pending">
-                  <IconButton>
+                <img src={kyc} alt="KycPending" style={{ width: "24px", height: "24px" }} />
+                  {/* <IconButton>
                     <Icon
                       icon="ph:clock-countdown-bold"
                       width={24}
                       height={24}
                       color="#FF4200"
                     />
-                  </IconButton>
+                  </IconButton> */}
                 </Tooltip>
               </Mount>
             </Box>
@@ -1055,7 +1058,8 @@ const AdimUserView = () => {
               id={row.id}
               amount={
                 <Tooltip title="Performace Report" placement="bottom">
-                  <BarChartIcon sx={{ color: "#DE3163" }} />
+                  {/* <BarChartIcon sx={{ color: "#DE3163" }} /> */}
+                  <img src={performance} alt="PerformanceReport" style={{ width: "24px", height: "24px" }} />
                 </Tooltip>
               }
               usedInUserTable
@@ -1170,9 +1174,9 @@ const AdimUserView = () => {
           />
         </Grid>
       </Grid>
-
+{user.role!=="Ad"&&
       <AdminUserTab setQuery={setQuery} user={user} />
-
+}
       <ApiPaginateSearch
         showSearch={true}
         apiEnd={ApiEndpoints.GET_USERS}

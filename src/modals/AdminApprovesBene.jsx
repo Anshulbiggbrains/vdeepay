@@ -12,6 +12,7 @@ import LabelComponent from "../component/LabelComponent";
 import DetailsComponent from "../component/DetailsComponent";
 import CommonStatus from "../component/CommonStatus";
 import Loader from "../component/loading-screen/Loader";
+import { Icon } from "@iconify/react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -96,19 +97,24 @@ const AdminApprovesBene = ({ row, refresh }) => {
   return (
     <>
       <Tooltip title="Click to View Documents" placement="bottom">
-        <IconButton onClick={handleOpen} className="shadow-effect">
+        <IconButton
+          onClick={handleOpen}
+          sx={{
+            color:
+              row?.kyc_status === 0
+                ? "#f44336"
+                : row?.kyc_status === 1
+                ? "#388e3c"
+                : "#ffa726",
+          }}
+        >
           {request ? (
             <Loader loading={request} />
           ) : (
-            <VisibilityIcon
-              sx={{
-                color:
-                  row?.kyc_status === 0
-                    ? "#f44336"
-                    : row?.kyc_status === 1
-                    ? "#388e3c"
-                    : "#ffa726",
-              }}
+            <Icon
+              icon="material-symbols:pageview-outline"
+              width={25}
+              height={25}
             />
           )}
         </IconButton>

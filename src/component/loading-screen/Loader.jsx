@@ -132,7 +132,7 @@ const Loader = ({ loading, children }) => {
             <div className="circle1" />
             <div className="circle2" />
           </div>
-          <p className="loading-text" style={{marginTop:"4%"}}>Loading, please wait...</p>
+          <p className="loading-text">Loading, please wait...</p>
         </Box>
       )}
       {children}
@@ -194,7 +194,7 @@ const Loader = ({ loading, children }) => {
         }
 
         .loading-text {
-          margin-top: 15px;
+          margin-top: 5%;
           font-size: 20px;
           color: white;
           font-family: Arial, sans-serif;

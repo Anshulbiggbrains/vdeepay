@@ -34,9 +34,10 @@ import CardComponent from "./CardComponent";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import CircleComponent from "./CircleComponent";
 import { back } from "../iconsImports";
 
-const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) => {
+const MobileRechargeForm = ({ type, resetView }) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
@@ -46,7 +47,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
   const [request, setRequest] = useState(false);
   const [infoFetched, setInfoFetched] = useState(false);
   const [numberinfo, setNumberinfo] = useState();
-
+  const [operatorIcon,setOperatorIcon] = useState()
   // console.log("numberinfo", numberinfo);
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState("");
@@ -80,6 +81,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
         console.log("op array is",IsOptSelected);
         
         const op = opArray.map((item) => {
+          // setOperatorIcon(op.);
           return {
             code: item.code,
             name: item.name,
@@ -155,7 +157,10 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
           }
         });
     }
+console.log("default",defaultIcon);
 
+setOperatorIcon(operatorVal.code)
+console.log("icons",operatorIcon);
 
     if (mobile === "" && type === "mobile") {
       setdefaultIcon("");
@@ -202,27 +207,26 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
   };
 
   const handleOperatorChange = (event) => {
-    const selectedOperator = operatorVal.find(item => item.code === event.target.value);
+    // const selectedOperator = operatorVal.find(item => item.code === event.target.value);
     setOperator(selectedOperator); 
     setOpName(selectedOperator ? selectedOperator.name : "");
-    setOperatorIcon(selectedOperator ? selectedOperator.img : ""); // Update the operator image
-  };
+     // Update the operator image
+  }
 
 
-     const handleOpenVal = (operatorName) => {
+     const handleOpenVal = (opt) => {
      if (!IsOptSelected) {
       setIsOptSelected(true)
      } 
-     setOpName(operatorName)
+     setOpName(opt.name)
+     setOperatorIcon(opt.code)
       // alert(`You clicked on: ${operatorVal}`);
     };
 
-     console.log("deafault value ",infoFetched)
-     
-     const handleBack=()=>{
-      resetView (false)
-    }
-     
+     console.log("deafault value ",operatorIcon)
+     const handleBack = () => {
+      resetView(false);
+    };
   return (
    
     <div className="position-relative"  >
@@ -257,11 +261,11 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
       {operatorVal &&
         operatorVal.map((operator, index) => (
           <Grid item xs={6} sm={4} md={3} key={index}>
-            
             <CardComponent
               title={operator.name}
               img={operator.code}
-              onClick={() => handleOpenVal(operator.name)} 
+              
+              onClick={() => handleOpenVal(operator)} 
               
             />
           </Grid>
@@ -273,19 +277,23 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
       <Grid container spacing={2}>
        <Grid item lg={4} xs={12} sm={3.8}>
           {operatorVal && operatorVal.map((operator, index) => (
-            
             <CardComponent
               title={operator.name}
+              setOpIcon={setOperatorIcon}
               img={operator.code}
               height="55px"
-              onClick={() => handleOpenVal(operator.name)} 
               isSelected={ opName === operator.name?true:false}
+              onClick={() => handleOpenVal(operator)} 
             />
          
           ))}
         </Grid>
+      
         <Grid item lg={8} xs={12} sm={8.2}>
+        <Card sx={{  height: "100%",position: "relative" }}>
+        <CircleComponent img={operatorIcon}  />
           <Box sx={{ p: 3 }}>
+
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
                 {type === "mobile" ? title : "DTH"}
@@ -445,7 +453,7 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
                   setModalVisible={setModalVisible}
                   setSuccessRechage={setSuccessRechage}
                   apiEnd={ApiEndpoints.PREPAID_RECHARGE}
-                  type="recharge"
+                  view="recharge"
                   setShowSuccess={setShowSuccess}
                   setMobile={setMobile}
                   setInfoFetched={setInfoFetched}
@@ -456,8 +464,10 @@ const MobileRechargeForm = ({ type, setOperatorIcon,operatorIcon, resetView }) =
               )}
             </Box>
           </Box>
+        </Card>
         </Grid>
       </Grid>
+    
     )}
   </div>
   

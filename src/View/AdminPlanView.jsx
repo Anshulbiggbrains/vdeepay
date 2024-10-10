@@ -45,7 +45,8 @@ const AdminPlanView = () => {
           fullWidth
           sx={{ textAlign: "left" }}
         >
-          <TextField autoComplete="off"
+          <TextField
+            autoComplete="off"
             select
             defaultValue="Operators"
             onChange={handleChangeOperator}
@@ -89,7 +90,7 @@ const AdminPlanView = () => {
       selector: (row) => (
         <Box sx={{ textAlign: "left" }}>{row.description}</Box>
       ),
-      width: "760px",
+      width: "700px",
       wrap: true,
     },
     // {
@@ -107,7 +108,6 @@ const AdminPlanView = () => {
             alignItems: "center",
           }}
         >
-          
           <EditPlanModal row={row} refresh={refresh} />
           <BlockUnBlockPlans row={row} />
           <DeletePlan row={row} refresh={refresh} />

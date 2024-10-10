@@ -367,6 +367,7 @@ const AdminVirtualAccounts = () => {
       selector: (row) => (
         <Box sx={{ display: "flex", mr: 3 }}>
           {/* Conditional rendering based on user.id */}
+          {/* {user.role === "SAdmin" ? ( */}
           {user.id === 1 ? (
             <>
               {/* Render EditVirtualTransactions when user.id is "1" */}

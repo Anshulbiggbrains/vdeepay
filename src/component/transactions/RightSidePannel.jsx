@@ -15,7 +15,7 @@ import AuthContext from "../../store/AuthContext";
 import { createFileName, useScreenshot } from "use-react-screenshot";
 import { Icon } from "@iconify/react";
 import { datemonthYear } from "../../utils/DateUtils";
-import Loader from "../loading-screen/Loader"; 
+import Loader from "../loading-screen/Loader";
 import { Crisp } from "crisp-sdk-web";
 import CommonSnackBar from "../CommonSnackBar";
 
@@ -23,14 +23,18 @@ export default function RightSidePannel({ row }) {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
+  console.log("row is define",row)
 
   // screenshot
   const [image, takeScreenshot] = useScreenshot({
     type: "image/png",
     quality: 1.0,
   });
-  
-  const download = (image, { name = "Transaction Details", extension = "png" } = {}) => {
+
+  const download = (
+    image,
+    { name = "Transaction Details", extension = "png" } = {}
+  ) => {
     const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);
@@ -45,7 +49,10 @@ export default function RightSidePannel({ row }) {
 
   const DetailsComponent = ({ details }) => (
     <CommonSnackBar>
-      <span style={{ textAlign: "right", fontSize: "13px" }} className="fw-bold">
+      <span
+        style={{ textAlign: "right", fontSize: "13px" }}
+        className="fw-bold"
+      >
         {details}
       </span>
     </CommonSnackBar>
@@ -56,15 +63,15 @@ export default function RightSidePannel({ row }) {
     takeScreenshot(ref.current).then(download);
   };
 
-  useEffect(() => {
-    if ((user && role === "ret") || (user && role === "dd")) {
-      Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
-      Crisp.chat.hide();
-    } else {
-      Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
-      Crisp.chat.show();
-    }
-  }, [user, role]);
+  // useEffect(() => {
+  //   if ((user && role === "ret") || (user && role === "dd")) {
+  //     Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
+  //     Crisp.chat.hide();
+  //   } else {
+  //     Crisp.configure(process.env.REACT_APP_CRISP_WEB_KEY, { autoload: false });
+  //     Crisp.chat.show();
+  //   }
+  // }, [user, role]);
 
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
@@ -79,8 +86,12 @@ export default function RightSidePannel({ row }) {
   return (
     <>
       <Tooltip title="View">
-        <IconButton sx={{ color: "#1877F2" }} onClick={openView}>
-          <Icon icon="dashicons:welcome-view-site" width={26} height={26} />
+        <IconButton sx={{ color: "#5234ea" }} onClick={openView}>
+          <Icon
+            icon="material-symbols:pageview-outline"
+            width={26}
+            height={26}
+          />
         </IconButton>
       </Tooltip>
 
@@ -125,7 +136,13 @@ export default function RightSidePannel({ row }) {
                   }}
                 >
                   <div>
-                    <span style={{ fontSize: "40px", fontWeight: "600", color: "#001d3d" }}>
+                    <span
+                      style={{
+                        fontSize: "40px",
+                        fontWeight: "600",
+                        color: "#001d3d",
+                      }}
+                    >
                       {currencySetter(row.amount).split(".")[0]}
                     </span>
                     .
@@ -134,13 +151,25 @@ export default function RightSidePannel({ row }) {
                     </span>
                   </div>
 
-                  <h4 style={{ letterSpacing: "1px", color: getStatusColor(row?.status) }}>
+                  <h4
+                    style={{
+                      letterSpacing: "1px",
+                      color: getStatusColor(row?.status),
+                    }}
+                  >
                     {capitalize1(row?.status)}
                   </h4>
                 </Stack>
 
-                <Grid sx={{ textAlign: "right", fontSize: "13px", color: "#566573" }}>
-                  {datemonthYear(row.created_at)} , {datemonthYear(row.updated_at)}
+                <Grid
+                  sx={{
+                    textAlign: "right",
+                    fontSize: "13px",
+                    color: "#566573",
+                  }}
+                >
+                  {datemonthYear(row.created_at)} ,{" "}
+                  {datemonthYear(row.updated_at)}
                 </Grid>
               </Box>
 
@@ -152,7 +181,11 @@ export default function RightSidePannel({ row }) {
                       item
                       md={12}
                       xs={12}
-                      sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        alignItems: "center",
+                      }}
                     >
                       <Tooltip title="Download">
                         <IconButton onClick={downloadScreenshot}>
@@ -165,7 +198,9 @@ export default function RightSidePannel({ row }) {
                     </Grid>
 
                     <Typography sx={{ fontSize: "16px", display: "flex" }}>
-                      <Typography sx={{ fontWeight: "bold" }}>Transaction</Typography>
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        Transaction
+                      </Typography>
                       <Typography sx={{ ml: 0.5 }}>details</Typography>
                     </Typography>
 
@@ -242,15 +277,21 @@ export default function RightSidePannel({ row }) {
                           <Typography className="fw-bold">RET</Typography>
                           <div>
                             <LabelComponent label="Comm" />
-                            <DetailsComponent details={currencySetter(row?.ret_comm)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ret_comm)}
+                            />
                           </div>
                           <div>
                             <LabelComponent label="TDS" />
-                            <DetailsComponent details={currencySetter(row?.ret_tds)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ret_tds)}
+                            />
                           </div>
                           <div>
                             <LabelComponent label="Charge" />
-                            <DetailsComponent details={currencySetter(row?.ret_charge)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ret_charge)}
+                            />
                           </div>
                         </Box>
                         <div className="divider-inright-nav"></div>
@@ -278,15 +319,21 @@ export default function RightSidePannel({ row }) {
                           <Typography className="fw-bold">AD</Typography>
                           <div>
                             <LabelComponent label="Comm" />
-                            <DetailsComponent details={currencySetter(row?.ad_comm)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ad_comm)}
+                            />
                           </div>
                           <div>
                             <LabelComponent label="TDS" />
-                            <DetailsComponent details={currencySetter(row?.ad_tds)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ad_tds)}
+                            />
                           </div>
                           <div>
                             <LabelComponent label="Charge" />
-                            <DetailsComponent details={currencySetter(row?.ad_charge)} />
+                            <DetailsComponent
+                              details={currencySetter(row?.ad_charge)}
+                            />
                           </div>
                         </Box>
                         <div className="divider-inright-nav"></div>
