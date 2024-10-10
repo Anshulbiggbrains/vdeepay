@@ -229,247 +229,232 @@ console.log("icons",operatorIcon);
     };
   return (
    
-    <div className="position-relative"  >
-        <Grid
-                    item
-                    md={12}
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      mb: 2,
-                    }}
-                  >
-                    <Button
-                      size="small"
-                      id="verify-btn"
-                      className="button-props"
-                      onClick={handleBack}
-                    >
-                      <span style={{ marginRight: "5px" }}>Back</span>
-                      <img
-                        src={back}
-                        alt="UPI logo"
-                        style={{ width: "18px", height: "20px" }}
-                      />
-                    </Button>
-                    </Grid>   
-      <Loader loading={request} />
-      {(!IsOptSelected&&
-       <Grid container spacing={2}>
-      {operatorVal &&
-        operatorVal.map((operator, index) => (
-          <Grid item xs={6} sm={4} md={3} key={index}>
-            <CardComponent
-              title={operator.name}
-              img={operator.code}
-              
-              onClick={() => handleOpenVal(operator)} 
-              
-            />
-          </Grid>
-        ))}
+    <div className="position-relative">
+    <Loader loading={request} />
+    {!IsOptSelected && (
+      <Grid container spacing={2}>
+        {operatorVal &&
+          operatorVal.map((operator, index) => (
+            <Grid item xs={6} sm={4} md={3} key={index}>
+              <CardComponent
+                title={operator.name}
+                img={operator.code}
+                onClick={() => handleOpenVal(operator)}
+              />
+            </Grid>
+          ))}
       </Grid>
     )}
-
+  
     {IsOptSelected && (
       <Grid container spacing={2}>
-       <Grid item lg={4} xs={12} sm={3.8}>
-          {operatorVal && operatorVal.map((operator, index) => (
-            <CardComponent
-              title={operator.name}
-              setOpIcon={setOperatorIcon}
-              img={operator.code}
-              height="55px"
-              isSelected={ opName === operator.name?true:false}
-              onClick={() => handleOpenVal(operator)} 
-            />
-         
-          ))}
+        <Grid item lg={4} xs={12} sm={3.8}>
+          {operatorVal &&
+            operatorVal.map((operator, index) => (
+              <CardComponent
+                title={operator.name}
+                setOpIcon={setOperatorIcon}
+                img={operator.code}
+                height="55px"
+                isSelected={opName === operator.name}
+                onClick={() => handleOpenVal(operator)}
+              />
+            ))}
         </Grid>
-      
-        <Grid item lg={8} xs={12} sm={8.2}>
-        <Card sx={{  height: "100%",position: "relative" }}>
-        <CircleComponent img={operatorIcon}  />
-          <Box sx={{ p: 3 }}>
-
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
-                {type === "mobile" ? title : "DTH"}
-              </Typography>
-              {type === "mobile" && (
-                <div style={{ textAlign: "right" }}>
-                  <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
-                    {title === "Prepaid" ? "Switch to Postpaid" : "Switch to Prepaid"}
-                  </Typography>
-                  <Tooltip title={title === "Prepaid" ? "Postpaid" : "Prepaid"}>
-                    <Switch
-                      checked={checked}
-                      onChange={handleChange}
-                      inputProps={{ "aria-label": "controlled" }}
-                      sx={{
-                        "& .MuiSwitch-switchBase.Mui-checked": {
-                          color: primaryColor(),
-                        },
-                      }}
-                    />
-                  </Tooltip>
-                </div>
-              )}
-            </div>
   
-            <Box
-              component="form"
-              id="recharge"
-              validate
-              autoComplete="off"
-              onSubmit={handleSubmit}
-              sx={{
-                "& .MuiTextField-root": { m: 2 },
-                objectFit: "contain",
-                overflowY: "scroll",
-              }}
-            >
-              <Grid item xs={12}>
+        <Grid item lg={8} xs={12} sm={8.2}>
+          <Card sx={{ height: "100%", position: "relative" }}>
+            <Box sx={{ p: 3 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <CircleComponent img={operatorIcon} /> 
+                  <Typography sx={{ fontSize: "24px", fontWeight: "bold", marginLeft: "16px",marginLeft:"4px" }}>
+                    {type === opName ? title : opName}
+                  </Typography>
+                </div>
+  
                 {type === "mobile" && (
+                  <div style={{ textAlign: "right" }}>
+                    <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
+                      {title === "Prepaid" ? "Switch to Postpaid" : "Switch to Prepaid"}
+                    </Typography>
+                    <Tooltip title={title === "Prepaid" ? "Postpaid" : "Prepaid"}>
+                      <Switch
+                        checked={checked}
+                        onChange={handleChange}
+                        inputProps={{ "aria-label": "controlled" }}
+                        sx={{
+                          "& .MuiSwitch-switchBase.Mui-checked": {
+                            color: primaryColor(),
+                          },
+                        }}
+                      />
+                    </Tooltip>
+                  </div>
+                )}
+              </div>
+  
+              {/* Form Section */}
+              <Box
+                component="form"
+                id="recharge"
+                validate
+                autoComplete="off"
+                onSubmit={handleSubmit}
+                sx={{
+                  "& .MuiTextField-root": { m: 2 },
+                  objectFit: "contain",
+                  overflowY: "scroll",
+                }}
+              >
+                <Grid item xs={12}>
+                  {type === "mobile" && (
+                    <FormControl sx={{ width: "100%" }}>
+                      <TextField
+                        autoComplete="off"
+                        label="Mobile Number"
+                        id="mobile"
+                        type="number"
+                        size="small"
+                        error={!isMobV}
+                        helperText={!isMobV ? "Enter valid Mobile" : ""}
+                        InputProps={{
+                          inputProps: { maxLength: 10 },
+                        }}
+                        value={mobile}
+                        onChange={(e) => {
+                          setIsMobV(PATTERNS.MOBILE.test(e.target.value));
+                          if (e.target.value === "") setIsMobV(true);
+                          setMobile(e.target.value);
+                          if (e.target.value.length === 10 && PATTERNS.MOBILE.test(e.target.value)) {
+                            getNumberInfo(e.target.value);
+                          } else {
+                            setInfoFetched(false);
+                            setAmount("");
+                            setNumberinfo("");
+                            setOperator("");
+                          }
+                        }}
+                        required
+                        disabled={request}
+                      />
+                    </FormControl>
+                  )}
+                  {type === "dth" && (
+                    <FormControl sx={{ width: "100%" }}>
+                      <TextField
+                        autoComplete="off"
+                        label="Customer ID"
+                        id="customer-id"
+                        type="tel"
+                        error={!isCustomerIdV}
+                        helperText={!isCustomerIdV ? "Enter valid Customer Id" : ""}
+                        size="small"
+                        inputProps={{ maxLength: 20 }}
+                        onChange={(e) => {
+                          setCustomerId(e.target.value);
+                          setIsCustomerIdV(PATTERNS.DTH.test(e.target.value));
+                          if (e.target.value === "") {
+                            setIsCustomerIdV(true);
+                            setInfoFetched(false);
+                            setAmount("");
+                            setNumberinfo("");
+                            setOperator("");
+                          }
+                        }}
+                        required
+                        InputProps={{
+                          endAdornment:
+                            infoFetched && envName !== PROJECTS.moneyoddr && (
+                              <InputAdornment position="end">
+                                <Button variant="text" onClick={() => getNumberInfo(customerId)}>
+                                  get Info
+                                </Button>
+                              </InputAdornment>
+                            ),
+                        }}
+                      />
+                    </FormControl>
+                  )}
+                </Grid>
+  
+                <Grid item xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
-                      label="Mobile Number"
-                      id="mobile"
-                      type="number"
+                    <TextField
+                      autoComplete="off"
+                      label="Amount"
+                      id="amount"
                       size="small"
-                      error={!isMobV}
-                      helperText={!isMobV ? "Enter valid Mobile" : ""}
-                      InputProps={{
-                        inputProps: { maxLength: 10 },
-                      }}
-                      value={mobile}
-                      onChange={(e) => {
-                        setIsMobV(PATTERNS.MOBILE.test(e.target.value));
-                        if (e.target.value === "") setIsMobV(true);
-                        setMobile(e.target.value);
-                        if (e.target.value.length === 10 && PATTERNS.MOBILE.test(e.target.value)) {
-                          getNumberInfo(e.target.value);
-                        } else {
-                          setInfoFetched(false);
-                          setAmount("");
-                          setNumberinfo("");
-                          setOperator("");
+                      type="number"
+                      value={amount || ""}
+                      onChange={(e) => setAmount(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "+" || e.key === "-") {
+                          e.preventDefault();
                         }
+                      }}
+                      InputProps={{
+                        inputProps: { max: 10000, min: 10 },
+                        endAdornment:
+                          infoFetched &&
+                          type === "mobile" && (
+                            <InputAdornment position="end">
+                              <AllPlansBar
+                                operator={operator && operator.op}
+                                onClick={(plan) => setAmount(plan?.plan)}
+                              />
+                            </InputAdornment>
+                          ),
                       }}
                       required
                       disabled={request}
                     />
                   </FormControl>
-                )}
-                {type === "dth" && (
-                  <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
-                      label="Customer ID"
-                      id="customer-id"
-                      type="tel"
-                      error={!isCustomerIdV}
-                      helperText={!isCustomerIdV ? "Enter valid Customer Id" : ""}
-                      size="small"
-                      inputProps={{ maxLength: 20 }}
-                      onChange={(e) => {
-                        setCustomerId(e.target.value);
-                        setIsCustomerIdV(PATTERNS.DTH.test(e.target.value));
-                        if (e.target.value === "") {
-                          setIsCustomerIdV(true);
-                          setInfoFetched(false);
-                          setAmount("");
-                          setNumberinfo("");
-                          setOperator("");
-                        }
-                      }}
-                      required
-                      InputProps={{
-                        endAdornment: infoFetched && envName !== PROJECTS.moneyoddr && (
-                          <InputAdornment position="end">
-                            <Button variant="text" onClick={() => getNumberInfo(customerId)}>
-                              get Info
-                            </Button>
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                )}
-              </Grid>
+                </Grid>
   
-              <Grid item xs={12}>
-                <FormControl sx={{ width: "100%" }}>
-                  <TextField autoComplete="off"
-                    label="Amount"
-                    id="amount"
-                    size="small"
-                    type="number"
-                    value={amount || ""}
-                    onChange={(e) => setAmount(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "+" || e.key === "-") {
-                        e.preventDefault();
-                      }
+                <Grid item xs={12}>
+                  <Button
+                    type="submit"
+                    form="recharge"
+                    className="btn-background"
+                    sx={{
+                      width: "95%",
+                      mt: 1,
                     }}
-                    InputProps={{
-                      inputProps: { max: 10000, min: 10 },
-                      endAdornment: infoFetched && type === "mobile" && (
-                        <InputAdornment position="end">
-                          <AllPlansBar operator={operator && operator.op} onClick={(plan) => setAmount(plan?.plan)} />
-                        </InputAdornment>
-                      ),
-                    }}
-                    required
                     disabled={request}
+                  >
+                    <span>{infoFetched ? "Proceed to pay" : type === "mobile" ? "Proceed" : "Fetch Info"}</span>
+                  </Button>
+                </Grid>
+  
+                {infoFetched && numberinfo && <RepeatRechargeModal data={numberinfo} setAmount={setAmount} />}
+                {modalVisible && (
+                  <EnterMpinModal
+                    data={data}
+                    setModalVisible={setModalVisible}
+                    setSuccessRechage={setSuccessRechage}
+                    apiEnd={ApiEndpoints.PREPAID_RECHARGE}
+                    view="recharge"
+                    setShowSuccess={setShowSuccess}
+                    setMobile={setMobile}
+                    setInfoFetched={setInfoFetched}
                   />
-                </FormControl>
-              </Grid>
-  
-              <Grid item xs={12}>
-                <Button
-                  type="submit"
-                  form="recharge"
-                  className="btn-background"
-                  sx={{
-                    width: "95%",
-                    mt: 1,
-                  }}
-                  disabled={request}
-                >
-                  <span>
-                    {infoFetched ? "Proceed to pay" : type === "mobile" ? "Proceed" : "Fetch Info"}
-                  </span>
-                </Button>
-              </Grid>
-  
-              {infoFetched && numberinfo && (
-                <RepeatRechargeModal data={numberinfo} setAmount={setAmount} />
-              )}
-              {modalVisible && (
-                <EnterMpinModal
-                  data={data}
-                  setModalVisible={setModalVisible}
-                  setSuccessRechage={setSuccessRechage}
-                  apiEnd={ApiEndpoints.PREPAID_RECHARGE}
-                  view="recharge"
-                  setShowSuccess={setShowSuccess}
-                  setMobile={setMobile}
-                  setInfoFetched={setInfoFetched}
-                />
-              )}
-              {showSuccess && (
-                <SuccessRechargeModal successRecharge={successRecharge} setShowSuccess={setShowSuccess} />
-              )}
+                )}
+                {showSuccess && (
+                  <SuccessRechargeModal
+                    successRecharge={successRecharge}
+                    setShowSuccess={setShowSuccess}
+                  />
+                )}
+              </Box>
             </Box>
-          </Box>
-        </Card>
+          </Card>
         </Grid>
       </Grid>
-    
     )}
   </div>
+  
   
     
   );
