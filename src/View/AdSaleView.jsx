@@ -263,24 +263,7 @@ const AdSaleView = () => {
           }}
         >
           {/* back button */}
-          <Button
-            size="small"
-            className="otp-hover-purple mb-2"
-            sx={{
-              color: primaryColor(),
-            }}
-            onClick={() => {
-              setChooseInitialCategoryFilter(false);
-              if (role === USER_ROLES.AD) {
-                navigate("/ad/transactions");
-              } else if (role === USER_ROLES.MD) {
-                navigate("/md/transactions");
-              } else {
-              }
-            }}
-          >
-            <KeyboardBackspaceIcon fontSize="small" /> Back
-          </Button>
+        
           <ExcelUploadModal
             twobuttons="Download Csv"
             btn
@@ -408,26 +391,7 @@ const AdSaleView = () => {
               </Tooltip>
             </Grid>
           }
-          backButton={
-            <Button
-              size="small"
-              className="otp-hover-purple mb-2"
-              sx={{
-                color: primaryColor(),
-              }}
-              onClick={() => {
-                setChooseInitialCategoryFilter(false);
-                if (role === USER_ROLES.AD) {
-                  navigate("/ad/transactions");
-                } else if (role === USER_ROLES.MD) {
-                  navigate("/md/transactions");
-                } else {
-                }
-              }}
-            >
-              <KeyboardBackspaceIcon fontSize="small" /> Back
-            </Button>
-          }
+     
           apiEnd={ApiEndpoints.GET_TRANSACTIONS}
           searchOptions={searchOptions}
           columns={columns}

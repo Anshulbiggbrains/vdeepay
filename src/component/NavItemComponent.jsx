@@ -113,12 +113,12 @@ const NavItemComponent = ({
               }}
             >
               <img
-                width="22px"
+                width="25spx"
                 src={item.icon}
                 alt=""
                 style={{
                   filter: isCurrentActive
-                    ? "invert(100%) brightness(1000%)"
+                    ? "brightness(0) saturate(100%) invert(100%)"
                     : "",
                 }}
               />

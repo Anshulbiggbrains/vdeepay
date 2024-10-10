@@ -211,7 +211,7 @@ const VerifyMpinLogin = ({
       }
     );
   };
-  // veriify bank
+ 
   const verifyBank = (e) => {
     data.mpin = otp;
     e.preventDefault();
@@ -347,7 +347,7 @@ const VerifyMpinLogin = ({
   // console.log("username data", username);
 
   return (
-    <Grid container spacing={3} sx={{ justifyContent: "center", mb: 4 }}>
+    <Grid container spacing={3} sx={{ justifyContent: "center", mb: { xs: 2, md: 4 } }}>
     <Grid item xs={12}>
       <Box
         display="flex"
@@ -361,44 +361,45 @@ const VerifyMpinLogin = ({
           alignItems="center"
           sx={{ width: "100%", position: "relative", justifyContent: "center" }}
         >
-         <Button
-        onClick={() => {
-          if (!isOtpField) setIsOtpField(false);
-        }}
-        sx={{
-          position: "absolute",
-          left: { xs: '10%', sm: '15%', md: '20%' }, 
-          ml: { xs: 1, sm: 2 },
-          padding: 0, 
-        }}
-      >
-        <ArrowBackIcon
-          sx={{ cursor: "pointer", fontSize: { xs: "1.50rem", md: "1.50rem" }, color: "#000" }} 
-        />
-      </Button>
-
-         
+        
+          <Button
+            onClick={() => {
+              if (!isOtpField) setIsOtpField(false);
+            }}
+            sx={{
+              position: "absolute",
+              left: { xs: '5%', sm: '10%', md: '15%' },
+              ml: { xs: 1, sm: 2 },
+              padding: 0,
+            }}
+          >
+            <ArrowBackIcon
+              sx={{ cursor: "pointer", fontSize: { xs: "1.25rem", md: "1.50rem" }, color: "#000" }}
+            />
+          </Button>
+  
           <Typography
             variant="h6"
             component="h2"
             sx={{
               color: "#000000",
               fontWeight: "bold",
-              fontSize: { xs: "1.25rem", md: "1.5rem" }, 
-              textAlign: "center", 
+              fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+              textAlign: "center",
               flexGrow: 1,
-              ml: { xs: 4, sm: 5 }, 
+              ml: { xs: 3, sm: 4, md: 5 },
             }}
           >
             {title}
           </Typography>
-
-          {/* Loader */}
+  
+          
           <Loader loading={request} />
         </Box>
       </Box>
     </Grid>
-
+  
+ 
     <Grid item xs={12}>
       <Box
         component="form"
@@ -415,7 +416,7 @@ const VerifyMpinLogin = ({
             : handleSubmit
         }
         sx={{
-          "& .MuiTextField-root": { m: 2 },
+          "& .MuiTextField-root": { m: { xs: 1, sm: 2 } },
         }}
       >
         <Grid container spacing={2} justifyContent="center">
@@ -425,12 +426,18 @@ const VerifyMpinLogin = ({
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "flex-end",
-                flexDirection: "row", 
+                alignItems: "center",
+                flexDirection: "row",
               }}
             >
-            
-              <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center", 
+                }}
+              >
+              
                 <PinInput
                   length={6}
                   autoComplete={"off"}
@@ -444,7 +451,7 @@ const VerifyMpinLogin = ({
                   inputStyle={{
                     width: "40px",
                     height: "40px",
-                    marginRight: "5px",
+                    marginRight: { xs: "3px", md: "5px" }, 
                     textAlign: "center",
                     borderRadius: "0",
                     border: "none",
@@ -453,14 +460,16 @@ const VerifyMpinLogin = ({
                     outline: "none",
                   }}
                 />
-                {/* ResetMpin button below the Pin input */}
-                < Box sx={{mt:2}}>
-                <ResetMpin variant="text" username={username}  />
+  
+                
+                <Box sx={{ mt: 2 }}>
+                  <ResetMpin variant="text" username={username} />
                 </Box>
               </Box>
             </FormControl>
           </Grid>
-
+  
+       
           {secureValidate === "MPIN" && (
             <>
               {err && (
@@ -486,7 +495,8 @@ const VerifyMpinLogin = ({
               )}
             </>
           )}
-
+  
+         
           {secureValidate === "OTP" && (
             <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
               {isresend ? (
@@ -507,7 +517,8 @@ const VerifyMpinLogin = ({
               {err && err.message && <div>{err.message}</div>}
             </Grid>
           )}
-
+  
+        
           <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               form="VerifyOtpLogin"
@@ -515,7 +526,7 @@ const VerifyMpinLogin = ({
               onClick={handleSubmit}
               sx={{
                 width: "100%",
-                maxWidth: "300px",
+                maxWidth: { xs: "250px", md: "300px" },
                 mt: 2,
                 borderRadius: 6,
                 color: "#fff",
@@ -529,6 +540,7 @@ const VerifyMpinLogin = ({
       </Box>
     </Grid>
   </Grid>
+  
 );
 };
   

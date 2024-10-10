@@ -12,7 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import PinInput from "react-pin-input";
 import { useState } from "react";
-
+import unblock from "../assets/blockicon.png"
+import block from "../assets/block.png"
 const style = {
   position: "absolute",
   top: "50%",
@@ -65,11 +66,13 @@ const BlockUnBlockModal = ({ row }) => {
       <Box sx={{ width: "100%" }} onClick={handleOpen}>
         {row.status === 1 ? (
           <Tooltip title="Unblocked">
-            <LockOpenOutlinedIcon sx={{ color: "#00BF78" }} />
+           <img src={unblock} alt="unblocked" style={{ width: "24px", height: "24px" }} />
+            {/* <LockOpenOutlinedIcon sx={{ color: "#00BF78" }} /> */}
           </Tooltip>
         ) : (
           <Tooltip title="Block">
-            <LockOutlinedIcon sx={{ color: "#DC5F5F" }} />
+              <img src={block} alt="unblocked" style={{ width: "24px", height: "24px" }} />
+            {/* <LockOutlinedIcon sx={{ color: "#DC5F5F" }} /> */}
           </Tooltip>
         )}
       </Box>

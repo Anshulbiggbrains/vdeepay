@@ -384,6 +384,17 @@ const VerifyOtpLogin = ({
                       setOtp(value);
                     }}
                     regexCriteria={/^[0-9]*$/}
+                    inputStyle={{
+                      width: "40px",
+                      height: "40px",
+                      marginRight: { xs: "3px", md: "5px" }, 
+                      textAlign: "center",
+                      borderRadius: "0",
+                      border: "none",
+                      borderBottom: "1px solid #000",
+                      padding: "5px",
+                      outline: "none",
+                    }}
                   />
                 </FormControl>
               </Grid>

@@ -75,10 +75,10 @@ const ChangeRouteMenu = ({ row, refresh }) => {
           height: "15px",
           fontSize: "13px",
 
-          color: primaryColor(),
+          color: "#03AED2",
           "&:hover": {
-            color: "#fff",
-            backgroundColor: primaryColor(),
+            color: "#000",
+            backgroundColor: "#00ff9c",
           },
           borderRadius: "5px",
           padding: "13px",

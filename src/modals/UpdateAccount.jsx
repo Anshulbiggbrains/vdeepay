@@ -9,6 +9,7 @@ import {
   Tooltip,
   MenuItem,
   Drawer,
+  Button,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
@@ -113,22 +114,38 @@ const UpdateAccount = ({ row, refresh }) => {
       }}
     >
       <Tooltip title="update Account">
-        {/* <MyButton text="Edit" onClick={handleOpen} ml={1} /> */}
-        <IconButton
+        <Button
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            padding: "8px",
+            fontSize: "12px",
+            color: "#ffffff",
+            fontWeight: "700",
+            borderRadius: "8px  ",
+            transition: "all 0.3s ease",
+            justifyContent: "center",
+            background: "#1877f2",
+          }}
+          onClick={handleOpen}
+        >
+          Edit
+        </Button>
+        {/* <IconButton
           style={{ fontSize: "10px", color: "#0504AA" }}
           onClick={handleOpen}
         >
           <Icon icon="raphael:edit" width={26} height={26} />
-        </IconButton>
+        </IconButton> */}
       </Tooltip>
 
-      <Drawer
-        open={open}
-        onClose={handleClose}
-    anchor="right"
-      >
-        <Box sx={{width:400}} className="sm_modal">
-          <ModalHeader title="Update Account" handleClose={handleClose} subtitle="Easily Update Your Account Information Today." />
+      <Drawer open={open} onClose={handleClose} anchor="right">
+        <Box sx={{ width: 400 }} className="sm_modal">
+          <ModalHeader
+            title="Update Account"
+            handleClose={handleClose}
+            subtitle="Easily Update Your Account Information Today."
+          />
           <Box
             component="form"
             id="update-account"

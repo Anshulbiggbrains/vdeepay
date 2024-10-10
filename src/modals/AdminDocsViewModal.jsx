@@ -147,13 +147,13 @@ const AdminDocsViewModal = ({ row, refresh }) => {
         <VisibilityIcon
           sx={{
             color: aadhaar_image === null && pan_image === null
-              ? "#f44336"
+              ? "#6A5ACD"
               : (aadhaar_image || pan_image) &&
                 (is_aadhaar_verified === 0 ||
                   is_pan_verified === 0 ||
                   is_aadhaar_verified === 2 ||
                   is_pan_verified === 2)
-              ? "#ffa726"
+              ? "#fd792d"
               : "#388e3c",
           }}
         />
