@@ -21,7 +21,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box } from "@mui/system";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginPage, loginPage1, dashboardIllustratorImg } from "../iconsImports";
+import { loginPage, loginPage1, LoginPageIllustratorImg } from "../iconsImports";
 import { Icon } from "@iconify/react";
 import Marquee from "react-fast-marquee";
 import ForgotPass from "../modals/ForgotPass";
@@ -251,7 +251,7 @@ const LoginPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           padding: 9,
-          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundImage: `url(${LoginPageIllustratorImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center', 
           backgroundRepeat: 'no-repeat',
@@ -278,7 +278,7 @@ const LoginPage = () => {
           </Typography> */}
           {/* <Box
             component="img"
-            src={dashboardIllustratorImg}
+            src={LoginPageIllustrator}
             alt="admin dash"
             sx={{
               maxWidth: "80%",
