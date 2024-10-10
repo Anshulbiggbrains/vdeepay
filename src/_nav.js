@@ -582,7 +582,6 @@ export const customer_nav = [
             title:"Manage Your Profile",
             
             to:"/customer/my-profile",
-            
             }
           ]
         },
