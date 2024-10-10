@@ -291,6 +291,7 @@ const MyPurchaseView = () => {
           </Box>
         </>
       ),
+      center: true,
     },
   ];
   const searchOptions = [{ field: "Number", parameter: "number" }];

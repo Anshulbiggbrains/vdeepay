@@ -24,7 +24,6 @@ const AdminNotificationsView = () => {
     {
       name: "id",
       selector: (row) => row.id,
-      width: "70px",
     },
     {
       name: "Created At",
@@ -61,7 +60,6 @@ const AdminNotificationsView = () => {
           {row.priority}
         </div>
       ),
-      width: "100px",
     },
     {
       name: "Message",
@@ -77,8 +75,8 @@ const AdminNotificationsView = () => {
           {row.message}
         </div>
       ),
-      width: "750px",
-      grow: 1,
+      width: "550px",
+
       wrap: true,
     },
     // {
@@ -97,7 +95,6 @@ const AdminNotificationsView = () => {
             gap: 5,
 
             pr: 0,
-            width: "100px",
           }}
         >
           {row.is_read === 0 ? (
@@ -119,6 +116,7 @@ const AdminNotificationsView = () => {
           </div>
         </div>
       ),
+      center: true,
     },
   ];
   return (

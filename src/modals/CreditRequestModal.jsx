@@ -121,7 +121,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
               },
             }}
           >
-            <Icon icon="charm:square-tick" width={26} height={26} />
+            <Icon icon="charm:square-tick" width={25} height={25} />
           </IconButton>
         </Tooltip>
       )}
@@ -149,7 +149,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
               },
             }}
           >
-            <Icon icon="charm:square-cross" width={26} height={26} />
+            <Icon icon="charm:square-cross" width={25} height={25} />
           </IconButton>
         </Tooltip>
       )}
@@ -157,7 +157,7 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
         <Drawer open={open} anchor="right" onClose={handleClose}>
           <Box sx={{ width: 400 }} className="sm_modal">
             <ModalHeader
-            subtitle="Take Action: Quick and Simple Fund Request!"
+              subtitle="Take Action: Quick and Simple Fund Request!"
               title={`${action} (${row.name})`}
               handleClose={handleClose}
             />

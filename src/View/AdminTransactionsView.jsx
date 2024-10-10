@@ -348,12 +348,21 @@ const AdminTransactionsView = () => {
 
   const columns = [
     {
-      name: 
-      <Tooltip title=" Created at/Updated at" >
-        <Typography variant="" sx={{fontSize:"13px" ,whiteSpace: 'nowrap',overflow: 'hidden',textOverflow: 'ellipsis' }}>
-          Created at/Updated at
-        </Typography>
-      </Tooltip>,
+      name: (
+        <Tooltip title=" Created at/Updated at">
+          <Typography
+            variant=""
+            sx={{
+              fontSize: "13px",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            Created at/Updated at
+          </Typography>
+        </Tooltip>
+      ),
       selector: (row) => (
         <>
           <div className="mb-2">
@@ -365,7 +374,7 @@ const AdminTransactionsView = () => {
         </>
       ),
       wrap: true,
-      width: "130px",
+      width: "135px",
     },
     {
       name: "Route",
@@ -401,17 +410,12 @@ const AdminTransactionsView = () => {
             )}
           </div>
 
-          <div style={{ fontSize: "10px", fontWeight: "bold" }}>
-            {row.route}
-          </div>
+          <div style={{ fontSize: "10px", fontWeight: "600" }}>{row.route}</div>
 
           <div style={{ fontSize: "8px" }}>{row.mop}</div>
         </div>
       ),
-      width: "60px",
     },
-
-   
 
     // est missing from ad login
     {
@@ -807,7 +811,6 @@ const AdminTransactionsView = () => {
   } else {
     return (
       <>
-  
         <Grid xs={12} sx={{ pl: { xs: 0, md: 2 } }}>
           <RetDbTransactionTab setQuery={setQuery} />
           <ApiPaginateSearch
