@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CommonStatus from "../../component/CommonStatus";
 import {
   Tooltip,
   //   Snackbar,
@@ -300,8 +301,6 @@ const AdTransactionView = () => {
         </div>
       ),
       wrap: true,
-      // grow: 1.3,
-      width: "150px",
     },
     {
       name: <span className="">Operator</span>,
@@ -322,7 +321,7 @@ const AdTransactionView = () => {
         </div>
       ),
       wrap: true,
-      width: "250px",
+      width: "200px",
     },
     // est missing from ad login
     {
@@ -345,6 +344,7 @@ const AdTransactionView = () => {
 
       wrap: true,
       center: false,
+      width: "260px",
     },
     {
       name: <span>Number</span>,
@@ -369,7 +369,6 @@ const AdTransactionView = () => {
       ),
       wrap: true,
       center: false,
-      width: "100px",
     },
 
     {
@@ -391,7 +390,6 @@ const AdTransactionView = () => {
       ),
       // omit: role !== "api" ,
       // omit: role !== "api" || role !== "ret" || role !== "dd",
-      width: "80px",
     },
     {
       name: "TDS",
@@ -403,7 +401,6 @@ const AdTransactionView = () => {
         </>
       ),
       // omit: user && user.role !== "Ad",
-      width: "80px",
     },
 
     {
@@ -420,43 +417,25 @@ const AdTransactionView = () => {
       name: "Status",
       selector: (row) => (
         <>
-          <div
-            className="px-2 text-uppercase"
-            style={{
-              color: "#fff",
-              backgroundColor:
-                row.status && row.status === "SUCCESS"
-                  ? "#00BF78"
-                  : row.status && row.status === "PENDING"
-                  ? "#F08D17"
-                  : row.status && row.status === "REFUND"
-                  ? "#4045A1"
-                  : row.status && row.status === "FAILED"
-                  ? "#DC6F6F"
-                  : "#00BF78",
-              fontWeight: "bold",
-              borderRadius: "4px",
-              minWidth: "85px",
-            }}
-          >
-            {row.status && row.status === "SUCCESS"
-              ? "Success"
-              : row.status && row.status === "PENDING"
-              ? "Pending"
-              : row.status && row.status === "REFUND"
-              ? "Refund"
-              : row.status && row.status === "FAILED"
-              ? "Failed"
-              : "Success"}
-          </div>
+          <CommonStatus
+            status={row.status}
+            approvedStatusText="Success"
+            pendingStatusText="Pending"
+            rejectedStatusText="Failed"
+            refundStatusText="Refund"
+            fontSize="11px"
+          />
+
           <div
             className="break-words"
             style={{
               fontSize: "9px",
-              maxWidth: "85px",
+
               marginTop: "5px",
-              color: "#000",
-              fontWeight: "600",
+              color: "#535353",
+              fontWeight: "500",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             {row.op_id}
@@ -464,14 +443,11 @@ const AdTransactionView = () => {
         </>
       ),
       wrap: true,
-      width: "100px",
     },
     {
       name: "Details",
-      selector: (row) => (
-        <RightSidePannel  row={row}/>
-      ),
-      right: true,
+      selector: (row) => <RightSidePannel row={row} />,
+      center: true,
     },
   ];
 
@@ -589,26 +565,24 @@ const AdTransactionView = () => {
   //     </>
   //   );
   // } else {
-    return (
-      <Grid container>
-        {/* only for small screen  */}
-        <Grid
-          item
-          md={12}
-          sm={12}
-          xs={12}
-          sx={{
-            display: { md: "none", sm: "none", xs: "flex" },
-            justifyContent: "end",
-            alignItems: "center",
-            flexDirection: { md: "row" },
-            pr: 1,
-          }}
-        >
-
-      
-          {/* back button */}
-          {/* <Button
+  return (
+    <Grid container>
+      {/* only for small screen  */}
+      <Grid
+        item
+        md={12}
+        sm={12}
+        xs={12}
+        sx={{
+          display: { md: "none", sm: "none", xs: "flex" },
+          justifyContent: "end",
+          alignItems: "center",
+          flexDirection: { md: "row" },
+          pr: 1,
+        }}
+      >
+        {/* back button */}
+        {/* <Button
             size="small"
             className="otp-hover-purple"
             sx={{
@@ -620,291 +594,286 @@ const AdTransactionView = () => {
           >
             <KeyboardBackspaceIcon fontSize="small" /> Back
           </Button> */}
-          {/* old new tranactions */}
-          <div className="mx-2" style={{ width: "70px" }}>
-   
-            <FormGroup>
-              <FormControlLabel
-                sx={{
-                  mt: { md: 0, sm: 2, xs: 2 },
-                  mb: { md: 0, sm: 2, xs: 2 },
-                }}
-                control={
-                  <Switch
-                    value={showOldTransaction}
-                    defaultChecked={showOldTransaction}
-                    onChange={() => setShowOldTransaction(!showOldTransaction)}
-                  />
-                }
-                label={
-                  <Typography variant="body2" style={{ fontSize: "15px" }}>
-                    Old
-                  </Typography>
-                }
-              />
-            </FormGroup>
-          </div>
+        {/* old new tranactions */}
+        <div className="mx-2" style={{ width: "70px" }}>
+          <FormGroup>
+            <FormControlLabel
+              sx={{
+                mt: { md: 0, sm: 2, xs: 2 },
+                mb: { md: 0, sm: 2, xs: 2 },
+              }}
+              control={
+                <Switch
+                  value={showOldTransaction}
+                  defaultChecked={showOldTransaction}
+                  onChange={() => setShowOldTransaction(!showOldTransaction)}
+                />
+              }
+              label={
+                <Typography variant="body2" style={{ fontSize: "15px" }}>
+                  Old
+                </Typography>
+              }
+            />
+          </FormGroup>
+        </div>
 
-          {/* excel */}
+        {/* excel */}
 
-        
-          {/* filter */}
-          <FilterCard
-            iforderidFilter
-            ifdateFilter
-            ifoperatorFilter
-            ifstatusFilter
-            ifUsernameFilter
-            ifestFilter
-            ifTypeFilter
-            
-            tabQueryreset={tabQueryreset}
-            
-            getTypes={getTypes}
-            typeList={typeList.filter((item) => item.name !== "ALL")}
-            ifnumberFilter
-            setTabQueryreset={setTabQueryreset}
-            ifotherFilter
-            operatorList={operatorList}
-            statusList={statusList}
-            getOperatorVal={getOperatorVal}
-            setQuery={setQuery}
-            query={query}
-            clearHookCb={(cb) => {
-              refreshFilter = cb;
-            }}
-            refresh={refresh}
-            isShowFilterCard={isShowFilterCard}
-            setIsShowFilterCard={setIsShowFilterCard}
-          />
-        </Grid>
-        <Grid xs={12} sx={{ pl: { xs: 0, md: 2 } }}>
+        {/* filter */}
+        <FilterCard
+          iforderidFilter
+          ifdateFilter
+          ifoperatorFilter
+          ifstatusFilter
+          ifUsernameFilter
+          ifestFilter
+          ifTypeFilter
+          tabQueryreset={tabQueryreset}
+          getTypes={getTypes}
+          typeList={typeList.filter((item) => item.name !== "ALL")}
+          ifnumberFilter
+          setTabQueryreset={setTabQueryreset}
+          ifotherFilter
+          operatorList={operatorList}
+          statusList={statusList}
+          getOperatorVal={getOperatorVal}
+          setQuery={setQuery}
+          query={query}
+          clearHookCb={(cb) => {
+            refreshFilter = cb;
+          }}
+          refresh={refresh}
+          isShowFilterCard={isShowFilterCard}
+          setIsShowFilterCard={setIsShowFilterCard}
+        />
+      </Grid>
+      <Grid xs={12} sx={{ pl: { xs: 0, md: 2 } }}>
+        <RetDbTransactionTab
+          setQuery={setQuery}
+          setTabQueryreset={setTabQueryreset}
+        />
+        <ApiPaginateSearch
+          showSearch={true}
+          // actionButtons={
+          //   <Grid
+          //     item
+          //     md={11}
+          //     sm={12}
+          //     xs={12}
+          //     sx={{
+          //       display: "flex",
+          //       justifyContent: { md: "end", xs: "start" },
+          //       alignItems: "center",
+          //       flexDirection: { md: "row", xs: "column" },
+          //       pr: 1,
+          //     }}
+          //   >
+          //     <FormGroup>
+          //       <FormControlLabel
+          //         sx={{
+          //           mt: { md: 0, sm: 2, xs: 2 },
+          //           mb: { md: 0, sm: 2, xs: 2 },
+          //         }}
+          //         control={
+          //           <Switch
+          //             value={showOldTransaction}
+          //             defaultChecked={showOldTransaction}
+          //             onChange={() =>
+          //               setShowOldTransaction(!showOldTransaction)
+          //             }
+          //           />
+          //         }
+          //         label={
+          //           <Typography variant="body2" style={{ fontSize: "15px" }}>
+          //             Old Transactions
+          //           </Typography>
+          //         }
+          //       />
+          //     </FormGroup>
 
-        <RetDbTransactionTab   setQuery={setQuery} setTabQueryreset={setTabQueryreset}/>
-          <ApiPaginateSearch
-            showSearch={true}
-            // actionButtons={
-            //   <Grid
-            //     item
-            //     md={11}
-            //     sm={12}
-            //     xs={12}
-            //     sx={{
-            //       display: "flex",
-            //       justifyContent: { md: "end", xs: "start" },
-            //       alignItems: "center",
-            //       flexDirection: { md: "row", xs: "column" },
-            //       pr: 1,
-            //     }}
-            //   >
-            //     <FormGroup>
-            //       <FormControlLabel
-            //         sx={{
-            //           mt: { md: 0, sm: 2, xs: 2 },
-            //           mb: { md: 0, sm: 2, xs: 2 },
-            //         }}
-            //         control={
-            //           <Switch
-            //             value={showOldTransaction}
-            //             defaultChecked={showOldTransaction}
-            //             onChange={() =>
-            //               setShowOldTransaction(!showOldTransaction)
-            //             }
-            //           />
-            //         }
-            //         label={
-            //           <Typography variant="body2" style={{ fontSize: "15px" }}>
-            //             Old Transactions
-            //           </Typography>
-            //         }
-            //       />
-            //     </FormGroup>
+          //     <div className="mx-2">
+          //       <ExcelUploadModal
+          //         twobuttons="Download Csv"
+          //         btn
+          //         request={request}
+          //         getExcel={getExcel}
+          //         getCsv={getCsv}
+          //         noOfResponses={noOfResponses}
+          //         setQuery={setQuery}
+          //         handleCloseCB={(closeModal) => {
+          //           handleCloseModal = closeModal;
+          //         }}
+          //       />
+          //     </div>
+          //     <RefreshComponent
+          //       className="refresh-icon-table"
+          //       onClick={() => {
+          //         refreshFunc(setQuery);
+          //       }}
+          //     />
+          //     <span className="filter-sm">
+          //       <FilterModal
+          //         ifdateFilter
+          //         ifoperatorFilter
+          //         ifstatusFilter
+          //         ifUsernameFilter={
+          //           user &&
+          //           (user.role.toLowerCase() === "ret" ||
+          //             user.role.toLowerCase() === "dd")
+          //             ? false
+          //             : true
+          //         }
+          //         ifestFilter
+          //         ifnumberFilter
+          //         operatorList={operatorList}
+          //         statusList={statusList}
+          //         getOperatorVal={getOperatorVal}
+          //         setQuery={setQuery}
+          //         query={query}
+          //         clearHookCb={(cb) => {
+          //           refreshFilter = cb;
+          //         }}
+          //         refresh={refresh}
+          //         isShowFilterCard={isShowFilterCard}
+          //         setIsShowFilterCard={setIsShowFilterCard}
+          //       />
+          //     </span>
+          //   </Grid>
+          // }
+          // backButton={
+          //   <Button
+          //     size="small"
+          //     className="otp-hover-purple"
+          //     sx={{
+          //       color: primaryColor(),
+          //     }}
+          //     onClick={() => {
+          //       setChooseInitialCategoryFilter(false);
+          //     }}
+          //   >
+          //     <KeyboardBackspaceIcon fontSize="small" /> Back
+          //   </Button>
+          // }
+          apiEnd={
+            showOldTransaction && showOldTransaction
+              ? ApiEndpoints.OLD_TRANSACTIONS
+              : ApiEndpoints.GET_TRANSACTIONS
+          }
+          searchOptions={searchOptions[`${role}`]}
+          setQuery={setQuery}
+          columns={columns}
+          apiData={apiData}
+          setTabQueryreset={setTabQueryreset}
+          setApiData={setApiData}
+          tableStyle={CustomStyles}
+          queryParam={query ? query : ""}
+          returnRefetch={(ref) => {
+            refresh = ref;
+          }}
+          conditionalRowStyles={conditionalRowStyles}
+          selectableRows={false}
+          selectableRowDisabled={isStatusPending}
+          onSelectedRowsChange={(data) => {
+            setSelectedRows(data);
+          }}
+          responses={(val) => {
+            setNoOfResponses(val);
+          }}
+          isFilterAllowed={isFilterAllowed}
+          filterComponent={
+            <FilterCard
+              showSearch={false}
+              ifdateFilter
+              ifoperatorFilter
+              ifstatusFilter
+              chooseInitialCategoryFilter={
+                chooseInitialCategoryFilter !== "ALL"
+                  ? chooseInitialCategoryFilter
+                  : false
+              }
+              //
+              ifnumberFilter
+              ifotherFilter
+              ifUsernameFilter
+              iforderidFilter
+              ifTypeFilter
+              asmList={asmList}
+              typeList={typeList.filter((item) => item.name !== "ALL")}
+              ifestFilter
+              nonAdminColOptions={nonAdminColOptions[`${role}`]}
+              statusList={statusList}
+              operatorList={operatorList}
+              getOperatorVal={getOperatorVal}
+              setQuery={setQuery}
+              query={query}
+              clearHookCb={(cb) => {
+                refreshFilter = cb;
+              }}
+              getTypes={getTypes}
+              refresh={refresh}
+              isShowFilterCard={isShowFilterCard}
+              setIsShowFilterCard={setIsShowFilterCard}
+              // buttons
+              // backButton={
+              //   <Button
+              //     size="small"
+              //     className="otp-hover-purple"
+              //     sx={{
+              //       color: primaryColor(),
+              //     }}
+              //     onClick={() => {
+              //       setChooseInitialCategoryFilter(false);
+              //     }}
+              //   >
+              //     <KeyboardBackspaceIcon fontSize="small" /> Back
+              //   </Button>
+              // }
+              actionButtons={
+                <>
+                  <Box sx={{ display: "flex", ml: -2 }}>
+                    <ExcelUploadModal
+                      twobuttons="Download Csv"
+                      btn
+                      request={request}
+                      getExcel={getExcel}
+                      getCsv={getCsv}
+                      noOfResponses={noOfResponses}
+                      handleCloseCB={(closeModal) => {
+                        handleCloseModal = closeModal;
+                      }}
+                    />
 
-            //     <div className="mx-2">
-            //       <ExcelUploadModal
-            //         twobuttons="Download Csv"
-            //         btn
-            //         request={request}
-            //         getExcel={getExcel}
-            //         getCsv={getCsv}
-            //         noOfResponses={noOfResponses}
-            //         setQuery={setQuery}
-            //         handleCloseCB={(closeModal) => {
-            //           handleCloseModal = closeModal;
-            //         }}
-            //       />
-            //     </div>
-            //     <RefreshComponent
-            //       className="refresh-icon-table"
-            //       onClick={() => {
-            //         refreshFunc(setQuery);
-            //       }}
-            //     />
-            //     <span className="filter-sm">
-            //       <FilterModal
-            //         ifdateFilter
-            //         ifoperatorFilter
-            //         ifstatusFilter
-            //         ifUsernameFilter={
-            //           user &&
-            //           (user.role.toLowerCase() === "ret" ||
-            //             user.role.toLowerCase() === "dd")
-            //             ? false
-            //             : true
-            //         }
-            //         ifestFilter
-            //         ifnumberFilter
-            //         operatorList={operatorList}
-            //         statusList={statusList}
-            //         getOperatorVal={getOperatorVal}
-            //         setQuery={setQuery}
-            //         query={query}
-            //         clearHookCb={(cb) => {
-            //           refreshFilter = cb;
-            //         }}
-            //         refresh={refresh}
-            //         isShowFilterCard={isShowFilterCard}
-            //         setIsShowFilterCard={setIsShowFilterCard}
-            //       />
-            //     </span>
-            //   </Grid>
-            // }
-            // backButton={
-            //   <Button
-            //     size="small"
-            //     className="otp-hover-purple"
-            //     sx={{
-            //       color: primaryColor(),
-            //     }}
-            //     onClick={() => {
-            //       setChooseInitialCategoryFilter(false);
-            //     }}
-            //   >
-            //     <KeyboardBackspaceIcon fontSize="small" /> Back
-            //   </Button>
-            // }
-            apiEnd={
-              showOldTransaction && showOldTransaction
-                ? ApiEndpoints.OLD_TRANSACTIONS
-                : ApiEndpoints.GET_TRANSACTIONS
-            }
-            searchOptions={searchOptions[`${role}`]}
-            setQuery={setQuery}
-            columns={columns}
-            apiData={apiData}
-            setTabQueryreset={setTabQueryreset}
-            setApiData={setApiData}
-            tableStyle={CustomStyles}
-            queryParam={query ? query : ""}
-            returnRefetch={(ref) => {
-              refresh = ref;
-            }}
-            conditionalRowStyles={conditionalRowStyles}
-            selectableRows={false}
-            selectableRowDisabled={isStatusPending}
-            onSelectedRowsChange={(data) => {
-              setSelectedRows(data);
-            }}
-            responses={(val) => {
-              setNoOfResponses(val);
-            }}
-            isFilterAllowed={isFilterAllowed}
-            filterComponent={
-              <FilterCard
-                showSearch={false}
-                ifdateFilter
-                ifoperatorFilter
-                ifstatusFilter
-                chooseInitialCategoryFilter={
-                  chooseInitialCategoryFilter !== "ALL"
-                    ? chooseInitialCategoryFilter
-                    : false
-                }
-                //
-                ifnumberFilter
-                ifotherFilter
-                ifUsernameFilter
-                iforderidFilter
-                ifTypeFilter
-                asmList={asmList}
-                typeList={typeList.filter((item) => item.name !== "ALL")}
-                ifestFilter
-                nonAdminColOptions={nonAdminColOptions[`${role}`]}
-                statusList={statusList}
-                operatorList={operatorList}
-                getOperatorVal={getOperatorVal}
-                setQuery={setQuery}
-                query={query}
-                clearHookCb={(cb) => {
-                  refreshFilter = cb;
-                }}
-                getTypes={getTypes}
-                refresh={refresh}
-                isShowFilterCard={isShowFilterCard}
-                setIsShowFilterCard={setIsShowFilterCard}
-                // buttons
-                // backButton={
-                //   <Button
-                //     size="small"
-                //     className="otp-hover-purple"
-                //     sx={{
-                //       color: primaryColor(),
-                //     }}
-                //     onClick={() => {
-                //       setChooseInitialCategoryFilter(false);
-                //     }}
-                //   >
-                //     <KeyboardBackspaceIcon fontSize="small" /> Back
-                //   </Button>
-                // }
-                actionButtons={
-                  <>
-                    <Box sx={{ display: "flex", ml: -2 }}>
-                    
-                        <ExcelUploadModal
-                          twobuttons="Download Csv"
-                          btn
-                          request={request}
-                          getExcel={getExcel}
-                          getCsv={getCsv}
-                          noOfResponses={noOfResponses}
-                          handleCloseCB={(closeModal) => {
-                            handleCloseModal = closeModal;
-                          }}
-                        />
-                 
-                      <Tooltip title="refresh">
-                        <IconButton
-                          className=""
-                          aria-label="refresh"
+                    <Tooltip title="refresh">
+                      <IconButton
+                        className=""
+                        aria-label="refresh"
+                        sx={{
+                          color: "#1560bd",
+                        }}
+                        onClick={() => {
+                          refreshFunc(setQuery);
+                        }}
+                      >
+                        <CachedIcon
+                          className="refresh-purple"
                           sx={{
                             color: "#1560bd",
                           }}
-                          onClick={() => {
-                            refreshFunc(setQuery);
-                          }}
-                        >
-                          <CachedIcon
-                            className="refresh-purple"
-                            sx={{
-                              color: "#1560bd",
-                            }}
-                          />
-                        </IconButton>
-                      </Tooltip>
-
-                    </Box>
-                  </>
-                }
-              />
-            }
-          />
-        </Grid>
-
-        {/* <RightSidePannel state={state} setState={setState} row={rowData} /> */}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                </>
+              }
+            />
+          }
+        />
       </Grid>
-    );
-  }
 
+      {/* <RightSidePannel state={state} setState={setState} row={rowData} /> */}
+    </Grid>
+  );
+};
 
 export default AdTransactionView;
