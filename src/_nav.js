@@ -318,7 +318,7 @@ export const Admin_nav = [
 export const Asm_nav = [
   {
     title: "Dashboard",
-    icon: DashboardIcon,
+    icon: dashboards,
     icon2: DashboardIconWhite,
     to: "/asm/dashboard",
   },
@@ -330,13 +330,13 @@ export const Asm_nav = [
   },
   {
     title: "Transactions",
-    icon: TransactionIcon,
+    icon: transaction1,
     icon2: TransactionIconWhite,
     to: "/asm/transactions",
   },
   {
     title: "Fund Request",
-    icon: CreditRequestIcon,
+    icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/asm/cred-req",
   },
@@ -350,7 +350,7 @@ export const Asm_nav = [
 export const Zsm_nav = [
   {
     title: "Dashboard",
-    icon: DashboardIcon,
+    icon: dashboards,
     icon2: DashboardIconWhite,
     to: "/zsm/dashboard",
   },
@@ -362,7 +362,7 @@ export const Zsm_nav = [
   },
   {
     title: "Transactions",
-    icon: TransactionIcon,
+    icon: transaction1,
     icon2: TransactionIconWhite,
     to: "/zsm/transactions",
   },
@@ -445,13 +445,13 @@ export const Ad_nav = [
   },
   {
     title: "My Sale",
-    icon: TransactionIcon,
+    icon: transaction1,
     icon2: TransactionIconWhite,
     to: "/ad/sale",
   },
   {
     title: "My Purchase",
-    icon: TransactionIcon,
+    icon: transaction1,
     icon2: TransactionIconWhite,
     to: "/ad/purchase",
   },
@@ -479,25 +479,25 @@ export const Ad_nav = [
 export const Md_nav = [
   {
     title: "Dashboard",
-    icon: DashboardIcon,
+    icon: dashboards,
     icon2: DashboardIconWhite,
     to: "/md/dashboard",
   },
   {
     title: "Users",
-    icon: UserIcon,
+    icon: user1,
     icon2: UserIconWhite,
     to: "/md/users",
   },
   {
     title: "Fund  Request",
-    icon: CreditRequestIcon,
+    icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/md/cred-req",
   },
   {
     title: "Transactions",
-    icon: TransactionIcon,
+    icon: transaction1,
     icon2: TransactionIconWhite,
     to: "/md/transactions",
   },
@@ -703,7 +703,7 @@ export const reports = [
   },
   {
     title: "My Transactions",
-    icon: transactions,
+    icon: transaction1,
     to: "/customer/transactions",
   },
   {
