@@ -23,7 +23,7 @@ import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import { useContext } from "react";
 import AuthContext from "../store/AuthContext";
 import ModalFooter from "./ModalFooter";
-
+import money from "../assets/money.png"
 const style = {
   position: "absolute",
   top: "50%",
@@ -92,12 +92,14 @@ const WalletDebitModal = ({ row }) => {
       }}
     >
       <Tooltip title="Wallet Debit">
-        <IconButton variant="contained" onClick={handleOpen}>
+
+        {/* <IconButton variant="contained" onClick={handleOpen}>
           <CurrencyRupeeIcon
             size="small"
             sx={{ color: "#1976D2", fontSize: "22px" }}
           />
-        </IconButton>
+        </IconButton> */}
+          <img src={money} alt="PerformanceReport" style={{ width: "24px", height: "24px" }} />
       </Tooltip>
 
       <Drawer

@@ -259,31 +259,31 @@ export default function SideNav(props, { data }) {
 
       const outletBoxStyle = {
         width: {
-          lg: 
-            user?.role === "Admin" || 
-            user?.role === "Asm" || 
-            user?.role === "Zsm" || 
+          lg:
+            user?.role === "Admin" ||
+            user?.role === "Asm" ||
+            user?.role === "Zsm" ||
             (location.pathname !== "/customer/transactions" &&
-            location.pathname !== "/api-user/transactions" &&
-            location.pathname !== "/account/dashboard" &&
-            location.pathname !== "/ad/transactions" &&
-            location.pathname !== "/md/transactions" &&
-            location.pathname !== "/ad/sale" &&
-            location.pathname !== "/md/sale" &&
-            location.pathname !== "/ad/purchase" &&
-            location.pathname !== "/md/purchase")
-            ? "100%"
-            : "100%", // Default case
+              location.pathname !== "/api-user/transactions" &&
+              location.pathname !== "/account/dashboard" &&
+              location.pathname !== "/ad/transactions" &&
+              location.pathname !== "/md/transactions" &&
+              location.pathname !== "/ad/sale" &&
+              location.pathname !== "/md/sale" &&
+              location.pathname !== "/ad/purchase" &&
+              location.pathname !== "/md/purchase")
+              ? "calc(100% - 10rem)" // Adjusted to allow scroll
+              : "100%", // Default case
           xs: "100%",
         },
         justifyContent: "start",
         alignContent: "left",
         marginLeft: {
-          lg: user?.role === "Admin" ? "13rem" :
-          user?.role === "Asm" ? "14rem" :
-          user?.role === "Zsm" ? "13rem" :
-          user.role==="Admin" &&  location.pathname === "/admin/transactions" ? "18rem" :
-          "18rem",
+          lg: user?.role === "Admin" ? "12rem" :
+              user?.role === "Asm" ? "14rem" :
+              user?.role === "Zsm" ? "13rem" :
+              user.role==="Admin" &&  location.pathname === "/admin/transactions" ? "18rem" :
+              "13rem",
           md: user?.role === "Admin" ? "13rem" :
               user?.role === "Asm" ? "14rem" :
               user?.role === "Zsm" ? "13rem" :
@@ -297,17 +297,23 @@ export default function SideNav(props, { data }) {
           xs: "0.5rem",
         },
         marginRight: {
-          md: user?.role === "Admin" ? "2rem" :
+          md: 
               user?.role === "Asm" ? "1.5rem" :
               user?.role === "Zsm" ? "1rem" :
               "1rem", // Default case
-          sm: user?.role === "Admin" ? "2rem" :
+          sm: 
               user?.role === "Asm" ? "1.5rem" :
               user?.role === "Zsm" ? "1rem" :
               "0.5rem", // Default case
           xs: "0.5rem",
         },
         marginTop: "1rem",
+        overflowX: "auto", // Added for horizontal scroll
+        overflowY: "auto", // Added for vertical scroll
+        display: "flex",
+        flexDirection: "column", // Ensures proper stacking of child elements
+        height: "100%", // Allows full container height for scrollable content
+        maxHeight: "calc(100vh - 4rem)", // Limits vertical height with room for scrolling
       };
       
 

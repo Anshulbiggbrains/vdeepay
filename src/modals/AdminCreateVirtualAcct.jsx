@@ -18,7 +18,7 @@ import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import Loader from "../component/loading-screen/Loader"; 
 import { createFileName, useScreenshot } from "use-react-screenshot";
 import { Row } from "@nextui-org/react";
-
+import virtualA from "../assets/VirtualAccount.png"
 const style = {
   position: "absolute",
   top: "50%",
@@ -102,14 +102,14 @@ const AdminCreateVirtualAcct = ({ row, refresh ,user}) => {
           ) : (
             <>
               {/* Conditionally render the first icon's color based on `row.vaCreate` */}
-              <Icon
+              {/* <Icon
                 icon="mdi:card-account-mail-outline"
                 style={{
                   fontSize: "25px",
                   color: vaData.vaCreated ? "#63b027" : "#FFAF00", // Blue if `vaCreate` is true, Red if false
                 }}
-              />
-             
+              /> */}
+               <img src={virtualA} alt="VirtualAccount" style={{ width: "24px", height: "24px" }} />
             </>
           )}
         </IconButton>

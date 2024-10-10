@@ -71,7 +71,6 @@ const RecentHistory = () => {
           overflowY: "scroll",
           overflowX: "hidden",
           paddingBottom: "0.5rem",
-          paddingRight: "0.5rem",
         }}
       >
         {recentData.map((data, index) => {
@@ -83,10 +82,10 @@ const RecentHistory = () => {
                 py: 1,
                 borderRadius: 3,
                 px: 1,
-                mb: 0.3,
+                mb: 0.5,
                 border: "2px solid #d48628",
-                alignItems: "center", 
-                justifyContent: "space-between", 
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
               key={index}
               wrap="nowrap"
@@ -174,8 +173,7 @@ const RecentHistory = () => {
                     fontSize: "12px",
                     color: "#787879",
                     marginLeft: "6px",
-                    display: "flex", 
-                   
+                    display: "flex",
                   }}
                 >
                   {data.number}
