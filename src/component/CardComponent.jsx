@@ -110,8 +110,9 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
           borderRadius: '12px', // Rounded corners
           textAlign: 'left',
           cursor: 'pointer',
+          ml:1,
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '100%',
+          width: '94%',
           height: height || "100px", // Adjusted height
           padding: 2,
           marginTop: 2,

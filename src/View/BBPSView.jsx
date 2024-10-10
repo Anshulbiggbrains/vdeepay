@@ -662,7 +662,7 @@ const BBPSView = () => {
         <Divider sx={{ m: 1, backgroundColor: "grey.500", height: 1.5 }} />
 
         {/* Scrollable list of billers */}
-        <Box sx={{ maxHeight: {sm:"150px",xs:"150px",lg:"500px",md:"500px"}, overflowY: "auto" }}>
+        <Box  sx={{ maxHeight: {sm:"150px",xs:"150px",lg:"500px",md:"500px"}, overflowY: "auto" }}>
           {filteredBillers.length > 0 ? (
             filteredBillers.map((item, index) => (
               <Box key={index} sx={{ marginBottom: 2 }}>
