@@ -13,7 +13,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Verification from "../component/Verification";
 import Business from "../component/Business";
-import { dashboardIllustratorImg, loginPage } from "../iconsImports";
+import { LoginPageIllustratorImg, loginPage } from "../iconsImports";
 import Personal from "../component/Personal";
 import Registration from "../component/Registration";
 import ProgressBar from "../component/ProgressBar";
@@ -228,7 +228,7 @@ const SignUp = () => {
           flexDirection: "column",
           justifyContent: "center",
           padding: 9,
-          backgroundImage: `url(${dashboardIllustratorImg})`,
+          backgroundImage: `url(${LoginPageIllustratorImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center', 
           backgroundRepeat: 'no-repeat',

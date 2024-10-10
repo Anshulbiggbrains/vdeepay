@@ -222,7 +222,7 @@ const CreditRequestView = () => {
                   });
                 }}
               >
-                <Icon icon="basil:share-box-solid" width={22} height={22} />
+                <Icon icon="ri:share-forward-line" width={22} height={22} />
               </IconButton>
             </Tooltip>
             <Snackbar
@@ -465,7 +465,7 @@ const CreditRequestView = () => {
       }
     );
   };
-console.log("the role is",user.role)
+  console.log("the role is", user.role);
   return (
     <Grid>
       <Grid
@@ -482,7 +482,9 @@ console.log("the role is",user.role)
         <FilterCard
           ifestFilter={user.role !== "Api"}
           ifnumberFilter
-          ifAsmFilter={user.role !== "Api" && user.role !== "Ret" &&  user.role !== "Dd"}
+          ifAsmFilter={
+            user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
+          }
           ifStatusFilter
           setQuery={setQuery}
           query={query}

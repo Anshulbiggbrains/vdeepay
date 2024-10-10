@@ -1903,21 +1903,48 @@ div.second {
   text-transform: none !important;
 }
 
+
+
+
+
 .refresh-purple {
-  border-radius: 50%;
-  transform: scale(1) !important;
-  transition: 0.5s !important;
+  border-radius:50% ;
+  transform: scale(0.5) !important;
+  transition: transform 0.5s, background-color 0.5s, color 0.5s, box-shadow 0.5s !important; 
+
+  color: #1877f2!important; 
+  width:32; height: 32;
 }
+
 .refresh-purple:hover {
   cursor: pointer;
-  background-color: $primary-light !important;
-  transform: scale(1.2) !important;
-  color: #fff !important;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-    rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  background-color: #32CD32 !important; 
+  transform: scale(1.4) rotate(25deg) !important; 
+  color: #FFD700 !important; 
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 4px 8px,
+              rgba(0, 0, 0, 0.2) 0px 8px 16px, rgba(0, 0, 0, 0.2) 0px 16px 32px; 
   border-radius: 50%;
 }
+
+
+
+
+// .refresh-purple {
+ 
+//   border-radius: 50%;
+//   transform: scale(1) !important;
+//   transition: 0.5s !important;
+// }
+// .refresh-purple:hover {
+//   cursor: pointer;
+//   background-color: $primary-light !important;
+//   transform: scale(1.2) !important;
+//   color: #fff !important;
+//   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+//     rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+//     rgba(0, 0, 0, 0.07) 0px 16px 16px;
+//   border-radius: 50%;
+// }
 .upload-field-customized {
   width: 100%;
   height: auto;
