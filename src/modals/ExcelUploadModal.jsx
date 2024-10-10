@@ -77,16 +77,17 @@ const ExcelUploadModal = ({
       }}
     >
       {btn && (
-        <Box className="mx-2" sx={{mt:0.1}}>
-          <Tooltip title="Excel" placement="top" >
+        <Box className="mx-2" sx={{ mt: 0.1 }}>
+          <Tooltip title="Excel" placement="bottom">
             <img
               src={excelIcon}
               alt="excel"
               onClick={handleOpen}
-              className="size-excel refresh-purple"
-             
+              width={28}
+              height={28}
+              // className="size-excel "
             />
-           </Tooltip>
+          </Tooltip>
         </Box>
       )}
       {otherBtn && (
@@ -203,7 +204,8 @@ const ExcelUploadModal = ({
                         width: "90%",
                       }}
                     >
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Select Role"
                         id="role"
                         select
@@ -251,7 +253,8 @@ const ExcelUploadModal = ({
                         width: "90%",
                       }}
                     >
-                      <TextField autoComplete="off"
+                      <TextField
+                        autoComplete="off"
                         label="Select ASM"
                         id="ASM"
                         select
