@@ -19,7 +19,7 @@ import Loader from "../component/loading-screen/Loader";
 import { postJsonData } from "../network/ApiController";
 import { apiErrorToast } from "../utils/ToastUtil";
 import SettingsIcon from "@mui/icons-material/Settings";
-
+import setting from "../assets/setting.png"
 const style = {
   position: "absolute",
   top: "50%",
@@ -290,7 +290,8 @@ const UserServiceSetting = ({ row, refresh }) => {
           {request ? (
             <Loader loading={request} size={22} />
           ) : (
-            <SettingsIcon size="small" />
+            // <SettingsIcon size="small" />
+            <img src={setting} alt="Settings" style={{ width: "24px", height: "24px" }} />
           )}
         </IconButton>
       </Tooltip>
