@@ -257,18 +257,13 @@ export default function SideNav(props, { data }) {
         : customer_nav
       : nav;
 
-  const outletBoxStyle = {
-    width: {
-      lg:
-        user?.role === "Admin"
-          ? "100%"
-          : user?.role === "Asm"
-          ? "100%"
-          : user?.role === "Zsm"
-          ? "100%"
-          : // : user?.role === "Api"
-          // ? "100%"
-          location.pathname !== "/customer/transactions" &&
+      const outletBoxStyle = {
+        width: {
+          lg: 
+            user?.role === "Admin" || 
+            user?.role === "Asm" || 
+            user?.role === "Zsm" || 
+            (location.pathname !== "/customer/transactions" &&
             location.pathname !== "/api-user/transactions" &&
             location.pathname !== "/account/dashboard" &&
             location.pathname !== "/ad/transactions" &&
@@ -276,17 +271,45 @@ export default function SideNav(props, { data }) {
             location.pathname !== "/ad/sale" &&
             location.pathname !== "/md/sale" &&
             location.pathname !== "/ad/purchase" &&
-            location.pathname !== "/md/purchase"
-          ? "100%"
-          : "100%",
-      xs: "100%",
-    },
-    justifyContent: "start",
-    alignContent: "left",
-    marginLeft: { md: "13rem", sm: "13rem", xs: "0.5rem" },
-    marginRight: { md: "1rem", sm: "0.5rem", xs: "0.5rem" },
-    marginTop: "1rem",
-  };
+            location.pathname !== "/md/purchase")
+            ? "100%"
+            : "100%", // Default case
+          xs: "100%",
+        },
+        justifyContent: "start",
+        alignContent: "left",
+        marginLeft: {
+          lg: user?.role === "Admin" ? "13rem" :
+          user?.role === "Asm" ? "14rem" :
+          user?.role === "Zsm" ? "13rem" :
+          user.role==="Admin" &&  location.pathname === "/admin/transactions" ? "18rem" :
+          "18rem",
+          md: user?.role === "Admin" ? "13rem" :
+              user?.role === "Asm" ? "14rem" :
+              user?.role === "Zsm" ? "13rem" :
+              user.role==="Admin" &&  location.pathname === "/admin/transactions" ? "19rem" :
+              "13rem", // Default case
+          sm: user?.role === "Admin" ? "15rem" :
+              user?.role === "Asm" ? "14rem" :
+              user?.role === "Zsm" ? "13rem" :
+              location.pathname === "/customer/transactions" ? "0rem" :
+              "13rem", // Default case
+          xs: "0.5rem",
+        },
+        marginRight: {
+          md: user?.role === "Admin" ? "2rem" :
+              user?.role === "Asm" ? "1.5rem" :
+              user?.role === "Zsm" ? "1rem" :
+              "1rem", // Default case
+          sm: user?.role === "Admin" ? "2rem" :
+              user?.role === "Asm" ? "1.5rem" :
+              user?.role === "Zsm" ? "1rem" :
+              "0.5rem", // Default case
+          xs: "0.5rem",
+        },
+        marginTop: "1rem",
+      };
+      
 
   const drawer = (
     <div>
