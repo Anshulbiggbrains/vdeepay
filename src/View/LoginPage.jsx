@@ -454,11 +454,15 @@ const LoginPage = () => {
                         if (setUsername) setUsername(e.target.value);
                       }}
                       InputProps={{
-                        // startAdornment: (
-                        //   <InputAdornment position="start">
-                        //     <Icon icon="mi:call" style={{ color: "#292D32" }} />
-                        //   </InputAdornment>
-                        // ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                             
+                            >
+                             <Icon icon="mdi:account-outline" style={{ color: "#292D32" }} />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
                       }}
                       onKeyDown={(e) => {
                         if (e.key === "+" || e.key === "-") e.preventDefault();
@@ -625,9 +629,9 @@ const LoginPage = () => {
                   }}
                 /> */}
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
-                      <Typography sx={{ mx: 2 }}>OR</Typography>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black",   filter: 'blur(2px)',}} />
+                      <Typography sx={{ mx: 2, }}>OR</Typography>
+                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black",   filter: 'blur(2px)',}} />
                     </Box>
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>

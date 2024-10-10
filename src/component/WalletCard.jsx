@@ -154,31 +154,37 @@ const borderPulse = keyframes`
     
   >
     {/* ASM Card */}
-    { user.role==="Dd" && user.role==="Ret"&&
-    <Grid item xs="auto">
-      <Box
-        sx={{
-          padding: '4px 6px 3px 4px',
-          backgroundColor: '#ffebee',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          width:{ lg:'140px' ,sm:"125px"}, 
-
-          border: '2px solid #D71313',
-        }}
-      >
-        <Box  sx={{ minWidth: '100%', textAlign: 'left' }}> 
-          <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize:"10px",fontWeight:"bold"}}>
-            ASM- 
-          </Typography>
-          <Typography variant="body2" sx={{ color: '#212b5a', fontSize:"10px" ,}}>
-            Mobile No- 
-          </Typography>
-        </Box>
+    { (user.role === "Dd" || user.role === "Ret") && (
+  <Grid item xs="auto">
+    <Box
+      sx={{
+        padding: '4px 6px 3px 4px',
+        backgroundColor: '#ffebee',
+        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        width: { lg: '140px', sm: '125px' },
+        border: '2px solid #D71313',
+      }}
+    >
+      <Box sx={{ minWidth: '100%', textAlign: 'left' }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ color: '#b71c1c', fontSize: '10px', fontWeight: 'bold' }}
+        >
+          ASM-
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: '#212b5a', fontSize: '10px' }}
+        >
+          Mobile No-
+        </Typography>
       </Box>
-    </Grid>
-}
+    </Box>
+  </Grid>
+)}
+
     {/* DD Card */}
     {user.role!=="Dd"&&
     <Grid item xs="auto">
