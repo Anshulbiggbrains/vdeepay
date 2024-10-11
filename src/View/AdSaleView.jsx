@@ -25,6 +25,7 @@ import AndroidIcon from "@mui/icons-material/Android";
 import InstallMobileIcon from "@mui/icons-material/InstallMobile";
 import { DateRangePicker } from "rsuite";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
+import CommonStatus from "../component/CommonStatus";
 
 // ### NEW TRANSACTION VIEW CODE ####
 import { primaryColor } from "../theme/setThemeColor";
@@ -145,38 +146,37 @@ const AdSaleView = () => {
         <div
           style={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             flexDirection: "column",
           }}
         >
           <div>
             {row.platform === "APP" ? (
               <Tooltip title="APP">
-                <InstallMobileIcon fontSize="small" />
+                <InstallMobileIcon fontSize="small" sx={{ color: "yellow" }} />
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <LaptopIcon fontSize="small" />
+                <LaptopIcon fontSize="small" sx={{ color: "green" }} />
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <AndroidIcon fontSize="small" />
+                <AndroidIcon fontSize="small" sx={{ color: "blue" }} />
               </Tooltip>
             ) : row.platform === "IOS" ? (
               <Tooltip title="IOS">
-                <AppleIcon fontSize="small" />
+                <AppleIcon fontSize="small" sx={{ color: "pink" }} />
               </Tooltip>
             ) : (
               <Tooltip title="API">
-                <SyncAltIcon fontSize="small" />
+                <SyncAltIcon fontSize="small" sx={{ color: "red" }} />
               </Tooltip>
             )}
           </div>
           <div className="fw-bold">{row.platform}</div>
         </div>
       ),
-      center: false,
-      width: "80px",
+      center: true,
     },
 
     {
@@ -185,7 +185,12 @@ const AdSaleView = () => {
     },
     {
       name: "Service",
-      selector: (row) => row.operator,
+      selector: (row) => (
+        <Tooltip title={row.operator}>
+          <span>{row.operator}</span>
+        </Tooltip>
+      ),
+      width: "230px",
     },
     {
       name: "Amount",
@@ -212,36 +217,29 @@ const AdSaleView = () => {
     {
       name: "Status",
       selector: (row) => (
-        <div
-          className="px-2 text-uppercase"
-          style={{
-            color: "#fff",
-            backgroundColor:
-              row.status && row.status === "SUCCESS"
-                ? "#00BF78"
-                : row.status && row.status === "PENDING"
-                ? "#F08D17"
-                : row.status && row.status === "REFUND"
-                ? "#4045A1"
-                : row.status && row.status === "FAILED"
-                ? "#DC6F6F"
-                : "#00BF78",
-            fontWeight: "bold",
-            borderRadius: "4px",
-            minWidth: "85px",
-          }}
-        >
-          {row.status && row.status === "SUCCESS"
-            ? "Success"
-            : row.status && row.status === "PENDING"
-            ? "Pending"
-            : row.status && row.status === "REFUND"
-            ? "Refund"
-            : row.status && row.status === "FAILED"
-            ? "Failed"
-            : "Success"}
-        </div>
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+
+              alignItems: "center",
+            }}
+          >
+            <CommonStatus
+              status={row.status}
+              approvedStatusText="Success"
+              pendingStatusText="Pending"
+              rejectedStatusText="Failed"
+              refundStatusText="Refund"
+              fontSize="11px"
+              maxWidth="85px"
+              minWidth="85px"
+            />
+          </Box>
+        </>
       ),
+      center: true,
     },
   ];
 
@@ -263,7 +261,7 @@ const AdSaleView = () => {
           }}
         >
           {/* back button */}
-        
+
           <ExcelUploadModal
             twobuttons="Download Csv"
             btn
@@ -391,7 +389,6 @@ const AdSaleView = () => {
               </Tooltip>
             </Grid>
           }
-     
           apiEnd={ApiEndpoints.GET_TRANSACTIONS}
           searchOptions={searchOptions}
           columns={columns}

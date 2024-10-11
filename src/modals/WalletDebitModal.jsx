@@ -99,7 +99,7 @@ const WalletDebitModal = ({ row }) => {
             sx={{ color: "#1976D2", fontSize: "22px" }}
           />
         </IconButton> */}
-          <img src={money} alt="PerformanceReport" style={{ width: "24px", height: "24px" }} />
+          <img src={money} alt="PerformanceReport" style={{ width: "24px", height: "24px" }} onClick={handleOpen}/>
       </Tooltip>
 
       <Drawer

@@ -242,6 +242,7 @@ const MyPurchaseView = () => {
         <div style={{ textAlign: "left" }}>{row.operator}</div>
       ),
       center: false,
+      width: "230px",
     },
     {
       name: "Amount",

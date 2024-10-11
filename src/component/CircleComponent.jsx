@@ -1,20 +1,16 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
 
-const CircleComponent = ({ img}) => {
+const CircleComponent = ({ img }) => {
   const OuterIcon = styled(Box)(({ theme, bg = "#08509E" }) => ({
-    top: "-12px",
-   
-    right: "-12px",
     width: "93px",
     height: "93px",
     display: "flex",
     borderRadius: "50%",
-    position: "absolute",
     alignItems: "center",
     justifyContent: "center",
     background: bg,
-   
+    marginRight: theme.spacing(2), // Add margin for spacing
   }));
 
   const InnerIcon = styled(Box)(({ theme }) => ({
@@ -25,29 +21,25 @@ const CircleComponent = ({ img}) => {
     borderRadius: "50%",
     alignItems: "center",
     justifyContent: "center",
-   
     background: theme.palette.common.white,
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
   }));
+  
   let imageSrc;
   try {
     imageSrc = require(`../assets/operators/${img}.png`);
   } catch (error) {
-    imageSrc = null; 
+    imageSrc = null;
   }
 
   return (
-    <Box  className="recharge-outer-card">
-      <OuterIcon>
+    <Box display="flex" alignItems="center"> 
+     
         <InnerIcon>
-          <img
-           src={imageSrc}
-            alt="No Image"
-            width="40px"
-           
-          
-          />
+          <img src={imageSrc} alt="No Image" width="30px" />
         </InnerIcon>
-      </OuterIcon>
+      
+    
     </Box>
   );
 };

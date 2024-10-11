@@ -17,7 +17,7 @@ import ModalFooter from "./ModalFooter";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import { useState } from "react";
 import PinInput from "react-pin-input";
-import { rupee } from "../iconsImports";
+import { rupee1 } from "../iconsImports";
 import ResetMpin from "./ResetMpin";
 import useCommonContext from "../store/CommonContext";
 
@@ -56,7 +56,7 @@ const MoneyTransferModal = ({ row, refresh }) => {
           }
         );
       } else {
-        setError('Geolocation is not supported by this browser.');
+        setError("Geolocation is not supported by this browser.");
       }
     };
 
@@ -80,9 +80,8 @@ const MoneyTransferModal = ({ row, refresh }) => {
       req_type: "CHAIN",
       amount: amt,
       mpin: mpin,
-      latitude:latitude,
-      longitude:longitude
-
+      latitude: latitude,
+      longitude: longitude,
     };
     setRequest(true);
     postJsonData(
@@ -109,15 +108,10 @@ const MoneyTransferModal = ({ row, refresh }) => {
     >
       <Tooltip title="Money Transfer">
         <IconButton onClick={handleOpen}>
-          <Avatar
-            alt="Remy Sharp"
-            src={rupee}
-            sx={{
-              width: 28,
-              height: 28,
-              border: "1px solid #4045A1",
-              color: "#0077b6",
-            }}
+          <img
+            src={rupee1}
+            alt="Money Transfer"
+            style={{ width: "30px", height: "30px" }}
           />
           {/* <CurrencyRupeeIcon /> */}
         </IconButton>
@@ -144,7 +138,8 @@ const MoneyTransferModal = ({ row, refresh }) => {
               <Grid container sx={{ pt: 1 }}>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Retailer"
                       id="retailer"
                       size="small"
@@ -156,7 +151,8 @@ const MoneyTransferModal = ({ row, refresh }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       select
                       label="Payment Type"
                       id="payment_type"
@@ -171,7 +167,8 @@ const MoneyTransferModal = ({ row, refresh }) => {
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       label="Amount"
                       id="amount"
                       size="small"
