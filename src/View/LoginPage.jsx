@@ -66,6 +66,19 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+useEffect(()=>{
+  const handleContextMenu=(e)=>{
+    e.preventDefault();
+  };
+
+  document.addEventListener('contextmenu', handleContextMenu);
+  return () => {
+    document.removeEventListener('contextmenu', handleContextMenu);
+};
+},[]);
+
+
+
 
   useEffect(() => {
     locationVal();
@@ -259,113 +272,7 @@ const LoginPage = () => {
           width: "100%",
         }}
       >
-          {/* <Typography
-            variant="h4"
-            sx={{
-              color: "#fff",
-              mb: { xs: 10, sm: 15, md: 12 },
-              // textAlign: {xs:"center",md:"left"},
-              // marginLeft:{xs:0,sm:-10,md:-6,lg:16},
-              fontSize: { xs: "18px", sm: "20px", md: "32px" },
-              fontFamily: "Manrope",
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: { xs: 0, sm: -10, md: -6, lg: 0 },
-            }}
-          >
-            The Simplest Way To Manage
-            <br /> Your Payments
-          </Typography> */}
-          {/* <Box
-            component="img"
-            src={LoginPageIllustrator}
-            alt="admin dash"
-            sx={{
-              maxWidth: "80%",
-              maxHeight: "100%",
-              objectFit: "cover",
-              borderRadius: "16px",
-              marginTop: "-50px",
-              marginLeft: 10,
-            }}
-          /> */}
-          <br />
-          <br />
-          {/* <Marquee
-            fade={true}
-            gradient={true}
-            gradientColor="#4253F0"
-            pauseOnHover={true}
-            speed={100}
-          >
-            {[
-              "Recharge and Bill payment",
-              "DTH Recharge",
-              "Money Transfer",
-              "Mobile Recharge",
-              "Nepal Money Transfer",
-              "Fund Transfer",
-              "UPI Transfer",
-              "Fastag Recharge",
-              "Insurance",
-              "Train Ticket",
-              "Domestic Money Transfer",
-              "AEPS",
-              "Micro ATM",
-              "Travel",
-              "Loan EMI",
-            ].map((item, index) => (
-              <Typography
-                key={index}
-                sx={{
-                  color: "white",
-                  marginRight: 3,
-                  fontSize: "24px",
-                  fontFamily: "Marope",
-                }}
-              >
-                {item}
-              </Typography>
-            ))}
-          </Marquee> */}
-          <br />
-
-          {/* <Marquee
-            fade={true}
-            gradient={true}
-            gradientColor="#4253F0"
-            pauseOnHover={true}
-          >
-            {[
-              "Recharge and Bill payment",
-              "DTH Recharge",
-              "Money Transfer",
-              "Mobile Recharge",
-              "Nepal Money Transfer",
-              "Fund Transfer",
-              "UPI Transfer",
-              "Fastag Recharge",
-              "Insurance",
-              "Train Ticket",
-              "Domestic Money Transfer",
-              "AEPS",
-              "Micro ATM",
-              "Travel",
-              "Loan EMI",
-            ].map((item, index) => (
-              <Typography
-                key={index}
-                sx={{
-                  color: "white",
-                  marginRight: 3,
-                  fontSize: "24px",
-                  fontFamily: "Marope",
-                }}
-              >
-                {item}
-              </Typography>
-            ))}
-          </Marquee> */}
+        
         </Grid>
       </Hidden>
 

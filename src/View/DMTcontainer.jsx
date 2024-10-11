@@ -380,7 +380,7 @@ const DmtContainer = ({
                   className="card-css"
                   sx={{
                     width: "100%",
-                    px: 7,
+                    px: 2,
                     py: 2,
                     mt: 2,
                   }}
@@ -830,7 +830,7 @@ const DmtContainer = ({
                                 <TableRow
                                   sx={{
                                     // Apply max height to the row
-                                    paddingBottom: "4px",
+                                    paddingBottom: "1px",
                                     paddingTop: "4px",
                                   }}
                                 >
