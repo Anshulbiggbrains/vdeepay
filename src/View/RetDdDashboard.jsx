@@ -191,7 +191,7 @@ const RetDdDashboard = () => {
 
   return (
     <>
-      {user.role === "Dd" && location.pathname === "/customer/dashboard" && (
+      {user.role === "Dd" || user.role==="Ret" && location.pathname === "/customer/dashboard" && (
         <Grid
           item
           xs={12}

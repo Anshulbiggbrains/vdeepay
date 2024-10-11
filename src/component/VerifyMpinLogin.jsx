@@ -347,199 +347,178 @@ const VerifyMpinLogin = ({
   // console.log("username data", username);
 
   return (
-    <Grid container spacing={3} sx={{ justifyContent: "center", mb: { xs: 2, md: 4 } }}>
-    <Grid item xs={12}>
+<Grid container spacing={3} sx={{ justifyContent: "center", mb: { xs: 2, md: 4 } }}>
+  <Grid item xs={12}>
+    <Box display="flex" flexDirection="column" alignItems="center" sx={{ width: "100%" }}>
       <Box
         display="flex"
-        flexDirection="column"
+        flexDirection="row"
         alignItems="center"
-        sx={{ width: "100%" }}
+        sx={{ width: "100%", position: "relative", justifyContent: "center" }}
       >
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          sx={{ width: "100%", position: "relative", justifyContent: "center" }}
+        <Button
+          onClick={() => {
+            if (!isOtpField) setIsOtpField(false);
+          }}
+          sx={{
+            position: "absolute",
+            left: { xs: '5%', sm: '10%', md: '15%' },
+            padding: 0,
+          }}
         >
-        
-          <Button
-            onClick={() => {
-              if (!isOtpField) setIsOtpField(false);
-            }}
-            sx={{
-              position: "absolute",
-              left: { xs: '5%', sm: '10%', md: '15%' },
-              ml: { xs: 1, sm: 2 },
-              padding: 0,
-            }}
-          >
-            <ArrowBackIcon
-              sx={{ cursor: "pointer", fontSize: { xs: "1.25rem", md: "1.50rem" }, color: "#000" }}
-            />
-          </Button>
-  
-          <Typography
-            variant="h6"
-            component="h2"
-            sx={{
-              color: "#000000",
-              fontWeight: "bold",
-              fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.5rem" },
-              textAlign: "center",
-              flexGrow: 1,
-              ml: { xs: 3, sm: 4, md: 5 },
-            }}
-          >
-            {title}
-          </Typography>
-  
-          
-          <Loader loading={request} />
-        </Box>
-      </Box>
-    </Grid>
-  
- 
-    <Grid item xs={12}>
-      <Box
-        component="form"
-        id="VerifyOtpLogin"
-        noValidate
-        autoComplete="off"
-        onSubmit={
-          usedInSignUp
-            ? otpSubmitAtSignUp
-            : secureValidate === "Beneficiary"
-            ? otpAtBeneAdd
-            : secureValidate === "Add"
-            ? verifyBank
-            : handleSubmit
-        }
-        sx={{
-          "& .MuiTextField-root": { m: { xs: 1, sm: 2 } },
-        }}
-      >
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12}>
-            <FormControl
-              fullWidth
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center", 
-                }}
-              >
-              
-                <PinInput
-                  length={6}
-                  autoComplete={"off"}
-                  focus
-                  type="password"
-                  onChange={(value) => {
-                    if (err !== "") setErr("");
-                    setOtp(value);
-                  }}
-                  regexCriteria={/^[0-9]*$/}
-                  inputStyle={{
-                    width: "40px",
-                    height: "40px",
-                    marginRight: { xs: "3px", md: "5px" }, 
-                    textAlign: "center",
-                    borderRadius: "0",
-                    border: "none",
-                    borderBottom: "1px solid #000",
-                    padding: "5px",
-                    outline: "none",
-                  }}
-                />
-  
-                
-                <Box sx={{ mt: 2 }}>
-                  <ResetMpin variant="text" username={username} />
-                </Box>
-              </Box>
-            </FormControl>
-          </Grid>
-  
-       
-          {secureValidate === "MPIN" && (
-            <>
-              {err && (
-                <Grid item xs={12}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      fontSize: "12px",
-                      color: "#DC5F5F",
-                      textAlign: "center",
-                    }}
-                  >
-                    {err.message && <div>{err.message}</div>}
-                    {err.data && (
-                      <div className="blink_text">
-                        Attempts remaining: {5 - Number(err.data)}
-                      </div>
-                    )}
-                  </Box>
-                </Grid>
-              )}
-            </>
-          )}
-  
-         
-          {secureValidate === "OTP" && (
-            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-              {isresend ? (
-                <TimerButton
-                  initialSeconds={30}
-                  setIsResend={setIsResend}
-                  isresend={isresend}
-                />
-              ) : (
-                <Button
-                  onClick={currentStep === 3 ? resendOtpLast : resendOtpFunc}
-                  sx={{ display: "flex", alignItems: "center" }}
-                >
-                  <Loader loading={request} size="small" />
-                  Resend OTP
-                </Button>
-              )}
-              {err && err.message && <div>{err.message}</div>}
-            </Grid>
-          )}
-  
-        
-          <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              form="VerifyOtpLogin"
-              variant="contained"
-              onClick={handleSubmit}
-              sx={{
-                width: "100%",
-                maxWidth: { xs: "250px", md: "300px" },
-                mt: 2,
-                borderRadius: 6,
-                color: "#fff",
-                backgroundColor: "#4253F0",
-              }}
-            >
-              Login
-            </Button>
-          </Grid>
-        </Grid>
-      </Box>
-    </Grid>
+          <ArrowBackIcon
+            sx={{ cursor: "pointer", fontSize: { xs: "1.25rem", md: "1.50rem" }, color: "#000" }}
+          />
+        </Button>
+
+        <Typography
+          variant="h6"
+          component="h2"
+          sx={{
+            color: "#000",
+            fontWeight: "bold",
+            fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.5rem" },
+            textAlign: "center",
+            flexGrow: 1,
+            ml: { xs: 4, sm: 6, md: 8,lg:1 },
+          }}
+        >
+          {title}
+        </Typography>
+
+        <Loader loading={request} />
+      </Box> 
+    </Box>
   </Grid>
+
+  <Grid item xs={12}>
+    <Box
+      component="form"
+      id="VerifyOtpLogin"
+      noValidate
+      autoComplete="off"
+      onSubmit={
+        usedInSignUp
+          ? otpSubmitAtSignUp
+          : secureValidate === "Beneficiary"
+          ? otpAtBeneAdd
+          : secureValidate === "Add"
+          ? verifyBank
+          : handleSubmit
+      }
+      sx={{
+        "& .MuiTextField-root": { m: { xs: 1, sm: 2 } },
+      }}
+    >
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={12}>
+          <FormControl
+            fullWidth
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <PinInput
+              length={6}
+              autoComplete="off"
+              focus
+              type="password"
+              onChange={(value) => {
+                if (err !== "") setErr("");
+                setOtp(value);
+              }}
+              regexCriteria={/^[0-9]*$/}
+              inputStyle={{
+                width: "40px",
+                height: "40px",
+                marginRight: { xs: "3px", md: "5px" },
+                textAlign: "center",
+                borderRadius: "0",
+                border: "none",
+                borderBottom: "1px solid #000",
+                padding: "5px",
+                outline: "none",
+              }}
+            />
+
+            <Box sx={{ mt: 2 }}>
+              <ResetMpin variant="text" username={username} />
+            </Box>
+          </FormControl>
+        </Grid>
+
+        {secureValidate === "MPIN" && (
+          <>
+            {err && (
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    fontSize: "12px",
+                    color: "#DC5F5F",
+                    textAlign: "center",
+                  }}
+                >
+                  {err.message && <div>{err.message}</div>}
+                  {err.data && (
+                    <div className="blink_text">
+                      Attempts remaining: {5 - Number(err.data)}
+                    </div>
+                  )}
+                </Box>
+              </Grid>
+            )}
+          </>
+        )}
+
+        {secureValidate === "OTP" && (
+          <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+            {isresend ? (
+              <TimerButton
+                initialSeconds={30}
+                setIsResend={setIsResend}
+                isresend={isresend}
+              />
+            ) : (
+              <Button
+                onClick={currentStep === 3 ? resendOtpLast : resendOtpFunc}
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <Loader loading={request} size="small" />
+                Resend OTP
+              </Button>
+            )}
+            {err && err.message && <div>{err.message}</div>}
+          </Grid>
+        )}
+
+        <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            form="VerifyOtpLogin"
+            variant="contained"
+            onClick={handleSubmit}
+            sx={{
+              width: "100%",
+              maxWidth: { xs: "250px", md: "300px" },
+              mt: 2,
+              borderRadius: 6,
+              color: "#fff",
+              backgroundColor: "#4253F0",
+            }}
+          >
+            Login
+          </Button>
+        </Grid>
+      </Grid>
+    </Box>
+  </Grid>
+</Grid>
+
   
 );
 };

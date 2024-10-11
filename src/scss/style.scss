@@ -2966,8 +2966,8 @@ ol > li {
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: $black-color;
-  font-size: 10px !important;
-  height: 15px !important;
+  font-size: 13px !important;
+  height: 18px !important;
   &:disabled {
     background: rgba(255, 255, 255, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -2977,8 +2977,8 @@ ol > li {
 }
 .filter-input input,
 .filter-input input:focus {
-  font-size: 10px !important;
-  height: 15px !important;
+  font-size: 15px !important;
+  height: 20px !important;
 
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -2992,7 +2992,7 @@ ol > li {
 }
 .filter-input .MuiInputLabel-root {
   color: $black-color !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
 }
 .filter-autocomplete .MuiInputLabel-root {
   color: $black-color !important;

@@ -188,7 +188,7 @@ const ComplaintsView = () => {
         );
       },
       wrap: true,
-      width: "110px",
+      width: "100px",
     },
     {
       name: "Status",
@@ -212,7 +212,7 @@ const ComplaintsView = () => {
         );
       },
       wrap: true,
-      width: "110px",
+      width: "70px",
     },
 
     // <FormControl className="customized-textfield" fullWidth>

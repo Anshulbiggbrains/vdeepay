@@ -186,7 +186,7 @@ const borderPulse = keyframes`
 )}
 
     {/* DD Card */}
-    {user.role!=="Dd"&& user.role!=="Ad"&& user.role!=="Admin"&&
+    {user.role!=="Dd"&&user.role!=="Ret"&& user.role!=="Ad"&& user.role!=="Admin"&&
     <Grid item xs="auto">
       <Box
         sx={{
@@ -318,7 +318,7 @@ const borderPulse = keyframes`
         borderRadius: '8px',
         display: 'flex',
         alignItems: 'center',
-        width: { lg: '140px', sm: '105px' },
+        width: { lg: '140px', sm: '125px' },
         border: '2px solid #D71313',
       }}
     >
