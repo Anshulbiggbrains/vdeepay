@@ -35,7 +35,7 @@ const NoDataView = ({ msg }) => {
             {msg && msg ? (
               <div>{msg}</div>
             ) : (
-              "Data is Empty or Try Adjusting the filters!"
+" No data found !"
             )}
           </Typography>
         </Grid>

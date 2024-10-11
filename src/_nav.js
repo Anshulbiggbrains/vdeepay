@@ -72,6 +72,7 @@ import transfer1 from "./assets/sidenav/transfer1.svg";
 import creditrq1 from "./assets/sidenav/creditrq1.svg";
 import account1 from "./assets/sidenav/account1.svg";
 import transaction1 from "./assets/sidenav/white/transaction1.svg";
+import mysale from "./assets/sidenav/white/mysale.svg";
 import bank1 from "./assets/sidenav/bank1.svg";
 import message1 from "./assets/sidenav/message1.svg";
 import notification1 from "./assets/sidenav/notification1.svg";
@@ -445,7 +446,7 @@ export const Ad_nav = [
   },
   {
     title: "My Sale",
-    icon: transaction1,
+    icon: mysale,
     icon2: TransactionIconWhite,
     to: "/ad/sale",
   },
@@ -585,12 +586,12 @@ export const customer_nav = [
   //   to: "/customer/travel",
   //   // to: "/customer/travel-services",
   // },
-  {
-    title: "Fund Request",
-    icon: creditmoney,
-    icon2: CreditRequestIcon,
-    to: "/customer/cred-req",
-  },
+  // {
+  //   title: "Fund Request",
+  //   icon: creditmoney,
+  //   icon2: CreditRequestIcon,
+  //   to: "/customer/cred-req",
+  // },
   {
     title: "Reports",
     icon: graph,

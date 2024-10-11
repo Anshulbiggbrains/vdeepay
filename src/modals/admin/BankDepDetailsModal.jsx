@@ -131,7 +131,7 @@ const BankDepDetailsModal = ({
                     aria-label="type"
                     sx={{
                       "& .MuiToggleButton-root": {
-                        fontSize: isMobile ? "10px" : "14px", // Smaller font on mobile
+                        fontSize: isMobile ? "8px" : "12px", // Smaller font on mobile
                         padding: isMobile ? "6px 10px" : "8px 16px", // Adjust button padding for mobile
                       },
                     }}

@@ -161,7 +161,7 @@ const MyPurchaseView = () => {
     },
 
     {
-      name: "Route",
+      name: "Platform",
       cell: (row) => (
         <div
           style={{
