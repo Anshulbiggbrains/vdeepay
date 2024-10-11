@@ -41,7 +41,7 @@ const ElectricityForm = ({ title, type}) => {
   const operatorRef = useRef();
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
     const data = {};
     params.forEach((item, index) => {
       if (item || item !== "") {
@@ -103,7 +103,7 @@ const ElectricityForm = ({ title, type}) => {
     const selectedOperator = operatorVal.find(
       (item) => item.code === event.target.value
     );
-    setOpName(selectedOperator ? selectedOperator.name : ""); // Set the operator name
+    setOpName(selectedOperator ? selectedOperator.name : ""); 
     setOperatorIcon(selectedOperator ? selectedOperator.img : "");
   };
 
@@ -134,7 +134,7 @@ const ElectricityForm = ({ title, type}) => {
     setSelectedCard(operator.code);
     setOperatorIcon(operator.code)
     setOpName(operator.name);
-    setParams([operator.param1, operator.param2, operator.param3]); // Show all fields by default
+    setParams([operator.param1, operator.param2, operator.param3]); 
   };
 console.log("oppp",opName);
 
@@ -192,7 +192,7 @@ console.log("oppp",opName);
               p: 3,
             }}
           >
-            {/* Flexbox for CircleComponent and Title */}
+          
             <div
               style={{
                 display: "flex",
@@ -244,6 +244,7 @@ console.log("oppp",opName);
                           id={"param" + (i + 1).toString()}
                           size="small"
                           sx={{
+                             width: "400px",
                             "& .MuiInputBase-input": {
                               fontSize: "12px",
                               color: "black",

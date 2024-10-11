@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Tooltip, Typography, Button } from "@mui/material";
+import { Box, Tooltip, Typography } from "@mui/material";
 
 const CommonCardDashBoard = ({ name, img, onClick }) => {
   return (
@@ -19,8 +19,7 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
             width: "100%",
             height: "100%",
             overflow: "hidden",
-
-            // Yellow box shadow on hover
+            padding: { xs: "8px", sm: "12px" }, // Add padding for extra space
           }}
           onClick={onClick}
         >
@@ -28,10 +27,8 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
             sx={{
               width: { xs: "60px", sm: "80px" },
               height: { xs: "60px", sm: "80px" },
-              // boxShadow: '0px 4px 8px rgba(255, 217, 61, 0.7)',
               mt: 1,
               borderRadius: "50%",
-
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -60,9 +57,12 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
             variant="subtitle1"
             sx={{
               fontWeight: 500,
+              textAlign: "center", 
               overflow: "hidden",
-              textOverflow: "ellipsis",
+              textOverflow: "ellipsis", 
               whiteSpace: "nowrap",
+              maxWidth: "100%", 
+              fontSize: { xs: "12px", sm: "14px" }, 
             }}
           >
             {name}
