@@ -685,7 +685,7 @@ body {
 
 //right nav css
 .right-nav {
-  width: 530px;
+  
   height: 530px;
   padding: 8px;
   margin-top: -7px;
@@ -3390,3 +3390,14 @@ ol > li {
   // border: 2px solid #fff;
   animation: pulse 1s infinite;
 }
+.link-style {
+  font-size: 16px;
+  color: rgb(12, 12, 163); 
+  font-weight: bold; 
+  cursor: pointer;
+  padding: 5px;
+}
+
+
+
+

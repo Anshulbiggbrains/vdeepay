@@ -148,43 +148,44 @@ const AdminBankStatementView = () => {
     },
     {
       name: (
-        <>Description
-        <div>
-          {/* Implement your search field here */}
-          <FormControl sx={{ width: "100%" }}>
-            <TextField autoComplete="off"
-              // select
-              label="Search"
-              id="status"
-              sx={{
-                bgcolor: "white",
-                mx: 1,
-                borderRadius: 1
-              }}
-              size="small"
-              // required
-              onChange={(e) => setQuery("search={e}")}
-              defaultValue={""}
-            >
-            </TextField>
-          </FormControl>
-        </div>
-        </>),
+        <>
+          Description
+          <div>
+            {/* Implement your search field here */}
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                autoComplete="off"
+                // select
+                label="Search"
+                id="status"
+                sx={{
+                  bgcolor: "white",
+                  mx: 1,
+                  borderRadius: 1,
+                }}
+                size="small"
+                // required
+                onChange={(e) => setQuery("search={e}")}
+                defaultValue={""}
+              ></TextField>
+            </FormControl>
+          </div>
+        </>
+      ),
       selector: (row) => (
         <>
-        <div
-          className="break-words"
-          style={{
-            // overflow: "hidden",
-            display: "flex",
-            justifyContent: "flex-start",
-            textAlign: "left",
-            fontSize: "13px",
-          }}
-        >
-          {row.description}
-        </div>
-        
+          <div
+            className="break-words"
+            style={{
+              // overflow: "hidden",
+              display: "flex",
+              justifyContent: "flex-start",
+              textAlign: "left",
+              fontSize: "13px",
+            }}
+          >
+            {row.description}
+          </div>
         </>
       ),
       width: "340px",
@@ -253,15 +254,16 @@ const AdminBankStatementView = () => {
           >
             <CommonStatus
               status={row.status == 0 ? 1 : 2}
-              approvedStatusText="SUCCESS"
-              pendingStatusText="PENDING"
+              approvedStatusText="CLAIMED"
+              pendingStatusText="UNCLAIMED"
               fontSize="12px"
+              maxWidth="120px"
+              minWidth="100px"
             />
           </Box>
         );
       },
       wrap: true,
-      width: "110px",
     },
     // {
     //   name: "Status",
@@ -338,194 +340,255 @@ const AdminBankStatementView = () => {
 
   return (
     <Container maxWidth="xl">
-    <Box>
-      <Box
-        component="form"
-        id="addtxn"
-        validate="true"
-        autoComplete="off"
-        onSubmit={handleAddTxn}
-        sx={{
-          "& .MuiTextField-root": { m: 1 },
-          objectFit: "contain",
-          overflowY: "scroll",
-        }}
-        className="position-relative"
-      >
-        <Loader loading={request} />
-        <Grid container sx={{ pt: 1 }} alignItems="center">
-          <Grid item md={2} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off" label="Description" id="desc" size="small" required />
-            </FormControl>
-          </Grid>
-          <Grid item md={2} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off" label="Remarks" id="remarks" size="small" required />
-            </FormControl>
-          </Grid>
-          <Grid item md={2} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off"
-                select
-                required
-                size="small"
-                label="MOP"
-                id="mop"
-                value={mopVal}
-                onChange={(e) => setMopVal(e.target.value)}
-              >
-                <MenuItem dense value="CASH">Cash Deposit</MenuItem>
-                <MenuItem dense value="CASH-CDM">CDM Deposit</MenuItem>
-                <MenuItem dense value="CASH-KIOSK">KIOSK Deposit</MenuItem>
-                <MenuItem dense value="IMPS">IMPS</MenuItem>
-                <MenuItem dense value="NEFT">NEFT</MenuItem>
-                <MenuItem dense value="RTGS">RTGS</MenuItem>
-                <MenuItem dense value="FT">Fund Transfer</MenuItem>
-                <MenuItem dense value="UPI">UPI Transfer</MenuItem>
-                <MenuItem dense value="GST">GST</MenuItem>
-                <MenuItem dense value="CHARGE">Charge</MenuItem>
-              </TextField>
-            </FormControl>
-          </Grid>
-          <Grid item md={1.5} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off"
-                label="Debit"
-                id="debit"
-                size="small"
-                required
-                type="number"
-                inputProps={{ step: "any" }}
-                onChange={(event) => {
-                  const value = event.target.value;
-                  if (value.length === 0) {
-                    setBalance(old_balance);
-                    document.getElementById("credit").removeAttribute("disabled");
-                  } else if (parseFloat(value) > 0) {
-                    document.getElementById("credit").setAttribute("disabled", "");
-                    setBalance(parseFloat(old_balance) - parseFloat(value));
-                  } else if (parseFloat(value) === 0) {
-                    document.getElementById("credit").removeAttribute("disabled");
-                  }
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item md={1.5} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off"
-                label="Credit"
-                id="credit"
-                size="small"
-                required
-                type="number"
-                inputProps={{ step: "any" }}
-                onChange={(event) => {
-                  const value = event.target.value;
-                  if (value.length === 0) {
-                    setBalance(old_balance);
-                    document.getElementById("debit").removeAttribute("disabled");
-                  } else if (parseFloat(value) > 0) {
-                    document.getElementById("debit").setAttribute("disabled", "");
-                    setBalance(parseFloat(old_balance) + parseFloat(value));
-                  } else if (parseFloat(value) === 0) {
-                    document.getElementById("debit").removeAttribute("disabled");
-                  }
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item md={1.5} xs={3}>
-            <FormControl fullWidth>
-              <TextField autoComplete="off"
-                label="Balance"
-                id="balance"
-                size="small"
-                required
-                disabled
-                value={balance && currencySetter(balance)}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item  md={1.5} xs={2}>
-            <FormControl fullWidth>
-              <Button
-                className="button-purple"
-                form="addtxn"
-                type="submit"
-                disabled={request}
-                sx={{ mt: 0 }}
-              >
-                ADD
-              </Button>
-            </FormControl>
-          </Grid>
-        </Grid>
-      </Box>
-  
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mt: 2 }}>
-        <Button
-          size="small"
-          className="otp-hover-purple mb-2"
-          sx={{ color: primaryColor(), pr: 1 }}
-          onClick={() => navigate("/admin/banks")}
+      <Box>
+        <Box
+          component="form"
+          id="addtxn"
+          validate="true"
+          autoComplete="off"
+          onSubmit={handleAddTxn}
+          sx={{
+            "& .MuiTextField-root": { m: 1 },
+            objectFit: "contain",
+            overflowY: "scroll",
+          }}
+          className="position-relative"
         >
-          <KeyboardBackspaceIcon fontSize="small" /> Back
-        </Button>
-        <Box sx={{ display: "flex", justifyContent: "end" }}>
-          <Tooltip title="export">
-            <ExcelUploadModal
-              btn
-              twobuttons="Download Csv"
-              dateFilter
-              request={excelrequest}
-              getExcel={getExcel}
-              getCsv={getCsv}
-              filterValues={filterValues}
-              setFilterValues={setFilterValues}
-              noOfResponses={noOfResponses}
-              setQuery={setQuery}
-              defaultQuery={"bank_id"}
-              queryValue={bankId && bankId}
-              handleCloseCB={(closeModal) => {
-                handleCloseModal = closeModal;
-              }}
-            />
-          </Tooltip>
-          <Tooltip title="refresh">
-            <IconButton aria-label="refresh" color="success" onClick={() => refreshFunc(setQuery)}>
-              <CachedIcon className="refresh-purple" />
-            </IconButton>
-          </Tooltip>
-          {["9999442202", "7300895196"].includes(user.username) && (
-            <Tooltip title="delete">
-              <DeleteTxnBank refresh={() => refresh && refresh()} setBalance={setBalance} />
-            </Tooltip>
-          )}
+          <Loader loading={request} />
+          <Grid container sx={{ pt: 1 }} alignItems="center">
+            <Grid item md={2} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  label="Description"
+                  id="desc"
+                  size="small"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid item md={2} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  label="Remarks"
+                  id="remarks"
+                  size="small"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid item md={2} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  select
+                  required
+                  size="small"
+                  label="MOP"
+                  id="mop"
+                  value={mopVal}
+                  onChange={(e) => setMopVal(e.target.value)}
+                >
+                  <MenuItem dense value="CASH">
+                    Cash Deposit
+                  </MenuItem>
+                  <MenuItem dense value="CASH-CDM">
+                    CDM Deposit
+                  </MenuItem>
+                  <MenuItem dense value="CASH-KIOSK">
+                    KIOSK Deposit
+                  </MenuItem>
+                  <MenuItem dense value="IMPS">
+                    IMPS
+                  </MenuItem>
+                  <MenuItem dense value="NEFT">
+                    NEFT
+                  </MenuItem>
+                  <MenuItem dense value="RTGS">
+                    RTGS
+                  </MenuItem>
+                  <MenuItem dense value="FT">
+                    Fund Transfer
+                  </MenuItem>
+                  <MenuItem dense value="UPI">
+                    UPI Transfer
+                  </MenuItem>
+                  <MenuItem dense value="GST">
+                    GST
+                  </MenuItem>
+                  <MenuItem dense value="CHARGE">
+                    Charge
+                  </MenuItem>
+                </TextField>
+              </FormControl>
+            </Grid>
+            <Grid item md={1.5} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  label="Debit"
+                  id="debit"
+                  size="small"
+                  required
+                  type="number"
+                  inputProps={{ step: "any" }}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    if (value.length === 0) {
+                      setBalance(old_balance);
+                      document
+                        .getElementById("credit")
+                        .removeAttribute("disabled");
+                    } else if (parseFloat(value) > 0) {
+                      document
+                        .getElementById("credit")
+                        .setAttribute("disabled", "");
+                      setBalance(parseFloat(old_balance) - parseFloat(value));
+                    } else if (parseFloat(value) === 0) {
+                      document
+                        .getElementById("credit")
+                        .removeAttribute("disabled");
+                    }
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item md={1.5} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  label="Credit"
+                  id="credit"
+                  size="small"
+                  required
+                  type="number"
+                  inputProps={{ step: "any" }}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    if (value.length === 0) {
+                      setBalance(old_balance);
+                      document
+                        .getElementById("debit")
+                        .removeAttribute("disabled");
+                    } else if (parseFloat(value) > 0) {
+                      document
+                        .getElementById("debit")
+                        .setAttribute("disabled", "");
+                      setBalance(parseFloat(old_balance) + parseFloat(value));
+                    } else if (parseFloat(value) === 0) {
+                      document
+                        .getElementById("debit")
+                        .removeAttribute("disabled");
+                    }
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item md={1.5} xs={3}>
+              <FormControl fullWidth>
+                <TextField
+                  autoComplete="off"
+                  label="Balance"
+                  id="balance"
+                  size="small"
+                  required
+                  disabled
+                  value={balance && currencySetter(balance)}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item md={1.5} xs={2}>
+              <FormControl fullWidth>
+                <Button
+                  className="button-purple"
+                  form="addtxn"
+                  type="submit"
+                  disabled={request}
+                  sx={{ mt: 0 }}
+                >
+                  ADD
+                </Button>
+              </FormControl>
+            </Grid>
+          </Grid>
         </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: 2,
+          }}
+        >
+          <Button
+            size="small"
+            className="otp-hover-purple mb-2"
+            sx={{ color: primaryColor(), pr: 1 }}
+            onClick={() => navigate("/admin/banks")}
+          >
+            <KeyboardBackspaceIcon fontSize="small" /> Back
+          </Button>
+          <Box sx={{ display: "flex", justifyContent: "end" }}>
+            <Tooltip title="export">
+              <ExcelUploadModal
+                btn
+                twobuttons="Download Csv"
+                dateFilter
+                request={excelrequest}
+                getExcel={getExcel}
+                getCsv={getCsv}
+                filterValues={filterValues}
+                setFilterValues={setFilterValues}
+                noOfResponses={noOfResponses}
+                setQuery={setQuery}
+                defaultQuery={"bank_id"}
+                queryValue={bankId && bankId}
+                handleCloseCB={(closeModal) => {
+                  handleCloseModal = closeModal;
+                }}
+              />
+            </Tooltip>
+            <Tooltip title="refresh">
+              <IconButton
+                aria-label="refresh"
+                color="success"
+                onClick={() => refreshFunc(setQuery)}
+              >
+                <CachedIcon className="refresh-purple" />
+              </IconButton>
+            </Tooltip>
+            {["9999442202", "7300895196"].includes(user.username) && (
+              <Tooltip title="delete">
+                <DeleteTxnBank
+                  refresh={() => refresh && refresh()}
+                  setBalance={setBalance}
+                />
+              </Tooltip>
+            )}
+          </Box>
+        </Box>
+
+        <div>
+          <ApiPaginate
+            apiEnd={ApiEndpoints.GET_BANK_STATEMENT}
+            columns={columns}
+            apiData={apiData}
+            tableStyle={CustomStyles}
+            setApiData={setApiData}
+            ExpandedComponent=""
+            queryParam={query || ""}
+            returnRefetch={(ref) => {
+              refresh = ref;
+            }}
+            responses={(val) => {
+              setNoOfResponses(val);
+            }}
+          />
+        </div>
       </Box>
-  
-      <div>
-        <ApiPaginate
-          apiEnd={ApiEndpoints.GET_BANK_STATEMENT}
-          columns={columns}
-          apiData={apiData}
-          tableStyle={CustomStyles}
-          setApiData={setApiData}
-          ExpandedComponent=""
-          queryParam={query || ""}
-          returnRefetch={(ref) => {
-            refresh = ref;
-          }}
-          responses={(val) => {
-            setNoOfResponses(val);
-          }}
-        />
-      </div>
-    </Box>
-  </Container>
-  
+    </Container>
   );
 };
 

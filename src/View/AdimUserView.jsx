@@ -75,8 +75,8 @@ import CustomTabs from "../component/CustomTabs";
 import { Icon } from "@iconify/react";
 import AdminUserTab from "../component/Tab/AdminUserTab ";
 import { capitalize1 } from "../utils/TextUtil";
-import kyc from "../assets/Kyc.png"
-import performance from "../assets/PerfomanceR.png"
+import kyc from "../assets/Kyc.png";
+import performance from "../assets/PerfomanceR.png";
 // styled tabls
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -541,10 +541,10 @@ const AdimUserView = () => {
       selector: (row) => <div className="blue-highlight-txt">{row.role}</div>,
     },
     {
-      name:"Platform",
-      selector:(row)=>(
-      <div>
-         <Tooltip title={capitalize1(row.platform)}>
+      name: "Platform",
+      selector: (row) => (
+        <div>
+          <Tooltip title={capitalize1(row.platform)}>
             <div style={{ textAlign: "left" }}>
               <div
                 className="break-words"
@@ -556,11 +556,18 @@ const AdimUserView = () => {
               </div>
             </div>
           </Tooltip>
-      </div>
+        </div>
       ),
       wrap: true,
       width: "105px",
-    
+      omit:
+        user && user.role === "Admin"
+          ? false
+          : user && user.role === "Asm"
+          ? false
+          : user && user.role === "Zsm"
+          ? false
+          : true,
     },
     {
       name: "Parent",
@@ -902,27 +909,35 @@ const AdimUserView = () => {
       name: "Role",
       selector: (row) => <div className="blue-highlight-txt">{row.role}</div>,
     },
+
     {
-      name:"Platform",
-      selector:(row)=>(
-      <div>
-         <Tooltip title={capitalize1(row.platform)}>
-            <div style={{ textAlign: "left" }}>
-              <div
-                className="break-words"
-                style={{
-                  fontSize: "12px",
-                }}
-              >
-                {capitalize1(row.platform)||'NA'}
-              </div>
-            </div>
-          </Tooltip>
-      </div>
+      name: "Parent",
+      cell: (row) => (
+        <div
+          style={{
+            whiteSpace: "break-spaces",
+            overflow: "hidden",
+            textOverflow: "clip",
+            textAlign: "left",
+          }}
+        >
+          {getParent(row && row, true, false)
+            ? getParent(row && row, true, false)
+            : "NA"}
+        </div>
       ),
       wrap: true,
-      width: "105px",
-    
+      center: false,
+
+      grow: 1.7,
+      omit:
+        user && user.role === "Admin"
+          ? false
+          : user && user.role === "Asm"
+          ? false
+          : user && user.role === "Zsm"
+          ? false
+          : true,
     },
     {
       name: "InActive",
@@ -958,7 +973,7 @@ const AdimUserView = () => {
       omit: user && user.role === "Admin" ? false : true,
     },
     {
-      name: "Wallet Balance",
+      name: "WB",
       selector: (row) => (
         <div style={{ textAlign: "center" }}>
           <div>{currencySetter(row.w1 / 100)}</div>
@@ -976,6 +991,23 @@ const AdimUserView = () => {
 
       center: false,
     },
+    {
+      name: "ST",
+      selector: (row) => <div>{row.super_rate}</div>,
+    },
+    {
+      name: <span className="ms-2">DMT</span>,
+      selector: (row) =>
+        user &&
+        (user.role === "Ad" || user.role === "Md" || user.role === "Admin") ? (
+          <DmtModal row={row} refresh={refresh} />
+        ) : (
+          <span>{Number(row.dmt_slab2).toFixed(2)}%</span>
+        ),
+      center: false,
+      width: "70px",
+    },
+
     {
       name: "Transfer",
       selector: (row) => <MoneyTransferModal refresh={refresh} row={row} />,
@@ -1035,7 +1067,11 @@ const AdimUserView = () => {
 
               <Mount visible={row?.kyc !== 1}>
                 <Tooltip title="Kyc Pending">
-                <img src={kyc} alt="KycPending" style={{ width: "24px", height: "24px" }} />
+                  <img
+                    src={kyc}
+                    alt="KycPending"
+                    style={{ width: "24px", height: "24px" }}
+                  />
                   {/* <IconButton>
                     <Icon
                       icon="ph:clock-countdown-bold"
@@ -1059,7 +1095,11 @@ const AdimUserView = () => {
               amount={
                 <Tooltip title="Performace Report" placement="bottom">
                   {/* <BarChartIcon sx={{ color: "#DE3163" }} /> */}
-                  <img src={performance} alt="PerformanceReport" style={{ width: "24px", height: "24px" }} />
+                  <img
+                    src={performance}
+                    alt="PerformanceReport"
+                    style={{ width: "24px", height: "24px" }}
+                  />
                 </Tooltip>
               }
               usedInUserTable
@@ -1174,9 +1214,7 @@ const AdimUserView = () => {
           />
         </Grid>
       </Grid>
-{user.role!=="Ad"&&
-      <AdminUserTab setQuery={setQuery} user={user} />
-}
+      {user.role !== "Ad" && <AdminUserTab setQuery={setQuery} user={user} />}
       <ApiPaginateSearch
         showSearch={true}
         apiEnd={ApiEndpoints.GET_USERS}

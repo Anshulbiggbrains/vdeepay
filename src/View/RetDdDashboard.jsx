@@ -34,7 +34,6 @@ import {
   water1,
   landline1,
   recharge1,
-  bbps1,
 } from "../iconsImports";
 import DmtContainer from "./DMTcontainer";
 import CMSView from "./CMSView";
@@ -130,7 +129,7 @@ const RetDdDashboard = () => {
           img: landline1,
           component: ElectricityForm,
         },
-        { id: 16, name: "Bbps", img: bbps1, component: BBPSView },
+        { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
       ],
     },
     {
@@ -191,36 +190,37 @@ const RetDdDashboard = () => {
 
   return (
     <>
-      {user.role === "Dd" || user.role==="Ret" && location.pathname === "/customer/dashboard" && (
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={8}
-          lg={9}
-          sx={{
-            marginTop: { xs: "1rem" },
-            textAlign: "center",
-            display:"flex",
-            borderRadius: "8px",
-            backgroundColor: "#fEDCDB",
-            marginTop: "0.1%",
-            color: " #004080",
-            // color: "#023047", #004080,
-            fontSize: "14px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "0.5rem",
-            padding: "8px 6px",
-          }}
-        >
-          <marquee behavior="scroll" direction="left">
-            Digital payments are growing faster than ever ! UPI is leading the
-            way, making transactions quick and easy for millions.
-          </marquee>
-        </Grid>
-      )}
+      {user.role === "Dd" ||
+        (user.role === "Ret" && location.pathname === "/customer/dashboard" && (
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={8}
+            lg={9}
+            sx={{
+              marginTop: { xs: "1rem" },
+              textAlign: "center",
+              display: "flex",
+              borderRadius: "8px",
+              backgroundColor: "#fEDCDB",
+              marginTop: "0.1%",
+              color: " #004080",
+              // color: "#023047", #004080,
+              fontSize: "14px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "0.5rem",
+              padding: "8px 6px",
+            }}
+          >
+            <marquee behavior="scroll" direction="left">
+              Digital payments are growing faster than ever ! UPI is leading the
+              way, making transactions quick and easy for millions.
+            </marquee>
+          </Grid>
+        ))}
       {!currentView ? (
         dataCategories.map((category, index) => (
           <Box
