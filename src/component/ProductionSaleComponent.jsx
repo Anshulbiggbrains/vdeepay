@@ -257,7 +257,7 @@ const ProductionSaleComponent = ({
         padding: "1.3rem",
         boxShadow:
           "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
-        width: { lg: "99%", md: "95%", sm: "100%" }, 
+        width: { lg: "100%", md: "100%", sm: "100%" }, 
         ml: { lg: "0", md: "0", xs: "0" },
         mr: { lg: "1.5%", md: 0, xs: 0 },
         height: "514px",

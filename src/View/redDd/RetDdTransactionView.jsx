@@ -89,6 +89,7 @@ import Timeline from "../../component/transactions/Timeline";
 import Mount from "../../component/Mount";
 import Loader from "../../component/loading-screen/Loader";
 import CommonSnackBar from "../../component/CommonSnackBar";
+import StatusDisplay from "../../StatusDisplay";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
 let refresh;
@@ -807,29 +808,7 @@ const RetDdTransactionView = () => {
               </Grid>
             }
             totalCard={
-              <Grid container spacing={2} sx={{ mb: 2 }}>
-              {transactions.map((transaction, index) => (
-                <Grid item xs={2.4} key={index}>
-                  <Box
-                    sx={{
-                      border: "1px solid #ccc",
-                      borderRadius: "4px", // Normal border radius
-                      padding: 2,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      backgroundColor: "#f9f9f9", // Light background for the box
-                    }}
-                  >
-                    <Typography variant="h6">{transaction.title}</Typography>
-                    <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-                      {transaction.amount}
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
+         <StatusDisplay/>
              
             }
             apiEnd={
