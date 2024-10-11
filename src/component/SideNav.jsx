@@ -392,15 +392,25 @@ export default function SideNav(props, { data }) {
                 opacity: "0.9",
                 fontSize: "14px",
                 fontWeight: "600",
-                marginRight: "5px",
+                marginRight:"10px"
               }}
             >
-              {user?.role === "Dd" ?(
-             <Button sx={{ color: whiteColor()}}>Sign Out</Button>
-              ):(
-                <Button sx={{ color: whiteColor()}}>Logout</Button>
-              )
-}
+   {user?.role === "Dd" ? (
+  <Button
+    sx={{ color: whiteColor() }}
+    startIcon={<LogoutIcon sx={{color:"#FF9500"}} />} 
+  >
+    Sign Out
+  </Button>
+) : (
+  <Button
+    sx={{ color: whiteColor() }}
+    startIcon={<LogoutIcon sx={{color:"#FF9500"}}  />} 
+  >
+    Logout
+  </Button>
+)}
+
             </span>
           </Typography>
         )}

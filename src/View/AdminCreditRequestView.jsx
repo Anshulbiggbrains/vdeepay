@@ -467,23 +467,16 @@ const CreditRequestView = () => {
   };
   console.log("the role is", user.role);
   return (
-    <Grid >
-      <Grid
-      
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          pt: 1,
-          pb: 1,
-          gap: 5,
-        }}
-      >
+    <Grid  >
+          <Box sx={{
+            pb:1,
+            pt:1
+          }}>
         <FilterCard
-         ifdateFilter
-          ifAsmFilter={
-            user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
-          }
+        
+          // ifAsmFilter={
+          //   user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
+          // }
           ifStatusFilter
           setQuery={setQuery}
           query={query}
@@ -524,6 +517,7 @@ const CreditRequestView = () => {
                 </IconButton>
               </Tooltip>
             </>
+   
           }
         />
 
@@ -534,8 +528,7 @@ const CreditRequestView = () => {
         ) : (
           <CreateCreditRequest refresh={refresh} />
         )}
-      </Grid>
-
+      </Box>
       <Grid xs={12}>
         <ApiPaginate
           apiEnd={ApiEndpoints.CRED_REQ}
