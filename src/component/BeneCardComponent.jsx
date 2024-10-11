@@ -58,17 +58,17 @@ const BeneTableComponent = ({
       {/* Beneficiary Details */}
       <TableCell>
        
-        <Typography>
+        <Typography style={{fontSize:"13px"}}>
           {ben.name ? capitalize1(ben.name) : capitalize1(ben.bene_name)}
         </Typography>
       </TableCell>
       <TableCell>
         
-        <Typography>{ben.account || ben.bene_acc}</Typography>
+        <Typography style={{fontSize:"13px"}}>{ben.account || ben.bene_acc}</Typography>
       </TableCell>
       <TableCell>
        
-        <Typography>{ben.ifsc}</Typography>
+        <Typography style={{fontSize:"13px"}}>{ben.ifsc}</Typography>
       </TableCell>
 
       {/* Actions */}
@@ -79,7 +79,7 @@ const BeneTableComponent = ({
         ben.status === 1 ? (
           <>
        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-  <VerifiedIcon sx={{ fontSize: "17px", color: "#1977f2", mr: 0.5 }} />
+  <VerifiedIcon sx={{ fontSize: "13px", color: "#1977f2", mr: 0.5 }} />
   <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
 </Box>
             
