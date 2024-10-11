@@ -21,6 +21,7 @@ import { yyyymmdd } from "../utils/DateUtils";
 import { creditReqGuidelinesImg } from "../iconsImports";
 import { whiteColor } from "../theme/setThemeColor";
 
+
 const CreateCreditRequest = ({ refresh }) => {
   const [open, setOpen] = useState(false);
   const [request, setRequest] = useState(false);
@@ -49,6 +50,11 @@ const CreateCreditRequest = ({ refresh }) => {
       }
     );
   };
+
+  React.useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    setDateValue(today);
+  }, [open]);
 
   const handleOpen = () => {
     getCredDataList();
