@@ -9,6 +9,7 @@ import Loader from "../component/loading-screen/Loader";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import RetTxnCardComponent from "./RetTxnCardComponent";
 import DashboardDataComponent1 from "./DashboardDataComponent1";
+import TrafficSourcesChart from "../TrafficSourcesChart";
 
 const AdminDashboard = ({
   graphDuration,
@@ -58,7 +59,9 @@ const AdminDashboard = ({
           graphRequest={graphRequest}
           setGraphRequest={setGraphRequest}
         />   
+        <Grid><TrafficSourcesChart/></Grid>
     </Grid>
+    
       <Grid
         container
         justifyContent="flex-end" // Aligns children to the end
