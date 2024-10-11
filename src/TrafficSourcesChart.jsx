@@ -1,7 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -11,29 +11,29 @@ const TrafficSourcesChart = () => {
     datasets: [
       {
         label: 'Success',
-        data: [300, 700],  // 300 for success, 700 as background to create full circle
+        data: [1800, 900],  // 300 for success, 700 as background to create full circle
         backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(211, 211, 211, 1)'], // Gray as background
-        borderWidth: 1,
+        borderWidth:5,
       },
       {
         label: 'Pending',
-        data: [50, 950],  // 50 for pending, 950 as background
+        data: [500, 950],  // 50 for pending, 950 as background
         backgroundColor: ['rgba(255, 159, 64, 1)', 'rgba(211, 211, 211, 1)'], // Gray as background
-        borderWidth: 1,
+        borderWidth: 3,
         hoverOffset: 4,
       },
       {
         label: 'Failed',
         data: [100, 900],  // 100 for failed, 900 as background
         backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(211, 211, 211, 1)'], // Gray as background
-        borderWidth: 1,
+        borderWidth:5,
         hoverOffset: 4,
       },
       {
         label: 'Total',
         data: [500, 500],  // 500 for total, 500 as background
         backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(211, 211, 211, 1)'], // Gray as background
-        borderWidth: 1,
+        borderWidth:5,
         hoverOffset: 4,
       },
     ],
@@ -53,14 +53,17 @@ const TrafficSourcesChart = () => {
   };
 
   return (
-    <Card style={{ width: '300px', margin: 'auto' }}>
+
+    <Grid lg={4} md={3} sm={11.8} xs={11.2} sx={{height:"513px"}}>
+    <Card style={{ width: '470px', margin: 'auto' }}>
       <CardContent>
         <Typography variant="h5" component="div" align="center">
           Traffic Sources
         </Typography>
-        <Doughnut data={data} options={options} />
+        <Doughnut data={data} options={options} sx={{width:"300px"}}/>
       </CardContent>
     </Card>
+    </Grid>
   );
 };
 

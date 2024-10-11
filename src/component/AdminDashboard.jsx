@@ -59,7 +59,7 @@ const AdminDashboard = ({
           graphRequest={graphRequest}
           setGraphRequest={setGraphRequest}
         />   
-        <Grid><TrafficSourcesChart/></Grid>
+      <TrafficSourcesChart/>
     </Grid>
     
       <Grid
