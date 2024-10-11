@@ -387,7 +387,7 @@ const VerifyMpinLogin = ({
         </Typography>
 
         <Loader loading={request} />
-      </Box>
+      </Box> 
     </Box>
   </Grid>
 
