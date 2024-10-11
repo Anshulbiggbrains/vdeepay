@@ -9,6 +9,7 @@ import Loader from "../component/loading-screen/Loader";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import RetTxnCardComponent from "./RetTxnCardComponent";
 import DashboardDataComponent1 from "./DashboardDataComponent1";
+import TrafficSourcesChart from "../TrafficSourcesChart";
 
 const AdminDashboard = ({
   graphDuration,
@@ -38,74 +39,67 @@ const AdminDashboard = ({
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          mb: { md: 1, lg: -2, xs: 1, sm: 1 },
         }}
       >
-        <Grid xs={12} md={12} lg={2} item>
-          <DashboardDataToggleComponent
+        <Grid xs={12} md={12} lg={12} item>
+          {/* <DashboardDataToggleComponent
             graphDuration={graphDuration}
             setGraphDuration={setGraphDuration}
-          />
+          /> */}
         </Grid>
 
         <AdminWalletBalanceComponent graphDuration={graphDuration} />
       </Grid>
-
-      {user && user.role !== "Asm" && user.role !== "Zsm" && (
+      <Grid 
+      container
+   >
+      <ProductionSaleComponent
+          graphDuration={graphDuration}
+          setGraphDuration={setGraphDuration}
+          graphRequest={graphRequest}
+          setGraphRequest={setGraphRequest}
+        />   
+        <Grid><TrafficSourcesChart/></Grid>
+    </Grid>
+    
+      <Grid
+        container
+        justifyContent="flex-end" // Aligns children to the end
+      >
+      
+       {user && user.role !== "Asm" && user.role !== "Zsm" && (
         <Grid
           container
           columnSpacing={1.5}
           md={12}
           sm={11.8}
           xs={11.2}
-          lg={12}
+          lg={4}
           sx={{
             display: "flex",
             justifyContent: "left",
-            alignItems: "center",
-            borderRadius: "8px",
+            alignItems: "left",
             my: { md: 1, lg: 2, xs: 1, sm: 1 },
+            background: "#fff",
+            borderRadius: "8px",
+            padding: "1rem",
+            boxShadow:
+              "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
           }}
-          className="position-relative"
-        >
+          className="big-screen-box small-screen-box line-chart"
+          >
           <Loader loading={request} />
           {userData &&
             userData.map((item, index) => {
               return (
-                <Grid
-                  key={index}
-                  item
-                  xs={12}
-                  sm={6}
-                  md={2.4}
-                  lg={1.7}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <DashboardDataComponent2 users={item} />
-                </Grid>
+              <DashboardDataComponent2 users={item} />
+
               );
             })}
         </Grid>
       )}
 
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mb: 1,
-        }}
-      >
-        <ProductionSaleComponent
-          graphDuration={graphDuration}
-          setGraphDuration={setGraphDuration}
-          graphRequest={graphRequest}
-          setGraphRequest={setGraphRequest}
-        />
+
         {user && user.role !== "Asm" && user.role !== "Zsm" ? (
           <AsmProductionSaleComponent />
         ) : (

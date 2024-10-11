@@ -244,9 +244,10 @@ const AsmProductionSaleComponent = () => {
   ];
 
   return (
+
     <Grid
     container
-    lg={5.4}
+    lg={7}
     md={12}
     sm={11.8}
     xs={11.2}

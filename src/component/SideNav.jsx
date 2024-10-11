@@ -279,11 +279,11 @@ export default function SideNav(props, { data }) {
         justifyContent: "start",
         alignContent: "left",
         marginLeft: {
-          lg: user?.role === "Admin" ? "12rem" :
+          lg: user?.role === "Admin" ? "12.5rem" :
               user?.role === "Asm" ? "14rem" :
               user?.role === "Zsm" ? "13rem" :
               user.role==="Admin" &&  location.pathname === "/admin/transactions" ? "18rem" :
-              "13rem",
+              "12.5rem",
           md: user?.role === "Admin" ? "13rem" :
               user?.role === "Asm" ? "14rem" :
               user?.role === "Zsm" ? "13rem" :

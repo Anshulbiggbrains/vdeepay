@@ -199,9 +199,9 @@ const ProductionSaleComponent = ({
 
   return (
  
-<Grid item lg={6.5} md={8.5} sm={11.8} xs={11.2}  >
+<Grid item lg={7} md={8.5} sm={11.8} xs={11.2}  >
 <Box sx={{display:"flex", flexDirection:"column"}}>
-  <Box
+  {/* <Box
       sx={{
         backgroundColor: "#fff",
         borderRadius: "8px",
@@ -249,7 +249,7 @@ const ProductionSaleComponent = ({
               ))}
           </Grid>
         )}
-    </Box>
+    </Box> */}
     <Box
       sx={{
         background: "#fff",
@@ -325,9 +325,6 @@ const ProductionSaleComponent = ({
     />
      
   </Box>
-
-
- 
       </Grid>
 
       <Grid container>

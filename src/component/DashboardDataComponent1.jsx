@@ -1,11 +1,13 @@
 import React from "react";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import { Box, Grid, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Card, Grid, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import Loader from "./loading-screen/Loader";
 import { currencySetter } from "../utils/Currencyutil";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import MyEarningsModal from "../modals/admin/MyEarningsModal";
 import { useState } from "react";
+import NorthIcon from '@mui/icons-material/North';
+import SouthIcon from '@mui/icons-material/South';
 // import Mount from "./Mount";
 import { useRef } from "react";
 
@@ -55,24 +57,26 @@ const DashboardDataComponent1 = ({
   };
 
   return (
+   
     <Grid
       container
+
       sx={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
+        borderRadius:"8px",
         flexDirection: "column",
-
-        borderRight: {
-          lg:
-            data === "txn" ? "" : index === len - 1 ? "" : "1px solid #DADADA",
-          md:
-            data === "txn" ? "" : index === len - 1 ? "" : "1px solid #DADADA",
-          xs: "",
-          sm: "",
-        },
+        //   borderRight: {
+        //   lg:
+        //     data === "txn" ? "" : index === len - 1 ? "" : "1px solid #DADADA",
+        //   md:
+        //     data === "txn" ? "" : index === len - 1 ? "" : "1px solid #DADADA",
+        //   xs: "",
+        //   sm: "",
+        // },
       }}
-      className="position-relative"
+      // className="position-relative"
     >
       {index === 0 && data === "wallet" && <Loader loading={PrimaryRequest} />}
       {index === 1 && data === "wallet" && (
@@ -118,7 +122,7 @@ const DashboardDataComponent1 = ({
             }
           }}
         >
-          <BarChartIcon sx={{ mr: 1, color: users.color }} />
+          {/* <BarChartIcon sx={{ mr: 1, color: users.color }} /> */}
           <Tooltip
             title={
               data === "txn" ? (
@@ -153,8 +157,33 @@ const DashboardDataComponent1 = ({
                   }}
                 >
                   Cr
+               
                 </div>
+             
               )}
+                 <Box
+                sx={{
+                  fontSize: "10px",
+                  color: users.increased ? "#00BF78" : "#DC5F5F",
+                  display: "flex",
+                  alignItems: "left",
+                  justifyContent: { xs: "flex-start", sm: "flex-end" }, 
+                  mt: { xs: 1, sm: 0 },
+                  width: { xs: "100%", sm: "auto" },
+                  ml:2
+                }}
+              >
+                {users.increased ? (
+                  <NorthIcon sx={{  fontSize: { xs: "14px", sm: "16px" } }} />
+                ) : (
+                  <SouthIcon sx={{ fontSize: { xs: "14px", sm: "18px" } }} />
+                )}
+                <Typography
+                  sx={{ fontSize: { xs: "10px", sm: "12px" }, ml: 0.5 }}
+                >
+                  54.3%
+                </Typography>
+              </Box>
             </div>
           </Tooltip>
         </div>
@@ -218,6 +247,7 @@ const DashboardDataComponent1 = ({
       </Grid>
       <MyEarningsModal users={users} />
     </Grid>
+
   );
 };
 
