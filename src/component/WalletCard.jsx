@@ -186,7 +186,7 @@ const borderPulse = keyframes`
 )}
 
     {/* DD Card */}
-    {user.role!=="Dd"&& user.role!=="Ad"&& user.role!=="Admin"&&
+    {user.role!=="Dd"&&user.role!=="Ret"&& user.role!=="Ad"&& user.role!=="Admin"&&
     <Grid item xs="auto">
       <Box
         sx={{
