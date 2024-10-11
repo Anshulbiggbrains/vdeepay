@@ -308,76 +308,111 @@ console.log("icons",operatorIcon);
                   overflowY: "scroll",
                 }}
               >
-                <Grid item xs={12}>
-                  {type === "mobile" && (
-                    <FormControl sx={{ width: "100%" }}>
-                      <TextField
-                        autoComplete="off"
-                        label="Mobile Number"
-                        id="mobile"
-                        type="number"
-                        size="small"
-                        error={!isMobV}
-                        helperText={!isMobV ? "Enter valid Mobile" : ""}
-                        InputProps={{
-                          inputProps: { maxLength: 10 },
-                        }}
-                        value={mobile}
-                        onChange={(e) => {
-                          setIsMobV(PATTERNS.MOBILE.test(e.target.value));
-                          if (e.target.value === "") setIsMobV(true);
-                          setMobile(e.target.value);
-                          if (e.target.value.length === 10 && PATTERNS.MOBILE.test(e.target.value)) {
-                            getNumberInfo(e.target.value);
-                          } else {
-                            setInfoFetched(false);
-                            setAmount("");
-                            setNumberinfo("");
-                            setOperator("");
-                          }
-                        }}
-                        required
-                        disabled={request}
-                      />
-                    </FormControl>
-                  )}
-                  {type === "dth" && (
-                    <FormControl sx={{ width: "100%" }}>
-                      <TextField
-                        autoComplete="off"
-                        label="Customer ID"
-                        id="customer-id"
-                        type="tel"
-                        error={!isCustomerIdV}
-                        helperText={!isCustomerIdV ? "Enter valid Customer Id" : ""}
-                        size="small"
-                        inputProps={{ maxLength: 20 }}
-                        onChange={(e) => {
-                          setCustomerId(e.target.value);
-                          setIsCustomerIdV(PATTERNS.DTH.test(e.target.value));
-                          if (e.target.value === "") {
-                            setIsCustomerIdV(true);
-                            setInfoFetched(false);
-                            setAmount("");
-                            setNumberinfo("");
-                            setOperator("");
-                          }
-                        }}
-                        required
-                        InputProps={{
-                          endAdornment:
-                            infoFetched && envName !== PROJECTS.moneyoddr && (
-                              <InputAdornment position="end">
-                                <Button variant="text" onClick={() => getNumberInfo(customerId)}>
-                                  get Info
-                                </Button>
-                              </InputAdornment>
-                            ),
-                        }}
-                      />
-                    </FormControl>
-                  )}
-                </Grid>
+              <Grid item xs={12}>
+  {type === "mobile" && (
+  <FormControl sx={{ width: "100%" }}>
+  <TextField
+    autoComplete="off"
+    label="Mobile Number"
+    id="mobile"
+    type="text" // Change to 'text' to allow for custom input validation
+    size="small"
+    error={!isMobV || (mobile.length === 10 && mobile.startsWith("0"))}
+    helperText={
+      !isMobV
+        ? "Enter valid Mobile"
+        : mobile.length === 10 && mobile.startsWith("0")
+        ? "Mobile number cannot start with 0"
+        : ""
+    }
+    InputProps={{
+      inputProps: { maxLength: 10 },
+    }}
+    value={mobile}
+    onChange={(e) => {
+      const value = e.target.value;
+
+      // Prevent typing '0' as the first character and more than 10 digits
+      if (value.length > 10 || (value.length === 1 && value.startsWith("0"))) {
+        return; // Do not update state if the condition is met
+      }
+
+      // Set initial state for validations
+      if (value === "") {
+        setIsMobV(true);
+        setMobile(value);
+        setInfoFetched(false);
+        setAmount("");
+        setNumberinfo("");
+        setOperator("");
+        return;
+      }
+
+      // Update validation state
+      const isValidLength = value.length === 10;
+      const isValidPattern = PATTERNS.MOBILE.test(value);
+      const startsWithZero = value.startsWith("0");
+
+      // Set the validation flag based on the conditions
+      setIsMobV(isValidPattern && !startsWithZero);
+
+      setMobile(value);
+
+      // Fetch number info only if it is a valid 10-digit number
+      if (isValidLength && isValidPattern && !startsWithZero) {
+        getNumberInfo(value);
+      } else {
+        setInfoFetched(false);
+        setAmount("");
+        setNumberinfo("");
+        setOperator("");
+      }
+    }}
+    required
+    disabled={request}
+  />
+</FormControl>
+
+  )}
+  {type === "dth" && (
+    <FormControl sx={{ width: "100%" }}>
+      <TextField
+        autoComplete="off"
+        label="Customer ID"
+        id="customer-id"
+        type="tel"
+        error={!isCustomerIdV}
+        helperText={!isCustomerIdV ? "Enter valid Customer Id" : ""}
+        size="small"
+        inputProps={{ maxLength: 20 }}
+        onChange={(e) => {
+          const value = e.target.value;
+          setCustomerId(value);
+          setIsCustomerIdV(PATTERNS.DTH.test(value));
+          if (value === "") {
+            setIsCustomerIdV(true);
+            setInfoFetched(false);
+            setAmount("");
+            setNumberinfo("");
+            setOperator("");
+          }
+        }}
+        required
+        InputProps={{
+          endAdornment:
+            infoFetched && envName !== PROJECTS.moneyoddr && (
+              <InputAdornment position="end">
+                <Button variant="text" onClick={() => getNumberInfo(customerId)}>
+                  get Info
+                </Button>
+              </InputAdornment>
+            ),
+        }}
+      />
+    </FormControl>
+  )}
+</Grid>
+
   
                 <Grid item xs={12}>
                   <FormControl sx={{ width: "100%" }}>

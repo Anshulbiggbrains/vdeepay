@@ -34,7 +34,8 @@ import { Numbers } from "@mui/icons-material";
 import CardComponent from "../component/CardComponent";
 import ReplyIcon from '@mui/icons-material/Reply';
 import BbpsCardComponent from "../component/BbpsCardComponent";
-
+import SearchIcon from '@mui/icons-material/Search';
+import { InputAdornment } from '@mui/material';
 const OuterIcon = styled(Box)(({ theme, bg = '#08509E' }) => ({
   top: '-12px',
   zIndex: 1,
@@ -59,7 +60,7 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   borderRadius: '50%',
   alignItems: 'center',
   justifyContent: 'center',
-  boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+  boxShadow: 'rgba(0, 0, 0, 0.24) 0px 1px 4px',
   background: theme.palette.common.white,
 }));
 const BBPSView = ({resetView}) => {
@@ -103,6 +104,7 @@ const BBPSView = ({resetView}) => {
   const [selectedBillerName, setSelectedBillerName] = useState("");
   const [biller_name,setBilerName]=useState()
   const [searchQuery, setSearchQuery] = useState("");
+  const [image, setImage] = useState("");
   const [filteredBillers, setFilteredBillers] = useState(biller);
 
   const filterOptions = createFilterOptions({
@@ -534,7 +536,7 @@ const BBPSView = ({resetView}) => {
                   item
                   xs={12}
                   sm={6}
-                  md={3}
+                  md={4}
                   key={index}
                   sx={{ width: "100%", height: "100%" }}
                 >
@@ -546,6 +548,7 @@ const BBPSView = ({resetView}) => {
                       getBillers(item.categoryKey);
                       setAction(item.categoryName);
                       setIsActive(!isActive);
+                      setImage(item.iconUrl)
                     }}
                     isActive={action === item.categoryName}
                     title={item.categoryName}
@@ -561,13 +564,53 @@ const BBPSView = ({resetView}) => {
       {showSecondPage === 1 && (
         <Box>
        <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
+       <Grid item xs={12} sm="auto">
+    <Box display="flex" alignItems="center">
+      <InnerIcon>
+        <img src={image} alt="Biller" style={{ width: 40, height: 40 }} />
+      </InnerIcon>
+      <Typography variant="h6" align="left" sx={{ ml: 1 }}>
+        {biller.length > 0 ? biller[0].categoryName : "No Category"}
+      </Typography>
+    </Box>
+  </Grid>
+       <Grid item xs={12} sm={6}>
+  <TextField
+    label="Search Biller"
+    variant="outlined"
+    fullWidth
+    value={searchQuery}
+    onChange={handleSearch}
+    InputProps={{
+      endAdornment: (
+        <InputAdornment position="end">
+          <SearchIcon />
+        </InputAdornment>
+      ),
+    }}
+    sx={{
+      '& .MuiOutlinedInput-root': {
+        borderRadius: '8px',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#fff',
+      },
+      '& .MuiInputLabel-root': {
+        color: '#757575',
+      },
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#cccccc',
+      },
+      '&:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#999999',
+      },
+      '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#3f51b5',
+      },
+    }}
+  />
+</Grid>
 
-            <Grid item xs={12} sm="auto">
-              <Typography variant="h6" align="left" sx={{ ml: 1 }}>
-                {biller.length > 0 ? biller[0].categoryName : "No Category"}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 label="Search Biller"
                 variant="outlined"
@@ -594,7 +637,7 @@ const BBPSView = ({resetView}) => {
                   },
                 }}
               />
-            </Grid>
+            </Grid> */}
 
         
             <Grid item xs={12} sm="auto">
@@ -618,9 +661,9 @@ const BBPSView = ({resetView}) => {
                   item
                   xs={12}
                   sm={6}
-                  md={3}
+                  md={4}
                   key={index}
-                  sx={{ width: "100%", height: "75%" }}
+                  // sx={{ width: "100%", height: "75%" }}
                 >
                   <BbpsCardComponent
                     onClick={() => {
@@ -648,7 +691,7 @@ const BBPSView = ({resetView}) => {
       )}
 
      
-      {showSecondPage === 2 && (
+{showSecondPage === 2 && (
   <Box 
     sx={{ 
       padding: 2, 
@@ -659,49 +702,101 @@ const BBPSView = ({resetView}) => {
       overflow: "hidden" 
     }}
   >
-    
     <Grid container spacing={2} sx={{ height: "100%" }}>
-   
-     
       <Grid item lg={4} xs={12} sm={4} sx={{ p: 2 }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-     
-    <Typography variant="h6" align="left">
-      {biller[0]?.categoryName}
-    </Typography>
-    <Button variant="contained" onClick={handleBackToBillerData}>
-      <ReplyIcon /> Back
-    </Button>
-  </Box>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
+          <Box display="flex" alignItems="center">
+            <InnerIcon>
+              <img src={image} alt="Biller" style={{ width: 40, height: 40 }} />
+            </InnerIcon>
+            <Typography variant="h6" align="left" sx={{ ml: 1 }}>
+              {biller.length > 0 ? biller[0].categoryName : "No Category"}
+            </Typography>
+          </Box>
 
-        <Grid item xs={12} lg={12} sm={12} sx={{ mt: 1 }}>
+          <Button 
+            variant="contained" 
+            onClick={handleBackToBillerData} 
+            sx={{ ml: 2, p: "4px 12px", fontSize: '0.875rem', minWidth: "auto" }} 
+            size="small"
+          >
+            <ReplyIcon sx={{ fontSize: 16 }} />
+            Back
+          </Button>
+        </Box>
+
+        {/* Search Field */}
+        <Grid item xs={12} sm={6} lg={12} md={12}>
           <TextField
             label="Search Biller"
             variant="outlined"
             fullWidth
             value={searchQuery}
             onChange={handleSearch}
-            sx={{ 
-              '& .MuiOutlinedInput-root': { borderRadius: '8px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff' }
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '8px',
+                boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#fff',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#757575',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#cccccc',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#999999',
+              },
+              '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#3f51b5',
+              },
             }}
           />
         </Grid>
-        <Divider sx={{ m: 1, backgroundColor: "grey.500", height: 1.5 }} />
 
-        {/* Scrollable list of billers */}
-        <Box  sx={{ maxHeight: {sm:"150px",xs:"150px",lg:"500px",md:"500px"}, overflowY: "auto" }}>
+        {/* Divider */}
+        <Divider sx={{ my: 2, backgroundColor: "grey.500", height: 1.5 }} />
+
+        {/* Card Count */}
+
+        <Typography 
+  variant="caption" // Use a smaller variant for smaller text size
+  sx={{ 
+    mt:-2,
+    justifyContent: "end", 
+    display: 'flex', // Ensure the flex context for alignment
+    alignItems: 'flex-start', // Align items to the top
+     // Optional: adjust the margin to control the vertical spacing
+  }} 
+  align="right"
+>
+  {filteredBillers.length} {filteredBillers.length === 1 ? 'biller' : 'billers'} found
+</Typography>
+
+
+        {/* Scrollable List of Billers */}
+        <Box sx={{ maxHeight: { sm: "200px", xs: "200px", lg: "500px", md: "500px" }, overflowY: "auto" }}>
           {filteredBillers.length > 0 ? (
             filteredBillers.map((item, index) => (
               <Box key={index} sx={{ marginBottom: 2 }}>
                 <CardComponent
-                  height={"60px"}
+                  py={0}
+                  px={0}
                   title={item.billerName}
                   img={item.iconUrl}
                   onClick={() => {
                     setSelectedBillerId(item.billerId);
-                    setSelectedBillerName(item.name) 
-                    setSelectedImage(item.iconUrl)// Set selected biller ID
-                    getBillersDetails(item.billerId); // Fetch params for the selected biller
+                    setSelectedBillerName(item.name);
+                    setSelectedImage(item.iconUrl);
+                    getBillersDetails(item.billerId);
                   }}
                   isSelected={selectedBillerId === item.billerId}
                 />
@@ -717,131 +812,123 @@ const BBPSView = ({resetView}) => {
 
       {/* Right side: Scrollable detailed view */}
       <Grid
-  item
-  xs={12}
-  lg={8}
-  sm={8}
-  sx={{
-    maxHeight: "1000px",
-    overflowY: "auto",
-    padding: 2,
-    borderLeft: "1px solid lightgrey",
-    position: "relative",
-  }}
->
-
-  {/* Back to Categories Button aligned to the right */}
- 
-
-  {selectedBillerId ? (
-    <>
- 
-
-      <Box >
-        {params && (
-          <Box
-            component="form"
-            id="bbpsForm"
-            validate="true"
-            autoComplete="off"
-            onSubmit={mpinVal ? payBill : openMpinfunc}
-            sx={formStyle}
-          >
-            <Grid container spacing={2} sx={{ pt: 1, width: { md: "100%", sm: "100%", xs: "100%" } }}>
-              
-            <Box display="flex" alignItems="center">
-  <InnerIcon>
-    <img src={selectedImage} alt="bbps" />
-  </InnerIcon>
-  <Typography variant="h6" align="left" sx={{ ml: 2, fontWeight: "300" }}>
-    {biller_name}
-  </Typography>
-</Box>
-              {params.map((item, index) => (
-                <Grid item md={12} xs={12} key={index}>
-         
-                  <FormControl sx={{ width: "100%" }}>
-                    <TextField
-                      autoComplete="off"
-                      label={item.desc}
-                      id={item.name}
-                      inputProps={{
-                        minLength: item.minLength,
-                        maxLength: item.maxLength,
-                        pattern: item.regex,
-                      }}
-                      size="small"
-                      required={item.mandatory === 1}
-                      type={item.inputType === "NUMERIC" ? "number" : "text"}
-                      sx={{ marginBottom: 2 }} // Add spacing between text fields
-                    />
-                  </FormControl>
-                </Grid>
-              ))}
-
-              {/* Error message below text fields */}
-              {err && (
+        item
+        xs={12}
+        lg={8}
+        sm={8}
+        sx={{
+          maxHeight: "1000px",
+          overflowY: "auto",
+          padding: 2,
+          borderLeft: "1px solid lightgrey",
+          position: "relative",
+        }}
+      >
+        {/* Back to Categories Button aligned to the right */}
+        {selectedBillerId ? (
+          <>
+            <Box>
+              {params && (
                 <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    mt: 2,
-                    fontSize: "12px",
-                    px: 2,
-                    color: "#DC5F5F",
-                  }}
+                  component="form"
+                  id="bbpsForm"
+                  validate="true"
+                  autoComplete="off"
+                  onSubmit={mpinVal ? payBill : openMpinfunc}
+                  sx={formStyle}
                 >
-                  <div>{err.message}</div>
+                  <Grid container spacing={2} sx={{ pt: 1, width: { md: "100%", sm: "100%", xs: "100%" } }}>
+                    <Box display="flex" alignItems="center">
+                      <InnerIcon>
+                        <img src={selectedImage} alt="bbps" />
+                      </InnerIcon>
+                      <Typography variant="h6" align="left" sx={{ ml: 2, fontWeight: "300" }}>
+                        {biller_name}
+                      </Typography>
+                    </Box>
+                    {params.map((item, index) => (
+                      <Grid item md={12} xs={12} key={index}>
+                        <FormControl sx={{ width: "100%" }}>
+                          <TextField
+                            autoComplete="off"
+                            label={item.desc}
+                            id={item.name}
+                            inputProps={{
+                              minLength: item.minLength,
+                              maxLength: item.maxLength,
+                              pattern: item.regex,
+                            }}
+                            size="small"
+                            required={item.mandatory === 1}
+                            type={item.inputType === "NUMERIC" ? "number" : "text"}
+                            sx={{ marginBottom: 2 }} // Add spacing between text fields
+                          />
+                        </FormControl>
+                      </Grid>
+                    ))}
+
+                    {/* Error message below text fields */}
+                    {err && (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          mt: 2,
+                          fontSize: "12px",
+                          px: 2,
+                          color: "#DC5F5F",
+                        }}
+                      >
+                        <div>{err.message}</div>
+                      </Box>
+                    )}
+
+                    {/* Submit Button or Bill Details Modal */}
+                    <Grid item md={12} xs={12}>
+                      <FormControl sx={{ mt: 2, width: "100%" }}>
+                        {fetchMandatory === "MANDATORY" ? (
+                          <BillDetailsModal
+                            billerId={billerId}
+                            params={params}
+                            currentBiller={currentBiller}
+                            billDetails={billDetails}
+                            setBillDetails={setBillDetails}
+                            fetchBill={fetchBill}
+                            categoryName={categoryName}
+                            payRequest={payRequest}
+                            payBill={payBill}
+                            mpinVal={mpinVal}
+                            setMpinVal={setMpinVal}
+                            setOpenMpin={setOpenMpin}
+                            billValue={billValue}
+                            setBillValue={setBillValue}
+                            setPan={setPan}
+                            pan={pan}
+                            err={err}
+                          />
+                        ) : (
+                          <Button
+                            type="submit"
+                            form="bbpsForm"
+                            className="btn-background"
+                            sx={{ width: "100%", mt: 1 }}
+                          >
+                            {mpinVal ? "Pay Now" : "Continue"}
+                          </Button>
+                        )}
+                      </FormControl>
+                    </Grid>
+                  </Grid>
                 </Box>
               )}
-
-              {/* Submit Button or Bill Details Modal */}
-              <Grid item md={12} xs={12}>
-                <FormControl sx={{ mt: 2, width: "100%" }}>
-                  {fetchMandatory === "MANDATORY" ? (
-                    <BillDetailsModal
-                      billerId={billerId}
-                      params={params}
-                      currentBiller={currentBiller}
-                      billDetails={billDetails}
-                      setBillDetails={setBillDetails}
-                      fetchBill={fetchBill}
-                      categoryName={categoryName}
-                      payRequest={payRequest}
-                      payBill={payBill}
-                      mpinVal={mpinVal}
-                      setMpinVal={setMpinVal}
-                      setOpenMpin={setOpenMpin}
-                      billValue={billValue}
-                      setBillValue={setBillValue}
-                      setPan={setPan}
-                      pan={pan}
-                      err={err}
-                    />
-                  ) : (
-                    <Button
-                      type="submit"
-                      form="bbpsForm"
-                      className="btn-background"
-                      sx={{ width: "100%", mt: 1 }}
-                    >
-                      {mpinVal ? "Pay Now" : "Continue"}
-                    </Button>
-                  )}
-                </FormControl>
-              </Grid>
-            </Grid>
-          </Box>
+            </Box>
+          </>
+        ) : (
+          <Typography variant="h6" align="center">
+            Please select a biller to view details.
+          </Typography>
         )}
-      </Box>
-    </>
-  ) : (
-    <Typography variant="h6" align="center">
-      Please select a biller to view details.
-    </Typography>
-  )}
-</Grid>
-
+      </Grid>
     </Grid>
   </Box>
 )}

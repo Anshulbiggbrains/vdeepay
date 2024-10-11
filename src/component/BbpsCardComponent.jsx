@@ -1,8 +1,12 @@
 import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
 
-const BbpsCardComponent = ({ title, img, onClick ,height, isSelected = false }) => {
+const BbpsCardComponent = ({ title, img, onClick, height, isSelected = false }) => {
+  // Calculate the number of words in the title
+  const wordCount = title.split(' ').length;
 
+  // Define the font size based on the word count
+  const fontSize = wordCount > 9 ? '0.8rem' : '1rem'; // Adjust font sizes as needed
 
   return (
     <Tooltip title={title} placement="top">
@@ -17,19 +21,17 @@ const BbpsCardComponent = ({ title, img, onClick ,height, isSelected = false }) 
           textAlign: 'left',
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '95%',
+          width: '100%',
           height: height ? height : "75%",
           ml: 1,
-          padding: 2,
+          px: 0.5,
+          py:2,
           mt: 2,
           overflow: 'hidden',
-          whiteSpace: 'nowrap',
-          textOverflow: 'ellipsis',
           backgroundClip: 'padding-box',
           position: 'relative',
           border: isSelected ? '2px solid #1877F2' : '2px solid transparent', // Highlight border if selected
 
-        
           '&:hover': {
             transform: 'scale(1.05)',
             boxShadow: 4,
@@ -37,7 +39,6 @@ const BbpsCardComponent = ({ title, img, onClick ,height, isSelected = false }) 
             animation: 'pulse 1s infinite',
           },
 
-         
           '@keyframes pulse': {
             '0%': { transform: 'scale(1)' },
             '50%': { transform: 'scale(1.05)' },
@@ -46,12 +47,11 @@ const BbpsCardComponent = ({ title, img, onClick ,height, isSelected = false }) 
         }}
         onClick={onClick}
       >
-       
         <img
           src={img}
           alt={title}
           width="40px"
-          style={{ borderRadius: '50%', marginRight: '10px' }} 
+          style={{ marginRight: '10px' }} 
         />
 
         {/* Operator name */}
@@ -60,8 +60,9 @@ const BbpsCardComponent = ({ title, img, onClick ,height, isSelected = false }) 
           sx={{
             ml: 1,
             fontWeight: 500,
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
+            fontSize: fontSize, // Apply the dynamic font size here
+            overflow: 'visible', // Allow text to wrap
+            whiteSpace: 'normal', // Enable wrapping
             textOverflow: 'ellipsis',
             color: '#000', // Text color
           }}

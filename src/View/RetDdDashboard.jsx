@@ -93,53 +93,59 @@ const RetDdDashboard = () => {
       data: [
         {
           id: 7,
-          name: "Mobile Recharge",
+          name: "Prepaid",
           img: recharge1,
           component: MobileRechargeForm,
         },
-        { id: 8, name: "DTH", img: dth1, component: MobileRechargeForm },
         {
-          id: 9,
+          id: 8,
+          name: "Postpaid",
+          img: recharge1,
+          component: MobileRechargeForm,
+        },
+        { id: 9, name: "DTH", img: dth1, component: MobileRechargeForm },
+        {
+          id: 10,
           name: "Electricity",
           img: electricity1,
           component: ElectricityForm,
         },
         {
-          id: 10,
+          id: 11,
           name: "Credit Card ",
           img: creditcard1,
           component: CreditcardForm,
         },
         {
-          id: 11,
+          id: 12,
           name: "BroadBand",
           img: broadband1,
           component: ElectricityForm,
         },
-        { id: 12, name: "Gas", img: gas1, component: ElectricityForm },
-        { id: 13, name: "Water", img: water1, component: ElectricityForm },
+        { id: 13, name: "Gas", img: gas1, component: ElectricityForm },
+        { id: 14, name: "Water", img: water1, component: ElectricityForm },
         {
-          id: 14,
+          id: 15,
           name: "Insurance",
           img: insurance1,
           component: ElectricityForm,
         },
         {
-          id: 15,
+          id: 16,
           name: "Landline",
           img: landline1,
           component: ElectricityForm,
         },
-        { id: 16, name: "Bbps", img: bbps1, component: BBPSView },
+        { id: 17, name: "Bbps", img: bbps1, component: BBPSView },
       ],
     },
     {
       title: "Travel",
       data: [
-        { id: 17, name: "AIR", img: airplane1, component: FlightTab },
-        { id: 18, name: "BUS", img: bus1, component: BusTab },
-        { id: 19, name: "HOTELS", img: hotel1, component: HotelsTab },
-        { id: 20, name: "IRCTC", img: train1, component: TrainTab },
+        { id: 18, name: "AIR", img: airplane1, component: FlightTab },
+        { id: 19, name: "BUS", img: bus1, component: BusTab },
+        { id: 20, name: "HOTELS", img: hotel1, component: HotelsTab },
+        { id: 21, name: "IRCTC", img: train1, component: TrainTab },
       ],
     },
   ];
@@ -166,7 +172,7 @@ const RetDdDashboard = () => {
             ? "super"
             : item.name === "UPI"
             ? "upi"
-            : item.name === "Mobile Recharge"
+            : item.name === "Prepaid"||"PostPaid"
             ? "mobile"
             : item.name === "Water"
             ? "WATER"
