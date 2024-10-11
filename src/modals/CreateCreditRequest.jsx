@@ -34,12 +34,6 @@ const CreateCreditRequest = ({ refresh }) => {
   const [fileValue, setFileValue] = useState(null);
 
   const resetForm = () =>{
-    // bank_name: bank,
-    //   mode: mode,
-    //   bank_ref_id: form.ref_id.value,
-    //   date: dateValue, // Since this is already in YYYY-MM-DD format
-    //   amount: form.amt.value,
-    //   img: form.file_upload.value
     setBank("");
     setMode("");
     setDateValue("");
