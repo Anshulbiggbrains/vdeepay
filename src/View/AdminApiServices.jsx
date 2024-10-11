@@ -79,7 +79,12 @@ const AdminApiServices = () => {
     {
       name: (
         <FormControl className="customized-textfield">
-          <TextField autoComplete="off" select value={defaultStatus} sx={{ color: "#fff" }}>
+          <TextField
+            autoComplete="off"
+            select
+            value={defaultStatus}
+            sx={{ color: "#fff" }}
+          >
             <MenuItem dense value="All">
               All
             </MenuItem>

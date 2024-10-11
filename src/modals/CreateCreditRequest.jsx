@@ -95,7 +95,7 @@ const CreateCreditRequest = ({ refresh }) => {
       <Tooltip title="Credit Request">
         <Button
           variant="outlined"
-          className="refresh-icon-risk"
+          className="refresh-icon-risk "
           onClick={handleOpen}
           startIcon={
             <IconButton
@@ -107,17 +107,12 @@ const CreateCreditRequest = ({ refresh }) => {
               <AddCircleOutlineIcon />
             </IconButton>
           }
-          sx={{ py: 0.3 }}
         >
-          Add Request
+          Request
         </Button>
       </Tooltip>
 
-      <Drawer
-        anchor="right"
-        open={open}
-        onClose={handleClose}
-      >
+      <Drawer anchor="right" open={open} onClose={handleClose}>
         <Box
           sx={{
             width: 400,
@@ -129,7 +124,11 @@ const CreateCreditRequest = ({ refresh }) => {
           }}
           role="presentation"
         >
-          <ModalHeader title="Add Credit Request" handleClose={handleClose} subtitle="Quickly Request Credit with VdeePay Now!"/>
+          <ModalHeader
+            title="Add Credit Request"
+            handleClose={handleClose}
+            subtitle="Quickly Request Credit with VdeePay Now!"
+          />
           <Box
             component="form"
             id="createCreditReq"

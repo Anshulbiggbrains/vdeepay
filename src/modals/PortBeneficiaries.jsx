@@ -131,33 +131,15 @@ const PortBeneficiaries = ({
       }}
     >
       <Tooltip title="PORT">
-      <Button
-  sx={{
-    cursor: "pointer",
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: "#c69f26",
-    marginLeft: '1rem',
-    borderRadius: '4px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // Subtle shadow for depth
-    transition: 'background-color 0.3s, transform 0.2s', // Smooth transition
-    '&:hover': {
-      backgroundColor: "#E49B0F",
-      transform: 'scale(1.05)' // Slightly enlarge on hover
-    },
-    '&:active': {
-      transform: 'scale(0.95)', // Scale down when active for feedback
-    },
-  }}
-  onClick={handleOpen}
->
+   
   <Loader loading={request} size="small" />
   <img
     src={port}
+    onClick={handleOpen}
     alt="UPI logo"
     style={{ width: "20px", height: "20px", marginLeft: "4px" }} // Added margin for spacing
   />
-</Button>
+
 
 </Tooltip>
 

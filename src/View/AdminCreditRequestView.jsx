@@ -222,7 +222,7 @@ const CreditRequestView = () => {
                   });
                 }}
               >
-                <Icon icon="ri:share-forward-line" width={22} height={22} />
+                <Icon icon="ion:arrow-undo-sharp" width={22} height={22} />
               </IconButton>
             </Tooltip>
             <Snackbar
@@ -256,6 +256,7 @@ const CreditRequestView = () => {
       ),
       wrap: true,
       width: "150px",
+
       omit:
         user && user.role === "Admin"
           ? false
@@ -309,12 +310,11 @@ const CreditRequestView = () => {
     {
       name: "Bank",
       selector: (row) => (
-        <div style={{ textAlign: "left", fontSize: "13px" }}>
+        <div style={{ textAlign: "left", fontSize: "12px" }}>
           <div>{row.bank_name}</div>
         </div>
       ),
       wrap: true,
-      width: "130px",
     },
     {
       name: "MOP",
@@ -420,8 +420,8 @@ const CreditRequestView = () => {
                 >
                   <Icon
                     icon="material-symbols:pageview-outline"
-                    width={26}
-                    height={26}
+                    width={25}
+                    height={25}
                   />
                 </IconButton>
               </Tooltip>
@@ -435,7 +435,7 @@ const CreditRequestView = () => {
         </Box>
       ),
       wrap: true,
-      width: "140px",
+      width: "130px",
     },
   ];
 
