@@ -318,7 +318,7 @@ const borderPulse = keyframes`
         borderRadius: '8px',
         display: 'flex',
         alignItems: 'center',
-        width: { lg: '140px', sm: '105px' },
+        width: { lg: '140px', sm: '125px' },
         border: '2px solid #D71313',
       }}
     >

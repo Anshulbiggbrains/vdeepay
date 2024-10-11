@@ -44,9 +44,9 @@ function CustomTabs({ tabs, value, onChange, heading }) {
                 padding: '6px 12px',
                 flexDirection: 'row',
                 gap: '8px',
-                borderRight: '3px solid #e0e0e0', // Adding the right border
+                borderRight: '3px solid #e0e0e0', 
                 '&:last-child': {
-                  borderRight: 'none', // Remove border for the last tab
+                  borderRight: 'none', 
                 },
               }}
             />
