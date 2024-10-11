@@ -1,92 +1,8 @@
-// import React from 'react';
-// import { Box, Tooltip, Typography } from '@mui/material';
-// import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-// // Card component for displaying operator information
-// const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
-//   // Try to dynamically import the operator's image
-//   let imageSrc;
-//   try {
-//     imageSrc = require(`../assets/operators/${img}.png`);
-//   } catch (error) {
-//     imageSrc = null; 
-//   }
-
-//   return (
-//     <Tooltip title={title} placement="top">
-//       <Box
-//         className={isSelected ? "card-selected" : "card-unselected"}
-//         sx={{
-//           display: 'flex',
-//           alignItems: 'center',
-//           background: 'linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)',
-//           boxShadow: 2,
-//           borderRadius: '8px',
-//           textAlign: 'left',
-//           cursor: 'pointer',
-//           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-//           width: '95%',
-//           height: height ? height : "75%",
-//           ml: 1,
-//           padding: 2,
-//           mt: 2,
-//           overflow: 'hidden',
-//           whiteSpace: 'nowrap',
-//           textOverflow: 'ellipsis',
-//           backgroundClip: 'padding-box',
-//           position: 'relative',
-//           border: isSelected ? '2px solid #1877F2' : '2px solid transparent', // Highlight border if selected
-
-        
-//           '&:hover': {
-//             transform: 'scale(1.05)',
-//             boxShadow: 4,
-//             border: '2px solid black',
-//             animation: 'pulse 1s infinite',
-//           },
-
-         
-//           '@keyframes pulse': {
-//             '0%': { transform: 'scale(1)' },
-//             '50%': { transform: 'scale(1.05)' },
-//             '100%': { transform: 'scale(1)' },
-//           },
-//         }}
-//         onClick={onClick}
-//       >
-       
-//         <img
-//           src={imageSrc||img}
-//           alt={title}
-//           width="40px"
-//           style={{ borderRadius: '50%', marginRight: '10px' }} 
-//         />
-
-//         {/* Operator name */}
-//         <Typography
-//           variant="subtitle1"
-//           sx={{
-//             ml: 1,
-//             fontWeight: 500,
-//             overflow: 'hidden',
-//             whiteSpace: 'nowrap',
-//             textOverflow: 'ellipsis',
-//             color: '#000', // Text color
-//           }}
-//         >
-//           {title}
-//         </Typography>
-//       </Box>
-//     </Tooltip>
-//   );
-// };
-
-// export default CardComponent;
 import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'; // Optional icon for illustration
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
-  // Dynamically load image or fallback to placeholder
+  // Dynamically import the operator's image
   let imageSrc;
   try {
     imageSrc = require(`../assets/operators/${img}.png`);
@@ -97,77 +13,77 @@ const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
   return (
     <Tooltip title={title} placement="top">
       <Box
-        onClick={onClick}
         className={isSelected ? "card-selected" : "card-unselected"}
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          background: isSelected
-            ? 'linear-gradient(135deg, #1877F2 30%, #00A8FF 90%)'
-            : 'linear-gradient(135deg, #FFF 30%, #F1F1F1 90%)', 
-          boxShadow: isSelected ? 4 : 2,
-          borderRadius: '12px', 
+          background: 'linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)',
+          boxShadow: 2,
+          borderRadius: '8px',
           textAlign: 'left',
           cursor: 'pointer',
-          ml:1,
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '100%',
+          width: '95%',
           height: height || "75%",
+          ml: 1,
           padding: 2,
-          marginTop: 2,
-          border: isSelected ? '2px solid #1877F2' : '2px solid transparent',
+          mt: 2,
           overflow: 'hidden',
+          backgroundClip: 'padding-box',
+          position: 'relative',
+          border: isSelected ? '2px solid #1877F2' : '2px solid transparent',
+          
           '&:hover': {
             transform: 'scale(1.05)',
-            boxShadow: 6,
+            boxShadow: 4,
+            border: '2px solid black',
+            animation: 'pulse 1s infinite',
+          },
+
+          '@keyframes pulse': {
+            '0%': { transform: 'scale(1)' },
+            '50%': { transform: 'scale(1.05)' },
+            '100%': { transform: 'scale(1)' },
           },
         }}
+        onClick={onClick}
       >
-        {/* Image section */}
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            flexGrow: 1,
-          }}
-        >
-          <img
-            src={imageSrc || img} 
-            alt={title}
-            width="50px"
-            style={{
-              borderRadius: '50%',
-              marginRight: '15px',
-              border: isSelected ? '3px solid #00A8FF' : '3px solid #E0E0E0',
-            }}
-          />
+        <img
+          src={imageSrc || img}
+          alt="img"
+          width="40px"
+          style={{ borderRadius: '50%', marginRight: '10px' }} 
+        />
 
-         
-          <Typography
-            variant="subtitle1"
-            sx={{
-              fontWeight: 600,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis',
-              color: isSelected ? '#FFF' : '#333', 
-              fontSize: {
-                xs: '12px', 
-                sm: '14px', 
-                md: '16px', 
-                lg: '18px', 
-              },
-            }}
-          >
-            {title}
-          </Typography>
-        </Box>
+     
+<Typography
+  variant="subtitle1"
+  sx={{
+    fontWeight: 500,
+    color: '#000', // Text color
+    overflow: 'hidden',
+    wordWrap: 'break-word',
+    maxWidth: 'calc(100% - 70px)',
 
-        
-        {isSelected && (
-          <CheckCircleIcon sx={{ color: '#FFF', fontSize: '24px', marginLeft: 'auto' }} />
-        )}
+    
+    '@media (max-width: 600px)': {
+      fontSize: '12px', 
+    },
+    
+  
+    '@media (min-width: 601px) and (max-width: 900px)': {
+      fontSize: '10px',
+    },
+
+    // Large screens (over 900px)
+    '@media (min-width: 901px)': {
+      fontSize: '17px', 
+    },
+  }}
+>
+  {title}
+</Typography>
+
       </Box>
     </Tooltip>
   );

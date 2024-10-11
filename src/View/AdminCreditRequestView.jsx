@@ -467,9 +467,9 @@ const CreditRequestView = () => {
   };
   console.log("the role is", user.role);
   return (
-    <Grid>
+    <Grid >
       <Grid
-        className="table-container"
+      
         sx={{
           display: "flex",
           justifyContent: "space-between",
@@ -480,8 +480,7 @@ const CreditRequestView = () => {
         }}
       >
         <FilterCard
-          ifestFilter={user.role !== "Api"}
-          ifnumberFilter
+         ifdateFilter
           ifAsmFilter={
             user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
           }

@@ -65,6 +65,7 @@ const ModalFooter = ({
                   red={red1}
                   onClick={onClick}
                   icon={icon}
+                
                 />
                 {twobuttons && (
                   <Box sx={{ ml: 4 }}>
