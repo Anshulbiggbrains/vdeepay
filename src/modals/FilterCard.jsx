@@ -473,7 +473,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="number"
@@ -497,7 +498,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -522,7 +524,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="plan"
@@ -547,7 +550,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -571,7 +575,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -595,7 +600,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 sx={{ display: "flex", justifyContent: "start" }}
@@ -620,7 +626,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="operator"
@@ -655,7 +662,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -694,7 +702,8 @@ const FilterCard = ({
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
               <Loader loading={request} size="small" />
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="route"
@@ -725,34 +734,40 @@ const FilterCard = ({
           </div>
         )}
         {ifStatusFilter && (
-  <div
-    style={{
-      width: isMobile ? "100%" : "10.5%",
-      overflow: "hidden",
-    }}
-    className="mx-2"
-  >
-    <FormControl
-      sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
-    >
-      <TextField autoComplete="off"
-        className="filter-input"
-        size={isMobile ? "small" : "small"}
-        id="status"
-        select
-        label="Status"
-        value={status}
-        variant="standard"
-        onChange={(e) => setStatus(e.target.value)}
-      >
-        <MenuItem   sx={{fontSize:"13px"}} value="PENDING">PENDING</MenuItem>
-        <MenuItem    sx={{fontSize:"13px"}}  value="APPROVED">APPROVED</MenuItem>
-        <MenuItem   sx={{fontSize:"13px"}}  value="REJECTED">REJECTED</MenuItem>
-      </TextField>
-    </FormControl>
-  </div>
-)}
-
+          <div
+            style={{
+              width: isMobile ? "100%" : "10.5%",
+              overflow: "hidden",
+            }}
+            className="mx-2"
+          >
+            <FormControl
+              sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
+            >
+              <TextField
+                autoComplete="off"
+                className="filter-input"
+                size={isMobile ? "small" : "small"}
+                id="status"
+                select
+                label="Status"
+                value={status}
+                variant="standard"
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <MenuItem sx={{ fontSize: "13px" }} value="PENDING">
+                  PENDING
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "13px" }} value="APPROVED">
+                  APPROVED
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "13px" }} value="REJECTED">
+                  REJECTED
+                </MenuItem>
+              </TextField>
+            </FormControl>
+          </div>
+        )}
         {ifBeneKycStatus && (
           <div
             style={{
@@ -764,7 +779,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="kyc_status"
@@ -784,7 +800,11 @@ const FilterCard = ({
                 {BeneKycStatus.length > 0 &&
                   BeneKycStatus.map((item) => {
                     return (
-                      <MenuItem      sx={{fontSize:"14px"}} dense value={item.value}>
+                      <MenuItem
+                        sx={{ fontSize: "14px" }}
+                        dense
+                        value={item.value}
+                      >
                         {item.label}
                       </MenuItem>
                     );
@@ -810,7 +830,8 @@ const FilterCard = ({
                 textAlign: "start",
               }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="complaint_status"
@@ -851,7 +872,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="asm"
@@ -936,7 +958,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="est"
@@ -960,7 +983,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="role"
@@ -996,7 +1020,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -1020,7 +1045,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1045,7 +1071,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -1069,7 +1096,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -1093,7 +1121,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 onChange={(e) => {
@@ -1117,7 +1146,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1142,7 +1172,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1212,7 +1243,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1237,7 +1269,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1262,7 +1295,8 @@ const FilterCard = ({
             <FormControl
               sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
             >
-              <TextField autoComplete="off"
+              <TextField
+                autoComplete="off"
                 className="filter-input"
                 size={isMobile ? "small" : "small"}
                 id="type"
@@ -1295,16 +1329,25 @@ const FilterCard = ({
           >
             <Tooltip title="apply filter">
               <Button
-                size="small"
-                color="success"
                 variant="contained"
                 sx={{
-                  backgroundColor: "#1560bd",
+                  backgroundColor: "#f39c12",
+                  color: "white",
+                  padding: "6px ",
+                  fontSize: "13px",
+                  borderRadius: "8px",
                   textTransform: "capitalize",
-                  boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
-                  borderRadius: "2px",
-
-                  // ml: 2,
+                  boxShadow: "0px 4px 12px rgba(243, 156, 18, 0.3)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#e67e22",
+                    borderRadius: "8px",
+                    boxShadow: "0px 6px 14px rgba(230, 126, 34, 0.3)",
+                    transform: "scale(1)",
+                  },
+                  "&:active": {
+                    transform: "scale(0.98)",
+                  },
                 }}
                 onClick={() => {
                   if (query) {
@@ -1377,15 +1420,26 @@ const FilterCard = ({
             <Mount visible={query?.length > 0}>
               <Tooltip title="clear filter">
                 <Button
-                  size="small"
-                  color="success"
                   variant="contained"
                   sx={{
+                    backgroundColor: "#ff4757", // Bright red color
+                    color: "white",
+                    padding: "6px",
+                    fontSize: "13px",
                     ml: 1,
-                    backgroundColor: "red",
-                    textTransform: "capitalize",
-                    boxShadow: "rgba(7, 18, 77, 0.15) 0px 12px 10px 10px",
-                    borderRadius: "2px",
+                    borderRadius: "8px",
+                    textTransform: "Capitalize",
+                    boxShadow: "0px 4px 12px rgba(255, 71, 87, 0.3)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: "#e84118",
+                      borderRadius: "8px",
+                      boxShadow: "0px 8px 14px rgba(232, 65, 24, 0.3)",
+                      transform: "scale(1)",
+                    },
+                    "&:active": {
+                      transform: "scale(0.98)",
+                    },
                   }}
                   type="reset"
                   onClick={() => {
