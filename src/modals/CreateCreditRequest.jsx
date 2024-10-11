@@ -26,10 +26,30 @@ const CreateCreditRequest = ({ refresh }) => {
   const [open, setOpen] = useState(false);
   const [request, setRequest] = useState(false);
   const [dateValue, setDateValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const [bank, setBank] = useState("");
   const [mode, setMode] = useState("");
   const [bankList, setBankList] = useState([]);
   const [modeList, setModeList] = useState([]);
+  const [fileValue, setFileValue] = useState(null);
+
+  const resetForm = () =>{
+    // bank_name: bank,
+    //   mode: mode,
+    //   bank_ref_id: form.ref_id.value,
+    //   date: dateValue, // Since this is already in YYYY-MM-DD format
+    //   amount: form.amt.value,
+    //   img: form.file_upload.value
+    setBank("");
+    setMode("");
+    setDateValue("");
+    setFileValue(null);
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFileValue(file);
+  };
 
   const getCredDataList = () => {
     get(
@@ -52,6 +72,7 @@ const CreateCreditRequest = ({ refresh }) => {
   };
 
   React.useEffect(() => {
+    resetForm()
     const today = new Date().toISOString().split('T')[0];
     setDateValue(today);
   }, [open]);
@@ -74,6 +95,7 @@ const CreateCreditRequest = ({ refresh }) => {
       bank_ref_id: form.ref_id.value,
       date: dateValue, // Since this is already in YYYY-MM-DD format
       amount: form.amt.value,
+      img: form.file_upload.value
     };
     setRequest(true);
     postJsonData(
@@ -86,7 +108,9 @@ const CreateCreditRequest = ({ refresh }) => {
         if (refresh) refresh();
       },
       (error) => {
-        apiErrorToast(error);
+        // apiErrorToast(error);
+        console.log("This is your error", error)
+        setErrorMessage(error.response.data.message)
       }
     );
   };
@@ -256,6 +280,33 @@ const CreateCreditRequest = ({ refresh }) => {
                     required
                   />
                 </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label=""
+                    id="file_upload"
+                    size="small"
+                    type="file"
+                    variant="standard"
+                    onChange={handleFileChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    // required
+                    sx={{
+                      border: "none"
+                    }}
+                  />
+                  {/* {fileValue && (
+                    <div style={{ marginTop: 8 }}>
+                      <strong>Selected File:</strong> {fileValue.name}
+                    </div>
+                  )} */}
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12} sx={{width: "100%", color: "red", mx: 2}}>
+                {errorMessage ? errorMessage : ""}
               </Grid>
             </Grid>
           </Box>
