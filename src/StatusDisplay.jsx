@@ -7,7 +7,7 @@ const StatusDisplay = () => {
     { label: 'Total', value: '875468', color: '#000' },
     { label: 'Pending', value: '9875947', color: '#000' },
     { label: 'Refunded', value: '9875947', color: '#000' },
-    { label: 'Success', value: '₹ 100.00', color: '#000' },
+    { label: 'Success', value: '100.00', color: '#000' },
   ];
 
   // Function to get the border color based on status

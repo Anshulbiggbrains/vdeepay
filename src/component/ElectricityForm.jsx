@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Box, FormControl, Grid, TextField, Typography ,Card, Button} from "@mui/material";
+import { Box, FormControl, Grid, TextField, Typography ,Card, Button, Divider} from "@mui/material";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { postJsonData, get } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -13,8 +13,24 @@ import OperatorSearch from "./OperatorSearch";
 import CardComponent from "./CardComponent";
 import CircleComponent from "./CircleComponent";
 import { faListSquares } from "@fortawesome/free-solid-svg-icons";
+import ReplyIcon from '@mui/icons-material/Reply';
+import BbpsCardComponent from "../component/BbpsCardComponent";
+import SearchIcon from '@mui/icons-material/Search';
+import { InputAdornment } from '@mui/material';
+import styled from "styled-components";
+const InnerIcon = styled(Box)(({ theme }) => ({
 
-const ElectricityForm = ({ title, type}) => {
+  // padding: theme.spacing(1),
+  width: '48px',
+  height: '48px',
+  display: 'flex',
+  borderRadius: '50%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  boxShadow: 'rgba(0, 0, 0, 0.24) 0px 1px 4px',
+  // background: theme.palette.common.white,
+}));
+const ElectricityForm = ({ title, type,resetView}) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -36,7 +52,7 @@ const ElectricityForm = ({ title, type}) => {
   const [IsOptSelected, setIsOptSelected] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(false); 
   const [selectedCard, setSelectedCard] = useState(null); 
-  
+  const [searchTerm, setSearchTerm] = useState("");
   const [operatorIcon,setOperatorIcon] = useState()
   const operatorRef = useRef();
 
@@ -98,6 +114,11 @@ const ElectricityForm = ({ title, type}) => {
       );
     }
   };
+  const handleBackToCategories = () => {
+    resetView(false)
+    
+    // setShowSecondPage(0); // Set the state to 1 when the button is clicked
+};
 
   const handleOperatorChange = (event) => {
     const selectedOperator = operatorVal.find(
@@ -127,6 +148,9 @@ const ElectricityForm = ({ title, type}) => {
   useEffect(() => {
     getOperator();
   }, []);
+  const filteredOperators = operatorVal.filter((operator) =>
+    operator.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleOpenVal = (operator) => {
     setIsOptSelected(true);
@@ -141,10 +165,123 @@ console.log("oppp",opName);
   return (
     <div className="position-relative" id="whole">
     <Loader loading={fetchRequest} circleBlue />
+   
     {!IsOptSelected && (
+      <>
+   <div className="position-relative" id="whole">
+      {/* Existing loader and other components */}
+      <Loader loading={fetchRequest} circleBlue />
+
+      {/* Title and Back Button */}
+      <Grid container alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+      <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
+       <Grid item xs={12} sm="auto">
+    <Box display="flex" alignItems="center">
+      <InnerIcon>
+        <img src={""} alt="Biller" style={{ width: 40, height: 40 }} />
+      </InnerIcon>
+      <Typography variant="h6" align="left" sx={{ ml: 1 }}>
+        abc
+        {/* {biller.length > 0 ? biller[0].categoryName : "No Category"} */}
+      </Typography>
+    </Box>
+  </Grid>
+       <Grid item xs={12} sm={6}>
+  <TextField
+    label="Search Electricity"
+    variant="outlined"
+    fullWidth
+    // value={searchQuery}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    InputProps={{
+      endAdornment: (
+        <InputAdornment position="end">
+          <SearchIcon />
+        </InputAdornment>
+      ),
+    }}
+    sx={{
+      '& .MuiOutlinedInput-root': {
+        borderRadius: '8px',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#fff',
+      },
+      '& .MuiInputLabel-root': {
+        color: '#757575',
+      },
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#cccccc',
+      },
+      '&:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#999999',
+      },
+      '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#3f51b5',
+      },
+    }}
+  />
+</Grid>
+
+            {/* <Grid item xs={12} sm={6}>
+              <TextField
+                label="Search Biller"
+                variant="outlined"
+                fullWidth
+                value={searchQuery}
+                onChange={handleSearch}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '8px',
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+                    backgroundColor: '#fff',
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: '#757575',
+                  },
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#cccccc',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#999999',
+                  },
+                  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#3f51b5',
+                  },
+                }}
+              />
+            </Grid> */}
+
+        
+            <Grid item xs={12} sm="auto">
+              <Button
+                variant="contained"
+                onClick={handleBackToCategories} 
+                sx={{ ml: 2 }}
+              >
+                <ReplyIcon/> Back
+              </Button>
+            </Grid>
+          </Grid>
+          </Grid>
+
+      {/* Search Box */}
+      {/* <Grid container spacing={2} sx={{ mb: 2 }}>
+        <Grid item xs={12}>
+          <TextField
+            label="Search Operator"
+            variant="outlined"
+            fullWidth
+            size="small"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Grid>
+      </Grid> */}
+
+      {/* Display filtered operator list */}
       <Grid container spacing={2}>
-        {operatorVal &&
-          operatorVal.map((operator, index) => (
+        
+        {filteredOperators.length > 0 ? (
+          filteredOperators.map((operator, index) => (
             <Grid item xs={6} sm={4} md={3} key={index}>
               <CardComponent
                 title={operator.name}
@@ -152,121 +289,163 @@ console.log("oppp",opName);
                 onClick={() => handleOpenVal(operator)}
               />
             </Grid>
-          ))}
+          ))
+        ) : (
+          <Grid item xs={12}>
+            <Typography>No data found</Typography>
+          </Grid>
+        )}
       </Grid>
+
+      {/* Existing functionality (rest of the component) */}
+    </div>
+     </>
     )}
-    {IsOptSelected && (
-      <Grid container spacing={2}>
-        <Grid
-          item
-          lg={4}
-          xs={12}
-          sm={4}
-          sx={{
-            height: "600px",
-            width: "600px",
-            overflowY: "auto",
-            p: 2,
+   {IsOptSelected && (
+  <Grid container spacing={2}>
+    {/* Left Section for Operator List */}
+    <Grid
+      item
+      lg={4}
+      xs={12}
+      sm={4}
+      sx={{
+        mt:2,
+        height: "600px",
+        width: "600px",
+        overflowY: "auto",
+        p: 2,
+      }}
+    >
+      {/* Search Box for Electricity Operators */}
+      <TextField
+    label="Search Electricity"
+    variant="outlined"
+    fullWidth
+    // value={searchQuery}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    InputProps={{
+      endAdornment: (
+        <InputAdornment position="end">
+          <SearchIcon />
+        </InputAdornment>
+      ),
+    }}
+    sx={{
+      '& .MuiOutlinedInput-root': {
+        borderRadius: '8px',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#fff',
+      },
+      '& .MuiInputLabel-root': {
+        color: '#757575',
+      },
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#cccccc',
+      },
+      '&:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#999999',
+      },
+      '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#3f51b5',
+      },
+    }}
+  />
+     <Divider sx={{ my: 2, backgroundColor: "grey.500", height: 1.5 }} />
+
+{/* Card Count */}
+
+<Typography 
+variant="caption" // Use a smaller variant for smaller text size
+sx={{ 
+mt:-2,
+justifyContent: "end", 
+display: 'flex', // Ensure the flex context for alignment
+alignItems: 'flex-start', // Align items to the top
+// Optional: adjust the margin to control the vertical spacing
+}} 
+align="right"
+>
+{filteredOperators.length} {filteredOperators.length === 1 ? 'electricity' : 'electricity'} found
+</Typography>
+
+      {operatorVal && operatorVal
+        .filter((operator) => 
+          operator.name.toLowerCase().includes(searchTerm.toLowerCase())
+        ) // Filter operators based on the search term
+        .map((operator, index) => (
+          <CardComponent
+            key={index}
+            title={operator.name}
+            img={operator.code}
+            height="55px"
+            onClick={() => {
+              handleOpenVal(operator);
+            }}
+            isSelected={opName === operator.name}
+          />
+        ))}
+    </Grid>
+
+    {/* Right Form Section */}
+    <Grid item lg={8} xs={12} sm={8} sx={{ mr: -6 }}>
+  
+      <Box
+        sx={{
+          height: "100%",
+          p: 3,
+        }}
+      >
+          <Grid item xs={12} sm="auto" display="flex" justifyContent="flex-start" sx={{mb:3}}>
+  <Button
+    variant="contained"
+    onClick={handleBackToCategories}
+    sx={{ ml: 2 }} // Margin left for spacing
+  >
+    <ReplyIcon /> Back
+  </Button>
+</Grid>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            flexWrap: "wrap",
+            marginBottom: "16px",
           }}
         >
-          {operatorVal &&
-            operatorVal.map((operator, index) => (
-              <CardComponent
-                key={index}
-                title={operator.name}
-                img={operator.code}
-                height="55px"
-                onClick={() => {
-                  handleOpenVal(operator);
-                }}
-                isSelected={opName === operator.name ? true : false}
-              />
-            ))}
-        </Grid>
-  
-        {/* Right Form Section */}
-        <Grid item lg={8} xs={12} sm={8} sx={{ mr: -6 }}>
-          <Box
+          <CircleComponent img={operatorIcon} />
+          <Typography
             sx={{
-              height: "100%",
-              p: 3,
+              fontSize: { xs: "18px", sm: "20px", md: "24px" }, 
+              fontWeight: "bold",
+              ml: "15px", 
+              // flex: 1, 
+              wordWrap: "break-word", 
+        
             }}
           >
-          
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-                flexWrap: "wrap",
-                marginBottom: "16px",
-              }}
-            >
-              <CircleComponent img={operatorIcon} />
-              <Typography
-                sx={{
-                  fontSize: { xs: "18px", sm: "20px", md: "24px" }, 
-                  fontWeight: "bold",
-                  ml: "15px", 
-                  flex: 1, 
-                  wordWrap: "break-word", 
-                  marginLeft:"4px"
-                }}
-              >
-                {opName}
-              </Typography>
-            </div>
-  
-            <Box
-              component="form"
-              id="electricity"
-              validate="true"
-              autoComplete="off"
-              onSubmit={handleSubmit}
-              sx={{
-                "& .MuiTextField-root": { m: 1, width: "100%" },
-                overflowY: "auto",
-                maxHeight: "400px",
-              }}
-            >
-              <Grid container spacing={0.5}>
-                {params.map((item, i) => (
-                  <Grid item xs={12} key={i}>
-                    {item && item !== "" && (
-                      <FormControl
-                        sx={{
-                          width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" },
-                          mr: "19%",
-                        }}
-                      >
-                        <TextField
-                          label={item}
-                          id={"param" + (i + 1).toString()}
-                          size="small"
-                          sx={{
-                             width: "400px",
-                            "& .MuiInputBase-input": {
-                              fontSize: "12px",
-                              color: "black",
-                            },
-                            "& .MuiInputBase-input::placeholder": {
-                              fontSize: "12px",
-                              opacity: 1,
-                            },
-                          }}
-                          onChange={(e) => {
-                            setparamsValue({
-                              ...paramsValue,
-                              [e.currentTarget.id]: e.currentTarget?.value,
-                            });
-                          }}
-                          required
-                        />
-                      </FormControl>
-                    )}
-                  </Grid>
-                ))}
-                <Grid item xs={12}>
+            {opName}
+          </Typography>
+        </div>
+
+        <Box
+          component="form"
+          id="electricity"
+          validate="true"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "100%" },
+            overflowY: "auto",
+            maxHeight: "400px",
+          }}
+        >
+          <Grid container spacing={0.5}>
+            {params.map((item, i) => (
+              <Grid item xs={12} key={i}>
+                {item && item !== "" && (
                   <FormControl
                     sx={{
                       width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" },
@@ -274,10 +453,11 @@ console.log("oppp",opName);
                     }}
                   >
                     <TextField
-                      label="Amount"
-                      id="amount"
+                      label={item}
+                      id={"param" + (i + 1).toString()}
                       size="small"
                       sx={{
+                        width: "400px",
                         "& .MuiInputBase-input": {
                           fontSize: "12px",
                           color: "black",
@@ -287,46 +467,76 @@ console.log("oppp",opName);
                           opacity: 1,
                         },
                       }}
-                      value={amountValue}
                       onChange={(e) => {
-                        setAmountValue(e.target.value);
+                        setparamsValue({
+                          ...paramsValue,
+                          [e.currentTarget.id]: e.currentTarget?.value,
+                        });
                       }}
                       required
                     />
                   </FormControl>
-                </Grid>
-               
+                )}
               </Grid>
-              {/* <Button onClick={()=>{
-                 setChangeFetchToPay(true) 
-                }}>pay bill</Button> */}
-            </Box>
-  
-            {/* Payment Modal */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <BillPaymentModal
-                changeFetchToPay={changeFetchToPay}
-                amountValue={amountValue}
-                fetchBill={fetchBill}
-                billDetails={billDetails}
-                setBillDetails={setBillDetails}
-                payRequest={billPayRequest}
-                setBillPayRequest={setBillPayRequest}
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                operatorId={operatorId}
-                operatorName={opName}
-                successRecharge={successRecharge}
-                setSuccessRechage={setSuccessRechage}
-                showSuccess={showSuccess}
-                setShowSuccess={setShowSuccess}
-                data={data}
-              />
-            </div>
-          </Box>
-        </Grid>
-      </Grid>
-    )}
+            ))}
+            <Grid item xs={12}>
+              <FormControl
+                sx={{
+                  width: { xs: "100%", sm: "80%", md: "80%", lg: "80%", xl: "80%" },
+                  mr: "19%",
+                }}
+              >
+                <TextField
+                  label="Amount"
+                  id="amount"
+                  size="small"
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "black",
+                    },
+                    "& .MuiInputBase-input::placeholder": {
+                      fontSize: "12px",
+                      opacity: 1,
+                    },
+                  }}
+                  value={amountValue}
+                  onChange={(e) => {
+                    setAmountValue(e.target.value);
+                  }}
+                  required
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Box>
+
+        {/* Payment Modal */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <BillPaymentModal
+            changeFetchToPay={changeFetchToPay}
+            amountValue={amountValue}
+            fetchBill={fetchBill}
+            billDetails={billDetails}
+            setBillDetails={setBillDetails}
+            payRequest={billPayRequest}
+            setBillPayRequest={setBillPayRequest}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            operatorId={operatorId}
+            operatorName={opName}
+            successRecharge={successRecharge}
+            setSuccessRechage={setSuccessRechage}
+            showSuccess={showSuccess}
+            setShowSuccess={setShowSuccess}
+            data={data}
+          />
+        </div>
+      </Box>
+    </Grid>
+  </Grid>
+)}
+
   </div>
   
   );
