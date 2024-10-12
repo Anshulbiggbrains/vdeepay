@@ -1001,7 +1001,7 @@ const AdminTransactionsView = () => {
                         sx={{
                           mt: { md: 0, sm: 2, xs: 2 },
                           mb: { md: 0, sm: 2, xs: 2 },
-                          
+                          ml:50
                         }}
                         control={
                           <FormControl size="small">

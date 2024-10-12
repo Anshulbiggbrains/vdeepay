@@ -452,7 +452,7 @@ export const Ad_nav = [
   },
   {
     title: "My Purchase",
-    icon: transaction1,
+    icon: mypurchase,
     icon2: TransactionIconWhite,
     to: "/ad/purchase",
   },
