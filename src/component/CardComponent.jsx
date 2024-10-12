@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 
 const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false }) => {
   // Dynamically load image or fallback to a default
@@ -11,11 +10,8 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
     imageSrc = null; // Fallback if image not found
   }
 
-  // Calculate the word count in the title
-  const wordCount = title.split(' ').length;
-
-  // Define the font size based on the word count, dynamically adjusting for long titles
-  const fontSize = wordCount > 9 ? '0.75rem' : '1rem';
+  // Set a fixed height for the card (ensuring height stays constant)
+  const cardHeight = height || "100px"; // Default height to 100px if not provided
 
   return (
     <Tooltip title={title} placement="top">
@@ -30,25 +26,18 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
           textAlign: 'left',
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '95%',
-          height: height || "75%",
+          width: '100%',
+          height: cardHeight, // Fixed height for the card
           ml: 1,
           padding: 2,
           mt: 2,
           overflow: 'hidden',
-          backgroundClip: 'padding-box',
           position: 'relative',
-          border: isSelected ? '2px solid #1877F2' : '2px solid transparent', // Highlight border if selected
+          border: isSelected ? '2px solid #1877F2' : '2px solid transparent',
           '&:hover': {
             transform: 'scale(1.05)',
             boxShadow: 4,
             border: '2px solid black',
-            animation: 'pulse 1s infinite',
-          },
-          '@keyframes pulse': {
-            '0%': { transform: 'scale(1)' },
-            '50%': { transform: 'scale(1.05)' },
-            '100%': { transform: 'scale(1)' },
           },
         }}
         onClick={onClick}
@@ -66,11 +55,16 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
           variant="subtitle1"
           sx={{
             fontWeight: 500,
-            fontSize: fontSize, // Dynamic font size
-            overflow: 'hidden', // Ensure text doesn't overflow
-            whiteSpace: 'nowrap', // Keep text on one line
-            textOverflow: 'ellipsis', // Show ellipsis for overflowed text
+            fontSize: '1rem',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 2, // Limit the text to 2 lines
+            whiteSpace: 'normal', // Allow text wrapping for large titles
+            textOverflow: 'ellipsis', // Show ellipsis if text overflows
             color: '#000',
+            lineHeight: '1.2rem', // Adjust line height for consistency
+            maxHeight: '2.4rem', // Ensures that even long text stays within 2 lines
           }}
         >
           {title}
