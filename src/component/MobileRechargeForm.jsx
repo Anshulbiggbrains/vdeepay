@@ -47,7 +47,7 @@ const MobileRechargeForm = ({ type, resetView, title }) => {
   const [request, setRequest] = useState(false);
   const [infoFetched, setInfoFetched] = useState(false);
   const [numberinfo, setNumberinfo] = useState();
-  const [operatorIcon, setOperatorIcon] = useState();
+  const [operatorCode, setOperatorCode] = useState();
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState("");
   const [opName, setOpName] = useState("");
@@ -159,8 +159,8 @@ console.log("operator is ",operator)
         number: title === "Prepaid" ? form.mobile.value : undefined,
         param1: title === "Postpaid" ? form.mobile.value : undefined,
         operator:
-          opName 
-            ? opName
+          operatorCode 
+            ? operatorCode
             : numberinfo && numberinfo.operator,
         amount: form.amount.value,
         type: rechargeType,
@@ -202,11 +202,11 @@ console.log("operator is ",operator)
       setIsOptSelected(true)
      } 
      setOpName(opt.name)
-     setOperatorIcon(opt.code)
+     setOperatorCode(opt.code)
       // alert(`You clicked on: ${operatorVal}`);
     };
 
-     console.log("deafault value ",operatorIcon)
+     console.log("deafault value ",operatorCode)
      const handleBack = () => {
       resetView(false);
     };
@@ -261,7 +261,7 @@ console.log("operator is ",operator)
             operatorVal.map((operator, index) => (
               <CardComponent
                 title={operator.name}
-                setOpIcon={setOperatorIcon}
+                setOpIcon={setOperatorCode}
                 
                 img={operator.code}
                 height="55px"
@@ -281,7 +281,7 @@ console.log("operator is ",operator)
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <CircleComponent img={operatorIcon} /> 
+                  <CircleComponent img={operatorCode} /> 
                   <Typography sx={{ fontSize: "24px", fontWeight: "bold", marginLeft: "16px"}}>
                     {type === opName ? title : opName}
                   </Typography>
