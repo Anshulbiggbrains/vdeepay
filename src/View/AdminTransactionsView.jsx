@@ -66,7 +66,9 @@ import { resetData } from "../features/allUsers/allUsersSlice";
 import { keyframes } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import RetDbTransactionTab from "../component/Tab/RetDbTransactionTab";
-
+import android from "../assets/android.png";
+import explorer from "../assets/explorer.png";
+import api from "../assets/Api.png";
 // import { Icon } from "@iconify/react";
 
 // eslint-disable-next-line no-unused-vars
@@ -393,11 +395,13 @@ const AdminTransactionsView = () => {
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <LaptopIcon fontSize="small" sx={{ color: "green" }} />
+                 <img src={explorer} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <LaptopIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <AndroidIcon fontSize="small" sx={{ color: "blue" }} />
+                  <img src={android} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <AndroidIcon fontSize="small" sx={{ color: "blue" }} /> */}
               </Tooltip>
             ) : row.platform === "IOS" ? (
               <Tooltip title="IOS">
@@ -405,7 +409,8 @@ const AdminTransactionsView = () => {
               </Tooltip>
             ) : (
               <Tooltip title="API">
-                <SyncAltIcon fontSize="small" sx={{ color: "red" }} />
+                 <img src={api} alt="" style={{width:"25px", height:"25px"}}/>
+                {/* <SyncAltIcon fontSize="small" sx={{ color: "red" }} /> */}
               </Tooltip>
             )}
           </div>
@@ -926,82 +931,79 @@ const AdminTransactionsView = () => {
             isFilterAllowed={isFilterAllowed}
             filterComponent={
               <FilterCard
-                topMargin={0}
-                bottomMargin={0}
-                showSearch={false}
-                ifrouteFilter
-                ifoperatorFilter
-                ifFromBankFilter
-                ifstatusFilter
-                iforderidFilter
-                // type and category is same
-                ifTypeFilter
-                ifUsernameFilter
-                ifestFilter
-                ifnumberFilter
-                ifotherFilter
-                chooseInitialCategoryFilter={
-                  chooseInitialCategoryFilter !== "ALL"
-                    ? chooseInitialCategoryFilter
-                    : false
-                }
-                //
-                ifAdIdFilter
-                ifAsmFilter
-                asmList={asmList}
-                typeList={typeList.filter((item) => item.name !== "ALL")}
-                // ifClientIdFilter
-                nonAdminColOptions={nonAdminColOptions[`${role}`]}
-                statusList={statusList}
-                operatorList={operatorList}
-                getOperatorVal={getOperatorVal}
-                setQuery={setQuery}
-                query={query}
-                clearHookCb={(cb) => {
-                  refreshFilter = cb;
-                }}
-                getTypes={getTypes}
-                refresh={refresh}
-                isShowFilterCard={isShowFilterCard}
-                setIsShowFilterCard={setIsShowFilterCard}
-                // buttons
-                actionButtons={
-                  <>
-                    <div className="">
-                      <ExcelUploadModal
-                        twobuttons="Download Csv"
-                        btn
-                        request={request}
-                        getExcel={getExcel}
-                        getCsv={getCsv}
-                        noOfResponses={noOfResponses}
-                        setQuery={setQuery}
-                        handleCloseCB={(closeModal) => {
-                          handleCloseModal = closeModal;
-                        }}
-                      />
-                    </div>
-                    <Tooltip title="refresh">
-                      <IconButton
-                        aria-label="refresh"
-                        // color="success"
-                        sx={{
-                          color: "#0F52BA",
-                        }}
-                        onClick={() => {
-                          refreshFunc(setQuery);
-                        }}
-                      >
-                        <CachedIcon className="refresh-purple" />
-                      </IconButton>
-                    </Tooltip>
-
-                    <FormGroup sx={{display: 'flex-end', alignItems: 'flex-end'}}>
+              topMargin={0}
+              bottomMargin={0}
+              showSearch={false}
+              ifrouteFilter
+              ifoperatorFilter
+              ifFromBankFilter
+              ifstatusFilter
+              iforderidFilter
+              ifTypeFilter
+              ifUsernameFilter
+              ifestFilter
+              ifnumberFilter
+              ifotherFilter
+              chooseInitialCategoryFilter={
+                chooseInitialCategoryFilter !== 'ALL' ? chooseInitialCategoryFilter : false
+              }
+              ifAdIdFilter
+              ifAsmFilter
+              asmList={asmList}
+              typeList={typeList.filter((item) => item.name !== 'ALL')}
+              nonAdminColOptions={nonAdminColOptions}
+              statusList={statusList}
+              operatorList={operatorList}
+              getOperatorVal={getOperatorVal}
+              setQuery={setQuery}
+              query={query}
+              clearHookCb={(cb) => {
+                refreshFilter = cb;
+              }}
+              getTypes={getTypes}
+              refresh={refresh}
+              isShowFilterCard={isShowFilterCard}
+              setIsShowFilterCard={setIsShowFilterCard}
+              actionButtons={
+                <>
+                  {/* Excel Upload Button */}
+                  <div>
+                    <ExcelUploadModal
+                      twobuttons="Download Csv"
+                      btn
+                      request={request}
+                      getExcel={getExcel}
+                      getCsv={getCsv}
+                      noOfResponses={noOfResponses}
+                      setQuery={setQuery}
+                      handleCloseCB={(closeModal) => {
+                        handleCloseModal = closeModal;
+                      }}
+                    />
+                  </div>
+        
+                  {/* Refresh Button */}
+                  <Tooltip title="refresh">
+                    <IconButton
+                      aria-label="refresh"
+                      sx={{
+                        color: '#0F52BA',
+                      }}
+                      onClick={() => {
+                        refreshFunc(setQuery);
+                      }}
+                    >
+                      <CachedIcon className="refresh-purple" />
+                    </IconButton>
+                  </Tooltip>
+        
+                 
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', width:{lg:'550px',sm:'300px'}}}>
+                    <FormGroup>
                       <FormControlLabel
                         sx={{
                           mt: { md: 0, sm: 2, xs: 2 },
                           mb: { md: 0, sm: 2, xs: 2 },
-                          ml:50
                         }}
                         control={
                           <FormControl size="small">
@@ -1009,9 +1011,7 @@ const AdminTransactionsView = () => {
                               variant="standard"
                               fontSize="10px"
                               value={showOldTransaction}
-                              onChange={() =>
-                                setShowOldTransaction(!showOldTransaction)
-                              }
+                              onChange={() => setShowOldTransaction(!showOldTransaction)}
                             >
                               <MenuItem value={true}>Old</MenuItem>
                               <MenuItem value={false}>New</MenuItem>
@@ -1020,49 +1020,10 @@ const AdminTransactionsView = () => {
                         }
                       />
                     </FormGroup>
-                    {/* <>
-                      <Tooltip title="Scheduler">
-                        <BlinkingIcon active={isActive} onClick={handleClick} />
-                      </Tooltip>
-                      <Menu
-                        anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={() => handleMenuItemClick(5)}>
-                          5 sec
-                        </MenuItem>
-                        <MenuItem onClick={() => handleMenuItemClick(10)}>
-                          10 sec
-                        </MenuItem>
-                        <MenuItem onClick={() => handleMenuItemClick(15)}>
-                          15 sec
-                        </MenuItem>
-                        <MenuItem onClick={handleStop}>Stop</MenuItem>
-                      </Menu>
-                    </> */}
-                    {/* <div className="ms-3">
-                      <Link to="/admin/prabhu" className="navLinks">
-                        <Button
-                          size="small"
-                          color="success"
-                          variant="contained"
-                          sx={{
-                            py: 0.3,
-                            backgroundColor: "#1560bd",
-                            textTransform: "capitalize",
-                            boxShadow:
-                              "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
-                            borderRadius: "2px",
-                          }}
-                        >
-                          Prabhu Transfer
-                        </Button>
-                      </Link>
-                    </div> */}
-                  </>
-                }
-              />
+                  </Box>
+                </>
+              }
+            />
             }
           />
         </Grid>

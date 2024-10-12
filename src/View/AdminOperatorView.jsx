@@ -359,7 +359,7 @@ const AdminOperatorView = () => {
                 }}
               >
                 {/* Show operator switch if user is Admin */}
-                <Mount visible={user?.role === "Admin"}>
+                {/* <Mount visible={user?.role === "Admin"}>
                   <FormGroup sx={{ display: "flex", alignItems: "center" }}>
                     <FormControlLabel
                       sx={{
@@ -383,7 +383,7 @@ const AdminOperatorView = () => {
                       }
                     />
                   </FormGroup>
-                </Mount>
+                </Mount> */}
 
                 {/* Right-side items for actionButtons */}
                 <Box

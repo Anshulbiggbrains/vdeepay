@@ -39,6 +39,7 @@ import FilterModal from "../modals/FilterModal";
 import predefinedRanges from "../utils/predefinedRanges";
 import android from "../assets/android.png";
 import explorer from "../assets/explorer.png";
+import api from "../assets/Api.png";
 let refresh;
 let handleCloseModal;
 function refreshFunc(setQueryParams) {
@@ -191,8 +192,9 @@ const MyPurchaseView = () => {
                 <AppleIcon fontSize="small" sx={{ color: "pink" }} />
               </Tooltip>
             ) : (
-              <Tooltip title="API">
-                <SyncAltIcon fontSize="small" sx={{ color: "red" }} />
+              <Tooltip title="API">.
+               <img src={api} alt="" style={{width:"25px", height:"25px"}}/>
+                {/* <SyncAltIcon fontSize="small" sx={{ color: "red" }} /> */}
               </Tooltip>
             )}
           </div>
