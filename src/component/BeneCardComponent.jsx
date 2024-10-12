@@ -37,18 +37,18 @@ const BeneTableComponent = ({
           sx={{
             background: randomColors(
               ben?.name?.charAt(0).toUpperCase() ||
-              ben.bene_name.charAt(0).toUpperCase()
+                ben.bene_name.charAt(0).toUpperCase()
             ),
             borderRadius: "50%",
-            height: "50px",
-            width: "50px",
+            height: "30px",
+            width: "30px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             color: "#fff",
           }}
         >
-          <Typography sx={{ fontSize: "20px" }}>
+          <Typography sx={{ fontSize: "15px" }}>
             {ben?.name?.charAt(0).toUpperCase() ||
               ben.bene_name.charAt(0).toUpperCase()}
           </Typography>
@@ -57,18 +57,17 @@ const BeneTableComponent = ({
 
       {/* Beneficiary Details */}
       <TableCell>
-       
-        <Typography style={{fontSize:"13px"}}>
+        <Typography style={{ fontSize: "13px" }}>
           {ben.name ? capitalize1(ben.name) : capitalize1(ben.bene_name)}
         </Typography>
       </TableCell>
       <TableCell>
-        
-        <Typography style={{fontSize:"13px"}}>{ben.account || ben.bene_acc}</Typography>
+        <Typography style={{ fontSize: "13px" }}>
+          {ben.account || ben.bene_acc}
+        </Typography>
       </TableCell>
       <TableCell>
-       
-        <Typography style={{fontSize:"13px"}}>{ben.ifsc}</Typography>
+        <Typography style={{ fontSize: "13px" }}>{ben.ifsc}</Typography>
       </TableCell>
 
       {/* Actions */}
@@ -78,11 +77,12 @@ const BeneTableComponent = ({
         ben.verified === "1" ||
         ben.status === 1 ? (
           <>
-       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-  <VerifiedIcon sx={{ fontSize: "13px", color: "#1977f2", mr: 0.5 }} />
-  <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
-</Box>
-            
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <VerifiedIcon
+                sx={{ fontSize: "13px", color: "#1977f2", mr: 0.5 }}
+              />
+              <Typography sx={{ color: "#1977f2" }}>Verified</Typography>
+            </Box>
           </>
         ) : (
           <AccountVerificationModal
