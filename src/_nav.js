@@ -72,6 +72,7 @@ import transfer1 from "./assets/sidenav/transfer1.svg";
 import creditrq1 from "./assets/sidenav/creditrq1.svg";
 import account1 from "./assets/sidenav/account1.svg";
 import transaction1 from "./assets/sidenav/white/transaction1.svg";
+import mysale from "./assets/sidenav/white/mysale.svg";
 import bank1 from "./assets/sidenav/bank1.svg";
 import message1 from "./assets/sidenav/message1.svg";
 import notification1 from "./assets/sidenav/notification1.svg";
@@ -335,12 +336,7 @@ export const Asm_nav = [
     icon2: TransactionIconWhite,
     to: "/asm/transactions",
   },
-  {
-    title: "Fund Request",
-    icon: creditrq1,
-    icon2: CreditRequestIcon,
-    to: "/asm/cred-req",
-  },
+
   {
     title: "Login History",
     icon: loginHistory,
@@ -446,13 +442,13 @@ export const Ad_nav = [
   },
   {
     title: "My Sale",
-    icon: transaction1,
+    icon: mysale,
     icon2: TransactionIconWhite,
     to: "/ad/sale",
   },
   {
     title: "My Purchase",
-    icon: transaction1,
+    icon: mypurchase,
     icon2: TransactionIconWhite,
     to: "/ad/purchase",
   },
@@ -586,12 +582,12 @@ export const customer_nav = [
   //   to: "/customer/travel",
   //   // to: "/customer/travel-services",
   // },
-  {
-    title: "Fund Request",
-    icon: creditmoney,
-    icon2: CreditRequestIcon,
-    to: "/customer/cred-req",
-  },
+  // {
+  //   title: "Fund Request",
+  //   icon: creditmoney,
+  //   icon2: CreditRequestIcon,
+  //   to: "/customer/cred-req",
+  // },
   {
     title: "Reports",
     icon: graph,

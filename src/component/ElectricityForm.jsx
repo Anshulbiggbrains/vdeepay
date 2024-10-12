@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Box, FormControl, Grid, TextField, Typography ,Card} from "@mui/material";
+import { Box, FormControl, Grid, TextField, Typography ,Card, Button} from "@mui/material";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { postJsonData, get } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -295,7 +295,11 @@ console.log("oppp",opName);
                     />
                   </FormControl>
                 </Grid>
+               
               </Grid>
+              {/* <Button onClick={()=>{
+                 setChangeFetchToPay(true) 
+                }}>pay bill</Button> */}
             </Box>
   
             {/* Payment Modal */}

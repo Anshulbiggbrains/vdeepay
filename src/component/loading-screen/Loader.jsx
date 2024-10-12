@@ -132,7 +132,7 @@ const Loader = ({ loading, children }) => {
             <div className="circle1" />
             <div className="circle2" />
           </div>
-          <p className="loading-text">Loading, please wait...</p>
+          <p className="loading-text">Please wait while we are processing your request...</p>
         </Box>
       )}
       {children}

@@ -911,6 +911,7 @@ const FilterCard = ({
               className="filter-input"
               placeholder="Ad name"
               list={adList}
+              
               labelKey="name"
               valKey="id"
               valueGetter={setAdIdVal}

@@ -18,17 +18,38 @@ import { get, postJsonData } from "../network/ApiController";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useState } from "react";
 import { yyyymmdd } from "../utils/DateUtils";
+import numWords from "num-words";
 import { creditReqGuidelinesImg } from "../iconsImports";
 import { whiteColor } from "../theme/setThemeColor";
+import { urltoFile } from "../utils/cropImageUtils";
+
 
 const CreateCreditRequest = ({ refresh }) => {
   const [open, setOpen] = useState(false);
   const [request, setRequest] = useState(false);
   const [dateValue, setDateValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const [bank, setBank] = useState("");
+  const [fileType, setFileType] = useState("")
   const [mode, setMode] = useState("");
   const [bankList, setBankList] = useState([]);
   const [modeList, setModeList] = useState([]);
+  const [fileValue, setFileValue] = useState(null);
+  const [numToWords, setNumToWords] = useState(null);
+
+  const resetForm = () =>{
+    setBank("");
+    setMode("");
+    setDateValue("");
+    setFileValue(null);
+    setErrorMessage("");
+    setNumToWords(null);
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFileValue(file);
+  };
 
   const getCredDataList = () => {
     get(
@@ -50,6 +71,20 @@ const CreateCreditRequest = ({ refresh }) => {
     );
   };
 
+  const handleAmountChange = (val) => {
+    console.log("This is your value", val.target.value);
+    console.log("This is data type of val", typeof(val.target.value))
+    const newVal = numWords(parseInt(val.target.value));
+    console.log("This is your converted newVal", newVal);
+    setNumToWords(newVal);
+  }
+
+  React.useEffect(() => {
+    resetForm()
+    const today = new Date().toISOString().split('T')[0];
+    setDateValue(today);
+  }, [open]);
+
   const handleOpen = () => {
     getCredDataList();
   };
@@ -62,12 +97,20 @@ const CreateCreditRequest = ({ refresh }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    const formData = new FormData();
+    formData.append('reqeust_img', fileValue);
+    urltoFile(fileValue, fileType && fileType.name, fileType && fileType.type)
+        .then((file) => setFileValue(file))
+        .catch((err) => {
+          console.log(err);
+        });
     const data = {
       bank_name: bank,
       mode: mode,
       bank_ref_id: form.ref_id.value,
       date: dateValue, // Since this is already in YYYY-MM-DD format
       amount: form.amt.value,
+      img: form.file_upload.value
     };
     setRequest(true);
     postJsonData(
@@ -80,7 +123,9 @@ const CreateCreditRequest = ({ refresh }) => {
         if (refresh) refresh();
       },
       (error) => {
-        apiErrorToast(error);
+        // apiErrorToast(error);
+        console.log("This is your error", error)
+        setErrorMessage(error.response.data.message)
       }
     );
   };
@@ -240,6 +285,8 @@ const CreateCreditRequest = ({ refresh }) => {
                     id="amt"
                     size="small"
                     type="number"
+                    // onChange={(val) => setNumToWords(numWords(val))}
+                    onChange={(val) => handleAmountChange(val)}
                     InputProps={{
                       inputProps: {
                         max: 10000000,
@@ -249,6 +296,36 @@ const CreateCreditRequest = ({ refresh }) => {
                     required
                   />
                 </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12} sx={{mx: 2}}>
+                {numToWords ? numToWords : ""}
+              </Grid>
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ width: "100%" }}>
+                  <TextField
+                    label=""
+                    id="file_upload"
+                    size="small"
+                    type="file"
+                    variant="standard"
+                    onChange={handleFileChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    // required
+                    sx={{
+                      border: "none"
+                    }}
+                  />
+                  {/* {fileValue && (
+                    <div style={{ marginTop: 8 }}>
+                      <strong>Selected File:</strong> {fileValue.name}
+                    </div>
+                  )} */}
+                </FormControl>
+              </Grid>
+              <Grid item md={12} xs={12} sx={{width: "100%", color: "red", mx: 2}}>
+                {errorMessage ? errorMessage : ""}
               </Grid>
             </Grid>
           </Box>

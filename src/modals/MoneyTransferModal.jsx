@@ -9,6 +9,7 @@ import {
   Tooltip,
   MenuItem,
   Avatar,
+  Drawer,
 } from "@mui/material";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { postJsonData } from "../network/ApiController";
@@ -117,13 +118,14 @@ const MoneyTransferModal = ({ row, refresh }) => {
         </IconButton>
       </Tooltip>
       <Box>
-        <Modal
+        <Drawer 
+
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+         anchor="right"
+       
         >
-          <Box sx={style} className="sm_modal">
+          <Box sx={{width:400}} className="sm_modal">
             <ModalHeader title="Money Transfer" handleClose={handleClose} />
             <Box
               component="form"
@@ -214,7 +216,7 @@ const MoneyTransferModal = ({ row, refresh }) => {
             </Box>
             <ModalFooter form="money_transfer" request={request} btn="Done" />
           </Box>
-        </Modal>
+        </Drawer>
       </Box>
     </Box>
   );
