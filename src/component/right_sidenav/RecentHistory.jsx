@@ -2,7 +2,7 @@ import React from "react";
 import useCommonContext from "../../store/CommonContext";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import SyncIcon from "@mui/icons-material/Sync";
-import { Box, Grid, Button, Tooltip } from "@mui/material";
+import { Box, Grid, Button, Tooltip, Link } from "@mui/material";
 import RefreshComponent from "../RefreshComponent";
 import { useNavigate } from "react-router-dom";
 import { capitalize } from "../../utils/FormattingUtils";
@@ -70,7 +70,7 @@ const RecentHistory = () => {
           marginTop: "12px",
           overflowY: "scroll",
           overflowX: "hidden",
-          paddingBottom: "0.5rem",
+          paddingBottom: "0.2rem",
         }}
       >
         {recentData.map((data, index) => {
@@ -79,11 +79,11 @@ const RecentHistory = () => {
             <Grid
               container
               sx={{
-                py: 1,
                 borderRadius: 3,
                 px: 1,
+                py: 1,
                 mb: 0.5,
-                border: "2px solid #d48628",
+                border: "1px solid #909090",
                 alignItems: "center",
                 justifyContent: "space-between",
               }}
@@ -92,7 +92,7 @@ const RecentHistory = () => {
             >
               <Grid
                 item
-                xs={2}
+                xs={1}
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -102,16 +102,20 @@ const RecentHistory = () => {
                 {data.status === "FAILED" ? (
                   <Icon
                     title="Failed"
-                    bgColor="#FFD1DC"
                     icon={
-                      <CloseIcon sx={{ fontSize: "25px", color: "#ff2c2c" }} />
+                      <CloseIcon
+                        sx={{
+                          fontSize: "25px",
+
+                          color: "#ff2c2c",
+                        }}
+                      />
                     }
                     onClick={() => console.log("Failed clicked")}
                   />
                 ) : data.status === "SUCCESS" ? (
                   <Icon
                     title="Success"
-                    bgColor="#FFD1DC"
                     icon={
                       <DoneIcon sx={{ fontSize: "25px", color: "	#259625" }} />
                     }
@@ -120,14 +124,12 @@ const RecentHistory = () => {
                 ) : data.status === "REFUND" ? (
                   <Icon
                     title="Refund"
-                    bgColor="#FFDIDC"
                     icon={<SyncIcon sx={{ fontSize: "16px" }} />}
                     onClick={() => console.log("Refund clicked")}
                   />
                 ) : (
                   <Icon
                     title="Refund"
-                    bgColor="#FFD1DC"
                     icon={<PriorityHighIcon sx={{ fontSize: "16px" }} />}
                     onClick={() => console.log("Other status clicked")}
                   />
@@ -136,7 +138,7 @@ const RecentHistory = () => {
 
               <Grid
                 item
-                xs={6}
+                xs={7}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -158,7 +160,7 @@ const RecentHistory = () => {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      width: "100%",
+
                       textAlign: "left",
                       marginLeft: "6px",
                     }}
@@ -239,14 +241,15 @@ const RecentHistory = () => {
         })}
       </Box>
       <div className="flex-he-vc">
-        <Button
-          className="button-green-bold"
+        <Link
+          to="/customer/transactions"
           onClick={() => {
             navigate("/customer/transactions");
           }}
+          className="link-style"
         >
           More
-        </Button>
+        </Link>
       </div>
     </Box>
   );

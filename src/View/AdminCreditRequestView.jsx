@@ -177,11 +177,11 @@ const CreditRequestView = () => {
       wrap: true,
       width: "125px",
     },
-    /*{
-      name: "Date",
+    {
+      name: "Req Date",
       selector: (row) => <div>{row.date}</div>,
       wrap: true,
-    },*/
+    },
     {
       name: <span className="mx-2">Establishment</span>,
       // name: (
@@ -436,6 +436,12 @@ const CreditRequestView = () => {
       ),
       wrap: true,
       width: "130px",
+      omit:
+        user && user.role === "Admin"
+          ? defaultStatus && defaultStatus === "APPROVED"
+            ? true
+            : false
+          : true,
     },
   ];
 
@@ -465,7 +471,7 @@ const CreditRequestView = () => {
       }
     );
   };
-  console.log("the role is", user.role);
+
   return (
     <Grid  >
           <Box sx={{
