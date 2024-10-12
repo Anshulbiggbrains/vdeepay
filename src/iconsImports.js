@@ -44,6 +44,7 @@ import no_data_gif from "./assets/no_data.gif";
 import noDataIllustrator1 from "./assets/noDataIllustrator1.jpg";
 import noDataIllustrator2 from "./assets/noDataIllustrator2.jpg";
 import fetchbill from "./assets/invoice.png";
+import invoice from "./assets/sidenav/white/invoice.svg";
 import wave_bg from "./assets/wave-haikei.png";
 import team from "./assets/teamwork.jpg";
 
@@ -301,6 +302,7 @@ export const noDataFoundGif = no_data_gif;
 // export const noDataIllustrator = noDataIllustrator1;
 export const noDataIllustrator = noDataIllustrator2;
 export const Bill = fetchbill;
+export const invoice1 =invoice;
 export const waveBg = wave_bg;
 export const joinus = join_us;
 
