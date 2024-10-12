@@ -707,8 +707,8 @@ export default function SideNav(props, { data }) {
                   </span>
                 </MenuItem>
 
-                <div className="profile-dropdown-divider-new"></div>
-                <MenuItem
+                {/* <div className="profile-dropdown-divider-new"></div> */}
+                {/* <MenuItem
                   disableRipple
                   onClick={() => {
                     handleLogout();
@@ -728,7 +728,7 @@ export default function SideNav(props, { data }) {
                   }}
                 >
                   Logout <LogoutIcon className="ms-2" fontSize="small" />
-                </MenuItem>
+                </MenuItem> */}
               </div>
             </Menu>
           </div>
