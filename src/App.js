@@ -221,7 +221,7 @@ function App() {
                       path="transactions"
                       element={<AsmTransactionView />}
                     />
-                    <Route path="cred-req" element={<CreditRequestView />} />
+                   
                     <Route path="my-profile" element={<NewMyProfile />} />
                     <Route path="loginHistory" element={<LoginHistory />} />
                   </Route>

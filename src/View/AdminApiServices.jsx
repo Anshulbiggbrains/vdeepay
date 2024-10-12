@@ -79,7 +79,12 @@ const AdminApiServices = () => {
     {
       name: (
         <FormControl className="customized-textfield">
-          <TextField autoComplete="off" select value={defaultStatus} sx={{ color: "#fff" }}>
+          <TextField
+            autoComplete="off"
+            select
+            value={defaultStatus}
+            sx={{ color: "#fff" }}
+          >
             <MenuItem dense value="All">
               All
             </MenuItem>
@@ -125,6 +130,7 @@ const AdminApiServices = () => {
                 justifyContent: { md: "end", xs: "start" },
                 alignItems: "center",
                 mt: "-45px",
+                gap: 2,
               }}
             >
               <Mount visible={user?.role === "Admin"}>

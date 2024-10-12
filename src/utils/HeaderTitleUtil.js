@@ -114,7 +114,7 @@ export const setTitleFunc = (path, states) => {
     : path === "/md/khata-book"
     ? "Khata Book"
     : path === "/customer/dashboard"
-    ? "Dashboard"
+    ? "Home"
     : path === "/customer/recharge"
     ? "Recharge/Bill Payments"
     : path === "/customer/cred-req"

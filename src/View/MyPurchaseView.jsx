@@ -291,6 +291,7 @@ const MyPurchaseView = () => {
           </Box>
         </>
       ),
+      center: true,
     },
   ];
   const searchOptions = [{ field: "Number", parameter: "number" }];
@@ -531,7 +532,7 @@ const MyPurchaseView = () => {
                   // }
                   actionButtons={
                     <>
-                      <Box sx={{ display: "flex", mt: 2, ml: -1.5 }}>
+                      <Box sx={{ display: "flex", ml: -1.5 }}>
                         <ExcelUploadModal
                           twobuttons="Download Csv"
                           btn
