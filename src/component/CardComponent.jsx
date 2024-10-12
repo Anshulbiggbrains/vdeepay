@@ -1,19 +1,22 @@
 import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-// Card component for displaying operator information
-const CardComponent = ({ title, img, onClick, height,py,px, isSelected = false }) => {
-  // Try to dynamically import the operator's image
+
+const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false }) => {
+  // Dynamically load image or fallback to a default
   let imageSrc;
   try {
     imageSrc = require(`../assets/operators/${img}.png`);
   } catch (error) {
-    imageSrc = null; 
+    imageSrc = null; // Fallback if image not found
   }
+
+  // Calculate the word count in the title
   const wordCount = title.split(' ').length;
 
-  // Define the font size based on the word count
-  const fontSize = wordCount > 9 ? '0.8rem' : '1rem';
+  // Define the font size based on the word count, dynamically adjusting for long titles
+  const fontSize = wordCount > 9 ? '0.75rem' : '1rem';
+
   return (
     <Tooltip title={title} placement="top">
       <Box
@@ -28,23 +31,20 @@ const CardComponent = ({ title, img, onClick, height,py,px, isSelected = false }
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
           width: '95%',
-          // height: height ? height : "75%",
           ml: 1,
-          px: px?px:0.5,
-          py:py?py:2,
+          // px: px ? px : 0.5,
+          // py: py ? py : 2,
           mt: 2,
           overflow: 'hidden',
           backgroundClip: 'padding-box',
           position: 'relative',
           border: isSelected ? '2px solid #1877F2' : '2px solid transparent', // Highlight border if selected
-
           '&:hover': {
             transform: 'scale(1.05)',
             boxShadow: 4,
             border: '2px solid black',
             animation: 'pulse 1s infinite',
           },
-
           '@keyframes pulse': {
             '0%': { transform: 'scale(1)' },
             '50%': { transform: 'scale(1.05)' },
@@ -53,28 +53,25 @@ const CardComponent = ({ title, img, onClick, height,py,px, isSelected = false }
         }}
         onClick={onClick}
       >
-       
+        {/* Display image */}
         <img
-          src={imageSrc||img}
+          src={imageSrc || img}
           alt={title}
           width="50px"
-          style={{ borderRadius: '50%', marginRight: '10px' }} 
+          style={{ borderRadius: '50%', marginRight: '10px' }}
         />
 
         {/* Operator name */}
         <Typography
           variant="subtitle1"
           sx={{
-         
-           
-              fontWeight: 500,
-              fontSize: fontSize, // Apply the dynamic font size here
-              overflow: 'visible', // Allow text to wrap
-              whiteSpace: 'normal', // Enable wrapping
-              textOverflow: 'ellipsis',
-              color: '#000', // Text color
-            }} // Text color
-         
+            fontWeight: 500,
+            fontSize: fontSize, // Dynamic font size
+            overflow: 'hidden', // Ensure text doesn't overflow
+            whiteSpace: 'nowrap', // Keep text on one line
+            textOverflow: 'ellipsis', // Show ellipsis for overflowed text
+            color: '#000',
+          }}
         >
           {title}
         </Typography>
@@ -84,96 +81,3 @@ const CardComponent = ({ title, img, onClick, height,py,px, isSelected = false }
 };
 
 export default CardComponent;
-// import React from 'react';
-// import { Box, Tooltip, Typography } from '@mui/material';
-// import ElectricBoltIcon from '@mui/icons-material/ElectricBolt'; // Optional icon for illustration
-// import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-// const CardComponent = ({ title, img, onClick, height, isSelected = false }) => {
-//   // Dynamically load image or fallback to placeholder
-//   let imageSrc;
-//   try {
-//     imageSrc = require(`../assets/operators/${img}.png`);
-//   } catch (error) {
-//     imageSrc = null; // Fallback if image not found
-//   }
-
-//   return (
-//     <Tooltip title={title} placement="top">
-//       <Box
-//         onClick={onClick}
-//         className={isSelected ? "card-selected" : "card-unselected"}
-//         sx={{
-//           display: 'flex',
-//           alignItems: 'center',
-//           justifyContent: 'space-between',
-//           background: isSelected
-//             ? 'linear-gradient(135deg, #1877F2 30%, #00A8FF 90%)'
-//             : 'linear-gradient(135deg, #FFF 30%, #F1F1F1 90%)', 
-//           boxShadow: isSelected ? 4 : 2,
-//           borderRadius: '12px', 
-//           textAlign: 'left',
-//           cursor: 'pointer',
-//           ml:1,
-//           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-//           width: '100%',
-//           height: height || "75%",
-//           padding: 2,
-//           marginTop: 2,
-//           border: isSelected ? '2px solid #1877F2' : '2px solid transparent',
-//           overflow: 'hidden',
-//           '&:hover': {
-//             transform: 'scale(1.05)',
-//             boxShadow: 6,
-//           },
-//         }}
-//       >
-//         {/* Image section */}
-//         <Box
-//           sx={{
-//             display: 'flex',
-//             alignItems: 'center',
-//             flexGrow: 1,
-//           }}
-//         >
-//           <img
-//             src={imageSrc || img} 
-//             alt="img"
-//             width="50px"
-//             style={{
-//               borderRadius: '50%',
-//               marginRight: '15px',
-//               border: isSelected ? '3px solid #00A8FF' : '3px solid #E0E0E0',
-//             }}
-//           />
-
-         
-//           <Typography
-//             variant="subtitle1"
-//             sx={{
-//               fontWeight: 600,
-//               overflow: 'hidden',
-//               whiteSpace: 'nowrap',
-//               textOverflow: 'ellipsis',
-//               color: isSelected ? '#FFF' : '#333', 
-//               fontSize: {
-//                 xs: '12px', 
-//                 sm: '14px', 
-//                 md: '16px', 
-//                 lg: '18px', 
-//               },
-//             }}
-//           >
-//             {title}
-//           </Typography>
-//         </Box>
-
-        
-//         {isSelected && (
-//           <CheckCircleIcon sx={{ color: '#FFF', fontSize: '24px', marginLeft: 'auto' }} />
-//         )}
-//       </Box>
-//     </Tooltip>
-//   );
-// };
-
-// export default CardComponent;

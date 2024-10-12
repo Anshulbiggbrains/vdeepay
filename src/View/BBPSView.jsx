@@ -790,6 +790,7 @@ const BBPSView = ({resetView}) => {
                 <CardComponent
                   py={0}
                   px={0}
+                  height={"60px"}
                   title={item.billerName}
                   img={item.iconUrl}
                   onClick={() => {

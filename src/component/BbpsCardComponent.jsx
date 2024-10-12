@@ -21,7 +21,7 @@ const BbpsCardComponent = ({ title, img, onClick, height, isSelected = false }) 
           textAlign: 'left',
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '100%',
+          width: '95%',
           height: height ? height : "75%",
           ml: 1,
           px: 0.5,
