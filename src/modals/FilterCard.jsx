@@ -911,7 +911,6 @@ const FilterCard = ({
               className="filter-input"
               placeholder="Ad name"
               list={adList}
-              
               labelKey="name"
               valKey="id"
               valueGetter={setAdIdVal}
@@ -1145,7 +1144,7 @@ const FilterCard = ({
             className="mx-2"
           >
             <FormControl
-              sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
+              sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "left" }}
             >
               <TextField
                 autoComplete="off"

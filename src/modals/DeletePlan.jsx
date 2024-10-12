@@ -65,7 +65,7 @@ const DeletePlan = ({ row, refresh }) => {
     >
       <Tooltip title="Active">
         <IconButton sx={{ color: "#ff0000" }} onClick={handleOpen}>
-          <Icon icon="icon-park-outline:delete-five" width={26} height={26} />
+          <Icon icon="icon-park-outline:delete-five" width={25} height={25} />
         </IconButton>
       </Tooltip>
 
@@ -77,7 +77,11 @@ const DeletePlan = ({ row, refresh }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} className="sm_modal">
-            <ModalHeader title="Delete Plan" handleClose={handleClose} subtitle="Easily Delete Your Plan in Seconds." />
+            <ModalHeader
+              title="Delete Plan"
+              handleClose={handleClose}
+              subtitle="Easily Delete Your Plan in Seconds."
+            />
             <Box
               component="form"
               id="deletePlan"
@@ -115,9 +119,9 @@ const DeletePlan = ({ row, refresh }) => {
                 you want to delete plan {row.plan}
               </Typography>
             </Box>
-            <Box sx={{mr:"10px"}}>
-            <ModalFooter form="deletePlan" request={request} btn="YES" />
-          </Box>
+            <Box sx={{ mr: "10px" }}>
+              <ModalFooter form="deletePlan" request={request} btn="YES" />
+            </Box>
           </Box>
         </Modal>
       </Box>

@@ -106,7 +106,7 @@ const EditPlanModal = ({ refresh, row }) => {
     >
       <Tooltip title="Edit Account">
         <IconButton sx={{ color: "#0504AA" }} onClick={handleOpen}>
-          <Icon icon="raphael:edit" width={26} height={26} />
+          <Icon icon="raphael:edit" width={25} height={25} />
         </IconButton>
       </Tooltip>
 

@@ -112,20 +112,14 @@ const MoneyTransferModal = ({ row, refresh }) => {
           <img
             src={rupee1}
             alt="Money Transfer"
-            style={{ width: "30px", height: "30px" }}
+            style={{ width: "25px", height: "25px" }}
           />
           {/* <CurrencyRupeeIcon /> */}
         </IconButton>
       </Tooltip>
       <Box>
-        <Drawer 
-
-          open={open}
-          onClose={handleClose}
-         anchor="right"
-       
-        >
-          <Box sx={{width:400}} className="sm_modal">
+        <Drawer open={open} onClose={handleClose} anchor="right">
+          <Box sx={{ width: 400 }} className="sm_modal">
             <ModalHeader title="Money Transfer" handleClose={handleClose} />
             <Box
               component="form"
