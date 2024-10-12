@@ -22,7 +22,7 @@ const AdminServices = () => {
 
   const tabs = [
     { label: "Operators", content: <AdminOperatorView/>,icon:< MyLocationIcon/> },
-//  { label: "APiServices", content: <AdminApiServices />,icon:< DisplaySettingsIcon/>  },
+  { label: "APiServices", content: <AdminApiServices />,icon:< DisplaySettingsIcon/>  },
     
     { label: "Plans", content: <AdminPlanView />,icon:<StreetviewIcon />  },
     { label: "Routes", content: <AdminRoutesView />,icon:<RouterIcon/>  },

@@ -49,7 +49,7 @@ import {
   whiteColor,
 } from "../theme/setThemeColor";
 import LogoComponent from "./LogoComponent";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import ComputerIcon from "@mui/icons-material/Computer";
 import AdminBadgeComponent from "./AdminBadgeComponent";
@@ -427,59 +427,58 @@ export default function SideNav(props, { data }) {
                 opacity: "0.9",
                 fontSize: "14px",
                 fontWeight: "600",
-                marginRight:"10px"
+                marginRight: "10px",
               }}
             >
-   {user?.role === "Dd" ? (
-  <Button
-    sx={{ color: whiteColor() }}
-    startIcon={<LogoutIcon sx={{color:"#FF9500"}} />} 
-  >
-    Sign Out
-  </Button>
-) : (
-  <Button
-    sx={{ color: whiteColor() }}
-    startIcon={<LogoutIcon sx={{color:"#FF9500"}}  />} 
-  >
-    Logout
-  </Button>
-)}
-
+              {user?.role === "Dd" ? (
+                <Button
+                  sx={{ color: whiteColor() }}
+                  startIcon={<LogoutIcon sx={{ color: "#FF9500" }} />}
+                >
+                  Sign Out
+                </Button>
+              ) : (
+                <Button
+                  sx={{ color: whiteColor() }}
+                  startIcon={<LogoutIcon sx={{ color: "#FF9500" }} />}
+                >
+                  Logout
+                </Button>
+              )}
             </span>
           </Typography>
         )}
-    { open && (
-      <Typography
-        sx={{ textAlign: "left", pl: 5, mt: 2, color: "white" }}
-      >
-        <span
-          style={{
-            opacity: "0.9",
-            fontSize: "14px",
-            fontWeight: "600",
-            marginRight: "5px",
-          }}
-        >
-          IP:
-        </span>
-        <span
-          style={{
-            opacity: "0.9",
-            fontSize: "14px",
-            fontWeight: "600",
-            marginRight: "5px",
-          }}
-        >
-          {ip}
-        </span>
-        {isPhone ? (
-          <PhoneIphoneIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
-        ) : (
-          <ComputerIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
+        {open && (
+          <Typography sx={{ textAlign: "left", pl: 5, mt: 2, color: "white" }}>
+            <span
+              style={{
+                opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px",
+              }}
+            >
+              IP:
+            </span>
+            <span
+              style={{
+                opacity: "0.9",
+                fontSize: "14px",
+                fontWeight: "600",
+                marginRight: "5px",
+              }}
+            >
+              {ip}
+            </span>
+            {isPhone ? (
+              <PhoneIphoneIcon
+                sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }}
+              />
+            ) : (
+              <ComputerIcon sx={{ ml: 2, fontSize: "17px", opacity: "0.8" }} />
+            )}
+          </Typography>
         )}
-      </Typography>
-    )}
       </List>
       <Divider />
     </div>

@@ -126,6 +126,9 @@ const UpdateAccount = ({ row, refresh }) => {
             transition: "all 0.3s ease",
             justifyContent: "center",
             background: "#1877f2",
+            "&:hover": {
+              backgroundColor: "#122480",
+            },
           }}
           onClick={handleOpen}
         >
@@ -254,13 +257,13 @@ const UpdateAccount = ({ row, refresh }) => {
                 </FormControl>
               </Grid>
             </Grid>
-            <Box sx={{mr:"5px"}}>
-            <ModalFooter
-              form="update-account"
-              request={request}
-              btn="save account"
-            />
-          </Box>
+            <Box sx={{ mr: "5px" }}>
+              <ModalFooter
+                form="update-account"
+                request={request}
+                btn="save account"
+              />
+            </Box>
           </Box>
         </Box>
       </Drawer>

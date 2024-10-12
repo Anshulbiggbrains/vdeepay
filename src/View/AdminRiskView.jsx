@@ -218,7 +218,7 @@ const AdminRiskView = () => {
             <CommonStatus
               status={row.status}
               approvedStatusText="Verified"
-              fontSize="13px"
+              fontSize="11px"
               // minWidth="120px"
               maxWidth="120px"
             />
