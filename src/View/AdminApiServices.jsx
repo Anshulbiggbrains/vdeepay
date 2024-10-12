@@ -122,19 +122,17 @@ const AdminApiServices = () => {
           actionButtons={
             <Grid
               item
-              md={12}
-              sm={12}
               xs={12}
               sx={{
                 display: "flex",
-                justifyContent: { md: "end", xs: "start" },
+                justifyContent: { xs: "flex-start", md: "flex-end" },
                 alignItems: "center",
                 mt: "-45px",
-                gap: 2,
+                gap: 1,
               }}
             >
               <Mount visible={user?.role === "Admin"}>
-                <Box>
+                <Box display="flex" alignItems="center">
                   <AddOperatorModal />
                   <Tooltip title="refresh">
                     <IconButton aria-label="refresh" sx={{ color: "#0F52BA" }}>

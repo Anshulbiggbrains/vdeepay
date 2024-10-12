@@ -967,29 +967,6 @@ const AdminTransactionsView = () => {
                 // buttons
                 actionButtons={
                   <>
-                    <FormGroup>
-                      <FormControlLabel
-                        sx={{
-                          mt: { md: 0, sm: 2, xs: 2 },
-                          mb: { md: 0, sm: 2, xs: 2 },
-                        }}
-                        control={
-                          <FormControl size="small">
-                            <Select
-                              variant="standard"
-                              fontSize="10px"
-                              value={showOldTransaction}
-                              onChange={() =>
-                                setShowOldTransaction(!showOldTransaction)
-                              }
-                            >
-                              <MenuItem value={true}>Old</MenuItem>
-                              <MenuItem value={false}>New</MenuItem>
-                            </Select>
-                          </FormControl>
-                        }
-                      />
-                    </FormGroup>
                     <div className="">
                       <ExcelUploadModal
                         twobuttons="Download Csv"
@@ -1018,6 +995,31 @@ const AdminTransactionsView = () => {
                         <CachedIcon className="refresh-purple" />
                       </IconButton>
                     </Tooltip>
+
+                    <FormGroup sx={{display: 'flex-end', alignItems: 'flex-end'}}>
+                      <FormControlLabel
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                          ml:50
+                        }}
+                        control={
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() =>
+                                setShowOldTransaction(!showOldTransaction)
+                              }
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
+                        }
+                      />
+                    </FormGroup>
                     {/* <>
                       <Tooltip title="Scheduler">
                         <BlinkingIcon active={isActive} onClick={handleClick} />

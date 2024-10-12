@@ -11,6 +11,7 @@ import { postFormData, postJsonData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import useCommonContext from "../store/CommonContext";
+import { Bill, invoice1 } from "../iconsImports";
 
 const style = {
   position: "absolute",
@@ -123,19 +124,23 @@ const BillPaymentModal = ({
     <Box
       sx={{
         display: "flex",
-        justifyContent: "end",
       }}
     >
       <MyButton
         text={changeFetchToPay ? "Pay Bill" : "Fetch Bill"}
-        purple
+        
         // type="bbpsForm"
-        icon={!changeFetchToPay && <DownloadIcon />}
+        icon={!changeFetchToPay && <img src={invoice1}></img>}
         sx={{ fontSize: "12px", px: 1 }}
         onClick={handleOpen}
         disabled={
           !operatorId || (changeFetchToPay && (amountValue ? false : true))
         }
+      />
+        <MyButton
+        text="Pay Bill"
+        sx={{ fontSize: "12px", px: 1, ml: 1 }} // Add margin left for spacing
+        onClick={payBill}
       />
 
       <Modal

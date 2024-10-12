@@ -909,8 +909,9 @@ const FilterCard = ({
           >
             <CommonSearchField
               className="filter-input"
-              placeholder="Search Ad name"
+              placeholder="Ad name"
               list={adList}
+              
               labelKey="name"
               valKey="id"
               valueGetter={setAdIdVal}

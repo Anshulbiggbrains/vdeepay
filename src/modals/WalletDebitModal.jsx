@@ -224,7 +224,9 @@ const WalletDebitModal = ({ row }) => {
                 ></Controller>
               </Grid>
             </Grid>
-            <ModalFooter form="edit-user" request={request} btn="Submit" />
+            <Box sx={{mr:"10px"}}>
+            <ModalFooter form="edit-user" request={request} btn="Submit"  />
+          </Box>
           </Box>
         </Box>
       </Drawer>

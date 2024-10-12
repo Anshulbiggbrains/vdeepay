@@ -473,24 +473,16 @@ const CreditRequestView = () => {
   };
 
   return (
-    <Grid>
-      <Grid
-        className="table-container"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          pt: 1,
-          pb: 1,
-          gap: 5,
-        }}
-      >
+    <Grid  >
+          <Box sx={{
+            pb:1,
+            pt:1
+          }}>
         <FilterCard
-          ifestFilter={user.role !== "Api"}
-          ifnumberFilter
-          ifAsmFilter={
-            user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
-          }
+        
+          // ifAsmFilter={
+          //   user.role !== "Api" && user.role !== "Ret" && user.role !== "Dd"
+          // }
           ifStatusFilter
           setQuery={setQuery}
           query={query}
@@ -531,6 +523,7 @@ const CreditRequestView = () => {
                 </IconButton>
               </Tooltip>
             </>
+   
           }
         />
 
@@ -541,8 +534,7 @@ const CreditRequestView = () => {
         ) : (
           <CreateCreditRequest refresh={refresh} />
         )}
-      </Grid>
-
+      </Box>
       <Grid xs={12}>
         <ApiPaginate
           apiEnd={ApiEndpoints.CRED_REQ}

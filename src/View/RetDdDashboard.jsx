@@ -4,17 +4,6 @@ import { Grid, Typography, Box, IconButton } from "@mui/material";
 import AuthContext from "../store/AuthContext";
 import CommonCardDashBoard from "../component/CommonCardDashBoard";
 import {
-  aepsIcon,
-  BBPS,
-  broadband,
-  cmsIcon,
-  dthIcon,
-  elecIcon,
-  gasIcon,
-  landIcon,
-  mobileR_img,
-  upi,
-  waterIcon,
   moneyl,
   cms1,
   nepal1,
@@ -34,6 +23,8 @@ import {
   water1,
   landline1,
   recharge1,
+  bbps1,
+  BBPS,
 } from "../iconsImports";
 import DmtContainer from "./DMTcontainer";
 import CMSView from "./CMSView";
@@ -50,21 +41,15 @@ import FlightTab from "../component/Travel/FlightTab";
 import BusTab from "../component/Travel/BusTab";
 import TrainTab from "../component/Travel/TrainTab";
 import HotelsTab from "../component/Travel/HotelsTab";
-import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
-import HouseIcon from "@mui/icons-material/House";
-import TrainIcon from "@mui/icons-material/Train";
-import FlightIcon from "@mui/icons-material/Flight";
-import { Money } from "@mui/icons-material";
 
 const RetDdDashboard = () => {
-  const [currentView, setCurrentView] = useState(null); // State to track the current view
+  const [currentView, setCurrentView] = useState(null);
 
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
   console.log("user is ", user);
 
-  // JSON format dummy data categorized into different sections
   const dataCategories = [
     {
       title: "Banking",
@@ -92,100 +77,98 @@ const RetDdDashboard = () => {
       data: [
         {
           id: 7,
-          name: "Mobile Recharge",
+          name: "Prepaid",
           img: recharge1,
           component: MobileRechargeForm,
         },
-        { id: 8, name: "DTH", img: dth1, component: MobileRechargeForm },
         {
-          id: 9,
+          id: 8,
+          name: "Postpaid",
+          img: recharge1,
+          component: MobileRechargeForm,
+        },
+        { id: 9, name: "DTH", img: dth1, component: MobileRechargeForm },
+        {
+          id: 10,
           name: "Electricity",
           img: electricity1,
           component: ElectricityForm,
         },
         {
-          id: 10,
-          name: "Credit Card ",
+          id: 11,
+          name: "Credit Card",
           img: creditcard1,
           component: CreditcardForm,
         },
         {
-          id: 11,
+          id: 12,
           name: "BroadBand",
           img: broadband1,
           component: ElectricityForm,
         },
-        { id: 12, name: "Gas", img: gas1, component: ElectricityForm },
-        { id: 13, name: "Water", img: water1, component: ElectricityForm },
+        { id: 13, name: "Gas", img: gas1, component: ElectricityForm },
+        { id: 14, name: "Water", img: water1, component: ElectricityForm },
         {
-          id: 14,
+          id: 15,
           name: "Insurance",
           img: insurance1,
           component: ElectricityForm,
         },
         {
-          id: 15,
+          id: 16,
           name: "Landline",
           img: landline1,
           component: ElectricityForm,
         },
-        { id: 16, name: "Bbps", img: BBPS, component: BBPSView },
+        { id: 17, name: "Bbps", img: BBPS, component: BBPSView },
       ],
     },
     {
       title: "Travel",
       data: [
-        { id: 17, name: "AIR", img: airplane1, component: FlightTab },
-        { id: 18, name: "BUS", img: bus1, component: BusTab },
-        { id: 19, name: "HOTELS", img: hotel1, component: HotelsTab },
-        { id: 20, name: "IRCTC", img: train1, component: TrainTab },
+        { id: 18, name: "AIR", img: airplane1, component: FlightTab },
+        { id: 19, name: "BUS", img: bus1, component: BusTab },
+        { id: 20, name: "HOTELS", img: hotel1, component: HotelsTab },
+        { id: 21, name: "IRCTC", img: train1, component: TrainTab },
       ],
     },
   ];
 
   const handleCardClick = (item) => {
+    let title = ""; // Define a title variable
+    if (item.name === "Prepaid") {
+      title = "Prepaid";
+    } else if (item.name === "Postpaid") {
+      title = "Postpaid";
+    }
+
     // Check if the clicked item has a component associated
     if (item.component) {
       setCurrentView({
         component: item.component,
         type:
-          item.name === "DMT 1"
+          item.name === "DMT"
             ? "dmt1"
-            : item.name === "DMT 2"
-            ? "dmt2"
-            : item.name === "CMS 1"
+            : item.name === "CMS"
             ? "cms1"
-            : item.name === "CMS 2"
-            ? "cms2"
             : item.name === "Vendor Payments"
             ? "express"
             : item.name === "Nepal Transfer"
             ? "nepal"
-            : item.name === "Super"
-            ? "super"
             : item.name === "UPI"
             ? "upi"
-            : item.name === "Mobile Recharge"
+            : item.name === "Prepaid" || item.name === "Postpaid"
             ? "mobile"
-            : item.name === "Water"
-            ? "WATER"
             : item.name === "DTH"
             ? "dth"
-            : item.name === "Gas"
-            ? "GAS"
-            : item.name === "Broadband"
-            ? "BROADBAND"
-            : item.name === "Insurance"
-            ? "INSURANCE"
-            : item.name === "Electricity"
-            ? "ELECTRICITY"
-            : item.name, // default case
+            : item.name,
+        title, // Add title prop
       });
     }
   };
 
   const resetView = () => {
-    setCurrentView(null); // Reset to dashboard view
+    setCurrentView(null);
   };
 
   return (
@@ -204,11 +187,8 @@ const RetDdDashboard = () => {
               display: "flex",
               borderRadius: "8px",
               backgroundColor: "#fEDCDB",
-              marginTop: "0.1%",
-              color: " #004080",
-              // color: "#023047", #004080,
+              color: "#004080",
               fontSize: "14px",
-              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               marginBottom: "0.5rem",
@@ -216,11 +196,12 @@ const RetDdDashboard = () => {
             }}
           >
             <marquee behavior="scroll" direction="left">
-              Digital payments are growing faster than ever ! UPI is leading the
+              Digital payments are growing faster than ever! UPI is leading the
               way, making transactions quick and easy for millions.
             </marquee>
           </Grid>
         ))}
+
       {!currentView ? (
         dataCategories.map((category, index) => (
           <Box
@@ -228,7 +209,7 @@ const RetDdDashboard = () => {
             sx={{
               marginBottom: 2,
               border: "solid 1px lightgray",
-              p: { xs: 1, sm: 3 }, // Responsive padding
+              p: { xs: 1, sm: 3 },
               borderRadius: 3,
               overflow: "wrap",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
@@ -242,7 +223,7 @@ const RetDdDashboard = () => {
                 mt: -2,
                 mb: 1,
                 fontSize: { xs: "1rem", sm: "1.25rem" },
-              }} // Responsive typography
+              }}
             >
               {category.title}
             </Typography>
@@ -268,10 +249,10 @@ const RetDdDashboard = () => {
           </Box>
         ))
       ) : (
-        // Show the selected view component
         <currentView.component
           type={currentView.type}
-          resetView={resetView} // Function to reset the view
+          title={currentView.title} // Pass the title prop
+          resetView={resetView}
         />
       )}
     </>

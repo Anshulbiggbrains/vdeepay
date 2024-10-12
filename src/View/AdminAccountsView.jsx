@@ -18,6 +18,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 import FilterCard from "../modals/FilterCard";
 import useCommonContext from "../store/CommonContext";
 import { capitalize1 } from "../utils/TextUtil";
+import { dateToTime, ddmmyy } from "../utils/DateUtils";
 let refresh;
 let handleCloseModal;
 
@@ -139,6 +140,17 @@ const AdminAccountsView = () => {
       width: "70px",
     },
     {
+      name: "Created At",
+      selector: (row) => (
+        <div className="mb-1">
+          {ddmmyy(row.created_at)}
+          <br />
+          {dateToTime(row.created_at)}
+        </div>
+      ),
+      width: "100px",
+    },
+    {
       name: "Name",
       // name: (
       //   <FilterComponent
@@ -156,6 +168,7 @@ const AdminAccountsView = () => {
       ),
       wrap: "true",
     },
+ 
     {
       name: "Establishment",
       // name: (
