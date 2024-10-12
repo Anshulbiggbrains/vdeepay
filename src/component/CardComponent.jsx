@@ -11,7 +11,7 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
   }
 
   
-  const cardHeight = height || "100px"; 
+  const cardHeight = height || "75px"; 
 
   return (
     <Tooltip title={title} placement="top">
