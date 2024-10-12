@@ -201,7 +201,9 @@ const AddPlanModal = ({ refresh }) => {
               </Grid>
             </Grid>
           </Box>
+          <Box sx={{mr:"10px"}}>
           <ModalFooter form="addPlan" request={request} />
+          </Box>
         </Box>
       </Drawer>
     </Box>

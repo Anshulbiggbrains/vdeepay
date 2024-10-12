@@ -229,12 +229,14 @@ const CreateEditLimitAccount = ({ refresh, edit = false, row }) => {
                 </Grid>
               </Grid>
             </Box>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter
               form="accountlimit"
               type="submit"
               btn="Submit"
               disable={request}
             />
+            </Box>
           </Box>
         </Drawer>
       </Box>

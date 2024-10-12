@@ -115,7 +115,9 @@ const DeletePlan = ({ row, refresh }) => {
                 you want to delete plan {row.plan}
               </Typography>
             </Box>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter form="deletePlan" request={request} btn="YES" />
+          </Box>
           </Box>
         </Modal>
       </Box>

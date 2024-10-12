@@ -140,11 +140,13 @@ const BlockUnBlockPlans = ({ row }) => {
                 sx={{ display: "flex", justifyContent: "center" }}
               ></Grid>
             </Box>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter
               form="blockUnblockId"
               request={request}
               btn="Proceed"
             />
+            </Box>
           </Box>
         </Modal>
       </Box>

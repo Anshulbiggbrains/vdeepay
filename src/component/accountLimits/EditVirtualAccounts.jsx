@@ -204,12 +204,14 @@ const EditVirtualAccounts = ({ refresh, row }) => {
               </Grid>
             </Box>
           </Box>
+          <Box sx={{mr:"10px"}}>
           <ModalFooter
             form="accountlimit"
             type="submit"
             btn="Submit"
             disable={request}
           />
+        </Box>
         </Box>
       </Drawer>
     </Box>

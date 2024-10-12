@@ -189,7 +189,9 @@ const EditPlanModal = ({ refresh, row }) => {
                   </FormControl>
                 </Grid>
               </Grid>
+              <Box sx={{mr:"10px"}}>
               <ModalFooter form="addPlan" request={request} />
+              </Box>
             </Box>
           </Box>
         </Drawer>

@@ -211,12 +211,14 @@ const EditOpServices = ({ refresh, row }) => {
                 </Grid>
               </Grid>
             </Box>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter
               form="editOpServices"
               type="submit"
               btn="Submit"
               disable={request}
             />
+            </Box>
           </Box>
         </Drawer>
       </Box>

@@ -205,11 +205,13 @@ const SendNewNoti = ({ refresh }) => {
                 </Grid>
               </Grid>
             </Box>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter
               form="send_notification"
               request={request}
               btn="Send"
             />
+          </Box>
           </Box>
         </Drawer>
       </Box>

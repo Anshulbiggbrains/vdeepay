@@ -114,11 +114,13 @@ const DeleteNotification = ({ row, refresh }) => {
                 you want to delete Notification {row.notification_id}
               </Typography>
             </Box>
+           <Box sx={{mr:"10px"}}>
             <ModalFooter
               form="DeleteNotification"
               request={request}
               btn="YES"
             />
+          </Box>
           </Box>
         </Drawer>
       </Box>

@@ -137,7 +137,9 @@ const IssueHandlerModal = ({ row, refresh }) => {
               </Grid>
             </Grid>
           </Box>
+          <Box sx={{mr:"10px"}}>
           <ModalFooter form="issueHandler" request={request} btn="save" />
+        </Box>
         </Box>
       </Drawer>
     </Box>

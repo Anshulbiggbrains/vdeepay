@@ -218,7 +218,9 @@ const AddOperatorModal = ({ refresh }) => {
                 </FormControl>
               </Grid>
             </Grid>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter form="addOperator" request={request} />
+          </Box>
           </Box>
         </Box>
       </Drawer>

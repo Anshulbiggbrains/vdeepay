@@ -159,7 +159,9 @@ const EditOperator = ({ row, refresh }) => {
                 </FormControl>
               </Grid>
             </Grid>
+            <Box sx={{mr:"10px"}}>
             <ModalFooter form="edit-operator" request={request} btn="Proceed" />
+          </Box>
           </Box>
         </Box>
       </Drawer>
