@@ -2,16 +2,16 @@ import React from 'react';
 import { Box, Tooltip, Typography } from '@mui/material';
 
 const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false }) => {
-  // Dynamically load image or fallback to a default
+
   let imageSrc;
   try {
     imageSrc = require(`../assets/operators/${img}.png`);
   } catch (error) {
-    imageSrc = null; // Fallback if image not found
+    imageSrc = null; 
   }
 
-  // Set a fixed height for the card (ensuring height stays constant)
-  const cardHeight = height || "100px"; // Default height to 100px if not provided
+  
+  const cardHeight = height || "100px"; 
 
   return (
     <Tooltip title={title} placement="top">
@@ -27,7 +27,7 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
           width: '100%',
-          height: cardHeight, // Fixed height for the card
+          height: cardHeight, 
           ml: 1,
           padding: 2,
           mt: 2,
@@ -42,12 +42,20 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
         }}
         onClick={onClick}
       >
-        {/* Display image */}
+      
         <img
           src={imageSrc || img}
           alt={title}
-          width="50px"
-          style={{ borderRadius: '50%', marginRight: '10px' }}
+          style={{
+            borderRadius: '50%',
+            marginRight: '10px',
+            width: '37px',
+            height: '37px',
+            '@media (min-width: 600px)': {
+              width: '40px', 
+              height: '40px',
+            },
+          }}
         />
 
         {/* Operator name */}
@@ -59,12 +67,12 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 2, // Limit the text to 2 lines
-            whiteSpace: 'normal', // Allow text wrapping for large titles
-            textOverflow: 'ellipsis', // Show ellipsis if text overflows
+            WebkitLineClamp: 2,
+            whiteSpace: 'normal',
+            textOverflow: 'ellipsis', 
             color: '#000',
-            lineHeight: '1.2rem', // Adjust line height for consistency
-            maxHeight: '2.4rem', // Ensures that even long text stays within 2 lines
+            lineHeight: '1.2rem', 
+            maxHeight: '2.4rem', 
           }}
         >
           {title}
