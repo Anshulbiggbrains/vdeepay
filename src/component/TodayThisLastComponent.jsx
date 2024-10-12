@@ -183,9 +183,9 @@ const TodayThisLastComponent = ({
             textAlign: "center",
 
             borderRadius: "8px",
-            backgroundColor: " #1675e024",
-            marginTop: "0.1%",
-            color: "#003776",
+            backgroundColor: "#fEDCDB",
+            marginTop: "0.34%",
+            color: "#004080",
             fontSize: "14px",
             display: "flex",
             alignItems: "center",
@@ -193,18 +193,18 @@ const TodayThisLastComponent = ({
             marginBottom: "0.8rem",
           }}
         >
-          <IconButton sx={{ textAlign: "flex-start", color: "#003776" }}>
+          {/* <IconButton sx={{ textAlign: "flex-start", color: "#003776" }}>
             <Icon icon="icon-park-outline:speaker-one" width={22} height={22} />
-          </IconButton>
+          </IconButton> */}
 
           <marquee behavior="scroll" direction="left">
-            New! Keyboard shortcuts Drive keyboard shortcuts have been updated
-            to give you first-letters navigation
+            Digital payments are growing faster than ever! UPI is leading the
+            way, making transactions quick and easy for millions.
           </marquee>
 
-          <IconButton sx={{ textAlign: "flex-end", color: "#003776" }}>
+          {/* <IconButton sx={{ textAlign: "flex-end", color: "#003776" }}>
             <Icon icon="oui:cross-in-circle-empty" width={22} height={22} />
-          </IconButton>
+          </IconButton> */}
         </Grid>
       </Grid>
 

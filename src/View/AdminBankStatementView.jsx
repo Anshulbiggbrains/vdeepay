@@ -256,9 +256,9 @@ const AdminBankStatementView = () => {
               status={row.status == 0 ? 1 : 2}
               approvedStatusText="CLAIMED"
               pendingStatusText="UNCLAIMED"
-              fontSize="12px"
+              fontSize="11px"
               maxWidth="120px"
-              minWidth="100px"
+              minWidth="90px"
             />
           </Box>
         );

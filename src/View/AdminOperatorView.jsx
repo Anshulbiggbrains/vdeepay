@@ -294,7 +294,7 @@ const AdminOperatorView = () => {
           position: "relative",
         }}
       >
-        <Box sx={{ width: "150%" }}>
+        {/* <Box sx={{ width: "150%" }}>
           <Mount visible={user?.role === "Admin"}>
             <FormGroup>
               <FormControlLabel
@@ -317,7 +317,7 @@ const AdminOperatorView = () => {
               />
             </FormGroup>
           </Mount>
-        </Box>
+        </Box> */}
 
         <Box
           sx={{

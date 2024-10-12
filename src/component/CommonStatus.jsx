@@ -1,4 +1,3 @@
-
 import { Button, IconButton, Box } from "@mui/material";
 import { Icon } from "@iconify/react";
 import React from "react";
@@ -49,7 +48,7 @@ const CommonStatus = ({
       sx={{
         display: "flex",
         alignItems: "center",
-        padding: "10px",
+        padding: "8px",
         minWidth: minWidth,
         maxWidth: maxWidth,
         fontSize: fontSize,

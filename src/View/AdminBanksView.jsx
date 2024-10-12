@@ -134,6 +134,7 @@ const AdminBanksView = () => {
                   boxShadow: "0px 4px 15px rgba(255, 165, 0, 0.5)",
                   "&:hover": {
                     boxShadow: "0px 6px 20px rgba(255, 165, 0, 0.5)",
+                    background: "#e0561f",
                   },
                 }}
                 onClick={() => {
