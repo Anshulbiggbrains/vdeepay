@@ -335,12 +335,7 @@ export const Asm_nav = [
     icon2: TransactionIconWhite,
     to: "/asm/transactions",
   },
-  {
-    title: "Fund Request",
-    icon: creditrq1,
-    icon2: CreditRequestIcon,
-    to: "/asm/cred-req",
-  },
+
   {
     title: "Login History",
     icon: mypurchase,

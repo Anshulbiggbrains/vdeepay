@@ -1203,7 +1203,7 @@ const AdimUserView = () => {
             query={query}
             setQuery={setQuery}
             // ifRoleFilter
-            ifAdIdFilter
+            ifAdIdFilter={user.role!=="Ad"}
             setTabQueryreset={setTabQueryreset}
             ifestFilter
             ifUsernameFilter

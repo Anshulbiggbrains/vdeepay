@@ -1,17 +1,46 @@
 import React from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh'; // For refresh icon
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'; // Wallet icon
+import { Box, Typography } from '@mui/material';
 
 const StatusDisplay = () => {
   const statuses = [
-   
     { label: 'Failed', value: '9875947', color: '#000' },
     { label: 'Total', value: '875468', color: '#000' },
     { label: 'Pending', value: '9875947', color: '#000' },
     { label: 'Refunded', value: '9875947', color: '#000' },
-    { label: 'Success', value: '₹ 100.00',  color: '#000' },
+    { label: 'Success', value: '₹ 100.00', color: '#000' },
   ];
+
+  // Function to get the border color based on status
+  const getBorderColor = (label) => {
+    switch (label) {
+      case 'Failed':
+        return 'red';
+      case 'Success':
+        return 'green';
+      case 'Pending':
+        return 'yellow';
+      case 'Refunded':
+        return 'blue';
+      default:
+        return '#ccc'; // Default gray color
+    }
+  };
+
+  // Function to get light background color based on status
+  const getBackgroundColor = (label) => {
+    switch (label) {
+      case 'Failed':
+        return '#ffcccc'; // Light red
+      case 'Success':
+        return '#ccffcc'; // Light green
+      case 'Pending':
+        return '#ffffcc'; // Light yellow
+      case 'Refunded':
+        return '#cce5ff'; // Light blue
+      default:
+        return '#f0f0f0'; // Light gray for other statuses
+    }
+  };
 
   return (
     <Box display="flex" justifyContent="space-around" alignItems="center" p={1} borderRadius={2}>
@@ -21,9 +50,10 @@ const StatusDisplay = () => {
           display="flex"
           alignItems="center"
           justifyContent="space-between"
-          p={1} // Reduced padding to decrease height
+          p={1}
           mx={1}
-          border="2px solid #ccc" // Gray border
+          border={`2px solid ${getBorderColor(status.label)}`} // Dynamically set the border color
+          backgroundColor={getBackgroundColor(status.label)} // Set background color
           borderRadius={2}
           minWidth="200px"
         >
@@ -35,16 +65,8 @@ const StatusDisplay = () => {
 
           <Box display="flex" alignItems="center">
             <Typography variant="body2" style={{ color: status.color, marginRight: '8px' }}>
-              {status.value}
+              ₹ {status.value} {/* Rupee icon added next to value */}
             </Typography>
-            {status.icon && (
-              <IconButton size="small">
-                {status.icon}
-              </IconButton>
-            )}
-            <IconButton size="small">
-              <RefreshIcon />
-            </IconButton>
           </Box>
         </Box>
       ))}
