@@ -36,7 +36,9 @@ import { useContext } from "react";
 import AuthContext from "../store/AuthContext";
 import { USER_ROLES } from "../utils/constants";
 import predefinedRanges from "../utils/predefinedRanges";
-
+import android from "../assets/android.png";
+import explorer from "../assets/explorer.png";
+import api from "../assets/Api.png";
 let refresh;
 let handleCloseModal;
 const prefilledQuery = "type_txn=SALE";
@@ -157,11 +159,13 @@ const AdSaleView = () => {
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <LaptopIcon fontSize="small" sx={{ color: "green" }} />
+                 <img src={explorer} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <LaptopIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <AndroidIcon fontSize="small" sx={{ color: "blue" }} />
+                  <img src={android} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <AndroidIcon fontSize="small" sx={{ color: "blue" }} /> */}
               </Tooltip>
             ) : row.platform === "IOS" ? (
               <Tooltip title="IOS">
@@ -169,11 +173,11 @@ const AdSaleView = () => {
               </Tooltip>
             ) : (
               <Tooltip title="API">
-                <SyncAltIcon fontSize="small" sx={{ color: "red" }} />
+                   <img src={api} alt="" style={{width:"25px", height:"25px"}}/>
+                {/* <SyncAltIcon fontSize="small" sx={{ color: "red" }} /> */}
               </Tooltip>
             )}
           </div>
-          <div className="fw-bold">{row.platform}</div>
         </div>
       ),
       center: true,

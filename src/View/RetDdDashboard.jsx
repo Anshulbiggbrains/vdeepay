@@ -24,6 +24,7 @@ import {
   landline1,
   recharge1,
   bbps1,
+  BBPS,
 } from "../iconsImports";
 import DmtContainer from "./DMTcontainer";
 import CMSView from "./CMSView";
@@ -55,8 +56,18 @@ const RetDdDashboard = () => {
       data: [
         { id: 1, name: "DMT", img: moneyl, component: DmtContainer },
         { id: 2, name: "CMS ", img: cms1, component: CMSView },
-        { id: 3, name: "Nepal Transfer", img: nepal1, component: NepalTransfer },
-        { id: 4, name: "Vendor Payments", img: vpay1, component: VendorPayments },
+        {
+          id: 3,
+          name: "Nepal Transfer",
+          img: nepal1,
+          component: NepalTransfer,
+        },
+        {
+          id: 4,
+          name: "Vendor Payments",
+          img: vpay1,
+          component: VendorPayments,
+        },
         { id: 5, name: "UPI", img: upi1, component: UPITransferView },
         { id: 6, name: "Aeps", img: aeps1, component: AEPS2View },
       ],
@@ -64,17 +75,52 @@ const RetDdDashboard = () => {
     {
       title: "Utility",
       data: [
-        { id: 7, name: "Prepaid", img: recharge1, component: MobileRechargeForm },
-        { id: 8, name: "Postpaid", img: recharge1, component: MobileRechargeForm },
+        {
+          id: 7,
+          name: "Prepaid",
+          img: recharge1,
+          component: MobileRechargeForm,
+        },
+        {
+          id: 8,
+          name: "Postpaid",
+          img: recharge1,
+          component: MobileRechargeForm,
+        },
         { id: 9, name: "DTH", img: dth1, component: MobileRechargeForm },
-        { id: 10, name: "Electricity", img: electricity1, component: ElectricityForm },
-        { id: 11, name: "Credit Card", img: creditcard1, component: CreditcardForm },
-        { id: 12, name: "BroadBand", img: broadband1, component: ElectricityForm },
+        {
+          id: 10,
+          name: "Electricity",
+          img: electricity1,
+          component: ElectricityForm,
+        },
+        {
+          id: 11,
+          name: "Credit Card",
+          img: creditcard1,
+          component: CreditcardForm,
+        },
+        {
+          id: 12,
+          name: "BroadBand",
+          img: broadband1,
+          component: ElectricityForm,
+        },
         { id: 13, name: "Gas", img: gas1, component: ElectricityForm },
         { id: 14, name: "Water", img: water1, component: ElectricityForm },
-        { id: 15, name: "Insurance", img: insurance1, component: ElectricityForm },
-        { id: 16, name: "Landline", img: landline1, component: ElectricityForm },
-        { id: 17, name: "Bbps", img: bbps1, component: BBPSView },
+        {
+          id: 15,
+          name: "Insurance",
+          img: insurance1,
+          component: ElectricityForm,
+        },
+        {
+          id: 16,
+          name: "Landline",
+          img: landline1,
+          component: ElectricityForm,
+        },
+        { id: 17, name: "Bbps", img: BBPS, component: BBPSView },
       ],
     },
     {
@@ -113,7 +159,8 @@ const RetDdDashboard = () => {
             ? "upi"
             : item.name === "Prepaid" || item.name === "Postpaid"
             ? "mobile"
-            :item.name==="DTH"?"dth"
+            : item.name === "DTH"
+            ? "dth"
             : item.name,
         title, // Add title prop
       });
@@ -126,32 +173,34 @@ const RetDdDashboard = () => {
 
   return (
     <>
-      {user.role === "Dd" || (user.role === "Ret" && location.pathname === "/customer/dashboard") && (
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={8}
-          lg={9}
-          sx={{
-            marginTop: { xs: "1rem" },
-            textAlign: "center",
-            display: "flex",
-            borderRadius: "8px",
-            backgroundColor: "#fEDCDB",
-            color: "#004080",
-            fontSize: "14px",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "0.5rem",
-            padding: "8px 6px",
-          }}
-        >
-          <marquee behavior="scroll" direction="left">
-            Digital payments are growing faster than ever! UPI is leading the way, making transactions quick and easy for millions.
-          </marquee>
-        </Grid>
-      )}
+      {user.role === "Dd" ||
+        (user.role === "Ret" && location.pathname === "/customer/dashboard" && (
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={8}
+            lg={9}
+            sx={{
+              marginTop: { xs: "1rem" },
+              textAlign: "center",
+              display: "flex",
+              borderRadius: "8px",
+              backgroundColor: "#fEDCDB",
+              color: "#004080",
+              fontSize: "14px",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "0.5rem",
+              padding: "8px 6px",
+            }}
+          >
+            <marquee behavior="scroll" direction="left">
+              Digital payments are growing faster than ever! UPI is leading the
+              way, making transactions quick and easy for millions.
+            </marquee>
+          </Grid>
+        ))}
 
       {!currentView ? (
         dataCategories.map((category, index) => (

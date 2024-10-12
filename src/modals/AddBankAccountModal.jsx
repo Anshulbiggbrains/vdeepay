@@ -224,7 +224,9 @@ const AddBankAccountModal = ({ refresh }) => {
                   </TextField>
                 </FormControl>
               </Grid>
+              <Box sx={{mr:"5px"}}>
               <ModalFooter form="addAcc" request={request} />
+              </Box>
             </Box>
           </Box>
         </Drawer>

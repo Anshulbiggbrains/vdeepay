@@ -623,6 +623,7 @@ const AdTransactionView = () => {
         {/* filter */}
         <FilterCard
           iforderidFilter
+          ifFromBankFilter
           ifdateFilter
           ifoperatorFilter
           ifstatusFilter
@@ -784,7 +785,8 @@ const AdTransactionView = () => {
           filterComponent={
             <FilterCard
               showSearch={false}
-              ifdateFilter
+              ifdateFilter={false}
+              ifFromBankFilter
               ifoperatorFilter
               ifstatusFilter
               chooseInitialCategoryFilter={

@@ -685,7 +685,7 @@ body {
 
 //right nav css
 .right-nav {
-  width: 530px;
+  
   height: 530px;
   padding: 8px;
   margin-top: -7px;
@@ -1895,7 +1895,7 @@ div.second {
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
   transform: scale(1) !important;
   border-radius: 9px !important;
-  padding:"7px" !important;
+  padding: "7px" !important;
   color: #fff !important;
   // box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
   //   rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
@@ -1905,39 +1905,33 @@ div.second {
   text-transform: none !important;
 }
 .refresh-icon-risk:hover {
-  background-color: #2980b9 !important; 
-  border-radius: 9px !important; 
-  
-
+  background-color: #2980b9 !important;
+  border-radius: 9px !important;
 }
 
-
-
 .refresh-purple {
-  border-radius:50% ;
-  
-  transition: transform 0.5s, background-color 0.5s, color 0.5s, box-shadow 0.5s !important; 
+  border-radius: 50%;
 
-  color: #1877f2!important; 
-  width:32; height: 32;
+  transition: transform 0.5s, background-color 0.5s, color 0.5s, box-shadow 0.5s !important;
+
+  color: #1877f2 !important;
+  width: 32;
+  height: 32;
 }
 
 .refresh-purple:hover {
   cursor: pointer;
-  background-color: #32CD32 !important; 
+  background-color: #32cd32 !important;
 
-  transform: scale(1.4) rotate(25deg) !important; 
-  color: #FFD700 !important; 
+  transform: scale(1.4) rotate(25deg) !important;
+  color: #ffd700 !important;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 4px 8px,
-              rgba(0, 0, 0, 0.2) 0px 8px 16px, rgba(0, 0, 0, 0.2) 0px 16px 32px; 
+    rgba(0, 0, 0, 0.2) 0px 8px 16px, rgba(0, 0, 0, 0.2) 0px 16px 32px;
   border-radius: 50%;
 }
 
-
-
-
 // .refresh-purple {
- 
+
 //   border-radius: 50%;
 //   transform: scale(1) !important;
 //   transition: 0.5s !important;
@@ -2910,6 +2904,7 @@ ol > li {
 .table-container {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: $white-color;
   // background-image: linear-gradient(
@@ -3390,3 +3385,14 @@ ol > li {
   // border: 2px solid #fff;
   animation: pulse 1s infinite;
 }
+.link-style {
+  font-size: 16px;
+  color: rgb(12, 12, 163); 
+  font-weight: bold; 
+  cursor: pointer;
+  padding: 5px;
+}
+
+
+
+

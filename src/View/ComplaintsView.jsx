@@ -191,7 +191,7 @@ const ComplaintsView = () => {
       width: "100px",
     },
     {
-      name: "Status",
+      name: "C Status",
       selector: (row) => {
         return (
           <Box

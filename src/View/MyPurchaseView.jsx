@@ -37,7 +37,8 @@ import { USER_ROLES } from "../utils/constants";
 import FilterCard from "../modals/FilterCard";
 import FilterModal from "../modals/FilterModal";
 import predefinedRanges from "../utils/predefinedRanges";
-
+import android from "../assets/android.png";
+import explorer from "../assets/explorer.png";
 let refresh;
 let handleCloseModal;
 function refreshFunc(setQueryParams) {
@@ -177,11 +178,13 @@ const MyPurchaseView = () => {
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <LaptopIcon fontSize="small" sx={{ color: "green" }} />
+                <img src={explorer} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <LaptopIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <AndroidIcon fontSize="small" sx={{ color: "blue" }} />
+                <img src={android} alt="" style={{width:"20px", height:"20px"}}/>
+                {/* <AndroidIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "IOS" ? (
               <Tooltip title="IOS">
@@ -193,7 +196,7 @@ const MyPurchaseView = () => {
               </Tooltip>
             )}
           </div>
-          <div className="fw-bold">{row.platform}</div>
+          {/* <div className="fw-bold">{row.platform}</div> */}
         </div>
       ),
       center: true,
@@ -495,7 +498,8 @@ const MyPurchaseView = () => {
               <Grid sx={{ justifyContent: "end", display: "relative" }}>
                 <FilterCard
                   showSearch={false}
-                  ifdateFilter
+                  // ifdateFilter
+                  ifFromBankFilter
                   //
                   ifnumberFilter
                   setQuery={setQuery}

@@ -81,13 +81,9 @@ const IssueHandlerModal = ({ row, refresh }) => {
       >
         <IconButton
           onClick={handleOpen}
-          sx={{ color: row.status == "OPEN" ? "#5234ea" : "#535353" }}
+          sx={{ color: row.status == "OPEN" ? "#1ee383" : "#de1212" }}
         >
-          <Icon
-            icon="material-symbols:system-update-alt"
-            width={28}
-            height={28}
-          />
+          <Icon icon="hugeicons:complaint" width={28} height={28} />
         </IconButton>
       </Tooltip>
       <Drawer open={open} onClose={handleClose} anchor="right">

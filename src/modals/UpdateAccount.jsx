@@ -254,11 +254,13 @@ const UpdateAccount = ({ row, refresh }) => {
                 </FormControl>
               </Grid>
             </Grid>
+            <Box sx={{mr:"5px"}}>
             <ModalFooter
               form="update-account"
               request={request}
               btn="save account"
             />
+          </Box>
           </Box>
         </Box>
       </Drawer>

@@ -54,7 +54,7 @@ import useResponsive from "../hooks/useResponsive";
 import { BBPS, teamWork } from "../iconsImports";
 import NoDataView from "../component/NoDataView";
 import CustomTabs from "../component/CustomTabs";
-import { cms_tab_value, mt_tab_value } from "../utils/constants";
+import { mt_tab_value } from "../utils/constants";
 import BeneTableComponent from "../component/BeneCardComponent";
 import { getTableHeadRowColor } from "../theme/setThemeColor";
 const DmtContainer = ({
@@ -740,7 +740,6 @@ const DmtContainer = ({
                       getRemitterStatus(mob);
                     }}
                   />
-                  {/* )} */}
                   {infoFetchedMob && infoFetchedMob && (
                     <Grid
                       lg={12}
@@ -758,15 +757,17 @@ const DmtContainer = ({
                         }}
                       >
                         <Box
-                          sx={{
-                            flex: 1, // Ensure it takes available space
-                            maxWidth: {
-                              lg: "100%",
-                              md: "200px",
-                              sm: "150px",
-                              xs: "100%",
-                            }, // Adjust max-width based on screen size
-                          }}
+                          sx={
+                            {
+                              // flex: 1, // Ensure it takes available space
+                              // maxWidth: {
+                              //   lg: "100%",
+                              //   md: "200px",
+                              //   sm: "150px",
+                              //   xs: "100%",
+                              // }, // Adjust max-width based on screen size
+                            }
+                          }
                         >
                           <BeneSearchBar setSearch={setSearch} />
                         </Box>
@@ -834,25 +835,19 @@ const DmtContainer = ({
                                     paddingTop: "4px",
                                   }}
                                 >
-                                  <TableCell
-                                    align="center"
-                                    sx={{ padding: "4px" }}
-                                  >
+                                  <TableCell align="center" sx={{ padding: 2 }}>
                                     Avatar
                                   </TableCell>
-                                  <TableCell sx={{ padding: "4px" }}>
+                                  <TableCell sx={{ padding: 2 }}>
                                     Name
                                   </TableCell>
-                                  <TableCell sx={{ padding: "4px" }}>
+                                  <TableCell sx={{ padding: 2 }}>
                                     Account No
                                   </TableCell>
-                                  <TableCell sx={{ padding: "4px" }}>
+                                  <TableCell sx={{ padding: 2 }}>
                                     IFSC
                                   </TableCell>
-                                  <TableCell
-                                    align="center"
-                                    sx={{ padding: "4px" }}
-                                  >
+                                  <TableCell align="center" sx={{ padding: 2 }}>
                                     Verified
                                   </TableCell>
                                   <TableCell

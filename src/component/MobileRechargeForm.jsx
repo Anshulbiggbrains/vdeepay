@@ -257,7 +257,7 @@ console.log("operator is ",operator)
             
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <CircleComponent img={operatorIcon} /> 
-                  <Typography sx={{ fontSize: "24px", fontWeight: "bold", marginLeft: "16px",marginLeft:"4px" }}>
+                  <Typography sx={{ fontSize: "24px", fontWeight: "bold", marginLeft: "16px"}}>
                     {type === opName ? title : opName}
                   </Typography>
                 </div>
