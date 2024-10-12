@@ -202,6 +202,7 @@ const MyPurchaseView = () => {
         </div>
       ),
       center: true,
+      width:"80px"
     },
     {
       name: "Number",
@@ -240,6 +241,7 @@ const MyPurchaseView = () => {
         </div>
       ),
       center: false,
+      width:"130px"
     },
     {
       name: "Service",
@@ -247,7 +249,7 @@ const MyPurchaseView = () => {
         <div style={{ textAlign: "left" }}>{row.operator}</div>
       ),
       center: false,
-      width: "230px",
+      width: "210px",
     },
     {
       name: "Amount",
