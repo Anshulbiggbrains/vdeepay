@@ -389,8 +389,9 @@ const CreditRequestModal = ({ row, action = "status", refresh }) => {
                 </Grid>
               </Box>
             )}
-
+              <Box sx={{mr:"5px"}}>
             <ModalFooter form="cred_req" type="submit" request={request} />
+          </Box>
           </Box>
         </Drawer>
       </Box>
