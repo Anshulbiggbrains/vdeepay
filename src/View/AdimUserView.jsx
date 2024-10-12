@@ -75,9 +75,9 @@ import CustomTabs from "../component/CustomTabs";
 import { Icon } from "@iconify/react";
 import AdminUserTab from "../component/Tab/AdminUserTab ";
 import { capitalize1 } from "../utils/TextUtil";
-import kyc from "../assets/Kyc.png"
-import performance from "../assets/PerfomanceR.png"
-import RestoreIcon from '@mui/icons-material/Restore';
+import kyc from "../assets/Kyc.png";
+import performance from "../assets/PerfomanceR.png";
+import RestoreIcon from "@mui/icons-material/Restore";
 // styled tabls
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -1062,18 +1062,19 @@ const AdimUserView = () => {
               </Mount>
               <Mount visible={row?.kyc === 1 && row.fingId}>
                 <Tooltip title="Kyc / AePS2 Done">
-                  <PlaylistAddCheckIcon  sx={{width:"24px",
-                      height:"24px",
-                      color:"#17B169"}}/>
+                  <PlaylistAddCheckIcon
+                    sx={{ width: "24px", height: "24px", color: "#17B169" }}
+                  />
                 </Tooltip>
               </Mount>
 
               <Mount visible={row?.kyc !== 1}>
                 <Tooltip title="Kyc Pending">
-               <RestoreIcon sx={{width:"24px",
-                      height:"24px",
-                      color:"#E49B0F"}}/>
-                {/* <img src={kyc} alt="KycPending" style={{ width: "24px", height: "24px" }} /> */}
+                  <img
+                    src={kyc}
+                    alt="KycPending"
+                    style={{ width: "24px", height: "24px" }}
+                  />
                   {/* <IconButton>
                     <Icon
                       icon="ph:clock-countdown-bold"
@@ -1243,7 +1244,7 @@ const AdimUserView = () => {
             query={query}
             setQuery={setQuery}
             // ifRoleFilter
-            ifAdIdFilter={user.role!=="Ad"}
+            ifAdIdFilter={user.role !== "Ad"}
             setTabQueryreset={setTabQueryreset}
             ifestFilter
             ifUsernameFilter
