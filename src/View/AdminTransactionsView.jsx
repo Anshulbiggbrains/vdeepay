@@ -70,6 +70,7 @@ import RetDbTransactionTab from "../component/Tab/RetDbTransactionTab";
 import android from "../assets/android.png";
 import explorer from "../assets/explorer.png";
 import api from "../assets/Api.png";
+import StatusDisplay from "../StatusDisplay";
 // import { Icon } from "@iconify/react";
 
 // eslint-disable-next-line no-unused-vars
@@ -880,7 +881,7 @@ const AdminTransactionsView = () => {
               </Grid>
             }
             totalCard={
-              <><StatusDisplay/></>
+              <StatusDisplay/>
             }
             backButton={
               role !== "admin" && role !== "api" ? (
