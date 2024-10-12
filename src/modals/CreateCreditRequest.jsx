@@ -98,19 +98,25 @@ const CreateCreditRequest = ({ refresh }) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData();
-    formData.append('reqeust_img', fileValue);
-    urltoFile(fileValue, fileType && fileType.name, fileType && fileType.type)
+    console.log("This is your form", form)
+    console.log("This is your fileValue", fileValue)
+    const name = event.target.files[0].name;
+    console.log("Fetched name")
+    const type = event.target.files[0].type;
+    urltoFile(fileValue, name, type)
         .then((file) => setFileValue(file))
         .catch((err) => {
           console.log(err);
         });
+    formData.append("request_image", fileValue);
     const data = {
       bank_name: bank,
       mode: mode,
       bank_ref_id: form.ref_id.value,
-      date: dateValue, // Since this is already in YYYY-MM-DD format
+      date: dateValue,
       amount: form.amt.value,
-      img: form.file_upload.value
+      img: form.file_upload.value,
+      request_image: fileValue
     };
     setRequest(true);
     postJsonData(
