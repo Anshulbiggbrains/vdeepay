@@ -37,51 +37,42 @@ import Checkbox from '@mui/material/Checkbox';
 import CircleComponent from "./CircleComponent";
 import { back } from "../iconsImports";
 
-const MobileRechargeForm = ({ type, resetView }) => {
+const MobileRechargeForm = ({ type, resetView, title }) => {
   const authCtx = useContext(AuthContext);
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
   const [isMobV, setIsMobV] = useState(true);
   const [isCustomerIdV, setIsCustomerIdV] = useState(true);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = useState(true);
   const [request, setRequest] = useState(false);
   const [infoFetched, setInfoFetched] = useState(false);
   const [numberinfo, setNumberinfo] = useState();
-  const [operatorIcon,setOperatorIcon] = useState()
-  // console.log("numberinfo", numberinfo);
+  const [operatorIcon, setOperatorIcon] = useState();
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState("");
-    const [opName, setOpName] = useState("");
+  const [opName, setOpName] = useState("");
   const [amount, setAmount] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [operatorVal, setOperatorVal] = useState([]);
-  const [selectedOperator,setSelectedOperator]=useState([null])
-  const [defaultIcon, setdefaultIcon] = useState();
-  // console.log("defaultIcons", defaultIcon);
+  const [selectedOperator, setSelectedOperator] = useState([null]);
+  const [defaultIcon, setDefaultIcon] = useState();
   const [operator, setOperator] = useState();
   const [successRecharge, setSuccessRechage] = useState([]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [customerId, setCustomerId] = useState("");
-  const[IsOptSelected, setIsOptSelected]=useState(false)
-
- 
-  let title = checked && checked ? "Prepaid" : "Postpaid";
-  // console.log("title", title);
+  const [IsOptSelected, setIsOptSelected] = useState(false);
+  const[data,setData]=useState()
+console.log("operator is ",operator)
   const envName = getEnv();
 
   const getOperatorVal = () => {
-    // setOperator("");
     get(
       ApiEndpoints.GET_OPERATOR,
       `sub_type=${type === "mobile" ? title : "DTH"}`,
       "",
       (res) => {
         const opArray = res.data.data;
-        // setIsOptSelected(opArray)
-        console.log("op array is",IsOptSelected);
-        
         const op = opArray.map((item) => {
-          // setOperatorIcon(op.);
           return {
             code: item.code,
             name: item.name,
@@ -95,8 +86,6 @@ const MobileRechargeForm = ({ type, resetView }) => {
       }
     );
   };
-  const [data, setData] = useState("");
-  // console.log("data", data);
 
   const getNumberInfo = (number) => {
     setInfoFetched(false);
@@ -108,7 +97,7 @@ const MobileRechargeForm = ({ type, resetView }) => {
       },
       setRequest,
       (res) => {
-        if (res && res.data && res.data) {
+        if (res && res.data && res.data.info) {
           const data = res.data.info;
           const customNumInfo = data;
           customNumInfo.customer_no = number;
@@ -121,9 +110,7 @@ const MobileRechargeForm = ({ type, resetView }) => {
       },
       (error) => {
         if (
-          error &&
           error.response &&
-          error.response.status &&
           (error.response.status === 403 || error.response.status === 404)
         ) {
           setInfoFetched(true);
@@ -133,37 +120,24 @@ const MobileRechargeForm = ({ type, resetView }) => {
       }
     );
   };
+
   useEffect(() => {
-    getOperatorVal()
-    // if (numberinfo && numberinfo) {
-    //   const val = {
-    //     op: numberinfo.operator,
-    //     img: numberinfo.img,
-    //   };
-    //   setOperator(val);
-    // }
-    // if nothing is typed in the number text field then numberinfo = null
+    getOperatorVal();
     if (!numberinfo) {
-      setdefaultIcon("");
+      setDefaultIcon("");
     }
   }, [numberinfo]);
 
   useEffect(() => {
     if (operatorVal && numberinfo) {
-      operatorVal &&
-        operatorVal.forEach((item) => {
-          if (item.code === numberinfo.operator) {
-            setdefaultIcon(item.img);
-          }
-        });
+      operatorVal.forEach((item) => {
+        if (item.code === numberinfo.operator) {
+          setDefaultIcon(item.img);
+        }
+      });
     }
-console.log("default",defaultIcon);
-
-setOperatorIcon(operatorVal.code)
-console.log("icons",operatorIcon);
-
     if (mobile === "" && type === "mobile") {
-      setdefaultIcon("");
+      setDefaultIcon("");
     }
   }, [operatorVal, numberinfo]);
 
@@ -172,27 +146,36 @@ console.log("icons",operatorIcon);
       document.activeElement.blur();
       event.preventDefault();
       const form = event.currentTarget;
+      
+      // Determine the correct type based on title and type
+      let rechargeType;
+      if (type === "mobile") {
+        rechargeType = title === "Prepaid" ? "PREPAID" : "POSTPAID";
+      } else {
+        rechargeType = "DTH";
+      }
+
       const data = {
         number: title === "Prepaid" ? form.mobile.value : undefined,
         param1: title === "Postpaid" ? form.mobile.value : undefined,
         operator:
-          operator && operator.op
-            ? operator.op
+          opName 
+            ? opName
             : numberinfo && numberinfo.operator,
         amount: form.amount.value,
-        type: type === "mobile" ? title.toUpperCase() : "DTH",
+        type: rechargeType,
         pf: "WEB",
-        latitude: userLat && userLat,
-        longitude: userLong && userLong,
+        latitude: userLat || undefined,
+        longitude: userLong || undefined,
       };
+
       setData(data);
       setModalVisible(true);
     } else {
       event.preventDefault();
       getNumberInfo(customerId);
     }
-  };
-
+  }
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -254,10 +237,15 @@ console.log("icons",operatorIcon);
               <CardComponent
                 title={operator.name}
                 setOpIcon={setOperatorIcon}
+                
                 img={operator.code}
                 height="55px"
                 isSelected={opName === operator.name}
-                onClick={() => handleOpenVal(operator)}
+                onClick={() => handleOpenVal(operator)
+
+
+                 
+                }
               />
             ))}
         </Grid>
@@ -277,9 +265,9 @@ console.log("icons",operatorIcon);
                 {type === "mobile" && (
                   <div style={{ textAlign: "right" }}>
                     <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
-                      {title === "Prepaid" ? "Switch to Postpaid" : "Switch to Prepaid"}
+                      {title }
                     </Typography>
-                    <Tooltip title={title === "Prepaid" ? "Postpaid" : "Prepaid"}>
+                    {/* <Tooltip title={title === "Prepaid" ? "Postpaid" : "Prepaid"}>
                       <Switch
                         checked={checked}
                         onChange={handleChange}
@@ -290,7 +278,7 @@ console.log("icons",operatorIcon);
                           },
                         }}
                       />
-                    </Tooltip>
+                    </Tooltip> */}
                   </div>
                 )}
               </div>
