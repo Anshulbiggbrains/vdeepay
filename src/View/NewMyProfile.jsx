@@ -689,7 +689,8 @@ const NewMyProfile = () => {
   <ChangeMpin sx={{ padding: "8px 16px" }} />
   <ResetMpin sx={{ padding: "8px 16px" }} />
   {(user.role === "Ret" || user.role === "Dd") && (
-    <ChangeLayoutModal sx={{ padding: "8px 16px" }} />
+    <></>
+    // <ChangeLayoutModal sx={{ padding: "8px 16px" }} />
   )}
   {user.role !== "Admin" &&
     user.role !== "Asm" &&

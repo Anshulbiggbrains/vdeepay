@@ -289,7 +289,7 @@ console.log("operator is ",operator)
   
                 {type === "mobile" && (
                   <div style={{ textAlign: "right" }}>
-                    <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
+                    <Typography sx={{ mr:4, fontSize:"25px", fontWeight: "bold" }}>
                       {title }
                     </Typography>
                     {/* <Tooltip title={title === "Prepaid" ? "Postpaid" : "Prepaid"}>

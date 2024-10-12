@@ -714,15 +714,7 @@ const BBPSView = ({resetView}) => {
             </Typography>
           </Box>
 
-          <Button 
-            variant="contained" 
-            onClick={handleBackToBillerData} 
-            sx={{ ml: 2, p: "4px 12px", fontSize: '0.875rem', minWidth: "auto" }} 
-            size="small"
-          >
-            <ReplyIcon sx={{ fontSize: 16 }} />
-            Back
-          </Button>
+      
         </Box>
 
         {/* Search Field */}
@@ -813,123 +805,142 @@ const BBPSView = ({resetView}) => {
 
       {/* Right side: Scrollable detailed view */}
       <Grid
-        item
-        xs={12}
-        lg={8}
-        sm={8}
-        sx={{
-          maxHeight: "1000px",
-          overflowY: "auto",
-          padding: 2,
-          borderLeft: "1px solid lightgrey",
-          position: "relative",
-        }}
-      >
-        {/* Back to Categories Button aligned to the right */}
-        {selectedBillerId ? (
-          <>
-            <Box>
-              {params && (
+  item
+  xs={12}
+  lg={8}
+  sm={8}
+  sx={{
+    maxHeight: "1000px",
+    overflowY: "auto",
+    padding: 2,
+    borderLeft: "1px solid lightgrey",
+    position: "relative",
+  }}
+>
+  {/* Container for Back button aligned to the right */}
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "flex-end",
+      mb: 2, // Add margin-bottom to separate from content below
+    }}
+  >
+    <Button
+      variant="contained"
+      onClick={handleBackToBillerData}
+      sx={{ p: "4px 12px", fontSize: '0.875rem', minWidth: "auto" }}
+      size="small"
+    >
+      <ReplyIcon sx={{ fontSize: 16 }} />
+      Back
+    </Button>
+  </Box>
+
+  {/* Render biller details if selected */}
+  {selectedBillerId ? (
+    <>
+      <Box>
+        {params && (
+          <Box
+            component="form"
+            id="bbpsForm"
+            validate="true"
+            autoComplete="off"
+            onSubmit={mpinVal ? payBill : openMpinfunc}
+            sx={formStyle}
+          >
+            <Grid container spacing={2} sx={{ pt: 1, width: { md: "100%", sm: "100%", xs: "100%" } }}>
+              <Box display="flex" alignItems="center">
+                <InnerIcon>
+                  <img src={selectedImage} alt="bbps" />
+                </InnerIcon>
+                <Typography variant="h6" align="left" sx={{ ml: 2, fontWeight: "300" }}>
+                  {biller_name}
+                </Typography>
+              </Box>
+
+              {params.map((item, index) => (
+                <Grid item md={12} xs={12} key={index}>
+                  <FormControl sx={{ width: "100%" }}>
+                    <TextField
+                      autoComplete="off"
+                      label={item.desc}
+                      id={item.name}
+                      inputProps={{
+                        minLength: item.minLength,
+                        maxLength: item.maxLength,
+                        pattern: item.regex,
+                      }}
+                      size="small"
+                      required={item.mandatory === 1}
+                      type={item.inputType === "NUMERIC" ? "number" : "text"}
+                      sx={{ marginBottom: 2 }}
+                    />
+                  </FormControl>
+                </Grid>
+              ))}
+
+              {err && (
                 <Box
-                  component="form"
-                  id="bbpsForm"
-                  validate="true"
-                  autoComplete="off"
-                  onSubmit={mpinVal ? payBill : openMpinfunc}
-                  sx={formStyle}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mt: 2,
+                    fontSize: "12px",
+                    px: 2,
+                    color: "#DC5F5F",
+                  }}
                 >
-                  <Grid container spacing={2} sx={{ pt: 1, width: { md: "100%", sm: "100%", xs: "100%" } }}>
-                    <Box display="flex" alignItems="center">
-                      <InnerIcon>
-                        <img src={selectedImage} alt="bbps" />
-                      </InnerIcon>
-                      <Typography variant="h6" align="left" sx={{ ml: 2, fontWeight: "300" }}>
-                        {biller_name}
-                      </Typography>
-                    </Box>
-                    {params.map((item, index) => (
-                      <Grid item md={12} xs={12} key={index}>
-                        <FormControl sx={{ width: "100%" }}>
-                          <TextField
-                            autoComplete="off"
-                            label={item.desc}
-                            id={item.name}
-                            inputProps={{
-                              minLength: item.minLength,
-                              maxLength: item.maxLength,
-                              pattern: item.regex,
-                            }}
-                            size="small"
-                            required={item.mandatory === 1}
-                            type={item.inputType === "NUMERIC" ? "number" : "text"}
-                            sx={{ marginBottom: 2 }} // Add spacing between text fields
-                          />
-                        </FormControl>
-                      </Grid>
-                    ))}
-
-                    {/* Error message below text fields */}
-                    {err && (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          mt: 2,
-                          fontSize: "12px",
-                          px: 2,
-                          color: "#DC5F5F",
-                        }}
-                      >
-                        <div>{err.message}</div>
-                      </Box>
-                    )}
-
-                    {/* Submit Button or Bill Details Modal */}
-                    <Grid item md={12} xs={12}>
-                      <FormControl sx={{ mt: 2, width: "100%" }}>
-                        {fetchMandatory === "MANDATORY" ? (
-                          <BillDetailsModal
-                            billerId={billerId}
-                            params={params}
-                            currentBiller={currentBiller}
-                            billDetails={billDetails}
-                            setBillDetails={setBillDetails}
-                            fetchBill={fetchBill}
-                            categoryName={categoryName}
-                            payRequest={payRequest}
-                            payBill={payBill}
-                            mpinVal={mpinVal}
-                            setMpinVal={setMpinVal}
-                            setOpenMpin={setOpenMpin}
-                            billValue={billValue}
-                            setBillValue={setBillValue}
-                            setPan={setPan}
-                            pan={pan}
-                            err={err}
-                          />
-                        ) : (
-                          <Button
-                            type="submit"
-                            form="bbpsForm"
-                            className="btn-background"
-                            sx={{ width: "100%", mt: 1 }}
-                          >
-                            {mpinVal ? "Pay Now" : "Continue"}
-                          </Button>
-                        )}
-                      </FormControl>
-                    </Grid>
-                  </Grid>
+                  <div>{err.message}</div>
                 </Box>
               )}
-            </Box>
-          </>
-        ) : (
-          <Typography variant="h6" align="center">
-            Please select a biller to view details.
-          </Typography>
+
+              <Grid item md={12} xs={12}>
+                <FormControl sx={{ mt: 2, width: "100%" }}>
+                  {fetchMandatory === "MANDATORY" ? (
+                    <BillDetailsModal
+                      billerId={billerId}
+                      params={params}
+                      currentBiller={currentBiller}
+                      billDetails={billDetails}
+                      setBillDetails={setBillDetails}
+                      fetchBill={fetchBill}
+                      categoryName={categoryName}
+                      payRequest={payRequest}
+                      payBill={payBill}
+                      mpinVal={mpinVal}
+                      setMpinVal={setMpinVal}
+                      setOpenMpin={setOpenMpin}
+                      billValue={billValue}
+                      setBillValue={setBillValue}
+                      setPan={setPan}
+                      pan={pan}
+                      err={err}
+                    />
+                  ) : (
+                    <Button
+                      type="submit"
+                      form="bbpsForm"
+                      className="btn-background"
+                      sx={{ width: "100%", mt: 1 }}
+                    >
+                      {mpinVal ? "Pay Now" : "Continue"}
+                    </Button>
+                  )}
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Box>
         )}
-      </Grid>
+      </Box>
+    </>
+  ) : (
+    <Typography variant="h6" align="center">
+      Please select a biller to view details.
+    </Typography>
+  )}
+</Grid>
+
     </Grid>
   </Box>
 )}
