@@ -66,6 +66,7 @@ import { resetData } from "../features/allUsers/allUsersSlice";
 import { keyframes } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import RetDbTransactionTab from "../component/Tab/RetDbTransactionTab";
+import StatusDisplay from "../StatusDisplay";
 
 // import { Icon } from "@iconify/react";
 
@@ -872,6 +873,9 @@ const AdminTransactionsView = () => {
                   }}
                 /> */}
               </Grid>
+            }
+            totalCard={
+              <><StatusDisplay/></>
             }
             backButton={
               role !== "admin" && role !== "api" ? (
