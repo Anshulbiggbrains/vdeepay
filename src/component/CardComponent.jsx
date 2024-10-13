@@ -26,7 +26,7 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
           textAlign: 'left',
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-          width: '100%',
+          width: '95%',
           height: cardHeight, 
           ml: 1,
           padding: 2,

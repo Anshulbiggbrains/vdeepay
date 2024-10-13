@@ -173,7 +173,7 @@ const RetDdDashboard = () => {
 
   return (
     <>
-      {user.role === "Dd" ||
+      {user.role === "Dd"&& location.pathname === "/customer/dashboard" ||
         (user.role === "Ret" && location.pathname === "/customer/dashboard" && (
           <Grid
             item
@@ -182,7 +182,7 @@ const RetDdDashboard = () => {
             md={8}
             lg={9}
             sx={{
-              marginTop: { xs: "1rem" },
+              // marginTop: { xs: "1rem" },
               textAlign: "center",
               display: "flex",
               borderRadius: "8px",

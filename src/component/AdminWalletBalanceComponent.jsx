@@ -196,102 +196,7 @@ const AdminWalletBalanceComponent = ({
   }, []);
 
   return (
-    // <Grid
-    //   container
-    //   xs={12}
-    //   md={12}
-    //   lg={12}
-    //   sx={{
-    //     backgroundColor: "#fff",
-    //     borderRadius: "8px",
-    //     padding: "1rem",
-    //     boxShadow:
-    //       "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
-    //       width: { lg: "99%", md: "95%", sm: "100%" }, 
-    //     ml: { lg: "0", md: "0", xs: "0" }, 
-    //     mr: { lg: "1.5%", md: 0, xs: 0 },
-        
-    //   }}
-    
-    // >
-    //   {user && (user.role === "Asm" || user.role === "Zsm")
-    //     ? walletDataAsm &&
-    //       walletDataAsm.map((item, index) => {
-    //         return (
-    //           <Grid
-    //             key={index}
-    //             item
-    //             xs={6}
-    //             sm={3}
-    //             md={3}
-    //             sx={{
-    //               mb: { sm: 2, md: 2, xs: 2 },
-    //             }}
-    //           >
-    //             <DashboardDataComponent1
-    //               key={index}
-    //               users={item}
-    //               data="wallet"
-    //               index={index}
-    //               len={
-    //                 user && (user.role === "Asm" || user.role === "Zsm")
-    //                   ? walletDataAsm.length
-    //                   : walletData.length
-    //               }
-    //               w1={w1}
-    //               w2={w2}
-    //               getWalletBal={getWalletBalance}
-    //               getBankBal={getBankBalance}
-    //               getPrimaryBalance={getPrimaryBalance}
-    //               getTertiaryBalance={getTertiaryBalance}
-    //               PrimaryRequest={prequest}
-    //               TertiaryRequest={trequest}
-    //               walletReq={walletBalReq}
-    //               bankBalReq={bankBalReq}
-    //             />
-                
-   
-    
-
-    //           </Grid>
-    //         );
-    //       })
-    //     : walletData &&
-    //       walletData.map((item, index) => {
-    //         return (
-    //           <Grid
-    //             key={index}
-    //             item
-    //             xs={6}
-    //             sm={3}
-    //             md={2.2}
-    //             sx={{
-    //               mb: { sm: 2, md: 2, xs: 2 },
-    //             }}
-    //           >
-    //             <DashboardDataComponent1
-    //               users={item}
-    //               data="wallet"
-    //               index={index}
-    //               len={walletData.length}
-    //               w1={w1 && w1}
-    //               w2={w2 && w2}
-    //               getWalletBal={getWalletBalance}
-    //               getBankBal={getBankBalance}
-    //               getAPIBal={getAPIBalance}
-    //               apiBalancesData={apiBalancesData}
-    //               getPrimaryBalance={getPrimaryBalance}
-    //               getTertiaryBalance={getTertiaryBalance}
-    //               PrimaryRequest={prequest}
-    //               TertiaryRequest={trequest}
-    //               walletReq={walletBalReq}
-    //               bankBalReq={bankBalReq}
-    //               apiBalReq={apiBalReq}
-    //             />
-    //           </Grid>
-    //         );
-    //       })}
-    // </Grid>
+ 
     <Grid
     container
     xs={12}
@@ -303,9 +208,9 @@ const AdminWalletBalanceComponent = ({
       padding: "1rem",
       boxShadow:
         "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
-      width: { lg: "99%", md: "95%", sm: "100%" },
+      width: { lg: "100%", md: "100%", sm: "100%" },
       ml: { lg: "0", md: "0", xs: "0" },
-      mr: { lg: "1.5%", md: 0, xs: 0 },
+      // mr: { lg: "1.5%", md: 0, xs: 0 },
     }}
   >
     {user && (user.role === "Asm" || user.role === "Zsm")
@@ -313,14 +218,16 @@ const AdminWalletBalanceComponent = ({
           <Grid
             key={index}
             item
-            xs={12} // Full width on small screens
+            xs={6} // Full width on small screens
             sm={6}  // Half width on small to medium screens
-            md={3}  // Quarter width on medium screens
+            md={2.8}  // Quarter width on medium screens
             sx={{
+              ml:2,
               mb: { sm: 2, md: 2, xs: 2 },
               display: 'flex', // Use flex to allow children to take full space
               flexDirection: 'column', // Align children in a column
-              height: '100%', // Ensure the Grid item takes full height
+              height: '100%',
+              boxShadow:1 // Ensure the Grid item takes full height
             }}
           >
             <DashboardDataComponent1
@@ -348,11 +255,13 @@ const AdminWalletBalanceComponent = ({
             item
             xs={12} // Full width on small screens
             sm={6}  // Half width on small to medium screens
-            md={3}  // Quarter width on medium screens
+            md={2.8}  // Quarter width on medium screens
             sx={{
+              ml:2,
               mb: { sm: 2, md: 2, xs: 2 },
               display: 'flex',
               flexDirection: 'column',
+              boxShadow:1,
               height: '100%',
             }}
           >

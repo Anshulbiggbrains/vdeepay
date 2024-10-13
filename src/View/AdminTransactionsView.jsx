@@ -1002,7 +1002,7 @@ const AdminTransactionsView = () => {
                   </Tooltip>
         
                  
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', width:{lg:'550px',sm:'300px'}}}>
+                  <Box sx={{ display: 'flex', ml:2}}>
                     <FormGroup>
                       <FormControlLabel
                         sx={{
