@@ -44,7 +44,8 @@ import HotelsTab from "../component/Travel/HotelsTab";
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null);
-
+  const [name, setName] = useState();
+const[image,setImage]=useState()
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
@@ -135,6 +136,9 @@ const RetDdDashboard = () => {
   ];
 
   const handleCardClick = (item) => {
+
+    setName(item.name)
+    setImage(item.img)
     let title = ""; // Define a title variable
     if (item.name === "Prepaid") {
       title = "Prepaid";
@@ -253,6 +257,8 @@ const RetDdDashboard = () => {
           type={currentView.type}
           title={currentView.title} // Pass the title prop
           resetView={resetView}
+          name={name}
+          image={image}
         />
       )}
     </>

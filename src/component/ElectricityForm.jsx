@@ -18,11 +18,12 @@ import BbpsCardComponent from "../component/BbpsCardComponent";
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment } from '@mui/material';
 import styled from "styled-components";
+import { back } from "../iconsImports";
 const InnerIcon = styled(Box)(({ theme }) => ({
 
   // padding: theme.spacing(1),
-  width: '48px',
-  height: '48px',
+  width: '60px',
+  height: '60px',
   display: 'flex',
   borderRadius: '50%',
   alignItems: 'center',
@@ -30,7 +31,7 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   boxShadow: 'rgba(0, 0, 0, 0.24) 0px 1px 4px',
   // background: theme.palette.common.white,
 }));
-const ElectricityForm = ({ title, type,resetView}) => {
+const ElectricityForm = ({ title, type,resetView,name,image}) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -114,7 +115,7 @@ const ElectricityForm = ({ title, type,resetView}) => {
       );
     }
   };
-  const handleBackToCategories = () => {
+  const handleBack = () => {
     resetView(false)
     
     // setShowSecondPage(0); // Set the state to 1 when the button is clicked
@@ -176,17 +177,13 @@ console.log("oppp",opName);
       <Grid container alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
       <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
         {/* Image and Title Section */}
-        <Grid item xs={12} sm="auto">
+        <Grid item xs={12} sm="auto" sx={{ml:1}}>
           <Box display="flex" alignItems="center">
-            <Box sx={{ width: 40, height: 40, overflow: "hidden", borderRadius: "50%" }}>
-              <img
-                src={"your_image_url_here"} 
-                alt="Biller"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </Box>
+          <InnerIcon>
+        <img src={image} alt="Biller" style={{ width: 40, height: 40 }} />
+      </InnerIcon>
             <Typography variant="h6" align="left" sx={{ ml: 1 }}>
-              abc
+             {name}
               {/* Dynamically render biller name */}
             </Typography>
           </Box>
@@ -229,15 +226,40 @@ console.log("oppp",opName);
         </Grid>
 
         {/* Back Button */}
-        <Grid item xs={12} sm="auto">
+        {/* <Grid item xs={12} sm="auto">
           <Button
             variant="contained"
-            onClick={handleBackToCategories}
+            onClick={handleBack}
             sx={{ ml: 2 }}
           >
             <ReplyIcon /> Back
-          </Button>
-        </Grid>
+          </Button> */}
+        {/* </Grid> */}
+        <Grid
+                   
+                     item xs={12} sm="auto"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+              mr:2,
+                  mt:1
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Home</span>
+                      <img
+                        src={back}
+                        alt="back"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    </Grid>
       </Grid>
           </Grid>
 
@@ -388,7 +410,7 @@ console.log("oppp",opName);
           <Grid item xs={12} sm="auto" display="flex" justifyContent="flex-start" sx={{mb:3}}>
   <Button
     variant="contained"
-    onClick={handleBackToCategories}
+    onClick={handleBack}
     sx={{ ml: 2 }} // Margin left for spacing
   >
     <ReplyIcon /> Back

@@ -54,8 +54,8 @@ const OuterIcon = styled(Box)(({ theme, bg = '#08509E' }) => ({
 const InnerIcon = styled(Box)(({ theme }) => ({
 
   // padding: theme.spacing(1),
-  width: '48px',
-  height: '48px',
+  width: '60px',
+  height: '60px',
   display: 'flex',
   borderRadius: '50%',
   alignItems: 'center',
@@ -496,7 +496,8 @@ const BBPSView = ({resetView}) => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      mb: 2,
+                  ml:3,
+                  mt:1
                     }}
                   >
                     <Button
@@ -505,7 +506,7 @@ const BBPSView = ({resetView}) => {
                       className="button-props"
                       onClick={handleBack}
                     >
-                      <span style={{ marginRight: "5px" }}>Back</span>
+                      <span style={{ marginRight: "5px" }}>Home</span>
                       <img
                         src={back}
                         alt="UPI logo"

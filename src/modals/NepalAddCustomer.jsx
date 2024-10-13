@@ -53,6 +53,7 @@ const NepalAddCustomer = ({
   modelOpenHook,
   setMobile,
   mobileNum,
+  setNewCustomer,
   getCustomerByMobileOrId,
 }) => {
   const [open, setOpen] = useState(false);
@@ -98,7 +99,8 @@ const NepalAddCustomer = ({
 
   // console.log("validFields", validFields);
   const handleClose = () => {
-    setOpen(false);
+    // setOpen(false);
+    setNewCustomer(false)
     setGottenOTP(false);
     setDateOfB(null);
   };

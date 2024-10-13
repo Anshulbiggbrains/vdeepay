@@ -880,8 +880,9 @@ const AdminTransactionsView = () => {
               </Grid>
             }
             totalCard={
+              <>
               <StatusDisplay/>
-            }
+            </>}
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
