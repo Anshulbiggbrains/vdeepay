@@ -564,6 +564,8 @@ const LoginPage = () => {
                       <Typography sx={{ mx: 2, }}>OR</Typography>
                       <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                     </Box>
+                    {/* npm i @fvilers/disable-react-devtools */}
+
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>
                   <Button
