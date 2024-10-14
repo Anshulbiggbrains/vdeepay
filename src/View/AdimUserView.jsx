@@ -1243,7 +1243,7 @@ const AdimUserView = () => {
             showSearch={false}
             query={query}
             setQuery={setQuery}
-            
+             ifFromBankFilter
             // ifRoleFilter
             ifAdIdFilter={user.role !== "Ad"}
             setTabQueryreset={setTabQueryreset}
