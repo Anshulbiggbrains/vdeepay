@@ -44,7 +44,8 @@ import HotelsTab from "../component/Travel/HotelsTab";
 
 const RetDdDashboard = () => {
   const [currentView, setCurrentView] = useState(null);
-
+  const [name, setName] = useState();
+const[image,setImage]=useState()
   const location = useLocation();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
@@ -135,6 +136,9 @@ const RetDdDashboard = () => {
   ];
 
   const handleCardClick = (item) => {
+
+    setName(item.name)
+    setImage(item.img)
     let title = ""; // Define a title variable
     if (item.name === "Prepaid") {
       title = "Prepaid";
@@ -173,7 +177,7 @@ const RetDdDashboard = () => {
 
   return (
     <>
-      {user.role === "Dd" ||
+      {user.role === "Dd"&& location.pathname === "/customer/dashboard" ||
         (user.role === "Ret" && location.pathname === "/customer/dashboard" && (
           <Grid
             item
@@ -182,7 +186,7 @@ const RetDdDashboard = () => {
             md={8}
             lg={9}
             sx={{
-              marginTop: { xs: "1rem" },
+              // marginTop: { xs: "1rem" },
               textAlign: "center",
               display: "flex",
               borderRadius: "8px",
@@ -253,6 +257,8 @@ const RetDdDashboard = () => {
           type={currentView.type}
           title={currentView.title} // Pass the title prop
           resetView={resetView}
+          name={name}
+          image={image}
         />
       )}
     </>

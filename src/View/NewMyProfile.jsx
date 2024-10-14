@@ -668,10 +668,16 @@ const NewMyProfile = () => {
                     ? "Retailer"
                     : user.role === "Ad"
                     ? "Area Distributor"
+                      : user.role === "Md"
+                    ? "Master Distributor"
                     : user.role === "Admin"
                     ? "Admin"
                      : user.role === "Api"
                     ? "Api"
+                      : user.role === "Asm"
+                    ? "Asm"
+                       : user.role === "Zsm"
+                    ? "Zsm"
                     : "Role"}
                 </Box>
                 {/* buttons */}
@@ -689,7 +695,8 @@ const NewMyProfile = () => {
   <ChangeMpin sx={{ padding: "8px 16px" }} />
   <ResetMpin sx={{ padding: "8px 16px" }} />
   {(user.role === "Ret" || user.role === "Dd") && (
-    <ChangeLayoutModal sx={{ padding: "8px 16px" }} />
+    <></>
+    // <ChangeLayoutModal sx={{ padding: "8px 16px" }} />
   )}
   {user.role !== "Admin" &&
     user.role !== "Asm" &&

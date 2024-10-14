@@ -13,7 +13,7 @@ const DashboardDataComponent2 = ({ users }) => {
   sx={{
     display: "flex",
     alignItems: "center",
-    padding: { xs: "0.5rem", sm: "0.75rem", md: "1rem" },
+    // padding: { xs: "0.5rem", sm: "0.75rem", md: "1rem" },
     borderRadius: "10px",
 
     width: "100%",
@@ -26,10 +26,10 @@ const DashboardDataComponent2 = ({ users }) => {
 
   <Avatar
     sx={{
-      width: { xs: 40, sm: 48 }, 
-      height: { xs: 40, sm: 48 },
+      width: { xs: 30, sm: 38 }, 
+      height: { xs: 0, sm: 38 },
       mr: { xs: 0, sm: 1.5 }, 
-      mb: { xs: 1, sm: 0 },
+      // mb: { xs: 1, sm: 0 },
       backgroundColor: getUserColor(users.role),
     }}
   >
@@ -39,8 +39,8 @@ const DashboardDataComponent2 = ({ users }) => {
   <Box
     sx={{
       textAlign: { xs: "center", sm: "left" }, 
-      maxWidth: { xs: "100%", sm: "150px" }, 
-      mb: { xs: 1, sm: 0 },
+      // maxWidth: { xs: "100%", sm: "150px" }, 
+      // mb: { xs: 1, sm: 0 },
     }}
   >
     

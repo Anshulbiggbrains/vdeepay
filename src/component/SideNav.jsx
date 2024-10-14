@@ -300,7 +300,7 @@ export default function SideNav(props, { data }) {
         user?.role === "Admin"
           ? "12.5rem"
           : user?.role === "Asm"
-          ? "14rem"
+          ? "12.2rem"
           : user?.role === "Zsm"
           ? "13rem"
           : user.role === "Admin" && location.pathname === "/admin/transactions"
