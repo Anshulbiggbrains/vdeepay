@@ -824,7 +824,7 @@ const NepalTransfer = ({ resetView }) => {
                 </div>
               </TableCell>
               <TableCell>
-                {item?.PaymentMode !== "Cash Payment" ? item?.Receiver.Relationship : "N/A"}
+                {item?.PaymentMode !== "Cash Payment" ? item?.receivers?.Relationship : "N/A"}
               </TableCell>
               <TableCell>
                 {item?.PaymentMode !== "Cash Payment" ? item?.AcNumber : "N/A"}
