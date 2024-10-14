@@ -845,6 +845,7 @@ const RetDdTransactionView = () => {
                 setTabQueryreset={setTabQueryreset}
                 ifFromBankFilter
                 // ifdateFilter
+                
                 // type and category is same
                 ifTypeFilter
                 chooseInitialCategoryFilter={

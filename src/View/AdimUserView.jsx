@@ -1071,19 +1071,19 @@ const AdimUserView = () => {
 
               <Mount visible={row?.kyc !== 1}>
                 <Tooltip title="Kyc Pending">
-                  <img
+                  {/* <img
                     src={kyc}
                     alt="KycPending"
                     style={{ width: "24px", height: "24px" }}
-                  />
-                  {/* <IconButton>
+                  /> */}
+                  <IconButton>
                     <Icon
                       icon="ph:clock-countdown-bold"
                       width={24}
                       height={24}
-                      color="#FF4200"
+                      color="#FF9500"
                     />
-                  </IconButton> */}
+                  </IconButton>
                 </Tooltip>
               </Mount>
             </Box>
@@ -1244,6 +1244,7 @@ const AdimUserView = () => {
             showSearch={false}
             query={query}
             setQuery={setQuery}
+             ifFromBankFilter
             // ifRoleFilter
             ifAdIdFilter={user.role !== "Ad"}
             setTabQueryreset={setTabQueryreset}
