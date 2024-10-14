@@ -302,7 +302,7 @@ export const noDataFoundGif = no_data_gif;
 // export const noDataIllustrator = noDataIllustrator1;
 export const noDataIllustrator = noDataIllustrator2;
 export const Bill = fetchbill;
-export const invoice1 =invoice;
+export const invoice1 = invoice;
 export const waveBg = wave_bg;
 export const joinus = join_us;
 

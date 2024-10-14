@@ -14,7 +14,10 @@ import { Logo } from "../iconsImports";
 import LogoComponent from "./LogoComponent";
 import { getEnv } from "../theme/setThemeColor";
 import useCommonContext from "../store/CommonContext";
-
+import { loginPage1} from "../iconsImports";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 //change color on scroll
 const theme2 = {
   background: "rgba(255, 255, 255, 0)",
@@ -130,7 +133,7 @@ const handleClickScroll = (id) => {
 
 export default function Navbar(props) {
   const { section } = useCommonContext();
-
+  const [env, setEnv] = React.useState(getEnv());
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
@@ -155,7 +158,7 @@ export default function Navbar(props) {
           <Container maxWidth="xl">
             <Toolbar
               disableGutters
-              sx={{ display: "flex", justifyContent: "space-between" }}
+              sx={{ display: "flex", justifyContent:  { lg: "center", md: "none",sm:"space-between"} }}
             >
               <Typography
                 variant="h6"
@@ -199,12 +202,13 @@ export default function Navbar(props) {
                   },
                 }}
               >
-                <img src={Logo} width="150px" alt="logo" />
+     
+              <img src={loginPage1} width="140px" alt="logo" />
               </Typography>
               <Box
                 sx={{
-                  display: { xs: "flex", md: "none" },
-                  justifyContent: "right",
+                  display: { xs: "flex", md: "none",sm:"flex"},
+                  justifyContent:  { xs: "right" ,sm:"flex-end"},
                 }}
               >
                 <IconButton
@@ -252,8 +256,11 @@ export default function Navbar(props) {
                         >
                           {item.navItems}
                         </Link>
+                 
                       </MenuItem>
+                      
                     );
+                  
                   })}
                 </Menu>
               </Box>
@@ -263,6 +270,7 @@ export default function Navbar(props) {
                   justifyContent: "end",
                 }}
               >
+                 
                 {pagesLg.map((item) => {
                   return (
                     <MenuItem
@@ -287,10 +295,58 @@ export default function Navbar(props) {
                       ) : (
                         <Link className="navLinks">{item.navItems}</Link>
                       )}
+
+                      
                     </MenuItem>
                   );
+
                 })}
-                <Button
+                 {process.env.REACT_APP_TITLE !== "MoneyOddr" && (
+                      <Box
+                        component="div"
+                        sx={{
+                          textAlign: env === "MoneyOddr" ? "center" : "left",
+                          mt: 1,
+                          mb: 3,
+                        }}
+                        className="navLinks"
+                      >
+                        <IconButton
+                          // className="pulse-effect"
+                          aria-label="delete"
+                          sx={{
+                            mt: 1,
+                            marginRight: "0.5rem",
+                            color: "#9b9bae",
+                          }}
+                        >
+                          <FacebookRoundedIcon />
+                        </IconButton>
+                        <IconButton
+                        // /  className="pulse-effect"
+                          aria-label="delete"
+                          sx={{
+                            mt: 1,
+                            marginRight: "0.5rem",
+                            color: "#9b9bae",
+                          }}
+                        >
+                          <InstagramIcon />
+                        </IconButton>
+                        <IconButton
+                          // className="pulse-effect"
+                          aria-label="delete"
+                          sx={{
+                            mt: 1,
+                            marginRight: "0.5rem",
+                            color: "#9b9bae",
+                          }}
+                        >
+                          <TwitterIcon />
+                        </IconButton>
+                      </Box>
+                    )}
+                {/* <Button
                   className="button-red"
                   // className="the-gradient-button"
                   onClick={() => {
@@ -302,7 +358,7 @@ export default function Navbar(props) {
                   }}
                 >
                   Login / Signup
-                </Button>
+                </Button> */}
               </Box>
             </Toolbar>
           </Container>
