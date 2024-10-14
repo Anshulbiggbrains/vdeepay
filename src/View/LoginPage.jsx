@@ -32,6 +32,7 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okErrorToast } from "../utils/ToastUtil";
 import { getGeoLocation } from "../utils/GeoLocationUtil";
 import VerifyMpinLogin from "../component/VerifyMpinLogin";
+
 import { PATTERNS } from "../utils/ValidationUtil";
 const LoginPage = () => {
   const [isMobv, setIsMobv] = useState(true);
@@ -110,7 +111,20 @@ const LoginPage = () => {
       document.removeEventListener("selectstart", preventSelection);
     };
   }, []);
-
+  const devtools = /./;
+  const threshold = 160;
+  
+  const checkDevTools = () => {
+      const startTime = new Date();
+      debugger; // This will trigger the debugger if open
+      const endTime = new Date();
+      
+      if (endTime - startTime > threshold) {
+          alert('Developer Tools is open!');
+      }
+  };
+  
+  setInterval(checkDevTools, 1000);
   const handleLoginDisable = () => {
     if (!captchaChecked) {
       return true;
@@ -126,6 +140,7 @@ const LoginPage = () => {
       return false;
     }
   };
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
