@@ -341,7 +341,7 @@ const ProductionSaleComponent = ({
 
           {user && (user.role === "Asm" || user.role === "Zsm") && showProductTable ? (
             <Grid item xs={12} lg={12} sm={12} md={12}>
-              <ApiPaginate
+              {/* <ApiPaginate
                 apiEnd={ApiEndpoints.GET_RET_PROD_SALE}
                 columns={columnsProd}
                 apiData={apiData}
@@ -354,12 +354,13 @@ const ProductionSaleComponent = ({
                 ExpandedComponent={null}
                 paginateServer={false}
                 paginate={false}
-              />
+              /> */}
+              <AdminBarChart graphData={graphData} upper={false} />
             </Grid>
           ) : showMonthlyData?(
                   <MonthlyDataChart/>
           ): !showProductTable && graphDuration && graphDuration === "TODAY" ? (
-            <AdminBarChart graphData={graphData} />
+            <AdminBarChart graphData={graphData} upper={true} />
           ) : (
             ((!showProductTable && graphDuration === "THIS") || graphDuration === "LAST") && (
               <>
