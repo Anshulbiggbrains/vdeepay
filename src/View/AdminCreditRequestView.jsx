@@ -531,6 +531,9 @@ const CreditRequestView = () => {
           ""
         ) : user && user.role === "Asm" ? (
           ""
+            ) : user && user.role === "Zsm" ? (
+          ""
+          
         ) : (
           <CreateCreditRequest refresh={refresh} />
         )}

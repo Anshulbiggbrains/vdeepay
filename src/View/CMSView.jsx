@@ -407,7 +407,7 @@ const CMSView = ({resetView}) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-            mr:2,
+         
                 mt:1
                   }}
                 >
@@ -416,8 +416,9 @@ const CMSView = ({resetView}) => {
                     id="verify-btn"
                     className="button-props"
                     onClick={handleBack}
+                    sx={{ml:7}}
                   >
-                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <span>Home</span>
                     <img
                       src={back}
                       alt="back"
@@ -433,7 +434,7 @@ const CMSView = ({resetView}) => {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              // alignItems: "center",
+              alignItems: "left",
             }}
           >
               
