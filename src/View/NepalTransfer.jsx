@@ -365,46 +365,31 @@ const NepalTransfer = ({ resetView }) => {
                 mt: 2,
               }}
             >
-              <Grid
-                item
-                md={12}
-                xs={12}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mb: 2,
-                }}
-              >
-                <Button
-                  size="small"
-                  id="verify-btn"
-                  className="button-props"
-                  onClick={handleBack}
+                <Grid
+                   
+                   item xs={12} sm="auto"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+            mr:2,
+                mt:1
+                  }}
                 >
-                  <span style={{ marginRight: "5px" }}>Back</span>
-                  <img
-                    src={back}
-                    alt="UPI logo"
-                    style={{ width: "18px", height: "20px" }}
-                  />
-                </Button>
-
-                {!mobile ? (
-                  <Typography
-                    sx={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      letterSpacing: "0.05rem",
-                      textAlign: "center",
-                      mt: 0,
-                      flexGrow: 1,
-                    }}
+                  <Button
+                    size="small"
+                    id="verify-btn"
+                    className="button-props"
+                    onClick={handleBack}
                   >
-                    Nepal Transfer
-                  </Typography>
-                ) : null}
-              </Grid>
+                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <img
+                      src={back}
+                      alt="back"
+                      style={{ width: "18px", height: "20px" }}
+                    />
+                  </Button>
+                  </Grid>
               <Box
                 // component="form"
                 // id="seachNepalByID"
@@ -482,6 +467,7 @@ const NepalTransfer = ({ resetView }) => {
                          <NepalAddCustomer
                          modelOpenHook={newCustomer}
                          setMobile={setMobile}
+                         setNewCustomer={setNewCustomer}
                          mobileNum={mobileNum}
                          getCustomerByMobileOrId={getCustomerByMobileOrId}
                        />

@@ -199,7 +199,7 @@ const ProductionSaleComponent = ({
 
   return (
  
-<Grid item lg={7} md={8.5} sm={11.8} xs={11.2}  >
+<Grid item lg={12} md={12} sm={11.8} xs={11.2}  >
 <Box sx={{display:"flex", flexDirection:"column"}}>
   {/* <Box
       sx={{
@@ -260,7 +260,7 @@ const ProductionSaleComponent = ({
         width: { lg: "100%", md: "100%", sm: "100%" }, 
         ml: { lg: "0", md: "0", xs: "0" },
         mr: { lg: "1.5%", md: 0, xs: 0 },
-        height: "514px",
+        // height: "514px",
         mt:0.6
       }}
     >

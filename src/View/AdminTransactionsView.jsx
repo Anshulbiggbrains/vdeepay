@@ -891,7 +891,10 @@ const AdminTransactionsView = () => {
                 /> */}
               </Grid>
             }
-            totalCard={<StatusDisplay />}
+            totalCard={
+              <>
+              <StatusDisplay/>
+            </>}
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
@@ -945,108 +948,99 @@ const AdminTransactionsView = () => {
             isFilterAllowed={isFilterAllowed}
             filterComponent={
               <FilterCard
-                topMargin={0}
-                bottomMargin={0}
-                showSearch={false}
-                ifrouteFilter
-                ifoperatorFilter
-                ifFromBankFilter
-                ifstatusFilter
-                iforderidFilter
-                ifTypeFilter
-                ifUsernameFilter
-                ifestFilter
-                ifnumberFilter
-                ifotherFilter
-                chooseInitialCategoryFilter={
-                  chooseInitialCategoryFilter !== "ALL"
-                    ? chooseInitialCategoryFilter
-                    : false
-                }
-                ifAdIdFilter
-                ifAsmFilter
-                asmList={asmList}
-                typeList={typeList.filter((item) => item.name !== "ALL")}
-                nonAdminColOptions={nonAdminColOptions}
-                statusList={statusList}
-                operatorList={operatorList}
-                getOperatorVal={getOperatorVal}
-                setQuery={setQuery}
-                query={query}
-                clearHookCb={(cb) => {
-                  refreshFilter = cb;
-                }}
-                getTypes={getTypes}
-                refresh={refresh}
-                isShowFilterCard={isShowFilterCard}
-                setIsShowFilterCard={setIsShowFilterCard}
-                actionButtons={
-                  <>
-                    {/* Excel Upload Button */}
-                    <div>
-                      <ExcelUploadModal
-                        twobuttons="Download Csv"
-                        btn
-                        request={request}
-                        getExcel={getExcel}
-                        getCsv={getCsv}
-                        noOfResponses={noOfResponses}
-                        setQuery={setQuery}
-                        handleCloseCB={(closeModal) => {
-                          handleCloseModal = closeModal;
-                        }}
-                      />
-                    </div>
-
-                    {/* Refresh Button */}
-                    <Tooltip title="refresh">
-                      <IconButton
-                        aria-label="refresh"
-                        sx={{
-                          color: "#0F52BA",
-                        }}
-                        onClick={() => {
-                          refreshFunc(setQuery);
-                        }}
-                      >
-                        <CachedIcon className="refresh-purple" />
-                      </IconButton>
-                    </Tooltip>
-
-                    <Box
+              topMargin={0}
+              bottomMargin={0}
+              showSearch={false}
+              ifrouteFilter
+              ifoperatorFilter
+              ifFromBankFilter
+              ifstatusFilter
+              iforderidFilter
+              ifTypeFilter
+              ifUsernameFilter
+              ifestFilter
+              ifnumberFilter
+              ifotherFilter
+              chooseInitialCategoryFilter={
+                chooseInitialCategoryFilter !== 'ALL' ? chooseInitialCategoryFilter : false
+              }
+              ifAdIdFilter
+              ifAsmFilter
+              asmList={asmList}
+              typeList={typeList.filter((item) => item.name !== 'ALL')}
+              nonAdminColOptions={nonAdminColOptions}
+              statusList={statusList}
+              operatorList={operatorList}
+              getOperatorVal={getOperatorVal}
+              setQuery={setQuery}
+              query={query}
+              clearHookCb={(cb) => {
+                refreshFilter = cb;
+              }}
+              getTypes={getTypes}
+              refresh={refresh}
+              isShowFilterCard={isShowFilterCard}
+              setIsShowFilterCard={setIsShowFilterCard}
+              actionButtons={
+                <>
+                  {/* Excel Upload Button */}
+                  <div>
+                    <ExcelUploadModal
+                      twobuttons="Download Csv"
+                      btn
+                      request={request}
+                      getExcel={getExcel}
+                      getCsv={getCsv}
+                      noOfResponses={noOfResponses}
+                      setQuery={setQuery}
+                      handleCloseCB={(closeModal) => {
+                        handleCloseModal = closeModal;
+                      }}
+                    />
+                  </div>
+        
+                  {/* Refresh Button */}
+                  <Tooltip title="refresh">
+                    <IconButton
+                      aria-label="refresh"
                       sx={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        width: { lg: "550px", sm: "300px" },
+                        color: '#0F52BA',
+                      }}
+                      onClick={() => {
+                        refreshFunc(setQuery);
                       }}
                     >
-                      <FormGroup>
-                        <FormControlLabel
-                          sx={{
-                            mt: { md: 0, sm: 2, xs: 2 },
-                            mb: { md: 0, sm: 2, xs: 2 },
-                          }}
-                          control={
-                            <FormControl size="small">
-                              <Select
-                                variant="standard"
-                                fontSize="10px"
-                                value={showOldTransaction}
-                                onChange={() =>
-                                  setShowOldTransaction(!showOldTransaction)
-                                }
-                              >
-                                <MenuItem value={true}>Old</MenuItem>
-                                <MenuItem value={false}>New</MenuItem>
-                              </Select>
-                            </FormControl>
-                          }
-                        />
-                      </FormGroup>
-                    </Box>
-                  </>
-                }
-              />
+                      <CachedIcon className="refresh-purple" />
+                    </IconButton>
+                  </Tooltip>
+        
+                 
+                  <Box sx={{ display: 'flex', ml:2}}>
+                    <FormGroup>
+                      <FormControlLabel
+                        sx={{
+                          mt: { md: 0, sm: 2, xs: 2 },
+                          mb: { md: 0, sm: 2, xs: 2 },
+                        }}
+                        control={
+                          <FormControl size="small">
+                            <Select
+                              variant="standard"
+                              fontSize="10px"
+                              value={showOldTransaction}
+                              onChange={() => setShowOldTransaction(!showOldTransaction)}
+                            >
+                              <MenuItem value={true}>Old</MenuItem>
+                              <MenuItem value={false}>New</MenuItem>
+                            </Select>
+                          </FormControl>
+                        }
+                      />
+                    </FormGroup>
+                  </Box>
+                </>
+              }
+            />
             }
           />
         </Grid>

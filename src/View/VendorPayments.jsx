@@ -375,52 +375,29 @@ const VendorPayments = ({ resetView }) => {
                   }}
                 >
                   <Grid
-                    item
-                    md={12}
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      mb: 2,
-                    }}
+                   
+                   item xs={12} sm="auto"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+            mr:2,
+                mt:1
+                  }}
+                >
+                  <Button
+                    size="small"
+                    id="verify-btn"
+                    className="button-props"
+                    onClick={handleBack}
                   >
-                    <Button
-                      size="small"
-                      id="verify-btn"
-                      className="button-props"
-                      onClick={handleBack}
-                      sx={{ p: 1 }}
-                    >
-                      <span style={{ marginRight: "5px" }}>Back</span>
-                      <img
-                        src={back}
-                        alt="UPI logo"
-                        style={{ width: "18px", height: "20px" }}
-                      />
-                    </Button>
-                    {user?.dmt4 === 1 && user?.st === 1 && (
-                      <div
-                        sx={{ display: "flex" }}
-                        hidden={remitterStatus}
-                      ></div>
-                    )}
-                    {!mobile ? (
-                      <Typography
-                        sx={{
-                          fontSize: "24px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.05rem",
-                          textAlign: "center",
-                          mt: 1,
-                          flexGrow: 1,
-                        }}
-                      >
-                        {type == "express"
-                          ? "Express Money Transfer"
-                          : "Super Money Transfer"}
-                      </Typography>
-                    ) : null}
+                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <img
+                      src={back}
+                      alt="back"
+                      style={{ width: "18px", height: "20px" }}
+                    />
+                  </Button>
                   </Grid>
                   <Box
                     component="form"

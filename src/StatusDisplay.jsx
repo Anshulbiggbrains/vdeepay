@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
 const StatusDisplay = () => {
   const statuses = [
@@ -43,7 +43,7 @@ const StatusDisplay = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-around" alignItems="center" p={1} borderRadius={2}>
+    <Grid display="flex" justifyContent="space-around" alignItems="center" p={1} borderRadius={2}>
       {statuses.map((status, index) => (
         <Box
           key={index}
@@ -55,7 +55,7 @@ const StatusDisplay = () => {
           border={`2px solid ${getBorderColor(status.label)}`} // Dynamically set the border color
           backgroundColor={getBackgroundColor(status.label)} // Set background color
           borderRadius={2}
-          minWidth="200px"
+         width="200px"
         >
           <Box display="flex" flexDirection="column">
             <Typography variant="subtitle2" style={{ color: status.color, fontWeight: 'bold' }}>
@@ -70,7 +70,7 @@ const StatusDisplay = () => {
           </Box>
         </Box>
       ))}
-    </Box>
+    </Grid>
   );
 };
 
