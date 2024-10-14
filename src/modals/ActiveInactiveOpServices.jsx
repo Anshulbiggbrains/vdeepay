@@ -102,7 +102,7 @@ const ActiveInactiveOpServices = ({ row, refresh }) => {
         <Box sx={style} className="sm_modal">
           <Loader loading={request} />
           <ModalHeader
-          subtitle="Control User Status: Activate or Deactivate."
+            subtitle="Control User Status: Activate or Deactivate."
             title="Block Un-block Service"
             handleClose={handleClose}
           />

@@ -49,7 +49,7 @@ const CheckResponseModal = ({
           width: width,
           height: height,
           fontSize: fontSize,
-          backgroundColor: "#1675e017",
+          backgroundColor: "#FFE3E3",
           color: primaryColor(),
           // backgroundColor: "#9586EC",
           "&:hover": {

@@ -54,7 +54,7 @@ const AdminApiServices = () => {
     {
       name: "Code",
       selector: (row) => row.code,
-      width: "70px",
+      
     },
     {
       name: "Name",

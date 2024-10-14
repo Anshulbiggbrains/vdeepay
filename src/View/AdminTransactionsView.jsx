@@ -352,7 +352,7 @@ const AdminTransactionsView = () => {
   const columns = [
     {
       name: (
-        <Tooltip title=" Created at/Updated at">
+        <Tooltip title=" Created at /Updated at">
           <Typography
             variant=""
             sx={{

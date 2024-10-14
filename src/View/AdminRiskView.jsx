@@ -205,7 +205,6 @@ const AdminRiskView = () => {
       name: "Name",
       cell: (row) => (
         <div style={{ textAlign: "center" }}>
-          {" "}
           <div>{row.name}</div>
           <div
             style={{
@@ -214,7 +213,6 @@ const AdminRiskView = () => {
               justifyContent: "center",
             }}
           >
-            {" "}
             <CommonStatus
               status={row.status}
               approvedStatusText="Verified"
@@ -266,13 +264,13 @@ const AdminRiskView = () => {
             approvedStatusText="Complete"
             pendingStatusText="Pending"
             rejectedStatusText="Rejected"
-            fontSize="13px"
+            fontSize="12px"
             minWidth="120px"
           />
         </div>
       ),
       center: true,
-      width: "150px",
+      width: "130px",
     },
     {
       name: "Actions",
