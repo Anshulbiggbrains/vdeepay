@@ -217,6 +217,7 @@ function App() {
                   >
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="users" element={<AdimUserView />} />
+                    <Route path="cred-req" element={<CreditRequestView />} />
                     <Route
                       path="transactions"
                       element={<AsmTransactionView />}

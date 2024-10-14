@@ -398,7 +398,24 @@ const VendorPayments = ({ resetView }) => {
                       style={{ width: "18px", height: "20px" }}
                     />
                   </Button>
+                 
+
                   </Grid>
+                  {!mobile ? (
+                   <Typography
+                   sx={{
+                     fontSize: "24px",
+                     fontWeight: "bold",
+                     letterSpacing: "0.05rem",
+                     textAlign: "left",
+                     mt: 1,
+                   }}
+                 >
+                   {type == "express"
+                     ? "Express Money Transfer"
+                     : "Super Money Transfer"}
+                 </Typography>
+                    ) : null}
                   <Box
                     component="form"
                     id="seachRemByAcc"

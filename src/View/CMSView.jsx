@@ -424,7 +424,27 @@ const CMSView = ({resetView}) => {
                       style={{ width: "18px", height: "20px" }}
                     />
                   </Button>
+              
                   </Grid>
+                  <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              // alignItems: "center",
+            }}
+          >
+              
+            
+            <Typography
+              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:9,mt:2}}
+            >
+              Cash Management System
+            </Typography>
+          
+          </Grid>
 
           {/* <Grid item md={12} xs={12} sx={{ mt: 3 }}>
             <div sx={{ display: "flex" }}>
