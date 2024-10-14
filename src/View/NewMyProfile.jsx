@@ -587,14 +587,14 @@ const NewMyProfile = () => {
             md={12}
             sm={12}
             xs={12}
-            sx={{ p: 2, display: "flex", justifyContent: "space-between" }}
+            sx={{ p: 2, display: "flex", justifyContent: "center" }}
             className="card-css"
           >
             <Box
               component="div"
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 flexDirection: {
                   lg: "row",
                   md: "row",
