@@ -190,7 +190,7 @@ console.log("oppp",opName);
         </Grid>
 
         {/* Search Bar */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} sx={{mt:1}}>
           <TextField
             label="Search Electricity"
             variant="outlined"
