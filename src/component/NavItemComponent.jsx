@@ -51,14 +51,12 @@ const NavItemComponent = ({
     } else setOpen(false);
   };
 
-  // Check user role
+ 
   const userRole = authCtx.user.role; 
   console.log("userrole is",userRole)
- // Assuming userRole is provided in AuthContext
 
-  // Only show "Fund Request" if the user's role is "Dd"
   if (item.title === "Fund Request" && userRole !== "Dd" &&userRole !== "Ad" &&userRole !== "Md" && userRole !== "Admin") {
-    return null; // Do not render if the role is not "Dd"
+    return null;
   }
 
   return (
