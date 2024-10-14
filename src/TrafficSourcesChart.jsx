@@ -1,7 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -54,15 +54,17 @@ const TrafficSourcesChart = () => {
 
   return (
 
-    <Grid lg={4} md={3} sm={11.8} xs={11.2} sx={{height:"25rem"}}>
-    <Card style={{ width: '25rem', margin: 'auto' }}>
-      <CardContent>
-        <Typography variant="h5" component="div" align="center">
+    <Grid lg={12} md={12} sm={11.8} xs={11.2} >
+    <Box style={{ width: '270px', margin: 'auto' }}>
+
+        <Typography variant="h5" component="div" align="left">
           Traffic Sources
         </Typography>
-        <Doughnut data={data} options={options} sx={{width:"20rem"}}/>
-      </CardContent>
-    </Card>
+        <Box sx={{mt:2}}>
+        <Doughnut data={data} options={options} sx={{width:"300px"}}/>
+        </Box>
+      </Box>
+    
     </Grid>
   );
 };

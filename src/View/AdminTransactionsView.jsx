@@ -46,6 +46,7 @@ import FilterModal from "../modals/FilterModal";
 import CachedIcon from "@mui/icons-material/Cached";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import CommonStatus from "../component/CommonStatus";
+
 import {
   AD_REPORTS,
   REPORTS,
@@ -396,12 +397,20 @@ const AdminTransactionsView = () => {
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                 <img src={explorer} alt="" style={{width:"20px", height:"20px"}}/>
+                <img
+                  src={explorer}
+                  alt=""
+                  style={{ width: "20px", height: "20px" }}
+                />
                 {/* <LaptopIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                  <img src={android} alt="" style={{width:"20px", height:"20px"}}/>
+                <img
+                  src={android}
+                  alt=""
+                  style={{ width: "20px", height: "20px" }}
+                />
                 {/* <AndroidIcon fontSize="small" sx={{ color: "blue" }} /> */}
               </Tooltip>
             ) : row.platform === "IOS" ? (
@@ -410,7 +419,11 @@ const AdminTransactionsView = () => {
               </Tooltip>
             ) : (
               <Tooltip title="API">
-                 <img src={api} alt="" style={{width:"25px", height:"25px"}}/>
+                <img
+                  src={api}
+                  alt=""
+                  style={{ width: "25px", height: "25px" }}
+                />
                 {/* <SyncAltIcon fontSize="small" sx={{ color: "red" }} /> */}
               </Tooltip>
             )}
@@ -880,8 +893,9 @@ const AdminTransactionsView = () => {
               </Grid>
             }
             totalCard={
+              <>
               <StatusDisplay/>
-            }
+            </>}
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
@@ -1002,7 +1016,7 @@ const AdminTransactionsView = () => {
                   </Tooltip>
         
                  
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', width:{lg:'550px',sm:'300px'}}}>
+                  <Box sx={{ display: 'flex', ml:2}}>
                     <FormGroup>
                       <FormControlLabel
                         sx={{

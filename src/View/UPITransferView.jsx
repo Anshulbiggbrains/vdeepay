@@ -253,7 +253,7 @@ const UPITransferView = ({resetView}) => {
         className="button-props"
         onClick={handleBack}
       >
-                <span style={{ marginRight: '5px' }}>Back</span>
+                <span style={{ marginRight: '5px' }}>Home</span>
         <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
       </Button> 
 {

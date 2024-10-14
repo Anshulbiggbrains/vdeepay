@@ -247,7 +247,7 @@ const AsmProductionSaleComponent = () => {
 
     <Grid
     container
-    lg={7}
+    lg={12}
     md={12}
     sm={11.8}
     xs={11.2}

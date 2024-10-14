@@ -76,7 +76,7 @@ const BlockUnBlockPlans = ({ row }) => {
         ) : (
           <Tooltip title="In-Active">
             <IconButton sx={{ color: "#DC5F5F" }}>
-              <Icon icon="rivet-icons:lock-closed" width={26} height={26} />
+              <Icon icon="rivet-icons:lock-closed" width={25} height={25} />
             </IconButton>
           </Tooltip>
         )}

@@ -230,7 +230,7 @@ function App() {
                 <Route path="api-user" element={<SideNav />}>
                   <Route path="dashboard" element={<RetDdDashboard />} />
                   <Route path="transactions" element={<ApiTransactionView />} />
-                  <Route path="cred-req" element={<CreditRequestView />} />
+                  {/* <Route path="cred-req" element={<CreditRequestView />} /> */}
                   <Route path="invoice" element={<ApiInvoice />} />
                   <Route path="documents" element={<Documents/>} />
                   <Route path="my-profile" element={<NewMyProfile />} />

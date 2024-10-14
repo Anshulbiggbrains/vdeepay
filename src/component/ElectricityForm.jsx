@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { Box, FormControl, Grid, TextField, Typography ,Card, Button, Divider} from "@mui/material";
+import { Box, FormControl, Grid, TextField, Typography ,Card, Button, Divider, Tooltip} from "@mui/material";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { postJsonData, get } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -18,11 +18,12 @@ import BbpsCardComponent from "../component/BbpsCardComponent";
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment } from '@mui/material';
 import styled from "styled-components";
+import { back } from "../iconsImports";
 const InnerIcon = styled(Box)(({ theme }) => ({
 
   // padding: theme.spacing(1),
-  width: '48px',
-  height: '48px',
+  width: '60px',
+  height: '60px',
   display: 'flex',
   borderRadius: '50%',
   alignItems: 'center',
@@ -30,7 +31,7 @@ const InnerIcon = styled(Box)(({ theme }) => ({
   boxShadow: 'rgba(0, 0, 0, 0.24) 0px 1px 4px',
   // background: theme.palette.common.white,
 }));
-const ElectricityForm = ({ title, type,resetView}) => {
+const ElectricityForm = ({ title, type,resetView,name,image}) => {
   const authCtx = useContext(AuthContext);
   const location = authCtx.location;
   const [fetchRequest, setFetchRequest] = useState(false);
@@ -114,7 +115,7 @@ const ElectricityForm = ({ title, type,resetView}) => {
       );
     }
   };
-  const handleBackToCategories = () => {
+  const handleBack = () => {
     resetView(false)
     
     // setShowSecondPage(0); // Set the state to 1 when the button is clicked
@@ -175,93 +176,91 @@ console.log("oppp",opName);
       {/* Title and Back Button */}
       <Grid container alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
       <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
-       <Grid item xs={12} sm="auto">
-    <Box display="flex" alignItems="center">
-      <InnerIcon>
-        <img src={""} alt="Biller" style={{ width: 40, height: 40 }} />
+        {/* Image and Title Section */}
+        <Grid item xs={12} sm="auto" sx={{ml:1}}>
+          <Box display="flex" alignItems="center">
+          <InnerIcon>
+        <img src={image} alt="Biller" style={{ width: 40, height: 40 }} />
       </InnerIcon>
-      <Typography variant="h6" align="left" sx={{ ml: 1 }}>
-        abc
-        {/* {biller.length > 0 ? biller[0].categoryName : "No Category"} */}
-      </Typography>
-    </Box>
-  </Grid>
-       <Grid item xs={12} sm={6}>
-  <TextField
-    label="Search Electricity"
-    variant="outlined"
-    fullWidth
-    // value={searchQuery}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    InputProps={{
-      endAdornment: (
-        <InputAdornment position="end">
-          <SearchIcon />
-        </InputAdornment>
-      ),
-    }}
-    sx={{
-      '& .MuiOutlinedInput-root': {
-        borderRadius: '8px',
-        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-        backgroundColor: '#fff',
-      },
-      '& .MuiInputLabel-root': {
-        color: '#757575',
-      },
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#cccccc',
-      },
-      '&:hover .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#999999',
-      },
-      '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#3f51b5',
-      },
-    }}
-  />
-</Grid>
+            <Typography variant="h6" align="left" sx={{ ml: 1 }}>
+             {name}
+              {/* Dynamically render biller name */}
+            </Typography>
+          </Box>
+        </Grid>
 
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                label="Search Biller"
-                variant="outlined"
-                fullWidth
-                value={searchQuery}
-                onChange={handleSearch}
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '8px',
-                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-                    backgroundColor: '#fff',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#757575',
-                  },
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#cccccc',
-                  },
-                  '&:hover .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#999999',
-                  },
-                  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: '#3f51b5',
-                  },
-                }}
-              />
-            </Grid> */}
+        {/* Search Bar */}
+        <Grid item xs={12} sm={6} sx={{mt:1}}>
+          <TextField
+            label="Search Electricity"
+            variant="outlined"
+            fullWidth
+            onChange={(e) => setSearchTerm(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '8px',
+                boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#fff',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#757575',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#cccccc',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#999999',
+              },
+              '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: '#3f51b5',
+              },
+            }}
+          />
+        </Grid>
 
-        
-            <Grid item xs={12} sm="auto">
-              <Button
-                variant="contained"
-                onClick={handleBackToCategories} 
-                sx={{ ml: 2 }}
-              >
-                <ReplyIcon/> Back
-              </Button>
-            </Grid>
-          </Grid>
+        {/* Back Button */}
+        {/* <Grid item xs={12} sm="auto">
+          <Button
+            variant="contained"
+            onClick={handleBack}
+            sx={{ ml: 2 }}
+          >
+            <ReplyIcon /> Back
+          </Button> */}
+        {/* </Grid> */}
+        <Grid
+                   
+                     item xs={12} sm="auto"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+              mr:2,
+                  mt:1
+                    }}
+                  >
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Home</span>
+                      <img
+                        src={back}
+                        alt="back"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
+                    </Grid>
+      </Grid>
           </Grid>
 
       {/* Search Box */}
@@ -278,7 +277,14 @@ console.log("oppp",opName);
       </Grid> */}
 
       {/* Display filtered operator list */}
-      <Grid container spacing={2}>
+      <Grid container spacing={2}       sx={{
+          mt: 3,
+          maxHeight: "550px", // Adjust the max height as per your needs
+          overflowY: "auto", // Makes the data scrollable
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+          padding: 2,
+        }}>
         
         {filteredOperators.length > 0 ? (
           filteredOperators.map((operator, index) => (
@@ -305,25 +311,25 @@ console.log("oppp",opName);
   <Grid container spacing={2}>
     {/* Left Section for Operator List */}
     <Grid
-      item
-      lg={4}
-      xs={12}
-      sm={4}
-      sx={{
-        mt:2,
-        height: "600px",
-        width: "600px",
-        overflowY: "auto",
-        p: 2,
-      }}
-    >
-      {/* Search Box for Electricity Operators */}
-      <TextField
+  item
+  lg={4}
+  xs={12}
+  sm={4}
+  sx={{
+    mt: 2,
+    height: "600px",
+    width: "600px",
+    overflowY: "auto", // Ensure scrollability
+    p: 2,
+  }}
+>
+  {/* Search Box for Electricity Operators */}
+  <TextField
     label="Search Electricity"
     variant="outlined"
     fullWidth
-    // value={searchQuery}
-    onChange={(e) => setSearchTerm(e.target.value)}
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
     InputProps={{
       endAdornment: (
         <InputAdornment position="end">
@@ -351,25 +357,27 @@ console.log("oppp",opName);
       },
     }}
   />
-     <Divider sx={{ my: 2, backgroundColor: "grey.500", height: 1.5 }} />
 
-{/* Card Count */}
+  <Divider sx={{ my: 2, backgroundColor: "grey.500", height: 1.5 }} />
 
-<Typography 
-variant="caption" // Use a smaller variant for smaller text size
-sx={{ 
-mt:-2,
-justifyContent: "end", 
-display: 'flex', // Ensure the flex context for alignment
-alignItems: 'flex-start', // Align items to the top
-// Optional: adjust the margin to control the vertical spacing
-}} 
-align="right"
->
-{filteredOperators.length} {filteredOperators.length === 1 ? 'electricity' : 'electricity'} found
-</Typography>
+  {/* Card Count */}
+  <Typography 
+    variant="caption" // Smaller variant for text size
+    sx={{ 
+      mt: -2,
+      justifyContent: "end",
+      display: 'flex', // Flex for alignment
+      alignItems: 'flex-start',
+    }} 
+    align="right"
+  >
+    {filteredOperators.length} {filteredOperators.length === 1 ? 'electricity ' : 'electricity '} found
+  </Typography>
 
-      {operatorVal && operatorVal
+  {/* Scrollable Card List */}
+  <Box sx={{ overflowY: "auto", maxHeight: "480px" }}> 
+    {operatorVal &&
+      operatorVal
         .filter((operator) => 
           operator.name.toLowerCase().includes(searchTerm.toLowerCase())
         ) // Filter operators based on the search term
@@ -384,8 +392,11 @@ align="right"
             }}
             isSelected={opName === operator.name}
           />
-        ))}
-    </Grid>
+        ))
+    }
+  </Box>
+</Grid>
+
 
     {/* Right Form Section */}
     <Grid item lg={8} xs={12} sm={8} sx={{ mr: -6 }}>
@@ -399,7 +410,7 @@ align="right"
           <Grid item xs={12} sm="auto" display="flex" justifyContent="flex-start" sx={{mb:3}}>
   <Button
     variant="contained"
-    onClick={handleBackToCategories}
+    onClick={handleBack}
     sx={{ ml: 2 }} // Margin left for spacing
   >
     <ReplyIcon /> Back
@@ -416,18 +427,23 @@ align="right"
           }}
         >
           <CircleComponent img={operatorIcon} />
-          <Typography
-            sx={{
-              fontSize: { xs: "18px", sm: "20px", md: "24px" }, 
-              fontWeight: "bold",
-              ml: "15px", 
-              // flex: 1, 
-              wordWrap: "break-word", 
-        
-            }}
-          >
-            {opName}
-          </Typography>
+          <Tooltip title={opName} arrow>
+  <Typography
+    sx={{
+      fontSize: { xs: "18px", sm: "20px", md: "24px" }, 
+      fontWeight: "bold",
+      ml: "15px", 
+      wordWrap: "break-word", 
+    }}
+  >
+    {opName.split(" ").length > 3 ? (
+      `${opName.split(" ").slice(0, 3).join(" ")}...`
+    ) : (
+      opName
+    )}
+  </Typography>
+</Tooltip>
+
         </div>
 
         <Box

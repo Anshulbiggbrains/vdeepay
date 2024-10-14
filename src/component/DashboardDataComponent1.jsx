@@ -142,6 +142,7 @@ const DashboardDataComponent1 = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "baseline",
+                marginLeft:"5%"
               }}
             >
               <Typography sx={{ fontSize: data === "txn" ? "18px" : "24px" }}>

@@ -599,18 +599,17 @@ const RetDdTransactionView = () => {
       name: "Details",
       selector: (row) => (
         <>
-   <RightSidePannel 
-  // state={drawerState} 
-  // setState={setDrawerState} 
-  row={row} 
-  // setRow={setSelectedRow} 
-  // buttons={someButtonList}
-/>
-    </>
+          {(user.role === "Ret" || user.role === "Dd") && (
+            <RightSidePannel 
+              row={row} 
+            />
+          )}
+        </>
       ),
       center: true,        
       width: "70px",
-    },
+    }
+    
   ];
 
   // const searchOptions = [
@@ -846,6 +845,7 @@ const RetDdTransactionView = () => {
                 setTabQueryreset={setTabQueryreset}
                 ifFromBankFilter
                 // ifdateFilter
+                
                 // type and category is same
                 ifTypeFilter
                 chooseInitialCategoryFilter={

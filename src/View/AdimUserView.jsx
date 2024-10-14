@@ -815,18 +815,20 @@ const AdimUserView = () => {
       selector: (row) => (
         <>
           <div
-            hidden={
-              user && user.role === "Admin"
-                ? false
-                : user && user.role === "Asm"
-                ? false
-                : true
-            }
+            // hidden={
+            //   user && user.role === "Admin"
+            //     ? false
+            //     : user && user.role === "Asm"
+            //     ? false
+            //     : true
+            // }
             style={{ textAlign: "left", cursor: "context-menu" }}
           >
-            <Tooltip title={dateToTime(row.created_at)}>
-              <span>{ddmmyy(row.created_at)}</span>
-            </Tooltip>
+            <div>
+              {ddmmyy(row.created_at)}
+              <br />
+              {dateToTime(row.created_at)}
+            </div>
           </div>
         </>
       ),
@@ -1006,7 +1008,6 @@ const AdimUserView = () => {
           <span>{Number(row.dmt_slab2).toFixed(2)}%</span>
         ),
       center: false,
-      width: "70px",
     },
 
     {
@@ -1070,19 +1071,19 @@ const AdimUserView = () => {
 
               <Mount visible={row?.kyc !== 1}>
                 <Tooltip title="Kyc Pending">
-                  <img
+                  {/* <img
                     src={kyc}
                     alt="KycPending"
                     style={{ width: "24px", height: "24px" }}
-                  />
-                  {/* <IconButton>
+                  /> */}
+                  <IconButton>
                     <Icon
                       icon="ph:clock-countdown-bold"
                       width={24}
                       height={24}
-                      color="#FF4200"
+                      color="#FF9500"
                     />
-                  </IconButton> */}
+                  </IconButton>
                 </Tooltip>
               </Mount>
             </Box>
@@ -1243,6 +1244,7 @@ const AdimUserView = () => {
             showSearch={false}
             query={query}
             setQuery={setQuery}
+             ifFromBankFilter
             // ifRoleFilter
             ifAdIdFilter={user.role !== "Ad"}
             setTabQueryreset={setTabQueryreset}
