@@ -164,8 +164,8 @@ const AdminDashboard = ({
 
         {user && user.role !== "Asm" && user.role !== "Zsm" ? (
           <Grid item lg={7.8} md={7.8} sm={11.8} xs={11.2} sx={{mt:1.6}}> {/* Adjust width here */}
-            {/* <AsmProductionSaleComponent /> */}
-            <ProductSaleLineChart/>
+            <AsmProductionSaleComponent />
+            {/* <ProductSaleLineChart/> */}
           </Grid>
         ) : (
           <></>

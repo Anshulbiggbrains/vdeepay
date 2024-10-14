@@ -359,7 +359,7 @@ export const Zsm_nav = [
   },
   {
     title: "Users",
-    icon: UserIcon,
+    icon: user1,
     icon2: UserIconWhite,
     to: "/zsm/users",
   },
@@ -371,7 +371,7 @@ export const Zsm_nav = [
   },
   {
     title: "Fund  Request",
-    icon: CreditRequestIcon,
+    icon: creditrq1,
     icon2: CreditRequestIcon,
     to: "/zsm/cred-req",
   },
