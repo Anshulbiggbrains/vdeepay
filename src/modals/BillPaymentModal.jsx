@@ -137,11 +137,13 @@ const BillPaymentModal = ({
           !operatorId || (changeFetchToPay && (amountValue ? false : true))
         }
       />
+      <Box sx={{ml:2}}>
         <MyButton
         text="Pay Bill"
         sx={{ fontSize: "12px", px: 1, ml: 1 }} // Add margin left for spacing
         onClick={payBill}
       />
+      </Box>
 
       <Modal
         open={billDetails || openWhenNoBill}

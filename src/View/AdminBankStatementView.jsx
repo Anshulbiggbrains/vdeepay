@@ -256,9 +256,9 @@ const AdminBankStatementView = () => {
               status={row.status == 0 ? 1 : 2}
               approvedStatusText="CLAIMED"
               pendingStatusText="UNCLAIMED"
-              fontSize="11px"
+              fontSize="12px"
               maxWidth="120px"
-              minWidth="90px"
+              minWidth="100px"
             />
           </Box>
         );
@@ -522,14 +522,19 @@ const AdminBankStatementView = () => {
             mt: 2,
           }}
         >
-          <Button
-            size="small"
-            className="otp-hover-purple mb-2"
-            sx={{ color: primaryColor(), pr: 1 }}
-            onClick={() => navigate("/admin/banks")}
-          >
-            <KeyboardBackspaceIcon fontSize="small" /> Back
-          </Button>
+         <Button
+          size="small"
+          className="otp-hover-purple mb-2"
+          sx={{
+            color: primaryColor(),
+            pr: 1,
+          }}
+          onClick={() => {
+            navigate("/admin/banking");
+          }}
+        >
+          <KeyboardBackspaceIcon fontSize="small" /> Back
+        </Button>
           <Box sx={{ display: "flex", justifyContent: "end" }}>
             <Tooltip title="export">
               <ExcelUploadModal

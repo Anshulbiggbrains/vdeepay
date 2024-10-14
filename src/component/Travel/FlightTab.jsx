@@ -1,15 +1,18 @@
 import React from "react";
 import OneWayFlightForm from "./OneWayFlightForm";
 // import RoundTripFlightForm from "./RoundTripFlightForm";
-import { AppBar, Grid, Tab, Tabs } from "@mui/material";
+import { AppBar, Button, Grid, Tab, Tabs } from "@mui/material";
 import { TabContext, TabPanel } from "@mui/lab";
 import { useDispatch, useSelector } from "react-redux";
 import { setArrivalDate, setTripType } from "../../features/flight/flightSlice";
+import { back } from "../../iconsImports";
 
-const FlightTab = () => {
+const FlightTab = ({resetView}) => {
   const dispatch = useDispatch();
   const { tripType } = useSelector((state) => state?.flight);
-
+const handleBack=()=>{
+  resetView(false)
+}
   const handleChange = (event, newValue) => {
     if (newValue === "0") {
       dispatch(setArrivalDate(""));
@@ -20,6 +23,31 @@ const FlightTab = () => {
   return (
     <>
     <Grid  className="search-engine">
+    <Grid
+                   
+                   item xs={12} sm="auto"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+            mr:2,
+                mt:1
+                  }}
+                >
+                  <Button
+                    size="small"
+                    id="verify-btn"
+                    className="button-props"
+                    onClick={handleBack}
+                  >
+                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <img
+                      src={back}
+                      alt="back"
+                      style={{ width: "18px", height: "20px" }}
+                    />
+                  </Button>
+                  </Grid>
 
     <TabContext value={tripType && tripType}  >
       {/* <!-- FLIGHT MULTIPLE SEARCH TAB --> */}

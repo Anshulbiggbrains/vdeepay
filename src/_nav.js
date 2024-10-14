@@ -363,12 +363,12 @@ export const Zsm_nav = [
     icon2: TransactionIconWhite,
     to: "/zsm/transactions",
   },
-  {
-    title: "Fund  Request",
-    icon: CreditRequestIcon,
-    icon2: CreditRequestIcon,
-    to: "/zsm/cred-req",
-  },
+  // {
+  //   title: "Fund  Request",
+  //   icon: CreditRequestIcon,
+  //   icon2: CreditRequestIcon,
+  //   to: "/zsm/cred-req",
+  // },
   {
     title: "Login History",
     icon: loginHistory,
@@ -582,12 +582,12 @@ export const customer_nav = [
   //   to: "/customer/travel",
   //   // to: "/customer/travel-services",
   // },
-  // {
-  //   title: "Fund Request",
-  //   icon: creditmoney,
-  //   icon2: CreditRequestIcon,
-  //   to: "/customer/cred-req",
-  // },
+  {
+    title: "Fund Request",
+    icon: creditmoney,
+    icon2: CreditRequestIcon,
+    to: "/customer/cred-req",
+  },
   {
     title: "Reports",
     icon: graph,

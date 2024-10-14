@@ -392,30 +392,30 @@ const DmtContainer = ({
                     !addNewRem &&
                     !verifyotp && (
                       <Grid
-                        item
-                        md={12}
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          mb: 2,
-                        }}
-                      >
-                        <Button
-                          size="small"
-                          id="verify-btn"
-                          className="button-props"
-                          onClick={handleBack}
-                        >
-                          <span style={{ marginRight: "5px" }}>Back</span>
-                          <img
-                            src={back}
-                            alt="UPI logo"
-                            style={{ width: "18px", height: "20px" }}
-                          />
-                        </Button>
-                      </Grid>
+                   
+                      item xs={12} sm="auto"
+                     sx={{
+                       display: "flex",
+                       alignItems: "center",
+                       justifyContent: "space-between",
+               mr:2,
+                   mt:1
+                     }}
+                   >
+                     <Button
+                       size="small"
+                       id="verify-btn"
+                       className="button-props"
+                       onClick={handleBack}
+                     >
+                       <span style={{ marginRight: "5px" }}>Home</span>
+                       <img
+                         src={back}
+                         alt="back"
+                         style={{ width: "18px", height: "20px" }}
+                       />
+                     </Button>
+                     </Grid>
                     )}
                   <Box>
                     {!mobile ? (

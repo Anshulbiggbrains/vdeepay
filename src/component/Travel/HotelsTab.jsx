@@ -1,13 +1,42 @@
 import { TabContext } from '@mui/lab'
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { HotelsImage } from '../../iconsImports';
-const HotelsTab = () => {
+import { back, HotelsImage } from '../../iconsImports';
+const HotelsTab = ({resetView}) => {
     const { tripType } = useSelector((state) => state?.flight);
+    const handleBack=()=>{
+      resetView(false)
+    }
   return (
    <> 
    <TabContext value={tripType && tripType}>
+   <Grid
+                   
+                   item xs={12} sm="auto"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+            mr:2,
+                mt:1
+                  }}
+                >
+                  <Button
+
+                    size="small"
+                    id="verify-btn"
+                    className="button-props"
+                    onClick={handleBack}
+                  >
+                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <img
+                      src={back}
+                      alt="back"
+                      style={{ width: "18px", height: "20px" }}
+                    />
+                  </Button>
+                  </Grid>
    <Box
         sx={{
           backgroundImage: `url(${HotelsImage})`,

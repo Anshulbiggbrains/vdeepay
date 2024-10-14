@@ -881,8 +881,9 @@ const AdminTransactionsView = () => {
               </Grid>
             }
             totalCard={
+              <>
               <StatusDisplay/>
-            }
+            </>}
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
@@ -1003,7 +1004,7 @@ const AdminTransactionsView = () => {
                   </Tooltip>
         
                  
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', ml:"10px"}}>
+                  <Box sx={{ display: 'flex', ml:2}}>
                     <FormGroup>
                       <FormControlLabel
                         sx={{
