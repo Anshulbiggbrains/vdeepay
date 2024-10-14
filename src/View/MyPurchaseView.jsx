@@ -179,12 +179,20 @@ const MyPurchaseView = () => {
               </Tooltip>
             ) : row.platform === "WEB" ? (
               <Tooltip title="WEB">
-                <img src={explorer} alt="" style={{width:"20px", height:"20px"}}/>
+                <img
+                  src={explorer}
+                  alt=""
+                  style={{ width: "20px", height: "20px" }}
+                />
                 {/* <LaptopIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "ANDROID" ? (
               <Tooltip title="ANDROID">
-                <img src={android} alt="" style={{width:"20px", height:"20px"}}/>
+                <img
+                  src={android}
+                  alt=""
+                  style={{ width: "20px", height: "20px" }}
+                />
                 {/* <AndroidIcon fontSize="small" sx={{ color: "green" }} /> */}
               </Tooltip>
             ) : row.platform === "IOS" ? (
@@ -192,8 +200,13 @@ const MyPurchaseView = () => {
                 <AppleIcon fontSize="small" sx={{ color: "pink" }} />
               </Tooltip>
             ) : (
-              <Tooltip title="API">.
-               <img src={api} alt="" style={{width:"25px", height:"25px"}}/>
+              <Tooltip title="API">
+                .
+                <img
+                  src={api}
+                  alt=""
+                  style={{ width: "25px", height: "25px" }}
+                />
                 {/* <SyncAltIcon fontSize="small" sx={{ color: "red" }} /> */}
               </Tooltip>
             )}
@@ -202,7 +215,6 @@ const MyPurchaseView = () => {
         </div>
       ),
       center: true,
-      width:"80px"
     },
     {
       name: "Number",
@@ -241,7 +253,7 @@ const MyPurchaseView = () => {
         </div>
       ),
       center: false,
-      width:"130px"
+      width: "130px",
     },
     {
       name: "Service",

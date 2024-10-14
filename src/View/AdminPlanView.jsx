@@ -105,7 +105,7 @@ const AdminPlanView = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-end",
           }}
         >
           <EditPlanModal row={row} refresh={refresh} />
@@ -113,6 +113,7 @@ const AdminPlanView = () => {
           <DeletePlan row={row} refresh={refresh} />
         </div>
       ),
+      width: "130px",
     },
   ];
 
