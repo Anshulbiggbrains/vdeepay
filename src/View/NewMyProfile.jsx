@@ -44,10 +44,11 @@ import ChangeLayoutModal from "../modals/ChangeLayoutModal";
 // import UserAddBankModal from "../modals/UserAddBankModal";
 import UserBankList from "./UserBankList";
 import AuthorizationLetters from "./AuthorizationLetters";
-import { PROJECTS } from "../utils/constants";
+import { my_profile, PROJECTS } from "../utils/constants";
 import ViewVirtualAcct from "../modals/ViewVirtualAcct";
 import ApiToken from "../modals/ApiToken";
 import ApiKey from "../modals/ApiKey";
+import CustomTabs from "../component/CustomTabs";
 
 let bankObjCallBack;
 const NewMyProfile = () => {
@@ -333,12 +334,35 @@ const NewMyProfile = () => {
       window.removeEventListener("resize", changeApply);
     };
   });
+  const tabs = [
+    { label: "Personal Information",  },
+    { label: "Business Information",   },
+    { label: "Bank Information",   },
+    { label: "Documents",   },
+    { label: "2-Factor Authentication",   },
+    { label: "BC Authorisation Letter",   },
+  ];
+  const [value, setValue] = useState(0);
+  const [currentType, setCurrentType] = useState("Personal")// Default active tab value
+
+  const handleChange = (event, newValue) => {
+    console.log("newval",newValue);
+    setValue(newValue);
+    setSelectedType(my_profile[newValue])
+    setCurrentType(my_profile[newValue])
+
+  };
 
   return (
     <>
+      <CustomTabs
+      tabs={tabs}
+      value={value}
+      onChange={handleChange}
+    />
       <Grid container sx={{ display: "flex", justifyContent: "start" }}>
         {/* the options selector */}
-        <Grid
+        {/* <Grid
           item
           md={3.2}
           sm={12}
@@ -548,10 +572,11 @@ const NewMyProfile = () => {
               </div>
             </Grid>
           )}
-        </Grid>
+        </Grid> */}
         {/* the center section */}
         <Grid
           item
+          lg={12}
           md={8.5}
           sm={12}
           xs={12}
@@ -910,6 +935,7 @@ const NewMyProfile = () => {
                 className="card-css"
                 sx={{ p: 3, mt: 2, mb: { md: 0, xs: 5 } }}
               >
+                 
                 <Box
                   component="form"
                   onSubmit={handleforms}
@@ -1024,6 +1050,7 @@ const NewMyProfile = () => {
                 >
                   Update Information
                 </Button>
+
               </Grid>
             )}
 
@@ -1198,6 +1225,7 @@ const NewMyProfile = () => {
 
             {/* document box */}
             {selectedType === "document" && (
+              
               <Grid
                 item
                 className="card-css position-relative"
@@ -1236,6 +1264,7 @@ const NewMyProfile = () => {
                       />
                       Click to view documents
                     </div>
+                    
                   )}
 
                 <Box
