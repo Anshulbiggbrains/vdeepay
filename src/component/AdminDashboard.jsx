@@ -30,7 +30,7 @@ const AdminDashboard = ({
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
-       
+        spacing: 2
       }}
     >
       {/* user by roles cards */}
