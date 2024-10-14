@@ -416,3 +416,12 @@ export const Status = [
   { label: "REJECTED", value: "REJECTED" },
   { label: "PENDING", value: "PENDING" },
 ];
+export const my_profile ={
+  0: "personal",
+  1: "business",
+  2:"bank",
+  3:"document",
+  4:"authentication",
+  5:"bc",
+
+}
