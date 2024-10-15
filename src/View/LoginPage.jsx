@@ -111,20 +111,8 @@ const LoginPage = () => {
       document.removeEventListener("selectstart", preventSelection);
     };
   }, []);
-  const devtools = /./;
-  const threshold = 160;
-  
-  const checkDevTools = () => {
-      const startTime = new Date();
-      debugger; // This will trigger the debugger if open
-      const endTime = new Date();
-      
-      if (endTime - startTime > threshold) {
-          alert('Developer Tools is open!');
-      }
-  };
-  
-  setInterval(checkDevTools, 1000);
+
+  // setInterval(checkDevTools, 1000);
   const handleLoginDisable = () => {
     if (!captchaChecked) {
       return true;
