@@ -36,7 +36,7 @@ const StatusDisplay = ({ sumData = {},setSumData }) => {  // Provide a default v
       case 'amount':
         return 'yellow';
       default:
-        return '#ccc'; // Default gray color
+        return '#ccc'; 
     }
   };
 
@@ -54,7 +54,7 @@ const StatusDisplay = ({ sumData = {},setSumData }) => {  // Provide a default v
       case 'amount':
         return '#ffffcc'; // Light yellow
       default:
-        return '#f0f0f0'; // Light gray for other statuses
+        return '#f0f0f0'; 
     }
   };
 

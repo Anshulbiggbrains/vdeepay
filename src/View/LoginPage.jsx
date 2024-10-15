@@ -32,6 +32,7 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okErrorToast } from "../utils/ToastUtil";
 import { getGeoLocation } from "../utils/GeoLocationUtil";
 import VerifyMpinLogin from "../component/VerifyMpinLogin";
+
 import { PATTERNS } from "../utils/ValidationUtil";
 const LoginPage = () => {
   const [isMobv, setIsMobv] = useState(true);
@@ -66,19 +67,6 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
-useEffect(()=>{
-  const handleContextMenu=(e)=>{
-    e.preventDefault();
-  };
-
-  document.addEventListener('contextmenu', handleContextMenu);
-  return () => {
-    document.removeEventListener('contextmenu', handleContextMenu);
-};
-},[]);
-
-
-
 
   useEffect(() => {
     locationVal();
@@ -94,7 +82,37 @@ useEffect(()=>{
       okErrorToast("Location", err);
     }
   );
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
 
+    const handleKeyDown = (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && (e.key === "u" || e.key === "U")) ||
+        (e.ctrlKey && e.shiftKey && e.key === "I")
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    const preventSelection = (e) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("selectstart", preventSelection);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("selectstart", preventSelection);
+    };
+  }, []);
+
+  // setInterval(checkDevTools, 1000);
   const handleLoginDisable = () => {
     if (!captchaChecked) {
       return true;
@@ -110,6 +128,7 @@ useEffect(()=>{
       return false;
     }
   };
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -415,14 +434,7 @@ useEffect(()=>{
                             if (setPassword) setPassword(e.target.value);
                           }}
                           InputProps={{
-                            // startAdornment: (
-                            //   <InputAdornment position="start">
-                            //     <Icon
-                            //       icon="solar:lock-password-outline"
-                            //       style={{ color: "#292D32" }}
-                            //     />
-                            //   </InputAdornment>
-                            // ),
+                           
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
@@ -540,6 +552,8 @@ useEffect(()=>{
                       <Typography sx={{ mx: 2, }}>OR</Typography>
                       <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
                     </Box>
+                    {/* npm i @fvilers/disable-react-devtools */}
+
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>
                   <Button
@@ -565,38 +579,7 @@ useEffect(()=>{
                   item
                   xs={12}
                   sx={{ mt: 0, display: "flex", justifyContent: "right" }}
-                >
-                  {/* <Button
-                  // type="submit"
-                  // form="contact"
-                  variant="contained"
-                  sx={{
-                    width: "100%",
-                    // mt: 2,
-                    // marginLeft:3,
-                    color: "#fff",
-                    backgroundColor: "#4253F0",
-                  }}
-                  onClick={() => navigate("/sign-up")}
-                  // disabled={!(captchaChecked && agreedToTerms)}
-                >
-                  Sign Up
-                </Button> */}
-               {/* <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        fontSize={14}
-                      >
-                        New User ?{" "}
-                        <Link
-                          href="/sign-up"
-                          underline="always"
-                          color="#4253F0"
-                          fontSize={14}
-                        >
-                          Register Here!
-                        </Link>
-                      </Typography> */}
+          >
                 </Grid>
               </Grid>
             ) : (

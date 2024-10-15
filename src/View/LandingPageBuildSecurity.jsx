@@ -5,7 +5,7 @@ import { getEnv } from "../theme/setThemeColor";
 
 const LandingPageBuildSecurity = () => {
   return (
-    <Grid xs={12} className="sectionBreake builSecurity_bg">
+    <Grid xs={12} className="builSecurity_bg">
       <Container maxWidth="lg">
         <div className="landing-bg_main_font" style={{ textAlign: "center" }}>
           Built With Security In Mind

@@ -98,7 +98,7 @@ const UserBankList = () => {
   return (
     <Grid container sx={{ mt: 3 }}>
       <Loader loading={addBankReq} />
-      <Grid item md={12}>
+      <Grid item md={12} >
         <table>
           <tr className="table-row">
             <th className="table-header min-width">Bank Name</th>

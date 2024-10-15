@@ -199,6 +199,7 @@ const ApiEndpoints = {
   ACCOUNT_BALANCE: "admin/accBalance",
   DASHBOARD_ASM_REPORT: "reports/getTertiaryDataServiceWise",
   MY_EARNINGS: "reports/myEarnings",
+  GET_TRIPLE_BARCHART_DATA: "reports/getTertiaryDataServiceWise",
 
   //admin acc
   ADMIN_ACC_GET_USER: "reports/getUsersForAcc",

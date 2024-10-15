@@ -25,6 +25,7 @@ import { useContext } from "react";
 import AuthContext from "../store/AuthContext";
 import { createFileName, useScreenshot } from "use-react-screenshot";
 import { createRef } from "react";
+import AdminBarChart from "./AdminBarChart";
 
 let refresh;
 function refreshFunc(setQueryParams, setPushFlag) {
@@ -344,8 +345,8 @@ const AsmProductionSaleComponent = () => {
     </Grid>
   
     
-    <Grid item xs={12} lg={12} sm={12} md={12} sx={{ mt: 0.5 }} ref={ref}>
-      <ApiPaginate
+    <Grid item xs={12} lg={12} sm={12} md={12} sx={{ mt: 0.5, height: 500 }} ref={ref}>
+      {/* <ApiPaginate
         apiEnd={
           showPrimaryData
             ? ApiEndpoints.GET_RET_PROD_SALE
@@ -362,7 +363,8 @@ const AsmProductionSaleComponent = () => {
         ExpandedComponent={null}
         paginateServer={false}
         paginate={false}
-      />
+      /> */}
+      <AdminBarChart graphData={[]} upper={false} />
     </Grid>
   </Grid>
   

@@ -11,7 +11,7 @@ import LoginPageIllustrator from "./assets/LoginPageSideIllustrator.jpg";
 //
 import bbps from "./assets/bbps.png";
 import login_illustration from "./assets/loginIllustration.png";
-import landingPageIllustration from "./assets/landing-page-assets/landingPageillustration.webp";
+import landingPageIllustration from "./assets/landing-page-assets/landingPageillustration2.webp";
 import contact from "./assets/sidebar_icons/contactUs.png";
 import dash from "./assets/sidebar_icons/dashboard.svg";
 import express from "./assets/sidebar_icons/ExpressTransfer.png";
@@ -89,6 +89,7 @@ import money_t from "./assets/moneyT.png";
 import join_us from "./assets/joinus.webp";
 import join_us_img from "./assets/joinus2.webp";
 import contact_img from "./assets/contactus.webp";
+import contactimg from "./assets/contactus.jpg";
 import certificateT from "./assets/certificatetop.png";
 import certificateB from "./assets/certificatebottom.png";
 import playstoreIcon from "../src/assets/playstore.png";
@@ -312,6 +313,7 @@ export const joinus = join_us;
 
 export const joinus2 = join_us_img;
 export const contact_us = contact_img;
+export const contact_Us = contactimg;
 export const who_we_are = we_are;
 export const teamWork = team;
 

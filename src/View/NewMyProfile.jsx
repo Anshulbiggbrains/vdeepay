@@ -335,12 +335,12 @@ const NewMyProfile = () => {
     };
   });
   const tabs = [
-    { label: "Personal Information",  },
-    { label: "Business Information",   },
-    { label: "Bank Information",   },
+    { label: "Personal ",  },
+    { label: "Business ",   },
+    { label: "Banking ",   },
     { label: "Documents",   },
-    { label: "2-Factor Authentication",   },
-    { label: "BC Authorisation Letter",   },
+    { label: "2-FA",   },
+    { label: "BC Auth Letter",   },
   ];
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState("Personal")// Default active tab value
@@ -587,14 +587,14 @@ const NewMyProfile = () => {
             md={12}
             sm={12}
             xs={12}
-            sx={{ p: 2, display: "flex", justifyContent: "space-between" }}
+            sx={{ p: 2, display: "flex", justifyContent: "center" }}
             className="card-css"
           >
             <Box
               component="div"
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 flexDirection: {
                   lg: "row",
                   md: "row",
@@ -1064,6 +1064,7 @@ const NewMyProfile = () => {
                   px: 1.5,
                   mt: 2,
                   mb: { md: 0, xs: 5 },
+                
                 }}
               >
                 <Box
@@ -1086,6 +1087,7 @@ const NewMyProfile = () => {
                         display: "flex",
                         justifyContent: "space-between",
                         width: "100%",
+                        
                       }}
                     >
                       <Typography className="my-profile-topography">
@@ -1199,8 +1201,11 @@ const NewMyProfile = () => {
                       </FormControl>
                     </Grid>
                   </Grid> */}
+
                 </Box>
                 <UserBankList />
+
+              
                 {/* {user && !user.acc_number && (
                   <Button
                     variant="contained"

@@ -116,7 +116,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/login-copy"element={<LoginPageCopy/>}/>
+          <Route path="/login-copy" element={<LoginPageCopy />} />
 
           <Route
             path="irctc/payment-authentication"
@@ -222,7 +222,7 @@ function App() {
                       path="transactions"
                       element={<AsmTransactionView />}
                     />
-                   
+
                     <Route path="my-profile" element={<NewMyProfile />} />
                     <Route path="loginHistory" element={<LoginHistory />} />
                   </Route>
@@ -233,7 +233,7 @@ function App() {
                   <Route path="transactions" element={<ApiTransactionView />} />
                   {/* <Route path="cred-req" element={<CreditRequestView />} /> */}
                   <Route path="invoice" element={<ApiInvoice />} />
-                  <Route path="documents" element={<Documents/>} />
+                  <Route path="documents" element={<Documents />} />
                   <Route path="my-profile" element={<NewMyProfile />} />
                   <Route path="loginHistory" element={<LoginHistory />} />
                 </Route>
@@ -272,15 +272,15 @@ function App() {
                     )}
                     <Route path="dashboard" element={<RetDdDashboard />} />
                     <Route path="recharge" element={<RechargeAndBillPay />} />
-                    <Route path="money-transfer-new" element={<MoneyTransferViewNew/>} />
                     <Route
-                      path="Profile-new"
-                      element={<ProfilePage />}
+                      path="money-transfer-new"
+                      element={<MoneyTransferViewNew />}
                     />
+                    <Route path="Profile-new" element={<ProfilePage />} />
 
                     <Route
                       path="money-transfer"
-                      element={<MoneyTransferView/>}
+                      element={<MoneyTransferView />}
                     />
                     <Route path="travel" element={<TravelContainer />} />
                     {/* <Route path="travel-irctc" element={<IRCTCView />} /> */}
@@ -290,7 +290,7 @@ function App() {
                       path="booking-review"
                       element={<BookingReviewPage />}
                     />
-                      <Route path="loginHistory" element={<LoginHistory />} />
+                    <Route path="loginHistory" element={<LoginHistory />} />
                     <Route
                       path="express-transfer"
                       element={
@@ -312,7 +312,6 @@ function App() {
                       path="vendor-payments"
                       element={<VendorPayments />}
                     />
-                    
 
                     {authCtx?.user?.stm === 1 && (
                       <Route path="settlements" element={<SettlementsView />} />
