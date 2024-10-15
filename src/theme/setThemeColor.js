@@ -1,6 +1,6 @@
 export const primaryColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return "#FF7F50";
+    return "#ff9d5c";
   }
 };
 export const primaryLight = () => {
