@@ -42,7 +42,7 @@ import { USER_ROLES } from "../utils/constants";
 import FilterCard from "../modals/FilterCard";
 import FilterModal from "../modals/FilterModal";
 import predefinedRanges from "../utils/predefinedRanges";
-
+// import AuthContext from "../store/AuthContext";
 let refresh;
 let handleCloseModal;
 function refreshFunc(setQueryParams) {
@@ -53,6 +53,7 @@ function refreshFunc(setQueryParams) {
 const LoginHistory = () => {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
+
   const role = user?.role;
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState("");
@@ -80,8 +81,9 @@ const LoginHistory = () => {
     },
 
     {
-      name: "Establishment",
-      selector: (row) => <row className="establishment"></row>,
+      name: "User Id",
+      selector: (row) => user.name,
+      center: true,
     },
     {
       name: "Created At",
@@ -124,7 +126,6 @@ const LoginHistory = () => {
             <Box
               component="img"
               src={imageUrl}
-              alt={row.device}
               sx={{ width: "22px", height: "22px" }}
             />
             <Typography>{row.device}</Typography>
