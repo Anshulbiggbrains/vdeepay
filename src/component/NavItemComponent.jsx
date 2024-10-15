@@ -55,7 +55,7 @@ const NavItemComponent = ({
   const userRole = authCtx.user.role; 
   console.log("userrole is",userRole)
 
-  if (item.title === "Fund Request" && userRole !== "Dd" &&userRole !== "Ad" &&userRole !== "Md" && userRole !== "Admin") {
+  if (item.title === "Fund Request" && userRole !== "Dd" &&userRole !== "Ad" &&userRole !== "Md" && userRole !== "Admin" && userRole !== "Asm" &&userRole !== "Zsm") {
     return null;
   }
 

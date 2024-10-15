@@ -336,6 +336,12 @@ export const Asm_nav = [
     icon2: TransactionIconWhite,
     to: "/asm/transactions",
   },
+  {
+    title: "Fund Request",
+    icon: creditrq1,
+    icon2: CreditRequestIcon,
+    to: "/asm/cred-req",
+  },
 
   {
     title: "Login History",
@@ -353,7 +359,7 @@ export const Zsm_nav = [
   },
   {
     title: "Users",
-    icon: UserIcon,
+    icon: user1,
     icon2: UserIconWhite,
     to: "/zsm/users",
   },
@@ -363,12 +369,12 @@ export const Zsm_nav = [
     icon2: TransactionIconWhite,
     to: "/zsm/transactions",
   },
-  // {
-  //   title: "Fund  Request",
-  //   icon: CreditRequestIcon,
-  //   icon2: CreditRequestIcon,
-  //   to: "/zsm/cred-req",
-  // },
+  {
+    title: "Fund  Request",
+    icon: creditrq1,
+    icon2: CreditRequestIcon,
+    to: "/zsm/cred-req",
+  },
   {
     title: "Login History",
     icon: loginHistory,

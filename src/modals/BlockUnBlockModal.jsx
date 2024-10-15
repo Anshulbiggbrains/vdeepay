@@ -41,7 +41,8 @@ const BlockUnBlockModal = ({ row }) => {
       setRequest,
       (res) => {
         handleClose();
-        okSuccessToast("data saved");
+        okSuccessToast(res.data.message);
+        
       },
       (error) => {
         apiErrorToast("error=>", error);
