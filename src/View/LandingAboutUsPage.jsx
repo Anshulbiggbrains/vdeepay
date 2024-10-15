@@ -64,7 +64,7 @@ const LandingAboutUsPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
   return (
-    <div id="about-us">
+    <div id="about-us ">
       <Grid container sx={{ mt: 5 }} className="bottom2top">
         {/* about us */}
         <Grid md={12} xs={12}>
