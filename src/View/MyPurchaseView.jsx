@@ -40,6 +40,7 @@ import predefinedRanges from "../utils/predefinedRanges";
 import android from "../assets/android.png";
 import explorer from "../assets/explorer.png";
 import api from "../assets/Api.png";
+import StatusDisplay from "../StatusDisplay";
 let refresh;
 let handleCloseModal;
 function refreshFunc(setQueryParams) {
@@ -51,6 +52,7 @@ const MyPurchaseView = () => {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
   const role = user?.role;
+  const[sumData,setSumData]=useState(false)
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState("");
   const prefilledQuery = "type_txn=PURCHASE";
@@ -394,6 +396,10 @@ const MyPurchaseView = () => {
         </Grid>
         <ApiPaginateSearch
           showSearch={true}
+          totalCard={
+            <>
+            <StatusDisplay sumData={sumData} setSumData={setSumData}/>
+          </>}
           isFilterAllowed
           actionButtons={
             <></>
@@ -477,6 +483,7 @@ const MyPurchaseView = () => {
           columns={columns}
           apiData={apiData}
           setApiData={setApiData}
+          setSumData={setSumData}
           tableStyle={CustomStyles}
           queryParam={query ? query : ""}
           returnRefetch={(ref) => {
