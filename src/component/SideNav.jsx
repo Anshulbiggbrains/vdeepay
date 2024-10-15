@@ -564,7 +564,7 @@ export default function SideNav(props, { data }) {
           <div
             style={{
               display: "flex",
-              marginRight: "10px",
+             marginRight:"4%",
               justifyContent: "end",
             }}
           >
@@ -574,6 +574,7 @@ export default function SideNav(props, { data }) {
                 borderRadius: "0px",
                 p: 0,
                 textAlign: "right",
+              
               }}
               size="large"
               aria-label="account of current user"

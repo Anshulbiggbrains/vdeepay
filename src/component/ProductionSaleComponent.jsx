@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { postJsonData } from "../network/ApiController";
+import { get, postJsonData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast } from "../utils/ToastUtil";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
@@ -27,6 +27,7 @@ import LineChartAllServices from "./LineChartAllServices.";
 import AdminLineChart from "./AdminLineChart";
 import { primaryColor } from "../theme/setThemeColor";
 import MonthlyDataChart from "./MonthlyDataChart";
+import AdminTripleChart from "./AdminTripleBarChart";
 
 let refresh;
 function refreshFunc(setQueryParams) {
@@ -43,6 +44,7 @@ const ProductionSaleComponent = ({
   const user = authCtx.user;
   const [graphData, setGraphData] = useState([]);
   const [graphAllData, setGraphAllData] = useState();
+  const [tripleBarData, setTripleBarData] = useState([]);
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState();
   const [txnDataReq, setTxnDataReq] = useState(false);
@@ -149,6 +151,29 @@ const ProductionSaleComponent = ({
     );
   };
 
+  const getData = () => {
+    get(
+      ApiEndpoints.GET_TRIPLE_BARCHART_DATA,
+      "",
+      () => {},
+      (res) => {
+        console.log("This is your res in AdminTripleChart", res)
+        setTripleBarData(res?.data?.data);
+        // const data = res.data.data;
+        // if (graphDuration === "TODAY") {
+        //   setGraphData(barChartData(data));
+        // } else if (graphDuration === "THIS" || graphDuration === "LAST") {
+        //   setGraphAllData(data && data);
+        //   setGraphData(totalChartData(data));
+        // }
+      },
+      (err) => {
+        // apiErrorToast(err);
+        console.log("This is your error in AdminTripleChart", err);
+      }
+    );
+  };
+
   const getTxnData = () => {
     postJsonData(
       ApiEndpoints.ADMIN_DASHBOARD_GET_TXN_DATA,
@@ -180,6 +205,11 @@ const ProductionSaleComponent = ({
       }
     );
   };
+
+  useEffect(()=>{
+    console.log("Triple Bar Chart api called");
+    getData();
+  }, [])
 
   useEffect(() => {
     if (user.role !== "Zsm") {
@@ -341,7 +371,7 @@ const ProductionSaleComponent = ({
 
           {user && (user.role === "Asm" || user.role === "Zsm") && showProductTable ? (
             <Grid item xs={12} lg={12} sm={12} md={12}>
-              <ApiPaginate
+              {/* <ApiPaginate
                 apiEnd={ApiEndpoints.GET_RET_PROD_SALE}
                 columns={columnsProd}
                 apiData={apiData}
@@ -354,12 +384,14 @@ const ProductionSaleComponent = ({
                 ExpandedComponent={null}
                 paginateServer={false}
                 paginate={false}
-              />
+              /> */}
+              {/* <AdminBarChart graphData={graphData} upper={false} /> */}
+              <AdminTripleChart data={tripleBarData} upper={false}/>
             </Grid>
           ) : showMonthlyData?(
                   <MonthlyDataChart/>
           ): !showProductTable && graphDuration && graphDuration === "TODAY" ? (
-            <AdminBarChart graphData={graphData} />
+            <AdminBarChart graphData={graphData} upper={true} />
           ) : (
             ((!showProductTable && graphDuration === "THIS") || graphDuration === "LAST") && (
               <>

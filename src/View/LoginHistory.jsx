@@ -69,14 +69,14 @@ const LoginHistory = () => {
 
   const columns = [
     {
-      name: "Date",
-      selector: (row) => <></>,
+      name: "id",
+      selector: (row) => <>{row.id}</>,
     },
 
     {
-      name: "userName",
+      name: "userId",
       cell: (row) => (
-      ""
+      <>{row.user_id}</>
       ),
       center: false,
 
@@ -85,39 +85,28 @@ const LoginHistory = () => {
     {
       name: "Login ip",
       selector: (row) => (
-      ""
+   <> {row.ip}</>
       ),
       center: false,
     },
     {
-      name: "Login Key",
+      name: "device",
       selector: (row) => (
-       <></>
+       <> {row.device}</>
       ),
       center: false,
     },
     {
-      name: "logout Time",
-      selector: (row) => <></>,
+      name: "created_at",
+      selector: (row) => <>{row.created_at}</>,
     },
     {
-      name: "Logout Date",
+      name: "updated_at",
       selector: (row) => (
-       <></>
+       <>{row.updated_at}</>
       ),
     },
-    {
-      name: "Login Token",
-      selector: (row) => (
-       <></>
-      ),
-    },
-    {
-      name: "Role",
-      selector: (row) => (
-        <></>
-      ),
-    },
+ 
   ];
   const searchOptions = [{ field: "Number", parameter: "number" }];
   return (
@@ -155,24 +144,24 @@ const LoginHistory = () => {
           showSearch={true}
           isFilterAllowed
       
-          apiEnd={ApiEndpoints.GET_TRANSACTIONS}
-          searchOptions={searchOptions}
-          setQuery={setQuery}
+          apiEnd={ApiEndpoints.GET_LOGIN_HISTORY}
+          // searchOptions={searchOptions}
+          // setQuery={setQuery}
           columns={columns}
           apiData={apiData}
           setApiData={setApiData}
           tableStyle={CustomStyles}
-          queryParam={query ? query : ""}
-          returnRefetch={(ref) => {
-            refresh = ref;
-          }}
-          responses={(val) => {
-            setNoOfResponses(val);
-          }}
-          prefilledQuery={prefilledQuery}
-          backButton={
-        <></>
-          }
+          // queryParam={query ? query : ""}
+          // returnRefetch={(ref) => {
+          //   refresh = ref;
+          // }}
+        //   responses={(val) => {
+        //     setNoOfResponses(val);
+        //   }}
+        //   prefilledQuery={prefilledQuery}
+        //   backButton={
+        // <></>
+        //   }
 
           
        

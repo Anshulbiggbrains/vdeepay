@@ -390,6 +390,19 @@ const NepalTransfer = ({ resetView }) => {
                     />
                   </Button>
                   </Grid>
+                  {!mobile?(
+                      <Typography
+                        sx={{
+                          fontSize: "24px",
+                          fontWeight: "bold",
+                          letterSpacing: "0.05rem",
+                          textAlign: "left",
+                          mt: 1,
+                        }}
+                      >
+                        Nepal Transfer
+                      </Typography>
+                      ):null}
               <Box
                 // component="form"
                 // id="seachNepalByID"
@@ -824,7 +837,7 @@ const NepalTransfer = ({ resetView }) => {
                 </div>
               </TableCell>
               <TableCell>
-                {item?.PaymentMode !== "Cash Payment" ? item?.Receiver.Relationship : "N/A"}
+                {item?.PaymentMode !== "Cash Payment" ? item?.receivers?.Relationship : "N/A"}
               </TableCell>
               <TableCell>
                 {item?.PaymentMode !== "Cash Payment" ? item?.AcNumber : "N/A"}
