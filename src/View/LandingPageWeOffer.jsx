@@ -15,7 +15,7 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { useNavigate } from "react-router-dom";
 import { primaryColor } from "../theme/setThemeColor";
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 const LandingPageWeOffer = () => {
   const navigate = useNavigate();
@@ -67,10 +67,10 @@ const LandingPageWeOffer = () => {
             <Grid container spacing={2}>
               {weOffer.map((item, index) => (
                 <Grid item md={6} lg={6} key={index}>
-                  <motion.div
+                  {/* <motion.div
                     whileHover={{ scale: 1.05, rotate: 1 }} // Animation on hover
                     transition={{ type: "spring", stiffness: 300 }}
-                  >
+                  > */}
                     <Card
                       sx={{
                         width: "100%",
@@ -138,7 +138,7 @@ const LandingPageWeOffer = () => {
                         </Button>
                       </CardActions>
                     </Card>
-                  </motion.div>
+                  {/* </motion.div> */}
                 </Grid>
               ))}
             </Grid>

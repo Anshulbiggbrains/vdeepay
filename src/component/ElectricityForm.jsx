@@ -192,7 +192,7 @@ console.log("oppp",opName);
         {/* Search Bar */}
         <Grid item xs={12} sm={6} sx={{mt:1}}>
           <TextField
-            label="Search Electricity"
+            label="Search"
             variant="outlined"
             fullWidth
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -325,7 +325,7 @@ console.log("oppp",opName);
 >
   {/* Search Box for Electricity Operators */}
   <TextField
-    label="Search Electricity"
+    label="Search"
     variant="outlined"
     fullWidth
     value={searchTerm}
