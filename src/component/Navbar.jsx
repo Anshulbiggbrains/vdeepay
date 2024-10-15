@@ -53,12 +53,12 @@ const pagesLg = [
     id: "our-services",
     sName: "servicesSec",
   },
-  {
-    navItems: "OUR PARTNERS",
-    to: "/our-partners",
-    id: "our-partners",
-    sName: "partnerSec",
-  },
+  // {
+  //   navItems: "OUR PARTNERS",
+  //   to: "/our-partners",
+  //   id: "our-partners",
+  //   sName: "partnerSec",
+  // },
   {
     navItems: "CONTACT US",
     to: "/contact-us",
@@ -69,7 +69,7 @@ const pagesLg = [
 const pagesSm = [
   { navItems: "ABOUT US", to: "/about-us", sName: "aboutSec" },
   { navItems: "OUR SERVICES", to: "/our-services", sName: "servicesSec" },
-  { navItems: "OUR PARTNERS", to: "/our-partners", sName: "partnerSec" },
+  // { navItems: "OUR PARTNERS", to: "/our-partners", sName: "partnerSec" },
   { navItems: "CONTACT US", to: "/contact-us", sName: "contactSec" },
   { navItems: "LOGIN/SIGN UP", to: "/login", sName: "" },
 ];
