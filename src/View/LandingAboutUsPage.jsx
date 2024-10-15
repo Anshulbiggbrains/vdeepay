@@ -65,7 +65,7 @@ const LandingAboutUsPage = () => {
   }, []);
   return (
     <div id="about-us ">
-      <Grid container sx={{ mt: 5 }} className="bottom2top">
+      <Grid container sx={{ mt: 5 }} className="builSecurity_bg">
         {/* about us */}
         <Grid md={12} xs={12}>
           <Typography

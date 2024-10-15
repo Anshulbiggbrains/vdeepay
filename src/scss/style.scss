@@ -2378,7 +2378,7 @@ div.second {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: $secondary-color;
+  background: #fc8474;
   transition: all 0.3s ease-in-out;
 }
 
@@ -2406,7 +2406,7 @@ div.second {
 }
 .icon-box:hover .actual-icon {
   // background: #fff;
-  color: $secondary-color;
+  color: #fc7474;
 }
 
 .icon-box::before {
@@ -2422,7 +2422,7 @@ div.second {
   z-index: -1;
 }
 .icon-box:hover::before {
-  background: $secondary-color;
+  background: #fc7474;
   right: 0;
   top: 0;
   width: 100%;

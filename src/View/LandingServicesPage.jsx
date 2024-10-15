@@ -23,7 +23,7 @@ const LandingServicesPage = () => {
   // }, []);
   return (
     <div
-      className={envName === "MoneyOddr" ? "" : "servicePageBg2"}
+      className={envName === "MoneyOddr" ? "" : "builSecurity_bg"}
       sx={{ paddingBottom: "none !important" }}
       id="our-services"
     >
