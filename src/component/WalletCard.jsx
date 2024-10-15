@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -7,7 +7,7 @@ import {
  
 } from "@mui/material";
 import AuthContext from "../store/AuthContext";
-import { postFormData } from "../network/ApiController";
+import { get, postFormData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 
@@ -24,6 +24,7 @@ import RefreshComponent from "./RefreshComponent";
 import { useLocation } from "react-router-dom";
 
 import { keyframes } from '@mui/system';
+import { Button } from "rsuite";
 
 
 
@@ -41,6 +42,7 @@ const WalletCard = () => {
   const [request, setRequest] = useState(false);
   const { getRecentData, refreshUser, userRequest } = useCommonContext();
   const [err, setErr] = useState();
+  const[response,setResponse]=useState()
   const location = useLocation();
 
   console.log("user is",user);
@@ -144,6 +146,26 @@ const borderPulse = keyframes`
   100% { border-color: red; }
 `;
 
+const getParent = useCallback(() => {
+  get(
+    ApiEndpoints.GET_PARENT,
+    "",
+    () => {},
+    (res) => {
+      setResponse(res?.data.data)
+      console.log("res", res?.data.data.asm);
+  
+    },
+    (err) => {
+
+      apiErrorToast(err)
+    }
+  );
+}, []);
+useEffect(() => {
+  getParent();
+  return () => {};
+}, [getParent, user]);
   return(
     <Grid 
     container 
@@ -153,6 +175,7 @@ const borderPulse = keyframes`
     justifyContent="flex-start"
     
   >
+
     {/* ASM Card */}
     { (user.role === "Dd" || user.role === "Ret" ||user.role==="Ad"||user.role==="Md") && (
   <Grid item xs="auto">
@@ -178,7 +201,7 @@ const borderPulse = keyframes`
           variant="body2"
           sx={{ color: '#212b5a', fontSize: '10px' }}
         >
-          Mobile No-
+          Mobile No-{response.asm}
         </Typography>
       </Box>
     </Box>
