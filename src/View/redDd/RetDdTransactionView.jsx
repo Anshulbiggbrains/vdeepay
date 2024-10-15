@@ -100,7 +100,7 @@ const RetDdTransactionView = () => {
   const [query, setQuery] = useState();
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
- 
+  const[sumData,setSumData]=useState(false)
   const [state, setState] = useState(true);
   const[openViews ,setOpenViews]=useState(false)
   const [rowData, setRowData] = useState({});
@@ -726,6 +726,10 @@ const RetDdTransactionView = () => {
         <Grid xs={12} sx={{ pl: { xs: 0, md: 0 } }}>
           <ApiPaginateSearch
             showSearch={true}
+            totalCard={
+              <>
+              <StatusDisplay sumData={sumData} setSumData={setSumData}/>
+            </>}
             actionButtons={
               <Grid
                 item
@@ -806,10 +810,7 @@ const RetDdTransactionView = () => {
                 />
               </Grid>
             }
-            totalCard={
-         <StatusDisplay/>
-             
-            }
+          
             apiEnd={
               showOldTransaction && showOldTransaction
                 ? ApiEndpoints.OLD_TRANSACTIONS
@@ -819,6 +820,7 @@ const RetDdTransactionView = () => {
             setQuery={setQuery}
             columns={columns}
             apiData={apiData}
+            setSumData={setSumData}
             setApiData={setApiData}
             tableStyle={CustomStyles}
             setResetFilter={setResetFilter}

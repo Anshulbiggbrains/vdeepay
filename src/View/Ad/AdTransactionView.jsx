@@ -62,6 +62,7 @@ import FilterCard from "../../modals/FilterCard";
 import RightSidePannel from "../../component/transactions/RightSidePannel";
 import CachedIcon from "@mui/icons-material/Cached";
 import RetDbTransactionTab from "../../component/Tab/RetDbTransactionTab";
+import StatusDisplay from "../../StatusDisplay";
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
 
@@ -81,6 +82,7 @@ const AdTransactionView = () => {
   const [request, setRequest] = useState();
   const [noOfResponses, setNoOfResponses] = useState(0);
   const [typeList, setTypeList] = useState([]);
+  const[sumData,setSumData]=useState(false)
   const [tabQueryreset, setTabQueryreset] = useState(false);
   const navigate = useNavigate();
 
@@ -654,6 +656,10 @@ const AdTransactionView = () => {
         />
         <ApiPaginateSearch
           showSearch={true}
+          totalCard={
+            <>
+            <StatusDisplay sumData={sumData} setSumData={setSumData}/>
+          </>}
           // actionButtons={
           //   <Grid
           //     item
@@ -763,6 +769,7 @@ const AdTransactionView = () => {
           setQuery={setQuery}
           columns={columns}
           apiData={apiData}
+          setSumData={setSumData}
           setTabQueryreset={setTabQueryreset}
           setApiData={setApiData}
           tableStyle={CustomStyles}

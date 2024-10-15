@@ -25,6 +25,7 @@ const ApiPaginate = ({
   tableStyle,
   apiData,
   setApiData,
+  setSumData=false,
   selectableRows,
   onSelectedRowsChange,
   clearSelection,
@@ -65,6 +66,8 @@ const ApiPaginate = ({
   //     setList([]);
   //   }
   // }, [apiData]);
+  console.log("list data is define",list);
+  
 
   useEffect(() => {
     if (data) {
@@ -123,7 +126,10 @@ const ApiPaginate = ({
     }
     return () => {};
   }, [data]);
-
+  if (data?.sum || setSumData) {
+    // If setSumData is provided, set the sum data
+    setSumData(data?.sum);
+  }
   useEffect(() => {
     if (error) {
       if (error.response && error.response.status === 401) {
