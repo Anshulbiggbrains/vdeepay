@@ -5,6 +5,8 @@
 @import "rsuite/dist/rsuite.css";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 // @import "@sweetalert2/theme-material-ui/material-ui.scss";
 
 .iconColour {
@@ -61,13 +63,21 @@ body {
 }
 // navbar
 .navLinks {
-  color: $navlink-color !important;
+  color: #fff !important;
+
+  font-family: "Ubuntu", sans-serif !important;
+  transition: color 0.3s ease;
+}
+
+.navLinks:focus {
+  color: #008cff !important;
 }
 .navLinks:hover {
-  text-decoration: none !important;
+  color: #008cff !important;
 }
 .navitems {
-  color: $navlink-color !important;
+  color: black !important;
+  background: linear-gradient(to right, #7fb4f9, #ee5f5f);
   font-weight: 400 !important;
   position: relative;
   border-bottom: $white-color;
@@ -259,7 +269,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 .landing-bg {
-  background-image: url(../assets/landing-page-assets/landingBg.png);
+  background: linear-gradient(to right, #7fb4f9, #ee5f5f);
+  // background-image: url(../assets/landing-page-assets/landingBg.png);
   height: 95vh;
   width: 100%;
   background-position: center;
@@ -282,7 +293,8 @@ body {
 }
 .landing_intro {
   align-items: center;
-  color: #1d1d1d;
+  // color: #1d1d1d;
+  color: #fff;
   font-size: 1.6rem;
   font-weight: 500;
   text-align: left;
@@ -291,12 +303,12 @@ body {
 }
 .landing-bg_main_font {
   align-items: center;
-  color: #1d1d1d;
+  color: #004990;
   font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  // letter-spacing: 0.01em;
   text-align: left;
-  font-family: "poppins" !important;
+  font-family: "Roboto", sans-serif !important;
 }
 .landing-bg_biggpay_font {
   align-items: center;
@@ -685,7 +697,6 @@ body {
 
 //right nav css
 .right-nav {
-  
   height: 530px;
   padding: 8px;
   margin-top: -7px;
@@ -3387,12 +3398,8 @@ ol > li {
 }
 .link-style {
   font-size: 16px;
-  color: rgb(12, 12, 163); 
-  font-weight: bold; 
+  color: rgb(12, 12, 163);
+  font-weight: bold;
   cursor: pointer;
   padding: 5px;
 }
-
-
-
-

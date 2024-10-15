@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.who-we-are {
+  background: linear-gradient(to right, #488eeb, #ff4081);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero-section {
+  padding: 50px 0;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: slide-in 1s forwards;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  animation: fade-in 2s forwards;
+}
+
+.introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  animation: fade-up 1s forwards;
+}
+
+.intro-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.intro-image img {
+  max-width: 10%;
+  height: auto;
+}
+
+.core-values {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.value {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  flex: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.value h3 {
+  font-size: 1.5rem;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.impact {
+  margin: 20px 0;
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat {
+  background: white;
+  color: #1a73e8;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: scale(1.05);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Container, Typography } from "@mui/material";
-import { facebook, insta, linkdin, Logo, twitter } from "../iconsImports";
+import { facebook, insta, linkdin, loginPage1, Logo, twitter } from "../iconsImports";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -72,7 +72,7 @@ const Footer = () => {
                         ? ""
                         : "#ffffff",
                   }}
-                  src={Logo}
+                  src={loginPage1}
                   alt="logo"
                   width="230px"
                 />

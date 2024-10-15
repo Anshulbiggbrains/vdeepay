@@ -195,7 +195,7 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width:{ lg:'140px' ,sm:"125px"}, 
+          width:{ lg:'140px' ,sm:"130px"}, 
           border: '2px solid #D71313',
         }}
       >
@@ -261,7 +261,7 @@ const borderPulse = keyframes`
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
-          width: { lg: '140px', sm: '130px', xs: '90px' }, 
+          width: { lg: '140px', sm: '130px', xs: '100px' }, 
           border: '2px solid #D71313',
           overflow: 'hidden', 
         }}
@@ -288,7 +288,7 @@ const borderPulse = keyframes`
         borderRadius: '8px',
         display: 'flex',
         alignItems: 'center',
-        width: { lg: '140px', sm: '105px' },
+        width: { lg: '140px', sm: '125px' },
         border: '2px solid #D71313',
       }}
     >

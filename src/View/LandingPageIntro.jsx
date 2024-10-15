@@ -3,13 +3,13 @@ import React from "react";
 import { PrimaryButton, SecondaryButton } from "../theme/Theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+// import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { lp_illustration } from "../iconsImports";
 import { useNavigate } from "react-router-dom";
 import { getEnv, secondaryColor } from "../theme/setThemeColor";
 import { useState } from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const LandingPageIntro = () => {
   const navigate = useNavigate();
   const [env, setEnv] = useState(getEnv());
@@ -21,17 +21,18 @@ const LandingPageIntro = () => {
         backgroundSize: { md: "cover", xs: "contain" },
         height: "max-content",
       }}
+      
     >
       <Container maxWidth="xl">
         <Grid container xs={12} sx={{ px: { md: 8, sm: 1 } }}>
           <Grid md={env === "VdeePay" || env === "PaisaKart" ? 6 : 12} sm={12}>
-            <Box container sx={{ mt: 20 }}>
+            <Box container sx={{ mt: 25 }}>
               <div className="lineUp">
                 <div
                   className="landing-bg_main_font"
                   style={{ textAlign: env === "MoneyOddr" ? "center" : "left" }}
                 >
-                  Welcome To 
+                 Embark on a Journey with 
                 </div>
                 <div className="landing-bg_biggpay_font">
                   {process.env.REACT_APP_TITLE === "MoneyOddr" ? (
@@ -48,7 +49,19 @@ const LandingPageIntro = () => {
                       </span>
                     </>
                   ) : (
-                    process.env.REACT_APP_TITLE
+                    <div
+                 
+                    style={{
+                      color: "#FE0000",
+                      // fontStyle: "italic",
+                      marginLeft: "9px",
+                      fontSize: "2.5rem",
+                     
+                    }}
+                  >
+                   { process.env.REACT_APP_TITLE}
+                    </div>
+
                   )}
                 </div>
               </div>
@@ -74,12 +87,11 @@ const LandingPageIntro = () => {
                   </div>
                 ) : (
                   <div className="landing_intro">
-                    New Age Payment Solution Platform For Individuals, Business
-                    Owners & Corporations.
+                   Empowering Seamless Transactions for Individuals, Entrepreneurs, and Enterprises
                   </div>
                 )}
 
-                {process.env.REACT_APP_TITLE !== "MoneyOddr" && (
+                {/* {process.env.REACT_APP_TITLE !== "MoneyOddr" && (
                   <Box
                     component="div"
                     sx={{
@@ -94,7 +106,7 @@ const LandingPageIntro = () => {
                       sx={{
                         backgroundColor: "#fff",
                         marginRight: "0.5rem",
-                        color: "#4045A1",
+                        color: "#073980",
                       }}
                     >
                       <FacebookRoundedIcon />
@@ -105,7 +117,7 @@ const LandingPageIntro = () => {
                       sx={{
                         backgroundColor: "#fff",
                         marginRight: "0.5rem",
-                        color: "#4045A1",
+                        color: "#073980",
                       }}
                     >
                       <InstagramIcon />
@@ -116,13 +128,13 @@ const LandingPageIntro = () => {
                       sx={{
                         backgroundColor: "#fff",
                         marginRight: "0.5rem",
-                        color: "#4045A1",
+                        color: "#073980",
                       }}
                     >
                       <TwitterIcon />
                     </IconButton>
                   </Box>
-                )}
+                )} */}
                 <Box
                   component="div"
                   sx={{
@@ -141,7 +153,7 @@ const LandingPageIntro = () => {
                 >
                   <PrimaryButton
                     variant="contained"
-                    size="large"
+                    size="small"
                     sx={{
                       mr: { xs: env === "MoneyOddr" ? 0 : 2, md: 2 },
                       mb: { md: 0, xs: 2 },
@@ -150,9 +162,9 @@ const LandingPageIntro = () => {
                       navigate("/login");
                     }}
                   >
-                    Login Here
+                    Getting Started  <ArrowForwardIcon sx={{ ml: 1 }} />
                   </PrimaryButton>
-                  <SecondaryButton
+                  {/* <SecondaryButton
                     variant="contained"
                     size="large"
                     className="button-red"
@@ -164,26 +176,10 @@ const LandingPageIntro = () => {
                     target="_blank"
                   >
                     Download App
-                  </SecondaryButton>
+                  </SecondaryButton> */}
                 </Box>
               </div>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "left",
-                  mt: 3,
-                  mb: 10,
-                }}
-              >
-                {env !== "MoneyOddr" && (
-                  <a href="https://old.impsguru.com/index" target="_blank">
-                    {/* <Button className="visit-btn"> */}
-                    Visit our old portal
-                    <LaunchIcon sx={{ ml: 1 }} />
-                    {/* </Button> */}
-                  </a>
-                )}
-              </Box>
+           
             </Box>
           </Grid>
           {env !== "MoneyOddr" && (

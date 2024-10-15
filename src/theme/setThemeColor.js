@@ -1,6 +1,6 @@
 export const primaryColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return "#1877F2";
+    return "#004792";
   }
 };
 export const primaryLight = () => {
@@ -15,7 +15,7 @@ export const primaryLightest = () => {
 };
 export const secondaryColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return "#1877F2";
+    return "#004792";
   }
 };
 
@@ -96,13 +96,13 @@ export const getUserColor = (role) => {
 export const randomColors = () => {
   // Array containing colors
   var colors = [
-    "rgba(255, 99, 132, 0.2)",  // Light red
-    "rgba(54, 162, 235, 0.2)",  // Light blue
-    "rgba(255, 206, 86, 0.2)",  // Light yellow
-    "rgba(75, 192, 192, 0.2)",  // Light teal
+    "rgba(255, 99, 132, 0.2)", // Light red
+    "rgba(54, 162, 235, 0.2)", // Light blue
+    "rgba(255, 206, 86, 0.2)", // Light yellow
+    "rgba(75, 192, 192, 0.2)", // Light teal
     "rgba(153, 102, 255, 0.2)", // Light purple
   ];
-  
+
   // selecting random color
   var random_color = colors[Math.floor(Math.random() * colors.length)];
   return random_color;

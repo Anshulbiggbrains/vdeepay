@@ -11,7 +11,7 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
   }
 
   
-  const cardHeight = height || "75px"; 
+  const cardHeight = height || "75px";
 
   return (
     <Tooltip title={title} placement="top">
@@ -42,23 +42,22 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
         }}
         onClick={onClick}
       >
-      
+       
         <img
           src={imageSrc || img}
           alt={title}
           style={{
             borderRadius: '50%',
             marginRight: '10px',
-            width: '37px',
+            width: '37px', 
             height: '37px',
             '@media (min-width: 600px)': {
-              width: '40px', 
+              width: '40px',
               height: '40px',
             },
           }}
         />
 
-        {/* Operator name */}
         <Typography
           variant="subtitle1"
           sx={{
@@ -68,7 +67,7 @@ const CardComponent = ({ title, img, onClick, height, py, px, isSelected = false
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: 2,
-            whiteSpace: 'normal',
+            whiteSpace: 'normal', 
             textOverflow: 'ellipsis', 
             color: '#000',
             lineHeight: '1.2rem', 
