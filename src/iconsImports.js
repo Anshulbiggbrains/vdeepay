@@ -11,7 +11,7 @@ import LoginPageIllustrator from "./assets/LoginPageSideIllustrator.jpg";
 //
 import bbps from "./assets/bbps.png";
 import login_illustration from "./assets/loginIllustration.png";
-import landingPageIllustration from "./assets/landing-page-assets/landingPageillustration.webp";
+import landingPageIllustration from "./assets/landing-page-assets/landingPageillustration2.webp";
 import contact from "./assets/sidebar_icons/contactUs.png";
 import dash from "./assets/sidebar_icons/dashboard.svg";
 import express from "./assets/sidebar_icons/ExpressTransfer.png";

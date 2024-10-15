@@ -63,7 +63,8 @@ body {
 }
 // navbar
 .navLinks {
-  color: #9b9bae !important;
+  color: #fff !important;
+
   font-family: "Ubuntu", sans-serif !important;
   transition: color 0.3s ease;
 }
@@ -76,6 +77,7 @@ body {
 }
 .navitems {
   color: black !important;
+  background: linear-gradient(to right, #7fb4f9, #ee5f5f);
   font-weight: 400 !important;
   position: relative;
   border-bottom: $white-color;
@@ -267,7 +269,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 .landing-bg {
-  background-image: url(../assets/landing-page-assets/landingBg.png);
+  background: linear-gradient(to right, #7fb4f9, #ee5f5f);
+  // background-image: url(../assets/landing-page-assets/landingBg.png);
   height: 95vh;
   width: 100%;
   background-position: center;
@@ -290,7 +293,8 @@ body {
 }
 .landing_intro {
   align-items: center;
-  color: #1d1d1d;
+  // color: #1d1d1d;
+  color: #fff;
   font-size: 1.6rem;
   font-weight: 500;
   text-align: left;

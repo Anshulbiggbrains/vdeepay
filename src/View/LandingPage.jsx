@@ -63,7 +63,7 @@ const LandingPage = () => {
         {/* <ServiceCrausal /> */}
 
         <LandingPageBuildSecurity />
-        <LandingPageAppDnld />
+        {/* <LandingPageAppDnld /> */}
         {/* <LandingPageTestimonials /> */}
       </div>
     </div>

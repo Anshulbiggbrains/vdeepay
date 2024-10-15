@@ -3,7 +3,7 @@ import React from "react";
 import { PrimaryButton, SecondaryButton } from "../theme/Theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+// import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { lp_illustration } from "../iconsImports";
 import { useNavigate } from "react-router-dom";
 import { getEnv, secondaryColor } from "../theme/setThemeColor";
@@ -61,6 +61,7 @@ const LandingPageIntro = () => {
                   >
                    { process.env.REACT_APP_TITLE}
                     </div>
+
                   )}
                 </div>
               </div>

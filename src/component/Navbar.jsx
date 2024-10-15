@@ -26,7 +26,7 @@ const theme2 = {
   color: "#000",
 };
 const theme = {
-  background: "#fff",
+  background: ' background: linear-gradient(to right, #7fb4f9, #ee5f5f)',
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
   color: "#000",
 };
@@ -218,6 +218,7 @@ export default function Navbar(props) {
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
                   color="inherit"
+                
                 >
                   <MenuIcon />
                 </IconButton>
@@ -237,6 +238,7 @@ export default function Navbar(props) {
                   onClose={handleCloseNavMenu}
                   sx={{
                     display: { xs: "block", md: "none" },
+                    // backgroundColor:"  background:'linear-gradient(to right, #7fb4f9, #ee5f5f)"
                   }}
                 >
                   {/* {pages.map((page) => (
@@ -317,7 +319,7 @@ export default function Navbar(props) {
                           sx={{
                             mt: 1,
                             marginRight: "0.5rem",
-                            color: "#9b9bae",
+                            color: "#fff",
                           }}
                         >
                           <FacebookRoundedIcon />
@@ -328,7 +330,7 @@ export default function Navbar(props) {
                           sx={{
                             mt: 1,
                             marginRight: "0.5rem",
-                            color: "#9b9bae",
+                            color: "#fff",
                           }}
                         >
                           <InstagramIcon />
@@ -339,7 +341,7 @@ export default function Navbar(props) {
                           sx={{
                             mt: 1,
                             marginRight: "0.5rem",
-                            color: "#9b9bae",
+                            color: "#fff",
                           }}
                         >
                           <TwitterIcon />
