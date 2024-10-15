@@ -132,12 +132,13 @@ const ComplaintsView = () => {
     {
       name: "Message",
       cell: (row) => (
-        <div style={{ textAlign: "left", fontSize: "12px" }}>
+        <div style={{ textAlign: "justify", fontSize: "12px" }}>
           {capitalize1(row.msg)}
         </div>
       ),
 
       wrap: true,
+      width: "200px",
     },
     {
       name: "Handler",
