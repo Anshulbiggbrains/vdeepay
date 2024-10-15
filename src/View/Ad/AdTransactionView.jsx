@@ -294,10 +294,8 @@ const AdTransactionView = () => {
     {
       name: "Date/Time",
       selector: (row) => (
-        <div style={{ textAlign: "left" }}>
-          <div style={{ marginBottom: "5px" }}>
-            {datemonthYear(row.created_at)}
-          </div>
+        <div style={{ textAlign: "left", marginBottom: "2px" }}>
+          {datemonthYear(row.created_at)}
         </div>
       ),
       wrap: true,

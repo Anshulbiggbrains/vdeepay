@@ -43,6 +43,7 @@ const ApiEndpoints = {
   ADD_ACCOUNT: "admin/createNewAcc",
   ADD_ACCOUNT_TXN: "admin/addAccTxn",
   DELETE_TXN: "admin/deleteTxn",
+  GET_LOGIN_HISTORY:"user/getLoginHistory",
   GET_MASSEGE: "admin/getMessages",
   GET_OUT_MASSEGE: "admin/getOutMessages",
   GET_WEBHOOK: "admin/getWebHooks",
@@ -84,6 +85,7 @@ const ApiEndpoints = {
   MONEY_TRANSFER: "wallet/w1ToW1Transfer",
   DMT_RATE_CHANGE: "wallet/editRetByAd",
   W2TOW1_TRANSFER: "wallet/w2ToW1Transfer",
+  GET_PARENT: "user/getParent",
   GET_NUMBER_INFO: "prepaid/getNumberInfo",
   PREPAID_RECHARGE: "prepaid/prepaidRecharge",
   // dmr
@@ -197,6 +199,7 @@ const ApiEndpoints = {
   ACCOUNT_BALANCE: "admin/accBalance",
   DASHBOARD_ASM_REPORT: "reports/getTertiaryDataServiceWise",
   MY_EARNINGS: "reports/myEarnings",
+  GET_TRIPLE_BARCHART_DATA: "reports/getTertiaryDataServiceWise",
 
   //admin acc
   ADMIN_ACC_GET_USER: "reports/getUsersForAcc",

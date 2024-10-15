@@ -256,13 +256,15 @@ const UPITransferView = ({resetView}) => {
                 <span style={{ marginRight: '5px' }}>Home</span>
         <img src={back} alt="UPI logo" style={{ width: '18px', height: '20px' }} />
       </Button> 
+
+</Grid>
 {
   !mobile?(
            <Typography
                   sx={{
                     fontSize: "24px",
                     fontWeight: "bold",
-                    textAlign: "center",
+                    textAlign: "left",
                     flexGrow:1
                   }}
                 >
@@ -272,7 +274,6 @@ const UPITransferView = ({resetView}) => {
                   UPI Transfer
                 </Typography>
   ): null}
-</Grid>
                 <Box
                   component="form"
                   sx={{

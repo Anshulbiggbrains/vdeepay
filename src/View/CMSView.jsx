@@ -407,7 +407,7 @@ const CMSView = ({resetView}) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-            mr:2,
+         
                 mt:1
                   }}
                 >
@@ -416,15 +416,36 @@ const CMSView = ({resetView}) => {
                     id="verify-btn"
                     className="button-props"
                     onClick={handleBack}
+                    sx={{ml:7}}
                   >
-                    <span style={{ marginRight: "5px" }}>Home</span>
+                    <span>Home</span>
                     <img
                       src={back}
                       alt="back"
                       style={{ width: "18px", height: "20px" }}
                     />
                   </Button>
+              
                   </Grid>
+                  <Grid
+            item
+            md={12}
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "left",
+            }}
+          >
+              
+            
+            <Typography
+              sx={{ fontWeight: "600", textAlign: "center", fontSize: "20px" ,ml:9,mt:2}}
+            >
+              Cash Management System
+            </Typography>
+          
+          </Grid>
 
           {/* <Grid item md={12} xs={12} sx={{ mt: 3 }}>
             <div sx={{ display: "flex" }}>

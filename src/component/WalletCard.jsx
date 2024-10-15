@@ -186,7 +186,7 @@ const borderPulse = keyframes`
 )}
 
     {/* DD Card */}
-    {user.role!=="Dd"&&user.role!=="Ret"&& user.role!=="Ad"&& user.role!=="Admin"&&
+    {user.role!=="Dd"&&user.role!=="Ret"&& user.role!=="Ad"&& user.role!=="Admin" && user.role!=="Asm" && user.role!=="Zsm"&&
     <Grid item xs="auto">
       <Box
         sx={{
@@ -217,7 +217,7 @@ const borderPulse = keyframes`
     </Grid>
 }
     {/* Wallet 1 */}
-    {user.role!=="Admin"&&
+    {user.role!=="Admin"&& user.role!=="Asm"&& user.role!=="Zsm"&&
     <Grid item xs="auto">
   <Box
     sx={{
@@ -251,8 +251,8 @@ const borderPulse = keyframes`
 </Grid>}
 
   
-    {/* Wallet 2 */}
-    {user.role!=="Ad" && user.role!=="Md"&& user.role!=="Admin"&&
+    {/* Aeps  */}
+    {user.role!=="Ad" && user.role!=="Md"&& user.role!=="Admin"&& user.role!=="Asm"&&user.role!=="Zsm"&&
     <Grid item xs="auto">
       <Box
         sx={{
