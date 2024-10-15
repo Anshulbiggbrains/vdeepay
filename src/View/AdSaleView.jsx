@@ -39,6 +39,7 @@ import predefinedRanges from "../utils/predefinedRanges";
 import android from "../assets/android.png";
 import explorer from "../assets/explorer.png";
 import api from "../assets/Api.png";
+import StatusDisplay from "../StatusDisplay";
 let refresh;
 let handleCloseModal;
 const prefilledQuery = "type_txn=SALE";
@@ -58,6 +59,7 @@ const AdSaleView = () => {
   const [request, setRequest] = useState(false);
   const [noOfResponses, setNoOfResponses] = useState(0);
   const [filterValues, setFilterValues] = useState({ date: {}, dateVal: null });
+  const[sumData,setSumData]=useState(false)
   const [isBig, setIsBig] = React.useState(
     window.innerWidth < 900 ? false : true
   );
@@ -319,6 +321,10 @@ const AdSaleView = () => {
       <Grid sx={{ pr: { xs: 1.3, lg: 0 } }}>
         <ApiPaginateSearch
           showSearch
+          totalCard={
+            <>
+            <StatusDisplay sumData={sumData} setSumData={setSumData}/>
+          </>}
           actionButtons={
             <Grid
               item
@@ -397,6 +403,7 @@ const AdSaleView = () => {
           searchOptions={searchOptions}
           columns={columns}
           apiData={apiData}
+          setSumData={setSumData}
           query={query}
           setQuery={setQuery}
           tableStyle={CustomStyles}
