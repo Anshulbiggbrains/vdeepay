@@ -572,7 +572,7 @@ const LoginPage = () => {
                     // disabled={!(captchaChecked && agreedToTerms) && (isMobv && username !== "")}
                     // disabled={handleLoginDisable()}
                   >
-                    {/* {isOtpField ? "Verify OTP" : "Login"} */}Sign In
+                    {/* {isOtpField ? "Verify OTP" : "Login"} */}Sign Up
                   </Button>
                 </Grid>
                 <Grid
