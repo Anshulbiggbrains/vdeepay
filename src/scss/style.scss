@@ -259,7 +259,9 @@ body {
 //landing page css
 .sectionBreake {
   margin-top: 10ch;
+  // background-color: blue;
 }
+
 .drawer-bg {
   background-image: url(../assets/landing-page-assets/landingBg1copy.png);
   background-size: cover;
@@ -272,6 +274,7 @@ body {
   background: linear-gradient(to right, #7fb4f9, #ee5f5f);
   // background-image: url(../assets/landing-page-assets/landingBg.png);
   height: 95vh;
+
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -341,8 +344,8 @@ body {
 
 .landingPageSubHeading {
   align-items: center;
-  color: $primary-light;
-  // color: #1d1d1d;
+  // color: $primary-light;
+  color: #fff;
   flex: none;
   flex-grow: 0;
   font-family: Poppins;
@@ -369,9 +372,10 @@ body {
 }
 //who we are
 .whoWeAre_bg {
-  background-image: url(../assets/landing-page-assets/whoWeBg.png);
+  // background-image: url(../assets/landing-page-assets/whoWeBg.png);
   // height: 70vh;
   width: 100%;
+  background: linear-gradient(to right, #4b70a0, #b54a4a);
   background-position: left;
   background-repeat: no-repeat;
   background-size: 500;
@@ -387,6 +391,7 @@ body {
 .builSecurity_bg {
   background-image: url(../assets/svg/wave.svg);
   // height: 70vh;
+  background: linear-gradient(to right, #4b70a0, #e68d60);
   width: 100%;
   background-position: left;
   background-repeat: no-repeat;
@@ -650,11 +655,11 @@ body {
 //footer
 
 .footer {
-  margin-top: 100px;
+  // margin-top: 100px;
   padding: 2rem;
   width: "100%";
   height: auto;
-  background-color: $secondary-color;
+  background: linear-gradient(to left, rgb(158, 192, 255), #ff8eae);
 }
 .footer-head-text {
   color: $off-white;
