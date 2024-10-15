@@ -131,17 +131,17 @@ export const getStatusColor = (status) => {
 
 export const getFirmAddress = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `Mobifast Solutions Plot No. 8 Pocket, 6, Sector 22, Rohini, Delhi, 110086`;
+    return `Flat no 54a ground floor type 2 block 5 sector 3 bawana dsiidc near bank of India delhi 110039`;
   }
 };
 export const getFirmContact = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `01149954822`;
+    return `0000000000`;
   }
 };
 export const getFirmEmail = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `VdeePay@gmail.com`;
+    return `help@VdeePay.com`;
   }
 };
 

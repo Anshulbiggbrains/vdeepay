@@ -12,7 +12,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Box } from "@mui/system";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import EmailIcon from "@mui/icons-material/Email";
-import { contact_us, moSupport } from "../iconsImports";
+import { contact_Us, contact_us, moSupport } from "../iconsImports";
 import { PATTERNS } from "../utils/ValidationUtil";
 import {
   primaryColor,
@@ -62,13 +62,13 @@ const LandingContactUsPage = () => {
       <div className={envValue !== "MoneyOddr" && "builSecurity_bg "}>
         {envValue !== "MoneyOddr" && (
           <Grid xs={12} className="servicePageBg">
-            <Box
+            {/* <Box
               component="div"
               className="pageHead"
               sx={{ textAlign: "center" ,mt:7}}
             >
 Contact Us!
-            </Box>
+            </Box> */}
             {/* <div className="landingPageSubHeading">
               We can ensure realiability, low cost fores and most important,
               with safty and comfort in mind
@@ -223,6 +223,30 @@ Contact Us!
                   </Card>
                 </Grid>
               </Grid>
+              
+// {/* <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
+//   {[{ title: 'OUR MAIN OFFICE', content: getFirmAddress(),  },
+//     { title: 'PHONE NUMBER', content: getFirmContact(),  },
+//     { title: 'EMAIL', content: getFirmEmail(),}
+//   ].map((item, index) => (
+//     <Grid
+//       key={index}
+//       lg={4}
+//       md={4}
+//       sm={12}
+//       xs={12}
+//       sx={{ px: 5, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
+//     >
+//       <Card className="hexagon-card">
+//         {/* <div className="icon">{item.icon}</div> */}
+//         <div className="card-title">{item.title}</div>
+//         <Box className="card-content">
+//           {item.content}
+//         </Box>
+//       </Card>
+//     </Grid>
+//   ))}
+// </Grid> */}
 //               <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
 //   <Grid
 //     lg={4}
@@ -392,7 +416,7 @@ Contact Us!
               className={`${envValue === "MoneyOddr" ? "" : "sectionBreake"}`}
             >
               <Grid
-                lg={envValue === "MoneyOddr" ? 12 : 7}
+                lg={envValue === "MoneyOddr" ? 12 : 6}
                 md={12}
                 sm={12}
                 xs={12}
@@ -663,9 +687,9 @@ Contact Us!
                   md={12}
                   sm={12}
                   xs={12}
-                  sx={{ pt: 15, display: { md: "block", xs: "none" } }}
+                  sx={{ pt: 15, display: { md: "block", xs: "none" }, ml: 6 }}
                 >
-                  <img src={contact_us} alt="Contact us" width="100%" />
+                  <img src={contact_Us} alt="Contact us" width="100%" />
                 </Grid>
               )}
             </Grid>

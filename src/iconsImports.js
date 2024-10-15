@@ -89,6 +89,7 @@ import money_t from "./assets/moneyT.png";
 import join_us from "./assets/joinus.webp";
 import join_us_img from "./assets/joinus2.webp";
 import contact_img from "./assets/contactus.webp";
+import contactimg from "./assets/contactus.jpg";
 import certificateT from "./assets/certificatetop.png";
 import certificateB from "./assets/certificatebottom.png";
 import playstoreIcon from "../src/assets/playstore.png";
@@ -308,6 +309,7 @@ export const joinus = join_us;
 
 export const joinus2 = join_us_img;
 export const contact_us = contact_img;
+export const contact_Us = contactimg;
 export const who_we_are = we_are;
 export const teamWork = team;
 
