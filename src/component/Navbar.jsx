@@ -56,14 +56,14 @@ ElevationScroll.propTypes = {
 const pagesLg = [
   { navItems: "ABOUT US", to: "/about-us", id: "about-us", sName: "aboutSec" },
   { navItems: "OUR SERVICES", to: "/our-services", id: "our-services", sName: "servicesSec" },
-  { navItems: "OUR PARTNERS", to: "/our-partners", id: "our-partners", sName: "partnerSec" },
+  // { navItems: "OUR PARTNERS", to: "/our-partners", id: "our-partners", sName: "partnerSec" },
   { navItems: "CONTACT US", to: "/contact-us", id: "contact-us", sName: "contactSec" },
 ];
 
 const pagesSm = [
   { navItems: "ABOUT US", to: "/about-us", sName: "aboutSec" },
   { navItems: "OUR SERVICES", to: "/our-services", sName: "servicesSec" },
-  { navItems: "OUR PARTNERS", to: "/our-partners", sName: "partnerSec" },
+  // { navItems: "OUR PARTNERS", to: "/our-partners", sName: "partnerSec" },
   { navItems: "CONTACT US", to: "/contact-us", sName: "contactSec" },
   { navItems: "LOGIN/SIGN UP", to: "/login", sName: "" },
 ];
@@ -100,7 +100,7 @@ export default function Navbar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar position="static" sx={{ width: '100%' }}>
+        <AppBar  sx={{ width: '100%' }}>
           <Toolbar sx={{ justifyContent: { lg: "center", md: "none", sm: "space-between" }, background: "linear-gradient(to right, #7fb4f9, #ee5f5f)" }}>
             <Typography
               variant="h6"
