@@ -100,7 +100,7 @@ export default function Navbar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar position="static" sx={{ width: '100%' }}>
+        <AppBar sx={{ width: '100%' }}>
           <Toolbar sx={{ justifyContent: { lg: "center", md: "none", sm: "space-between" }, background: "linear-gradient(to right, #7fb4f9, #ee5f5f)" }}>
             <Typography
               variant="h6"
