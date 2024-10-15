@@ -5,7 +5,9 @@ import {
   IconButton,
   Snackbar,
   Tooltip,
+  Typography,
 } from "@mui/material";
+import { android2, windows2, macintosh2 } from "../iconsImports";
 import React, { useContext, useEffect } from "react";
 import ApiEndpoints from "../network/ApiEndPoints";
 import CachedIcon from "@mui/icons-material/Cached";
@@ -20,6 +22,10 @@ import moment from "moment";
 import { json2Csv, json2Excel } from "../utils/exportToExcel";
 import { apiErrorToast } from "../utils/ToastUtil";
 import ExcelUploadModal from "../modals/ExcelUploadModal";
+import { ddmmyy, dateToTime } from "../utils/DateUtils";
+import windowsImage from "../assets/windows1.png";
+import androidImage from "../assets/android1.png";
+import macintoshImage from "../assets/macintosh.png";
 
 // icons
 import InstallMobileIcon from "@mui/icons-material/InstallMobile";
@@ -61,58 +67,76 @@ const LoginHistory = () => {
 
   const navigate = useNavigate();
 
-  const [isBig, setIsBig] = React.useState(
-    window.innerWidth < 900 ? false : true
-  );
-
- 
+  const [isBig, setIsBig] = React
+    .useState
+    // window.innerWidth < 900 ? false : true
+    ();
 
   const columns = [
     {
-      name: "id",
-      selector: (row) => <>{row.id}</>,
-    },
-
-    {
-      name: "userId",
-      cell: (row) => (
-      <>{row.user_id}</>
-      ),
-      center: false,
-
+      name: "ID",
+      selector: (row) => <div className="blue-highlight-txt">{row.id}</div>,
       width: "70px",
     },
+
     {
-      name: "Login ip",
+      name: "Establishment",
+      selector: (row) => <row className="establishment"></row>,
+    },
+    {
+      name: "Created At",
       selector: (row) => (
-   <> {row.ip}</>
+        <div>
+          {ddmmyy(row.created_at)} {dateToTime(row.created_at)}
+        </div>
       ),
-      center: false,
+      center: "true",
     },
     {
-      name: "device",
-      selector: (row) => (
-       <> {row.device}</>
-      ),
-      center: false,
+      name: "Login Ip",
+      selector: (row) => row.ip,
+      center: "true",
     },
     {
-      name: "created_at",
-      selector: (row) => <>{row.created_at}</>,
+      name: "Device",
+      selector: (row) => {
+        let imageUrl;
+
+        if (row.device.toLowerCase() === "windows") {
+          imageUrl = windowsImage;
+        } else if (row.device.toLowerCase() === "android") {
+          imageUrl = androidImage;
+        } else if (row.device.toLowerCase() === "macintosh") {
+          imageUrl = macintoshImage;
+        } else {
+          imageUrl = windowsImage;
+        }
+
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: "13px",
+              textAlign: "justify",
+            }}
+          >
+            <Box
+              component="img"
+              src={imageUrl}
+              alt={row.device}
+              sx={{ width: "22px", height: "22px" }}
+            />
+            <Typography>{row.device}</Typography>
+          </Box>
+        );
+      },
     },
-    {
-      name: "updated_at",
-      selector: (row) => (
-       <>{row.updated_at}</>
-      ),
-    },
- 
   ];
   const searchOptions = [{ field: "Number", parameter: "number" }];
   return (
     <Box>
-      <Grid container sx={{ pr: { xs: 1.3, lg: 0 } }}>
-        {/* small screen button */}
+      <Grid container>
         <Grid
           item
           md={12}
@@ -127,7 +151,7 @@ const LoginHistory = () => {
           }}
         >
           {/* back button */}
-      
+
           {/* filter modal */}
           <FilterModal
             ifdateFilter
@@ -143,7 +167,6 @@ const LoginHistory = () => {
         <ApiPaginateSearch
           showSearch={true}
           isFilterAllowed
-      
           apiEnd={ApiEndpoints.GET_LOGIN_HISTORY}
           // searchOptions={searchOptions}
           // setQuery={setQuery}
@@ -155,16 +178,13 @@ const LoginHistory = () => {
           // returnRefetch={(ref) => {
           //   refresh = ref;
           // }}
-        //   responses={(val) => {
-        //     setNoOfResponses(val);
-        //   }}
-        //   prefilledQuery={prefilledQuery}
-        //   backButton={
-        // <></>
-        //   }
-
-          
-       
+          //   responses={(val) => {
+          //     setNoOfResponses(val);
+          //   }}
+          //   prefilledQuery={prefilledQuery}
+          //   backButton={
+          // <></>
+          //   }
         />
         {/* <ApiPaginate
           apiEnd={ApiEndpoints.GET_TRANSACTIONS}

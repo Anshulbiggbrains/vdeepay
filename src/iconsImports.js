@@ -152,6 +152,7 @@ import slide_one from "../src/assets/slide1.webp";
 import slide_two from "../src/assets/slide2.webp";
 import male_avatar from "../src/assets/maleAvatar.jpeg";
 import female_avatar from "../src/assets/femaleAvatar.jpeg";
+
 // new nav
 import ledgre from "../src/assets/sidebar_icons/accountledger.svg";
 import purchase from "../src/assets/sidebar_icons/mypurchase.svg";
@@ -215,6 +216,9 @@ import landline_1 from "./assets/dashboard_icons/landline.png";
 import broadband_1 from "./assets/dashboard_icons/broadband.png";
 import impsLogo from "./assets/IMPSLogo.png";
 import neftLogo from "./assets/NeftLogo.png";
+// import android_1 from "./assets/android1.png";
+// import macintosh_1 from "./assets/macintosh.png";
+// import windows_1 from "./assets/windows1.png";
 
 export const Logo = biggpayLogo;
 export const smLogo = biggpayLogo_sm;
@@ -302,7 +306,7 @@ export const noDataFoundGif = no_data_gif;
 // export const noDataIllustrator = noDataIllustrator1;
 export const noDataIllustrator = noDataIllustrator2;
 export const Bill = fetchbill;
-export const invoice1 =invoice;
+export const invoice1 = invoice;
 export const waveBg = wave_bg;
 export const joinus = join_us;
 
@@ -439,3 +443,6 @@ export const gas1 = gas_1;
 export const water1 = water_1;
 export const recharge1 = recharge_1;
 export const bbps1 = bbps_1;
+// export const android2 = android_1;
+// export const macintosh2 = macintosh_1;
+// export const windows2 = windows_1;
