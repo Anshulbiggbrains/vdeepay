@@ -15,6 +15,7 @@ const AdminWalletBalanceComponent = ({
 }) => {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
+  const setApiBal = authCtx.setApiBal;
   const [prequest, setPRequest] = useState(false);
   const [trequest, setTRequest] = useState(false);
 
@@ -30,7 +31,7 @@ const AdminWalletBalanceComponent = ({
     { name: "Bank Balance", balance: "0", color: "#F08D17" },
     { name: "API Balances", balance: "0", color: "#FFB6C6" },
   ]);
-
+  console.log("This is your setApiBal", setApiBal);
   const [walletDataAsm, setWalletDataAsm] = useState([
     { name: "Primary", balance: "0", color: "#00BF78" },
     { name: "Tertiary", balance: "0", color: "#9f86c0" },
@@ -50,9 +51,13 @@ const AdminWalletBalanceComponent = ({
         newData.forEach((item) => {
           if (item.name === "Bank Balance") {
             item.balance = data;
+           
           }
+          // if(item.name==="Api Balance"){
+          // setApiBal(item.balance);}
         });
         setWalletData(newData);
+        // setApiBal(newData);
       },
       (err) => {
         apiErrorToast(err);
@@ -181,6 +186,10 @@ const AdminWalletBalanceComponent = ({
     getPrimaryBalance();
     getTertiaryBalance();
   }, [graphDuration]);
+
+  // useEffect(() => {
+  //   setApiBal({"getApiBal": getAPIBalance, "bal": walletData[3].balance})
+  // }, [getAPIBalance])
 
   useEffect(() => {
     if (user && (user.role === "Asm" || user.role === "Zsm")) {

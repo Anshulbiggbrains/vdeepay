@@ -65,7 +65,7 @@ const GetAdModalTxn = ({ row }) => {
           width: "10px",
           height: "15px",
           fontSize: "8px",
-          backgroundColor: "#1675e017",
+          backgroundColor: "#FFE3E3",
           color: primaryColor(),
           "&:hover": {
             color: "#fff",

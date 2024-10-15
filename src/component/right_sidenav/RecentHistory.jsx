@@ -26,7 +26,7 @@ const RecentHistory = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          fontWeight: "700",
+          fontWeight: "600",
           fontSize: "20px",
           position: "relative",
           color: "#008ecc",

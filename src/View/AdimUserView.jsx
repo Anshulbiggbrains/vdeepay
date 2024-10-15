@@ -899,6 +899,7 @@ const AdimUserView = () => {
               textOverflow: "clip",
               textAlign: "left",
               fontSize: "10px",
+              mb: "0.2",
               color: primaryColor(),
             }}
           >
@@ -1316,11 +1317,12 @@ function AepsIdButton({ id, onClick }) {
     <Typography
       component="button"
       sx={{
-        mt: 0.8,
+        mt: 0.3,
         mx: 0.3,
         fontSize: "10px",
         fontWeight: "bold",
         color: primaryColor(),
+      
       }}
       onClick={onClick}
     >

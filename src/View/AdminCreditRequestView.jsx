@@ -222,7 +222,7 @@ const CreditRequestView = () => {
                   });
                 }}
               >
-                <Icon icon="ion:arrow-undo-sharp" width={22} height={22} />
+                <Icon icon="ion:arrow-undo-sharp" width={20} height={20} />
               </IconButton>
             </Tooltip>
             <Snackbar

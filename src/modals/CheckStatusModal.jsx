@@ -66,7 +66,7 @@ const CheckStatusModal = ({ row }) => {
           width: "5px",
           height: "15px",
           fontSize: "8px",
-          backgroundColor: "#1675e017",
+          backgroundColor: "#FFE3E3",
           color: primaryColor(),
           // backgroundColor: "#9586EC",
           "&:hover": {

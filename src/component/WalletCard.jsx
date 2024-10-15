@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -7,7 +7,7 @@ import {
  
 } from "@mui/material";
 import AuthContext from "../store/AuthContext";
-import { postFormData } from "../network/ApiController";
+import { get, postFormData } from "../network/ApiController";
 import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 
@@ -24,12 +24,15 @@ import RefreshComponent from "./RefreshComponent";
 import { useLocation } from "react-router-dom";
 
 import { keyframes } from '@mui/system';
+import { Button } from "rsuite";
 
 
 
 const WalletCard = () => {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
+  const {apiBal} = authCtx;
+
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
   const [showQr, setShowQr] = useState(false);
@@ -41,9 +44,10 @@ const WalletCard = () => {
   const [request, setRequest] = useState(false);
   const { getRecentData, refreshUser, userRequest } = useCommonContext();
   const [err, setErr] = useState();
+  const[response,setResponse]=useState(null)
   const location = useLocation();
 
-  console.log("user is",user);
+  console.log("ApiBalance is",apiBal);
   const selfqrValue =
     instId && instId
       ? `upi://pay?pa=ipay.133876.` +
@@ -144,6 +148,27 @@ const borderPulse = keyframes`
   100% { border-color: red; }
 `;
 
+const getParent = useCallback(() => {
+  get(
+    ApiEndpoints.GET_PARENT,
+    "",
+    () => {},
+    (res) => {
+      setResponse(res?.data?.data)
+      console.log("res", res?.data?.data?.asm);
+  
+    },
+    (err) => {
+
+      apiErrorToast(err)
+    }
+  );
+}, []);
+useEffect(() => {
+  if(user.role==="Dd"|| user.role==="Ad"||user.role==="Md"){
+  getParent();}
+  return () => {};
+}, [getParent, user]);
   return(
     <Grid 
     container 
@@ -153,6 +178,7 @@ const borderPulse = keyframes`
     justifyContent="flex-start"
     
   >
+
     {/* ASM Card */}
     { (user.role === "Dd" || user.role === "Ret" ||user.role==="Ad"||user.role==="Md") && (
   <Grid item xs="auto">
@@ -178,7 +204,7 @@ const borderPulse = keyframes`
           variant="body2"
           sx={{ color: '#212b5a', fontSize: '10px' }}
         >
-          Mobile No-
+          Mobile No-{response?.asm}
         </Typography>
       </Box>
     </Box>
@@ -298,7 +324,7 @@ const borderPulse = keyframes`
           Comm Wallet
         </Typography>
         <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
-          ₹ {numberSetter(user.w2 / 100)}
+          ₹ {numberSetter(user.w3 / 100)}
         </Typography>
       </Box>
       <RefreshComponent
@@ -325,15 +351,18 @@ const borderPulse = keyframes`
       <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
       <Box>
         <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize: "10px" }}>
-         Api Balance
+        Api Balance
         </Typography>
         <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
-          ₹ {numberSetter(user.w2 / 100)}
+          ₹ {numberSetter(apiBal/ 100)}
         </Typography>
       </Box>
       <RefreshComponent
         refresh={userRequest}
-        onClick={() => refreshUser()}
+        onClick={() => {
+          refreshUser();
+          apiBal.getApiBal();
+        }}
         sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }}
       />
     </Box>

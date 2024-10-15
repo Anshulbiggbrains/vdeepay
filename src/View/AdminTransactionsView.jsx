@@ -102,6 +102,7 @@ const AdminTransactionsView = () => {
   const [apiData, setApiData] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [query, setQuery] = useState();
+  const[sumData,setSumData]=useState(false)
   const [asmList, setAsmList] = useState([]);
   const authCtx = useContext(AuthContext);
   const [state, setState] = useState(false);
@@ -353,7 +354,7 @@ const AdminTransactionsView = () => {
   const columns = [
     {
       name: (
-        <Tooltip title=" Created at/Updated at">
+        <Tooltip title=" Created at /Updated at">
           <Typography
             variant=""
             sx={{
@@ -894,7 +895,7 @@ const AdminTransactionsView = () => {
             }
             totalCard={
               <>
-              <StatusDisplay/>
+              <StatusDisplay sumData={sumData} setSumData={setSumData}/>
             </>}
             backButton={
               role !== "admin" && role !== "api" ? (
@@ -923,6 +924,8 @@ const AdminTransactionsView = () => {
             setQuery={setQuery}
             columns={columns}
             apiData={apiData}
+            setSumData={setSumData}
+            
             setApiData={setApiData}
             tableStyle={CustomStyles}
             queryParam={query ? query : ""}
