@@ -14,6 +14,7 @@ const ApiPaginateSearch = ({
   returnRefetch,
   setQuery,
   query,
+  setSumData=false,
   searchOptions = [],
   actionButtons,
   responses,
@@ -129,6 +130,7 @@ const ApiPaginateSearch = ({
             apiData={apiData}
             tableStyle={tableStyle}
             setApiData={setApiData}
+            setSumData={setSumData}
             queryParam={queryParam ? queryParam : ""}
             returnRefetch={returnRefetch}
             ExpandedComponent={null}

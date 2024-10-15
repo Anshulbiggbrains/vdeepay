@@ -50,6 +50,7 @@ const[image,setImage]=useState()
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
   console.log("user is ", user);
+   const[sumData,setSumData]=useState(false)
 
   const dataCategories = [
     {

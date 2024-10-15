@@ -31,6 +31,8 @@ import { Button } from "rsuite";
 const WalletCard = () => {
   const authCtx = useContext(AuthContext);
   const user = authCtx.user;
+  const {apiBal} = authCtx;
+
   const userLat = authCtx.location && authCtx.location.lat;
   const userLong = authCtx.location && authCtx.location.long;
   const [showQr, setShowQr] = useState(false);
@@ -42,10 +44,10 @@ const WalletCard = () => {
   const [request, setRequest] = useState(false);
   const { getRecentData, refreshUser, userRequest } = useCommonContext();
   const [err, setErr] = useState();
-  const[response,setResponse]=useState()
+  const[response,setResponse]=useState(null)
   const location = useLocation();
 
-  console.log("user is",user);
+  console.log("ApiBalance is",apiBal);
   const selfqrValue =
     instId && instId
       ? `upi://pay?pa=ipay.133876.` +
@@ -152,8 +154,8 @@ const getParent = useCallback(() => {
     "",
     () => {},
     (res) => {
-      setResponse(res?.data.data)
-      console.log("res", res?.data.data.asm);
+      setResponse(res?.data?.data)
+      console.log("res", res?.data?.data?.asm);
   
     },
     (err) => {
@@ -163,7 +165,8 @@ const getParent = useCallback(() => {
   );
 }, []);
 useEffect(() => {
-  getParent();
+  if(user.role==="Dd"|| user.role==="Ad"||user.role==="Md"){
+  getParent();}
   return () => {};
 }, [getParent, user]);
   return(
@@ -201,7 +204,7 @@ useEffect(() => {
           variant="body2"
           sx={{ color: '#212b5a', fontSize: '10px' }}
         >
-          Mobile No-{response.asm}
+          Mobile No-{response?.asm}
         </Typography>
       </Box>
     </Box>
@@ -321,7 +324,7 @@ useEffect(() => {
           Comm Wallet
         </Typography>
         <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
-          ₹ {numberSetter(user.w2 / 100)}
+          ₹ {numberSetter(user.w3 / 100)}
         </Typography>
       </Box>
       <RefreshComponent
@@ -348,15 +351,18 @@ useEffect(() => {
       <AccountBalanceWalletIcon sx={{ fontSize: 15, color: '#212b5a', mr: 1 }} />
       <Box>
         <Typography variant="subtitle1" sx={{ color: '#b71c1c', fontSize: "10px" }}>
-         Api Balance
+        Api Balance
         </Typography>
         <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
-          ₹ {numberSetter(user.w2 / 100)}
+          ₹ {numberSetter(apiBal/ 100)}
         </Typography>
       </Box>
       <RefreshComponent
         refresh={userRequest}
-        onClick={() => refreshUser()}
+        onClick={() => {
+          refreshUser();
+          apiBal.getApiBal();
+        }}
         sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }}
       />
     </Box>
