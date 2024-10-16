@@ -12,6 +12,7 @@ import FilterModal from "../modals/FilterModal";
 import AdminAccountLimit from "./AdminAccountLimit";
 import { useTheme } from "@mui/material/styles";
 import AdminBlockedAc from "./AdminBlockedAc";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 let refresh;
 function refreshFunc(setQueryParams) {
@@ -57,10 +58,10 @@ const AdminRiskView = () => {
   };
 
   const tabs = [
-    { label: "ACcount", content: <AdminAccountLimit />, },
+    { label: "ACcount",icon:<LabelImportantIcon/>, content: <AdminAccountLimit />, },
     
-    { label: "Settelments", content: <AdminSettelments />,  },
-    { label: "Blocked Account", content: <AdminBlockedAc />,  },
+    { label: "Settelments",icon:<SettingsInputAntennaIcon/>, content: <AdminSettelments />,  },
+    { label: "Blocked Account",icon:<SettingsInputAntennaIcon/>, content: <AdminBlockedAc />,  },
     // { label: "Notification", content: <AdminNotificationsView />,icon:<NotificationsIcon sx={{ color: "#ee6c4d" }}/>},
 
   ];
