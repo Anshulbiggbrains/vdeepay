@@ -23,6 +23,7 @@ const AdminDashboard = ({
   getTxnData,
   txnDataReq,
   txnData,
+  transactionData
 }) => {
   return (
     <Box
@@ -74,7 +75,7 @@ const AdminDashboard = ({
       // ml: { lg: "0", md: "0", xs: "0" },
       // mr: { lg: "1.5%", md: 0, xs: 0 },
     }}>
-          <TrafficSourcesChart />
+          <TrafficSourcesChart transactionData={transactionData}/>
         </Grid>
 ):(  <Grid
   item
