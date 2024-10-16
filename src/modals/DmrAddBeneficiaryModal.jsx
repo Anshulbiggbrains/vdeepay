@@ -149,6 +149,7 @@ const DmrAddBeneficiaryModal = ({
         (res) => {
           getRecentData();
           okSuccessToast(res.data.message);
+          if (getRemitterStatus) getRemitterStatus(rem_mobile);
           const data = {
             name: res.data.message,
             rem_mobile: rem_mobile,

@@ -122,10 +122,15 @@ const FilterCard = ({
   const [adApiLoader, setAdApiLoader] = useState(false);
   // console.log("adList", adList);
   const [partnerPinNo, setPartnerPinNo] = useState("");
+  const today = new Date();
   const [filterValues, setFilterValues] = useState({
-    date: { start: "", end: "" },
-    dateVal: "",
+    date: { start: yyyymmdd(today), end: yyyymmdd(today) },
+    dateVal: [today, today],
   });
+  // const [filterValues, setFilterValues] = useState({
+  //   date: { start: yyyymmdd(today), end: yyyymmdd(today) },
+  //   dateVal: [today, today],
+  // });
   const isMobile = useResponsive("down", "sm");
   const [request, setRequest] = useState(false);
   const [routeList, setRouteList] = useState([]);
@@ -139,6 +144,20 @@ const FilterCard = ({
       setQuery(`operator=${event.target.value}`);
     }
   };
+
+  useEffect(() => {
+    let filter = "";
+    if (filterValues.date.start || filterValues.date.end) {
+      filter =
+        filter +
+        (filter ? "&" : "") +
+        "start=" +
+        filterValues.date.start +
+        "&end=" +
+        filterValues.date.end;
+    }
+    setQuery(filter)
+  })
 
   const getRouteValApi = () => {
     if (routeList.length === 0) {
@@ -1247,6 +1266,7 @@ const FilterCard = ({
                 value={filterValues && filterValues.dateVal}
                 onChange={(value) => {
                   let dateVal = value;
+                  console.log("This is your value in date filter", value, [today, today]);
                   if (value) {
                     setFilterValues({
                       ...filterValues,

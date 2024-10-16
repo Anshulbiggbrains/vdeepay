@@ -225,6 +225,7 @@ const AdimUserView = () => {
       setPreFilledQuery("platform=WEB");
       console.log("inside tab 10 ");
     }
+    
   };
 
   console.log("prefilledQuery", prefilledQuery);

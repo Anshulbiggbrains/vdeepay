@@ -5,7 +5,8 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const TrafficSourcesChart = () => {
+const TrafficSourcesChart = ({transactionData}) => {
+  console.log("This is your Transaction Data in Traffic Source", transactionData);
   const data = {
     labels: ['Success', 'Pending', 'Failed', 'Total'],
     datasets: [
