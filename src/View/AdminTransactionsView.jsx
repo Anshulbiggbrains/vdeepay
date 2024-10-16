@@ -102,15 +102,15 @@ const AdminTransactionsView = () => {
   const [apiData, setApiData] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [query, setQuery] = useState();
-  const[sumData,setSumData]=useState(false)
+  const [sumData, setSumData] = useState(false);
   const [asmList, setAsmList] = useState([]);
   const authCtx = useContext(AuthContext);
   const [state, setState] = useState(false);
   const [rowData, setRowData] = useState(false);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
-  // const [scheduler, setScheduler] = useState(false);
-  // const [schedulerTime, setSchedulerTime] = useState(0);
+  const [scheduler, setScheduler] = useState(false);
+  const [schedulerTime, setSchedulerTime] = useState(0);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -895,8 +895,9 @@ const AdminTransactionsView = () => {
             }
             totalCard={
               <>
-              <StatusDisplay sumData={sumData} setSumData={setSumData}/>
-            </>}
+                <StatusDisplay sumData={sumData} setSumData={setSumData} />
+              </>
+            }
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
@@ -925,7 +926,6 @@ const AdminTransactionsView = () => {
             columns={columns}
             apiData={apiData}
             setSumData={setSumData}
-            
             setApiData={setApiData}
             tableStyle={CustomStyles}
             queryParam={query ? query : ""}
@@ -952,99 +952,123 @@ const AdminTransactionsView = () => {
             isFilterAllowed={isFilterAllowed}
             filterComponent={
               <FilterCard
-              topMargin={0}
-              bottomMargin={0}
-              showSearch={false}
-              ifrouteFilter
-              ifoperatorFilter
-              ifFromBankFilter
-              ifstatusFilter
-              iforderidFilter
-              ifTypeFilter
-              ifUsernameFilter
-              ifestFilter
-              ifnumberFilter
-              ifotherFilter
-              chooseInitialCategoryFilter={
-                chooseInitialCategoryFilter !== 'ALL' ? chooseInitialCategoryFilter : false
-              }
-              ifAdIdFilter
-              ifAsmFilter
-              asmList={asmList}
-              typeList={typeList.filter((item) => item.name !== 'ALL')}
-              nonAdminColOptions={nonAdminColOptions}
-              statusList={statusList}
-              operatorList={operatorList}
-              getOperatorVal={getOperatorVal}
-              setQuery={setQuery}
-              query={query}
-              clearHookCb={(cb) => {
-                refreshFilter = cb;
-              }}
-              getTypes={getTypes}
-              refresh={refresh}
-              isShowFilterCard={isShowFilterCard}
-              setIsShowFilterCard={setIsShowFilterCard}
-              actionButtons={
-                <>
-                  {/* Excel Upload Button */}
-                  <div>
-                    <ExcelUploadModal
-                      twobuttons="Download Csv"
-                      btn
-                      request={request}
-                      getExcel={getExcel}
-                      getCsv={getCsv}
-                      noOfResponses={noOfResponses}
-                      setQuery={setQuery}
-                      handleCloseCB={(closeModal) => {
-                        handleCloseModal = closeModal;
-                      }}
-                    />
-                  </div>
-        
-                  {/* Refresh Button */}
-                  <Tooltip title="refresh">
-                    <IconButton
-                      aria-label="refresh"
-                      sx={{
-                        color: '#0F52BA',
-                      }}
-                      onClick={() => {
-                        refreshFunc(setQuery);
-                      }}
-                    >
-                      <CachedIcon className="refresh-purple" />
-                    </IconButton>
-                  </Tooltip>
-        
-                 
-                  <Box sx={{ display: 'flex', ml:2}}>
-                    <FormGroup>
-                      <FormControlLabel
-                        sx={{
-                          mt: { md: 0, sm: 2, xs: 2 },
-                          mb: { md: 0, sm: 2, xs: 2 },
+                topMargin={0}
+                bottomMargin={0}
+                showSearch={false}
+                ifrouteFilter
+                ifoperatorFilter
+                ifFromBankFilter
+                ifstatusFilter
+                iforderidFilter
+                ifTypeFilter
+                ifUsernameFilter
+                ifestFilter
+                ifnumberFilter
+                ifotherFilter
+                chooseInitialCategoryFilter={
+                  chooseInitialCategoryFilter !== "ALL"
+                    ? chooseInitialCategoryFilter
+                    : false
+                }
+                ifAdIdFilter
+                ifAsmFilter
+                asmList={asmList}
+                typeList={typeList.filter((item) => item.name !== "ALL")}
+                nonAdminColOptions={nonAdminColOptions}
+                statusList={statusList}
+                operatorList={operatorList}
+                getOperatorVal={getOperatorVal}
+                setQuery={setQuery}
+                query={query}
+                clearHookCb={(cb) => {
+                  refreshFilter = cb;
+                }}
+                getTypes={getTypes}
+                refresh={refresh}
+                isShowFilterCard={isShowFilterCard}
+                setIsShowFilterCard={setIsShowFilterCard}
+                actionButtons={
+                  <>
+                    {/* Excel Upload Button */}
+                    <div>
+                      <ExcelUploadModal
+                        twobuttons="Download Csv"
+                        btn
+                        request={request}
+                        getExcel={getExcel}
+                        getCsv={getCsv}
+                        noOfResponses={noOfResponses}
+                        setQuery={setQuery}
+                        handleCloseCB={(closeModal) => {
+                          handleCloseModal = closeModal;
                         }}
-                        control={
-                          <FormControl size="small">
-                            <Select
-                              variant="standard"
-                              fontSize="10px"
-                              value={showOldTransaction}
-                              onChange={() => setShowOldTransaction(!showOldTransaction)}
-                            >
-                              <MenuItem value={true}>Old</MenuItem>
-                              <MenuItem value={false}>New</MenuItem>
-                            </Select>
-                          </FormControl>
-                        }
                       />
-                    </FormGroup>
-                  </Box>
-                </>
-              }
-            />
+                    </div>
+
+                    {/* Refresh Button */}
+                    <Tooltip title="refresh">
+                      <IconButton
+                        aria-label="refresh"
+                        sx={{
+                          color: "#0F52BA",
+                        }}
+                        onClick={() => {
+                          refreshFunc(setQuery);
+                        }}
+                      >
+                        <CachedIcon className="refresh-purple" />
+                      </IconButton>
+                    </Tooltip>
+                    <>
+                      <Tooltip title="Scheduler">
+                        <BlinkingIcon active={isActive} onClick={handleClick} />
+                      </Tooltip>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={() => handleMenuItemClick(5)}>
+                          5 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(10)}>
+                          10 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(15)}>
+                          15 sec
+                        </MenuItem>
+                        <MenuItem onClick={handleStop}>Stop</MenuItem>
+                      </Menu>
+                    </>
+
+                    <Box sx={{ display: "flex", ml: 2 }}>
+                      <FormGroup>
+                        <FormControlLabel
+                          sx={{
+                            mt: { md: 0, sm: 2, xs: 2 },
+                            mb: { md: 0, sm: 2, xs: 2 },
+                          }}
+                          control={
+                            <FormControl size="small">
+                              <Select
+                                variant="standard"
+                                fontSize="10px"
+                                value={showOldTransaction}
+                                onChange={() =>
+                                  setShowOldTransaction(!showOldTransaction)
+                                }
+                              >
+                                <MenuItem value={true}>Old</MenuItem>
+                                <MenuItem value={false}>New</MenuItem>
+                              </Select>
+                            </FormControl>
+                          }
+                        />
+                      </FormGroup>
+                    </Box>
+                  </>
+                }
+              />
             }
           />
         </Grid>

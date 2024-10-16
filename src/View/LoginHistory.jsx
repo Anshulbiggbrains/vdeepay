@@ -11,7 +11,7 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { CustomStyles } from "../component/CustomStyle";
 import { android2, macintosh2, windows2, linux2 } from "../iconsImports";
 import AuthContext from "../store/AuthContext";
-
+let refresh;
 const LoginHistory = () => {
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState("");
@@ -113,6 +113,7 @@ const LoginHistory = () => {
             apiData={apiData}
             setApiData={setApiData}
             tableStyle={CustomStyles}
+            refresh={refresh}
           />
         </Grid>
       </Grid>
