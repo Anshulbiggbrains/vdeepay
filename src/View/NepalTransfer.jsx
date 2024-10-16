@@ -492,7 +492,7 @@ const NepalTransfer = ({ resetView }) => {
                     <TableContainer component={Paper}>
                      <Table>
 
-                      <TableHead>
+                      <TableHead   >
                         <TableRow>
                         <TableCell align="center">Remitter Details</TableCell>
                            <TableCell align="center">Contact Details</TableCell>
@@ -772,35 +772,39 @@ const NepalTransfer = ({ resetView }) => {
       <TableHead
   sx={{
     border: "none",
-    color: "white",
-    backgroundColor: getTableHeadRowColor(), // Ensure this function returns a valid color
+    color: "#fff",
+    backgroundColor: getTableHeadRowColor(),
     fontFamily: "Poppins",
-    height: "40px", // Set a fixed height for the table header
+    paddingLeft: "8px",
+    minHeight: "24px", // Decreased minimum height
     borderBottom: "0.5px solid #DBDDDF",
-    paddingBottom: "4px",
-    paddingTop: "4px",
+    paddingBottom: "2px", // Reduced padding for bottom
+    paddingTop: "2px", // Reduced padding for top
   }}
 >
-  <TableRow >
-    <TableCell sx={{ padding: "0 8px",color: "white" }}>
+  <TableRow   sx={{
+      paddingBottom: "0px", // Further reduce padding for row
+      paddingTop: "2px",
+    }} >
+    <TableCell align="center" sx={{ padding: "4px", }}>
       Initial
     </TableCell>
-    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+    <TableCell  align="center"  sx={{ padding: "4px",  }}>
       Name
     </TableCell>
-    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+    <TableCell   align="center" sx={{ padding: "4px" , }}>
       Relationship
     </TableCell>
-    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+    <TableCell align="center" sx={{ padding: "4px" , }}>
       A/C
     </TableCell>
-    <TableCell sx={{ padding: "0 8px" ,color: "white" }}>
+    <TableCell align="center" sx={{ padding: "4px" , }}>
       Bank
     </TableCell>
-    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+    <TableCell align="center" sx={{ padding: "4px",  }}>
       Mobile
     </TableCell>
-    <TableCell sx={{ padding: "0 8px",color: "white"  }}>
+    <TableCell align="center" sx={{ padding: "4px",  }}>
       Actions
     </TableCell>
   </TableRow>
