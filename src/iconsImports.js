@@ -220,6 +220,7 @@ import neftLogo from "./assets/NeftLogo.png";
 import android_1 from "./assets/android1.png";
 import macintosh_1 from "./assets/macintosh.png";
 import windows_1 from "./assets/windows1.png";
+import linux_1 from "./assets/linux.png";
 
 export const Logo = biggpayLogo;
 export const smLogo = biggpayLogo_sm;
@@ -448,3 +449,4 @@ export const bbps1 = bbps_1;
 export const android2 = android_1;
 export const macintosh2 = macintosh_1;
 export const windows2 = windows_1;
+export const linux2 = linux_1;
