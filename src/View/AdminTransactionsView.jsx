@@ -109,8 +109,8 @@ const AdminTransactionsView = () => {
   const [rowData, setRowData] = useState(false);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
-  // const [scheduler, setScheduler] = useState(false);
-  // const [schedulerTime, setSchedulerTime] = useState(0);
+  const [scheduler, setScheduler] = useState(false);
+  const [schedulerTime, setSchedulerTime] = useState(0);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -849,6 +849,11 @@ const AdminTransactionsView = () => {
                   pr: 1,
                 }}
               >
+
+
+                    <>
+                 
+                    </>
                 {/* <FormGroup>
                   <FormControlLabel
                     sx={{
@@ -959,6 +964,7 @@ const AdminTransactionsView = () => {
               ifoperatorFilter
               ifFromBankFilter
               ifstatusFilter
+              ifstatusFilter2
               iforderidFilter
               ifTypeFilter
               ifUsernameFilter
@@ -1041,6 +1047,25 @@ const AdminTransactionsView = () => {
                         }
                       />
                     </FormGroup>
+                    <Tooltip title="Scheduler">
+                        <BlinkingIcon active={isActive} onClick={handleClick} />
+                      </Tooltip>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={() => handleMenuItemClick(5)}>
+                          5 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(10)}>
+                          10 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(15)}>
+                          15 sec
+                        </MenuItem>
+                        <MenuItem onClick={handleStop}>Stop</MenuItem>
+                      </Menu>
                   </Box>
                 </>
               }

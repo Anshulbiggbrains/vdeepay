@@ -8,8 +8,8 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column", // Stack items vertically
-            alignItems: "center", // Center items horizontally
+            flexDirection: "column", 
+            alignItems: "center",
             justifyContent: "center",
             background:
               "linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%)",
@@ -25,8 +25,8 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
         >
           <Box
             sx={{
-              width: { xs: "60px", sm: "80px" },
-              height: { xs: "60px", sm: "80px" },
+              width: { xs: "100px", sm: "100px" },
+              height: { xs: "100px", sm: "100px" },
               mt: 1,
               borderRadius: "50%",
               display: "flex",
@@ -47,8 +47,8 @@ const CommonCardDashBoard = ({ name, img, onClick }) => {
               src={img}
               alt={name}
               style={{
-                width: "45px",
-                height: "45px",
+                width: "55px",
+                height: "55px",
                 borderRadius: "30%", // Ensures the image is circular
               }}
             />
