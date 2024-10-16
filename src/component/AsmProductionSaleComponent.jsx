@@ -8,7 +8,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import ApiPaginate from "./ApiPaginate";
 import ApiEndpoints from "../network/ApiEndPoints";
@@ -26,6 +26,8 @@ import AuthContext from "../store/AuthContext";
 import { createFileName, useScreenshot } from "use-react-screenshot";
 import { createRef } from "react";
 import AdminBarChart from "./AdminBarChart";
+import AdminTripleChart from "./AdminTripleBarChart";
+import { get } from "../network/ApiController";
 
 let refresh;
 function refreshFunc(setQueryParams, setPushFlag) {
@@ -39,6 +41,7 @@ const AsmProductionSaleComponent = () => {
   const { setPushFlag } = useCommonContext();
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState();
+  const [tripleBarData, setTripleBarData] = useState();
   const [showPrimaryData, setShowPrimaryData] = useState(true);
 
   // ##### DOWNLOAD SCREENSHOT VARIABLES ########
@@ -60,6 +63,33 @@ const AsmProductionSaleComponent = () => {
   const downloadScreenshot = () => {
     takeScreenshot(ref.current).then(download);
   };
+
+  const getData = () => {
+    get(
+      ApiEndpoints.GET_TRIPLE_BARCHART_DATA,
+      "",
+      () => {},
+      (res) => {
+        console.log("This is your res in AdminTripleChart", res)
+        setTripleBarData(res?.data?.data);
+        // const data = res.data.data;
+        // if (graphDuration === "TODAY") {
+        //   setGraphData(barChartData(data));
+        // } else if (graphDuration === "THIS" || graphDuration === "LAST") {
+        //   setGraphAllData(data && data);
+        //   setGraphData(totalChartData(data));
+        // }
+      },
+      (err) => {
+        // apiErrorToast(err);
+        console.log("This is your error in AdminTripleChart", err);
+      }
+    );
+  };
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   const columnsAsm = [
     {
@@ -364,7 +394,8 @@ const AsmProductionSaleComponent = () => {
         paginateServer={false}
         paginate={false}
       /> */}
-      <AdminBarChart graphData={[]} upper={false} />
+      {/* <AdminBarChart graphData={[]} upper={false} /> */}
+      <AdminTripleChart data={tripleBarData}/>
     </Grid>
   </Grid>
   

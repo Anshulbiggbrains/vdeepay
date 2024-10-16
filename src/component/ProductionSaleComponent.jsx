@@ -206,10 +206,10 @@ const ProductionSaleComponent = ({
     );
   };
 
-  useEffect(()=>{
-    console.log("Triple Bar Chart api called");
-    getData();
-  }, [])
+  // useEffect(()=>{
+  //   console.log("Triple Bar Chart api called");
+  //   getData();
+  // }, [])
 
   useEffect(() => {
     if (user.role !== "Zsm") {
