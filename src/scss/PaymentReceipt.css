@@ -16,7 +16,7 @@ h6 {
   width: 23cm;
   height: auto;
 
-  border-style: solid;
+  border: 3px solid #0d47a1;
   margin: 0 auto;
 }
 .parent-border-vertical {
@@ -32,7 +32,7 @@ h6 {
   background-color: #ffffff;
   width: 10cm;
   height: auto;
-  margin: 15px auto;
+  margin: auto;
   text-align: left;
 }
 .mt-recipt-wrapper {
@@ -241,4 +241,9 @@ table.invoice-table-address td {
 .just-padding {
   padding: 10px;
   padding-bottom: 5px;
+}
+@media print {
+  .hide-no-print {
+    display: none;
+  }
 }

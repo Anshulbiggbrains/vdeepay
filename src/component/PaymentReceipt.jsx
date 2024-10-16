@@ -581,39 +581,58 @@ const PaymentReceipt = () => {
           </FormControl>
         </div>
         <Grid className="parent-border">
-          <Box sx={{ px: 2, py: 1, border: "2px solid #1877F2", mt: 2 }}>
+          <Box sx={{ px: 2, py: 1, mt: 1.5 }}>
             <Grid container justifyContent="space-between" lg={12}>
               {/* Left Side - Logo */}
-              <Grid item lg={6} sx={{ textAlign: "left", mt: 1 }}>
+              <Grid item xs={12} lg={6} sm={6} sx={{ textAlign: "left" }}>
                 <LogoComponent width="40%" />
+
                 <Typography
                   variant="body2"
-                  sx={{ fontSize: "0.875rem", color: "#256BC5", mt: 1 }}
-                >
-                  Mobifast Solutions Private Limited
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ fontSize: "1.2rem", color: "#000000", mt: 2 }}
+                  sx={{
+                    fontSize: "1.4rem",
+                    fontWeight: "600",
+                    color: "#1E88E5",
+                    mt: 3,
+                    textDecoration: "underline",
+                    textDecorationThickness: "2px",
+                    textUnderlineOffset: "3px",
+                    textDecorationColor: "#0D47A1",
+                  }}
                 >
                   Payment Confirmation
                 </Typography>
               </Grid>
 
               {/* Right Side - Location, Email, and Phone */}
-              <Grid item lg={6}>
+              <Grid item xs={12} lg={6} sm={6}>
                 <Box
-                  display="flex"
+                  display="grid"
                   flexDirection="column"
-                  alignItems="flex-start"
-                  marginLeft="2rem"
+                  alignItems="start"
+                  sx={{ ml: 2 }}
                 >
                   {/* Align to the right */}
 
                   {/* Location Icon with Dummy Address */}
-                  <Box sx={{ display: "flex", mt: 1, color: "#256BC5" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      mt: 1,
+                      gap: 1.2,
+
+                      color: "#FF5722",
+                    }}
+                  >
                     <LocationOn color="#256BC5" fontSize="small" />
-                    <Typography variant="body2" sx={{ fontSize: "0.875rem" }}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                        fontSize: "14px",
+                      }}
+                    >
                       Flat No. 8, Pocket 6, Sector 22, Rohini, Delhi, 110086
                     </Typography>
                   </Box>
@@ -624,13 +643,17 @@ const PaymentReceipt = () => {
                       display: "flex",
                       alignItems: "center",
                       mt: 1,
-                      gap: 1,
+                      gap: 1.2,
+                      color: "#FF5722",
                     }}
                   >
-                    <Email color="primary" fontSize="small" />
+                    <Email color="#FF5722" fontSize="small" />
                     <Typography
-                      variant="body2"
-                      sx={{ fontSize: "0.875rem", color: "#256BC5" }}
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
                     >
                       Email: VdeePay@gmail.com
                     </Typography>
@@ -642,13 +665,17 @@ const PaymentReceipt = () => {
                       display: "flex",
                       alignItems: "center",
                       mt: 1,
-                      gap: 1,
+                      gap: 1.2,
+                      color: "#FF5722",
                     }}
                   >
-                    <Phone color="primary" fontSize="small" />
+                    <Phone color="#FF5722" fontSize="small" />
                     <Typography
-                      variant="body2"
-                      sx={{ fontSize: "0.875rem", color: "#256BC5" }}
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
                     >
                       Phone: 84474445497
                     </Typography>
@@ -658,103 +685,198 @@ const PaymentReceipt = () => {
             </Grid>
 
             {/* <Typography>Payment Confirmations</Typography> */}
-            <Grid
-              container
-              sx={{ justifyContent: "start", fontSize: "17px", mt: 5 }}
+            <Box
+              sx={{
+                marginLeft: { xs: "10px", sm: "20px", md: "45px" },
+              }}
             >
-              {/* Left column */}
-              <Grid item xs={12} sm={6} container>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Outlet Name:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.outletName}
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Beneficiary:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.beneficiary}
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Bank Name:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.bankName}
-                  </Typography>
-                </Grid>
-              </Grid>
-
-              {/* Right column */}
               <Grid
-                item
-                xs={12}
-                sm={6}
                 container
-                justifyContent="center"
-                textAlign="left"
+                sx={{
+                  justifyContent: "center",
+                  mt: 5,
+                  textAlign: "left",
+                }}
               >
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Mobile No:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.mobileNo}
-                  </Typography>
+                {/* Left column */}
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  lg={6}
+                  container
+                  justifyContent="center"
+                  textAlign="left"
+                >
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        textAlign: "left",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Outlet Name:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.outletName}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        textAlign: "left",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Beneficiary:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.beneficiary}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        textAlign: "left",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Bank Name:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.bankName}
+                    </Typography>
+                  </Grid>
                 </Grid>
 
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Account No:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.accountNo}
-                  </Typography>
-                </Grid>
+                {/* Right column */}
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  lg={6}
+                  container
+                  justifyContent="center"
+                  textAlign="left"
+                >
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Mobile No:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.mobileNo}
+                    </Typography>
+                  </Grid>
 
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#295A9B" }}>
-                    Date & Time:
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={6} sm={6}>
-                  <Typography variant="body" sx={{ color: "#256BC5" }}>
-                    {dummyData.dateTime}
-                  </Typography>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Account No:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.accountNo}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#295A9B",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Date & Time:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={6} sm={6}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "#256BC5",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      {dummyData.dateTime}
+                    </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-
+            </Box>
             <Box display="flex" justifyContent="center" textAlign="center">
               <Typography
                 variant="body"
-                color="#FF0800"
                 sx={{
-                  width: "auto", // Change from 40% to auto to avoid width affecting centering
-                  backgroundColor: "#FFEFD5",
-                  padding: "5px 22px ",
+                  width: "auto",
+                  backgroundColor: "#E3F2FD",
+                  color: "#0D47A1",
+                  padding: "10px 30px",
                   textAlign: "center",
-                  borderRadius: "20px",
-                  border: "1px solid #F7C992",
-                  font: "16px",
+                  borderRadius: "25px",
+                  border: "2px solid #90CAF9",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  fontSize: "1rem",
                   mt: 4,
+                  fontWeight: 600,
                 }}
               >
                 Transaction Summary
@@ -764,42 +886,108 @@ const PaymentReceipt = () => {
             <TableContainer
               sx={{
                 mt: 1.5,
-                textAlign: "left",
-                color: "#256BC5",
-                fontweight: 700,
+                color: "#1A237E",
+                fontWeight: 700,
+                border: "1px solid #BBDEFB",
+                borderRadius: "8px",
+                overflow: "hidden",
               }}
             >
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ border: "1px solid blue" }}>TID</TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        backgroundColor: "#E3F2FD",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      TID
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        backgroundColor: "#E3F2FD",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                      }}
+                    >
                       Type
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>UTR</TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        backgroundColor: "#E3F2FD",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      UTR
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        backgroundColor: "#E3F2FD",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                      }}
+                    >
                       Amount
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        backgroundColor: "#E3F2FD",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                      }}
+                    >
                       Status
                     </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       {dummyData.tid}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       IMPS
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       {dummyData.utr}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       {dummyData.amount}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid blue" }}>
+                    <TableCell
+                      sx={{
+                        border: "1px solid #64B5F6",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       {dummyData.status}
                     </TableCell>
                   </TableRow>
@@ -820,55 +1008,89 @@ const PaymentReceipt = () => {
                     justifyContent: "start",
                     display: "flex",
                     mt: 2,
-                    color: "#256BC5",
-                    fontWeight: 800,
+                    color: "#0D47A1",
+                    fontWeight: 700,
+                    fontSize: "1.25rem",
                   }}
                 >
                   <Typography variant="body1">
-                    Total Amount: Rs. {dummyData.amount}
+                    Total Amount: <strong>Rs. {dummyData.amount}</strong>
                   </Typography>
                 </Box>
                 <Box sx={{ justifyContent: "start", display: "flex", mt: 1 }}>
-                  <Typography variant="body1">
-                    Amount ( In Words ) : Five Thousand Only
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#0D47A1",
+                      fontSize: "1rem",
+                      fontWeight: 500,
+                    }}
+                  >
+                    Amount (In Words): <strong>Five Thousand Only</strong>
                   </Typography>
                 </Box>
               </Grid>
 
-              <Grid mt={3} sx={{ textAlign: "right", mr: 2, fontSize: "13px" }}>
-                <div className="btnPrint ">
-                  <MyButton
-                    text="Print"
-                    icon={<PrintIcon />}
+              <Grid
+                className="hide-on-print"
+                mt={3}
+                sx={{ textAlign: "right", mr: 1, fontSize: "13px" }}
+              >
+                <div>
+                  <Button
+                    className="hide-on-print"
+                    variant="contained"
+                    color="primary"
+                    startIcon={<PrintIcon />}
                     onClick={() => {
                       window.print();
                     }}
-                  />
+                    sx={{
+                      backgroundColor: "#1E88E5",
+                      color: "#fff",
+                      padding: "9px 18px",
+                      borderRadius: "8px",
+                      fontWeight: 600,
+                      "&:hover": {
+                        backgroundColor: "#1565C0",
+                      },
+                    }}
+                  >
+                    Print
+                  </Button>
                 </div>
               </Grid>
             </Grid>
-
-            <div
-              sx={{
-                textAlign: "right",
-                alignItems: "end",
-                color: "#256BC5",
-              }}
-            >
-              <Typography variant="caption">
-                This is a system generated receipt, hence no seal or signature
-                required.
-              </Typography>
-            </div>
             <Box
               sx={{
-                textAlign: "left",
-                alignItems: "end",
-                color: "#256BC5",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                color: "#0D47A1",
+                mt: 5,
               }}
             >
-              <Typography variant="caption">
+              <Typography
+                variant="caption"
+                sx={{
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  textAlign: "left",
+                }}
+              >
                 2024 All Rights Reserved
+              </Typography>
+
+              <Typography
+                variant="caption"
+                sx={{
+                  fontSize: "0.875rem",
+                  fontWeight: 500,
+                  textAlign: "right",
+                }}
+              >
+                This is a system generated receipt, hence no seal or signature
+                required.
               </Typography>
             </Box>
           </Box>
