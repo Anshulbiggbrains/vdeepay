@@ -124,7 +124,7 @@ const FilterCard = ({
   const [partnerPinNo, setPartnerPinNo] = useState("");
   const today = new Date();
   const [filterValues, setFilterValues] = useState({
-    date: { start: "", end: "" },
+    date: { start: today, end: today },
     dateVal: [today, today],
   });
   const isMobile = useResponsive("down", "sm");
