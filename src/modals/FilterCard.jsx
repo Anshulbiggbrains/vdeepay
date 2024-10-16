@@ -120,9 +120,10 @@ const FilterCard = ({
   const [adApiLoader, setAdApiLoader] = useState(false);
   // console.log("adList", adList);
   const [partnerPinNo, setPartnerPinNo] = useState("");
+  const today = new Date();
   const [filterValues, setFilterValues] = useState({
     date: { start: "", end: "" },
-    dateVal: "",
+    dateVal: [today, today],
   });
   const isMobile = useResponsive("down", "sm");
   const [request, setRequest] = useState(false);
@@ -1210,6 +1211,7 @@ const FilterCard = ({
                 value={filterValues && filterValues.dateVal}
                 onChange={(value) => {
                   let dateVal = value;
+                  console.log("This is your value in date filter", value, [today, today]);
                   if (value) {
                     setFilterValues({
                       ...filterValues,
