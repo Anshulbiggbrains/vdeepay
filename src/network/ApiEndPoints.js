@@ -72,6 +72,7 @@ const ApiEndpoints = {
   CREATE_VA: "admin/createVa",
   VIRTUAL_ACCS: "admin/virtualAccounts",
   VIRTUAL_TRANSACTIONS: "admin/vaTransactions",
+  GET_BLOCKED_AC: "admin/blockedAccounts",
   BANK_DETAILS: "admin/bankDepData",
   SEND_OTP:"user/sendOtp",
   GET_API_TOKEN:"user/getApiToken",
