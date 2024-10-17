@@ -291,6 +291,12 @@ export const Admin_nav = [
     icon2: AccountIconWhite,
     to: "/admin/risk",
   },
+    {
+    title: "Virtual Accounts",
+    icon: virtualaccount1,
+    icon2: AccountIconWhite,
+    to: "/admin/virtual-accounts",
+  },
   {
     title: "Login History",
     icon: loginHistory,
@@ -298,12 +304,7 @@ export const Admin_nav = [
     to: "/admin/loginHistory",
   },
 
-  // {
-  //   title: "Virtual Accounts",
-  //   icon: virtualaccount1,
-  //   icon2: AccountIconWhite,
-  //   to: "/admin/virtual-accounts",
-  // },
+
   // {
   //   title: "Employees",
   //   icon: employee1,
