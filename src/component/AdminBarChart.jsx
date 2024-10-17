@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -11,49 +10,25 @@ import {
   Legend,
 } from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const AdminBarChart = ({ graphData, upper }) => {
-  const [chartData, setChartData] = useState();
-  const [chartDates, setChartDates] = useState();
-
-  const myData = [
-    {service: 'aeps', val: 10, secondVal: 10},
-    {service: 'PG Collect', val: 50, secondVal: 30},
-    {service: 'money_transfer', val: 70, secondVal: 45},
-    {service: 'payments', val: 40, secondVal: 67},
-    {service: 'prepaid', val: 20, secondVal: 44},
-    {service: 'settlements', val: 20, secondVal: 56},
-    {service: 'utility', val: 50, secondVal: 70}
-  ]
-
-  console.log("This is your graph data", graphData);
+  const [chartData, setChartData] = useState([]);
+  const [chartDates, setChartDates] = useState([]);
+  console.log("graph data is",graphData)
 
   useEffect(() => {
-    // setChartData(graphData && graphData.map((item) => item.val));
-    // setChartDates(graphData && graphData.map((item) => item.service));
-    if(upper){
-    setChartData(myData && myData.map((item) => item.val));
-    setChartDates(myData && myData.map((item) => item.service));
-    }else{
-      setChartData(myData && myData.map((item) => item.secondVal));
-      setChartDates(myData && myData.map((item) => item.service));
+    if (graphData && graphData.length > 0) {
+      setChartData(graphData.map((item) => (item.val )));
+      setChartDates(graphData.map((item) => item.service));
     }
-  }, []);
-  // }, [graphData]);
+  }, [graphData, upper]);
 
   const data1 = {
-    labels: chartDates && chartDates,
-    datasets: upper ? [
+    labels: chartDates,
+    datasets: [
       {
-        data: chartData && chartData,
+        data: chartData,
         fill: true,
         backgroundColor: [
           "rgba(255, 99, 133, 0.385)",
@@ -74,31 +49,7 @@ const AdminBarChart = ({ graphData, upper }) => {
           "rgb(201, 203, 207)",
         ],
         borderWidth: 1,
-      }
-    ]
-    :
-    [
-      {
-        data: chartData && chartData,
-        fill: true,
-        backgroundColor: ["rgba(255, 99, 133, 0.385)"],
-        borderColor: ["rgb(255, 99, 132)"],
-        borderWidth: 1,
       },
-      {
-        data: chartData && chartData,
-        fill: true,
-        backgroundColor: ["rgba(255, 160, 64, 0.385)"],
-        borderColor: ["rgb(255, 159, 64)"],
-        borderWidth: 1,
-      },
-      {
-        data: chartData && chartData,
-        fill: true,
-        backgroundColor: ["rgba(75, 192, 192, 0.385)"],
-        borderColor: ["rgb(75, 192, 192)"],
-        borderWidth: 1,
-      }
     ],
   };
 
@@ -120,10 +71,7 @@ const AdminBarChart = ({ graphData, upper }) => {
         callbacks: {
           label: function (context) {
             let label = context.dataset.label || "";
-
-            if (label) {
-              label += ": ";
-            }
+            if (label) label += ": ";
             if (context.parsed.y !== null) {
               label += new Intl.NumberFormat("en-IN", {
                 style: "currency",
@@ -137,7 +85,7 @@ const AdminBarChart = ({ graphData, upper }) => {
     },
   };
 
-  return <Bar data={data1 && data1} options={options} />;
+  return <Bar data={data1} options={options} />;
 };
 
 export default AdminBarChart;
