@@ -291,12 +291,12 @@ export const Admin_nav = [
     icon2: AccountIconWhite,
     to: "/admin/risk",
   },
-    {
-    title: "Virtual Accounts",
-    icon: virtualaccount1,
-    icon2: AccountIconWhite,
-    to: "/admin/virtual-accounts",
-  },
+  //   {
+  //   title: "Virtual Accounts",
+  //   icon: virtualaccount1,
+  //   icon2: AccountIconWhite,
+  //   to: "/admin/virtual-accounts",
+  // },
   {
     title: "Login History",
     icon: loginHistory,

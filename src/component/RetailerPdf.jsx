@@ -150,7 +150,7 @@ const RetailerPdf = ({ user }) => {
               opacity: "0.7",
             }}
           >
-            Mobifast Solutions Pvt Ltd
+            LINKSTECH SERVICES PRIVATE LIMITED s Pvt Ltd
           </Text>
           <Text
             style={{

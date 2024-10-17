@@ -42,6 +42,7 @@ const AsmProductionSaleComponent = () => {
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState();
   const [tripleBarData, setTripleBarData] = useState();
+  const [asmTripleBarData, setAsmTripleBarData] = useState();
   const [showPrimaryData, setShowPrimaryData] = useState(true);
 
   // ##### DOWNLOAD SCREENSHOT VARIABLES ########
@@ -87,8 +88,25 @@ const AsmProductionSaleComponent = () => {
     );
   };
 
+  const getAsmData = () => {
+    get(
+      ApiEndpoints.GET_ASM_TRIPLE_BARCHART_DATA,
+      "",
+      () => {},
+      (res) => {
+        console.log("This is your res in AsmTripleBarChartData", res)
+        setAsmTripleBarData(res?.data?.data);
+      },
+      (err) => {
+        // apiErrorToast(err);
+        console.log("This is your error in AdminTripleChart", err);
+      }
+    );
+  };
+
   useEffect(() => {
     getData()
+    getAsmData()
   }, [])
 
   const columnsAsm = [
@@ -395,7 +413,11 @@ const AsmProductionSaleComponent = () => {
         paginate={false}
       /> */}
       {/* <AdminBarChart graphData={[]} upper={false} /> */}
+      {showPrimaryData ? 
       <AdminTripleChart data={tripleBarData}/>
+      : 
+      <AdminTripleChart data={asmTripleBarData}/>
+      }
     </Grid>
   </Grid>
   

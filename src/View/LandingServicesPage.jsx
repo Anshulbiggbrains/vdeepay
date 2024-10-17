@@ -27,7 +27,7 @@ const LandingServicesPage = () => {
       sx={{ paddingBottom: "none !important" }}
       id="our-services"
     >
-      <Grid xs={12} sm={6}className="servicePageBg1">
+      <Grid xs={12} sm={6} className="servicePageBg1">
         <Box
           component="div"
           className="pageHead"
@@ -312,7 +312,7 @@ const LandingServicesPage = () => {
             md={6}
             sx={{ display: { md: "block", sm: "none", xs: "none" } }}
           >
-            <img src={qrCode_img} alt="qrCode img " width="80%" ></img>
+            <img src={qrCode_img} alt="qrCode img " width="80%"></img>
           </Grid>
         </Grid>
         <Grid container maxWidth="lg" className="bottom2top">
