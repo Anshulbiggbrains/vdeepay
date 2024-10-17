@@ -88,7 +88,7 @@ const DmrAddBeneficiaryModal = ({
         ifsc: ifscVal.toUpperCase(),
         bank_id: bankId,
         bank_name: bankName,
-        verified: type === "dmt2" ? 0 : 0,
+        verified: type ? 0 : 0,
       };
     } else {
       if (mpin !== "" && viewMpin) {
@@ -119,13 +119,23 @@ const DmrAddBeneficiaryModal = ({
     if (buttonName === "Add Beneficiary" || buttonName === "Add Vendor") {
       postJsonData(
         apiEnd,
-        data,
+        data = {
+          number: rem_mobile && rem_mobile,
+          ben_acc: form.acc_no.value.toUpperCase(),
+          ben_id: user.username,
+          ifsc: ifscVal,
+          latitude: loc.lat,
+          longitude: loc.long,
+          ben_name: form.name.value,
+          pf: "WEB",
+          mpin: mpin && mpin,
+        },
         setRequest,
         (res) => {
           if (
             res?.data?.status === "OTP" &&
             view === "MT_View" &&
-            type === "dmt1"
+            type 
           ) {
             setSecureValidate("Beneficiary");
             setOtpRefId(res?.data?.otpReference);
@@ -144,7 +154,17 @@ const DmrAddBeneficiaryModal = ({
     } else if (mpin !== "") {
       postJsonData(
         ApiEndpoints.VERIFY_ACC,
-        data,
+         data = {
+          number: rem_mobile && rem_mobile,
+          ben_acc: form.acc_no.value.toUpperCase(),
+          ben_id: user.username,
+          ifsc: ifscVal,
+          latitude: loc.lat,
+          longitude: loc.long,
+          ben_name: form.name.value,
+          pf: "WEB",
+          mpin: mpin && mpin,
+        },
         setRequest,
         (res) => {
           getRecentData();
@@ -167,7 +187,7 @@ const DmrAddBeneficiaryModal = ({
               if (
                 res?.data?.status === "OTP" &&
                 view === "MT_View" &&
-                type === "dmt1"
+                type 
               ) {
                 setSecureValidate("Beneficiary");
                 setOtpRefId(res?.data?.otpReference);
@@ -202,7 +222,6 @@ const DmrAddBeneficiaryModal = ({
           }
         }
       );
-    } else {
     }
   };
 
@@ -243,52 +262,7 @@ const DmrAddBeneficiaryModal = ({
             >
               <Grid container sx={{ pt: 1 }}>
                 <Grid item md={11.6} xs={11.6}>
-                  {/* <FormControl sx={{ width: "100%" }}>
-                    <Autocomplete
-                      // filterOptions={filterOptions}
-                      disablePortal
-                      id="combo-box-demo"
-                      options={bankList ? bankList : ""}
-                      onChange={(event, newValue) => {
-                        if (newValue) {
-                          setBankId(
-                            view === "MT_View" && type === "dmt2"
-                              ? newValue.id
-                              : newValue.bankId
-                          );
-                          setIfscVal(
-                            view === "MT_View" && type === "dmt2"
-                              ? newValue.ifsc
-                              : newValue.ifscGlobal
-                          );
-                          setBankName(newValue.name);
-                        }
-                      }}
-                      getOptionLabel={(option) => option.name}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="Select Bank"
-                          size="small"
-                          required
-                          value={bankTextVal}
-                          onChange={(e) => {
-                            setBankTextVal(e.target.value);
-                          }}
-                        />
-                      )}
-                      clearIcon={
-                        <BackspaceIcon
-                          sx={{ fontSize: "15px", ml: 0 }}
-                          onClick={() => {
-                            setBankId("");
-                            setIfscVal("");
-                            setBankName("");
-                          }}
-                        />
-                      }
-                    />
-                  </FormControl> */}
+       
                   <ApiSearch
                     label="Search Bank"
                     name="user_id"
@@ -368,7 +342,7 @@ const DmrAddBeneficiaryModal = ({
                   </FormControl>
                 </Grid>
 
-                {type === "dmt2" && viewMpin && (
+                {type  && viewMpin && (
                   <Grid
                     item
                     md={12}
@@ -445,13 +419,8 @@ const DmrAddBeneficiaryModal = ({
               request={request}
               btn={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
               disable={!isValidName || !accNoV}
-              twobuttons={type === "dmt2" ? "Verify & Add" : false}
-              // onClick2={() => {
-              //   viewMpin === false &&
-              //     setTimeout(() => {
-              //       setViewMpin(true);
-              //     }, 300);
-              // }}
+              twobuttons={type  ? "Verify & Add" : false}
+          
             />
           </Box>
         </Drawer>

@@ -13,6 +13,7 @@ import AdminAccountLimit from "./AdminAccountLimit";
 import { useTheme } from "@mui/material/styles";
 import AdminBlockedAc from "./AdminBlockedAc";
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import AdminVirtualAccounts from "./AdminVirtualAccounts";
 
 let refresh;
 function refreshFunc(setQueryParams) {
@@ -61,8 +62,9 @@ const AdminRiskView = () => {
     { label: "ACcount",icon:<LabelImportantIcon/>, content: <AdminAccountLimit />, },
     
     { label: "Settelments",icon:<SettingsInputAntennaIcon/>, content: <AdminSettelments />,  },
+    // { label: "Virtual transaction",icon:<SettingsInputAntennaIcon/>, content: <AdminVirtualAccounts/>,  },
     { label: "Blocked Account",icon:<SettingsInputAntennaIcon/>, content: <AdminBlockedAc />,  },
-    // { label: "Notification", content: <AdminNotificationsView />,icon:<NotificationsIcon sx={{ color: "#ee6c4d" }}/>},
+
 
   ];
 

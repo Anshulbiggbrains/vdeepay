@@ -703,6 +703,7 @@ const DmtContainer = ({
                                 >
                                   <DmrAddBeneficiaryModal
                                     type={type}
+                                   
                                     rem_mobile={mobile}
                                     getRemitterStatus={
                                       type === "dmt1"
