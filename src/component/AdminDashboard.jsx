@@ -75,7 +75,7 @@ const AdminDashboard = ({
       // ml: { lg: "0", md: "0", xs: "0" },
       // mr: { lg: "1.5%", md: 0, xs: 0 },
     }}>
-          <TrafficSourcesChart transactionData={transactionData}/>
+          <TrafficSourcesChart transactionData={txnData} getTxnData={getTxnData}/>
         </Grid>
 ):(  <Grid
   item
