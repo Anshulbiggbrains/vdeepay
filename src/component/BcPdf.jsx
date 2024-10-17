@@ -94,9 +94,10 @@ const BcPdf = ({ user }) => {
         </Text>
 
         <Text style={styles.text}>
-          Mobifast Solutions Private Limited (“{envName}”) a company
-          incorporated under The Companies Act, 1956 and having its registered
-          office at {getFirmAddress()} is a Business Correspondent with BCs.
+          LINKSTECH SERVICES PRIVATE LIMITED s Private Limited (“{envName}”) a
+          company incorporated under The Companies Act, 1956 and having its
+          registered office at {getFirmAddress()} is a Business Correspondent
+          with BCs.
         </Text>
 
         <Text style={styles.text}>
@@ -146,7 +147,7 @@ const BcPdf = ({ user }) => {
           <Text
             style={{ fontSize: "8px", color: "#1877f2", marginBottom: "0px" }}
           >
-            Mobifast Solutions Private Limited |{" "}
+            LINKSTECH SERVICES PRIVATE LIMITED s Private Limited |{" "}
             <Text style={{ marginBottom: "0px" }}>
               CIN: U74999DL2017PTC316608
             </Text>
@@ -293,7 +294,7 @@ const BcPdf = ({ user }) => {
         >
           We,{" "}
           <Text style={{ fontFamily: "roboto-bold" }}>
-            Mobifast Solutions Private Limited
+            LINKSTECH SERVICES PRIVATE LIMITED s Private Limited
           </Text>{" "}
           (CIN: U74999DL2017PTC316608), a company registered under Companies act
           1956 having its registered office at {getFirmAddress()}{" "}
@@ -383,7 +384,7 @@ const BcPdf = ({ user }) => {
           <Text
             style={{ fontSize: "8px", color: "#1877f2", marginBottom: "0px" }}
           >
-            Mobifast Solutions Private Limited |{" "}
+            LINKSTECH SERVICES PRIVATE LIMITED s Private Limited |{" "}
             <Text style={{ marginBottom: "0px" }}>
               CIN: U74999DL2017PTC316608
             </Text>
@@ -533,11 +534,11 @@ const BcPdf = ({ user }) => {
             marginBottom: "15px",
           }}
         >
-          This is to certify that we, Mobifast Solutions Private Limited, a
-          company registered under Companies Act, 1956 and having its registered
-          office at {getFirmAddress()} (ImpsGuru) is Corporate Business
-          Correspondent of Instantpay India Limited and other banks in
-          accordance with the Guidelines, RBI/2010-11/217 DBOD. NO.
+          This is to certify that we, LINKSTECH SERVICES PRIVATE LIMITED s
+          Private Limited, a company registered under Companies Act, 1956 and
+          having its registered office at {getFirmAddress()} (ImpsGuru) is
+          Corporate Business Correspondent of Instantpay India Limited and other
+          banks in accordance with the Guidelines, RBI/2010-11/217 DBOD. NO.
           BL.BC.43/22.01.009/2010-11 dated September 28, 2010 issued by Reserve
           Bank of India. The following are the details of Business Correspondent
           Agent (“BC Agent”) who maintains an account with your branch for
@@ -653,7 +654,7 @@ const BcPdf = ({ user }) => {
           <Text
             style={{ fontSize: "8px", color: "#1877f2", marginBottom: "0px" }}
           >
-            Mobifast Solutions Private Limited |{" "}
+            LINKSTECH SERVICES PRIVATE LIMITED s Private Limited |{" "}
             <Text style={{ marginBottom: "0px" }}>
               CIN: U74999DL2017PTC316608
             </Text>

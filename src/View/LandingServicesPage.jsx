@@ -27,7 +27,7 @@ const LandingServicesPage = () => {
       sx={{ paddingBottom: "none !important" }}
       id="our-services"
     >
-      <Grid xs={12} className="servicePageBg">
+      <Grid xs={12} sm={6} className="servicePageBg1">
         <Box
           component="div"
           className="pageHead"
@@ -36,9 +36,9 @@ const LandingServicesPage = () => {
             marginTop: "-3px",
           }}
         >
-          Our Services
+          {/* Our Services */}
         </Box>
-        {envName === "MoneyOddr" ? (
+        {/* {envName === "MoneyOddr" ? (
           <>
             <div className="landingPageSubHeading px-5">
               Unlock new possibilities for your business and boost your earnings
@@ -55,7 +55,7 @@ const LandingServicesPage = () => {
               We have exciting services for you on our application
             </div>
           </>
-        )}
+        )} */}
       </Grid>
       {/* <Container maxWidth="lg" className="sectionBreake" sx={{ pb: 10 }}> */}
       <Container maxWidth="lg" sx={{ pb: 10, mt: 10 }}>
@@ -199,7 +199,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -241,7 +245,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -286,7 +294,11 @@ const LandingServicesPage = () => {
             </div>
             <Box sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}>
               <Button
-                className="button-red"
+                // className="button-red"
+                sx={{
+                  backgroundColor: "#FF7F50",
+                  color: "#fff",
+                }}
                 onClick={() => {
                   navigate("/sign-up");
                 }}
@@ -344,7 +356,11 @@ const LandingServicesPage = () => {
                   sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
                 >
                   <Button
-                    className="button-red"
+                    // className="button-red"
+                    sx={{
+                      backgroundColor: "#FF7F50",
+                      color: "#fff",
+                    }}
                     onClick={() => {
                       navigate("/sign-up");
                     }}
@@ -388,7 +404,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -437,7 +457,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -478,7 +502,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -535,7 +563,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -579,7 +611,11 @@ const LandingServicesPage = () => {
                 sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}
               >
                 <Button
-                  className="button-red"
+                  // className="button-red"
+                  sx={{
+                    backgroundColor: "#FF7F50",
+                    color: "#fff",
+                  }}
                   onClick={() => {
                     navigate("/sign-up");
                   }}
@@ -619,7 +655,11 @@ const LandingServicesPage = () => {
             </div>
             <Box sx={{ display: "flex", justifyContent: "left", mt: 2, mb: 3 }}>
               <Button
-                className="button-red"
+                // className="button-red"
+                sx={{
+                  backgroundColor: "#FF7F50",
+                  color: "#fff",
+                }}
                 onClick={() => {
                   navigate("/sign-up");
                 }}
