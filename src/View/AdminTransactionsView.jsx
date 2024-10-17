@@ -102,15 +102,15 @@ const AdminTransactionsView = () => {
   const [apiData, setApiData] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [query, setQuery] = useState();
-  const[sumData,setSumData]=useState(false)
+  const [sumData, setSumData] = useState(false);
   const [asmList, setAsmList] = useState([]);
   const authCtx = useContext(AuthContext);
   const [state, setState] = useState(false);
   const [rowData, setRowData] = useState(false);
   const user = authCtx.user;
   const role = user?.role.toLowerCase();
-  // const [scheduler, setScheduler] = useState(false);
-  // const [schedulerTime, setSchedulerTime] = useState(0);
+  const [scheduler, setScheduler] = useState(false);
+  const [schedulerTime, setSchedulerTime] = useState(0);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -849,6 +849,11 @@ const AdminTransactionsView = () => {
                   pr: 1,
                 }}
               >
+
+
+                    <>
+                 
+                    </>
                 {/* <FormGroup>
                   <FormControlLabel
                     sx={{
@@ -895,8 +900,9 @@ const AdminTransactionsView = () => {
             }
             totalCard={
               <>
-              <StatusDisplay sumData={sumData} setSumData={setSumData}/>
-            </>}
+                <StatusDisplay sumData={sumData} setSumData={setSumData} />
+              </>
+            }
             backButton={
               role !== "admin" && role !== "api" ? (
                 <Button
@@ -925,7 +931,6 @@ const AdminTransactionsView = () => {
             columns={columns}
             apiData={apiData}
             setSumData={setSumData}
-            
             setApiData={setApiData}
             tableStyle={CustomStyles}
             queryParam={query ? query : ""}
@@ -959,6 +964,7 @@ const AdminTransactionsView = () => {
               ifoperatorFilter
               ifFromBankFilter
               ifstatusFilter
+              ifstatusFilter2
               iforderidFilter
               ifTypeFilter
               ifUsernameFilter
@@ -1041,6 +1047,25 @@ const AdminTransactionsView = () => {
                         }
                       />
                     </FormGroup>
+                    <Tooltip title="Scheduler">
+                        <BlinkingIcon active={isActive} onClick={handleClick} />
+                      </Tooltip>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={() => handleMenuItemClick(5)}>
+                          5 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(10)}>
+                          10 sec
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMenuItemClick(15)}>
+                          15 sec
+                        </MenuItem>
+                        <MenuItem onClick={handleStop}>Stop</MenuItem>
+                      </Menu>
                   </Box>
                 </>
               }

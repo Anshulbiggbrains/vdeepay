@@ -7,8 +7,6 @@ import {
   TextField,
   Button,
   Typography,
-  Icon,
-  InputAdornment,
   Drawer,
 } from "@mui/material";
 import ModalHeader from "./ModalHeader";
@@ -17,20 +15,18 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { apiErrorToast, okSuccessToast } from "../utils/ToastUtil";
 import { postJsonData } from "../network/ApiController";
 import { useState } from "react";
-import AddIcon from '@mui/icons-material/Add';
 import { PATTERNS } from "../utils/ValidationUtil";
 import useCommonContext from "../store/CommonContext";
-import Loader from "../component/loading-screen/Loader";
+// import Spinner from "../commons/Spinner";
 import VerifyOtpLogin from "./VerifyOtpLogin";
 import AuthContext from "../store/AuthContext";
 import { useContext } from "react";
 import PinInput from "react-pin-input";
 import ResetMpin from "./ResetMpin";
 import ApiSearch from "../component/ApiSearch";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import SearchIcon from '@mui/icons-material/Search';
+
 const DmrAddBeneficiaryModal = ({
-  dmtValue,
+  type,
   rem_mobile,
   apiEnd = [],
   getRemitterStatus,
@@ -55,19 +51,19 @@ const DmrAddBeneficiaryModal = ({
   const [viewMpin, setViewMpin] = useState(false);
   // console.log("view", view);
 
-  // const style = {
-  //   position: "absolute",
-  //   top: "50%",
-  //   left: "50%",
-  //   transform: "translate(-50%, -50%)",
-  //   width: "40%",
-  //   bgcolor: "background.paper",
-  //   boxShadow: 24,
-  //   fontFamily: "Poppins",
-  //   height: "max-content",
-  //   overflowY: "scroll",
-  //   p: 2,
-  // };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "40%",
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    fontFamily: "Poppins",
+    height: "max-ceontent",
+    overflowY: "scroll",
+    p: 2,
+  };
   const handleOpen = () => {
     setOpen(true);
   };
@@ -92,7 +88,7 @@ const DmrAddBeneficiaryModal = ({
         ifsc: ifscVal.toUpperCase(),
         bank_id: bankId,
         bank_name: bankName,
-        verified: dmtValue === "dmt2" ? 0 : 0,
+        verified: type === "dmt2" ? 0 : 0,
       };
     } else {
       if (mpin !== "" && viewMpin) {
@@ -129,7 +125,7 @@ const DmrAddBeneficiaryModal = ({
           if (
             res?.data?.status === "OTP" &&
             view === "MT_View" &&
-            dmtValue === "dmt1"
+            type === "dmt1"
           ) {
             setSecureValidate("Beneficiary");
             setOtpRefId(res?.data?.otpReference);
@@ -153,6 +149,7 @@ const DmrAddBeneficiaryModal = ({
         (res) => {
           getRecentData();
           okSuccessToast(res.data.message);
+          if (getRemitterStatus) getRemitterStatus(rem_mobile);
           const data = {
             name: res.data.message,
             rem_mobile: rem_mobile,
@@ -170,7 +167,7 @@ const DmrAddBeneficiaryModal = ({
               if (
                 res?.data?.status === "OTP" &&
                 view === "MT_View" &&
-                dmtValue === "dmt1"
+                type === "dmt1"
               ) {
                 setSecureValidate("Beneficiary");
                 setOtpRefId(res?.data?.otpReference);
@@ -216,55 +213,21 @@ const DmrAddBeneficiaryModal = ({
         justifyContent: "end",
       }}
     >
-   <Button
-  variant="text"
-  onClick={handleOpen}
-  size="small"
-  sx={{
-    color: "Dark-Blue",
-    fontWeight: "bold",
-    textTransform:"capitalize",
-    fontSize: "10px",
-    display: "flex", // Added to align items
-    alignItems: "center",
-    borderRadius: 2,
-    backgroundColor: "#D9E9FD", // Vertically center the icon and text
-    '&:hover': {
-      color: "Dark-Blue",
-      backgroundColor: "#D8D8D8",
-      
-    },
-  }}
->
-  <AddCircleIcon sx={{ mr: 1, fontSize: "16px" ,mb:0.5}} />
-  {view === "MT_View" 
-    ? "Add beneficiary"
-    : "Add vendor"
-  }
-  <Loader loading={request} size="small" sx={{ ml: 1 }} />
-</Button>
+      <Button
+        variant="contained"
+        onClick={handleOpen}
+        className="button-red"
+        size="small"
+      >
+        {/* <Spinner loading={request} size="small" /> */}
+        {view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
+      </Button>
 
       <Box>
-        <Drawer
-          open={open}
-          anchor="right"
-          onClose={handleClose}
-          // aria-labelledby="modal-modal-title"
-          // aria-describedby="modal-modal-description"
-        >
-          <Box   sx={{
-            width: 400,
-            p: 2,
-            height: "100%",
-            boxShadow: 24,
-            fontFamily: "Poppins",
-            overflowY: "auto",
-          }}
-          role="presentation"
- >
-            <Loader loading={request} />
+        <Drawer open={open} onClose={handleClose} anchor="right">
+          <Box sx={{ width: 400 }} className="sm_modal">
+            {/* <Spinner loading={request} /> */}
             <ModalHeader
-            subtitle="Empower Your Payments: Add a Beneficiary Today!"
               title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
               handleClose={handleClose}
             />
@@ -279,41 +242,85 @@ const DmrAddBeneficiaryModal = ({
               }}
             >
               <Grid container sx={{ pt: 1 }}>
-              <Grid item xs={12} sm={11.7} md={12} lg={12} xl={11.7}>
-  
-  <ApiSearch
-    label="Search Bank"
-    name="user_id"
-    placeholder="Bank"
-    cb1={(item) => {
-      setBankId(
-        view === "MT_View" && dmtValue === "dmt2"
-          ? item.id
-          : item.bankId
-      );
-      setIfscVal(
-        view === "MT_View" && dmtValue === "dmt2"
-          ? item.ifsc
-          : item.ifscGlobal
-      );
-      setBankName(item.newValue);
-    }}
-    nameKeys={["name"]}
-    searchApi={
-      view === "MT_View" && dmtValue === "dmt2"
-        ? ApiEndpoints.DMT2_BANK_LIST
-        : ApiEndpoints.GET_BANK_DMR
-    }
-    sx={{
-      mt: 3,
-      width: "100%"
-    }}
-  />
-</Grid>
-
+                <Grid item md={11.6} xs={11.6}>
+                  {/* <FormControl sx={{ width: "100%" }}>
+                    <Autocomplete
+                      // filterOptions={filterOptions}
+                      disablePortal
+                      id="combo-box-demo"
+                      options={bankList ? bankList : ""}
+                      onChange={(event, newValue) => {
+                        if (newValue) {
+                          setBankId(
+                            view === "MT_View" && type === "dmt2"
+                              ? newValue.id
+                              : newValue.bankId
+                          );
+                          setIfscVal(
+                            view === "MT_View" && type === "dmt2"
+                              ? newValue.ifsc
+                              : newValue.ifscGlobal
+                          );
+                          setBankName(newValue.name);
+                        }
+                      }}
+                      getOptionLabel={(option) => option.name}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="Select Bank"
+                          size="small"
+                          required
+                          value={bankTextVal}
+                          onChange={(e) => {
+                            setBankTextVal(e.target.value);
+                          }}
+                        />
+                      )}
+                      clearIcon={
+                        <BackspaceIcon
+                          sx={{ fontSize: "15px", ml: 0 }}
+                          onClick={() => {
+                            setBankId("");
+                            setIfscVal("");
+                            setBankName("");
+                          }}
+                        />
+                      }
+                    />
+                  </FormControl> */}
+                  <ApiSearch
+                    label="Search Bank"
+                    name="user_id"
+                    placeholder="Bank"
+                    cb1={(item) => {
+                      setBankId(
+                        view === "MT_View" && type === "dmt2"
+                          ? item.id
+                          : item.bankId
+                      );
+                      setIfscVal(
+                        view === "MT_View" && type === "dmt2"
+                          ? item.ifsc
+                          : item.ifscGlobal
+                      );
+                      setBankName(item.newValue);
+                    }}
+                    nameKeys={["name"]}
+                    searchApi={
+                      view === "MT_View" && type === "dmt2"
+                        ? ApiEndpoints.DMT2_BANK_LIST
+                        : ApiEndpoints.GET_BANK_DMR
+                    }
+                    sx={{
+                      mt: 3,
+                      width: "97%",
+                    }}
+                  />
+                </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
                       label="IFSC"
                       id="ifsc"
                       size="small"
@@ -328,7 +335,7 @@ const DmrAddBeneficiaryModal = ({
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
                       label="Name"
                       id="name"
                       size="small"
@@ -345,7 +352,7 @@ const DmrAddBeneficiaryModal = ({
                 </Grid>
                 <Grid item md={12} xs={12}>
                   <FormControl sx={{ width: "100%" }}>
-                    <TextField autoComplete="off"
+                    <TextField
                       label="Account Number"
                       id="acc_no"
                       size="small"
@@ -361,38 +368,41 @@ const DmrAddBeneficiaryModal = ({
                   </FormControl>
                 </Grid>
 
-                {dmtValue === "dmt2" && viewMpin && (
-  <Grid
-    item
-    md={12}
-    xs={12}
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-      mt: 2,
-    }}
-  >
-    <Button
-      variant="contained"
-      color="primary"
-      type="submit"
-      sx={{ width: "48%" }}
-    >
-      Confirm
-    </Button>
-    <Button
-      variant="outlined"
-      color="secondary"
-      onClick={handleClose}
-      sx={{ width: "48%" }}
-    >
-      Cancel
-    </Button>
-  </Grid>
-)}
- 
+                {type === "dmt2" && viewMpin && (
+                  <Grid
+                    item
+                    md={12}
+                    xs={12}
+                    sx={{ display: "flex", justifyContent: "center", mt: 2 }}
+                  >
+                    <FormControl>
+                      <Typography
+                        sx={{ display: "flex", justifyContent: "center" }}
+                      >
+                        Enter M-PIN
+                      </Typography>
+                      <PinInput
+                        length={6}
+                        focus
+                        type="password"
+                        onChange={(value, index) => {
+                          setMpin(value);
+                        }}
+                        regexCriteria={/^[0-9]*$/}
+                      />
+                      <Grid
+                        item
+                        md={12}
+                        xs={12}
+                        sx={{ display: "flex", justifyContent: "end" }}
+                      >
+                        <ResetMpin variant="text" />
+                      </Grid>
+                    </FormControl>
+                  </Grid>
+                )}
 
-                {dmtValue === "dmt2" && viewMpin && (
+                {type === "dmt2" && viewMpin && (
                   <Grid
                     item
                     md={12}
@@ -435,7 +445,7 @@ const DmrAddBeneficiaryModal = ({
               request={request}
               btn={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
               disable={!isValidName || !accNoV}
-              twobuttons={dmtValue === "dmt2" ? "Verify & Add" : false}
+              twobuttons={type === "dmt2" ? "Verify & Add" : false}
               // onClick2={() => {
               //   viewMpin === false &&
               //     setTimeout(() => {

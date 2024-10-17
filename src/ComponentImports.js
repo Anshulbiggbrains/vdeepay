@@ -12,6 +12,7 @@ export const Admindashboard = ({
   getTxnData,
   txnDataReq,
   txnData,
+  transactionData
 }) => {
   useEffect(() => {}, []);
   return (
@@ -27,6 +28,7 @@ export const Admindashboard = ({
         getTxnData={getTxnData}
         txnDataReq={txnDataReq}
         txnData={txnData}
+        transactionData={transactionData}
       />
     </>
   );

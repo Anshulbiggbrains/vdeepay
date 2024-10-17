@@ -20,6 +20,7 @@ const Dashboard = () => {
   const user = authCtx.user;
   const [request, setRequest] = useState(false);
   const [graphDuration, setGraphDuration] = useState("TODAY");
+  const [transactionData, setTransactionData] = useState([])
   const [userData, setUserData] = useState([
     {
       role: "Asm",
@@ -152,6 +153,7 @@ const Dashboard = () => {
       setTxnDataReq,
       (res) => {
         const data = res.data.data;
+        setTransactionData(data);
         const newData = [...txnData];
         newData.forEach((oldData) => {
           if (oldData.name === "SUCCESS") {
@@ -194,6 +196,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user && (user.role === "Asm" || user.role === "Zsm")) {
+      console.log("*******************************************8 First use Effect **************************************************")
       getTxnData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -201,8 +204,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user && user.role !== "Asm" && user.role !== "Zsm") {
+      console.log("*******************************************8 Second use Effect **************************************************")
       getUsersData();
     } else if (user && (user.role === "Asm" || user.role === "Zsm")) {
+      console.log("*******************************************8 Third use Effect **************************************************")
       getTxnData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -221,6 +226,7 @@ const Dashboard = () => {
         getTxnData={getTxnData}
         txnDataReq={txnDataReq}
         txnData={txnData}
+        transactionData={transactionData}
       />
     </>
   );

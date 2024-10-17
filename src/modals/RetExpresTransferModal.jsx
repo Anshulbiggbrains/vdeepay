@@ -32,6 +32,8 @@ import CallMadeIcon from "@mui/icons-material/CallMade";
 import Loader from "../component/loading-screen/Loader";
 import ConfirmationModal from "./ConfirmationModal";
 import { validateApiCall } from "../utils/LastApiCallChecker";
+// import AuthContext from "../store/AuthContext";
+import { fetchUserAgain } from "../utils/fetchUserUtil";
 import { useEffect } from "react";
 const RetExpresTransferModal = ({
   type,
@@ -49,6 +51,7 @@ const RetExpresTransferModal = ({
   const [request, setRequest] = useState(false);
   const [mpin, setMpin] = useState("");
   const [arrAmtRes, setArrAmtRes] = useState([]);
+  // const {}
   // console.log("arrAmtRes", arrAmtRes);
   const [err, setErr] = useState();
   const [mtRequest, setMtRequest] = useState(false);
@@ -184,6 +187,7 @@ const RetExpresTransferModal = ({
         };
         setErr(error);
       }
+      fetchUserAgain(setRequest, authCtx);
     }
   };
 

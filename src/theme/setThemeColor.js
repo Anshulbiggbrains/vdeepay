@@ -94,16 +94,21 @@ export const getUserColor = (role) => {
 };
 
 export const randomColors = () => {
-  // Array containing colors
+  // Array containing both light and dark colors
   var colors = [
-    "rgba(255, 99, 132, 0.2)", // Light red
-    "rgba(54, 162, 235, 0.2)", // Light blue
-    "rgba(255, 206, 86, 0.2)", // Light yellow
-    "rgba(75, 192, 192, 0.2)", // Light teal
-    "rgba(153, 102, 255, 0.2)", // Light purple
+    // "rgba(255, 99, 132, 0.2)",  // Light red
+    // "rgba(54, 162, 235, 0.2)",  // Light blue
+    // "rgba(255, 206, 86, 0.2)",  // Light yellow
+    // "rgba(75, 192, 192, 0.2)",  // Light teal
+    // "rgba(153, 102, 255, 0.2)", // Light purple
+    "rgba(255, 99, 132, 0.8)",  // Dark red
+    "rgba(54, 162, 235, 0.8)",  // Dark blue
+    "rgba(255, 206, 86, 0.8)",  // Dark yellow
+    "rgba(75, 192, 192, 0.8)",  // Dark teal
+    "rgba(153, 102, 255, 0.8)", // Dark purple
   ];
 
-  // selecting random color
+  // Selecting random color
   var random_color = colors[Math.floor(Math.random() * colors.length)];
   return random_color;
 };

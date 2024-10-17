@@ -843,7 +843,7 @@ const RetDdTransactionView = () => {
               <FilterCard
                 showSearch={false}
                 ifoperatorFilter
-                ifstatusFilter
+                ifstatusFilter2
                 setTabQueryreset={setTabQueryreset}
                 ifFromBankFilter
                 // ifdateFilter

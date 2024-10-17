@@ -45,6 +45,7 @@ const FilterCard = ({
   refresh,
   tabQueryreset = true,
   ifTypeFilter = false,
+  
   chooseInitialCategoryFilter = false,
   ifAdIdFilter = false,
   ifnameFilter = false,
@@ -52,6 +53,7 @@ const FilterCard = ({
   ifrouteFilter = false,
   ifoperatorFilter = false,
   ifStatusFilter = false,
+  ifstatusFilter2=false,
   iforderidFilter = false,
   ifClientIdFilter = false,
   ifestFilter = false,
@@ -120,10 +122,15 @@ const FilterCard = ({
   const [adApiLoader, setAdApiLoader] = useState(false);
   // console.log("adList", adList);
   const [partnerPinNo, setPartnerPinNo] = useState("");
+  const today = new Date();
   const [filterValues, setFilterValues] = useState({
-    date: { start: "", end: "" },
-    dateVal: "",
+    date: { start: yyyymmdd(today), end: yyyymmdd(today) },
+    dateVal: [today, today],
   });
+  // const [filterValues, setFilterValues] = useState({
+  //   date: { start: yyyymmdd(today), end: yyyymmdd(today) },
+  //   dateVal: [today, today],
+  // });
   const isMobile = useResponsive("down", "sm");
   const [request, setRequest] = useState(false);
   const [routeList, setRouteList] = useState([]);
@@ -137,6 +144,20 @@ const FilterCard = ({
       setQuery(`operator=${event.target.value}`);
     }
   };
+
+  useEffect(() => {
+    let filter = "";
+    if (filterValues.date.start || filterValues.date.end) {
+      filter =
+        filter +
+        (filter ? "&" : "") +
+        "start=" +
+        filterValues.date.start +
+        "&end=" +
+        filterValues.date.end;
+    }
+    setQuery(filter)
+  })
 
   const getRouteValApi = () => {
     if (routeList.length === 0) {
@@ -768,6 +789,41 @@ const FilterCard = ({
             </FormControl>
           </div>
         )}
+          {ifstatusFilter2 && (
+          <div
+            style={{
+              width: isMobile ? "100%" : "10.5%",
+              overflow: "hidden",
+            }}
+            className="mx-2"
+          >
+            <FormControl
+              sx={{ mt: isMobile ? 0 : 0, width: "100%", textAlign: "start" }}
+            >
+              <TextField
+                autoComplete="off"
+                className="filter-input"
+                size={isMobile ? "small" : "small"}
+                id="status"
+                select
+                label="Status"
+                value={status}
+                variant="standard"
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <MenuItem sx={{ fontSize: "13px" }} value="PENDING">
+                  PENDING
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "13px" }} value="SUCCESS">
+                  SUCCESS
+                </MenuItem>
+                <MenuItem sx={{ fontSize: "13px" }} value="FAILED">
+                  FAILED
+                </MenuItem>
+              </TextField>
+            </FormControl>
+          </div>
+        )}
         {ifBeneKycStatus && (
           <div
             style={{
@@ -1210,6 +1266,7 @@ const FilterCard = ({
                 value={filterValues && filterValues.dateVal}
                 onChange={(value) => {
                   let dateVal = value;
+                  console.log("This is your value in date filter", value, [today, today]);
                   if (value) {
                     setFilterValues({
                       ...filterValues,

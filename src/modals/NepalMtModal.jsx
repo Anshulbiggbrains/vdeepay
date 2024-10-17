@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
@@ -22,6 +22,8 @@ import { currencySetter } from "../utils/Currencyutil";
 import Loader from "../component/loading-screen/Loader";
 import NepalPaymentSuccessModal from "./NepalPaymentSuccessModal";
 import { capitalize1 } from "../utils/TextUtil";
+import { fetchUserAgain } from "../utils/fetchUserUtil";
+import AuthContext from "../store/AuthContext";
 
 const style = {
   position: "absolute",
@@ -49,6 +51,7 @@ const NepalMtModal = ({ receiver, nepalAllRes, customerMobile }) => {
   const [remReasonVal, setRemReasonVal] = useState("");
   const [successModal, setSuccessModal] = useState("");
   const [nepalMtSuccessData, setNepalMtSuccessData] = useState();
+  const authCtx = useContext(AuthContext);
   // console.log("remmitanceReason", remittanceReason);
   // console.log("remReasonVal", remReasonVal);
   // console.log("serviceChargeData", serviceChargeData);
@@ -150,6 +153,7 @@ const NepalMtModal = ({ receiver, nepalAllRes, customerMobile }) => {
         // }, 300);
       }
     );
+    fetchUserAgain(setRequest, authCtx);
   };
 
   const getOtp = (e) => {
