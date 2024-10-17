@@ -58,6 +58,7 @@ const AdminRiskView = () => {
   const [query, setQuery] = useState();
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
+  console.log("set value is hear",value)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -72,10 +73,10 @@ const AdminRiskView = () => {
     { label: "Blocked Account",icon:<SettingsInputAntennaIcon/>, content: <AdminBlockedAc />,  },
     {
       label: "VIRTUAL ACCOUNTS",
-      content: <AdminVirtualAccounts/>,
-      icon: <ManageAccountsRoundedIcon />,
+      content: <AdminVirtualAccounts value={value}/>,
+      icon: <ManageAccountsRoundedIcon  />,
     },
-    { label: "VIRTUAL TRANSACTIONS", content: <AdminVirtualAccounts/>, icon: <CurrencyRupeeIcon /> },
+    { label: "VIRTUAL TRANSACTIONS", content: <AdminVirtualAccounts value={value}/>, icon: <CurrencyRupeeIcon /> },
   ];
 
   return (

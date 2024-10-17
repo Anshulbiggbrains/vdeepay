@@ -110,15 +110,15 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(() => ({
   },
 }));
 
-const AdminVirtualAccounts = () => {
+const AdminVirtualAccounts = ({value}) => {
   const theme = useTheme();
   const [apiData, setApiData] = useState([]);
   const [query, setQuery] = useState();
     const authCtx = useContext(AuthContext);
     const user = authCtx.user;
     const role = user?.role;
-    // console.log("user is define hear",user.id)
-  const [value, setValue] = useState(0);
+    console.log("value is define hear",value)
+  // const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
   // const tabs = [
   //   {
@@ -432,10 +432,10 @@ const AdminVirtualAccounts = () => {
             }}
           />
         </Grid>
-
         {/* 2  virtual accounts*/}
+        { value===3&&
         <Grid item md={12} sm={12} xs={12}>
-          <TabPanel value={value} index={0} dir={theme.direction}>
+         
             <ApiPaginateSearch
               showSearch={true}
               actionButtons={
@@ -505,11 +505,13 @@ const AdminVirtualAccounts = () => {
                   />
                 }
             />
-          </TabPanel>
+         
         </Grid>
+}
         {/* 3  virtual transactions*/}
+        {value===4&&
         <Grid item md={12} sm={12} xs={12}>
-          <TabPanel value={value} index={1} dir={theme.direction}>
+         
             <ApiPaginateSearch
               showSearch={true}
               actionButtons={
@@ -578,8 +580,8 @@ const AdminVirtualAccounts = () => {
                 />
               }
             />
-          </TabPanel>
-        </Grid>
+         
+        </Grid>}
       </Grid>
     </Grid>
   );
