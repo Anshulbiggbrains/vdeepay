@@ -21,8 +21,16 @@ const TrafficSourcesChart = ({transactionData}) => {
     // })
     datasets: [
       {
+        label: 'Total',
+        data: [100],
+        // data: [totalCount, 0], 
+        backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(211, 211, 211, 1)'], 
+        borderWidth:5,
+        hoverOffset: 4,
+      },
+      {
         label: 'Pending',
-        data: [100, 5],
+        data: [5, 95],
         // data: [pendingCount, totalCount - pendingCount], 
         backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(211, 211, 211, 1)'],
         // backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
@@ -31,7 +39,7 @@ const TrafficSourcesChart = ({transactionData}) => {
       },
       {
         label: 'Failed',
-        data: [100, 10],
+        data: [10, 90],
         // data: [failedCount, totalCount - failedCount],  
         backgroundColor: ['rgba(255, 159, 64, 1)', 'rgba(211, 211, 211, 1)'], 
         borderWidth:5,
@@ -39,19 +47,12 @@ const TrafficSourcesChart = ({transactionData}) => {
       },
       {
         label: 'Success',
-        data: [100, 75],
+        data: [75, 25],
         // data: [successCount, totalCount - successCount],  
         backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(211, 211, 211, 1)'], 
         borderWidth:5,
       },
-      {
-        label: 'Total',
-        data: [100, 100],
-        // data: [totalCount, 0], 
-        backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(211, 211, 211, 1)'], 
-        borderWidth:5,
-        hoverOffset: 4,
-      },
+      
     ],
   };
 
