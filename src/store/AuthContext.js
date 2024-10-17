@@ -28,7 +28,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(initialToken);
   const [nepalToken, setNepalToken] = useState(initialNepalToken);
   const [user, setUser] = useState(initialUser);
-  const [apiBal, setApiBal] = useState(0);
+  const [apiBal, setApiBal] = useState();
   const [location, setLocation] = useState(
     JSON.parse(localStorage.getItem("location"))
   );
@@ -107,7 +107,7 @@ export const AuthContextProvider = (props) => {
     saveNepalUser: nepalUserHandler,
     setLocation: latLongHandler,
     setDocsInLocal,
-    setApiBal,
+    setApiBal:setApiBal,
     ifDocsUploaded,
   };
 

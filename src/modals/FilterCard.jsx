@@ -146,6 +146,7 @@ const FilterCard = ({
   };
 
   useEffect(() => {
+    if(ifstatusFilter2){
     let filter = "";
     if (filterValues.date.start || filterValues.date.end) {
       filter =
@@ -157,7 +158,8 @@ const FilterCard = ({
         filterValues.date.end;
     }
     setQuery(filter)
-  })
+ } })
+
 
   const getRouteValApi = () => {
     if (routeList.length === 0) {

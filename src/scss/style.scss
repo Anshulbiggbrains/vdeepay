@@ -227,7 +227,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left;
-  -webkit-box-shadow: inset 0px -7px 31px -24px rgba(96, 89, 201, 0.65);
+  -webkit-box-shadow: inset 0px -7px 31px -builSecurity_bg24px
+    rgba(96, 89, 201, 0.65);
   -moz-box-shadow: inset 0px -7px 31px -24px rgba(96, 89, 201, 0.65);
   box-shadow: inset 0px -7px 31px -24px rgba(96, 89, 201, 0.65);
 }
@@ -243,6 +244,11 @@ body {
     display: none;
   }
 }
+
+.about-Us {
+  background: #007bff;
+}
+
 .login-page_col2 {
   height: 100vh;
   overflow-y: auto;
@@ -260,6 +266,10 @@ body {
 .sectionBreake {
   margin-top: 10ch;
   // background-color: blue;
+}
+.aboutUs {
+  // background: #007bff;
+  background: linear-gradient(to right, #718eb4, #c96767);
 }
 
 .drawer-bg {
@@ -538,7 +548,7 @@ body {
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../assets/borderBg.webp);
+  // background-image: url(../assets/borderBg.webp);
 }
 
 .double-quots-mark {
@@ -600,12 +610,14 @@ body {
   font-size: 1.3rem;
   border-radius: 30px;
   // background-color: $theme-green;
-  background-color: $primary-color;
+  // background-color: $primary-color;
+  background-color: #d1b4a1;
   // background-color: $secondary-color;
 }
 .whatWedoCard:hover {
   // background-color: $theme-green;
-  background-color: $primary-color;
+  background-color: #cd5c5c;
+  // background-color: pink;
   color: $white-color;
 }
 .whatWedoCard {
