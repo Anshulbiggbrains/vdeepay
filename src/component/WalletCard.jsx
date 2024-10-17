@@ -354,7 +354,7 @@ useEffect(() => {
         Api Balance
         </Typography>
         <Typography variant="body2" sx={{ color: '#212b5a', fontSize: "10px" }}>
-          ₹ {numberSetter(apiBal.balance/ 100)}
+          ₹ {numberSetter(apiBal?.balance/ 100)}
         </Typography>
       </Box>
       <RefreshComponent
