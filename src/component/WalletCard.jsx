@@ -361,7 +361,7 @@ useEffect(() => {
         refresh={userRequest}
         onClick={() => {
           refreshUser();
-          apiBal.getApiBal();
+          // apiBal.getApiBal();
         }}
         sx={{ mb: 2, color: "#000", fontSize: 15, ml: 1 }}
       />

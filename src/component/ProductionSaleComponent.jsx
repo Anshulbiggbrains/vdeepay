@@ -386,7 +386,7 @@ const ProductionSaleComponent = ({
                 paginate={false}
               /> */}
               {/* <AdminBarChart graphData={graphData} upper={false} /> */}
-              <AdminTripleChart data={tripleBarData} upper={false}/>
+              {/* <AdminTripleChart data={tripleBarData} upper={false}/> */}
             </Grid>
           ) : showMonthlyData?(
                   <MonthlyDataChart/>
