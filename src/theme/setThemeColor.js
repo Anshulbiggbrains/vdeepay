@@ -101,10 +101,10 @@ export const randomColors = () => {
     // "rgba(255, 206, 86, 0.2)",  // Light yellow
     // "rgba(75, 192, 192, 0.2)",  // Light teal
     // "rgba(153, 102, 255, 0.2)", // Light purple
-    "rgba(255, 99, 132, 0.8)",  // Dark red
-    "rgba(54, 162, 235, 0.8)",  // Dark blue
-    "rgba(255, 206, 86, 0.8)",  // Dark yellow
-    "rgba(75, 192, 192, 0.8)",  // Dark teal
+    "rgba(255, 99, 132, 0.8)", // Dark red
+    "rgba(54, 162, 235, 0.8)", // Dark blue
+    "rgba(255, 206, 86, 0.8)", // Dark yellow
+    "rgba(75, 192, 192, 0.8)", // Dark teal
     "rgba(153, 102, 255, 0.8)", // Dark purple
   ];
 
@@ -136,7 +136,7 @@ export const getStatusColor = (status) => {
 
 export const getFirmAddress = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `Flat no 54A ground floor type 2 block 5 sector 3 bawana dsiidc near bank of India delhi 110039`;
+    return `Flat NO.54-A GROUND FLOOR, TYPE-11 BLOCK-5 SEC-3 DSIDC,BAWANA,NORTH WEST DELHI,DELHI-110039`;
   }
 };
 export const getFirmContact = () => {
