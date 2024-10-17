@@ -89,6 +89,7 @@ Contact Us!
                   <Card
                     sx={{
                       width: "100%",
+                      borderRadius:"12px",
                       textAlign: "center",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
@@ -138,6 +139,7 @@ Contact Us!
                     sx={{
                       width: "100%",
                       textAlign: "center",
+                      borderRadius:"12px",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
                       '&:hover': {
@@ -186,6 +188,7 @@ Contact Us!
                     sx={{
                       width: "100%",
                       textAlign: "center",
+                      borderRadius:"12px",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
         '&:hover': {
@@ -425,6 +428,8 @@ Contact Us!
                   sx={{
                     p: 5,
                     mb: 10,
+                    backgroundColor:"#ffd1ad",
+                    borderRadius:"15px",
                     boxShadow:
                       "rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em",
                   }}

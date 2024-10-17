@@ -64,8 +64,8 @@ const LandingAboutUsPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
   return (
-    <div id="about-us ">
-      <Grid container sx={{ mt: 5 }} className="builSecurity_bg">
+    <div id="about-us " className="aboutUs">
+      <Grid container className="builSecurity_bg">
         {/* about us */}
         <Grid md={12} xs={12}>
           <Typography
@@ -317,6 +317,7 @@ const LandingAboutUsPage = () => {
                 <Card
                   sx={{
                     boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                    background: "#FCEAFD",
                     width: { lg: "60%", md: "70%", sm: "80%", xs: "90%" },
                     p: 4,
                     mx: 3,
@@ -347,7 +348,7 @@ const LandingAboutUsPage = () => {
         )}
 
         {/* what we do */}
-        <Container maxWidth="lg" sx={{ mb: 1, mt: 10 }} className="bottom2top">
+        <Container maxWidth="lg" sx={{ mt: 10 }} className="bottom2top">
           <div className="landingPageHeadings ">
             {envName === "MoneyOddr" ? "Why Choose Us" : "What We Do"}
           </div>
@@ -580,7 +581,7 @@ const LandingAboutUsPage = () => {
                   component="span"
                   sx={{
                     backgroundColor:
-                      envName === "MoneyOddr" ? "#2C3D69" : "#4045A1",
+                      envName === "MoneyOddr" ? "#EC9706" : "#ED7014",
                     color: "#fff",
                     width: "70px",
                     height: "70px",
@@ -594,7 +595,7 @@ const LandingAboutUsPage = () => {
                 </Box>
                 <span
                   className="landingPageHeadings"
-                  style={{ letterSpacing: "0.2rem" }}
+                  style={{ letterSpacing: "0.2rem", color: "#fff" }}
                 >
                   Our Vission
                 </span>
@@ -664,7 +665,7 @@ const LandingAboutUsPage = () => {
                   component="span"
                   sx={{
                     backgroundColor:
-                      envName === "MoneyOddr" ? "#2C3D69" : "#4045A1",
+                      envName === "MoneyOddr" ? "#2C3D69" : "#ED7014",
                     color: "#fff",
                     width: {
                       lg: "70px",
@@ -683,7 +684,7 @@ const LandingAboutUsPage = () => {
                 </Box>
                 <span
                   className="landingPageHeadings"
-                  style={{ letterSpacing: "0.2rem" }}
+                  style={{ letterSpacing: "0.2rem", color: "#fff" }}
                 >
                   Our Mission
                 </span>
@@ -746,7 +747,7 @@ const LandingAboutUsPage = () => {
                   component="span"
                   sx={{
                     backgroundColor:
-                      envName === "MoneyOddr" ? "#2C3D69" : "#4045A1",
+                      envName === "MoneyOddr" ? "#2C3D69" : "#ED7014",
                     color: "#fff",
                     width: "70px",
                     height: "70px",
@@ -760,7 +761,7 @@ const LandingAboutUsPage = () => {
                 </Box>
                 <span
                   className="landingPageHeadings"
-                  style={{ letterSpacing: "0.2rem" }}
+                  style={{ letterSpacing: "0.2rem", color: "#fff" }}
                 >
                   Our Values
                 </span>

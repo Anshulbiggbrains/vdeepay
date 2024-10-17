@@ -1,6 +1,6 @@
 export const primaryColor = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return "#FF7F50";
+    return "#ff9d5c";
   }
 };
 export const primaryLight = () => {
@@ -136,7 +136,7 @@ export const getStatusColor = (status) => {
 
 export const getFirmAddress = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `Flat no 54a ground floor type 2 block 5 sector 3 bawana dsiidc near bank of India delhi 110039`;
+    return `Flat no 54A ground floor type 2 block 5 sector 3 bawana dsiidc near bank of India delhi 110039`;
   }
 };
 export const getFirmContact = () => {
