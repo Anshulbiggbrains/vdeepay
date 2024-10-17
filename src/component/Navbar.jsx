@@ -200,6 +200,7 @@ export default function Navbar(props) {
                   <IconButton aria-label="delete" sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}>
                     <TwitterIcon />
                   </IconButton>
+       
                 </Box>
               )}
             </Box>

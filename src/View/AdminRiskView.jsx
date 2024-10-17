@@ -14,6 +14,9 @@ import { useTheme } from "@mui/material/styles";
 import AdminBlockedAc from "./AdminBlockedAc";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import AdminVirtualAccounts from "./AdminVirtualAccounts";
+import ManageAccountsRoundedIcon from "@mui/icons-material/ManageAccountsRounded";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import { mt_tab_value } from "../utils/constants";
 
 let refresh;
 function refreshFunc(setQueryParams) {
@@ -25,6 +28,7 @@ let refreshFilter;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
 
   return (
     <div
@@ -53,9 +57,11 @@ const AdminRiskView = () => {
   const theme = useTheme();
   const [query, setQuery] = useState();
   const [value, setValue] = useState(0);
+  const [currentType, setCurrentType] = useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setCurrentType(mt_tab_value[newValue]);
   };
 
   const tabs = [
@@ -64,8 +70,12 @@ const AdminRiskView = () => {
     { label: "Settelments",icon:<SettingsInputAntennaIcon/>, content: <AdminSettelments />,  },
     // { label: "Virtual transaction",icon:<SettingsInputAntennaIcon/>, content: <AdminVirtualAccounts/>,  },
     { label: "Blocked Account",icon:<SettingsInputAntennaIcon/>, content: <AdminBlockedAc />,  },
-
-
+    {
+      label: "VIRTUAL ACCOUNTS",
+      content: <AdminVirtualAccounts/>,
+      icon: <ManageAccountsRoundedIcon />,
+    },
+    { label: "VIRTUAL TRANSACTIONS", content: <AdminVirtualAccounts/>, icon: <CurrencyRupeeIcon /> },
   ];
 
   return (

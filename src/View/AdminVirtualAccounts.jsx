@@ -120,18 +120,18 @@ const AdminVirtualAccounts = () => {
     // console.log("user is define hear",user.id)
   const [value, setValue] = useState(0);
   const [currentType, setCurrentType] = useState();
-  const tabs = [
-    {
-      label: "VIRTUAL ACCOUNTS",
-      content: "",
-      icon: <ManageAccountsRoundedIcon />,
-    },
-    { label: "VIRTUAL TRANSACTIONS", content: "", icon: <CurrencyRupeeIcon /> },
-  ];
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    setCurrentType(mt_tab_value[newValue]);
-  };
+  // const tabs = [
+  //   {
+  //     label: "VIRTUAL ACCOUNTS",
+  //     content: "",
+  //     icon: <ManageAccountsRoundedIcon />,
+  //   },
+  //   { label: "VIRTUAL TRANSACTIONS", content: "", icon: <CurrencyRupeeIcon /> },
+  // ];
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  //   setCurrentType(mt_tab_value[newValue]);
+  // };
   const searchOptionsVa = [
     { field: "AC Name", parameter: "acc_name" },
     { field: "AC Number", parameter: "acc_no" },
@@ -397,7 +397,7 @@ const AdminVirtualAccounts = () => {
           borderTopLeftRadius: "4px",
         }}
       >
-        <CustomTabs tabs={tabs} value={value} onChange={handleChange} />
+        {/* <CustomTabs tabs={tabs} value={value} onChange={handleChange} /> */}
         {/* <StyledTabs
           value={value}
           onChange={handleChange}
@@ -501,51 +501,9 @@ const AdminVirtualAccounts = () => {
                         </IconButton>
                       </Tooltip>
                     </>
-                    //     <Grid
-                    //   item
-                    //   md={12}
-                    //   sm={12}
-                    //   xs={12}
-                    //   sx={{
-                    //     display: "flex",
-                    //     justifyContent: { md: "end", xs: "start", lg: "end"},
-                    //     alignItems: "center",
-                    //     // pr: 2,
-                    //     mt: { md: 0, xs: 2, sm: 2 },
-                    //   }}
-                    // >
-                    //   <RefreshComponent
-                    //     className="refresh-icon-table"
-                    //     onClick={() => {
-                    //       refresh();
-                    //     }}
-                    //   />
-                    // </Grid>
                   }
-                />
-              }
-              // filterComponent={
-              //   <FilterCard
-              //     showSearch={false}
-              //     ifBeneKycStatus
-              //     setQuery={setQuery}
-              //     query={query}
-              //     clearHookCb={(cb) => {
-              //       refreshFilter = cb;
-              //     }}
-              //     refresh={refresh}
-              //     actionButtons={
-              //       <>
-              //         <RefreshComponent
-              //           className="refresh-icon-table"
-              //           onClick={() => {
-              //             refresh();
-              //           }}
-              //         />
-              //       </>
-              //     }
-              //   />
-              // }
+                  />
+                }
             />
           </TabPanel>
         </Grid>
