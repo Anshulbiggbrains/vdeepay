@@ -1,159 +1,39 @@
-import { Box, Grid, IconButton, Tooltip, Typography } from "@mui/material";
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import { Box, Grid, IconButton, Tooltip } from "@mui/material";
+import React, { useContext, useState } from "react";
 import ApiPaginateSearch from "../component/ApiPaginateSearch";
-import { useState } from "react";
-// import { useContext } from "react";
 import AuthContext from "../store/AuthContext";
 import { CustomStyles } from "../component/CustomStyle";
 import RefreshComponent from "../component/RefreshComponent";
 import ApiEndpoints from "../network/ApiEndPoints";
-import { datemonthYear, ddmmyy, dateToTime } from "../utils/DateUtils";
+import { ddmmyy, dateToTime } from "../utils/DateUtils";
 import { useTheme } from "@mui/material/styles";
-import { mt_tab_value } from "../utils/constants";
-import CustomTabs from "../component/CustomTabs";
-import { styled } from "@mui/material/styles";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import CommonStatus from "../component/CommonStatus";
-import ManageAccountsRoundedIcon from "@mui/icons-material/ManageAccountsRounded";
-// import { get } from "../network/ApiController";
-// import { apiErrorToast } from "../utils/ToastUtil";
 import ActiveInactiveModal from "../modals/ActiveInactiveModal";
 import EditVirtualAccounts from "../component/accountLimits/EditVirtualAccounts";
 import CheckResponseModal from "../modals/CheckResponseModal";
 import { currencySetter } from "../utils/Currencyutil";
 import FilterCard from "../modals/FilterCard";
 import CachedIcon from "@mui/icons-material/Cached";
-
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import EditOperator from "../modals/EditOperator";
 import EditVirtualTransactions from "../modals/EditVirtualTransactions";
-// import AuthContext from "../store/AuthContext";
-
-
 
 let refresh;
-function refreshFunc(setQueryParams) {
-  setQueryParams("");
-  if (refresh) refresh();
-}
-let refreshFilter;
 
-// tabs in top bar
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 1 }}>
-          {" "}
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-const StyledTabs = styled((props) => (
-  <Tabs
-    {...props}
-    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-  />
-))({
-  // borderRadius: "4px",
-  padding: "12px 10px",
-  "& .MuiTabs-indicator": {
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: "transparent",
-  },
-  "& .MuiTabs-indicatorSpan": {
-    maxWidth: 80,
-    width: "0px",
-    backgroundColor: "#ffffff",
-  },
-});
-
-const StyledTab = styled((props) => <Tab disableRipple {...props} />)(() => ({
-  color: "#fff",
-  fontSize: "15px",
-  minHeight: "15px",
-  minWidth: "25px",
-  padding: "8px 6px",
-  borderRadius: "4px",
-  textTransform: "none",
-  // backgroundColor: getHoverInActive(),
-  "&.Mui-selected": {
-    color: "#fff",
-
-    // backgroundColor: primaryColor(),
-    backgroundColor: `hsla(0,0%,100%,.2)`,
-    transition: `background-color .3s .2s`,
-  },
-  "&.Mui-focusVisible": {
-    backgroundColor: "rgba(100, 95, 228, 0.32)",
-  },
-}));
-
-const AdminVirtualAccounts = ({value}) => {
+const AdminVirtualAccounts = ({ value }) => {
   const theme = useTheme();
   const [apiData, setApiData] = useState([]);
-  const [query, setQuery] = useState();
-    const authCtx = useContext(AuthContext);
-    const user = authCtx.user;
-    const role = user?.role;
-    console.log("value is define hear",value)
-  // const [value, setValue] = useState(0);
-  const [currentType, setCurrentType] = useState();
-  // const tabs = [
-  //   {
-  //     label: "VIRTUAL ACCOUNTS",
-  //     content: "",
-  //     icon: <ManageAccountsRoundedIcon />,
-  //   },
-  //   { label: "VIRTUAL TRANSACTIONS", content: "", icon: <CurrencyRupeeIcon /> },
-  // ];
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  //   setCurrentType(mt_tab_value[newValue]);
-  // };
+  const [query, setQuery] = useState("");
+  const authCtx = useContext(AuthContext);
+  const user = authCtx.user;
+  const role = user?.role;
+
+  console.log("Current value:", value);
+
   const searchOptionsVa = [
     { field: "AC Name", parameter: "acc_name" },
     { field: "AC Number", parameter: "acc_no" },
   ];
 
-  //   const getSingleUser = (id) => {
-  //     get(
-  //       ApiEndpoints.GET_USERS,
-  //       `page=1&paginate=10&export=&user_id=${id}`,
-  //       "",
-  //       (res) => {
-  //         const userArray = res.data;
-  //         // console.log("userArr", userArray);
-  //         setSingleUser();
-  //       },
-  //       (error) => {
-  //         apiErrorToast(error);
-  //       }
-  //     );
-  //   };
-
-  const virtualAccounts = [
+  const virtualAccountsColumns = [
     {
       name: "Created/Updated",
       selector: (row) => (
@@ -169,22 +49,18 @@ const AdminVirtualAccounts = ({value}) => {
       width: "150px",
     },
     {
-      name: <span className="mx:5">ID</span>,
+      name: "ID",
       selector: (row) => (
         <div className="blue-highlight-txt" style={{ textAlign: "left" }}>
           {row.user_id}
         </div>
       ),
-
       width: "100px",
     },
     {
       name: "User",
       selector: (row) => (
-        <div
-          style={{ textAlign: "left" }}
-          //   onClick={() => getSingleUser(row.user_id)}
-        >
+        <div style={{ textAlign: "left" }}>
           {row.establishment}
         </div>
       ),
@@ -194,41 +70,32 @@ const AdminVirtualAccounts = ({value}) => {
     {
       name: "Virtual Account",
       cell: (row) => (
-        <div style={{ textAlign: "center" }}>
-          <div style={{ color: "#473b7f" }}>{row.va}</div>
+        <div style={{ textAlign: "center", color: "#473b7f" }}>
+          {row.va}
         </div>
       ),
-
       wrap: true,
     },
     {
       name: "Allowed Accounts",
       cell: (row) => (
         <div style={{ textAlign: "left" }}>
-          {" "}
-          <div>{row.allowed_accounts}</div>
+          {row.allowed_accounts}
         </div>
       ),
       wrap: true,
       width: "300px",
     },
-    // {
-    //   name: "Status",
-    //   selector: (row) => <ActiveInactiveModal row={row} refresh={refresh} />,
-    //   center: true,
-    // },
     {
-      name: " Actions",
+      name: "Actions",
       selector: (row) => (
         <Box
           sx={{
             display: "flex",
-
             justifyContent: "flex-end",
             alignItems: "center",
           }}
         >
-          {/* edit */}
           <ActiveInactiveModal row={row} refresh={refresh} />
           <EditVirtualAccounts
             row={row}
@@ -240,7 +107,8 @@ const AdminVirtualAccounts = ({value}) => {
       right: true,
     },
   ];
-  const virtualTransactions = [
+
+  const virtualTransactionsColumns = [
     {
       name: "Created/Updated",
       selector: (row) => (
@@ -274,11 +142,9 @@ const AdminVirtualAccounts = ({value}) => {
           </div>
         </div>
       ),
-
       width: "170px",
       wrap: true,
     },
-
     {
       name: "Sender Name/Info",
       cell: (row) => (
@@ -287,7 +153,6 @@ const AdminVirtualAccounts = ({value}) => {
           <div className="light-text">{row.sender_info}</div>
         </div>
       ),
-
       wrap: true,
       width: "180px",
     },
@@ -295,8 +160,7 @@ const AdminVirtualAccounts = ({value}) => {
       name: "VA",
       cell: (row) => (
         <div style={{ textAlign: "center" }}>
-          {" "}
-          <div>{row.va_account}</div>
+          {row.va_account}
         </div>
       ),
       center: true,
@@ -306,8 +170,7 @@ const AdminVirtualAccounts = ({value}) => {
       name: "Credit Date",
       cell: (row) => (
         <div style={{ textAlign: "center" }}>
-          {" "}
-          <div>{row?.credit_date?.split(" ")[0]}</div>
+          {row?.credit_date?.split(" ")[0]}
         </div>
       ),
       center: true,
@@ -317,7 +180,7 @@ const AdminVirtualAccounts = ({value}) => {
       name: "Amount",
       cell: (row) => (
         <div style={{ textAlign: "center", fontWeight: 500, fontSize: "15px" }}>
-          <div>{currencySetter(row.amount)}</div>
+          {currencySetter(row.amount)}
         </div>
       ),
       center: true,
@@ -339,9 +202,8 @@ const AdminVirtualAccounts = ({value}) => {
       center: true,
       width: "110px",
     },
-
     {
-      name: <span className="mx-4">Response</span>,
+      name: "Response",
       selector: (row) => (
         <Box
           sx={{
@@ -350,8 +212,6 @@ const AdminVirtualAccounts = ({value}) => {
             mx: 4,
           }}
         >
-          {/* edit */}
-
           <CheckResponseModal
             row={row}
             fontSize="11px"
@@ -366,50 +226,35 @@ const AdminVirtualAccounts = ({value}) => {
       name: "Actions",
       selector: (row) => (
         <Box sx={{ display: "flex", mr: 3 }}>
-          {/* Conditional rendering based on user.id */}
-          {/* {user.role === "SAdmin" ? ( */}
-          {user.id === 1 ? (
-            <>
-              {/* Render EditVirtualTransactions when user.id is "1" */}
-              <EditVirtualTransactions row={row} refresh={refresh} />
-            </>
-          ) : null}
+          {user.id === 1 && <EditVirtualTransactions row={row} refresh={refresh} />}
         </Box>
       ),
       right: true,
-    }
-    
+    },
   ];
+
+  const refreshFunc = () => {
+    setQuery("");
+    if (refresh) refresh();
+  };
 
   return (
     <Grid container>
+      {/* Header */}
       <Grid
         item
         md={12}
         sm={12}
         xs={12}
         sx={{
-          // width: "100%",
-          // background:"#4056A1" ,
-          backgroundImage: `linear-gradient(90deg, #0077c0 0%, #00aaff 100%);`,
+          backgroundImage: `linear-gradient(90deg, #0077c0 0%, #00aaff 100%)`,
           maxHeight: "60px",
           borderTopRightRadius: "4px",
           borderTopLeftRadius: "4px",
         }}
-      >
-        {/* <CustomTabs tabs={tabs} value={value} onChange={handleChange} /> */}
-        {/* <StyledTabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          variant="fullWidth"
-          scrollButtons="auto"
-          aria-label="full width tabs example"
-        >
-          <StyledTab label="Virtual Accounts" value={2} />
-          <StyledTab label="Virtual Transactions" value={3} />
-        </StyledTabs> */}
-      </Grid>
+      ></Grid>
+
+      {/* Refresh Button for Mobile */}
       <Grid container>
         <Grid
           item
@@ -420,22 +265,18 @@ const AdminVirtualAccounts = ({value}) => {
             display: { md: "none", sm: "none", xs: "flex" },
             justifyContent: "end",
             alignItems: "center",
-            flexDirection: { md: "row" },
             pr: 1,
           }}
         >
-          {/*  */}
           <RefreshComponent
             className="refresh-icon-table"
-            onClick={() => {
-              refresh();
-            }}
+            onClick={refreshFunc}
           />
         </Grid>
-        {/* 2  virtual accounts*/}
-        { value===3&&
-        <Grid item md={12} sm={12} xs={12}>
-         
+
+        {/* Virtual Accounts */}
+        {value === 3 && (
+          <Grid item md={12} sm={12} xs={12}>
             <ApiPaginateSearch
               showSearch={true}
               actionButtons={
@@ -452,66 +293,52 @@ const AdminVirtualAccounts = ({value}) => {
                     mt: { md: 0, xs: 2, sm: 2 },
                   }}
                 >
-                  {/* <RefreshComponent
-                    className="refresh-icon-table"
-                    onClick={() => {
-                      refresh();
-                    }}
-                  /> */}
+                  {/* Additional action buttons can be added here if needed */}
                 </Grid>
               }
               apiEnd={ApiEndpoints.VIRTUAL_ACCS}
-              // searchOptions={searchOptions}
               setQuery={setQuery}
-              columns={virtualAccounts}
+              columns={virtualAccountsColumns}
               apiData={apiData}
               setApiData={setApiData}
               tableStyle={CustomStyles}
-              queryParam={query ? query : ""}
+              queryParam={query}
               returnRefetch={(ref) => {
                 refresh = ref;
               }}
               isFilterAllowed={true}
               filterComponent={
                 <FilterCard
-                  bottomMargin={-1}
+                 
                   showSearch={false}
                   ifUsernameFilter
                   setQuery={setQuery}
                   query={query}
-                  clearHookCb={(cb) => {
-                    refreshFilter = cb;
-                  }}
                   refresh={refresh}
                   actionButtons={
-                    <>
-                      <Tooltip title="refresh">
-                        <IconButton
-                          aria-label="refresh"
-                          sx={{
-                            width: "30px",
-                            color: "#0F52BA",
-                            ml: -1,
-                          }}
-                          onClick={() => {
-                            refreshFunc(setQuery);
-                          }}
-                        >
-                          <CachedIcon className="refresh-purple " />
-                        </IconButton>
-                      </Tooltip>
-                    </>
+                    <Tooltip title="Refresh">
+                      <IconButton
+                        aria-label="refresh"
+                        sx={{
+                          width: "30px",
+                          color: "#0F52BA",
+                          ml: -1,
+                        }}
+                        onClick={refreshFunc}
+                      >
+                        <CachedIcon className="refresh-purple" />
+                      </IconButton>
+                    </Tooltip>
                   }
-                  />
-                }
+                />
+              }
             />
-         
-        </Grid>
-}
-        {/* 3  virtual transactions*/}
-        {value===4&&
-        <Grid item md={12} sm={12} xs={12}>
-         
+          </Grid>
+        )}
+
+        {/* Virtual Transactions */}
+        {value === 4 && (
+          <Grid item md={12} sm={12} xs={12}>
             <ApiPaginateSearch
               showSearch={true}
               actionButtons={
@@ -527,24 +354,25 @@ const AdminVirtualAccounts = ({value}) => {
                     pr: 2,
                     mt: { md: 0, xs: 2, sm: 2 },
                   }}
-                ></Grid>
+                >
+                  {/* Additional action buttons can be added here if needed */}
+                </Grid>
               }
               apiEnd={ApiEndpoints.VIRTUAL_TRANSACTIONS}
               searchOptions={searchOptionsVa}
               setQuery={setQuery}
-              columns={virtualTransactions}
+              columns={virtualTransactionsColumns}
               apiData={apiData}
               setApiData={setApiData}
               tableStyle={CustomStyles}
-              queryParam={query ? query : ""}
+              queryParam={query}
               returnRefetch={(ref) => {
                 refresh = ref;
               }}
               isFilterAllowed={true}
               filterComponent={
                 <FilterCard
-                  topMargin={-1}
-                  bottomMargin={-1}
+                 
                   showSearch={false}
                   ifBeneKycStatus
                   ifSenderNameFilter
@@ -553,35 +381,27 @@ const AdminVirtualAccounts = ({value}) => {
                   ifdateFilter
                   setQuery={setQuery}
                   query={query}
-                  clearHookCb={(cb) => {
-                    refreshFilter = cb;
-                  }}
                   refresh={refresh}
                   actionButtons={
-                    <>
-                      <Tooltip title="refresh">
-                        <IconButton
-                          aria-label="refresh"
-                          sx={{
-                            width: "30px",
-                            color: "#0F52BA",
-
-                            ml: -1,
-                          }}
-                          onClick={() => {
-                            refreshFunc(setQuery);
-                          }}
-                        >
-                          <CachedIcon className="refresh-purple " />
-                        </IconButton>
-                      </Tooltip>
-                    </>
+                    <Tooltip title="Refresh">
+                      <IconButton
+                        aria-label="refresh"
+                        sx={{
+                          width: "30px",
+                          color: "#0F52BA",
+                          ml: -1,
+                        }}
+                        onClick={refreshFunc}
+                      >
+                        <CachedIcon className="refresh-purple" />
+                      </IconButton>
+                    </Tooltip>
                   }
                 />
               }
             />
-         
-        </Grid>}
+          </Grid>
+        )}
       </Grid>
     </Grid>
   );
