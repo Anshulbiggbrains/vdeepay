@@ -53,8 +53,7 @@ const AdminWalletBalanceComponent = ({
             item.balance = data;
            
           }
-          // if(item.name==="Api Balance"){
-          // setApiBal(item.balance);}
+        setApiBal(item)
         });
         setWalletData(newData);
         // setApiBal(newData);
