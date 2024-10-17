@@ -2433,7 +2433,7 @@ div.second {
 .icon-box::before {
   content: "";
   position: absolute;
-  background: #e1f0fa;
+  background: #FFC8C3;
   right: -60px;
   top: -40px;
   width: 100px;
@@ -2464,6 +2464,8 @@ div.second {
   margin-top: 0.7rem !important;
   line-height: 28px;
   margin-bottom: 0;
+  
+  
 }
 .icon-box:hover .box-para {
   color: #fff;
