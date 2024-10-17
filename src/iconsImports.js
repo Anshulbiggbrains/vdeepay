@@ -83,7 +83,7 @@ import water_drop_invert_svg from "./assets/svg-invert/water_drop.svg";
 import mobile_recharge from "./assets/mobileRec.png";
 import m_recharge from "./assets/recharge.png";
 import irctc from "./assets/irctc.png";
-import qr_img from "./assets/qrCode.svg";
+import qr_img from "./assets/qrCode.png";
 import aadharAtm from "./assets/atm.webp";
 import money_t from "./assets/moneyT.png";
 import join_us from "./assets/joinus.webp";
