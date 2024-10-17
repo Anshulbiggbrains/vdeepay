@@ -11,7 +11,7 @@ const MainPage = () => {
       {/* not using currently */}
       {/* <ContactusModal /> */}
       <Outlet />
-      <ChatBox />
+      {/* <ChatBox /> */}
       <Footer />
     </div>
   );

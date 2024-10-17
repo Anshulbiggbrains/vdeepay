@@ -6,8 +6,6 @@ import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../iconsImports";
@@ -18,7 +16,7 @@ import { loginPage1 } from "../iconsImports";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-
+import MenuIcon from "@mui/icons-material/Menu";
 // Change color on scroll
 const theme2 = {
   background: "rgba(255, 255, 255, 0)",
@@ -28,7 +26,7 @@ const theme2 = {
 };
 
 const theme = {
-  background: 'linear-gradient(to right, #7fb4f9, #ee5f5f)',
+  background: "linear-gradient(to right, #7fb4f9, #ee5f5f)",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
   color: "#000",
 };
@@ -55,15 +53,23 @@ ElevationScroll.propTypes = {
 // Menu items
 const pagesLg = [
   { navItems: "ABOUT US", to: "/about-us", id: "about-us", sName: "aboutSec" },
-  { navItems: "OUR SERVICES", to: "/our-services", id: "our-services", sName: "servicesSec" },
-  // { navItems: "OUR PARTNERS", to: "/our-partners", id: "our-partners", sName: "partnerSec" },
-  { navItems: "CONTACT US", to: "/contact-us", id: "contact-us", sName: "contactSec" },
+  {
+    navItems: "OUR SERVICES",
+    to: "/our-services",
+    id: "our-services",
+    sName: "servicesSec",
+  },
+  {
+    navItems: "CONTACT US",
+    to: "/contact-us",
+    id: "contact-us",
+    sName: "contactSec",
+  },
 ];
-
+const loginPage = { navItems: "LOGIN/SIGN UP", to: "/login", sName: "" };
 const pagesSm = [
   { navItems: "ABOUT US", to: "/about-us", sName: "aboutSec" },
   { navItems: "OUR SERVICES", to: "/our-services", sName: "servicesSec" },
-  // { navItems: "OUR PARTNERS", to: "/our-partners", sName: "partnerSec" },
   { navItems: "CONTACT US", to: "/contact-us", sName: "contactSec" },
   { navItems: "LOGIN/SIGN UP", to: "/login", sName: "" },
 ];
@@ -100,15 +106,20 @@ export default function Navbar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar  sx={{ width: '100%' }}>
-          <Toolbar sx={{ justifyContent: { lg: "center", md: "none", sm: "space-between" }, background: "linear-gradient(to right, #7fb4f9, #ee5f5f)" }}>
+        <AppBar sx={{ width: "100%" }}>
+          <Toolbar
+            sx={{
+              justifyContent: "space-between", // Adjusted to space-between for logo and button positioning
+              background: "linear-gradient(to right, #7fb4f9, #ee5f5f)",
+            }}
+          >
+            {/* Logo on the left */}
             <Typography
               variant="h6"
               noWrap
               component="a"
               href="/"
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -123,13 +134,13 @@ export default function Navbar(props) {
             >
               <LogoComponent />
             </Typography>
+
             <Typography
               variant="h5"
               noWrap
               component="a"
               href=""
               sx={{
-                mr: 2,
                 display: { xs: "flex", md: "none" },
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -145,7 +156,95 @@ export default function Navbar(props) {
             >
               <img src={loginPage1} width="140px" alt="logo" />
             </Typography>
-            <Box sx={{ display: { xs: "flex", md: "none", sm: "flex" }, justifyContent: { xs: "right", sm: "flex-end" } }}>
+
+            {/* Center Menu Items */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {pagesLg.map((item) => (
+                <MenuItem
+                  key={item.to}
+                  onClick={() => {
+                    if (getEnv() === "MoneyOddr") {
+                      handleClickScroll(item.id);
+                    } else {
+                      navigate(item.to);
+                    }
+                  }}
+                >
+                  <Link className="navLinks">{item.navItems}</Link>
+                </MenuItem>
+              ))}
+              {/* {process.env.REACT_APP_TITLE !== "MoneyOddr" && (
+                <Box
+                  component="div"
+                  sx={{
+                    textAlign: "center",
+                    mt: 1,
+                    mb: 3,
+                  }}
+                >
+                  <IconButton
+                    aria-label="delete"
+                    sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}
+                  >
+                    <FacebookRoundedIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="delete"
+                    sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}
+                  >
+                    <InstagramIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="delete"
+                    sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}
+                  >
+                    <TwitterIcon />
+                  </IconButton>
+                </Box>
+              )} */}
+            </Box>
+
+            {/* Login Button on the right */}
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Button
+                sx={{
+                  background: "linear-gradient(to right, #7fb4f9, #ee5f5f)",
+                  color: "#fff",
+                  borderRadius: "25px",
+                  padding: "10px 20px",
+                  display: "flex",
+                  alignItems: "center",
+                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)",
+                  },
+                }}
+                onClick={() => navigate("/login")}
+              >
+                {loginPage.navItems}
+              </Button>
+            </Box>
+
+            {/* Mobile Menu Icon */}
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                justifyContent: "flex-end",
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -166,43 +265,19 @@ export default function Navbar(props) {
                 onClose={handleCloseNavMenu}
               >
                 {pagesSm.map((item) => (
-                  <MenuItem key={item.to} onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    key={item.to}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      background: "linear-gradient(to right, #7fb4f9, #ee5f5f)",
+                    }}
+                  >
                     <Link to={item.to} className="navLinks">
                       {item.navItems}
                     </Link>
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
-            <Box sx={{ display: { xs: "none", md: "flex" }, justifyContent: "end" }}>
-              {pagesLg.map((item) => (
-                <MenuItem
-                  key={item.to}
-                  onClick={() => {
-                    if (getEnv() === "MoneyOddr") {
-                      handleClickScroll(item.id);
-                    } else {
-                      navigate(item.to);
-                    }
-                  }}
-                >
-                  <Link className="navLinks">{item.navItems}</Link>
-                </MenuItem>
-              ))}
-              {process.env.REACT_APP_TITLE !== "MoneyOddr" && (
-                <Box component="div" sx={{ textAlign: env === "MoneyOddr" ? "center" : "left", mt: 1, mb: 3 }}>
-                  <IconButton aria-label="delete" sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}>
-                    <FacebookRoundedIcon />
-                  </IconButton>
-                  <IconButton aria-label="delete" sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}>
-                    <InstagramIcon />
-                  </IconButton>
-                  <IconButton aria-label="delete" sx={{ mt: 1, marginRight: "0.5rem", color: "#fff" }}>
-                    <TwitterIcon />
-                  </IconButton>
-       
-                </Box>
-              )}
             </Box>
           </Toolbar>
         </AppBar>

@@ -21,7 +21,11 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box } from "@mui/system";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginPage, loginPage1, LoginPageIllustratorImg } from "../iconsImports";
+import {
+  loginPage,
+  loginPage1,
+  LoginPageIllustratorImg,
+} from "../iconsImports";
 import { Icon } from "@iconify/react";
 import Marquee from "react-fast-marquee";
 import ForgotPass from "../modals/ForgotPass";
@@ -128,7 +132,6 @@ const LoginPage = () => {
       return false;
     }
   };
-
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -273,26 +276,24 @@ const LoginPage = () => {
       )}
       {/* Left Column - Hidden on medium and smaller screens */}
       <Hidden mdDown>
-      <Grid
-        item
-        xs={12}
-        md={7}
-        lg={7}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: 9,
-          backgroundImage: `url(${LoginPageIllustratorImg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center', 
-          backgroundRepeat: 'no-repeat',
-          height: "100vh", 
-          width: "100%",
-        }}
-      >
-        
-        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          lg={7}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: 9,
+            backgroundImage: `url(${LoginPageIllustratorImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "100vh",
+            width: "100%",
+          }}
+        ></Grid>
       </Hidden>
 
       {/* Right Column - Always visible */}
@@ -307,29 +308,41 @@ const LoginPage = () => {
           justifyContent: "center",
           padding: 9,
           my: "auto",
-          maxHeight: "80vh"
+          maxHeight: "80vh",
         }}
       >
         <Box sx={{}}>
-          <Box
-            component="img"
-            src={loginPage1}
-            alt="admin dash"
-            sx={{
-              maxWidth: "56%",
-              // maxHeight: "46%",
-              maxHeight: "80vh",
-              objectFit: "cover",
-              mb: 4,
-            }}
-          />
+          <Button>
+            <Box
+              component="img"
+              src={loginPage1}
+              alt="admin dash"
+              sx={{
+                maxWidth: "56%",
+                // maxHeight: "46%",
+                maxHeight: "80vh",
+                objectFit: "cover",
+                mb: 4,
+              }}
+              onClick={() => navigate("/")}
+            />
+          </Button>
           <Loader loading={loading} />
           <Box component="form" id="contact" onSubmit={handleClick}>
             {!isOtpField && !isOtpField ? (
               <Grid container spacing={0.5} sx={{ mb: 6 }}>
                 <Grid item xs={12} sx={{ mb: 2 }}>
                   <FormControl sx={{ width: "100%" }}>
-                  <Typography fullWidth sx={{ display:"flex",justifyContent:"left", fontWeight:"bold"}}>Username</Typography>
+                    <Typography
+                      fullWidth
+                      sx={{
+                        display: "flex",
+                        justifyContent: "left",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Username
+                    </Typography>
                     {/* <TextField autoComplete="off"
                       placeholder="Enter your Mobile Number"
                       name="username"
@@ -358,7 +371,8 @@ const LoginPage = () => {
                         },
                       }}
                     /> */}
-                    <TextField autoComplete="off"
+                    <TextField
+                      autoComplete="off"
                       // label="Mobile"
                       placeholder="Enter your Mobile Number"
                       // id="mob"
@@ -370,10 +384,11 @@ const LoginPage = () => {
                       error={!isMobv}
                       helperText={!isMobv ? "Enter valid Mobile" : ""}
                       sx={{
-                        borderRadius: '50px',
-                        '& .MuiOutlinedInput-root': {
-                          borderRadius: '50px',
-                      }}}
+                        borderRadius: "50px",
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: "50px",
+                        },
+                      }}
                       onChange={(e) => {
                         setIsMobv(PATTERNS.MOBILE.test(e.target.value));
                         if (e.target.value === "") setIsMobv(true);
@@ -382,10 +397,11 @@ const LoginPage = () => {
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton
-                             
-                            >
-                             <Icon icon="mdi:account-outline" style={{ color: "#292D32" }} />
+                            <IconButton>
+                              <Icon
+                                icon="mdi:account-outline"
+                                style={{ color: "#292D32" }}
+                              />
                             </IconButton>
                           </InputAdornment>
                         ),
@@ -405,12 +421,22 @@ const LoginPage = () => {
 
                 <Grid item xs={12} sx={{ mt: 2 }}>
                   <FormControl fullWidth variant="outlined" margin="normal">
-                    <Typography fullWidth sx={{ display:"flex",justifyContent:"left", fontWeight:"bold"}}>Password</Typography>
+                    <Typography
+                      fullWidth
+                      sx={{
+                        display: "flex",
+                        justifyContent: "left",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Password
+                    </Typography>
                     <Controller
                       name="password"
                       control={control}
                       render={({ field }) => (
-                        <TextField autoComplete="off"
+                        <TextField
+                          autoComplete="off"
                           {...field}
                           placeholder="Enter Your Password"
                           type={showPassword ? "text" : "password"}
@@ -419,9 +445,10 @@ const LoginPage = () => {
                           // error={!!errors.password}
                           error={!isPassV}
                           sx={{
-                            borderRadius: '50px',
-                            '& .MuiOutlinedInput-root': {
-                            borderRadius: '50px',},
+                            borderRadius: "50px",
+                            "& .MuiOutlinedInput-root": {
+                              borderRadius: "50px",
+                            },
                           }}
                           helperText={
                             // errors.password ? errors.password.message : ""
@@ -434,7 +461,6 @@ const LoginPage = () => {
                             if (setPassword) setPassword(e.target.value);
                           }}
                           InputProps={{
-                           
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
@@ -477,7 +503,7 @@ const LoginPage = () => {
                       marginTop: -5,
                     }}
                   >
-                  <ForgotPass />
+                    <ForgotPass />
                   </FormControl>
                 </Grid>
 
@@ -529,7 +555,7 @@ const LoginPage = () => {
                       width: "100%",
                       // mt: 2,
                       // marginLeft:3,
-                      borderRadius:6,
+                      borderRadius: 6,
                       color: "#fff",
                       backgroundColor: "#4253F0",
                     }}
@@ -540,32 +566,58 @@ const LoginPage = () => {
                   </Button>
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>
-                {/* <Divider 
+                  {/* <Divider 
                   sx={{
                     height: "5px",
                     color: "black",
                     border: "none"
                   }}
                 /> */}
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", my: 2, width: "90%", mx: "auto" }}>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
-                      <Typography sx={{ mx: 2, }}>OR</Typography>
-                      <Divider sx={{ flexGrow: 1, height: "2px", backgroundColor: "black", border: "none", color: "black"}} />
-                    </Box>
-                    {/* npm i @fvilers/disable-react-devtools */}
-
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      my: 2,
+                      width: "90%",
+                      mx: "auto",
+                    }}
+                  >
+                    <Divider
+                      sx={{
+                        flexGrow: 1,
+                        height: "2px",
+                        backgroundColor: "black",
+                        border: "none",
+                        color: "black",
+                      }}
+                    />
+                    <Typography sx={{ mx: 2 }}>OR</Typography>
+                    <Divider
+                      sx={{
+                        flexGrow: 1,
+                        height: "2px",
+                        backgroundColor: "black",
+                        border: "none",
+                        color: "black",
+                      }}
+                    />
+                  </Box>
+                  {/* npm i @fvilers/disable-react-devtools */}
                 </Grid>
                 <Grid item xs={12} sx={{ mt: 0 }}>
                   <Button
                     // type="submit"
                     form="contact"
                     variant="contained"
-                    onClick={()=>{navigate("/sign-up")}}
+                    onClick={() => {
+                      navigate("/sign-up");
+                    }}
                     sx={{
                       width: "100%",
                       // mt: 2,
                       // marginLeft:3,
-                      borderRadius:6,
+                      borderRadius: 6,
                       color: "#fff",
                       backgroundColor: "#FE5100", //"#4253F0", "#D48628"
                     }}
@@ -579,8 +631,7 @@ const LoginPage = () => {
                   item
                   xs={12}
                   sx={{ mt: 0, display: "flex", justifyContent: "right" }}
-          >
-                </Grid>
+                ></Grid>
               </Grid>
             ) : (
               <VerifyMpinLogin

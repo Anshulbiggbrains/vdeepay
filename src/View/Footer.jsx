@@ -1,6 +1,13 @@
 import React from "react";
 import { Box, Grid, Container, Typography } from "@mui/material";
-import { facebook, insta, linkdin, loginPage1, Logo, twitter } from "../iconsImports";
+import {
+  facebook,
+  insta,
+  linkdin,
+  loginPage1,
+  Logo,
+  twitter,
+} from "../iconsImports";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -228,12 +235,12 @@ const Footer = () => {
               <Typography sx={{ color: "#fff", fontSize: "14px", mt: 1 }}>
                 <span className="mx-1">© Copyright 2023</span>
                 {process.env.REACT_APP_TITLE === "VdeePay"
-                  ? "MobiFast"
+                  ? "LINKSTECH "
                   : process.env.REACT_APP_TITLE === "PaisaKart"
                   ? "PEHEKART WALLET (OPC)"
                   : process.env.REACT_APP_TITLE}
                 <span className="mx-1">
-                  Solutions Pvt Ltd. All Rights Reserve
+                  Services Pvt Ltd. All Rights Reserve
                 </span>
               </Typography>
               <Typography sx={{ color: "#fff", fontSize: "14px", mt: 0.5 }}>
