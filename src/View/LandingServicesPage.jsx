@@ -27,7 +27,7 @@ const LandingServicesPage = () => {
       sx={{ paddingBottom: "none !important" }}
       id="our-services"
     >
-      <Grid xs={12} className="servicePageBg">
+      <Grid xs={12} sm={6}className="servicePageBg1">
         <Box
           component="div"
           className="pageHead"
@@ -36,9 +36,9 @@ const LandingServicesPage = () => {
             marginTop: "-3px",
           }}
         >
-          Our Services
+          {/* Our Services */}
         </Box>
-        {envName === "MoneyOddr" ? (
+        {/* {envName === "MoneyOddr" ? (
           <>
             <div className="landingPageSubHeading px-5">
               Unlock new possibilities for your business and boost your earnings
@@ -55,7 +55,7 @@ const LandingServicesPage = () => {
               We have exciting services for you on our application
             </div>
           </>
-        )}
+        )} */}
       </Grid>
       {/* <Container maxWidth="lg" className="sectionBreake" sx={{ pb: 10 }}> */}
       <Container maxWidth="lg" sx={{ pb: 10, mt: 10 }}>
@@ -300,7 +300,7 @@ const LandingServicesPage = () => {
             md={6}
             sx={{ display: { md: "block", sm: "none", xs: "none" } }}
           >
-            <img src={qrCode_img} alt="qrCode img " width="80%"></img>
+            <img src={qrCode_img} alt="qrCode img " width="80%" ></img>
           </Grid>
         </Grid>
         <Grid container maxWidth="lg" className="bottom2top">
