@@ -71,10 +71,12 @@ const LandingServicesPage = () => {
           >
             <span className="icon">
               <StayCurrentPortraitIcon
-                sx={{
-                  // color: secondaryColor(),
-                  fontSize: "2.2rem",
-                }}
+                sx={
+                  {
+                    // color: secondaryColor(),
+                    fontSize: "2.2rem",
+                  }
+                }
                 className="actual-icon"
               />
             </span>

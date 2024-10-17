@@ -875,7 +875,7 @@ const PaymentReceipt = () => {
                   border: "2px solid #90CAF9",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                   fontSize: "1rem",
-                  mt: 4,
+                  mt: 3,
                   fontWeight: 600,
                 }}
               >
@@ -1031,14 +1031,9 @@ const PaymentReceipt = () => {
                 </Box>
               </Grid>
 
-              <Grid
-                className="hide-on-print"
-                mt={3}
-                sx={{ textAlign: "right", mr: 1, fontSize: "13px" }}
-              >
+              <Grid mt={3} sx={{ textAlign: "right", mr: 1, fontSize: "12px" }}>
                 <div>
                   <Button
-                    className="hide-on-print"
                     variant="contained"
                     color="primary"
                     startIcon={<PrintIcon />}
@@ -1054,6 +1049,9 @@ const PaymentReceipt = () => {
                       "&:hover": {
                         backgroundColor: "#1565C0",
                       },
+                      "@media print": {
+                        display: "none",
+                      },
                     }}
                   >
                     Print
@@ -1067,7 +1065,7 @@ const PaymentReceipt = () => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 color: "#0D47A1",
-                mt: 5,
+                mt: 6,
               }}
             >
               <Typography
