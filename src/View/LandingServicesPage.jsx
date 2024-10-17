@@ -27,7 +27,7 @@ const LandingServicesPage = () => {
       sx={{ paddingBottom: "none !important" }}
       id="our-services"
     >
-      <Grid xs={12} className="servicePageBg1">
+      <Grid xs={12} sm={6}className="servicePageBg1">
         <Box
           component="div"
           className="pageHead"
