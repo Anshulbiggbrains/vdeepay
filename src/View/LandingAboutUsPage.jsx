@@ -65,7 +65,7 @@ const LandingAboutUsPage = () => {
   }, []);
   return (
     <div id="about-us " className="aboutUs">
-      <Grid container sx={{ mt: 5 }} className="builSecurity_bg">
+      <Grid container className="builSecurity_bg">
         {/* about us */}
         <Grid md={12} xs={12}>
           <Typography
@@ -348,7 +348,7 @@ const LandingAboutUsPage = () => {
         )}
 
         {/* what we do */}
-        <Container maxWidth="lg" sx={{ mb: 1, mt: 10 }} className="bottom2top">
+        <Container maxWidth="lg" sx={{ mt: 10 }} className="bottom2top">
           <div className="landingPageHeadings ">
             {envName === "MoneyOddr" ? "Why Choose Us" : "What We Do"}
           </div>
