@@ -523,11 +523,9 @@ const LoginPage = () => {
                       marginTop: -5,
                     }}
                   >
-                  </FormControl>
-                  
                   <ForgotPass />
+                  </FormControl>
                 </Grid>
-
                 <ReCAPTCHA
                   sitekey={process.env.REACT_APP_SITE_KEY}
                   ref={captchaRef}
