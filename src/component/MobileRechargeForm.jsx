@@ -155,19 +155,21 @@ console.log("operator is ",operator)
         rechargeType = "DTH";
       }
 
-      const data = {
-        number: title === "Prepaid" ? form.mobile.value : undefined,
-        param1: title === "Postpaid" ? form.mobile.value : undefined,
-        operator:
-          operatorCode 
-            ? operatorCode
-            : numberinfo && numberinfo.operator,
-        amount: form.amount.value,
-        type: rechargeType,
-        pf: "WEB",
-        latitude: userLat || undefined,
-        longitude: userLong || undefined,
-      };
+      const number = (type === "mobile")
+      ? (title === "Prepaid" ? form.mobile.value : undefined)
+      : (type === "dth" ? customerId : undefined);
+    
+    const data = {
+      number,  // This will be assigned based on the conditions above
+      param1: title === "Postpaid" ? form.mobile.value : undefined,
+      operator: operatorCode ? operatorCode : (numberinfo && numberinfo.operator),
+      amount: form.amount.value,
+      type: rechargeType,
+      pf: "WEB",
+      latitude: userLat || undefined,
+      longitude: userLong || undefined,
+    };
+    
 
       setData(data);
       setModalVisible(true);
@@ -480,6 +482,7 @@ console.log("operator is ",operator)
                 {modalVisible && (
                   <EnterMpinModal
                     data={data}
+                    customerId={customerId}
                     setModalVisible={setModalVisible}
                     setSuccessRechage={setSuccessRechage}
                     apiEnd={ApiEndpoints.PREPAID_RECHARGE}

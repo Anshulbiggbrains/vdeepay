@@ -23,12 +23,14 @@ import PortBeneficiaries from "../modals/PortBeneficiaries";
 const BeneTableComponent = ({
   ben,
   index,
+  type,
   mobile,
   remitterStatus,
   getRemitterStatus,
   dmtValue,
   view,
 }) => {
+  console.log("dmtvalue is define here ",)
   return (
     <TableRow key={index}>
       {/* Avatar Column */}
@@ -90,7 +92,7 @@ const BeneTableComponent = ({
             rem_number={mobile}
             remitterStatus={remitterStatus}
             getRemitterStatus={getRemitterStatus}
-            dmtValue={dmtValue}
+            type={dmtValue}
           />
         )}
       </TableCell>
@@ -105,7 +107,7 @@ const BeneTableComponent = ({
             rem_number={mobile}
             rem_details={remitterStatus}
             apiEnd={
-              dmtValue === "dmt1"
+              type === "dmt1"
                 ? ApiEndpoints.DMR_MONEY_TRANSFER
                 : ApiEndpoints.DMT2_MT
             }
@@ -123,7 +125,7 @@ const BeneTableComponent = ({
             rem_number={mobile}
             rem_details={remitterStatus}
             apiEnd={
-              dmtValue === "dmt1"
+              type === "dmt1"
                 ? ApiEndpoints.DMR_MONEY_TRANSFER
                 : ApiEndpoints.DMT2_MT
             }
@@ -136,7 +138,7 @@ const BeneTableComponent = ({
           />
           <PortBeneficiaries
             ben={ben}
-            dmtValue={dmtValue}
+            dmtValue={type}
             remitterStatus={remitterStatus}
             getRemitterStatus={getRemitterStatus}
             view={view}

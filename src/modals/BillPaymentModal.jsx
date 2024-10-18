@@ -29,6 +29,7 @@ const style = {
 
 const BillPaymentModal = ({
   billDetails,
+  amount,
   setBillDetails,
   fetchBill,
   endpt,
@@ -37,7 +38,7 @@ const BillPaymentModal = ({
   operatorId,
   params,
   operatorName,
-  amount,
+  
   changeFetchToPay = false,
   amountValue = "",
   parametersData,
@@ -94,6 +95,7 @@ const BillPaymentModal = ({
       latitude: location.lat,
       longitude: location.long,
       mpin: mpin,
+      amount:amount,
       param1:
         billDetails && billDetails.billNumber
           ? billDetails.billNumber

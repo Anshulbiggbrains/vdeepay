@@ -55,7 +55,9 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
   const [selectedCard, setSelectedCard] = useState(null); 
   const [searchTerm, setSearchTerm] = useState("");
   const [operatorIcon,setOperatorIcon] = useState()
+  const [amount ,setAmmount]=useState()
   const operatorRef = useRef();
+  console.log("amount is define here",amount)
 
   const handleSubmit = (event) => {
     event.preventDefault(); 
@@ -75,6 +77,7 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
       latitude: location.lat,
       longitude: location.long,
       operator: operatorId,
+ 
     };
     params.forEach((item, index) => {
       if (item && item !== "") {
@@ -93,6 +96,8 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
         setFetchRequest,
         (res) => {
           setBillDetails(res.data.data);
+          setAmmount(res.data.data.dueAmount
+          )
           okSuccessToast(
             res.data.message.param1
               ? res.data.message.param1[0]
@@ -541,6 +546,7 @@ console.log("oppp",opName);
             setModalVisible={setModalVisible}
             operatorId={operatorId}
             operatorName={opName}
+            amount={amount}
             successRecharge={successRecharge}
             setSuccessRechage={setSuccessRechage}
             showSuccess={showSuccess}
