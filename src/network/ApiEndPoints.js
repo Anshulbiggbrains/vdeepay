@@ -1,5 +1,6 @@
 // export const BASE_URL = "https://api.impsguru.com/";
-export const BASE_URL = "https://uat.impsguru.com/";
+// export const BASE_URL = "https://uat.impsguru.com/";
+export const BASE_URL = "https://api.vdeepay.com";
 // export const BASE_URL = "http://192.168.1.14/impsguru-php/";
 
 const ApiEndpoints = {

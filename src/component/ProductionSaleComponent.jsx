@@ -332,8 +332,8 @@ const ProductionSaleComponent = ({
             }}
           />
         </Typography>
-        
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        {(user.role === "Admin") &&
+        (<Box sx={{ display: "flex", alignItems: "center" }}>
     <Typography
       sx={{
         fontWeight: 500,
@@ -354,7 +354,7 @@ const ProductionSaleComponent = ({
     inputProps={{ 'aria-label': 'controlled' }}
     />
      
-  </Box>
+  </Box>)}
       </Grid>
 
       <Grid container>
