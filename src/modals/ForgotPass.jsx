@@ -36,6 +36,7 @@ const ForgotPass = ({ refresh }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     const data = {
       username: form.username.value,
