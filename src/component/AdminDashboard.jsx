@@ -75,7 +75,7 @@ const AdminDashboard = ({
       // ml: { lg: "0", md: "0", xs: "0" },
       // mr: { lg: "1.5%", md: 0, xs: 0 },
     }}>
-          <TrafficSourcesChart transactionData={transactionData}/>
+          <TrafficSourcesChart transactionData={txnData}/>
         </Grid>
 ):(  <Grid
   item
@@ -120,7 +120,7 @@ const AdminDashboard = ({
         ? "This Month's"
         : ""}
       Transactions
-      <CachedOutlinedIcon
+      {/* <CachedOutlinedIcon
         className="ms-2 rotate-on-hover"
         sx={{
           transform: "scale(1)",
@@ -133,7 +133,9 @@ const AdminDashboard = ({
             getTxnData();
           }
         }}
-      />
+      /> */}
+      
+      <TrafficSourcesChart transactionData={txnData}/>
     </Typography>
   </Grid>
   <Grid
