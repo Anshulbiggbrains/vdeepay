@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const AdminTripleChart = ({data}) => {
+const AdminTripleChart = ({data, asmData}) => {
   const [chartData, setChartData] = useState();
   const [chartDates, setChartDates] = useState();
   const [todayData, setTodayData] = useState();
@@ -30,16 +30,24 @@ const AdminTripleChart = ({data}) => {
   const [thisData, setThisData] = useState();
 
   useEffect(() => {
+    if(!asmData){
     setTodayData(data && data.map((item) => item.Today));
     setLastData(data && data.map((item) => item.Last));
     setThisData(data && data.map((item) => item.This));
     setChartDates(data && data.map((item) => item.service));
+    }else{
+      setTodayData(data && data.map((item) => item.primaryToday));
+      setLastData(data && data.map((item) => item.primaryLast));
+      setThisData(data && data.map((item) => item.primaryThis));
+      setChartDates(data && data.map((item) => item.name));
+    }
   }, [data]);
   // }, [graphData]);
 
   const data1 = {
     labels: chartDates && chartDates,
-    datasets: [
+    datasets: 
+    [
       {
         data: todayData && todayData,
         fill: true,
@@ -58,54 +66,46 @@ const AdminTripleChart = ({data}) => {
         data: lastData && lastData,
         fill: true,
         backgroundColor: ["rgba(255, 204, 86, 0.385)"],
-        borderColor: [
-          "rgb(255, 99, 132)",
-          // "rgb(255, 159, 64)",
-          // "rgb(255, 205, 86)",
-          // "rgb(75, 192, 192)",
-          // "rgb(54, 162, 235)",
-          // "rgb(153, 102, 255)",
-          // "rgb(201, 203, 207)",
-        ],
+        borderColor: ["rgb(255, 99, 132)"],
         borderWidth: 1,
       }
     ],
   };
 
-  const data2 = {
-    labels: chartDates && chartDates,
-    datasets: [
-      {
-        data: todayData && todayData,
-        fill: true,
-        backgroundColor: ["rgba(255, 99, 133, 0.385)"],
-        borderColor: ["rgb(255, 99, 132)"],
-        borderWidth: 1,
-      },
-      {
-        data: thisData && thisData,
-        fill: true,
-        backgroundColor: ["rgba(255, 160, 64, 0.385)"],
-        borderColor: ["rgb(255, 159, 64)"],
-        borderWidth: 1,
-      },
-      {
-        data: lastData && lastData,
-        fill: true,
-        backgroundColor: ["rgba(255, 204, 86, 0.385)"],
-        borderColor: [
-          "rgb(255, 99, 132)",
-          // "rgb(255, 159, 64)",
-          // "rgb(255, 205, 86)",
-          // "rgb(75, 192, 192)",
-          // "rgb(54, 162, 235)",
-          // "rgb(153, 102, 255)",
-          // "rgb(201, 203, 207)",
-        ],
-        borderWidth: 1,
-      }
-    ],
-  };
+  // const data2 = {
+  //   labels: chartDates && chartDates,
+  //   datasets: [
+  //     {
+  //       data: todayData && todayData,
+  //       fill: true,
+  //       backgroundColor: ["rgba(255, 99, 133, 0.385)"],
+  //       borderColor: ["rgb(255, 99, 132)"],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       data: thisData && thisData,
+  //       fill: true,
+  //       backgroundColor: ["rgba(255, 160, 64, 0.385)"],
+  //       borderColor: ["rgb(255, 159, 64)"],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       data: lastData && lastData,
+  //       fill: true,
+  //       backgroundColor: ["rgba(255, 204, 86, 0.385)"],
+  //       borderColor: [
+  //         "rgb(255, 99, 132)",
+  //         // "rgb(255, 159, 64)",
+  //         // "rgb(255, 205, 86)",
+  //         // "rgb(75, 192, 192)",
+  //         // "rgb(54, 162, 235)",
+  //         // "rgb(153, 102, 255)",
+  //         // "rgb(201, 203, 207)",
+  //       ],
+  //       borderWidth: 1,
+  //     }
+  //   ],
+  // };
 
   const options = {
     maintainAspectRatio: false,

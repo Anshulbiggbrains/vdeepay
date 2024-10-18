@@ -6,24 +6,11 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const TrafficSourcesChart = ({transactionData}) => {
-  console.log("This is a transaction data in traffic comp", transactionData)
 
   // const successCount = transactionData.reduce((acc, item) => acc + item.success, 0);
   // const pendingCount = transactionData.reduce((acc, item) => acc + item.pending, 0);
   // const failedCount = transactionData.reduce((acc, item) => acc + item.failed, 0);
   // const totalCount = successCount + pendingCount + failedCount;
-
-  console.log("This is your mapped data", 
-    transactionData.map((item) => (
-      {
-      label: item.name,
-      data: [parseInt(item.percent)],
-      backgroundColor: [item.bgColor],
-      borderWidth: 5,
-      hoverOffset: 4
-      }
-    ))
-  )
 
   const data = {
     // labels: ['Success', 'Pending', 'Failed', 'Total'],
