@@ -290,10 +290,30 @@ const LoginPage = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            height: "100vh",
+            ObjectFit: "contained",
+            height: "auto",
             width: "100%",
           }}
         ></Grid>
+        {/* <Grid
+          item
+          xs={12}
+          md={7}
+          lg={7}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: 9,
+            backgroundImage: `url(${LoginPageIllustratorImg})`,
+            backgroundSize: "cover", // Use 'cover' or '100%' depending on your needs
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "100vh", // Set a specific height for the Grid
+            width: "100%",
+          }}
+      ></Grid> */}
+
       </Hidden>
 
       {/* Right Column - Always visible */}
@@ -320,9 +340,9 @@ const LoginPage = () => {
               sx={{
                 maxWidth: "56%",
                 // maxHeight: "46%",
-                maxHeight: "80vh",
-                objectFit: "cover",
-                mb: 4,
+                maxHeight: "100vh",
+                objectFit: "contain",
+                mb: 8,
               }}
               onClick={() => navigate("/")}
             />
@@ -503,8 +523,9 @@ const LoginPage = () => {
                       marginTop: -5,
                     }}
                   >
-                    <ForgotPass />
                   </FormControl>
+                  
+                  <ForgotPass />
                 </Grid>
 
                 <ReCAPTCHA

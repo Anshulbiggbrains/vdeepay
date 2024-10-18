@@ -6,7 +6,7 @@ import successVdo from "./assets/video/checkmark.mp4";
 import failedVdo from "./assets/video/exclaimation.mp4";
 import smallLogo from "./assets/small_logo.jpeg";
 import outlet_reg_img from "./assets/outletreg.png";
-import LoginPageIllustrator from "./assets/LoginPageSideIllustrator.jpg";
+import LoginPageIllustrator from "./assets/LoginPageSideIllustrator.png";
 
 //
 import bbps from "./assets/bbps.png";
