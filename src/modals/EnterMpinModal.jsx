@@ -28,6 +28,7 @@ const style = {
 
 const EnterMpinModal = ({
   data,
+  customerId,
   setModalVisible,
   setSuccessRechage,
   view,

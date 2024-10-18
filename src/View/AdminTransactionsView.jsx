@@ -698,7 +698,7 @@ const AdminTransactionsView = () => {
     {
       name: "Actions",
       selector: (row) => <ChangeStatusModal row={row} refresh={refresh} />,
-      width: "100px",
+      width: "160px",
       center: true,
     },
   ];

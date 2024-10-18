@@ -93,13 +93,14 @@ const DmrAddBeneficiaryModal = ({
     } else {
       if (mpin !== "" && viewMpin) {
         data = {
-          number: rem_mobile && rem_mobile,
-          ben_acc: form.acc_no.value.toUpperCase(),
+          rem_mobile: rem_mobile && rem_mobile,
+          account_number: form.acc_no.value.toUpperCase(),
           ben_id: user.username,
+          bank_id: bankId,
           ifsc: ifscVal,
           latitude: loc.lat,
           longitude: loc.long,
-          ben_name: form.name.value,
+          name: form.name.value,
           pf: "WEB",
           mpin: mpin && mpin,
         };
@@ -120,13 +121,14 @@ const DmrAddBeneficiaryModal = ({
       postJsonData(
         apiEnd,
         data = {
-          number: rem_mobile && rem_mobile,
-          ben_acc: form.acc_no.value.toUpperCase(),
+          rem_mobile: rem_mobile && rem_mobile,
+          account_number: form.acc_no.value.toUpperCase(),
           ben_id: user.username,
           ifsc: ifscVal,
+          bank_id: bankId,
           latitude: loc.lat,
           longitude: loc.long,
-          ben_name: form.name.value,
+          name: form.name.value,
           pf: "WEB",
           mpin: mpin && mpin,
         },
@@ -159,6 +161,7 @@ const DmrAddBeneficiaryModal = ({
           ben_acc: form.acc_no.value.toUpperCase(),
           ben_id: user.username,
           ifsc: ifscVal,
+          bank_id: bankId,
           latitude: loc.lat,
           longitude: loc.long,
           ben_name: form.name.value,

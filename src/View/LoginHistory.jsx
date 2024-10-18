@@ -11,6 +11,7 @@ import ApiEndpoints from "../network/ApiEndPoints";
 import { CustomStyles } from "../component/CustomStyle";
 import { android2, macintosh2, windows2, linux2 } from "../iconsImports";
 import AuthContext from "../store/AuthContext";
+import { wrap } from "gsap";
 let refresh;
 const LoginHistory = () => {
   const [apiData, setApiData] = useState([]);
@@ -19,31 +20,23 @@ const LoginHistory = () => {
   const user = authCtx?.user;
   const columns = [
     {
-      name: "ID",
-      selector: (row) => <div className="blue-highlight-txt">{row.id}</div>,
-      width: "70px",
+      name: "User ",
+      selector: (row) => <>{user.establishment}</>,
     },
     {
-      name: "User Id",
-      selector: (row) => <>{user.name}</>,
-      center: true,
-    },
-    {
-      name: "Created At",
+      name: "Login At",
       selector: (row) => (
         <div>
           {ddmmyy(row.created_at)} {dateToTime(row.created_at)}
         </div>
       ),
-      center: true,
     },
     {
       name: "Login Ip",
       selector: (row) => row.ip,
-      center: true,
     },
     {
-      name: "Device",
+      name: "Login Device",
       selector: (row) => {
         let icon;
 
@@ -90,14 +83,17 @@ const LoginHistory = () => {
               alignItems: "center",
               fontSize: "13px",
               textAlign: "justify",
+              gap: 2,
             }}
           >
             {icon}
-            {/* <Typography>{row.device}</Typography> */}
+            <Typography>{row.device}</Typography>
           </Box>
         );
       },
-      center: true,
+      width: "560px",
+      wrap: true,
+      center: false,
     },
   ];
 

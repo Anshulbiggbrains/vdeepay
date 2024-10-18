@@ -89,14 +89,14 @@ Contact Us!
                   <Card
                     sx={{
                       width: "100%",
-                      borderRadius:"12px",
+                      borderRadius: "12px",
                       textAlign: "center",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
-'&:hover': {
-          transform: 'scale(1.05)',
-          boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-}
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
+                      },
                     }}
                   >
                     <LocationOnIcon
@@ -139,13 +139,13 @@ Contact Us!
                     sx={{
                       width: "100%",
                       textAlign: "center",
-                      borderRadius:"12px",
+                      borderRadius: "12px",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
-                      '&:hover': {
-                        transform: 'scale(1.05)',
+                      "&:hover": {
+                        transform: "scale(1.05)",
                         boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-                      }
+                      },
                     }}
                   >
                     <PhoneAndroidIcon
@@ -188,13 +188,13 @@ Contact Us!
                     sx={{
                       width: "100%",
                       textAlign: "center",
-                      borderRadius:"12px",
+                      borderRadius: "12px",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
                       transition: "transform 0.3s, box-shadow 0.3s",
-        '&:hover': {
-          transform: 'scale(1.05)',
-          boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-        },
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
+                      },
                     }}
                   >
                     <EmailIcon
@@ -226,187 +226,187 @@ Contact Us!
                   </Card>
                 </Grid>
               </Grid>
-              
-// {/* <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
-//   {[{ title: 'OUR MAIN OFFICE', content: getFirmAddress(),  },
-//     { title: 'PHONE NUMBER', content: getFirmContact(),  },
-//     { title: 'EMAIL', content: getFirmEmail(),}
-//   ].map((item, index) => (
-//     <Grid
-//       key={index}
-//       lg={4}
-//       md={4}
-//       sm={12}
-//       xs={12}
-//       sx={{ px: 5, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
-//     >
-//       <Card className="hexagon-card">
-//         {/* <div className="icon">{item.icon}</div> */}
-//         <div className="card-title">{item.title}</div>
-//         <Box className="card-content">
-//           {item.content}
-//         </Box>
-//       </Card>
-//     </Grid>
-//   ))}
-// </Grid> */}
-//               <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
-//   <Grid
-//     lg={4}
-//     md={4}
-//     sm={12}
-//     xs={12}
-//     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
-//   >
-//     <Card
-//       sx={{
-//         width: "100%",
-//         textAlign: "center",
-//         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-//         borderRadius: 3,
-//         transition: "transform 0.3s, box-shadow 0.3s",
-//         '&:hover': {
-//           transform: 'scale(1.05)',
-//           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-//         },
-//       }}
-//     >
-//       <LocationOnIcon
-//         sx={{
-//           color: primaryColor(),
-//           fontSize: "3rem",
-//           mt: 3,
-//         }}
-//       />
-//       <Typography
-//         variant="h6"
-//         sx={{
-//           fontWeight: 600,
-//           mt: 1,
-//           mb: 2,
-//         }}
-//       >
-//         OUR MAIN OFFICE
-//       </Typography>
-//       <Box
-//         sx={{
-//           textAlign: "center",
-//           color: "#fff",
-//           p: 3,
-//           backgroundColor: primaryColor(),
-//           borderRadius: '0 0 3px 3px',
-//           height: "150px",
-//         }}
-//       >
-//         {getFirmAddress()}
-//       </Box>
-//     </Card>
-//   </Grid>
 
-//   <Grid
-//     lg={4}
-//     md={4}
-//     sm={12}
-//     xs={12}
-//     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
-//   >
-//     <Card
-//       sx={{
-//         width: "100%",
-//         textAlign: "center",
-//         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-//         borderRadius: 3,
-//         transition: "transform 0.3s, box-shadow 0.3s",
-//         '&:hover': {
-//           transform: 'scale(1.05)',
-//           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-//         },
-//       }}
-//     >
-//       <PhoneAndroidIcon
-//         sx={{
-//           color: primaryColor(),
-//           fontSize: "3rem",
-//           mt: 3,
-//         }}
-//       />
-//       <Typography
-//         variant="h6"
-//         sx={{
-//           fontWeight: 600,
-//           mt: 1,
-//           mb: 2,
-//         }}
-//       >
-//         PHONE NUMBER
-//       </Typography>
-//       <Box
-//         sx={{
-//           textAlign: "center",
-//           color: "#fff",
-//           p: 3,
-//           backgroundColor: primaryColor(),
-//           borderRadius: '0 0 3px 3px',
-//           height: "150px",
-//         }}
-//       >
-//         {getFirmContact()}
-//       </Box>
-//     </Card>
-//   </Grid>
+              // {/* <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
+              //   {[{ title: 'OUR MAIN OFFICE', content: getFirmAddress(),  },
+              //     { title: 'PHONE NUMBER', content: getFirmContact(),  },
+              //     { title: 'EMAIL', content: getFirmEmail(),}
+              //   ].map((item, index) => (
+              //     <Grid
+              //       key={index}
+              //       lg={4}
+              //       md={4}
+              //       sm={12}
+              //       xs={12}
+              //       sx={{ px: 5, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
+              //     >
+              //       <Card className="hexagon-card">
+              //         {/* <div className="icon">{item.icon}</div> */}
+              //         <div className="card-title">{item.title}</div>
+              //         <Box className="card-content">
+              //           {item.content}
+              //         </Box>
+              //       </Card>
+              //     </Grid>
+              //   ))}
+              // </Grid> */}
+              //               <Grid container sx={{ mt: { lg: 18, md: 18, sm: 18, xs: 30 } }}>
+              //   <Grid
+              //     lg={4}
+              //     md={4}
+              //     sm={12}
+              //     xs={12}
+              //     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
+              //   >
+              //     <Card
+              //       sx={{
+              //         width: "100%",
+              //         textAlign: "center",
+              //         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+              //         borderRadius: 3,
+              //         transition: "transform 0.3s, box-shadow 0.3s",
+              //         '&:hover': {
+              //           transform: 'scale(1.05)',
+              //           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
+              //         },
+              //       }}
+              //     >
+              //       <LocationOnIcon
+              //         sx={{
+              //           color: primaryColor(),
+              //           fontSize: "3rem",
+              //           mt: 3,
+              //         }}
+              //       />
+              //       <Typography
+              //         variant="h6"
+              //         sx={{
+              //           fontWeight: 600,
+              //           mt: 1,
+              //           mb: 2,
+              //         }}
+              //       >
+              //         OUR MAIN OFFICE
+              //       </Typography>
+              //       <Box
+              //         sx={{
+              //           textAlign: "center",
+              //           color: "#fff",
+              //           p: 3,
+              //           backgroundColor: primaryColor(),
+              //           borderRadius: '0 0 3px 3px',
+              //           height: "150px",
+              //         }}
+              //       >
+              //         {getFirmAddress()}
+              //       </Box>
+              //     </Card>
+              //   </Grid>
 
-//   <Grid
-//     lg={4}
-//     md={4}
-//     sm={12}
-//     xs={12}
-//     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
-//   >
-//     <Card
-//       sx={{
-//         width: "100%",
-//         textAlign: "center",
-//         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-//         borderRadius: 3,
-//         transition: "transform 0.3s, box-shadow 0.3s",
-//         '&:hover': {
-//           transform: 'scale(1.05)',
-//           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
-//         },
-//       }}
-//     >
-//       <EmailIcon
-//         sx={{
-//           color: primaryColor(),
-//           fontSize: "3rem",
-//           mt: 3,
-//         }}
-//       />
-//       <Typography
-//         variant="h6"
-//         sx={{
-//           fontWeight: 600,
-//           mt: 1,
-//           mb: 2,
-//         }}
-//       >
-//         EMAIL
-//       </Typography>
-//       <Box
-//         sx={{
-//           textAlign: "center",
-//           color: "#fff",
-//           p: 3,
-//           backgroundColor: primaryColor(),
-//           borderRadius: '0 0 3px 3px',
-//           height: "150px",
-//         }}
-//       >
-//         {getFirmEmail()}
-//       </Box>
-//     </Card>
-//   </Grid>
-// </Grid>
+              //   <Grid
+              //     lg={4}
+              //     md={4}
+              //     sm={12}
+              //     xs={12}
+              //     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
+              //   >
+              //     <Card
+              //       sx={{
+              //         width: "100%",
+              //         textAlign: "center",
+              //         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+              //         borderRadius: 3,
+              //         transition: "transform 0.3s, box-shadow 0.3s",
+              //         '&:hover': {
+              //           transform: 'scale(1.05)',
+              //           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
+              //         },
+              //       }}
+              //     >
+              //       <PhoneAndroidIcon
+              //         sx={{
+              //           color: primaryColor(),
+              //           fontSize: "3rem",
+              //           mt: 3,
+              //         }}
+              //       />
+              //       <Typography
+              //         variant="h6"
+              //         sx={{
+              //           fontWeight: 600,
+              //           mt: 1,
+              //           mb: 2,
+              //         }}
+              //       >
+              //         PHONE NUMBER
+              //       </Typography>
+              //       <Box
+              //         sx={{
+              //           textAlign: "center",
+              //           color: "#fff",
+              //           p: 3,
+              //           backgroundColor: primaryColor(),
+              //           borderRadius: '0 0 3px 3px',
+              //           height: "150px",
+              //         }}
+              //       >
+              //         {getFirmContact()}
+              //       </Box>
+              //     </Card>
+              //   </Grid>
+
+              //   <Grid
+              //     lg={4}
+              //     md={4}
+              //     sm={12}
+              //     xs={12}
+              //     sx={{ px: 2, mt: { lg: 0, md: 0, sm: 3, xs: 3 } }}
+              //   >
+              //     <Card
+              //       sx={{
+              //         width: "100%",
+              //         textAlign: "center",
+              //         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+              //         borderRadius: 3,
+              //         transition: "transform 0.3s, box-shadow 0.3s",
+              //         '&:hover': {
+              //           transform: 'scale(1.05)',
+              //           boxShadow: "0px 6px 30px rgba(0, 0, 0, 0.15)",
+              //         },
+              //       }}
+              //     >
+              //       <EmailIcon
+              //         sx={{
+              //           color: primaryColor(),
+              //           fontSize: "3rem",
+              //           mt: 3,
+              //         }}
+              //       />
+              //       <Typography
+              //         variant="h6"
+              //         sx={{
+              //           fontWeight: 600,
+              //           mt: 1,
+              //           mb: 2,
+              //         }}
+              //       >
+              //         EMAIL
+              //       </Typography>
+              //       <Box
+              //         sx={{
+              //           textAlign: "center",
+              //           color: "#fff",
+              //           p: 3,
+              //           backgroundColor: primaryColor(),
+              //           borderRadius: '0 0 3px 3px',
+              //           height: "150px",
+              //         }}
+              //       >
+              //         {getFirmEmail()}
+              //       </Box>
+              //     </Card>
+              //   </Grid>
+              // </Grid>
 
               // <></>
             )}
@@ -428,8 +428,8 @@ Contact Us!
                   sx={{
                     p: 5,
                     mb: 10,
-                    backgroundColor:"#ffd1ad",
-                    borderRadius:"15px",
+                    backgroundColor: "#ffd1ad",
+                    borderRadius: "15px",
                     boxShadow:
                       "rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em",
                   }}
@@ -561,129 +561,136 @@ Contact Us!
                     </Button>
                   </Box> */}
                   <Box
-  component="form"
-  id="contact"
-  sx={{ width: "100%", padding: 3, borderRadius: 2, boxShadow: 3 }}
-  onSubmit={handleSubmit}
->
-  <Grid container spacing={2}>
-    <Grid item lg={6} md={6} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          id="c_fname"
-          label="Full Name"
-          variant="outlined"
-          type="text"
-          value={name}
-          onChange={onInputChange}
-          required
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
-    <Grid item lg={6} md={6} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          id="c_mobile"
-          label="Mobile Number"
-          variant="outlined"
-          error={!isMobv}
-          required
-          helperText={!isMobv ? "Enter a valid mobile" : ""}
-          onChange={(e) => {
-            setIsMobv(PATTERNS.MOBILE.test(e.target.value));
-            if (e.target.value === "") setIsMobv(true);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "+" || e.key === "-") {
-              e.preventDefault();
-            }
-            if (e.target.value.length === 10 && e.key.toLowerCase() !== "backspace") {
-              e.preventDefault();
-            }
-          }}
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
+                    component="form"
+                    id="contact"
+                    sx={{
+                      width: "100%",
+                      padding: 3,
+                      borderRadius: 2,
+                      boxShadow: 3,
+                    }}
+                    onSubmit={handleSubmit}
+                  >
+                    <Grid container spacing={2}>
+                      <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            id="c_fname"
+                            label="Full Name"
+                            variant="outlined"
+                            type="text"
+                            value={name}
+                            onChange={onInputChange}
+                            required
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
+                      <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            id="c_mobile"
+                            label="Mobile Number"
+                            variant="outlined"
+                            error={!isMobv}
+                            required
+                            helperText={!isMobv ? "Enter a valid mobile" : ""}
+                            onChange={(e) => {
+                              setIsMobv(PATTERNS.MOBILE.test(e.target.value));
+                              if (e.target.value === "") setIsMobv(true);
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "+" || e.key === "-") {
+                                e.preventDefault();
+                              }
+                              if (
+                                e.target.value.length === 10 &&
+                                e.key.toLowerCase() !== "backspace"
+                              ) {
+                                e.preventDefault();
+                              }
+                            }}
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
 
-    <Grid item lg={6} md={6} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          id="c_email"
-          label="Email Id"
-          variant="outlined"
-          error={!isEmailv}
-          required
-          helperText={!isEmailv ? "Enter a valid email" : ""}
-          onChange={(e) => {
-            setIsEmailv(PATTERNS.EMAIL.test(e.target.value));
-            if (e.target.value === "") setIsEmailv(true);
-          }}
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
+                      <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            id="c_email"
+                            label="Email Id"
+                            variant="outlined"
+                            error={!isEmailv}
+                            required
+                            helperText={!isEmailv ? "Enter a valid email" : ""}
+                            onChange={(e) => {
+                              setIsEmailv(PATTERNS.EMAIL.test(e.target.value));
+                              if (e.target.value === "") setIsEmailv(true);
+                            }}
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
 
-    <Grid item lg={6} md={6} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          id="c_city"
-          label="City"
-          variant="outlined"
-          required
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
-    <Grid item lg={12} md={12} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          id="c_company"
-          label="Company/Organization"
-          variant="outlined"
-          required
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
-    <Grid item lg={12} md={12} sm={12} xs={12}>
-      <FormControl fullWidth variant="outlined">
-        <TextField
-          autoComplete="off"
-          multiline
-          id="c_message"
-          rows={3}
-          label="Your Message"
-          required
-          sx={{ bgcolor: 'white' }}
-        />
-      </FormControl>
-    </Grid>
-  </Grid>
-  <Button
-    type="submit"
-    variant="contained"
-    sx={{
-      width: "100%",
-      mt: 3,
-      bgcolor: 'primary.main',
-      '&:hover': {
-        bgcolor: 'primary.dark',
-      },
-      borderRadius: 2,
-      boxShadow: 2,
-    }}
-  >
-    Submit
-  </Button>
-</Box>
-
+                      <Grid item lg={6} md={6} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            id="c_city"
+                            label="City"
+                            variant="outlined"
+                            required
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
+                      <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            id="c_company"
+                            label="Company/Organization"
+                            variant="outlined"
+                            required
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
+                      <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <FormControl fullWidth variant="outlined">
+                          <TextField
+                            autoComplete="off"
+                            multiline
+                            id="c_message"
+                            rows={3}
+                            label="Your Message"
+                            required
+                            sx={{ bgcolor: "white" }}
+                          />
+                        </FormControl>
+                      </Grid>
+                    </Grid>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        mt: 3,
+                        bgcolor: "primary.main",
+                        "&:hover": {
+                          bgcolor: "primary.dark",
+                        },
+                        borderRadius: 2,
+                        boxShadow: 2,
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </Box>
                 </Card>
               </Grid>
               {envValue !== "MoneyOddr" && (
