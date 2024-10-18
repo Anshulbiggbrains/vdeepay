@@ -195,7 +195,7 @@ const SignUp = () => {
   };
 
   return (
-    <Grid container spacing={0} sx={{ height: '97vh', overflow: 'hidden' }}>
+    <Grid container spacing={0} sx={{ height: '100vh', overflow: 'hidden' }}>
       {loading && (
         <Box
           sx={{
