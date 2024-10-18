@@ -190,12 +190,12 @@ const SettlementsView = () => {
         <div className="mx-2">
           <AddSettlementBeneficiary refresh={refresh} />
         </div>
-        <RefreshComponent
+        {/* <RefreshComponent
           className="refresh-icon-table"
           onClick={() => {
             refresh();
           }}
-        />
+        /> */}
         <div className="mx-2 ms-3">
           <FilterModal
             showSearch={false}
