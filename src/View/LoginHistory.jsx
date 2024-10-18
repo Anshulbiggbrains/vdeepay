@@ -93,7 +93,7 @@ const LoginHistory = () => {
       },
       width: "560px",
       wrap: true,
-      center: true,
+      center: false,
     },
   ];
 
