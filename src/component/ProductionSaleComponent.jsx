@@ -370,7 +370,9 @@ const ProductionSaleComponent = ({
           <Loader loading={graphRequest && !showProductTable} circleBlue />
 
           {user && (user.role === "Asm" || user.role === "Zsm") && showProductTable ? (
-            <Grid item xs={12} lg={12} sm={12} md={12}>
+            <Grid item xs={12} lg={12} sm={12} md={12}
+            sx={{ minHeight: { md: "350px", sm: "180px", xs: "180px" }}}
+            >
               {/* <ApiPaginate
                 apiEnd={ApiEndpoints.GET_RET_PROD_SALE}
                 columns={columnsProd}
@@ -385,8 +387,9 @@ const ProductionSaleComponent = ({
                 paginateServer={false}
                 paginate={false}
               /> */}
-              {/* <AdminBarChart graphData={graphData} upper={false} /> */}
+              <AdminBarChart graphData={graphData} upper={false} />
               {/* <AdminTripleChart data={tripleBarData} upper={false}/> */}
+              {/* <AdminBarChart graphData={graphData} upper={true} /> */}
             </Grid>
           ) : showMonthlyData?(
                   <MonthlyDataChart/>

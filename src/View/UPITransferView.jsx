@@ -223,8 +223,15 @@ const UPITransferView = ({resetView}) => {
               sx={{ display: "flex", justifyContent: "center", mt: 1 }}
             >
               
-              
-               
+              <Card
+                  className="card-css"
+                  sx={{
+                    width: "100%",
+                    px: 2,
+                    py: 2,
+                    mt: 2,
+                  }}
+                >               
               <Grid
                 item
                 md={12}
@@ -468,6 +475,7 @@ const UPITransferView = ({resetView}) => {
                   </Grid>
                 </Box>
               </Grid>
+              </Card>
               {infoFetchedMob && infoFetchedMob && 
 
               <Grid

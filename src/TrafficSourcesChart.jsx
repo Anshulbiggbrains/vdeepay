@@ -5,7 +5,7 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const TrafficSourcesChart = ({transactionData}) => {
+const TrafficSourcesChart = ({transactionData=[]}) => {
 
   // const successCount = transactionData.reduce((acc, item) => acc + item.success, 0);
   // const pendingCount = transactionData.reduce((acc, item) => acc + item.pending, 0);
