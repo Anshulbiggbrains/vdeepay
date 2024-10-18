@@ -7,58 +7,60 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const TrafficSourcesChart = ({transactionData=[]}) => {
 
-// {transactionData &&
-//   transactionData.map((item) => {
-//           console.log("apidata is defin here",item)
-//       })}
-  console.log("This is your transaction data in traffic comp", transactionData);
-  const successCount = transactionData.reduce((acc, item) => acc + item.success, 0);
-  const pendingCount = transactionData.reduce((acc, item) => acc + item.pending, 0);
-  const failedCount = transactionData.reduce((acc, item) => acc + item.failed, 0);
-  const totalCount = successCount + pendingCount + failedCount;
+  // const successCount = transactionData.reduce((acc, item) => acc + item.success, 0);
+  // const pendingCount = transactionData.reduce((acc, item) => acc + item.pending, 0);
+  // const failedCount = transactionData.reduce((acc, item) => acc + item.failed, 0);
+  // const totalCount = successCount + pendingCount + failedCount;
 
   const data = {
-    labels: ['Success', 'Pending', 'Failed', 'Total'],
-    // datasets: transactionData.map((item) => {
+    // labels: ['Success', 'Pending', 'Failed', 'Total'],
+    // labels: transactionData.map((item) => item.name),
+    datasets: 
+    transactionData.map((item) => (
+      {
+      label: item.name,
+      data: [item.percent],
+      backgroundColor: [item.bgColor, 'rgba(211, 211, 211, 1)'],
+      borderWidth: 5,
+      hoverOffset: 4
+      }
+    ))
+    // datasets: [
     //   {
-    //     label: 
-    //   }
-    // })
-    datasets: [
-      {
-        label: 'Total',
-        data: [100],
-        // data: [totalCount, 0], 
-        backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(211, 211, 211, 1)'], 
-        borderWidth:5,
-        hoverOffset: 4,
-      },
-      {
-        label: 'Pending',
-        // data: [5, 95],
-        data: [pendingCount, totalCount - pendingCount], 
-        backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(211, 211, 211, 1)'],
-        // backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-        borderWidth: 3,
-        hoverOffset: 4,
-      },
-      {
-        label: 'Failed',
-        // data: [10, 90],
-        data: [failedCount, totalCount - failedCount],  
-        backgroundColor: ['rgba(255, 159, 64, 1)', 'rgba(211, 211, 211, 1)'], 
-        borderWidth:5,
-        hoverOffset: 4,
-      },
-      {
-        label: 'Success',
-        // data: [75, 25],
-        data: [successCount, totalCount - successCount],  
-        backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(211, 211, 211, 1)'], 
-        borderWidth:5,
-      },
+    //     label: 'Total',
+    //     data: [100],
+    //     // data: [totalCount, 0], 
+    //     data: filteredObject.Total,
+    //     backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(211, 211, 211, 1)'], 
+    //     borderWidth:5,
+    //     hoverOffset: 4,
+    //   },
+    //   {
+    //     label: 'Pending',
+    //     data: [5, 95],
+    //     // data: [pendingCount, totalCount - pendingCount], 
+    //     backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(211, 211, 211, 1)'],
+    //     // backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+    //     borderWidth: 3,
+    //     hoverOffset: 4,
+    //   },
+    //   {
+    //     label: 'Failed',
+    //     data: [10, 90],
+    //     // data: [failedCount, totalCount - failedCount],  
+    //     backgroundColor: ['rgba(255, 159, 64, 1)', 'rgba(211, 211, 211, 1)'], 
+    //     borderWidth:5,
+    //     hoverOffset: 4,
+    //   },
+    //   {
+    //     label: 'Success',
+    //     data: [75, 25],
+    //     // data: [successCount, totalCount - successCount],  
+    //     backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(211, 211, 211, 1)'], 
+    //     borderWidth:5,
+    //   },
       
-    ],
+    // ],
   };
 
   const options = {

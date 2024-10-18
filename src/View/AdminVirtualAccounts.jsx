@@ -219,9 +219,7 @@ const AdminVirtualAccounts = ({ value }) => {
       name: "Actions",
       selector: (row) => (
         <Box sx={{ display: "flex", mr: 3 }}>
-          {user.id === 1 && (
-            <EditVirtualTransactions row={row} refresh={refresh} />
-          )}
+          {user.role === "SAdmin" && <EditVirtualTransactions row={row} refresh={refresh} />}
         </Box>
       ),
       right: true,

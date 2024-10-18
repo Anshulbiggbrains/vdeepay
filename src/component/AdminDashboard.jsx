@@ -75,7 +75,7 @@ const AdminDashboard = ({
       // ml: { lg: "0", md: "0", xs: "0" },
       // mr: { lg: "1.5%", md: 0, xs: 0 },
     }}>
-          <TrafficSourcesChart transactionData={txnData} getTxnData={getTxnData}/>
+          <TrafficSourcesChart transactionData={txnData}/>
         </Grid>
 ):(  <Grid
   item
@@ -104,39 +104,10 @@ const AdminDashboard = ({
       flexDirection: { xs: "column", md: "row" },
     }}
   >
-    <Typography
-      style={{
-        fontWeight: "500",
-        fontSize: "18px",
-        display: "flex",
-        alignContent: "center",
-      }}
-    >
-      {graphDuration === "TODAY"
-        ? "Today's"
-        : graphDuration === "LAST"
-        ? "Last Month's"
-        : graphDuration === "THIS"
-        ? "This Month's"
-        : ""}
-      Transactions
-      <CachedOutlinedIcon
-        className="ms-2 rotate-on-hover"
-        sx={{
-          transform: "scale(1)",
-          transition: "0.5s",
-          "&:hover": { transform: "scale(1.2)" },
-          ml: 1,
-        }}
-        onClick={() => {
-          if (getTxnData) {
-            getTxnData();
-          }
-        }}
-      />
-    </Typography>
+   
+    <TrafficSourcesChart transactionData={txnData}/>
   </Grid>
-  <Grid
+  {/* <Grid
     item
     sx={{
       alignItems: "center",
@@ -150,7 +121,7 @@ const AdminDashboard = ({
       txnData.map((item) => {
         return <RetTxnCardComponent item={item} key={item.id} />; // Ensure you have a unique key
       })}
-  </Grid>
+  </Grid> */}
 </Grid>)
 
 }

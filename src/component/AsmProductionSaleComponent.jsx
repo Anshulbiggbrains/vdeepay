@@ -414,9 +414,9 @@ const AsmProductionSaleComponent = () => {
       /> */}
       {/* <AdminBarChart graphData={[]} upper={false} /> */}
       {showPrimaryData ? 
-      <AdminTripleChart data={tripleBarData}/>
+      <AdminTripleChart data={tripleBarData} asmData={false}/>
       : 
-      <AdminTripleChart data={asmTripleBarData}/>
+      <AdminTripleChart data={asmTripleBarData} asmData={true}/>
       }
     </Grid>
   </Grid>

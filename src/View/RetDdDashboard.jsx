@@ -58,12 +58,12 @@ const[image,setImage]=useState()
       data: [
         { id: 1, name: "DMT", img: moneyl, component: DmtContainer },
         { id: 2, name: "CMS ", img: cms1, component: CMSView },
-        {
-          id: 3,
-          name: "Nepal Transfer",
-          img: nepal1,
-          component: NepalTransfer,
-        },
+        // {
+        //   id: 3,
+        //   name: "Nepal Transfer",
+        //   img: nepal1,
+        //   component: NepalTransfer,
+        // },
         {
           id: 4,
           name: "Vendor Payments",

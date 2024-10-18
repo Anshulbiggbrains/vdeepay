@@ -57,6 +57,7 @@ import { primaryColor } from "../../theme/setThemeColor";
 import { CustomStyles } from "../../component/CustomStyle";
 import FilterCard from "../../modals/FilterCard";
 import RightSidePannel from "../../component/transactions/RightSidePannel";
+import StatusDisplay from "../../StatusDisplay";
 
 // eslint-disable-next-line no-unused-vars
 let refreshFilter;
@@ -71,6 +72,7 @@ const AsmTransactionView = () => {
   const role = user?.role.toLowerCase();
   const [state, setState] = useState(false);
   const [rowData, setRowData] = useState({});
+  const [sumData, setSumData] = useState(false);
   const [showOldTransaction, setShowOldTransaction] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [request, setRequest] = useState();
@@ -617,22 +619,7 @@ const AsmTransactionView = () => {
     {
       name: "Details",
       selector: (row) => (
-        <Button
-          type="text"
-          onClick={() => {
-            setRowData(row);
-            setState(true);
-          }}
-          sx={{
-            textTransform: "none",
-            "&:hover": {
-              textDecoration: "underline",
-            },
-          }}
-          className="just-hover"
-        >
-          View
-        </Button>
+        <RightSidePannel  row={rowData} />
       ),
     },
   ];
@@ -860,6 +847,12 @@ const AsmTransactionView = () => {
         <Grid xs={12} sx={{ pl: { xs: 0, md: 2 } }}>
           <ApiPaginateSearch
             showSearch={true}
+            totalCard={
+              <>
+                <StatusDisplay sumData={sumData} setSumData={setSumData} />
+
+              </>
+            }
             actionButtons={
               // <Grid
               <></>
@@ -961,6 +954,7 @@ const AsmTransactionView = () => {
             }
             searchOptions={searchOptions[`${role}`]}
             setQuery={setQuery}
+            setSumData={setSumData}
             columns={columns}
             apiData={apiData}
             setApiData={setApiData}
@@ -1064,7 +1058,7 @@ const AsmTransactionView = () => {
             }
           />
         </Grid>
-        <RightSidePannel state={state} setState={setState} row={rowData} />
+        {/* <RightSidePannel state={state} setState={setState} row={rowData} /> */}
       </Grid>
     );
   }
