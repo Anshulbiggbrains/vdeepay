@@ -159,7 +159,7 @@ const ChangeStatusModal = ({ row, refresh }) => {
           />
         </Tooltip>
       )}
-      <Box sx={{mt : -1}}>
+      <Box sx={{ mt: -1 }}>
         <RightSidePannel row={row} refresh={refresh} />,
       </Box>
     </Box>

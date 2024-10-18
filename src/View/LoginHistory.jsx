@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Tooltip, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
 import ApiPaginateSearch from "../component/ApiPaginateSearch";
 import { ddmmyy, dateToTime } from "../utils/DateUtils";
@@ -33,7 +33,11 @@ const LoginHistory = () => {
     },
     {
       name: "Login Ip",
-      selector: (row) => row.ip,
+      selector: (row) => (
+        <Tooltip title={row.ip}>
+          <div style={{ textAlign: "center" }}>{row.ip}</div>
+        </Tooltip>
+      ),
     },
     {
       name: "Login Device",

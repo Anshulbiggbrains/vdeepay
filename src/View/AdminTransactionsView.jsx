@@ -1073,13 +1073,13 @@ const AdminTransactionsView = () => {
             }
           />
         </Grid>
-        <RightSidePannel
+        {/* <RightSidePannel
           state={state}
           setState={setState}
           row={rowData}
           setRow={setRowData}
           // buttons={<ChangeStatusModal row={rowData} refresh={refresh} />}
-        />
+        /> */}
       </>
     );
   }
