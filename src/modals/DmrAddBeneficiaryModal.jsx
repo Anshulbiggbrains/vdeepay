@@ -123,6 +123,7 @@ const DmrAddBeneficiaryModal = ({
         data = {
           rem_mobile: rem_mobile && rem_mobile,
           account_number: form.acc_no.value.toUpperCase(),
+          bank_name: bankName,
           ben_id: user.username,
           ifsc: ifscVal,
           bank_id: bankId,
@@ -250,7 +251,7 @@ const DmrAddBeneficiaryModal = ({
           <Box sx={{ width: 400 }} className="sm_modal">
             {/* <Spinner loading={request} /> */}
             <ModalHeader
-              title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
+              title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor4"}
               handleClose={handleClose}
             />
             <Box
