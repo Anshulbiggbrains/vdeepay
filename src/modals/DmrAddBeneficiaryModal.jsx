@@ -103,6 +103,7 @@ const DmrAddBeneficiaryModal = ({
           name: form.name.value,
           pf: "WEB",
           mpin: mpin && mpin,
+        
         };
       } else {
         setViewMpin(true);
@@ -123,7 +124,6 @@ const DmrAddBeneficiaryModal = ({
         data = {
           rem_mobile: rem_mobile && rem_mobile,
           account_number: form.acc_no.value.toUpperCase(),
-          bank_name: bankName,
           ben_id: user.username,
           ifsc: ifscVal,
           bank_id: bankId,
@@ -132,6 +132,7 @@ const DmrAddBeneficiaryModal = ({
           name: form.name.value,
           pf: "WEB",
           mpin: mpin && mpin,
+            verified: type ? 0 : 0,
         },
         setRequest,
         (res) => {
@@ -243,7 +244,8 @@ const DmrAddBeneficiaryModal = ({
         size="small"
       >
         {/* <Spinner loading={request} size="small" /> */}
-        {view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
+        {(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : "Add Vendor"}
+
       </Button>
 
       <Box>
@@ -418,11 +420,10 @@ const DmrAddBeneficiaryModal = ({
                 )}
               </Grid>
             </Box>
-            {console.log("This is your type in the Add vendor folder", type)}
             <ModalFooter
               form="addbene"
               request={request}
-              btn={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
+              btn={(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : "Add Vendor"}
               disable={!isValidName || !accNoV}
               twobuttons={type  ? "Verify & Add" : false}
           

@@ -523,6 +523,7 @@ const DmtContainer = ({
 
                     {infoFetchedMob && infoFetchedMob && (
                       <Grid>
+                       
                         <TableContainer component={Paper}>
                           <Table>
                             {/* Table Head */}
@@ -760,13 +761,13 @@ const DmtContainer = ({
                         <Box
                           sx={
                             {
-                              // flex: 1, // Ensure it takes available space
-                              // maxWidth: {
-                              //   lg: "100%",
-                              //   md: "200px",
-                              //   sm: "150px",
-                              //   xs: "100%",
-                              // }, // Adjust max-width based on screen size
+                              flex: 1, // Ensure it takes available space
+                              maxWidth: {
+                                lg: "100%",
+                                md: "200px",
+                                sm: "150px",
+                                xs: "100%",
+                              }, // Adjust max-width based on screen size
                             }
                           }
                         >
