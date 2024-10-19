@@ -358,7 +358,7 @@ const DmtContainer = ({
               container
               sx={{
                 display: "flex",
-                position: "absolute",
+                // position: "absolute",
               }}
             >
               <Grid
@@ -380,8 +380,7 @@ const DmtContainer = ({
                 <Card
                   className="card-css"
                   sx={{
-                    position: "fixed",
-                    zIndex: 1,
+                    position: "absolute",
                     width: "100%",
 
                     px: 2,
@@ -445,7 +444,7 @@ const DmtContainer = ({
                         "& .MuiTextField-root": { mt: 2 },
                         objectFit: "contain",
                         overflowY: "scroll",
-                        position: "fixed",
+                        // position: "fixed",
                       }}
                     >
                       <Grid container lg={12} sm={12} xs={12}>
@@ -533,13 +532,7 @@ const DmtContainer = ({
                           position: "relative",
                         }}
                       >
-                        <TableContainer
-                          component={Paper}
-                          sx={{
-                            overflowY: "auto",
-                            maxHeight: "400px",
-                          }}
-                        >
+                        <TableContainer component={Paper}>
                           <Table>
                             <TableHead>
                               <TableRow
@@ -548,9 +541,6 @@ const DmtContainer = ({
                                   color: "#fff",
                                   fontFamily: "Poppins",
                                   borderBottom: "0.5px solid #DBDDDF",
-                                  position: "sticky",
-                                  top: 0,
-                                  zIndex: 1,
                                 }}
                               >
                                 <TableCell align="center">
@@ -782,8 +772,7 @@ const DmtContainer = ({
                       >
                         <Box
                           sx={{
-                            flex: 2,
-
+                            flex: 1,
                             maxWidth: {
                               lg: "100%",
                               md: "200px",
