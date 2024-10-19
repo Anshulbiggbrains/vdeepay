@@ -205,7 +205,7 @@ const VendorPayments = ({ resetView }) => {
             document.getElementById("acc").value = "";
             document.getElementById("acc").focus = "off";
           } else {
-            apiErrorToast("No Vendor Found! Kindly Change Account Number");
+            // apiErrorToast("No Vendor Found! Kindly Change Account Number");
           }
         } else {
           setRemitterStatus();
@@ -693,7 +693,13 @@ const VendorPayments = ({ resetView }) => {
                                     <DmrAddBeneficiaryModal
                                       rem_mobile={mobile}
                                       apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
-                                      getRemitterStatus={refreshRemitterStatus}
+                                      getRemitterStatus={
+                                        type === "express"
+                                          ? getRemitterStatus
+                                          : getRemitterStatus
+                                      }
+                                      type={type}
+                                      view="MT_View"
                                     />
                                   </TableCell>
                                 </TableRow>

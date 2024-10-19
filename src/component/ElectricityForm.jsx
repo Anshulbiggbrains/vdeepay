@@ -57,7 +57,7 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
   const [operatorIcon,setOperatorIcon] = useState()
   const [amount ,setAmmount]=useState()
   const operatorRef = useRef();
-  console.log("amount is define here",amount)
+  console.log("billDetails is define here",billDetails)
 
   const handleSubmit = (event) => {
     event.preventDefault(); 

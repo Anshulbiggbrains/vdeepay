@@ -543,7 +543,7 @@ const DmtContainer = ({
                             <TableHead>
                               <TableRow
                                 sx={{
-                                  backgroundColor: getTableHeadRowColor(),
+                                  // backgroundColor: getTableHeadRowColor(),
                                   color: "#fff",
                                   fontFamily: "Poppins",
                                   borderBottom: "0.5px solid #DBDDDF",
