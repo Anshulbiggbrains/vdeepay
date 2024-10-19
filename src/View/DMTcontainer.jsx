@@ -343,6 +343,7 @@ const DmtContainer = ({
           <Box
             style={{
               height: "90vh",
+
               alignItems: infoFetchedMob
                 ? "flex-start"
                 : user?.layout && user?.layout === 2
@@ -352,12 +353,12 @@ const DmtContainer = ({
             className="position-relative"
           >
             <Loader circleBlue loading={request} />
-            {/* <Loaders/> */}
-            {/* initial form */}
+
             <Grid
               container
               sx={{
                 display: "flex",
+                position: "absolute",
               }}
             >
               <Grid
@@ -379,10 +380,12 @@ const DmtContainer = ({
                 <Card
                   className="card-css"
                   sx={{
+                    position: "fixed",
+                    zIndex: 1,
                     width: "100%",
+
                     px: 2,
                     py: 2,
-                    mt: 2,
                   }}
                 >
                   {" "}
@@ -392,30 +395,31 @@ const DmtContainer = ({
                     !addNewRem &&
                     !verifyotp && (
                       <Grid
-                   
-                      item xs={12} sm="auto"
-                     sx={{
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "space-between",
-               mr:2,
-                   mt:1
-                     }}
-                   >
-                     <Button
-                       size="small"
-                       id="verify-btn"
-                       className="button-props"
-                       onClick={handleBack}
-                     >
-                       <span style={{ marginRight: "5px" }}>Home</span>
-                       <img
-                         src={back}
-                         alt="back"
-                         style={{ width: "18px", height: "20px" }}
-                       />
-                     </Button>
-                     </Grid>
+                        item
+                        xs={12}
+                        sm="auto"
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          mr: 2,
+                          mt: 1,
+                        }}
+                      >
+                        <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >
+                          <span style={{ marginRight: "5px" }}>Home</span>
+                          <img
+                            src={back}
+                            alt="back"
+                            style={{ width: "18px", height: "20px" }}
+                          />
+                        </Button>
+                      </Grid>
                     )}
                   <Box>
                     {!mobile ? (
@@ -441,6 +445,7 @@ const DmtContainer = ({
                         "& .MuiTextField-root": { mt: 2 },
                         objectFit: "contain",
                         overflowY: "scroll",
+                        position: "fixed",
                       }}
                     >
                       <Grid container lg={12} sm={12} xs={12}>
@@ -522,12 +527,32 @@ const DmtContainer = ({
                     )}
 
                     {infoFetchedMob && infoFetchedMob && (
-                      <Grid>
-                        <TableContainer component={Paper}>
+                      <Grid
+                        item
+                        sx={{
+                          position: "relative",
+                        }}
+                      >
+                        <TableContainer
+                          component={Paper}
+                          sx={{
+                            overflowY: "auto",
+                            maxHeight: "400px",
+                          }}
+                        >
                           <Table>
-                            {/* Table Head */}
                             <TableHead>
-                              <TableRow>
+                              <TableRow
+                                sx={{
+                                  backgroundColor: getTableHeadRowColor(),
+                                  color: "#fff",
+                                  fontFamily: "Poppins",
+                                  borderBottom: "0.5px solid #DBDDDF",
+                                  position: "sticky",
+                                  top: 0,
+                                  zIndex: 1,
+                                }}
+                              >
                                 <TableCell align="center">
                                   Remitter Details
                                 </TableCell>
@@ -653,7 +678,6 @@ const DmtContainer = ({
                                         mr: 1,
                                       }}
                                     />
-
                                     <Box sx={{ fontWeight: "bold", ml: 1 }}>
                                       {type === "dmt2"
                                         ? remitterStatus?.bank1_limit
@@ -686,7 +710,6 @@ const DmtContainer = ({
                                         mr: 1,
                                       }}
                                     />
-
                                     <Box sx={{ fontWeight: "bold" }}>
                                       {type === "dmt2"
                                         ? 5000
@@ -703,7 +726,6 @@ const DmtContainer = ({
                                 >
                                   <DmrAddBeneficiaryModal
                                     type={type}
-                                   
                                     rem_mobile={mobile}
                                     getRemitterStatus={
                                       type === "dmt1"
@@ -720,6 +742,7 @@ const DmtContainer = ({
                                   />
                                 </TableCell>
                               </TableRow>
+                              {/* Render more rows as needed */}
                             </TableBody>
                           </Table>
                         </TableContainer>
@@ -731,7 +754,7 @@ const DmtContainer = ({
                       onSubmit={getRemitterStatusByAcc}
                       validate
                       sx={{ width: "100%" }}
-                    ></Box>
+                    />
                     {/* </Box> */}
                   </Box>
                   <DmrNumberListModal
@@ -758,17 +781,16 @@ const DmtContainer = ({
                         }}
                       >
                         <Box
-                          sx={
-                            {
-                              // flex: 1, // Ensure it takes available space
-                              // maxWidth: {
-                              //   lg: "100%",
-                              //   md: "200px",
-                              //   sm: "150px",
-                              //   xs: "100%",
-                              // }, // Adjust max-width based on screen size
-                            }
-                          }
+                          sx={{
+                            flex: 2,
+
+                            maxWidth: {
+                              lg: "100%",
+                              md: "200px",
+                              sm: "150px",
+                              xs: "100%",
+                            },
+                          }}
                         >
                           <BeneSearchBar setSearch={setSearch} />
                         </Box>
@@ -813,27 +835,24 @@ const DmtContainer = ({
                             No Beneficiary found.
                           </Typography>
                         ) : (
-                          <TableContainer sx={{ mt: 2 }}>
+                          <TableContainer
+                            sx={{
+                              mt: 2,
+                              maxHeight: "400px",
+                              overflowY: "auto",
+                            }}
+                          >
                             <Table>
-                              <TableHead
-                                sx={{
-                                  border: "none",
-                                  color: "#fff",
-                                  backgroundColor: getTableHeadRowColor(),
-                                  fontFamily: "Poppins",
-                                  paddingLeft: "8px",
-                                  minHeight: "30px", // Set minimum height
-                                  // Set maximum height
-                                  borderBottom: "0.5px solid #DBDDDF",
-                                  paddingBottom: "4px",
-                                  paddingTop: "4px",
-                                }}
-                              >
+                              <TableHead>
                                 <TableRow
                                   sx={{
-                                    // Apply max height to the row
-                                    paddingBottom: "1px",
-                                    paddingTop: "4px",
+                                    backgroundColor: getTableHeadRowColor(),
+                                    color: "#fff",
+                                    fontFamily: "Poppins",
+                                    borderBottom: "0.5px solid #DBDDDF",
+                                    position: "sticky",
+                                    top: 0,
+                                    zIndex: 1,
                                   }}
                                 >
                                   <TableCell align="center" sx={{ padding: 2 }}>
