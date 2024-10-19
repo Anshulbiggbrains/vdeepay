@@ -385,37 +385,37 @@ const DmtContainer = ({
                     mt: 2,
                   }}
                 >
-                  {" "}
                   {!infoFetchedMob &&
                     !infoFetchedMob &&
                     !addNewRem &&
                     !addNewRem &&
                     !verifyotp && (
                       <Grid
-                   
-                      item xs={12} sm="auto"
-                     sx={{
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "space-between",
-               mr:2,
-                   mt:1
-                     }}
-                   >
-                     <Button
-                       size="small"
-                       id="verify-btn"
-                       className="button-props"
-                       onClick={handleBack}
-                     >
-                       <span style={{ marginRight: "5px" }}>Home</span>
-                       <img
-                         src={back}
-                         alt="back"
-                         style={{ width: "18px", height: "20px" }}
-                       />
-                     </Button>
-                     </Grid>
+                        item
+                        xs={12}
+                        sm="auto"
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          mr: 2,
+                          mt: 1,
+                        }}
+                      >
+                        <Button
+                          size="small"
+                          id="verify-btn"
+                          className="button-props"
+                          onClick={handleBack}
+                        >
+                          <span style={{ marginRight: "5px" }}>Home</span>
+                          <img
+                            src={back}
+                            alt="back"
+                            style={{ width: "18px", height: "20px" }}
+                          />
+                        </Button>
+                      </Grid>
                     )}
                   <Box>
                     {!mobile ? (
@@ -523,6 +523,17 @@ const DmtContainer = ({
 
                     {infoFetchedMob && infoFetchedMob && (
                       <Grid>
+                        <h1
+                          style={{
+                            fontSize: "22px",
+                            fontWeight: "600",
+                            color: "#1877f2",
+                          }}
+                        >
+                          {type === "dmt1"
+                            ? "Domestic Money Transfer 1"
+                            : "Domestic Money Transfer 2"}
+                        </h1>
                         <TableContainer component={Paper}>
                           <Table>
                             {/* Table Head */}
@@ -703,7 +714,6 @@ const DmtContainer = ({
                                 >
                                   <DmrAddBeneficiaryModal
                                     type={type}
-                                   
                                     rem_mobile={mobile}
                                     getRemitterStatus={
                                       type === "dmt1"
