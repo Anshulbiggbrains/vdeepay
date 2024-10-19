@@ -251,7 +251,7 @@ const DmrAddBeneficiaryModal = ({
           <Box sx={{ width: 400 }} className="sm_modal">
             {/* <Spinner loading={request} /> */}
             <ModalHeader
-              title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor4"}
+              title={view === "MT_View" ? "Add Beneficiary" : "Add Vendor"}
               handleClose={handleClose}
             />
             <Box
@@ -418,6 +418,7 @@ const DmrAddBeneficiaryModal = ({
                 )}
               </Grid>
             </Box>
+            {console.log("This is your type in the Add vendor folder", type)}
             <ModalFooter
               form="addbene"
               request={request}
