@@ -149,12 +149,12 @@ const BeneTableComponent = ({
       {/* Delete Beneficiary Modal */}
       <TableCell align="center">
         <DeleteBeneficiaryModal
-          dmtValue={dmtValue}
+          dmtValue={type}
           bene={ben}
           mob={mobile}
           getRemitterStatus={getRemitterStatus}
           apiEnd={
-            dmtValue === "dmt1"
+            type === "dmt1"
               ? ApiEndpoints.REMOVE_BENE
               : ApiEndpoints.DMT2_REM_BENE
           }

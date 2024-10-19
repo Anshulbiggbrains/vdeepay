@@ -123,6 +123,7 @@ const DmrAddBeneficiaryModal = ({
         data = {
           rem_mobile: rem_mobile && rem_mobile,
           account_number: form.acc_no.value.toUpperCase(),
+          bank_name: bankName,
           ben_id: user.username,
           ifsc: ifscVal,
           bank_id: bankId,
@@ -417,6 +418,7 @@ const DmrAddBeneficiaryModal = ({
                 )}
               </Grid>
             </Box>
+            {console.log("This is your type in the Add vendor folder", type)}
             <ModalFooter
               form="addbene"
               request={request}

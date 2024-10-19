@@ -189,7 +189,8 @@ const VendorPayments = ({ resetView }) => {
     postJsonData(
       ApiEndpoints.GET_REMMITTER_STATUS_ACC,
       {
-        number: number,
+        // number: number,
+        number: mobile
       },
       setRequest,
       (res) => {
