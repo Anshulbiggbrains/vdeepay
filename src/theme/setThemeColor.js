@@ -136,7 +136,7 @@ export const getStatusColor = (status) => {
 
 export const getFirmAddress = () => {
   if (process.env.REACT_APP_TITLE === "VdeePay") {
-    return `Flat NO.54-A GROUND FLOOR, TYPE-11 BLOCK-5 SEC-3 DSIDC,BAWANA,NORTH WEST DELHI,DELHI-110039`;
+    return `Flat NO.54-A GROUND FLOOR, TYPE-II BLOCK-5 SEC-3 DSIDC,BAWANA,NORTH WEST DELHI,DELHI-110039`;
   }
 };
 export const getFirmContact = () => {
