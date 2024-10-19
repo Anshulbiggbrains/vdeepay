@@ -526,12 +526,7 @@ const DmtContainer = ({
                     )}
 
                     {infoFetchedMob && infoFetchedMob && (
-                      <Grid
-                        item
-                        sx={{
-                          position: "relative",
-                        }}
-                      >
+                      <Grid>
                         <TableContainer component={Paper}>
                           <Table>
                             <TableHead>
@@ -772,13 +767,13 @@ const DmtContainer = ({
                       >
                         <Box
                           sx={{
-                            flex: 1,
+                            flex: 1, // Ensure it takes available space
                             maxWidth: {
                               lg: "100%",
                               md: "200px",
                               sm: "150px",
                               xs: "100%",
-                            },
+                            }, // Adjust max-width based on screen size
                           }}
                         >
                           <BeneSearchBar setSearch={setSearch} />
