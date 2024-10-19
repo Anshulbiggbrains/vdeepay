@@ -35,7 +35,11 @@ import Loader from "../component/loading-screen/Loader";
 import BeneSearchBar from "../component/BeneSearchBar";
 import { PATTERNS } from "../utils/ValidationUtil";
 import { capitalize1 } from "../utils/TextUtil";
-import { getEnv, getTableHeadRowColor, randomColors } from "../theme/setThemeColor";
+import {
+  getEnv,
+  getTableHeadRowColor,
+  randomColors,
+} from "../theme/setThemeColor";
 import AuthContext from "../store/AuthContext";
 import OutletRegistration from "../component/OutletRegistration";
 import { mt_tab_value, PROJECTS, vendor_tab_value } from "../utils/constants";
@@ -190,7 +194,7 @@ const VendorPayments = ({ resetView }) => {
       ApiEndpoints.GET_REMMITTER_STATUS_ACC,
       {
         // number: number,
-        number: mobile
+        number: mobile,
       },
       setRequest,
       (res) => {
@@ -360,63 +364,67 @@ const VendorPayments = ({ resetView }) => {
                   marginLeft: 0,
                 }}
               >
-                                                    {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&
-                                                      <CustomTabs
-      tabs={tabs}
-      value={value}
-      onChange={handleChange}
-    />
-                                                    }
+                {!infoFetchedMob &&
+                  !infoFetchedMob &&
+                  !addNewRem &&
+                  !addNewRem &&
+                  !verifyotp &&
+                  !verifyotp && (
+                    <CustomTabs
+                      tabs={tabs}
+                      value={value}
+                      onChange={handleChange}
+                    />
+                  )}
                 <Card
                   className="card-css"
                   sx={{
-                    px: 7,
                     width: "100%",
-                    py: 3,
+                    px: 1.5,
+                    py: 1.5,
                   }}
                 >
                   <Grid
-                   
-                   item xs={12} sm="auto"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-            mr:2,
-                mt:1
-                  }}
-                >
-                  <Button
-                    size="small"
-                    id="verify-btn"
-                    className="button-props"
-                    onClick={handleBack}
+                    item
+                    xs={12}
+                    sm="auto"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mr: 2,
+                      mt: 1,
+                    }}
                   >
-                    <span style={{ marginRight: "5px" }}>Home</span>
-                    <img
-                      src={back}
-                      alt="back"
-                      style={{ width: "18px", height: "20px" }}
-                    />
-                  </Button>
-                 
-
+                    <Button
+                      size="small"
+                      id="verify-btn"
+                      className="button-props"
+                      onClick={handleBack}
+                    >
+                      <span style={{ marginRight: "5px" }}>Home</span>
+                      <img
+                        src={back}
+                        alt="back"
+                        style={{ width: "18px", height: "20px" }}
+                      />
+                    </Button>
                   </Grid>
                   {!mobile ? (
-                   <Typography
-                   sx={{
-                     fontSize: "24px",
-                     fontWeight: "bold",
-                     letterSpacing: "0.05rem",
-                     textAlign: "left",
-                     mt: 1,
-                   }}
-                 >
-                   {type == "express"
-                     ? "Express Money Transfer"
-                     : "Super Money Transfer"}
-                 </Typography>
-                    ) : null}
+                    <Typography
+                      sx={{
+                        fontSize: "24px",
+                        fontWeight: "bold",
+                        letterSpacing: "0.05rem",
+                        textAlign: "left",
+                        mt: 1,
+                      }}
+                    >
+                      {type == "express"
+                        ? "Express Money Transfer"
+                        : "Super Money Transfer"}
+                    </Typography>
+                  ) : null}
                   <Box
                     component="form"
                     id="seachRemByAcc"
@@ -439,195 +447,260 @@ const VendorPayments = ({ resetView }) => {
                       }}
                     >
                       <Grid item md={12} xs={12}>
-                        {!infoFetchedMob && !infoFetchedMob && !addNewRem && !addNewRem &&!verifyotp && !verifyotp &&(
-                          <FormControl sx={{ width: "100%" }}>
-                            <TextField
-                              autoComplete="off"
-                              label="Mobile Number"
-                              id="mobile"
-                              name="mobile"
-                              type="tel"
-                              value={mobile}
-                              size="small"
-                              required
-                              onChange={(e) => {
-                                setIsMobv(PATTERNS.MOBILE.test(e.target.value));
-                                if (e.target.value === "") {
-                                  setRemitterStatus("");
-                                  setInfoFetchedMob(false);
-                                  bene && setBene([]);
+                        {!infoFetchedMob &&
+                          !infoFetchedMob &&
+                          !addNewRem &&
+                          !addNewRem &&
+                          !verifyotp &&
+                          !verifyotp && (
+                            <FormControl sx={{ width: "100%" }}>
+                              <TextField
+                                autoComplete="off"
+                                label="Mobile Number"
+                                id="mobile"
+                                name="mobile"
+                                type="tel"
+                                value={mobile}
+                                size="small"
+                                required
+                                onChange={(e) => {
+                                  setIsMobv(
+                                    PATTERNS.MOBILE.test(e.target.value)
+                                  );
+                                  if (e.target.value === "") {
+                                    setRemitterStatus("");
+                                    setInfoFetchedMob(false);
+                                    bene && setBene([]);
 
-                                  setIsMobv(true);
-                                }
+                                    setIsMobv(true);
+                                  }
 
-                                setMobile(e.target.value);
-                                if (e.target.value.length === 9) {
-                                  setRemitterStatus("");
-                                  setInfoFetchedMob(false);
-                                  bene && setBene([]);
-                                }
-                                if (PATTERNS.MOBILE.test(e.target.value)) {
-                                  getRemitterStatus(e.target.value);
-                                }
-                              }}
-                              error={!isMobv}
-                              helperText={!isMobv ? "Enter valid Mobile" : ""}
-                              inputProps={{
-                                form: {
-                                  autocomplete: "off",
-                                },
-                                maxLength: "10",
-                              }}
-                              disabled={request && request && true}
-                            />
-                          </FormControl>
-                        )}
+                                  setMobile(e.target.value);
+                                  if (e.target.value.length === 9) {
+                                    setRemitterStatus("");
+                                    setInfoFetchedMob(false);
+                                    bene && setBene([]);
+                                  }
+                                  if (PATTERNS.MOBILE.test(e.target.value)) {
+                                    getRemitterStatus(e.target.value);
+                                  }
+                                }}
+                                error={!isMobv}
+                                helperText={!isMobv ? "Enter valid Mobile" : ""}
+                                inputProps={{
+                                  form: {
+                                    autocomplete: "off",
+                                  },
+                                  maxLength: "10",
+                                }}
+                                disabled={request && request && true}
+                              />
+                            </FormControl>
+                          )}
                       </Grid>
 
-                     
                       {infoFetchedMob && infoFetchedMob && (
-                        <>
-               
-                     
-                        <TableContainer component={Paper}>
-                        <Table >
+                        <Grid width="100%">
+                          <h1
+                            style={{
+                              fontSize: "24px",
+                              fontWeight: "600",
+                              color: "#1877f2",
+                            }}
+                          >
+                            {type == "express"
+                              ? "Express Money Transfer"
+                              : "Super Money Transfer"}
+                          </h1>
+                          <TableContainer component={Paper}>
+                            <Table>
+                              {/* Table Head */}
+                              <TableHead>
+                                <TableRow>
+                                  <TableCell align="center">
+                                    Remitter Details
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    Contact Details
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    Limit Available
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    Limit Per Transaction
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    Add Vendor
+                                  </TableCell>
+                                </TableRow>
+                              </TableHead>
 
+                              <TableBody>
+                                <TableRow>
+                                  <TableCell
+                                    sx={{
+                                      verticalAlign: "middle",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                      }}
+                                    >
+                                      <Box
+                                        component="img"
+                                        src={Name}
+                                        alt="Name"
+                                        sx={{
+                                          maxWidth: "25px",
+                                          maxHeight: "50px",
+                                          mr: 1,
+                                        }}
+                                      />
+                                      <Typography
+                                        sx={{
+                                          fontSize: "12px",
+                                          fontWeight: "600",
+                                          mt: 0.5,
+                                        }}
+                                      >
+                                        {type === "dmt2"
+                                          ? remitterStatus?.fname
+                                          : remitterStatus?.firstName}{" "}
+                                        {type === "dmt2"
+                                          ? remitterStatus?.lname
+                                          : remitterStatus?.lastName}
+                                      </Typography>
+                                    </Box>
+                                  </TableCell>
 
+                                  <TableCell
+                                    sx={{
+                                      verticalAlign: "middle",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                      }}
+                                    >
+                                      <Box
+                                        component="img"
+                                        src={Call1}
+                                        alt="Call"
+                                        sx={{
+                                          maxWidth: "25px",
+                                          maxHeight: "50px",
+                                          mr: 1,
+                                        }}
+                                      />
+                                      <Typography
+                                        sx={{
+                                          fontSize: "12px",
+                                          fontWeight: "600",
+                                          mt: 0.4,
+                                        }}
+                                      >
+                                        {remitterStatus?.mobile}
+                                      </Typography>
+                                      <BorderColorIcon
+                                        sx={{
+                                          color: "Black",
+                                          width: 15,
+                                          ml: 1,
+                                        }}
+                                        onClick={returnMoneyNew}
+                                      />
+                                    </Box>
+                                  </TableCell>
 
+                                  <TableCell
+                                    sx={{
+                                      verticalAlign: "middle",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                      }}
+                                    >
+                                      <Box
+                                        component="img"
+                                        src={LimitAcc}
+                                        alt="Limit"
+                                        sx={{
+                                          maxWidth: "25px",
+                                          maxHeight: "50px",
+                                          mr: 1,
+                                        }}
+                                      />
 
-                          {/* Table Head */}
-                          <TableHead>
-                            <TableRow>
-                              <TableCell align="center">Remitter Details</TableCell>
-                              <TableCell align="center">Contact Details</TableCell>
-                              <TableCell align="center">Limit Available</TableCell>
-                              <TableCell align="center">Limit Per Transaction</TableCell>
-                              <TableCell align="center">Add Vendor</TableCell>
-                            </TableRow>
-                          </TableHead>
-                      
-                         
-                          <TableBody>
-                          <TableRow>
-   
-     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
-       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
-         <Box
-           component="img"
-           src={Name}
-           alt="Name"
-           sx={{
-             maxWidth: "25px",
-             maxHeight: "50px",
-             mr: 1,
-           }}
-         />
-        <Typography
-                                sx={{
-                                  fontSize: "12px",
-                                  fontWeight: "600",
-                                  mt: 0.5,
-                                }}
-                              >
-                                {type === "dmt2"
-                                  ? remitterStatus?.fname
-                                  : remitterStatus?.firstName}{" "}
-                                {type === "dmt2"
-                                  ? remitterStatus?.lname
-                                  : remitterStatus?.lastName}
-                              </Typography>
-       </Box>
-     </TableCell>
-   
-    
-     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
-       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
-         <Box
-           component="img"
-           src={Call1}
-           alt="Call"
-           sx={{
-             maxWidth: "25px",
-             maxHeight: "50px",
-             mr: 1,
-           }}
-         />
-           <Typography
-                                sx={{
-                                  fontSize: "12px",
-                                  fontWeight: "600",
-                                  mt: 0.4,
-                                }}
-                              >
-                                {remitterStatus?.mobile}
-                              </Typography>
-         <BorderColorIcon
-           sx={{ color: "Black", width: 15, ml: 1 }}
-           onClick={returnMoneyNew}
-         />
-       </Box>
-     </TableCell>
-   
-   
-     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
+                                      <Box sx={{ fontWeight: "bold", ml: 1 }}>
+                                        {remitterStatus?.limitTotal}
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
 
+                                  <TableCell
+                                    sx={{
+                                      verticalAlign: "middle",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                      }}
+                                    >
+                                      <Box
+                                        component="img"
+                                        src={LimitTran}
+                                        alt="Limit"
+                                        sx={{
+                                          maxWidth: "25px",
+                                          maxHeight: "50px",
+                                          mr: 1,
+                                        }}
+                                      />
 
-       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"center" }}>
-         <Box
-           component="img"
-           src={LimitAcc}
-           alt="Limit"
-           sx={{
-             maxWidth: "25px",
-             maxHeight: "50px",
-             mr: 1,
-           }}
-         />
-       
-         <Box sx={{ fontWeight: "bold", ml: 1 }}>
-         {remitterStatus?.limitTotal}
-         </Box>
-       </Box>
-     </TableCell>
-   
-    
-     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
-       <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",justifyContent:"center" }}>
-         <Box
-           component="img"
-           src={LimitTran}
-           alt="Limit"
-           sx={{
-             maxWidth: "25px",
-             maxHeight: "50px",
-             mr: 1,
-           }}
-         />
-        
-         <Box sx={{ fontWeight: "bold" }}>
-         {remitterStatus?.limitPerTransaction}
-         </Box>
-       </Box>
-     </TableCell>
-     
+                                      <Box sx={{ fontWeight: "bold" }}>
+                                        {remitterStatus?.limitPerTransaction}
+                                      </Box>
+                                    </Box>
+                                  </TableCell>
 
-
-   
-   
-     <TableCell sx={{ verticalAlign: "middle", padding: "8px" }}>
-     <DmrAddBeneficiaryModal
-                              rem_mobile={mobile}
-                              apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
-                              getRemitterStatus={refreshRemitterStatus}
-                            />
-     </TableCell>
-   </TableRow>
-   
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                   
-                      </>
+                                  <TableCell
+                                    sx={{
+                                      verticalAlign: "middle",
+                                      padding: "8px",
+                                    }}
+                                  >
+                                    <DmrAddBeneficiaryModal
+                                      rem_mobile={mobile}
+                                      apiEnd={ApiEndpoints.ADD_BENE_EXPRESS}
+                                      getRemitterStatus={refreshRemitterStatus}
+                                    />
+                                  </TableCell>
+                                </TableRow>
+                              </TableBody>
+                            </Table>
+                          </TableContainer>
+                        </Grid>
                       )}
                     </Grid>
                   </Box>
@@ -682,7 +755,7 @@ const VendorPayments = ({ resetView }) => {
                         style={{
                           overflow: "auto",
                           height: "85vh",
-                          height: "85vh", // Fixed height to control the scrolling area
+
                           paddingBottom: "8px",
                           "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for Webkit browsers
                           msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
@@ -702,68 +775,90 @@ const VendorPayments = ({ resetView }) => {
                             No Vendor found.
                           </Typography>
                         ) : (
-                          <TableContainer sx={{mt:2,}}>
-                          <Table >
-                          <TableHead
-  sx={{
-    border: "none",
-    color: "#fff",
-    backgroundColor: getTableHeadRowColor(),
-    fontFamily: "Poppins",
-    paddingLeft: "8px",
-    minHeight: "30px", // Set minimum height
-    maxHeight: "30px", // Set maximum height
-    borderBottom: "0.5px solid #DBDDDF",
-    paddingBottom: "4px",
-    paddingTop: "4px",
-  }}
->
-  <TableRow
-    sx={{
-      maxHeight: "30px", // Apply max height to the row
-      paddingBottom: "4px",
-      paddingTop: "4px",
-    }}
-  >
-    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
-      Avatar
-    </TableCell>
-    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>Name</TableCell>
-    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>Account No</TableCell>
-    <TableCell sx={{ maxHeight: "30px", padding: "4px" }}>IFSC</TableCell>
-    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
-      Verified
-    </TableCell>
-    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
-      Actions
-    </TableCell>
-    <TableCell align="center" sx={{ maxHeight: "30px", padding: "4px" }}>
-      Delete
-    </TableCell>
-  </TableRow>
-</TableHead>
+                          <TableContainer sx={{ mt: 2 }}>
+                            <Table>
+                              <TableHead
+                                sx={{
+                                  border: "none",
+                                  color: "#fff",
+                                  backgroundColor: getTableHeadRowColor(),
+                                  fontFamily: "Poppins",
+                                  paddingLeft: "8px",
+                                  minHeight: "30px", // Set minimum height
+                                  maxHeight: "30px", // Set maximum height
+                                  borderBottom: "0.5px solid #DBDDDF",
+                                  paddingBottom: "4px",
+                                  paddingTop: "4px",
+                                }}
+                              >
+                                <TableRow
+                                  sx={{
+                                    maxHeight: "30px", // Apply max height to the row
+                                    paddingBottom: "4px",
+                                    paddingTop: "4px",
+                                  }}
+                                >
+                                  <TableCell
+                                    align="center"
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Avatar
+                                  </TableCell>
+                                  <TableCell
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Name
+                                  </TableCell>
+                                  <TableCell
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Account No
+                                  </TableCell>
+                                  <TableCell
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    IFSC
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Verified
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Actions
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    sx={{ maxHeight: "30px", padding: "4px" }}
+                                  >
+                                    Delete
+                                  </TableCell>
+                                </TableRow>
+                              </TableHead>
 
-                            <TableBody>
-
-                              {filteredBenelist.map((ben, index) => {
-                            return (
-                              <>
-                                <BeneCardVender
-                                  type={type}
-                                  ben={ben}
-                                  index={index}
-                                  mobile={mobile}
-                                  remitterStatus={remitterStatus}
-                                  getRemitterStatus={getRemitterStatus}
-                                  view="MT_View"
-                                  
-                                />
-                              </>
-                            );
-                          })}
-                            </TableBody>
-                          </Table>
-                        </TableContainer>
+                              <TableBody>
+                                {filteredBenelist.map((ben, index) => {
+                                  return (
+                                    <>
+                                      <BeneCardVender
+                                        type={type}
+                                        ben={ben}
+                                        index={index}
+                                        mobile={mobile}
+                                        remitterStatus={remitterStatus}
+                                        getRemitterStatus={getRemitterStatus}
+                                        view="MT_View"
+                                      />
+                                    </>
+                                  );
+                                })}
+                              </TableBody>
+                            </Table>
+                          </TableContainer>
                           // Vendor mapping......
                           // filteredBenelist.map((ben, index) => {
                           //   return (

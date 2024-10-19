@@ -427,7 +427,6 @@ const DmtContainer = ({
                           fontWeight: "bold",
                           letterSpacing: "0.05rem",
                           textAlign: "left",
-                          mt: 0,
                         }}
                       >
                         {type === "dmt1"
@@ -528,9 +527,11 @@ const DmtContainer = ({
                       <Grid>
                         <h1
                           style={{
-                            fontSize: "22px",
+                            fontSize: "24px",
                             fontWeight: "600",
                             color: "#1877f2",
+                            display: "flex",
+                            justifyContent: "center",
                           }}
                         >
                           {type === "dmt1"
