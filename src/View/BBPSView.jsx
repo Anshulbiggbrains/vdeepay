@@ -497,7 +497,7 @@ const BBPSView = ({resetView}) => {
                       alignItems: "center",
                       justifyContent: "space-between",
                   ml:3,
-                  mt:1
+                  mt:2
                     }}
                   >
                     <Button
