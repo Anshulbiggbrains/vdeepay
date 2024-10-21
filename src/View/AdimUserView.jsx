@@ -690,7 +690,7 @@ const AdimUserView = () => {
           }}
         >
           {user && user.role === "Admin" ? (
-            <BlockUnBlockModal row={row} />
+            <BlockUnBlockModal row={row}  refresh={refreshFunc}/>
           ) : (
             <Box sx={{ width: "100%" }}>
               {row.status === 1 ? (
@@ -743,10 +743,10 @@ const AdimUserView = () => {
               </Mount>
             </Box>
           )}
-
+{/* 
           {user && user.role === "Admin" && (
             <AdminCreateVirtualAcct user={user} row={row} refresh={refresh} />
-          )}
+          )} */}
           {user && user.role === "Admin" && (
             <AsmProductSaleModal
               role={row.role}
@@ -1030,7 +1030,7 @@ const AdimUserView = () => {
           }}
         >
           {user && user.role === "Admin" ? (
-            <BlockUnBlockModal row={row} />
+            <BlockUnBlockModal row={row} refresh={refresh}/>
           ) : (
             <Box sx={{ width: "100%" }}>
               {row.status === 1 ? (
@@ -1090,9 +1090,9 @@ const AdimUserView = () => {
               </Mount>
             </Box>
           )}
-          {user && user.role === "Admin" && (
+          {/* {user && user.role === "Admin" && (
             <AdminCreateVirtualAcct row={row} refresh={refresh} />
-          )}
+          )} */}
           {user && user.role === "Admin" && (
             <AsmProductSaleModal
               role={row.role}

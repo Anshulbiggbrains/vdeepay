@@ -28,7 +28,7 @@ const style = {
   p: 2,
 };
 
-const BlockUnBlockModal = ({ row }) => {
+const BlockUnBlockModal = ({ row ,refresh}) => {
   const [open, setOpen] = useState(false);
   const [request, setRequest] = useState(false);
   const [mpin, setMpin] = useState("");
@@ -40,6 +40,7 @@ const BlockUnBlockModal = ({ row }) => {
       { id: row.id, mpin: mpin },
       setRequest,
       (res) => {
+        if (refresh) refresh();
         handleClose();
         okSuccessToast(res.data.message);
         

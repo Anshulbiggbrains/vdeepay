@@ -452,7 +452,7 @@ const PaymentReceipt = () => {
                 : []
             );
           }
-        });
+        })
     }
   }, [value, splitAmtArr]);
 
@@ -633,7 +633,7 @@ const PaymentReceipt = () => {
                         fontSize: "14px",
                       }}
                     >
-                      Flat No. 8, Pocket 6, Sector 22, Rohini, Delhi, 110086
+                     Flat NO.54-A GROUND FLOOR, TYPE-II BLOCK-5 SEC-3 DSIDC,BAWANA,NORTH WEST DELHI,DELHI-110039
                     </Typography>
                   </Box>
 
@@ -677,7 +677,7 @@ const PaymentReceipt = () => {
                         fontFamily: "'Roboto', sans-serif",
                       }}
                     >
-                      Phone: 84474445497
+                      Phone: 00000000
                     </Typography>
                   </Box>
                 </Box>
@@ -1065,7 +1065,7 @@ const PaymentReceipt = () => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 color: "#0D47A1",
-                mt: 6,
+                mt: 10,
               }}
             >
               <Typography
