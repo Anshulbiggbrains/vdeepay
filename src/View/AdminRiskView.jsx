@@ -68,15 +68,15 @@ const AdminRiskView = () => {
   const tabs = [
     { label: "ACcount",icon:<LabelImportantIcon/>, content: <AdminAccountLimit />, },
     
-    { label: "Settelments",icon:<SettingsInputAntennaIcon/>, content: <AdminSettelments />,  },
+    // { label: "Settelments",icon:<SettingsInputAntennaIcon/>, content: <AdminSettelments />,  },
     // { label: "Virtual transaction",icon:<SettingsInputAntennaIcon/>, content: <AdminVirtualAccounts/>,  },
     { label: "Blocked Account",icon:<SettingsInputAntennaIcon/>, content: <AdminBlockedAc />,  },
-    {
-      label: "VIRTUAL ACCOUNTS",
-      content: <AdminVirtualAccounts value={value}/>,
-      icon: <ManageAccountsRoundedIcon  />,
-    },
-    { label: "VIRTUAL TRANSACTIONS", content: <AdminVirtualAccounts value={value}/>, icon: <CurrencyRupeeIcon /> },
+    // {
+    //   label: "VIRTUAL ACCOUNTS",
+    //   content: <AdminVirtualAccounts value={value}/>,
+    //   icon: <ManageAccountsRoundedIcon  />,
+    // },
+    // { label: "VIRTUAL TRANSACTIONS", content: <AdminVirtualAccounts value={value}/>, icon: <CurrencyRupeeIcon /> },
   ];
 
   return (

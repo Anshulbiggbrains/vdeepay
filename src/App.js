@@ -174,10 +174,10 @@ function App() {
                   <Route path="prabhu" element={<Transactions />} />
                   <Route path="accounts" element={<AdminAccountsView />} />
                   <Route path="risk" element={<AdminRiskView />} />
-                  <Route
+                  {/* <Route
                     path="virtual-accounts"
                     element={<AdminVirtualAccounts />}
-                  />
+                  /> */}
                   <Route path="banks" element={<AdminBanksView />} />
                   <Route path="banking" element={<AdminBanking />} />
                   <Route path="services" element={<AdminServices />} />
