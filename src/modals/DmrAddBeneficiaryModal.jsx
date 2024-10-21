@@ -131,6 +131,7 @@ const DmrAddBeneficiaryModal = ({
           longitude: loc.long,
           name: form.name.value,
           pf: "WEB",
+          bank_name: bankName,
           mpin: mpin && mpin,
             verified: type ? 0 : 0,
         },
@@ -183,6 +184,7 @@ const DmrAddBeneficiaryModal = ({
             bank_id: bankId,
             bank_name: bankName,
             verified: 1,
+            
           };
           postJsonData(
             apiEnd,
