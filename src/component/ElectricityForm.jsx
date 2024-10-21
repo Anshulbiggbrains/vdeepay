@@ -60,7 +60,7 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
   console.log("billDetails is define here",billDetails)
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
+    event && event.preventDefault();
     const data = {};
     params.forEach((item, index) => {
       if (item || item !== "") {
