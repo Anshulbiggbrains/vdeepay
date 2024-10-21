@@ -32,6 +32,7 @@ const BillPaymentModal = ({
   setBillDetails,
   fetchBill,
   endpt,
+  caNumber,
   payRequest,
   setPayRequest,
   operatorId,
@@ -95,9 +96,11 @@ const BillPaymentModal = ({
       longitude: location.long,
       mpin: mpin,
       param1:
-        billDetails && billDetails.billNumber
-          ? billDetails.billNumber
-          : parametersData && parametersData.param1,
+      billDetails && billDetails.billNumber
+      ? billDetails.billNumber
+      : parametersData && parametersData.param1
+      ? parametersData.param1
+      : caNumber
     };
     postJsonData(
       ApiEndpoints.RECH_PAY_BILL,
@@ -138,11 +141,11 @@ const BillPaymentModal = ({
         }
       />
       <Box sx={{ml:2}}>
-        <MyButton
+        {/* <MyButton
         text="Pay Bill"
         sx={{ fontSize: "12px", px: 1, ml: 1 }} // Add margin left for spacing
         onClick={payBill}
-      />
+      /> */}
       </Box>
 
       <Modal

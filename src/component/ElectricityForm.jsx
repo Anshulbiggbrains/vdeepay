@@ -56,9 +56,18 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [operatorIcon,setOperatorIcon] = useState()
   const [amount ,setAmmount]=useState()
+  const [caNumber, setCaNumber] = useState();
   const operatorRef = useRef();
-  console.log("billDetails is define here",billDetails)
+  console.log("params is define here",paramsValue)
+  // setCaNumber(paramsValue.param1)
+  useEffect(() => {
+    if (paramsValue && paramsValue.param1) {
+      // Set the caNumber to the param1 value from paramsValue
+      setCaNumber(paramsValue.param1);
+    }
+  }, [paramsValue]); // This will only run when paramsValue changes
 
+  console.log("caNumber:", caNumber);
   const handleSubmit = (event) => {
     event.preventDefault(); 
     const data = {};
@@ -73,6 +82,7 @@ const ElectricityForm = ({ title, type,resetView,name,image}) => {
   };
 
   const fetchBill = () => {
+ 
     const data = {
       latitude: location.lat,
       longitude: location.long,
@@ -538,6 +548,7 @@ console.log("oppp",opName);
             changeFetchToPay={changeFetchToPay}
             amountValue={amountValue}
             fetchBill={fetchBill}
+            caNumber={caNumber}
             billDetails={billDetails}
             setBillDetails={setBillDetails}
             payRequest={billPayRequest}
