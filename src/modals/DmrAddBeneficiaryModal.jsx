@@ -80,7 +80,7 @@ const DmrAddBeneficiaryModal = ({
     const form = event.currentTarget;
 
     let data = {};
-    if (buttonName === "Add Beneficiary" || buttonName === "Add Vendor") {
+    if (buttonName === "Add Beneficiary" || buttonName === "Add Vendor"||buttonName === "Add Super") {
       data = {
         name: form.name.value,
         rem_mobile: rem_mobile,
@@ -118,7 +118,7 @@ const DmrAddBeneficiaryModal = ({
       }
     }
 
-    if (buttonName === "Add Beneficiary" || buttonName === "Add Vendor") {
+    if (buttonName === "Add Beneficiary" || buttonName === "Add Vendor" ||buttonName === "Add Super") {
       postJsonData(
         apiEnd,
         data = {
@@ -246,7 +246,7 @@ const DmrAddBeneficiaryModal = ({
         size="small"
       >
         {/* <Spinner loading={request} size="small" /> */}
-        {(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : "Add Vendor"}
+        {(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : type==="express"? "Add Vendor":"Add Super"}
 
       </Button>
 
@@ -425,7 +425,7 @@ const DmrAddBeneficiaryModal = ({
             <ModalFooter
               form="addbene"
               request={request}
-              btn={(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : "Add Vendor"}
+              btn={(view === "MT_View" && (type === "dmt1" || type === "dmt2")) ? "Add Beneficiary" : type==="express"? "Add Vendor":"Add Super"}
               disable={!isValidName || !accNoV}
               twobuttons={type  ? "Verify & Add" : false}
           
