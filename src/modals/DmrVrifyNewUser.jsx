@@ -68,7 +68,7 @@ const DmrVrifyNewUser = ({
       sx={{
         width: "100%",
         display: "flex",
-        justifyContent: "end",
+        justifyContent: "center",
       }}
     >
       <Box
@@ -77,7 +77,7 @@ const DmrVrifyNewUser = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm_modal">
+        <Box  className="sm_modal">
           <ModalHeader title="Verify Sender" subtitle="Verify Now, Transact with Confidence!" handleClose={handleClose} />
           {/* <Box
             component="form"
